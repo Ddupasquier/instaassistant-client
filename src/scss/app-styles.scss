@@ -1,0 +1,11 @@
+.create-account {
+  background: none;
+  border: none;
+  color: white;
+  font-family: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  &:hover {
+    text-decoration: underline;
+  }
+}

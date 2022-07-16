@@ -1,0 +1,79 @@
+// SHADOWS
+$primary-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+  rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+  rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+$input-shadow: 0 0 8px rgb(255, 57, 107);
+
+// COLORS
+$primary-color: rgb(62, 180, 57);
+$secondary-color: rgb(28, 128, 25);
+
+.signup-form-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $primary-color;
+  z-index: 1;
+}
+
+.signup-form-container {
+  min-width: 40%;
+  max-width: 1200px;
+  height: fit-content;
+  text-align: center;
+  background: $secondary-color;
+  border-radius: 20px;
+  outline-offset: 4px;
+  .sign-up {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+      rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+      rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    padding: 20px;
+    z-index: 2;
+    input {
+      width: 90%;
+      height: 31px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      padding: 0 10px;
+      margin-bottom: 8px;
+      transition: 0.5s;
+      &:hover,
+      &:focus {
+        outline: none;
+        box-shadow: $input-shadow;
+      }
+    }
+    button {
+      padding: 8px 20px;
+      border-radius: 12px;
+      border: none;
+      font-size: 1.1rem;
+      background: $primary-color;
+      color: white;
+      transition: 0.5s;
+      &:hover {
+        box-shadow: 0 0 8px $primary-color;
+      }
+    }
+  }
+  a {
+    text-decoration: none;
+    color: white;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
