@@ -1,13 +1,12 @@
 header {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  padding: 0.5rem 0;
   border-bottom: 1px solid #000000;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 50px;
+  height: 60px;
   background: rgb(128, 128, 128);
   span {
     float: right;
@@ -19,4 +18,10 @@ header {
 
 header > * {
   border: black solid;
+}
+
+.nav-ham {
+  display: flex;
+  align-items: center;
+  font-size: 3rem;
 }

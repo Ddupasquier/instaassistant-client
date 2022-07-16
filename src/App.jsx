@@ -4,7 +4,7 @@ import './scss/app-styles.css';
 import { Outlet } from 'react-router-dom';
 import Login from './view/Login';
 import SignUp from './view/SignUp';
-import Header from './view/Header';
+import Header from './components/Header';
 import Footer from './view/Footer';
 
 const App = () => {
@@ -12,7 +12,7 @@ const App = () => {
   const [logIsVisible, setLogIsVisible] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   // TEMP VALUE
-  const [user] = useState(false);
+  const [user] = useState(true);
 
   const transLog = useTransition(logIsVisible, {
     from: { transform: 'translate3d(0, -100%, 0)', zIndex: '0' },

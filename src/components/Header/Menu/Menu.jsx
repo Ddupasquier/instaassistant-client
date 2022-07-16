@@ -1,6 +1,6 @@
 import React from 'react';
 import { animated } from 'react-spring';
-import './scss/nav-styles.css';
+import './scss/menu-styles.css';
 
 const Nav = ({ isOpen, style }) => {
   return (

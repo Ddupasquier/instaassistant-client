@@ -1,7 +1,7 @@
 import React from 'react';
 import './scss/header-styles.css';
 import * as HiIcons from 'react-icons/hi';
-import Nav from '../NavHam';
+import Menu from './Menu';
 
 const Header = ({ anim, isMenuOpen, setIsMenuOpen }) => {
   const handleToggle = () => {
@@ -20,7 +20,7 @@ const Header = ({ anim, isMenuOpen, setIsMenuOpen }) => {
       {anim((style, item) => {
           if (item) {
             return (
-              <Nav toggle={handleToggle} isOpen={isMenuOpen} style={style} />
+              <Menu toggle={handleToggle} isOpen={isMenuOpen} style={style} />
             );
           }
         })}
