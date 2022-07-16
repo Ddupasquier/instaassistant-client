@@ -57,10 +57,13 @@
   box-shadow: 0 0 8px rgb(255, 122, 155);
 }
 .login-form-container a {
+  font-family: none;
+  font-size: 1.1rem;
   text-decoration: none;
   color: white;
 }
 .login-form-container a:hover {
   text-decoration: underline;
+  color: white;
 }
 /*# sourceMappingURL=login-styles.css.map */
