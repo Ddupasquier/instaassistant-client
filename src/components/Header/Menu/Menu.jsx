@@ -97,7 +97,7 @@ const Menu = () => {
           <span>User</span>
         </div>
         <div style={c ? popOutStyle : null}>
-          <span>Users</span>
+          <span>Accounts</span>
         </div>
         <div style={d ? popOutStyle : null}>
           <span>Metrics</span>
