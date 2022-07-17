@@ -26,7 +26,7 @@
   border-radius: 50%;
   background: rgb(73, 73, 73);
 }
-.menu div a {
+.menu div .menu-item {
   color: rgb(80, 255, 255);
   text-decoration: none;
 }

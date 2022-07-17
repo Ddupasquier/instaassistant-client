@@ -1,7 +1,9 @@
+import { Link } from 'react-router-dom';
+
 const AccountCard = () => {
   return (
     <>
-      <div className="card" style={{ width: "18rem" }}>
+      <div className="card" style={{ width: '18rem' }}>
         <div className="card-body">
           <h2>@USERNAME</h2>
           <p className="card-text">
@@ -14,13 +16,13 @@ const AccountCard = () => {
           <h5 className="card-title">
             FOLLOWING: <span>23.5K</span>
           </h5>
-          <a href="#" className="btn btn-primary">
+          <Link to="/" className="btn btn-primary">
             Edit
-          </a>
+          </Link>
           &nbsp;
-          <a href="#" className="btn btn-primary">
+          <Link to="/" className="btn btn-primary">
             Start Task
-          </a>
+          </Link>
         </div>
       </div>
     </>
