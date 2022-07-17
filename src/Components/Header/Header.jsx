@@ -1,17 +1,13 @@
 import React from 'react';
 import './scss/header-styles.css';
-// import * as HiIcons from 'react-icons/hi';
 
-const Header = ({ isMenuOpen, setIsMenuOpen }) => {
-  const handleToggle = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+const Header = () => {
 
   return (
     <>
       <header>
-        <div className="spacer" onClick={handleToggle}>
-          {''}
+        <div className="logo">
+          Logo
         </div>
         <span>InstantAssisstant</span>
         <div className="username">Username here</div>

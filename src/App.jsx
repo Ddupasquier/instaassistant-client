@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import { useTransition } from 'react-spring';
 import './scss/app-styles.css';
 import { Outlet } from 'react-router-dom';
-import Login from './view/Login';
-import SignUp from './view/SignUp';
-import Header from './components/Header';
-import Footer from './view/Footer';
-import Menu from './components/Header/Menu/Menu';
+import Login from './View/Login';
+import SignUp from './View/SignUp';
+import Header from './Components/Header';
+import Footer from './Components/Footer';
+import Menu from './Components/Header/Menu/Menu';
 
 const App = () => {
   const [signIsVisible, setSignIsVisible] = useState(false);
   const [logIsVisible, setLogIsVisible] = useState(true);
-  // const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   // TEMP VALUE
   const [user] = useState(true);
 

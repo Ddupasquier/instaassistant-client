@@ -5,12 +5,12 @@ header {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   background: rgb(34, 34, 34);
-  border-bottom: 1px solid #000000;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 60px;
+  z-index: 1;
   span,
   div {
     display: flex;
@@ -21,6 +21,9 @@ header {
     padding-right: 10px;
     color: white;
     cursor: default;
+  }
+  .logo {
+    color: white;
   }
   span {
     font-size: 2rem;

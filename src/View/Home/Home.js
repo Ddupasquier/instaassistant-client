@@ -1,4 +1,4 @@
-import AccountCard from "../../components/AccountCard";
+import AccountCard from "../../Components/AccountCard";
 
 const Home = () => {
   return (
