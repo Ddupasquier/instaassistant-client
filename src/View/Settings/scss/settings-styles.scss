@@ -1,7 +1,11 @@
+$primary-color: rgb(0, 128, 128);
+$secondary-color: #e0b0ff;
+
 .settings {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
-    
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: $primary-color;
+  color: $secondary-color;
+}

@@ -1,0 +1,21 @@
+.slider {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 5vw;
+  padding: 0.3vh 0.5vh;
+  border: 4px solid grey;
+  border-radius: 26px;
+  box-shadow: -2px -2px 8px 5px rgba(255, 255, 255, 0.4), 2px 2px 8px 5px rgba(0, 0, 0, 0.6);
+  transition: 0.4s;
+}
+.slider:hover {
+  box-shadow: 2px 2px 8px 5px rgba(0, 0, 0, 0.6), -2px -2px 8px 5px rgba(255, 255, 255, 0.4);
+}
+.slider .slider-toggle {
+  height: 2vw;
+  aspect-ratio: 1/1;
+  background: darkgray;
+  border-radius: 25px;
+}
+/*# sourceMappingURL=slider-styles.css.map */
