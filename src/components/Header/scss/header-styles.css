@@ -1,28 +1,28 @@
 header {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  background: rgb(34, 34, 34);
   border-bottom: 1px solid #000000;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 60px;
-  background: rgb(128, 128, 128);
 }
-header span {
-  float: right;
-  font-size: 2rem;
-  font-weight: bold;
-  color: #ffffff;
-}
-
-header > * {
-  border: black solid;
-}
-
-.nav-ham {
+header span,
+header div {
   display: flex;
   align-items: center;
-  font-size: 3rem;
+}
+header .username {
+  justify-content: end;
+  padding-right: 10px;
+  color: white;
+  cursor: default;
+}
+header span {
+  font-size: 2rem;
+  color: rgb(80, 255, 255);
+  cursor: default;
 }
 /*# sourceMappingURL=header-styles.css.map */

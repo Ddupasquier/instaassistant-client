@@ -1,2 +1,2 @@
-header{display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid #000;position:fixed;top:0;left:0;width:100%;height:60px;background:gray}header span{float:right;font-size:2rem;font-weight:bold;color:#fff}header>*{border:#000 solid}.nav-ham{display:flex;align-items:center;font-size:3rem}
+header{display:grid;grid-template-columns:1fr 1fr 1fr;background:#222;border-bottom:1px solid #000;position:fixed;top:0;left:0;width:100%;height:60px}header span,header div{display:flex;align-items:center}header .username{justify-content:end;padding-right:10px;color:#fff;cursor:default}header span{font-size:2rem;color:#50ffff;cursor:default}
 /*# sourceMappingURL=header-styles.min.css.map */
