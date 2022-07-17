@@ -19,7 +19,7 @@ function Slider() {
         console.log(slider);
       }}
       style={
-        slider ? { backgroundColor: 'teal' } : { backgroundColor: 'black' }
+        slider ? { backgroundColor: '#00FFFFFF' } : { backgroundColor: '#C0C2C9' }
       }
     >
       <div
