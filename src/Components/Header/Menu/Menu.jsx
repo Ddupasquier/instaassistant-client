@@ -91,10 +91,10 @@ const Menu = () => {
       </div>
       <div className="popovers">
         <div style={settings ? popOutStyle : null}>
-          <span>Settings</span>
+          <span>Billing</span>
         </div>
         <div style={account ? popOutStyle : null}>
-          <span>User</span>
+          <span>Profile</span>
         </div>
         <div style={accounts ? popOutStyle : null}>
           <span>Accounts</span>
