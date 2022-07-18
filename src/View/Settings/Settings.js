@@ -14,19 +14,25 @@ const Settings = () => {
           height: "100vh",
         }}
       >
+        <h1>@USERNAME</h1>
+        <p>
+          <em>update username for @username</em>
+        </p>
         <div className="row">
-          <div className="col">
+          <div className="col-2"></div>
+          <div className="col-2">
             <Slider name="follows" />
           </div>
-          <div className="col">
+          <div className="col-2">
             <Slider name="follows" />
           </div>
-          <div className="col">
+          <div className="col-2">
             <Slider name="follows" />
           </div>
-          <div className="col">
+          <div className="col-2">
             <Slider name="follows" />
           </div>
+          <div className="col-2"></div>
         </div>
         <br />
 
