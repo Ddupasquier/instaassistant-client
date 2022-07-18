@@ -3,7 +3,12 @@
   height: -moz-fit-content;
   height: fit-content;
   width: 5vw;
+<<<<<<< Updated upstream
   padding: 0.3vh 0.5vh;
+=======
+  padding: 0.3vh 0.3vh;
+  border: 4px solid grey;
+>>>>>>> Stashed changes
   border-radius: 26px;
   box-shadow: -2px -2px 8px 5px rgba(255, 255, 255, 1), 2px 2px 8px 5px rgba(0, 0, 0, 0.5);
   transition: 0.4s;
