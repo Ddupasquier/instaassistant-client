@@ -4,9 +4,9 @@ import './scss/account-styles.css';
 
 const Profile = () => {
   return (
-      <div className="account">
-        <AccountCard />
-      </div>
+    <div className="account">
+      <AccountCard />
+    </div>
   );
 };
 

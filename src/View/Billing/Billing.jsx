@@ -1,7 +1,7 @@
 import React from "react";
 import Slider from "../../Components/Slider";
 import "./scss/settings-styles.css";
-import Button from "../../Components/Button";
+// import Button from "../../Components/Button";
 
 const Settings = () => {
   let payment = "credit";
@@ -37,7 +37,7 @@ const Settings = () => {
           <div className="col-4"> </div>
         </div>
         <div className="row">
-          {payment == "credit" ? (
+          {payment === "credit" ? (
             <>
               <input type="text" />
               <input type="text" />

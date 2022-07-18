@@ -39,7 +39,7 @@ const Menu = () => {
             setMetricsActive(false);
           }}
         >
-          <Link to="/settings" className="menu-item">
+          <Link to="/billing" className="menu-item">
             <Gear.BsGearWideConnected />
           </Link>
         </div>
@@ -54,7 +54,7 @@ const Menu = () => {
             setMetricsActive(false);
           }}
         >
-          <Link to="/account" className="menu-item">
+          <Link to="/profile" className="menu-item">
             <User.FaUserAlt />
           </Link>
         </div>
