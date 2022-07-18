@@ -7,9 +7,7 @@ import Profile from './View/Profile';
 import Accounts from './View/Accounts';
 import Metrics from './View/Metrics';
 import Account from './View/Account';
-import InstagramConfig from './View/instagramConfig/instagramConfig';
-
-
+import InstagramConfig from './View/instagramConfig';
 
 const AppRoutes = () => {
   return (
