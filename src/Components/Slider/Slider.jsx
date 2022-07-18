@@ -12,13 +12,16 @@ function Slider(props) {
   };
 
   return (
-    <button id={props.name}
+    <button
+      id={props.name}
       className="slider"
       onClick={() => {
         setSlider(!slider);
       }}
       style={
-        slider ? { backgroundColor: '#00FFFFFF' } : { backgroundColor: '#C0C2C9' }
+        slider
+          ? { backgroundColor: '#00FFFFFF' }
+          : { backgroundColor: '#C0C2C9' }
       }
     >
       <div
