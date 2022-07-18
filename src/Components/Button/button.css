@@ -4,5 +4,28 @@
     background: #E3E3E3;
     box-shadow: 10px 10px 15px 5px rgba(0, 0, 0, 0.25), -10px -10px 20px 5px #FFFFFF;
     border-radius: 60px;
+    padding: 10px 20px;
+}
+
+.round-ish {
+    border-radius: 15px;
+}
+
+.round {
+    border-radius: 54px;
+}
+
+.raised {
+    background: #E8E8E8;
+    box-shadow: 10px 10px 25px 5px rgba(0, 0, 0, 0.25), -10px -10px 25px 5px #FFFFFF;
+}
+
+.inset {
+    background: rgba(0, 0, 0, 0.04);
+    box-shadow: inset 10px 10px 10px rgba(0, 0, 0, 0.25);
+}
+
+.view-padding {
+    padding: 10px 20px;
 }
 

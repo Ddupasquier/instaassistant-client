@@ -1,9 +1,9 @@
 import "./button.css";
 
-const Button = () => {
+const Button = (props) => {
   return (
     <>
-      <div className="button">Button</div>
+      <div className="raised round-ish view-padding">{props.text}</div>
     </>
   );
 };
