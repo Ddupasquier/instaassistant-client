@@ -12,12 +12,15 @@ const Settings = () => {
           paddingLeft: "45px",
           backgroundColor: "#E3E3E3",
           height: "100vh",
+          justifyContent: "center",
+          textAlign: "center",
         }}
       >
         <h1>@USERNAME</h1>
         <p>
           <em>update username for @username</em>
         </p>
+        <hr />
         <div className="row">
           <div className="col-2"></div>
           <div className="col-2">
@@ -36,36 +39,71 @@ const Settings = () => {
         </div>
         <br />
 
-        <div className="row">
+        <div className="row" style={{ marginBottom: "50px" }}>
           <div className="col-2"> </div>
-          <div className="col-4 inset round-ish" style={{ height: "80px" }}>
-            Look-Alike Text Box
+
+          <div className="col-4">
+            <p>Look-Alike Text Box</p>
+            <textarea
+              type="textarea"
+              className=" inset round-ish"
+              style={{ width: "100%", height: "100%", resize: "none" }}
+            ></textarea>
           </div>
-          <div className="col-4 inset round-ish" style={{ height: "80px" }}>
-            Black-List Text Box{" "}
-          </div>
-          <div className="col-2"> </div>
-        </div>
-        <div className="row">
-          <div className="col-2"> </div>
-          <div className="col-4 inset round-ish" style={{ height: "80px" }}>
-            White-List Text Box{" "}
-          </div>
-          <div className="col-4 inset round-ish" style={{ height: "80px" }}>
-            Comments Text Box
-          </div>
-          <div className="col-2"> </div>
-        </div>
-        <div className="row">
-          <div className="col-2"> </div>
-          <div className="col-4 inset round-ish" style={{ height: "80px" }}>
-            Direct Messages Text Box{" "}
-          </div>
-          <div className="col-4 inset round-ish" style={{ height: "80px" }}>
-            Comments Text Box{" "}
+          <div className="col-4">
+            <p>Black-List Text Box</p>
+            <textarea
+              type="textarea"
+              className=" inset round-ish"
+              style={{ width: "100%", height: "100%", resize: "none" }}
+            ></textarea>
           </div>
           <div className="col-2"> </div>
         </div>
+
+        <div className="row" style={{ marginBottom: "50px" }}>
+          <div className="col-2"> </div>
+          <div className="col-4">
+            <p>White-List Text Box</p>
+            <textarea
+              type="textarea"
+              className=" inset round-ish"
+              style={{ width: "100%", height: "100%", resize: "none" }}
+            ></textarea>
+          </div>
+          <div className="col-4">
+            <p>Comments Text Box</p>
+            <textarea
+              type="textarea"
+              className=" inset round-ish"
+              style={{ width: "100%", height: "100%", resize: "none" }}
+            ></textarea>
+          </div>
+          <div className="col-2"> </div>
+        </div>
+
+        <div className="row" style={{ marginBottom: "50px" }}>
+          <div className="col-2"> </div>
+          <div className="col-4">
+            <p>Direct Messages Text Box</p>
+            <textarea
+              type="textarea"
+              className=" inset round-ish"
+              style={{ width: "100%", height: "100%", resize: "none" }}
+            ></textarea>
+          </div>
+          <div className="col-4">
+            <p>Comments Text Box</p>
+            <textarea
+              type="textarea"
+              className=" inset round-ish"
+              style={{ width: "100%", height: "100%", resize: "none" }}
+            ></textarea>
+          </div>
+          <div className="col-2"> </div>
+        </div>
+        <br />
+        <br />
         <br />
 
         <div className="row">
@@ -77,10 +115,10 @@ const Settings = () => {
                 <Button text="SAVE" />
               </div>
               <div className="col">
-                <Button text="Save &amp; Exit" />
+                <Button text="Save&nbsp;&amp;&nbsp;Exit" />
               </div>
               <div className="col">
-                <Button text="Discard Changes" />
+                <Button text="Discard&nbsp;Changes" />
               </div>
             </div>
           </div>
