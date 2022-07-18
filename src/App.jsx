@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTransition } from 'react-spring';
-import './scss/app-styles.css';
+import './Appscss/app-styles.css';
 import { Outlet } from 'react-router-dom';
 import Login from './View/Login';
 import SignUp from './View/SignUp';
