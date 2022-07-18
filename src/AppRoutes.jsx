@@ -7,6 +7,9 @@ import Profile from './View/Profile';
 import Accounts from './View/Accounts';
 import Metrics from './View/Metrics';
 import Account from './View/Account';
+import InstagramConfig from './View/instagramConfig/instagramConfig';
+
+
 
 const AppRoutes = () => {
   return (
@@ -18,6 +21,7 @@ const AppRoutes = () => {
         <Route path="/accounts" element={<Accounts />} />
         <Route path="/account" element={<Account />} />
         <Route path="/metrics" element={<Metrics />} />
+        <Route path="/config" element={<InstagramConfig />} />
       </Route>
     </Routes>
   );

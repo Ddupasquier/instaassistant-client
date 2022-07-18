@@ -1,6 +1,5 @@
 import React from "react";
 import Slider from "../../Components/Slider";
-import "./scss/settings-styles.css";
 import Button from "../../Components/Button";
 
 const InstagramConfig = () => {
