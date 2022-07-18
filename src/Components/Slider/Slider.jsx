@@ -14,7 +14,7 @@ function Slider(props) {
   return (
     <button
       id={props.name}
-      className="slider outset"
+      className="slider"
       onClick={() => {
         setSlider(!slider);
       }}
