@@ -3,8 +3,10 @@
   grid-template-rows: -webkit-fit-content 5vh 85vh -webkit-fit-content;
   grid-template-rows: fit-content 5vh 85vh fit-content;
   width: 95%;
+  height: 100%;
   padding-top: 4.5rem;
   margin-left: 45px;
+  background: #485b74;
 }
 .insta-config hr {
   text-align: center;
@@ -30,7 +32,8 @@
 }
 .insta-config .config-textareas textarea {
   width: 100%;
-  resize: both;
+  height: 12rem;
+  resize: none;
   overflow: auto;
 }
 .insta-config .config-buttons {

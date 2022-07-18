@@ -2,8 +2,10 @@
   display: grid;
   grid-template-rows: fit-content 5vh 85vh fit-content;
   width: 95%;
+  height: 100%;
   padding-top: 4.5rem;
   margin-left: 45px;
+  background: #485b74;
   hr {
     text-align: center;
     width: 60%;
@@ -27,7 +29,8 @@
     }
     textarea {
       width: 100%;
-      resize: both;
+      height: 12rem;
+      resize: none;
       overflow: auto;
     }
   }

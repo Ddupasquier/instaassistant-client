@@ -15,14 +15,14 @@
 }
 
 .outset {
-  background: #e8e8e8;
+  // background: #e8e8e8;
   border-radius: 15px;
-  box-shadow: -2px -2px 8px 5px rgba(255, 255, 255, 1),
-    2px 2px 8px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: -2px -2px 8px 5px rgba(255, 255, 255, 0.534),
+    2px 2px 8px 5px rgb(0, 0, 0);
 }
 
 .inset {
-  background: rgba(0, 0, 0, 0.04);
+  // background: rgba(0, 0, 0, 0.04);
   border: none;
   border-radius: 1rem;
   box-shadow: -0.1rem -0.1rem 0.4rem 0.2rem rgb(255, 255, 255) inset,
