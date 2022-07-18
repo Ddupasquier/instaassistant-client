@@ -13,7 +13,7 @@ const App = () => {
   const [logIsVisible, setLogIsVisible] = useState(true);
 
   // TEMP VALUE
-  const [user] = useState(false);
+  const [user] = useState(true);
 
   const transLog = useTransition(logIsVisible, {
     from: { transform: 'translate3d(0, -100%, 0)', zIndex: '0' },
