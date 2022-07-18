@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-items: center;
   align-items: center;
-  position: absolute;
+  position: fixed;
   width: 45px;
   top: 0;
   left: 0;
@@ -40,7 +40,7 @@
   flex-direction: column;
   justify-items: center;
   align-items: center;
-  position: absolute;
+  position: fixed;
   width: 130px;
   top: 0;
   left: -80px;

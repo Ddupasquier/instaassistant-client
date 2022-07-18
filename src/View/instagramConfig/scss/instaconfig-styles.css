@@ -1,0 +1,41 @@
+.insta-config {
+  display: grid;
+  grid-template-rows: -webkit-fit-content 5vh 85vh -webkit-fit-content;
+  grid-template-rows: fit-content 5vh 85vh fit-content;
+  width: 95%;
+  padding-top: 4.5rem;
+  margin-left: 45px;
+}
+.insta-config hr {
+  text-align: center;
+  width: 60%;
+  margin: auto;
+}
+.insta-config .config-toggles {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.insta-config .config-textareas {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.insta-config .config-textareas .textarea-container {
+  min-width: 300px;
+}
+.insta-config .config-textareas textarea {
+  width: 100%;
+  resize: both;
+  overflow: auto;
+}
+.insta-config .config-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/*# sourceMappingURL=instaconfig-styles.css.map */
