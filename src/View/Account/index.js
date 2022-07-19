@@ -1,2 +1,2 @@
-import Profile from "./Account";
-export default Profile;
+import Account from "./Account";
+export default Account;

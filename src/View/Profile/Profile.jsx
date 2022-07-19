@@ -1,8 +1,8 @@
 import React from 'react';
 import AccountCard from '../../Components/AccountCard';
-import './scss/account-styles.css';
+import './scss/profile-styles.css';
 
-const Account = () => {
+const Profile = () => {
   return (
       <div className="account">
         <AccountCard />
@@ -10,4 +10,4 @@ const Account = () => {
   );
 };
 
-export default Account;
+export default Profile;
