@@ -1,6 +1,6 @@
 .metrics-container {
   height: 100vh;
-  background: green;
+  background: lightgray;
 }
 .metrics-container .metrics-main {
   display: flex;

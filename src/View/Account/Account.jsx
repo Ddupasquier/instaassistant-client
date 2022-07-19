@@ -18,9 +18,9 @@ const Profile = () => {
       </div>
       <div className="account-buttons">
         <Link className="button outset" to="/accounts">
-          Back
+          Accounts
         </Link>
-        <Link className="button outset" to="">
+        <Link className="button outset" to="/config">
           Edit
         </Link>
       </div>

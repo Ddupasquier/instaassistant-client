@@ -10,6 +10,33 @@
   text-decoration: underline;
 }
 
+.button {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  cursor: pointer;
+  -webkit-user-select: none; /* Safari */ /* IE 10 and IE 11 */
+  -moz-user-select: none;
+       user-select: none; /* Standard syntax */
+  padding: 0.2rem 0.8rem;
+  margin: 1rem;
+  background: #e8e8e8;
+  transition: 0.2s;
+  color: black;
+  font-weight: 600;
+  text-decoration: none;
+}
+.button:active {
+  background: #e8e8e8;
+  box-shadow: 2px 2px 8px 5px rgb(255, 255, 255), -2px -2px 8px 5px rgba(0, 0, 0, 0.5);
+}
+.button:hover {
+  color: rgb(138, 138, 138);
+}
+
 .head {
   text-align: center;
   padding-top: 4rem;

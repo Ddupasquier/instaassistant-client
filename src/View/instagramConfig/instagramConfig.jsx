@@ -2,6 +2,7 @@ import React from 'react';
 import './scss/instaconfig-styles.css';
 import Slider from '../../Components/Slider';
 import Button from '../../Components/Button';
+import { Link } from 'react-router-dom';
 
 const InstagramConfig = () => {
   return (
@@ -64,7 +65,7 @@ const InstagramConfig = () => {
       <div className="config-buttons">
         <Button text="SAVE" />
 
-        <Button text="Save&nbsp;&amp;&nbsp;Exit" />
+        <Link  to="/account" className="button outset">Save and Exit</Link>
 
         <Button text="Discard&nbsp;Changes" />
       </div>
