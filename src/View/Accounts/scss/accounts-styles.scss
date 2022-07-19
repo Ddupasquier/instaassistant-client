@@ -1,6 +1,14 @@
-.accounts {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.accounts-container {
   height: 100vh;
+  background: lightgray;
+  .accounts-cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    width: 88%;
+  }
 }

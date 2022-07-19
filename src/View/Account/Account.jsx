@@ -1,5 +1,5 @@
 import React from 'react';
-import AccountCard from '../../Components/AccountCard';
+import AccountCard from '../../Components/AccountCard/AccountCard';
 import './scss/account-styles.css';
 
 const Profile = () => {
