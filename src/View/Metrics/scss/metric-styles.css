@@ -1,7 +1,13 @@
-.metrics {
+.metrics-container {
+  height: 100vh;
+  background: green;
+}
+.metrics-container .metrics-main {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  margin: auto;
+  width: 90%;
+  background: white;
 }
 /*# sourceMappingURL=metric-styles.css.map */
