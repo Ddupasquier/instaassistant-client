@@ -15,16 +15,16 @@
 }
 
 .outset {
-  // background: #e8e8e8;
+  border: none;
   border-radius: 15px;
-  box-shadow: -2px -2px 8px 5px rgba(255, 255, 255, 0.534),
+  box-shadow: -2px -2px 8px 5px rgba(255, 255, 255, 0.5),
     2px 2px 8px 5px rgb(0, 0, 0);
 }
 
 .inset {
-  // background: rgba(0, 0, 0, 0.04);
   border: none;
   border-radius: 1rem;
-  box-shadow: -0.1rem -0.1rem 0.4rem 0.2rem rgb(255, 255, 255) inset,
-    0.2rem 0.2rem 0.2rem 0.1rem rgb(94, 94, 94) inset;
+  background: linear-gradient(300deg, #ffffff23, #00000000);
+  box-shadow: 0.3rem 0.2rem 0.5rem -0.1rem rgba(0, 0, 0) inset,
+    -0.2rem -0.2rem 0.2rem 0.1rem rgb(255, 255, 255, 0.3) inset;
 }

@@ -26,37 +26,37 @@ const InstagramConfig = () => {
         <div className="textarea-container">
           <label>Look-Alike Text Box</label>
           <br />
-          <textarea type="textarea" className=" inset"></textarea>
+          <textarea type="textarea" className="inset"></textarea>
         </div>
 
         <div className="textarea-container">
           <label>Black-List Text Box</label>
           <br />
-          <textarea type="textarea" className=" inset"></textarea>
+          <textarea type="textarea" className="inset"></textarea>
         </div>
 
         <div className="textarea-container">
           <label>White-List Text Box</label>
           <br />
-          <textarea type="textarea" className=" inset"></textarea>
+          <textarea type="textarea" className="inset"></textarea>
         </div>
 
         <div className="textarea-container">
           <label>Comments Text Box</label>
           <br />
-          <textarea type="textarea" className=" inset"></textarea>
+          <textarea type="textarea" className="inset"></textarea>
         </div>
 
         <div className="textarea-container">
           <label>Direct Messages Text Box</label>
           <br />
-          <textarea type="textarea" className=" inset"></textarea>
+          <textarea type="textarea" className="inset"></textarea>
         </div>
         
         <div className="textarea-container">
           <label>Comments Text Box</label>
           <br />
-          <textarea type="textarea" className=" inset"></textarea>
+          <textarea type="textarea" className="inset"></textarea>
         </div>
 
         <br />

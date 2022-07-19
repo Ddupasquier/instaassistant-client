@@ -13,6 +13,8 @@
   margin: 1rem;
   background: #e8e8e8;
   transition: 0.2s;
+  color: black;
+  font-weight: 600;
 }
 .button:active {
   background: #e8e8e8;
