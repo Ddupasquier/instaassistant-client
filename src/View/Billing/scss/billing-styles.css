@@ -1,9 +1,29 @@
-.settings {
+.billing-container {
+  height: 100vh;
+  background: lightgray;
+}
+.billing-container .billing-main {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  background: rgb(0, 128, 128);
-  color: #e0b0ff;
+}
+.billing-container .billing-main .payment-options {
+  margin-bottom: 2rem;
+}
+.billing-container .billing-main input {
+  width: 90%;
+  height: 2rem;
+  border-radius: 1rem;
+  border: 0.1rem solid #ccc;
+  padding: 0 0.5rem;
+  margin-bottom: 8px;
+  transition: 0.5s;
+}
+.billing-container .billing-main input:hover, .billing-container .billing-main input:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 225, 255, 0.5);
+}
+.billing-container .billing-main .billing-button {
+  float: right;
 }
 /*# sourceMappingURL=billing-styles.css.map */

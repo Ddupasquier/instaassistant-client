@@ -2,8 +2,11 @@
   display: grid;
   grid-template-rows: fit-content 5vh 85vh fit-content;
   width: 95%;
+  height: 100%;
   padding-top: 4.5rem;
   margin-left: 45px;
+  background: rgb(44, 44, 53);
+  color: rgb(175, 175, 175);
   hr {
     text-align: center;
     width: 60%;
@@ -24,11 +27,17 @@
     width: 100%;
     .textarea-container {
       min-width: 300px;
-    }
-    textarea {
-      width: 100%;
-      resize: both;
-      overflow: auto;
+      label {
+        font-size: 1.2rem;
+      }
+      textarea {
+        width: 100%;
+        height: 12rem;
+        resize: none;
+        overflow: auto;
+        // background: rgba(0, 0, 0, 0.171);
+        color: rgb(175, 175, 175);
+      }
     }
   }
   .config-buttons {

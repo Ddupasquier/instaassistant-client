@@ -1,2 +1,2 @@
-.accounts{ }
+.accounts-container{height:100vh;background:#d3d3d3}.accounts-container .accounts-cards{display:flex;flex-direction:row;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:center;margin:auto;width:88%}
 /*# sourceMappingURL=accounts-styles.min.css.map */

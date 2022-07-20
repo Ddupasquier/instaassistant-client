@@ -1,15 +1,1 @@
-.button {
-  width: fit-content;
-  height: fit-content;
-  cursor: pointer;
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
-  padding: 0.2rem 0.8rem;
-  margin: 1rem;
-  &:active {
-    background: #e8e8e8;
-    box-shadow: 2px 2px 8px 5px rgba(255, 255, 255, 1),
-      -2px -2px 8px 5px rgba(0, 0, 0, 0.5);
-  }
-}
+
