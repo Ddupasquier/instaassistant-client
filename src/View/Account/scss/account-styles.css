@@ -1,6 +1,8 @@
 .account-container {
+  position: fixed;
   height: 100vh;
-  background: rgb(189, 56, 56);
+  width: 100vw;
+  background: lightgray;
 }
 .account-container .account-buttons {
   display: flex;
@@ -9,29 +11,82 @@
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  padding-top: 4rem;
 }
-.account-container .account-main {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 1rem;
-  align-items: center;
-  justify-content: center;
-  margin: auto;
-  width: 88%;
-}
-.account-container .account-main .account-controls {
+.account-container .account-head {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  width: 100%;
 }
-.account-container .account-main .account-log {
+.account-container .account-head span {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.account-container .account-head section {
+  text-align: center;
+}
+.account-container .account-head div {
+  padding: 0.2rem 1rem;
+}
+.account-container .controls-screen {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 1rem;
+  width: 80%;
+  height: 25rem;
+  margin: auto;
+}
+.account-container .controls-screen .account-controls {
+  display: none;
+  padding: 1rem;
+  transition: 0.5s;
+  text-align: center;
+}
+.account-container .controls-screen .account-controls select {
+  width: 100%;
+  height: 2rem;
+  border-radius: 1rem;
+  border: 0.1rem solid #ccc;
+  padding: 0 0.5rem;
+  margin: auto;
+  margin-bottom: 8px;
+  transition: 0.5s;
+}
+.account-container .controls-screen .account-controls select:hover, .account-container .controls-screen .account-controls select:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 225, 255, 0.5);
+}
+.account-container .controls-screen .account-controls input {
   width: 95%;
-  height: 30rem;
+  height: 2rem;
+  border-radius: 1rem;
+  border: 0.1rem solid #ccc;
+  padding: 0 0.5rem;
+  margin: auto;
+  margin-bottom: 8px;
+  transition: 0.5s;
+}
+.account-container .controls-screen .account-controls input:hover, .account-container .controls-screen .account-controls input:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 225, 255, 0.5);
+}
+.account-container .controls-screen .account-controls textarea {
+  width: 95%;
+  height: 2rem;
+  border-radius: 1rem;
+  border: 0.1rem solid #ccc;
+  padding: 0.5rem 0.5rem;
+  margin: auto;
+  margin-bottom: 8px;
+  resize: vertical;
+  max-height: 19rem;
+  transition: 0.5s;
+}
+.account-container .controls-screen .account-controls textarea:hover, .account-container .controls-screen .account-controls textarea:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 225, 255, 0.5);
+}
+.account-container .controls-screen .account-log {
   padding: 0 1rem;
   overflow: auto;
 }
