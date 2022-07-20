@@ -6,7 +6,7 @@ const Account = () => {
   // const [followers, setFollowers] = useState(0);
   // const [following, setFollowing] = useState(0);
   const [controlsShown, setControlsShown] = useState(false);
-const logText = ""
+  const logText = 'Woah';
 
   const controlsStyle = {
     display: 'block',
@@ -15,7 +15,8 @@ const logText = ""
   };
 
   const screenStyle = {
-    width: controlsShown ? '45%' : '100%',
+    maxWidth: controlsShown ? '100%' : '100%',
+    minWidth: controlsShown ? '50%' : '100%',
     height: controlsShown ? '100%' : '50%',
     resize: controlsShown ? 'none' : 'vertical',
   };

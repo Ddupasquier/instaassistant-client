@@ -34,7 +34,6 @@
   flex-wrap: wrap;
   gap: 1rem;
   width: 80%;
-  height: 25rem;
   margin: auto;
   border: red solid;
 }
@@ -77,7 +76,7 @@
   height: 2rem;
   border-radius: 1rem;
   border: 0.1rem solid #ccc;
-  padding: 0.5rem 0.5rem;
+  padding: 0.5rem;
   margin: auto;
   margin-bottom: 8px;
   resize: vertical;
@@ -89,7 +88,9 @@
   box-shadow: 0 0 10px rgba(0, 225, 255, 0.5);
 }
 .account-container .controls-screen .account-log {
-  padding: 0 1rem;
+  padding: 0.5rem;
   overflow: auto;
+  max-height: 50%;
+  max-width: 100%;
 }
 /*# sourceMappingURL=account-styles.css.map */
