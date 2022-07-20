@@ -28,10 +28,12 @@
   .controls-screen {
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
     gap: 1rem;
     width: 80%;
     height: 25rem;
     margin: auto;
+    border: red solid;
     .account-controls {
       display: none;
       padding: 1rem;
@@ -45,7 +47,7 @@
         padding: 0 0.5rem;
         margin: auto;
         margin-bottom: 8px;
-        transition: 0.5s;
+        transition: box-shadow 0.5s;
         &:hover,
         &:focus {
           outline: none;
@@ -60,7 +62,7 @@
         padding: 0 0.5rem;
         margin: auto;
         margin-bottom: 8px;
-        transition: 0.5s;
+        transition: box-shadow 0.5s;
         &:hover,
         &:focus {
           outline: none;
@@ -76,8 +78,8 @@
         margin: auto;
         margin-bottom: 8px;
         resize: vertical;
-        max-height: 19rem;
-        transition: 0.5s;
+        max-height: 13rem;
+        transition: box-shadow 0.5s;
         &:hover,
         &:focus {
           outline: none;

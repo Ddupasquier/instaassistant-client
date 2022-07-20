@@ -31,10 +31,12 @@
 .account-container .controls-screen {
   display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
   gap: 1rem;
   width: 80%;
   height: 25rem;
   margin: auto;
+  border: red solid;
 }
 .account-container .controls-screen .account-controls {
   display: none;
@@ -50,7 +52,7 @@
   padding: 0 0.5rem;
   margin: auto;
   margin-bottom: 8px;
-  transition: 0.5s;
+  transition: box-shadow 0.5s;
 }
 .account-container .controls-screen .account-controls select:hover, .account-container .controls-screen .account-controls select:focus {
   outline: none;
@@ -64,7 +66,7 @@
   padding: 0 0.5rem;
   margin: auto;
   margin-bottom: 8px;
-  transition: 0.5s;
+  transition: box-shadow 0.5s;
 }
 .account-container .controls-screen .account-controls input:hover, .account-container .controls-screen .account-controls input:focus {
   outline: none;
@@ -79,8 +81,8 @@
   margin: auto;
   margin-bottom: 8px;
   resize: vertical;
-  max-height: 19rem;
-  transition: 0.5s;
+  max-height: 13rem;
+  transition: box-shadow 0.5s;
 }
 .account-container .controls-screen .account-controls textarea:hover, .account-container .controls-screen .account-controls textarea:focus {
   outline: none;

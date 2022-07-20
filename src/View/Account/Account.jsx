@@ -1,36 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './scss/account-styles.css';
 import { Link } from 'react-router-dom';
 
 const Account = () => {
-  const [onScreen, setOnScreen] = useState('');
-  const [followers, setFollowers] = useState(0);
-  const [following, setFollowing] = useState(0);
+  // const [followers, setFollowers] = useState(0);
+  // const [following, setFollowing] = useState(0);
   const [controlsShown, setControlsShown] = useState(false);
-
-  let logText = 'your mom';
+const logText = ""
 
   const controlsStyle = {
     display: 'block',
-    width: controlsShown ? '50%' : '0',
-    height: controlsShown ? '100%' : '0',
-    transition: '1s',
+    width: controlsShown ? '15rem' : '0',
+    height: controlsShown ? '20rem' : '0',
   };
 
   const screenStyle = {
-    width: controlsShown ? '50%' : '100%',
+    width: controlsShown ? '45%' : '100%',
     height: controlsShown ? '100%' : '50%',
     resize: controlsShown ? 'none' : 'vertical',
-    transition: '1s',
   };
-
-  useEffect(() => {
-    // some fetch for data
-    // might split into separate fetches
-    setOnScreen(logText);
-    setFollowers(23.5);
-    setFollowing(23.5);
-  }, [logText, followers, following]);
 
   return (
     <div className="account-container">
@@ -49,11 +37,11 @@ const Account = () => {
         </section>
         <section>
           <label>Followers</label>
-          <div className="followers inset">{followers} K</div>
+          <div className="followers inset">23.5 K</div>
         </section>
         <section>
           <label>Following</label>
-          <div className="following inset">{following} K</div>
+          <div className="following inset">23.5 K</div>
         </section>
       </div>
 
@@ -96,7 +84,7 @@ const Account = () => {
             </form>
           </div>
           <div className="account-log inset" style={screenStyle}>
-            {onScreen}
+            {logText}
           </div>
         </div>
       </div>
