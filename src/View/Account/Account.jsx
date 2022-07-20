@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './scss/account-styles.css';
 import { Link } from 'react-router-dom';
 
-const Profile = () => {
+const Account = () => {
   const [onScreen, setOnScreen] = useState('');
 
   let logText = 'your mom';
