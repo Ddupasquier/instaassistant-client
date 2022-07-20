@@ -16,11 +16,11 @@ const AccountCard = () => {
         <h5 className="card-title">
           FOLLOWING: <span>23.5K</span>
         </h5>
-        <Link to="/config" className="btn btn-primary">
+        <Link to="/config" className="button outset">
           Edit
         </Link>
         &nbsp;
-        <Link to="/account" className="btn btn-primary">
+        <Link to="/account" className="button outset">
           Start Task
         </Link>
       </div>

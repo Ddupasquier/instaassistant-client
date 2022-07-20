@@ -1,5 +1,7 @@
 .billing-container {
+  position: fixed;
   height: 100vh;
+  width: 100vw;
   background: lightgray;
   .billing-main {
     display: flex;

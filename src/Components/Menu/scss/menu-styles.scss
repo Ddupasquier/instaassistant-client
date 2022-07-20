@@ -3,7 +3,6 @@ $primary-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
   rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 $primary-font: rgb(80, 255, 255);
 $secondary-font: rgb(80, 255, 182);
-// $item-height: 1rem;
 
 .menu {
   display: flex;
@@ -17,6 +16,7 @@ $secondary-font: rgb(80, 255, 182);
   bottom: 0;
   padding-top: 70px;
   background: rgba(34, 34, 34);
+  z-index: 1;
   div {
     display: flex;
     align-items: center;

@@ -1,6 +1,9 @@
 .account {
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: lightgray;
   height: 100vh;
+  width: 100vw;
 }

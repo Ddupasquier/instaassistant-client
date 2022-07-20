@@ -1,12 +1,12 @@
 .insta-config {
+  position: fixed;
   display: grid;
   grid-template-rows: fit-content 5vh 85vh fit-content;
-  width: 95%;
-  height: 100%;
-  padding-top: 4.5rem;
-  margin-left: 45px;
+  width: 100vw;
+  height: 100vh;
   background: rgb(44, 44, 53);
   color: rgb(175, 175, 175);
+  overflow: auto;
   hr {
     text-align: center;
     width: 60%;

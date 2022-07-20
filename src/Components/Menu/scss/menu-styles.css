@@ -10,6 +10,7 @@
   bottom: 0;
   padding-top: 70px;
   background: rgb(34, 34, 34);
+  z-index: 1;
 }
 .menu div {
   display: flex;

@@ -3,5 +3,9 @@
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  background: white;
+  border: 1px black solid;
+  border-radius: 5px;
+  padding: 1rem;
 }
 /*# sourceMappingURL=accountcard-styles.css.map */

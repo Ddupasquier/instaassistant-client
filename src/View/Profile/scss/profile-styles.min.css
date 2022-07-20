@@ -1,2 +1,2 @@
-.account{display:flex;align-items:center;justify-content:center;height:100vh}
+.account{position:fixed;display:flex;align-items:center;justify-content:center;background:#d3d3d3;height:100vh;width:100vw}
 /*# sourceMappingURL=profile-styles.min.css.map */
