@@ -18,12 +18,12 @@ $secondary-font: rgb(80, 255, 182);
   padding-top: 70px;
   background: rgba(34, 34, 34);
   font-size: 1.2rem;
-  z-index: 1;
+  z-index: 2;
   .menu-item {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(34, 34, 34);
+    background: rgba(34, 34, 34, 0);
     height: 2.3rem;
     aspect-ratio: 1/1;
     border-radius: 50%;
@@ -46,11 +46,39 @@ $secondary-font: rgb(80, 255, 182);
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.623);
+    background: rgba(255, 255, 255, 0.514);
     height: 2.3rem;
     aspect-ratio: 1/1;
-    // border: 1px lightgray solid;
     box-shadow: 0 0 10px rgba(0, 225, 255, 0.774);
     border-radius: 50%;
+  }
+}
+
+.pop-overs {
+  display: flex;
+  flex-direction: column;
+  // justify-items: left;
+  align-items: left;
+  position: fixed;
+  gap: 1rem;
+  // width: 3.2rem;
+  top: 0;
+  left: 0.5rem;
+  bottom: 0;
+  padding-top: 70px;
+  font-size: 1.2rem;
+  z-index: 1;
+  .pop-over {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    background: rgba(34, 34, 34, 0);
+    height: 2.18rem;
+    padding-right: 0.5rem;
+    // aspect-ratio: 1/1;
+    border-radius: 25px;
+    color: $primary-font;
+    transition: 0.5s;
+    border: 1px red solid;
   }
 }
