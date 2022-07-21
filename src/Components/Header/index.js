@@ -1,2 +1,2 @@
-import Header from "./Header";
-export default Header;
+/* eslint-disable import/prefer-default-export */
+export { default as Header } from './Header';

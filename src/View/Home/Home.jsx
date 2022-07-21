@@ -1,12 +1,12 @@
 import React from 'react';
 import './scss/home-styles.css';
 
-const Home = () => {
+function Home() {
   return (
     <div className="home">
       Home
     </div>
   );
-};
+}
 
 export default Home;

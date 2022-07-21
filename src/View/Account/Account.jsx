@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './scss/account-styles.css';
 import { Link } from 'react-router-dom';
 
-const Account = () => {
+function Account() {
   // const [followers, setFollowers] = useState(0);
   // const [following, setFollowing] = useState(0);
   const [controlsShown, setControlsShown] = useState(false);
@@ -37,22 +37,24 @@ const Account = () => {
           <span>@Username</span>
         </section>
         <section>
-          <label>Followers</label>
+          <legend>Followers</legend>
           <div className="followers inset">23.5 K</div>
         </section>
         <section>
-          <label>Following</label>
+          <legend>Following</legend>
           <div className="following inset">23.5 K</div>
         </section>
       </div>
 
       <div className="account-main">
         <div className="account-buttons">
-          <b>Action Log</b>{' '}
+          <b>Action Log</b>
+          {' '}
           <Link to="/metrics" className="button outset">
             Metrics
           </Link>
           <button
+            type="button"
             className="add outset button"
             onClick={() => setControlsShown(!controlsShown)}
           >
@@ -91,6 +93,6 @@ const Account = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Account;

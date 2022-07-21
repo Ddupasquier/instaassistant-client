@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { useTransition } from 'react-spring';
 import './Appscss/app-styles.css';
 import { Outlet } from 'react-router-dom';
-import Login from './View/Login';
-import SignUp from './View/SignUp';
-import Header from './Components/Header';
-import Footer from './Components/Footer';
-import {Menu} from './Components/Menu';
+import { Login } from './View/Login';
+import { SignUp } from './View/SignUp';
+import { Header } from './Components/Header';
+import { Footer } from './Components/Footer';
+import { Menu } from './Components/Menu';
 
-const App = () => {
+function App() {
   const [signIsVisible, setSignIsVisible] = useState(false);
   const [logIsVisible, setLogIsVisible] = useState(true);
 
@@ -49,6 +49,7 @@ const App = () => {
                 />
               );
             }
+            return null;
           })}
           {tranSign((style, item) => {
             if (item) {
@@ -61,11 +62,12 @@ const App = () => {
                 />
               );
             }
+            return null;
           })}
         </>
       )}
     </div>
   );
-};
+}
 
 export default App;

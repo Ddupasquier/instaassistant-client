@@ -1,15 +1,15 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import App from './App';
-import Home from './View/Home';
-import Billing from './View/Billing';
-import Profile from './View/Profile';
-import Accounts from './View/Accounts';
-import Metrics from './View/Metrics';
-import Account from './View/Account';
-import InstagramConfig from './View/instagramConfig';
+import { Home } from './View/Home';
+import { Billing } from './View/Billing';
+import { Profile } from './View/Profile';
+import { Account } from './View/Account';
+import { Accounts } from './View/Accounts';
+import { Metrics } from './View/Metrics';
+import { InstagramConfig } from './View/instagramConfig';
 
-const AppRoutes = () => {
+function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<App />}>
@@ -23,6 +23,6 @@ const AppRoutes = () => {
       </Route>
     </Routes>
   );
-};
+}
 
 export default AppRoutes;

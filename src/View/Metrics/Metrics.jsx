@@ -1,7 +1,7 @@
 import React from 'react';
 import './scss/metric-styles.css';
 
-const Metrics = () => {
+function Metrics() {
   return (
     <div className="metrics-container">
       <div className="head">
@@ -13,6 +13,6 @@ const Metrics = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Metrics;

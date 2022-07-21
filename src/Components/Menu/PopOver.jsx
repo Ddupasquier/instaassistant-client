@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function PopOver({ item, hovered }) {
   const popOverActive = {
@@ -22,3 +23,12 @@ function PopOver({ item, hovered }) {
 }
 
 export default PopOver;
+
+PopOver.propTypes = {
+  item: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    to: PropTypes.string.isRequired,
+    Icon: PropTypes.func.isRequired,
+  }).isRequired,
+  hovered: PropTypes.string.isRequired,
+};

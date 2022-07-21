@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import './scss/slider-styles.css';
 
-function Slider(props) {
+function Slider({ name }) {
   const [slider, setSlider] = useState(false);
 
   const toggleRight = {
@@ -13,7 +14,8 @@ function Slider(props) {
 
   return (
     <button
-      id={props.name}
+      id={name}
+      type="button"
       className="slider"
       onClick={() => {
         setSlider(!slider);
@@ -33,3 +35,7 @@ function Slider(props) {
 }
 
 export default Slider;
+
+Slider.propTypes = {
+  name: PropTypes.string.isRequired,
+};

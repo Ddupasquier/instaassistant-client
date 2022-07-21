@@ -1,2 +1,2 @@
-import Billing from "./Billing";
-export default Billing;
+/* eslint-disable import/prefer-default-export */
+export { default as Billing } from './Billing';

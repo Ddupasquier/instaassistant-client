@@ -1,10 +1,10 @@
 import React from 'react';
 import './scss/instaconfig-styles.css';
-import Slider from '../../Components/Slider';
-import Button from '../../Components/Button';
 import { Link } from 'react-router-dom';
+import { Slider } from '../../Components/Slider';
+import { Button } from '../../Components/Button';
 
-const InstagramConfig = () => {
+function InstagramConfig() {
   return (
     <div className="insta-config">
       <div className="head">
@@ -25,39 +25,39 @@ const InstagramConfig = () => {
       </div>
       <div className="config-textareas">
         <div className="textarea-container">
-          <label>Look-Alike Text Box</label>
+          <legend>Look-Alike Text Box</legend>
           <br />
-          <textarea type="textarea" className="inset"></textarea>
+          <textarea type="textarea" className="inset" />
         </div>
 
         <div className="textarea-container">
-          <label>Black-List Text Box</label>
+          <legend>Black-List Text Box</legend>
           <br />
-          <textarea type="textarea" className="inset"></textarea>
+          <textarea type="textarea" className="inset" />
         </div>
 
         <div className="textarea-container">
-          <label>White-List Text Box</label>
+          <legend>White-List Text Box</legend>
           <br />
-          <textarea type="textarea" className="inset"></textarea>
+          <textarea type="textarea" className="inset" />
         </div>
 
         <div className="textarea-container">
-          <label>Comments Text Box</label>
+          <legend>Comments Text Box</legend>
           <br />
-          <textarea type="textarea" className="inset"></textarea>
+          <textarea type="textarea" className="inset" />
         </div>
 
         <div className="textarea-container">
-          <label>Direct Messages Text Box</label>
+          <legend>Direct Messages Text Box</legend>
           <br />
-          <textarea type="textarea" className="inset"></textarea>
+          <textarea type="textarea" className="inset" />
         </div>
-        
+
         <div className="textarea-container">
-          <label>Comments Text Box</label>
+          <legend>Comments Text Box</legend>
           <br />
-          <textarea type="textarea" className="inset"></textarea>
+          <textarea type="textarea" className="inset" />
         </div>
 
         <br />
@@ -65,12 +65,14 @@ const InstagramConfig = () => {
       <div className="config-buttons">
         <Button text="SAVE" />
 
-        <Link  to="/account" className="button outset">Save and Exit</Link>
+        <Link to="/account" className="button outset">
+          Save and Exit
+        </Link>
 
         <Button text="Discard&nbsp;Changes" />
       </div>
     </div>
   );
-};
+}
 
 export default InstagramConfig;

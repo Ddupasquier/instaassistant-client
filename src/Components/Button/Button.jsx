@@ -1,11 +1,13 @@
-import "./scss/button-styles.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import './scss/button-styles.css';
 
-const Button = (props) => {
-  return (
-    <>
-      <div className="outset button">{props.text}</div>
-    </>
-  );
-};
+function Button({ text }) {
+  return <div className="outset button">{text}</div>;
+}
 
 export default Button;
+
+Button.propTypes = {
+  text: PropTypes.string.isRequired,
+};

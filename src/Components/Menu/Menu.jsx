@@ -30,9 +30,8 @@ const menuItems = [
   },
 ];
 
-const Menu = () => {
+function Menu() {
   const [hovered, setHovered] = useState('');
-  console.log(hovered);
 
   return (
     <>
@@ -40,7 +39,9 @@ const Menu = () => {
         {menuItems.map((item) => (
           <div
             onMouseOver={() => setHovered(item.name)}
+            onFocus={() => setHovered(item.name)}
             onMouseLeave={() => setHovered('')}
+            onBlur={() => setHovered('')}
           >
             <MenuItem key={item.to} item={item} />
           </div>
@@ -48,11 +49,11 @@ const Menu = () => {
       </div>
       <div className="pop-overs">
         {menuItems.map((item) => (
-          <PopOver key={item.to} item={item} hovered={hovered}/>
+          <PopOver key={item.to} item={item} hovered={hovered} />
         ))}
       </div>
     </>
   );
-};
+}
 
 export default Menu;

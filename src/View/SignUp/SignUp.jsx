@@ -1,7 +1,11 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import './scss/signup-styles.css';
-import {animated} from 'react-spring'
+import { animated } from 'react-spring';
 
-const SignUp = ({ setVis, setLogVis, isVis, style }) => {
+function SignUp({
+  setVis, setLogVis, isVis, style,
+}) {
   return (
     <animated.div className="signup-form-overlay" style={style}>
       <div className="signup-form-container">
@@ -25,6 +29,7 @@ const SignUp = ({ setVis, setLogVis, isVis, style }) => {
         </a>
         <br />
         <button
+          type="button"
           className="create-account"
           onClick={() => {
             setVis(!isVis);
@@ -36,6 +41,13 @@ const SignUp = ({ setVis, setLogVis, isVis, style }) => {
       </div>
     </animated.div>
   );
-};
+}
 
 export default SignUp;
+
+SignUp.propTypes = {
+  setVis: PropTypes.func.isRequired,
+  setLogVis: PropTypes.func.isRequired,
+  isVis: PropTypes.bool.isRequired,
+  style: PropTypes.func.isRequired,
+};

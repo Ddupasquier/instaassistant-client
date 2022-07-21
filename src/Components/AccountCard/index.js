@@ -1,2 +1,2 @@
-import AccountCard from "./AccountCard";
-export default AccountCard;
+/* eslint-disable import/prefer-default-export */
+export { default as AccountCard } from './AccountCard';

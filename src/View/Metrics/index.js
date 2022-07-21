@@ -1,2 +1,2 @@
-import Metrics from "./Metrics";
-export default Metrics;
+/* eslint-disable import/prefer-default-export */
+export { default as Metrics } from './Metrics';

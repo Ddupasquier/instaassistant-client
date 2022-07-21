@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
-const MenuItem = ({ item }) => {
+function MenuItem({ item }) {
   const [hover, setHover] = useState(false);
 
   return (
@@ -17,6 +18,14 @@ const MenuItem = ({ item }) => {
       </div>
     </NavLink>
   );
-};
+}
 
 export default MenuItem;
+
+MenuItem.propTypes = {
+  item: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    to: PropTypes.string.isRequired,
+    Icon: PropTypes.func.isRequired,
+  }).isRequired,
+};
