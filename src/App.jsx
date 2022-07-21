@@ -6,7 +6,7 @@ import Login from './View/Login';
 import SignUp from './View/SignUp';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
-import Menu from './Components/Menu';
+import {Menu} from './Components/Menu';
 
 const App = () => {
   const [signIsVisible, setSignIsVisible] = useState(false);

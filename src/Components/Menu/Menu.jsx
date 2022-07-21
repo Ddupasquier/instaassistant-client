@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BsGearWideConnected } from 'react-icons/bs';
 import { FaUserAlt, FaUserFriends } from 'react-icons/fa';
 import { VscGraphLine } from 'react-icons/vsc';
-import { MenuItem } from '../MenuItem';
+import MenuItem from './MenuItem';
+import PopOver from './PopOver';
+
 import './scss/menu-styles.css';
 
 const menuItems = [
@@ -29,34 +31,24 @@ const menuItems = [
 ];
 
 const Menu = () => {
-  const popOverStyle = {
-    width: '8rem',
-    translate: 'translate(-50%, -50%)',
-  };
-
-  // const isHover = (hover) => {
-  //   console.log(hover);
-  //   return hover;
-  // };
+  const [hovered, setHovered] = useState('');
+  console.log(hovered);
 
   return (
     <>
       <div className="menu">
         {menuItems.map((item) => (
-          <MenuItem key={item.to} item={item} 
-          // isHover={isHover} 
-          />
+          <div
+            onMouseOver={() => setHovered(item.name)}
+            onMouseLeave={() => setHovered('')}
+          >
+            <MenuItem key={item.to} item={item} />
+          </div>
         ))}
       </div>
       <div className="pop-overs">
         {menuItems.map((item) => (
-          <div
-            key={item.to}
-            className="pop-over"
-            style={popOverStyle}
-          >
-            {item.name}
-          </div>
+          <PopOver key={item.to} item={item} hovered={hovered}/>
         ))}
       </div>
     </>

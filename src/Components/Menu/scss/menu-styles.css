@@ -64,12 +64,11 @@
   display: flex;
   align-items: center;
   justify-content: right;
-  background: rgba(34, 34, 34, 0);
-  height: 2.18rem;
+  background: rgb(34, 34, 34);
+  height: 2.3rem;
   padding-right: 0.5rem;
   border-radius: 25px;
   color: rgb(80, 255, 255);
   transition: 0.5s;
-  border: 1px red solid;
 }
 /*# sourceMappingURL=menu-styles.css.map */

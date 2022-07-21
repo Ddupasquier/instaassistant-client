@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-const MenuItem = ({ item, isHover }) => {
+const MenuItem = ({ item }) => {
   const [hover, setHover] = useState(false);
-//   isHover(hover);
 
   return (
     <NavLink
