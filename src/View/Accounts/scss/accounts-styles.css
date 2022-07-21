@@ -4,14 +4,26 @@
   width: 100vw;
   background: lightgray;
 }
-.accounts-container .accounts-cards {
+.accounts-container .accounts-main {
+  margin: auto;
+  width: 87%;
+  padding: 1rem;
+}
+.accounts-container .accounts-main .accounts-cards {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   gap: 1rem;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
   margin: auto;
-  width: 88%;
+  padding: 1rem;
+  overflow-x: scroll;
+}
+.accounts-container .accounts-main .ads {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-evenly;
 }
 /*# sourceMappingURL=accounts-styles.css.map */

@@ -1,5 +1,7 @@
 .card {
-  width: 15rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
@@ -7,5 +9,13 @@
   border: 1px black solid;
   border-radius: 5px;
   padding: 1rem;
+}
+.card .card-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
 }
 /*# sourceMappingURL=accountcard-styles.css.map */

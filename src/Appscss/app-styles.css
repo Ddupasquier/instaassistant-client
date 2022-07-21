@@ -54,4 +54,10 @@
   background: linear-gradient(300deg, rgba(255, 255, 255, 0.137254902), rgba(0, 0, 0, 0));
   box-shadow: 0.3rem 0.2rem 0.5rem -0.1rem rgb(0, 0, 0) inset, -0.2rem -0.2rem 0.2rem 0.1rem rgba(255, 255, 255, 0.3) inset;
 }
+
+hr {
+  text-align: center;
+  width: 60%;
+  margin: 1rem auto;
+}
 /*# sourceMappingURL=app-styles.css.map */

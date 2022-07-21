@@ -9,11 +9,6 @@
   color: rgb(175, 175, 175);
   overflow: auto;
 }
-.insta-config hr {
-  text-align: center;
-  width: 60%;
-  margin: auto;
-}
 .insta-config .config-toggles {
   display: flex;
   align-items: center;
