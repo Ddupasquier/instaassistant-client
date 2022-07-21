@@ -35,7 +35,7 @@
   gap: 1rem;
   width: 80%;
   margin: auto;
-  border: red solid;
+  padding-top: 2rem;
 }
 .account-container .controls-screen .account-controls {
   display: none;
@@ -44,7 +44,6 @@
   text-align: center;
 }
 .account-container .controls-screen .account-controls select {
-  width: 100%;
   height: 2rem;
   border-radius: 1rem;
   border: 0.1rem solid #ccc;
@@ -58,7 +57,6 @@
   box-shadow: 0 0 10px rgba(0, 225, 255, 0.5);
 }
 .account-container .controls-screen .account-controls input {
-  width: 95%;
   height: 2rem;
   border-radius: 1rem;
   border: 0.1rem solid #ccc;
@@ -72,13 +70,11 @@
   box-shadow: 0 0 10px rgba(0, 225, 255, 0.5);
 }
 .account-container .controls-screen .account-controls textarea {
-  width: 95%;
   height: 2rem;
   border-radius: 1rem;
   border: 0.1rem solid #ccc;
   padding: 0.5rem;
   margin: auto;
-  margin-bottom: 8px;
   resize: vertical;
   max-height: 13rem;
   transition: box-shadow 0.5s;

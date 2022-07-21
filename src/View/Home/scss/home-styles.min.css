@@ -1,2 +1,2 @@
-.home{display:flex;align-items:center;justify-content:center;height:100vh}
+.invite{padding:1rem}.invite legend{font-size:1.2rem;font-weight:bold;color:#fff}.invite input{width:90%;height:2rem;border-radius:1rem;border:.1rem solid #ccc;padding:0 .5rem;margin-bottom:8px;transition:.5s}.invite input:hover,.invite input:focus{outline:none;box-shadow:0 0 15px #ff7a9b}
 /*# sourceMappingURL=home-styles.min.css.map */

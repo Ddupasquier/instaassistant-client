@@ -1,33 +1,43 @@
-import React from 'react';
+/* eslint-disable object-curly-newline */
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './scss/signup-styles.css';
 import { animated } from 'react-spring';
+import { Home } from '../Home';
 
-function SignUp({
-  setVis, setLogVis, isVis, style,
-}) {
+function SignUp({ setVis, setLogVis, isVis, style }) {
+  const [isInvited, setIsInvited] = useState(false);
+
   return (
     <animated.div className="signup-form-overlay" style={style}>
       <div className="signup-form-container">
-        <form className="sign-up">
-          Create an account!
-          <h1>Sign Up</h1>
-          <input type="text" id="username" placeholder="EMAIL" />
-          <br />
-          <input type="password" id="password" placeholder="PASSWORD" />
-          <br />
-          <input
-            type="confirmPassword"
-            id="confirmPassword"
-            placeholder="CONFIRM PASSWORD"
-          />
-          <br />
-          <button type="submit">Sign Up</button>
-        </form>
-        <a href="/" className="forgot-password">
-          Forgot Password?
-        </a>
-        <br />
+        {isInvited ? (
+          <form className="sign-up">
+            Create an account!
+            <h1>Sign Up</h1>
+            <input type="text" id="username" placeholder="EMAIL" />
+            <br />
+            <input type="password" id="password" placeholder="PASSWORD" />
+            <br />
+            <input
+              type="confirmPassword"
+              id="confirmPassword"
+              placeholder="CONFIRM PASSWORD"
+            />
+            <br />
+            <button type="submit">Sign Up</button>
+          </form>
+        ) : (
+          <Home isInvited={isInvited} setIsInvited={setIsInvited} />
+        )}
+        {isInvited ? (
+          <>
+            <a href="/" className="forgot-password">
+              Forgot Password?
+            </a>
+            <br />
+          </>
+        ) : null}
         <button
           type="button"
           className="create-account"
@@ -36,7 +46,7 @@ function SignUp({
             setLogVis(isVis);
           }}
         >
-          Already Have An Account
+          Already Have An Account?
         </button>
       </div>
     </animated.div>

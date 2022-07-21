@@ -1,7 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import App from './App';
-import { Home } from './View/Home';
 import { Billing } from './View/Billing';
 import { Profile } from './View/Profile';
 import { Account } from './View/Account';
@@ -13,7 +12,7 @@ function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<App />}>
-        <Route index element={<Home />} />
+        <Route index element={<Profile />} />
         <Route path="/billing" element={<Billing />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/accounts" element={<Accounts />} />

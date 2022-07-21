@@ -8,6 +8,7 @@
   margin: auto;
   width: 87%;
   padding: 1rem;
+  overflow: hidden;
 }
 .accounts-container .accounts-main .accounts-cards {
   display: flex;
@@ -18,6 +19,7 @@
   justify-content: left;
   margin: auto;
   padding: 1rem;
+  box-sizing: content-box;
   overflow-x: scroll;
 }
 .accounts-container .accounts-main .ads {

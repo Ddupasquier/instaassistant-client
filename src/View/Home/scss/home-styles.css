@@ -1,7 +1,22 @@
-.home {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+.invite {
+  padding: 1rem;
+}
+.invite legend {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+}
+.invite input {
+  width: 90%;
+  height: 2rem;
+  border-radius: 1rem;
+  border: 0.1rem solid #ccc;
+  padding: 0 0.5rem;
+  margin-bottom: 8px;
+  transition: 0.5s;
+}
+.invite input:hover, .invite input:focus {
+  outline: none;
+  box-shadow: 0 0 15px rgb(255, 122, 155);
 }
 /*# sourceMappingURL=home-styles.css.map */

@@ -10,14 +10,21 @@
     0.2rem 0.2rem 0.2rem 0.1rem rgb(94, 94, 94) inset,
     0 0 0 rgb(0, 0, 0, 0.5) inset;
   margin: 1rem;
+  transition: 0.5s;
+  &:hover {
+    box-shadow: 0 0 10px rgba(0, 225, 255, 0.774),
+      -0.1rem -0.1rem 0.4rem 0.2rem rgb(255, 255, 255, 0.541) inset,
+      0.2rem 0.2rem 0.2rem 0.1rem rgb(94, 94, 94) inset,
+  }
+  cursor: pointer;
   .slider-toggle {
     height: 1.2rem;
     aspect-ratio: 1/1;
     background: rgb(145, 145, 145);
     border-radius: 25px;
+    cursor: pointer;
   }
 }
-
 
 // * Later Feature
 // .disabled-slider {

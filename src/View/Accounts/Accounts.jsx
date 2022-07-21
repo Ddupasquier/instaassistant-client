@@ -15,6 +15,13 @@ function Accounts() {
           <AccountCard />
           <AccountCard />
           <AccountCard />
+          <AccountCard />
+          <AccountCard />
+          <AccountCard />
+          <AccountCard />
+          <AccountCard />
+          <AccountCard />
+          <AccountCard />
         </div>
         <div className="ads">
           <p>Twitter - Coming soon!</p>

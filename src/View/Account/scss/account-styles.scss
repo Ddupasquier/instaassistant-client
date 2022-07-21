@@ -32,14 +32,13 @@
     gap: 1rem;
     width: 80%;
     margin: auto;
-    border: red solid;
+    padding-top: 2rem;
     .account-controls {
       display: none;
       padding: 1rem;
       transition: 0.5s;
       text-align: center;
       select {
-        width: 100%;
         height: 2rem;
         border-radius: 1rem;
         border: 0.1rem solid #ccc;
@@ -54,7 +53,6 @@
         }
       }
       input {
-        width: 95%;
         height: 2rem;
         border-radius: 1rem;
         border: 0.1rem solid #ccc;
@@ -69,13 +67,11 @@
         }
       }
       textarea {
-        width: 95%;
         height: 2rem;
         border-radius: 1rem;
         border: 0.1rem solid #ccc;
         padding: 0.5rem;
         margin: auto;
-        margin-bottom: 8px;
         resize: vertical;
         max-height: 13rem;
         transition: box-shadow 0.5s;
