@@ -17,9 +17,9 @@ function Accounts() {
           <AccountCard />
         </div>
         <div className="ads">
-          <h3>Twitter - Coming soon!</h3>
-          <h3>TikTok - Coming Soon!</h3>
-          <h3>Facebook - Coming soon!</h3>
+          <p>Twitter - Coming soon!</p>
+          <p>TikTok - Coming Soon!</p>
+          <p>Facebook - Coming soon!</p>
         </div>
       </div>
     </div>

@@ -22,7 +22,6 @@
   -moz-user-select: none;
        user-select: none; /* Standard syntax */
   padding: 0.2rem 0.8rem;
-  margin: 1rem;
   background: #e8e8e8;
   transition: 0.2s;
   color: black;

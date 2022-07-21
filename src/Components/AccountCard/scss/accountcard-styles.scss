@@ -1,16 +1,23 @@
 .card {
   width: fit-content;
   height: fit-content;
-  background: white;
+  background: rgb(95, 95, 95);
   border: 1px black solid;
   border-radius: 5px;
   padding: 1rem;
+  color: white;
+  cursor: default;
+  transition: 0.3s;
+  &:hover {
+    transform: translateY(-0.3rem);
+    border: 0.1rem rgb(102, 255, 0) solid;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.719);
+  }
   .card-buttons {
     display: flex;
     flex-direction: row;
-    gap: 1rem;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     margin: auto;
   }
 }

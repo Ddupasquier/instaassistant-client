@@ -1,4 +1,6 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React, { useEffect, useState } from 'react';
+import { User } from '@nextui-org/react';
 import { Link } from 'react-router-dom';
 import './scss/accountcard-styles.css';
 
@@ -17,28 +19,20 @@ function AccountCard() {
 
   return (
     <div className="card">
-      <h2>@USERNAME</h2>
+      <User
+        src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
+        name="@Username"
+        size="xl"
+      />
       <p className="card-text">
         Some quick example text to build on the card title and make up the bulk
         of the cards content.
       </p>
       <h5 className="card-title">
-        FOLLOWERS:
-        {' '}
-        <span>
-          {followers}
-          {' '}
-          K
-        </span>
+        FOLLOWERS: <span>{followers} K</span>
       </h5>
       <h5 className="card-title">
-        FOLLOWING:
-        {' '}
-        <span>
-          {following}
-          {' '}
-          K
-        </span>
+        FOLLOWING: <span>{following} K</span>
       </h5>
       <div className="card-buttons">
         <Link to="/config" className="button outset">
