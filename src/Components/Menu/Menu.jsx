@@ -35,7 +35,7 @@ function Menu() {
 
   return (
     <>
-      <div className="menu">
+      <nav className="menu">
         {menuItems.map((item) => (
           <div
             onMouseOver={() => setHovered(item.name)}
@@ -46,7 +46,7 @@ function Menu() {
             <MenuItem key={item.to} item={item} />
           </div>
         ))}
-      </div>
+      </nav>
       <div className="pop-overs">
         {menuItems.map((item) => (
           <PopOver key={item.to} item={item} hovered={hovered} />
