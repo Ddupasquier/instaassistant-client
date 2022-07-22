@@ -6,7 +6,7 @@ import { animated } from 'react-spring';
 import { Home } from '../Home';
 
 function SignUp({ setVis, setLogVis, isVis, style }) {
-  const [isInvited, setIsInvited] = useState(false);
+  const [isInvited, setIsInvited] = useState(true);
 
   return (
     <animated.div className="signup-form-overlay" style={style}>

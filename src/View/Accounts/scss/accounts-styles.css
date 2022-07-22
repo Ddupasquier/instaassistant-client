@@ -21,6 +21,7 @@
   padding: 1rem;
   box-sizing: content-box;
   overflow-x: scroll;
+  box-shadow: rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 .accounts-container .accounts-main .ads {
   display: flex;

@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useEffect, useState } from 'react';
-import { User } from '@nextui-org/react';
+import { User, Button } from '@nextui-org/react';
 import { Link } from 'react-router-dom';
 import './scss/accountcard-styles.css';
 
@@ -35,13 +35,19 @@ function AccountCard() {
         FOLLOWING: <span>{following} K</span>
       </h5>
       <div className="card-buttons">
-        <Link to="/config" className="button outset">
-          Edit
-        </Link>
-        &nbsp;
-        <Link to="/account" className="button outset">
-          Start Task
-        </Link>
+        <Button.Group size="sm" color="success">
+          <Button>
+            <Link to="/config" className="card-button">
+              Edit
+            </Link>
+          </Button>
+          <Button>/</Button>
+          <Button>
+            <Link to="/account" className="card-button">
+              Start Task
+            </Link>
+          </Button>
+        </Button.Group>
       </div>
     </div>
   );

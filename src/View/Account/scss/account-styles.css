@@ -75,8 +75,6 @@
   border: 0.1rem solid #ccc;
   padding: 0.5rem;
   margin: auto;
-  resize: vertical;
-  max-height: 13rem;
   transition: box-shadow 0.5s;
 }
 .account-container .controls-screen .account-controls textarea:hover, .account-container .controls-screen .account-controls textarea:focus {

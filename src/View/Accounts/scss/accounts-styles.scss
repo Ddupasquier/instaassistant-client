@@ -17,8 +17,9 @@
       justify-content: left;
       margin: auto;
       padding: 1rem;
-      box-sizing: content-box; 
+      box-sizing: content-box;
       overflow-x: scroll;
+      box-shadow: rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
     }
     .ads {
       display: flex;
