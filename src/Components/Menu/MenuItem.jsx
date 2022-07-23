@@ -9,7 +9,7 @@ function MenuItem({ item }) {
     <NavLink
       to={item.to}
       exact="true"
-      activeClassName="active"
+      activeclassname="active"
       onMouseEnter={() => setHover(!hover)}
       onMouseLeave={() => setHover(!hover)}
     >
