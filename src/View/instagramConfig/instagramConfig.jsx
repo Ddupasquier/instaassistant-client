@@ -1,9 +1,10 @@
 import React from 'react';
-import { User, Button } from '@nextui-org/react';
+import { Button } from '@nextui-org/react';
 import './scss/instaconfig-styles.css';
 import { Link } from 'react-router-dom';
 import { Slider } from '../../Components/Slider';
 import { Textarea } from '../../Components/Textarea';
+import { UserIcon } from '../../Components/UserIcon';
 
 function InstagramConfig() {
   const textareas = [
@@ -28,10 +29,10 @@ function InstagramConfig() {
     <div className="insta-config">
       <div className="config-user">
         <h2>Configuration</h2>
-        <User
+        <UserIcon
+          size="xl"
           src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
           name="@Username"
-          size="xl"
         />
       </div>
 
