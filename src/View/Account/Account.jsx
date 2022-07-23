@@ -1,8 +1,5 @@
-/* eslint-disable react/jsx-no-useless-fragment */
-/* eslint-disable arrow-parens */
-/* eslint-disable semi */
-/* eslint-disable no-console */
 /* eslint-disable react/jsx-one-expression-per-line */
+/* eslint-disable operator-linebreak */
 import React, { useState, useEffect } from 'react';
 import { User, Button } from '@nextui-org/react';
 import './scss/account-styles.css';
@@ -13,7 +10,7 @@ function Account() {
   const [controlsShown, setControlsShown] = useState(false);
   const [tasks, setTasks] = useState();
   const [tasksLoaded, setTasksLoaded] = useState();
-  console.log(tasks);
+  const [selected, setSelected] = useState('');
 
   useEffect(() => {
     FetchInstagramTaskTypes()
@@ -35,6 +32,10 @@ function Account() {
   const screenStyle = {
     width: controlsShown ? '42%' : '97%',
     transition: '1s',
+  };
+
+  const handleChange = (e) => {
+    setSelected(e.target.value);
   };
 
   return (
@@ -78,13 +79,33 @@ function Account() {
       <div className="account-main">
         <div className="account-controls outset" style={controlsStyle}>
           <form>
-            <select name="options" className="options">
+            <select
+              name="options"
+              className="options"
+              value={selected}
+              onChange={handleChange}
+            >
               <option value="">Select an option</option>
-              {tasksLoaded && (tasks.map(task => (
-                <option key={task.id} value={task.id}> {task.name} </option>)))}
+              {tasksLoaded &&
+                tasks.map((task) => (
+                  <option key={task.id} value={task.id}>
+                    {task.name}
+                  </option>
+                ))}
             </select>
             <br />
-            <input type="text" placeholder="param-one" className="param-one" />
+            {/* <input type="text" placeholder="param-one" className="param-one" /> */}
+
+            {tasksLoaded &&
+              tasks[Number(selected)].arguments.map((arg) => (
+                <input
+                  key={arg.id}
+                  // value={arg.id}
+                  type={arg.input_type}
+                  placeholder={arg.label}
+                />
+              ))}
+
             <br />
             <textarea
               type="text"
@@ -94,8 +115,6 @@ function Account() {
           </form>
         </div>
         <div className="log-container" style={screenStyle}>
-          {/* <section></section> */}
-
           <div className="log inset">
             <Button
               type="button"
