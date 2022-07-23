@@ -26,7 +26,7 @@ export const GetUserInfo = () => {
   return fetch(UserViewPath).then((response) => response.json());
 };
 
-export const CreateAccountPost = () => {
+export const CreateUserPost = () => {
   return fetch(CreateAccountPath).then((response) => response.json());
 };
 
@@ -43,8 +43,3 @@ export const CreateBot = (arg) => {
 export const DeleteBot = () => {
   return fetch(BotDeletePAth).then((response) => response.json());
 };
-
-//* Task for bot to complete
-
-export const TaskCreatePath = "";
-export const TaskDeletePath = "";
