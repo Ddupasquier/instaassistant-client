@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import React, { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { User, Button } from '@nextui-org/react';
 import './scss/account-styles.css';
 import { Link } from 'react-router-dom';
