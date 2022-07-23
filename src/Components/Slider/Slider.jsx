@@ -10,6 +10,7 @@ function Slider({ name }) {
   };
   const toggleLeft = {
     float: 'left',
+    backgroundColor: '#F5A524',
   };
 
   return (
@@ -22,7 +23,7 @@ function Slider({ name }) {
       }}
       style={
         slider
-          ? { backgroundColor: '#00FFFFFF' }
+          ? { backgroundColor: '#17C964' }
           : { backgroundColor: '#C0C2C9' }
       }
     >
