@@ -6,8 +6,8 @@ body {
 
 .app {
   display: grid;
-  grid-template-rows: 10vh 90vh;
-  grid-template-columns: 10vw 90vw;
+  grid-template-rows: 3.5rem auto;
+  grid-template-columns: 3rem auto;
 }
 .app header {
   grid-column: span 2;

@@ -1,7 +1,7 @@
 .account-container {
   display: flex;
   flex-direction: column;
-  background: lightgray;
+  background: rgb(44, 44, 53);
   overflow: auto;
 }
 .account-container .account-head-buttons {

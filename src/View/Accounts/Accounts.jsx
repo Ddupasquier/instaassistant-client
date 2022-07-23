@@ -5,7 +5,7 @@ import './scss/accounts-styles.css';
 import { AccountCard } from '../../Components/AccountCard';
 
 function Accounts() {
-  const [iconView, setIconView] = useState(false);
+  const [iconView, setIconView] = useState(true);
 
   return (
     <div className="accounts-container">
