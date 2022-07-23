@@ -1,10 +1,12 @@
+/* eslint-disable operator-linebreak */
+/* eslint-disable quotes */
 export const InstagramTaskTypes =
   "https://instaassistant-api.herokuapp.com/task_type";
 
 export const TwitterTaskTypes =
   "https://instaassistant-api.herokuapp.com/task_type";
 
-//User Routes
+// User Routes
 
 export const UserLoginPath = "https://instaassistant-api.herokuapp.com/login";
 

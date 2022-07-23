@@ -1,18 +1,24 @@
+/* eslint-disable react/jsx-no-useless-fragment */
+/* eslint-disable arrow-parens */
+/* eslint-disable semi */
+/* eslint-disable no-console */
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState, useEffect } from 'react';
 import { User, Button } from '@nextui-org/react';
 import './scss/account-styles.css';
 import { Link } from 'react-router-dom';
+import { FetchInstagramTaskTypes } from '../../api';
 
 function Account() {
   const [controlsShown, setControlsShown] = useState(false);
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState();
+  const [tasksLoaded, setTasksLoaded] = useState();
   console.log(tasks);
 
   useEffect(() => {
-    fetch('/api/tasks')
-      .then((res) => res.json())
-      .then((data) => setTasks(data));
+    FetchInstagramTaskTypes()
+      .then((data) => setTasks(data))
+      .then(() => setTasksLoaded(true));
   }, []);
 
   const logText = [
@@ -74,9 +80,8 @@ function Account() {
           <form>
             <select name="options" className="options">
               <option value="">Select an option</option>
-              <option value="1">Option 1</option>
-              <option value="2">Option 2</option>
-              <option value="3">Option 3</option>
+              {tasksLoaded && (tasks.map(task => (
+                <option key={task.id} value={task.id}> {task.name} </option>)))}
             </select>
             <br />
             <input type="text" placeholder="param-one" className="param-one" />
