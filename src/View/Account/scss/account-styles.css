@@ -111,9 +111,10 @@
   overflow-y: scroll;
 }
 .account-container .account-main .log-container .log .log-button {
-  position: absolute;
+  position: -webkit-sticky;
+  position: sticky;
   top: 0.5rem;
-  right: 0.5rem;
+  left: 100%;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;

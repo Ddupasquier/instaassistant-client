@@ -111,9 +111,9 @@
         padding: 0.5rem;
         overflow-y: scroll;
         .log-button {
-          position: absolute;
+          position: sticky;
           top: 0.5rem;
-          right: 0.5rem;
+          left: 100%;
           height: fit-content;
           &:hover,
           &:focus {

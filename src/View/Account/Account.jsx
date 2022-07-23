@@ -11,14 +11,14 @@ function Account() {
   ];
 
   const controlsStyle = {
-    width: controlsShown ? '50%' : '0',
+    width: controlsShown ? '46%' : '0',
     position: 'relative',
     left: controlsShown ? '0' : '-1000px',
     transition: '1s',
   };
 
   const screenStyle = {
-    width: controlsShown ? '44%' : '97%',
+    width: controlsShown ? '42%' : '97%',
     transition: '1s',
   };
 
@@ -83,7 +83,6 @@ function Account() {
           {/* <section></section> */}
 
           <div className="log inset">
-            <h3>Activity Log:</h3>
             <Button
               type="button"
               color="warning"
@@ -94,6 +93,7 @@ function Account() {
             >
               {controlsShown ? 'Hide Controls' : 'Add Rules'}
             </Button>
+            <h3>Activity Log:</h3>
             <br />
             {logText[0]}
           </div>
