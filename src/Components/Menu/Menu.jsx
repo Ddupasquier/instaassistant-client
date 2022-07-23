@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { BsGearWideConnected } from 'react-icons/bs';
 import { FaUserAlt, FaUserFriends } from 'react-icons/fa';
 import { VscGraphLine } from 'react-icons/vsc';
@@ -30,18 +31,16 @@ const menuItems = [
   },
 ];
 
-function Menu() {
-  const [hovered, setHovered] = useState('');
-
+function Menu({ menuItemHovered, setMenuItemHovered }) {
   return (
     <>
       <nav className="menu">
         {menuItems.map((item) => (
           <div
-            onMouseOver={() => setHovered(item.name)}
-            onFocus={() => setHovered(item.name)}
-            onMouseLeave={() => setHovered('')}
-            onBlur={() => setHovered('')}
+            onMouseOver={() => setMenuItemHovered(item.name)}
+            onFocus={() => setMenuItemHovered(item.name)}
+            onMouseLeave={() => setMenuItemHovered('')}
+            onBlur={() => setMenuItemHovered('')}
           >
             <MenuItem key={item.to} item={item} />
           </div>
@@ -49,7 +48,7 @@ function Menu() {
       </nav>
       <div className="pop-overs">
         {menuItems.map((item) => (
-          <PopOver key={item.to} item={item} hovered={hovered} />
+          <PopOver key={item.to} item={item} hovered={menuItemHovered} />
         ))}
       </div>
     </>
@@ -57,3 +56,8 @@ function Menu() {
 }
 
 export default Menu;
+
+Menu.propTypes = {
+  menuItemHovered: PropTypes.string.isRequired,
+  setMenuItemHovered: PropTypes.func.isRequired,
+};

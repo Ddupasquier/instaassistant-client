@@ -11,7 +11,7 @@ function Billing() {
         <h3>PAYMENT SETTINGS</h3>
       </div>
 
-      <div className="billing-main outset">
+      <div className="billing-main">
         <div className="payment-options">
           Card&nbsp;
           <Slider />
