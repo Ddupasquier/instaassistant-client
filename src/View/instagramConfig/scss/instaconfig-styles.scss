@@ -1,16 +1,20 @@
 .insta-config {
-  position: fixed;
   display: grid;
   grid-template-rows: fit-content 5vh 85vh fit-content;
-  width: 100vw;
-  height: 100vh;
   background: rgb(44, 44, 53);
   color: rgb(175, 175, 175);
   overflow: auto;
+  .config-user {
+    padding: 1rem;
+    margin: auto;
+  }
   .config-toggles {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    section {
+      text-align: center;
+    }
   }
   .config-textareas {
     display: flex;
@@ -38,6 +42,7 @@
   .config-buttons {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
+    padding: 1rem;
   }
 }

@@ -1,3 +1,5 @@
+@import './../../../Appscss/app-styles.scss';
+
 $primary-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
   rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
   rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
@@ -9,16 +11,11 @@ $secondary-font: rgb(80, 255, 182);
   flex-direction: column;
   justify-items: center;
   align-items: center;
-  position: fixed;
   gap: 1rem;
-  width: 3.2rem;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  padding-top: 70px;
   background: rgba(34, 34, 34);
   font-size: 1.2rem;
-  z-index: 2;
+  padding-top: 1rem;
+  z-index: 100;
   .menu-item {
     display: flex;
     align-items: center;
@@ -75,6 +72,8 @@ $secondary-font: rgb(80, 255, 182);
     padding-right: 0.5rem;
     border-radius: 25px;
     color: $primary-font;
+    font-family: Montserrat;
+    font-style: italic;
     transition: 0.5s;
   }
 }

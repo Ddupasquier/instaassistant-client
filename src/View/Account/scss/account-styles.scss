@@ -1,49 +1,56 @@
 .account-container {
-  position: fixed;
-  height: 100vh;
-  width: 100vw;
+  display: flex;
+  flex-direction: column;
   background: lightgray;
-  .account-buttons {
+  overflow: auto;
+  .account-head-buttons {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     height: fit-content;
-    padding-top: 4rem;
+    padding: 0.5rem;
   }
-  .account-head {
+  .user {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    span {
-      font-size: 1.2rem;
-      font-weight: bold;
-    }
+    justify-content: center;
+    gap: 1rem;
     section {
       text-align: center;
-    }
-    div {
-      padding: 0.2rem 1rem;
+      padding: 1rem 0;
+      &:nth-child(2) {
+        div {
+          border-radius: 25px;
+          padding: 0.2rem 1rem;
+          background: rgb(228, 228, 228);
+        }
+      }
+      &:nth-child(3) {
+        div {
+          border-radius: 25px;
+          padding: 0.2rem 1rem;
+          background: rgb(228, 228, 228);
+        }
+      }
     }
   }
-  .controls-screen {
+
+  .account-main {
     display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
+    flex-direction: row;
+    position: relative;
     gap: 1rem;
-    width: 80%;
-    margin: auto;
-    padding-top: 2rem;
+    padding: 1rem;
+    height: 35rem;
     .account-controls {
-      display: none;
       padding: 1rem;
-      transition: 0.5s;
       text-align: center;
       select {
         height: 2rem;
+        width: 90%;
         border-radius: 1rem;
         border: 0.1rem solid #ccc;
         padding: 0 0.5rem;
-        margin: auto;
         margin-bottom: 8px;
         transition: box-shadow 0.5s;
         &:hover,
@@ -54,6 +61,7 @@
       }
       input {
         height: 2rem;
+        width: 90%;
         border-radius: 1rem;
         border: 0.1rem solid #ccc;
         padding: 0 0.5rem;
@@ -67,13 +75,14 @@
         }
       }
       textarea {
-        // height: 2rem;
+        height: 14rem;
+        width: 90%;
         border-radius: 1rem;
         border: 0.1rem solid #ccc;
         padding: 0.5rem;
         margin: auto;
-        // resize: vertical;
-        // max-height: 13rem;
+        resize: none;
+        max-height: 15rem;
         transition: box-shadow 0.5s;
         &:hover,
         &:focus {
@@ -82,11 +91,37 @@
         }
       }
     }
-    .account-log {
-      padding: 0.5rem;
-      overflow: auto;
-      max-height: 50%;
-      max-width: 100%;
+    .log-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: right;
+      position: absolute;
+      right: 0;
+      padding-right: 1rem;
+      height: 22rem;
+      section {
+        display: flex;
+        justify-content: right;
+        height: fit-content;
+        padding: 1rem;
+      }
+      .log {
+        position: relative;
+        height: 80%;
+        padding: 0.5rem;
+        overflow-y: scroll;
+        .log-button {
+          position: absolute;
+          top: 0.5rem;
+          right: 0.5rem;
+          height: fit-content;
+          &:hover,
+          &:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(0, 225, 255, 0.5);
+          }
+        }
+      }
     }
   }
 }

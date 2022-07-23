@@ -1,27 +1,40 @@
-import React from 'react';
+/* eslint-disable react/jsx-one-expression-per-line */
+import React, { useState } from 'react';
+import { Button } from '@nextui-org/react';
 import './scss/accounts-styles.css';
 import { AccountCard } from '../../Components/AccountCard';
 
 function Accounts() {
+  const [iconView, setIconView] = useState(false);
+
   return (
     <div className="accounts-container">
-      <div className="head">
-        <h3>Instagram</h3>
-        <hr />
-      </div>
-
       <div className="accounts-main">
-        <div className="accounts-cards outset">
-          <AccountCard />
-          <AccountCard />
-          <AccountCard />
-          <AccountCard />
-          <AccountCard />
-          <AccountCard />
-          <AccountCard />
-          <AccountCard />
-          <AccountCard />
-          <AccountCard />
+        <legend>Instagram</legend>
+        <div className="instagram-container">
+          <div className="options">
+            <Button
+              type="button"
+              onClick={() => setIconView(!iconView)}
+              size="xs"
+              color="warning"
+              rounded
+            >
+              Icon View
+            </Button>
+          </div>
+          <div className="instagram-cards">
+            <AccountCard iconView={iconView} />
+            <AccountCard iconView={iconView} />
+            <AccountCard iconView={iconView} />
+            <AccountCard iconView={iconView} />
+            <AccountCard iconView={iconView} />
+            <AccountCard iconView={iconView} />
+            <AccountCard iconView={iconView} />
+            <AccountCard iconView={iconView} />
+            <AccountCard iconView={iconView} />
+            <AccountCard iconView={iconView} />
+          </div>
         </div>
         <div className="ads">
           <p>Twitter - Coming soon!</p>

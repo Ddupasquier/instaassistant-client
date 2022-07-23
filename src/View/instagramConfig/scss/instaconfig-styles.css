@@ -1,18 +1,22 @@
 .insta-config {
-  position: fixed;
   display: grid;
   grid-template-rows: -webkit-fit-content 5vh 85vh -webkit-fit-content;
   grid-template-rows: fit-content 5vh 85vh fit-content;
-  width: 100vw;
-  height: 100vh;
   background: rgb(44, 44, 53);
   color: rgb(175, 175, 175);
   overflow: auto;
+}
+.insta-config .config-user {
+  padding: 1rem;
+  margin: auto;
 }
 .insta-config .config-toggles {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+}
+.insta-config .config-toggles section {
+  text-align: center;
 }
 .insta-config .config-textareas {
   display: flex;
@@ -40,6 +44,7 @@
 .insta-config .config-buttons {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
+  padding: 1rem;
 }
 /*# sourceMappingURL=instaconfig-styles.css.map */

@@ -1,50 +1,66 @@
 .account-container {
-  position: fixed;
-  height: 100vh;
-  width: 100vw;
+  display: flex;
+  flex-direction: column;
   background: lightgray;
+  overflow: auto;
 }
-.account-container .account-buttons {
+.account-container .account-head-buttons {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  padding-top: 4rem;
+  padding: 0.5rem;
 }
-.account-container .account-head {
+.account-container .user {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-}
-.account-container .account-head span {
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-.account-container .account-head section {
-  text-align: center;
-}
-.account-container .account-head div {
-  padding: 0.2rem 1rem;
-}
-.account-container .controls-screen {
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem;
-  width: 80%;
-  margin: auto;
-  padding-top: 2rem;
 }
-.account-container .controls-screen .account-controls {
-  display: none;
+.account-container .user section {
+  text-align: center;
+  padding: 1rem 0;
+}
+.account-container .user section:nth-child(2) div {
+  border-radius: 25px;
+  padding: 0.2rem 1rem;
+  background: rgb(228, 228, 228);
+}
+.account-container .user section:nth-child(3) div {
+  border-radius: 25px;
+  padding: 0.2rem 1rem;
+  background: rgb(228, 228, 228);
+}
+.account-container .account-main {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  gap: 1rem;
   padding: 1rem;
-  transition: 0.5s;
+  height: 35rem;
+}
+.account-container .account-main .account-controls {
+  padding: 1rem;
   text-align: center;
 }
-.account-container .controls-screen .account-controls select {
+.account-container .account-main .account-controls select {
   height: 2rem;
+  width: 90%;
+  border-radius: 1rem;
+  border: 0.1rem solid #ccc;
+  padding: 0 0.5rem;
+  margin-bottom: 8px;
+  transition: box-shadow 0.5s;
+}
+.account-container .account-main .account-controls select:hover, .account-container .account-main .account-controls select:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 225, 255, 0.5);
+}
+.account-container .account-main .account-controls input {
+  height: 2rem;
+  width: 90%;
   border-radius: 1rem;
   border: 0.1rem solid #ccc;
   padding: 0 0.5rem;
@@ -52,39 +68,58 @@
   margin-bottom: 8px;
   transition: box-shadow 0.5s;
 }
-.account-container .controls-screen .account-controls select:hover, .account-container .controls-screen .account-controls select:focus {
+.account-container .account-main .account-controls input:hover, .account-container .account-main .account-controls input:focus {
   outline: none;
   box-shadow: 0 0 10px rgba(0, 225, 255, 0.5);
 }
-.account-container .controls-screen .account-controls input {
-  height: 2rem;
-  border-radius: 1rem;
-  border: 0.1rem solid #ccc;
-  padding: 0 0.5rem;
-  margin: auto;
-  margin-bottom: 8px;
-  transition: box-shadow 0.5s;
-}
-.account-container .controls-screen .account-controls input:hover, .account-container .controls-screen .account-controls input:focus {
-  outline: none;
-  box-shadow: 0 0 10px rgba(0, 225, 255, 0.5);
-}
-.account-container .controls-screen .account-controls textarea {
-  height: 2rem;
+.account-container .account-main .account-controls textarea {
+  height: 14rem;
+  width: 90%;
   border-radius: 1rem;
   border: 0.1rem solid #ccc;
   padding: 0.5rem;
   margin: auto;
+  resize: none;
+  max-height: 15rem;
   transition: box-shadow 0.5s;
 }
-.account-container .controls-screen .account-controls textarea:hover, .account-container .controls-screen .account-controls textarea:focus {
+.account-container .account-main .account-controls textarea:hover, .account-container .account-main .account-controls textarea:focus {
   outline: none;
   box-shadow: 0 0 10px rgba(0, 225, 255, 0.5);
 }
-.account-container .controls-screen .account-log {
+.account-container .account-main .log-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  position: absolute;
+  right: 0;
+  padding-right: 1rem;
+  height: 22rem;
+}
+.account-container .account-main .log-container section {
+  display: flex;
+  justify-content: right;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 1rem;
+}
+.account-container .account-main .log-container .log {
+  position: relative;
+  height: 80%;
   padding: 0.5rem;
-  overflow: auto;
-  max-height: 50%;
-  max-width: 100%;
+  overflow-y: scroll;
+}
+.account-container .account-main .log-container .log .log-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.account-container .account-main .log-container .log .log-button:hover, .account-container .account-main .log-container .log .log-button:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 225, 255, 0.5);
 }
 /*# sourceMappingURL=account-styles.css.map */

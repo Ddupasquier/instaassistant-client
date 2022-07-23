@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom';
 import { Login } from './View/Login';
 import { SignUp } from './View/SignUp';
 import { Header } from './Components/Header';
-import { Footer } from './Components/Footer';
+// import { Footer } from './Components/Footer';
 import { Menu } from './Components/Menu';
 
 function App() {
@@ -30,12 +30,11 @@ function App() {
   return (
     <div className="App">
       {user ? (
-        <>
+        <div className="app">
           <Header />
           <Menu />
           <Outlet />
-          <Footer />
-        </>
+        </div>
       ) : (
         <>
           {transLog((style, item) => {

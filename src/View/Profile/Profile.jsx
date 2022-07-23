@@ -1,11 +1,10 @@
 import React from 'react';
-import { AccountCard } from '../../Components/AccountCard';
 import './scss/profile-styles.css';
 
 function Profile() {
   return (
-    <div className="account">
-      <AccountCard />
+    <div className="profile">
+      Place Profile Info Here
     </div>
   );
 }

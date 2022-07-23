@@ -1,16 +1,14 @@
+@import './../../../Appscss/app-styles.scss';
+
 $primary-font: rgb(80, 255, 255);
 $secondary-font: rgb(80, 255, 182);
 
 header {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 55px 1fr 1fr;
   background: rgb(34, 34, 34);
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 60px;
-  z-index: 1;
+  z-index: 1000;
   span,
   div {
     display: flex;
@@ -23,10 +21,11 @@ header {
     cursor: default;
   }
   .logo {
-    color: white;
+    position: relative;
   }
-  span {
+  .site-name {
     font-size: 2rem;
+    font-family: Montserrat;
     color: $primary-font;
     cursor: default;
   }

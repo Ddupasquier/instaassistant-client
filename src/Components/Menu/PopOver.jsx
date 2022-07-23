@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 function PopOver({ item, hovered }) {
   const popOverActive = {
-    width: '7.5rem',
+    width: '8.3rem',
     translate: 'translate(-50%, -50%)',
   };
 
