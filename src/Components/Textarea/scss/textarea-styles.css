@@ -1,0 +1,25 @@
+.textarea-container {
+  color: rgb(255, 0, 255);
+}
+.textarea-container legend {
+  position: relative;
+  top: 2rem;
+  left: 1rem;
+  transition: 0.5s;
+}
+.textarea-container textarea {
+  max-width: 100%;
+  border-radius: 8px;
+  border: none;
+  background: rgba(0, 0, 0, 0.5);
+}
+.textarea-container textarea:focus {
+  outline: none !important;
+  box-shadow: 0 0 10px rgb(0, 225, 255);
+  transition: 0.5s;
+}
+.textarea-container:focus-within legend {
+  top: -0.2rem;
+  left: 0;
+}
+/*# sourceMappingURL=textarea-styles.css.map */
