@@ -11,6 +11,8 @@ function App() {
   const [signIsVisible, setSignIsVisible] = useState(false);
   const [logIsVisible, setLogIsVisible] = useState(true);
   const [menuItemHovered, setMenuItemHovered] = useState('');
+  // write state to update to true if billing has been clicked
+  // write function to update state to false if billing has been clicked
 
   // TEMP VALUE
   const [user] = useState(true);
@@ -31,8 +33,11 @@ function App() {
     <div className="App">
       {user ? (
         <div className="app">
-          <Header />
-          <Menu menuItemHovered={menuItemHovered} setMenuItemHovered={setMenuItemHovered} />
+          <Header menuItemHovered={menuItemHovered} />
+          <Menu
+            menuItemHovered={menuItemHovered}
+            setMenuItemHovered={setMenuItemHovered}
+          />
           <Outlet />
         </div>
       ) : (
