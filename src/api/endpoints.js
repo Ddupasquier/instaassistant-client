@@ -1,5 +1,6 @@
 /* eslint-disable operator-linebreak */
 /* eslint-disable quotes */
+
 export const InstagramTaskTypes =
   "https://instaassistant-api.herokuapp.com/task_type";
 
