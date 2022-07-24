@@ -2,8 +2,15 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import './scss/header-styles.css';
 
+const boxOne = {
+  top: '.6rem',
+  left: '.6rem',
+  borderRadius: '.1rem',
+  width: '1rem',
+  height: '1.5rem',
+};
 function Header({ billingSelected }) {
-  const [boxOneStyle, setBoxOneStyle] = useState();
+  const [boxOneStyle, setBoxOneStyle] = useState(boxOne);
 
   useEffect(() => {
     const boxPositions = [
@@ -103,13 +110,7 @@ function Header({ billingSelected }) {
     // };
   }, [billingSelected]);
 
-  // const boxOne = {
-  //   top: billingSelected ? '30vh' : '.6rem',
-  //   left: billingSelected ? '30vw' : '.6rem',
-  //   borderRadius: billingSelected ? '.8rem' : '.1rem',
-  //   width: billingSelected ? '10rem' : '1rem',
-  //   height: billingSelected ? '15rem' : '1.5rem',
-  // };
+  
 
   const boxTwo = {
     top: billingSelected ? '35vh' : '.8rem',
