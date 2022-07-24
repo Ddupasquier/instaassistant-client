@@ -1,5 +1,5 @@
-/* eslint-disable operator-linebreak */
-/* eslint-disable quotes */
+export const InstagramTaskTypes =
+  "https://instaassistant-api.herokuapp.com/task_type";
 
 //* task lists for form
 // instagram task types for task form
@@ -35,4 +35,6 @@ export const BotCreatePath = ["http://localhost:3000/users/", "/bots"];
 export const BotDeletePAth = "http://localhost:3000/bots/";
 
 //* Task for bot to complete
-export const TaskCreatePath = "http://localhost:3000/tasks";
+
+export const TaskCreatePath = "https://instaassistant-api.herokuapp.com/tasks";
+export const TaskDeletePath = "https://instaassistant-api.herokuapp.com/tasks/";

@@ -1,8 +1,14 @@
-/* eslint-disable react/jsx-no-useless-fragment */
-/* eslint-disable arrow-parens */
+/* eslint-disable block-spacing */
 /* eslint-disable semi */
-/* eslint-disable no-console */
+/* eslint-disable no-trailing-spaces */
+/* eslint-disable react/jsx-indent */
+/* eslint-disable react/jsx-tag-spacing */
+/* eslint-disable brace-style */
+/* eslint-disable arrow-body-style */
+/* eslint-disable quotes */
+/* eslint-disable indent */
 /* eslint-disable react/jsx-one-expression-per-line */
+/* eslint-disable operator-linebreak */
 import React, { useState, useEffect } from 'react';
 import { User, Button } from '@nextui-org/react';
 import './scss/account-styles.css';
@@ -13,7 +19,8 @@ function Account() {
   const [controlsShown, setControlsShown] = useState(false);
   const [tasks, setTasks] = useState();
   const [tasksLoaded, setTasksLoaded] = useState();
-  console.log(tasks);
+  const [tasksSelected, setTasksSelected] = useState(false);
+  const [selected, setSelected] = useState('');
 
   useEffect(() => {
     FetchInstagramTaskTypes()
@@ -37,7 +44,45 @@ function Account() {
     transition: '1s',
   };
 
+  const handleChange = (e) => {
+    setSelected(e.target.value);
+    setTasksSelected(true);
+  };
+
+  const HandleSubmit = (e) => {
+    e.preventDefault()
+    let form = e.currentTarget;
+    let formFields = new FormData(form);
+    let formDataObject = Object.fromEntries(formFields.entries());
+    // Format the plain form data as JSON
+    let formDataJsonString = JSON.stringify(formDataObject);
+
+    let fetchOptions = {
+      //HTTP method set to POST.
+      method: "POST",
+      //Set the headers that specify you're sending a JSON body request and accepting JSON response
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      // POST request body as JSON string.
+      body: formDataJsonString,
+    };
+
+    
+    //! send enumerator change backend to accept index
+    //Call the `postFormFieldsJson()` function
+    //let responseData = await postFormFieldsAsJson({ url, formFields });
+    /*{
+	    "name": "activate",
+	    "bot_id": 2,
+	    "target": "postmalone",
+	    "arguments": "N/A"
+    }*/
+  }
+
   return (
+
     <div className="account-container">
       <div className="account-head-buttons">
         <Button type="button" color="secondary" size="md" rounded>
@@ -77,25 +122,40 @@ function Account() {
 
       <div className="account-main">
         <div className="account-controls outset" style={controlsStyle}>
-          <form>
-            <select name="options" className="options">
-              <option value="">Select an option</option>
-              {tasksLoaded && (tasks.map(task => (
-                <option key={task.id} value={task.id}> {task.name} </option>)))}
+          <form onSubmit={HandleSubmit}>
+            <select
+              name="TaskType"
+              className="options"
+              value={selected}
+              onChange={handleChange}
+            >
+              {!tasksSelected && <option value="">Select an option</option>}
+              {tasksLoaded &&
+                tasks.map((task) => (
+                  <option key={task.id} value={task.id}>
+                    {task.name}
+                  </option>
+                ))}
             </select>
             <br />
-            <input type="text" placeholder="param-one" className="param-one" />
+            {/* <input type="text" placeholder="param-one" className="param-one" /> */}
+
+            {tasksSelected &&
+
+              tasks[Number(selected - 1)].arguments.map((arg) => {
+                return arg.input_type === "textArea" ? 
+                <textarea key={arg.id} name={arg.label} className="form-control" placeholder="Enter text here">{arg.label}</textarea> :
+                <input name={arg.label} key={arg.id} type={arg.input_type} className="form-control" placeholder={arg.label}/> })}
             <br />
             <textarea
               type="text"
               placeholder="param-two"
               className="param-two"
             />
+            <button type='submit'> Submit</button>
           </form>
         </div>
         <div className="log-container" style={screenStyle}>
-          {/* <section></section> */}
-
           <div className="log inset">
             <Button
               type="button"
