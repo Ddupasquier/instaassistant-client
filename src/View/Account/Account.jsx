@@ -10,6 +10,7 @@ function Account() {
   const [controlsShown, setControlsShown] = useState(false);
   const [tasks, setTasks] = useState();
   const [tasksLoaded, setTasksLoaded] = useState();
+  const [tasksSelected, setTasksSelected] = useState(false);
   const [selected, setSelected] = useState('');
 
   useEffect(() => {
@@ -36,6 +37,7 @@ function Account() {
 
   const handleChange = (e) => {
     setSelected(e.target.value);
+    setTasksSelected(true);
   };
 
   return (
@@ -85,7 +87,7 @@ function Account() {
               value={selected}
               onChange={handleChange}
             >
-              <option value="">Select an option</option>
+              {!tasksSelected && <option value="">Select an option</option>}
               {tasksLoaded &&
                 tasks.map((task) => (
                   <option key={task.id} value={task.id}>
@@ -96,8 +98,8 @@ function Account() {
             <br />
             {/* <input type="text" placeholder="param-one" className="param-one" /> */}
 
-            {tasksLoaded &&
-              tasks[Number(selected)].arguments.map((arg) => (
+            {tasksSelected &&
+              tasks[Number(selected - 1)].arguments.map((arg) => (
                 <input
                   key={arg.id}
                   // value={arg.id}
