@@ -39,16 +39,19 @@ function Header({ billingSelected }) {
       if (billingSelected) {
         let res = [];
         for (const rule in boxPositions[0]) {
-          res.push(boxPositions[0][rule][0]);
+          res.push(`${rule}: '${boxPositions[0][rule][0]}',`);
         }
+        return res;
       } else {
+        let res = [];
         for (const rule in boxPositions[0]) {
-          return boxPositions[0][rule][1];
+          res.push(`${rule}: '${boxPositions[0][rule][1]}',`);
         }
+        return res;
       }
     };
-    console.log(moveBoxOne())
-  }, [billingSelected])
+    moveBoxOne();
+  }, [billingSelected]);
 
   // const moveBoxTwo = () => {
   //   if (billingSelected) {
