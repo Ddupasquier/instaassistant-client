@@ -56,7 +56,7 @@ function Account() {
     let formDataObject = Object.fromEntries(formFields.entries());
     // Format the plain form data as JSON
     let formDataJsonString = JSON.stringify(formDataObject);
-
+    
     let fetchOptions = {
       //HTTP method set to POST.
       method: "POST",
