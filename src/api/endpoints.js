@@ -1,6 +1,3 @@
-export const InstagramTaskTypes =
-  "https://instaassistant-api.herokuapp.com/task_type";
-
 //* task lists for form
 // instagram task types for task form
 export const InstagramTaskTypes =
