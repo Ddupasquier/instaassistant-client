@@ -50,7 +50,52 @@ function Header({ billingSelected }) {
         return res;
       }
     };
-    moveBoxOne();
+    const moveBoxTwo = () => {
+      if (billingSelected) {
+        let res = [];
+        for (const rule in boxPositions[1]) {
+          res.push(`${rule}: '${boxPositions[1][rule][0]}',`);
+        }
+        return res;
+      } else {
+        let res = [];
+        for (const rule in boxPositions[1]) {
+          res.push(`${rule}: '${boxPositions[1][rule][1]}',`);
+        }
+        return res;
+      }
+    };
+    const moveBoxThree = () => {
+      if (billingSelected) {
+        let res = [];
+        for (const rule in boxPositions[2]) {
+          res.push(`${rule}: '${boxPositions[2][rule][0]}',`);
+        }
+        return res;
+      } else {
+        let res = [];
+        for (const rule in boxPositions[2]) {
+          res.push(`${rule}: '${boxPositions[2][rule][1]}',`);
+        }
+        return res;
+      }
+    };
+    const moveBoxFour = () => {
+      if (billingSelected) {
+        let res = [];
+        for (const rule in boxPositions[3]) {
+          res.push(`${rule}: '${boxPositions[3][rule][0]}',`);
+        }
+        return res;
+      } else {
+        let res = [];
+        for (const rule in boxPositions[3]) {
+          res.push(`${rule}: '${boxPositions[3][rule][1]}',`);
+        }
+        return res;
+      }
+    };
+    // console.log(moveBoxOne());
   }, [billingSelected]);
 
   // const moveBoxTwo = () => {
