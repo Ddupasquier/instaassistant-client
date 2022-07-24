@@ -11,9 +11,20 @@ function App() {
   const [signIsVisible, setSignIsVisible] = useState(false);
   const [logIsVisible, setLogIsVisible] = useState(true);
   const [menuItemHovered, setMenuItemHovered] = useState('');
+  const [billingSelected, setBillingSeleted] = useState(false);
+  // write state to update to true if billing has been clicked
+  // write function to update state to false if billing has been clicked
 
   // TEMP VALUE
   const [user] = useState(true);
+
+  const animateLogo = (name) => {
+    if (name === 'Billing') {
+      setBillingSeleted(true);
+    } else {
+      setBillingSeleted(false);
+    }
+  };
 
   const transLog = useTransition(logIsVisible, {
     from: { transform: 'translate3d(0, -100%, 0)', zIndex: '0' },
@@ -31,8 +42,12 @@ function App() {
     <div className="App">
       {user ? (
         <div className="app">
-          <Header />
-          <Menu menuItemHovered={menuItemHovered} setMenuItemHovered={setMenuItemHovered} />
+          <Header billingSelected={billingSelected} />
+          <Menu
+            menuItemHovered={menuItemHovered}
+            setMenuItemHovered={setMenuItemHovered}
+            animateLogo={animateLogo}
+          />
           <Outlet />
         </div>
       ) : (

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
-function MenuItem({ item }) {
+function MenuItem({ item, animateLogo }) {
   const [hover, setHover] = useState(false);
 
   return (
@@ -12,6 +12,7 @@ function MenuItem({ item }) {
       activeclassname="active"
       onMouseEnter={() => setHover(!hover)}
       onMouseLeave={() => setHover(!hover)}
+      onClick={() => animateLogo(item.name)}
     >
       <div className="menu-item ">
         <item.Icon />
@@ -28,4 +29,5 @@ MenuItem.propTypes = {
     to: PropTypes.string.isRequired,
     Icon: PropTypes.func.isRequired,
   }).isRequired,
+  animateLogo: PropTypes.func.isRequired,
 };

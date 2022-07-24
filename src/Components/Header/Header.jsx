@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './scss/header-styles.css';
 
-function Header() {
+function Header({ billingSelected }) {
   const boxOne = {
     position: 'absolute',
     top: '10px',
@@ -34,12 +35,13 @@ function Header() {
 
   const boxFour = {
     position: 'absolute',
-    top: '19px',
+    top: billingSelected ? '25px' : '19px',
     left: '25px',
     backgroundColor: '#50ffff2d',
     borderRadius: '2px',
     width: '1rem',
     height: '1.5rem',
+    transition: '.5s',
   };
 
   return (
@@ -60,3 +62,7 @@ function Header() {
 }
 
 export default Header;
+
+Header.propTypes = {
+  billingSelected: PropTypes.bool.isRequired,
+};

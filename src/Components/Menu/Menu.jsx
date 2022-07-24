@@ -31,7 +31,7 @@ const menuItems = [
   },
 ];
 
-function Menu({ menuItemHovered, setMenuItemHovered }) {
+function Menu({ menuItemHovered, setMenuItemHovered, animateLogo }) {
   return (
     <>
       <nav className="menu">
@@ -42,7 +42,7 @@ function Menu({ menuItemHovered, setMenuItemHovered }) {
             onMouseLeave={() => setMenuItemHovered('')}
             onBlur={() => setMenuItemHovered('')}
           >
-            <MenuItem key={item.to} item={item} />
+            <MenuItem key={item.to} item={item} animateLogo={animateLogo} />
           </div>
         ))}
       </nav>
@@ -60,4 +60,5 @@ export default Menu;
 Menu.propTypes = {
   menuItemHovered: PropTypes.string.isRequired,
   setMenuItemHovered: PropTypes.func.isRequired,
+  animateLogo: PropTypes.func.isRequired,
 };
