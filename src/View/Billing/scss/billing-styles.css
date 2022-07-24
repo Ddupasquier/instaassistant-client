@@ -6,6 +6,7 @@
   overflow: auto;
 }
 .billing-container .billing-main {
+  position: relative;
   align-self: center;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -13,6 +14,7 @@
   background: darkgray;
   padding: 0 1.5rem 1.5rem 1.5rem;
   border-radius: 8px;
+  z-index: 10;
 }
 .billing-container .billing-main .payment-options {
   text-align: center;

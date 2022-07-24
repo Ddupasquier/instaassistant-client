@@ -1,8 +1,10 @@
 .account-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   background: rgba(44, 44, 53);
   overflow: auto;
+  z-index: 1;
   .account-head-buttons {
     display: flex;
     align-items: center;

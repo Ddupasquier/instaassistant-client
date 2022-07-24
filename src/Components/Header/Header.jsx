@@ -3,49 +3,94 @@ import PropTypes from 'prop-types';
 import './scss/header-styles.css';
 
 function Header({ billingSelected }) {
+  // const boxPositions = [
+  //   {
+  //     top: '0',
+  //     left: '0',
+  //     width: '100%',
+  //     height: '100%',
+  //   },
+  //   {
+  //     top: '0',
+  //     left: '0',
+  //     width: '100%',
+  //     height: '100%',
+  //   },
+  //   {
+  //     top: '0',
+  //     left: '0',
+  //     width: '100%',
+  //     height: '100%',
+  //   },
+  //   {
+  //     top: '0',
+  //     left: '0',
+  //     width: '100%',
+  //     height: '100%',
+  //   },
+  // ];
+
+  // useEffect(() => {
+  //   moveBoxOne();
+  //   moveBoxTwo();
+  //   moveBoxThree();
+  //   moveBoxFour();
+  // }, [billingSelected]);
+
+  // const moveBoxOne = () => {};
+
+  // const moveBoxTwo = () => {};
+
+  // const moveBoxThree = () => {};
+
+  // const moveBoxFour = () => {};
+
   const boxOne = {
     position: 'absolute',
-    top: '10px',
-    left: '10px',
+    top: billingSelected ? '30vh' : '.6rem',
+    left: billingSelected ? '30vw' : '.6rem',
     backgroundColor: '#00fbff',
-    borderRadius: '2px',
-    width: '1rem',
-    height: '1.5rem',
+    borderRadius: billingSelected ? '.8rem' : '.1rem',
+    width: billingSelected ? '10rem' : '1rem',
+    height: billingSelected ? '15rem' : '1.5rem',
+    transition: '.5s',
   };
 
   const boxTwo = {
     position: 'absolute',
-    top: '13px',
-    left: '15px',
+    top: billingSelected ? '35vh' : '.8rem',
+    left: billingSelected ? '35vw' : '.9rem',
     backgroundColor: '#50ffffc2',
-    borderRadius: '2px',
-    width: '1rem',
-    height: '1.5rem',
+    borderRadius: billingSelected ? '.8rem' : '.1rem',
+    width: billingSelected ? '10rem' : '1rem',
+    height: billingSelected ? '15rem' : '1.5rem',
+    transition: '.5s',
   };
 
   const boxThree = {
     position: 'absolute',
-    top: '16px',
-    left: '20px',
+    top: billingSelected ? '50vh' : '1rem',
+    left: billingSelected ? '55vw' : '1.2rem',
     backgroundColor: '#50ffff79',
-    borderRadius: '2px',
-    width: '1rem',
-    height: '1.5rem',
+    borderRadius: billingSelected ? '.8rem' : '.1rem',
+    width: billingSelected ? '10rem' : '1rem',
+    height: billingSelected ? '15rem' : '1.5rem',
+    transition: '.5s',
   };
 
   const boxFour = {
     position: 'absolute',
-    top: billingSelected ? '25px' : '19px',
-    left: '25px',
+    top: billingSelected ? '55vh' : '1.2rem',
+    left: billingSelected ? '65vw' : '1.5rem',
     backgroundColor: '#50ffff2d',
-    borderRadius: '2px',
-    width: '1rem',
-    height: '1.5rem',
+    borderRadius: billingSelected ? '.8rem' : '.1rem',
+    width: billingSelected ? '10rem' : '1rem',
+    height: billingSelected ? '15rem' : '1.5rem',
     transition: '.5s',
   };
 
   return (
-    <header>
+    <header style={{ zIndex: billingSelected ? '1' : '1000' }}>
       <div className="logo">
         <div className="box-one" style={boxOne} />
         <div className="box-two" style={boxTwo} />
