@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import './scss/header-styles.css';
+// import Icon from './Icon';
 function Header({ billingSelected }) {
   const [boxOneStyle, setBoxOneStyle] = useState({
     top: '.6rem',
@@ -63,74 +64,26 @@ function Header({ billingSelected }) {
       },
     ];
 
-    const moveBoxOne = () => {
+    const moveBoxes = (num) => {
       if (billingSelected) {
         let res = {};
-        for (const rule in boxPositions[0]) {
-          res[rule] = boxPositions[0][rule][0];
+        for (const rule in boxPositions[num]) {
+          res[rule] = boxPositions[num][rule][0];
         }
         return res;
       } else {
         let res = {};
-        for (const rule in boxPositions[0]) {
-          res[rule] = boxPositions[0][rule][1];
+        for (const rule in boxPositions[num]) {
+          res[rule] = boxPositions[num][rule][1];
         }
         return res;
       }
     };
 
-    const moveBoxTwo = () => {
-      if (billingSelected) {
-        let res = {};
-        for (const rule in boxPositions[1]) {
-          res[rule] = boxPositions[1][rule][0];
-        }
-        return res;
-      } else {
-        let res = {};
-        for (const rule in boxPositions[1]) {
-          res[rule] = boxPositions[1][rule][1];
-        }
-        return res;
-      }
-    };
-
-    const moveBoxThree = () => {
-      if (billingSelected) {
-        let res = {};
-        for (const rule in boxPositions[2]) {
-          res[rule] = boxPositions[2][rule][0];
-        }
-        return res;
-      } else {
-        let res = {};
-        for (const rule in boxPositions[2]) {
-          res[rule] = boxPositions[2][rule][1];
-        }
-        return res;
-      }
-    };
-
-    const moveBoxFour = () => {
-      if (billingSelected) {
-        let res = {};
-        for (const rule in boxPositions[3]) {
-          res[rule] = boxPositions[3][rule][0];
-        }
-        return res;
-      } else {
-        let res = {};
-        for (const rule in boxPositions[3]) {
-          res[rule] = boxPositions[3][rule][1];
-        }
-        return res;
-      }
-    };
-
-    setBoxOneStyle(moveBoxOne());
-    setBoxTwoStyle(moveBoxTwo());
-    setBoxThreeStyle(moveBoxThree());
-    setBoxFourStyle(moveBoxFour());
+    setBoxOneStyle(moveBoxes(0));
+    setBoxTwoStyle(moveBoxes(1));
+    setBoxThreeStyle(moveBoxes(2));
+    setBoxFourStyle(moveBoxes(3));
   }, [billingSelected]);
 
   return (
@@ -140,6 +93,18 @@ function Header({ billingSelected }) {
         <div className="box-two" style={boxTwoStyle} />
         <div className="box-three" style={boxThreeStyle} />
         <div className="box-four" style={boxFourStyle} />
+        {/* <Icon
+          billing={billingSelected}
+          top=".6rem"
+          newTop="30vh"
+          left=".6rem"
+          newLeft="30vw"
+          height="1.5rem"
+          newHeight="15rem"
+          width="1rem"
+          newWidth="10rem"
+          border=".1rem"
+        /> */}
       </div>
       <div className="site-name">
         <i>Instant</i>
