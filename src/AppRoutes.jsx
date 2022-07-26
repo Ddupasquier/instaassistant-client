@@ -7,11 +7,12 @@ import { Account } from './View/Account';
 import { Accounts } from './View/Accounts';
 import { Metrics } from './View/Metrics';
 import { InstagramConfig } from './View/instagramConfig';
+import { NextUI } from './View/NextUI';
 
 function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<App />}>
+      <Route exact path="/" element={<App />}>
         <Route index element={<Profile />} />
         <Route path="/billing" element={<Billing />} />
         <Route path="/profile" element={<Profile />} />
@@ -19,6 +20,7 @@ function AppRoutes() {
         <Route path="/account" element={<Account />} />
         <Route path="/metrics" element={<Metrics />} />
         <Route path="/config" element={<InstagramConfig />} />
+        <Route path="/next" element={<NextUI/>} />
       </Route>
     </Routes>
   );
