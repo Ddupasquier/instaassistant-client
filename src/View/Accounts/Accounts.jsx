@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Button } from '@nextui-org/react';
 import './scss/accounts-styles.css';
 import { AccountCard } from '../../Components/AccountCard';
+import AccountCardNext from '../../Components/AccountCardNext';
 
 function Accounts() {
   const [iconView, setIconView] = useState(true);
@@ -25,15 +26,7 @@ function Accounts() {
           </div>
           <div className="instagram-cards">
             <AccountCard iconView={iconView} />
-            <AccountCard iconView={iconView} />
-            <AccountCard iconView={iconView} />
-            <AccountCard iconView={iconView} />
-            <AccountCard iconView={iconView} />
-            <AccountCard iconView={iconView} />
-            <AccountCard iconView={iconView} />
-            <AccountCard iconView={iconView} />
-            <AccountCard iconView={iconView} />
-            <AccountCard iconView={iconView} />
+            <AccountCardNext/>
           </div>
         </div>
         <div className="ads">

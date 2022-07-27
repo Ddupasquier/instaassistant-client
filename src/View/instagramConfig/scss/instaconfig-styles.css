@@ -2,8 +2,6 @@
   display: grid;
   grid-template-rows: -webkit-fit-content 5vh 85vh -webkit-fit-content;
   grid-template-rows: fit-content 5vh 85vh fit-content;
-  background: rgb(44, 44, 53);
-  color: rgb(175, 175, 175);
   overflow: auto;
 }
 .insta-config .config-user {
