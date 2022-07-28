@@ -1,4 +1,4 @@
-import { Card, Grid, Text, User } from "@nextui-org/react";
+import { Card, Grid, Text, User, Button } from "@nextui-org/react";
 import { Link as LinkNext } from "@nextui-org/react";
 
 import { Link } from "react-router-dom";
@@ -6,7 +6,13 @@ import { Link } from "react-router-dom";
 const AccountCardNext = () => {
   return (
     <Link to="/account">
-      <Card isPressable to="/account" css={{ p: "$6", mw: "250px" }}>
+      <Card
+        isHoverable
+        isPressable
+        variant="flat"
+        to="/account"
+        css={{ p: "$6", mw: "250px" }}
+      >
         <Card.Header>
           <User
             src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
@@ -20,14 +26,10 @@ const AccountCardNext = () => {
           </Text>
         </Card.Body>
         <Card.Footer>
-          <LinkNext
-            icon
-            color="primary"
-            target="_blank"
-            href="https://github.com/nextui-org/nextui"
-          >
-            Visit source code on GitHub.
-          </LinkNext>
+          <Button.Group>
+            <Button>Edit</Button>
+            <Button>Task</Button>
+          </Button.Group>
         </Card.Footer>
       </Card>
     </Link>

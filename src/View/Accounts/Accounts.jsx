@@ -27,6 +27,14 @@ function Accounts() {
           <div className="instagram-cards">
             <AccountCard iconView={iconView} />
             <AccountCardNext/>
+            <AccountCardNext/>
+            <AccountCardNext/>
+            <AccountCardNext/>
+            <AccountCardNext/>
+            <AccountCardNext/>
+            <AccountCardNext/>
+            <AccountCardNext/>
+            <AccountCardNext/>
           </div>
         </div>
         <div className="ads">

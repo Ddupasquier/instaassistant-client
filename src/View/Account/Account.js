@@ -12,6 +12,7 @@ import {
   Dropdown,
   Grid,
   Textarea,
+  Switch,
 } from "@nextui-org/react";
 // CSS Import
 import "./scss/account-styles.css";
@@ -135,9 +136,26 @@ function Account() {
 
       <div className="account-head-buttons">
         <Grid.Container gap={2}>
+          <Grid sm={3} xs={12}></Grid>
+          <Grid sm={6} xs={12}>
+            <Card variant="flat">
+              <Card.Header>Task Currently Running</Card.Header>
+              <Card.Divider />
+              <Card.Body>
+                <Text h3>Activate: @Username</Text>
+              </Card.Body>
+              <Card.Footer>
+                <Button auto>Progress</Button>
+                <Button auto flat color="error">
+                  Abort
+                </Button>
+              </Card.Footer>
+            </Card>
+          </Grid>
+          <Grid sm={3} xs={12}></Grid>
           <Grid sm={4} xs={12}>
             <Card variant="flat">
-              <Card.Header>Utilization</Card.Header>
+              <Card.Header>Utilization | Lifetime | 30 Days</Card.Header>
               <Card.Divider />
               <Card.Body>
                 <Text h2>97%</Text>
@@ -146,7 +164,7 @@ function Account() {
           </Grid>
           <Grid sm={4} xs={12}>
             <Card variant="flat">
-              <Card.Header>Interactions Sent</Card.Header>
+              <Card.Header>Interactions Sent | Lifetime | 30 Days</Card.Header>
               <Card.Divider />
               <Card.Body>
                 <Text h2>367409</Text>
@@ -155,10 +173,19 @@ function Account() {
           </Grid>
           <Grid sm={4} xs={12}>
             <Card variant="flat">
-              <Card.Header>Utilization</Card.Header>
+              <Card.Header>Utilization | Lifetime | 30 Days</Card.Header>
               <Card.Divider />
               <Card.Body>
                 <Text h2>Bordered card.</Text>
+              </Card.Body>
+            </Card>
+          </Grid>
+          <Grid sm={4} xs={12}>
+            <Card variant="flat">
+              <Card.Header>Interaction Limit</Card.Header>
+              <Card.Divider />
+              <Card.Body>
+                <Text h2>FOLLOWS: 657/1000 </Text>
               </Card.Body>
             </Card>
           </Grid>
@@ -221,31 +248,43 @@ function Account() {
                   </option>
                 ))}
             </select>
-
+            <br />
             {tasksSelected &&
               tasks[Number(selected - 1)].arguments.map((arg) => {
-                return arg.input_type === "textArea" ? (
-                  <Textarea
-                    key={arg.id}
-                    name={arg.label}
-                    className="form-control"
-                    placeholder="Enter text here"
-                  >
-                    {arg.label}
-                  </Textarea>
-                ) : (
-                  <Input
-                    status="secondary"
-                    bordered
-                    labelPlaceholder={arg.label}
-                    helperText={arg.desc}
-                    name={arg.label}
-                    key={arg.id}
-                    type={arg.input_type}
-                    className="form-control"
-                    placeholder={arg.label}
-                  />
-                );
+                if (arg.input_type === "textarea") {
+                  return (
+                    <>
+                      <Textarea
+                        bordered
+                        key={arg.id}
+                        name={arg.label}
+                        labelPlaceholder={arg.label}
+                        className="form-control"
+                        status="secondary"
+                      ></Textarea>
+                      <br />
+                    </>
+                  );
+                } else if (arg.input_type === "bool") {
+                  return <Switch />;
+                } else {
+                  return (
+                    <>
+                      <Input
+                        status="secondary"
+                        bordered
+                        labelPlaceholder={arg.label}
+                        helperText={arg.desc}
+                        name={arg.label}
+                        key={arg.id}
+                        type={arg.input_type}
+                        className="form-control"
+                        placeholder={arg.label}
+                      />
+                      <br />
+                    </>
+                  );
+                }
               })}
           </Modal.Body>
           <Modal.Footer>
