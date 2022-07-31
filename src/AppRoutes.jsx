@@ -15,6 +15,8 @@ import { SignUp } from './View/SignUp';
 
 // NextUI import
 import { NextUIProvider,createTheme,useDarkMode } from "@nextui-org/react";
+import Task from './View/Task';
+import Tasks from './View/Tasks';
 
 const darkTheme = createTheme({
   type: 'dark',
@@ -27,7 +29,7 @@ const lightTheme = createTheme({
 function AppRoutes() {
 
   return (
-    <NextUIProvider theme={lightTheme}>
+    <NextUIProvider theme={darkTheme}>
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Profile />} />
@@ -40,6 +42,8 @@ function AppRoutes() {
           <Route path="/next" element={<NextUI/>} />
           <Route path="/login" element={<Login/>} />
           <Route path="/signup" element={<SignUp/>} />
+          <Route path="/task" element={<Task/>} />
+          <Route path="/tasks" element={<Tasks/>} />
         </Route>
       </Routes>
     </NextUIProvider>

@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState } from 'react';
-import { Button } from '@nextui-org/react';
+import { Button, Collapse, Text } from '@nextui-org/react';
 import './scss/accounts-styles.css';
 import { AccountCard } from '../../Components/AccountCard';
 import AccountCardNext from '../../Components/AccountCardNext';
@@ -8,10 +8,11 @@ import AccountCardNext from '../../Components/AccountCardNext';
 function Accounts() {
   const [iconView, setIconView] = useState(true);
 
-  return (
+  return (<>
     <div className="accounts-container">
       <div className="accounts-main">
-        <legend>Instagram</legend>
+      <Collapse.Group>
+        <Collapse title="Instagram" expanded>
         <div className="instagram-container">
           <div className="options">
             <Button
@@ -21,11 +22,19 @@ function Accounts() {
               color="warning"
               rounded
             >
-              Icon View
+              List View
             </Button>
           </div>
           <div className="instagram-cards">
-            <AccountCard iconView={iconView} />
+            <AccountCardNext/>
+            <AccountCardNext/>
+            <AccountCardNext/>
+            <AccountCardNext/>
+            <AccountCardNext/>
+            <AccountCardNext/>
+            <AccountCardNext/>
+            <AccountCardNext/>
+            <AccountCardNext/>
             <AccountCardNext/>
             <AccountCardNext/>
             <AccountCardNext/>
@@ -37,13 +46,30 @@ function Accounts() {
             <AccountCardNext/>
           </div>
         </div>
-        <div className="ads">
-          <p>Twitter - Coming soon!</p>
-          <p>TikTok - Coming Soon!</p>
-          <p>Facebook - Coming soon!</p>
-        </div>
+        </Collapse>
+        <Collapse title="TikTok" >
+          <Text>
+            Comming Soon
+          </Text>
+        </Collapse>
+        <Collapse title="Twitter">
+          <Text>
+          Comming Soon
+          </Text>
+        </Collapse>
+        <Collapse title="Facebook">
+          <Text>
+          Comming Soon
+          </Text>
+        </Collapse>
+        <Collapse title="Youtube">
+          <Text>
+          Comming Soon
+          </Text>
+        </Collapse>
+      </Collapse.Group>
       </div>
-    </div>
+    </div></>
   );
 }
 

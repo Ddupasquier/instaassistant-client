@@ -13,6 +13,7 @@ import {
   Grid,
   Textarea,
   Switch,
+  Progress,
 } from "@nextui-org/react";
 // CSS Import
 import "./scss/account-styles.css";
@@ -21,6 +22,8 @@ import { Link } from "react-router-dom";
 // APi Imports
 import { FetchInstagramTaskTypes } from "../../api";
 import TaskNext from "../../Components/TaskNext";
+import ChartPlaceHold from "../../Components/ChartPlaceHold";
+import PieChartPlaceHold from "../../Components/PieChartPlaceHold";
 
 function Account() {
   const [controlsShown, setControlsShown] = useState(false);
@@ -145,7 +148,9 @@ function Account() {
                 <Text h3>Activate: @Username</Text>
               </Card.Body>
               <Card.Footer>
-                <Button auto>Progress</Button>
+                <Link to="/task">
+                  <Button auto>Progress</Button>
+                </Link>
                 <Button auto flat color="error">
                   Abort
                 </Button>
@@ -155,16 +160,25 @@ function Account() {
           <Grid sm={3} xs={12}></Grid>
           <Grid sm={4} xs={12}>
             <Card variant="flat">
-              <Card.Header>Utilization | Lifetime | 30 Days</Card.Header>
+              <Card.Header>Utilization - Lifetime | 30 Days</Card.Header>
               <Card.Divider />
               <Card.Body>
-                <Text h2>97%</Text>
+                <Grid.Container>
+                  <Grid sm={11}>
+                    <Progress color="primary" value={92} />
+                  </Grid>
+                  <Grid sm={1}>
+                    <div>
+                      <Text>92%</Text>
+                    </div>
+                  </Grid>
+                </Grid.Container>
               </Card.Body>
             </Card>
           </Grid>
           <Grid sm={4} xs={12}>
             <Card variant="flat">
-              <Card.Header>Interactions Sent | Lifetime | 30 Days</Card.Header>
+              <Card.Header>Interactions Sent - Lifetime | 30 Days</Card.Header>
               <Card.Divider />
               <Card.Body>
                 <Text h2>367409</Text>
@@ -173,7 +187,7 @@ function Account() {
           </Grid>
           <Grid sm={4} xs={12}>
             <Card variant="flat">
-              <Card.Header>Utilization | Lifetime | 30 Days</Card.Header>
+              <Card.Header>Follower Gain - Lifetime | 30 Days</Card.Header>
               <Card.Divider />
               <Card.Body>
                 <Text h2>Bordered card.</Text>
@@ -182,10 +196,30 @@ function Account() {
           </Grid>
           <Grid sm={4} xs={12}>
             <Card variant="flat">
-              <Card.Header>Interaction Limit</Card.Header>
+              <Card.Header>Interaction Limits</Card.Header>
               <Card.Divider />
               <Card.Body>
                 <Text h2>FOLLOWS: 657/1000 </Text>
+              </Card.Body>
+            </Card>
+          </Grid>
+          <Grid sm={4} xs={12}>
+            <Card variant="flat" css={{ minHeight: "400px" }}>
+              <Card.Header>
+                Follower / Following - Day | Week | Month
+              </Card.Header>
+              <Card.Divider />
+              <Card.Body>
+                <ChartPlaceHold />
+              </Card.Body>
+            </Card>
+          </Grid>
+          <Grid sm={4} xs={12}>
+            <Card variant="flat" css={{ minHeight: "400px" }}>
+              <Card.Header>Post Scheduling</Card.Header>
+              <Card.Divider />
+              <Card.Body>
+                <Text h3>Coming Soon!</Text>
               </Card.Body>
             </Card>
           </Grid>
@@ -194,7 +228,7 @@ function Account() {
 
       <div className="account-main">
         <Grid.Container gap={2}>
-          <Card>
+          <Card css={{ minHeight: "400px" }}>
             <Card.Body>
               <div className="log-container" style={screenStyle}>
                 <div className="log">
@@ -267,6 +301,10 @@ function Account() {
                   );
                 } else if (arg.input_type === "bool") {
                   return <Switch />;
+                } else if (arg.input_type === "date") {
+                  return <Input width="186px" label="Date" type="date" />;
+                } else if (arg.input_type === "time") {
+                  return <Input width="186px" label="Time" type="time" />;
                 } else {
                   return (
                     <>
