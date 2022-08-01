@@ -49,16 +49,16 @@ function Accounts() {
               </div>
             </Collapse>
             <Collapse title="TikTok">
-              <Text>Comming Soon</Text>
+              <Text>Coming soon!</Text>
             </Collapse>
             <Collapse title="Twitter">
-              <Text>Comming Soon</Text>
+              <Text>Coming soon!</Text>
             </Collapse>
             <Collapse title="Facebook">
-              <Text>Comming Soon</Text>
+              <Text>Coming soon!</Text>
             </Collapse>
             <Collapse title="Youtube">
-              <Text>Comming Soon</Text>
+              <Text>Coming soon!</Text>
             </Collapse>
           </Collapse.Group>
         </div>
