@@ -1,15 +1,7 @@
-import React from "react";
-import {
-  Card,
-  Grid,
-  Text,
-  Button,
-  Row,
-  Link as LinkNext,
-  Table,
-  User,
-} from "@nextui-org/react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Card, Grid, Text, Button, Table } from '@nextui-org/react';
+import { Link } from 'react-router-dom';
+import { UserIcon } from '../../Components/UserIcon';
 
 function Tasks() {
   return (
@@ -23,7 +15,7 @@ function Tasks() {
       </div>
       <div className="user">
         <section>
-          <User
+          <UserIcon
             src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
             name="@Username"
             size="xl"
@@ -88,8 +80,8 @@ function Tasks() {
                 aria-label="Example static compact collection table"
                 selectionMode="multiple"
                 css={{
-                  height: "auto",
-                  minWidth: "100%",
+                  height: 'auto',
+                  minWidth: '100%',
                 }}
               >
                 <Table.Header>

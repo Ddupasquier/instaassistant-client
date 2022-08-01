@@ -15,7 +15,7 @@ import { SignUp } from './View/SignUp';
 
 // NextUI import
 import { NextUIProvider, createTheme, useDarkMode } from '@nextui-org/react';
-import Task from './View/Task';
+import { Task } from './View/Task';
 import Tasks from './View/Tasks';
 
 const darkTheme = createTheme({
