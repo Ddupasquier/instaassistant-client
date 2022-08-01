@@ -2,17 +2,30 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  background: rgb(44, 44, 53);
   overflow: auto;
   z-index: 1;
 }
 .account-container .account-head-buttons {
   display: flex;
   align-items: center;
+  align-self: center;
   justify-content: space-between;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  width: 100%;
   padding: 0.5rem;
+}
+.account-container .account-metrics {
+  align-self: center;
+  width: 95%;
+}
+.account-container .account-metrics .task-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  margin: auto;
+  width: 100%;
 }
 .account-container .user {
   display: flex;
@@ -33,6 +46,9 @@
   border-radius: 25px;
   padding: 0.2rem 1rem;
   background: rgb(228, 228, 228);
+}
+.account-container .user section > div {
+  color: black;
 }
 .account-container .account-main {
   display: flex;
@@ -107,7 +123,6 @@
 }
 .account-container .account-main .log-container .log {
   position: relative;
-  height: 80%;
   padding: 0.5rem;
   overflow-y: scroll;
 }

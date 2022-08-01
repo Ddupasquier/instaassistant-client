@@ -8,9 +8,21 @@
   .account-head-buttons {
     display: flex;
     align-items: center;
+    align-self: center;
     justify-content: space-between;
     height: fit-content;
+    width: 100%;
     padding: 0.5rem;
+  }
+  .account-metrics {
+    align-self: center;
+    width: 95%;
+    .task-buttons {
+      display: flex;
+      justify-content: space-evenly;
+      margin: auto;
+      width: 100%;
+    }
   }
   .user {
     display: flex;
@@ -34,6 +46,9 @@
           background: rgb(228, 228, 228);
         }
       }
+    }
+    section > div {
+      color: black;
     }
   }
 
@@ -109,7 +124,6 @@
       }
       .log {
         position: relative;
-        height: 80%;
         padding: 0.5rem;
         overflow-y: scroll;
         .log-button {
