@@ -1,2 +1,1 @@
-import AccountCardNext from "./AccountCardNext";
-export default AccountCardNext;
+export {default as AccountCardNext} from "./AccountCardNext";

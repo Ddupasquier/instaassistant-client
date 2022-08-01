@@ -1,26 +1,26 @@
-import React from "react";
-import { Button, Textarea, Switch, Grid } from "@nextui-org/react";
-import "./scss/instaconfig-styles.css";
-import { Link } from "react-router-dom";
-import { Slider } from "../../Components/Slider";
-import { UserIcon } from "../../Components/UserIcon";
+import React from 'react';
+import { Button, Textarea, Switch, Grid } from '@nextui-org/react';
+import './scss/instaconfig-styles.css';
+import { Link } from 'react-router-dom';
+// import { Slider } from '../../Components/Slider';
+import { UserIcon } from '../../Components/UserIcon';
 
 function InstagramConfig() {
   const textareas = [
     {
-      legend: "Look Alike",
+      legend: 'Look Alike',
     },
     {
-      legend: "White List",
+      legend: 'White List',
     },
     {
-      legend: "Black List",
+      legend: 'Black List',
     },
     {
-      legend: "Comments",
+      legend: 'Comments',
     },
     {
-      legend: "Direct Messages",
+      legend: 'Direct Messages',
     },
   ];
 

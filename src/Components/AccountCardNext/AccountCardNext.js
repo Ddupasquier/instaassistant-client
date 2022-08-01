@@ -1,7 +1,7 @@
-import { Card, Grid, Text, User, Button } from "@nextui-org/react";
-import { Link as LinkNext } from "@nextui-org/react";
-
-import { Link } from "react-router-dom";
+import React from 'react';
+import { UserIcon } from '../UserIcon';
+import { Card, Text, Button } from '@nextui-org/react';
+import { Link } from 'react-router-dom';
 
 const AccountCardNext = () => {
   return (
@@ -11,16 +11,16 @@ const AccountCardNext = () => {
         isPressable
         variant="flat"
         to="/account"
-        css={{ p: "$6", mw: "250px" }}
+        css={{ p: '$6', mw: '250px' }}
       >
         <Card.Header>
-          <User
+          <UserIcon
             src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
             name="@Username"
             size="xl"
           />
         </Card.Header>
-        <Card.Body css={{ py: "$2" }}>
+        <Card.Body css={{ py: '$2' }}>
           <Text>
             Make beautiful websites regardless of your design experience.
           </Text>
