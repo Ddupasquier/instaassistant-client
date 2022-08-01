@@ -1,26 +1,43 @@
-/* eslint-disable block-spacing */
-/* eslint-disable semi */
-/* eslint-disable no-trailing-spaces */
-/* eslint-disable react/jsx-indent */
-/* eslint-disable react/jsx-tag-spacing */
-/* eslint-disable brace-style */
-/* eslint-disable arrow-body-style */
-/* eslint-disable quotes */
-/* eslint-disable indent */
-/* eslint-disable react/jsx-one-expression-per-line */
-/* eslint-disable operator-linebreak */
 import React, { useState, useEffect } from 'react';
-import { User, Button } from '@nextui-org/react';
+// NextUI Import
+import {
+  User,
+  Button,
+  Card,
+  Input,
+  Modal,
+  Text,
+  // Row,
+  // Checkbox,
+  // Dropdown,
+  Grid,
+  Textarea,
+  Switch,
+  Progress,
+} from '@nextui-org/react';
+// CSS Import
 import './scss/account-styles.css';
+// Component Import
 import { Link } from 'react-router-dom';
+// APi Imports
 import { FetchInstagramTaskTypes } from '../../api';
+// import TaskNext from '../../Components/TaskNext';
+import { ChartPlaceHold } from '../../Components/ChartPlaceHold';
+// import PieChartPlaceHold from '../../Components/PieChartPlaceHold';
 
 function Account() {
-  const [controlsShown, setControlsShown] = useState(false);
+  // const [controlsShown, setControlsShown] = useState(false);
   const [tasks, setTasks] = useState();
   const [tasksLoaded, setTasksLoaded] = useState();
   const [tasksSelected, setTasksSelected] = useState(false);
   const [selected, setSelected] = useState('');
+  const [visible, setVisible] = React.useState(false);
+  const handler = () => setVisible(true);
+
+  const closeHandler = () => {
+    setVisible(false);
+    console.log('closed');
+  };
 
   useEffect(() => {
     FetchInstagramTaskTypes()
@@ -32,17 +49,17 @@ function Account() {
     'Woah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler text',
   ];
 
-  const controlsStyle = {
-    width: controlsShown ? '46%' : '0',
-    position: 'relative',
-    left: controlsShown ? '0' : '-1000px',
-    transition: '1s',
-  };
+  // const controlsStyle = {
+  //   width: controlsShown ? '46%' : '0',
+  //   position: 'relative',
+  //   left: controlsShown ? '0' : '-1000px',
+  //   transition: '1s',
+  // };
 
-  const screenStyle = {
-    width: controlsShown ? '42%' : '97%',
-    transition: '1s',
-  };
+  // const screenStyle = {
+  //   width: controlsShown ? '42%' : '97%',
+  //   transition: '1s',
+  // };
 
   const handleChange = (e) => {
     setSelected(e.target.value);
@@ -50,26 +67,26 @@ function Account() {
   };
 
   const HandleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     let form = e.currentTarget;
     let formFields = new FormData(form);
     let formDataObject = Object.fromEntries(formFields.entries());
     // Format the plain form data as JSON
     let formDataJsonString = JSON.stringify(formDataObject);
-    
-    let fetchOptions = {
-      //HTTP method set to POST.
-      method: "POST",
-      //Set the headers that specify you're sending a JSON body request and accepting JSON response
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      // POST request body as JSON string.
-      body: formDataJsonString,
-    };
+    console.log(formDataJsonString);
 
-    
+    // * let fetchOptions = {
+    //   //HTTP method set to POST.
+    //   method: 'POST',
+    //   //Set the headers that specify you're sending a JSON body request and accepting JSON response
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     Accept: 'application/json',
+    //   },
+    //   // POST request body as JSON string.
+    //   body: formDataJsonString,
+    // };
+
     //! send enumerator change backend to accept index
     //Call the `postFormFieldsJson()` function
     //let responseData = await postFormFieldsAsJson({ url, formFields });
@@ -79,10 +96,9 @@ function Account() {
 	    "target": "postmalone",
 	    "arguments": "N/A"
     }*/
-  }
+  };
 
   return (
-
     <div className="account-container">
       <div className="account-head-buttons">
         <Button type="button" color="secondary" size="md" rounded>
@@ -120,9 +136,139 @@ function Account() {
         </section>
       </div>
 
+      <div className="account-metrics">
+        <Grid.Container gap={2}>
+          <Grid sm={3} xs={12}></Grid>
+          <Grid sm={6} xs={12}>
+            <Card variant="flat">
+              <Card.Header>Task Currently Running</Card.Header>
+              <Card.Divider />
+              <Card.Body>
+                <Text h3>Activate: @Username</Text>
+              </Card.Body>
+              <Card.Footer>
+                <div className="task-buttons">
+                  <Link to="/task">
+                    <Button auto>Progress</Button>
+                  </Link>
+                  <Button auto flat color="error">
+                    Abort
+                  </Button>
+                </div>
+              </Card.Footer>
+            </Card>
+          </Grid>
+          <Grid sm={3} xs={12}></Grid>
+          <Grid sm={4} xs={12}>
+            <Card variant="flat">
+              <Card.Header>Utilization - Lifetime | 30 Days</Card.Header>
+              <Card.Divider />
+              <Card.Body>
+                <Grid.Container>
+                  <Grid sm={11}>
+                    <Progress color="primary" value={92} />
+                  </Grid>
+                  <Grid sm={1}>
+                    <div>
+                      <Text>92%</Text>
+                    </div>
+                  </Grid>
+                </Grid.Container>
+              </Card.Body>
+            </Card>
+          </Grid>
+          <Grid sm={4} xs={12}>
+            <Card variant="flat">
+              <Card.Header>Interactions Sent - Lifetime | 30 Days</Card.Header>
+              <Card.Divider />
+              <Card.Body>
+                <Text h2>367409</Text>
+              </Card.Body>
+            </Card>
+          </Grid>
+          <Grid sm={4} xs={12}>
+            <Card variant="flat">
+              <Card.Header>Follower Gain - Lifetime | 30 Days</Card.Header>
+              <Card.Divider />
+              <Card.Body>
+                <Text h2>Bordered card.</Text>
+              </Card.Body>
+            </Card>
+          </Grid>
+          <Grid sm={4} xs={12}>
+            <Card variant="flat">
+              <Card.Header>Interaction Limits</Card.Header>
+              <Card.Divider />
+              <Card.Body>
+                <Text h2>FOLLOWS: 657/1000 </Text>
+              </Card.Body>
+            </Card>
+          </Grid>
+          <Grid sm={4} xs={12}>
+            <Card variant="flat" css={{ minHeight: '400px' }}>
+              <Card.Header>
+                Follower / Following - Day | Week | Month
+              </Card.Header>
+              <Card.Divider />
+              <Card.Body>
+                <ChartPlaceHold />
+              </Card.Body>
+            </Card>
+          </Grid>
+          <Grid sm={4} xs={12}>
+            <Card variant="flat" css={{ minHeight: '400px' }}>
+              <Card.Header>Post Scheduling</Card.Header>
+              <Card.Divider />
+              <Card.Body>
+                <Text h3>Coming Soon!</Text>
+              </Card.Body>
+            </Card>
+          </Grid>
+        </Grid.Container>
+      </div>
+
       <div className="account-main">
-        <div className="account-controls outset" style={controlsStyle}>
-          <form onSubmit={HandleSubmit}>
+        <Grid.Container gap={2}>
+          <Card css={{ minHeight: '400px' }}>
+            <Card.Body>
+              <div className="log-container">
+                <div className="log">
+                  <Button
+                    onPress={handler}
+                    type="button"
+                    color="warning"
+                    size="sm"
+                    rounded
+                    className="log-button"
+                  >
+                    Start New Task
+                  </Button>
+                  <h3>Activity Log:</h3>
+                  <br />
+                  {logText[0]}
+                </div>
+              </div>
+            </Card.Body>
+          </Card>
+        </Grid.Container>
+      </div>
+      <Modal
+        closeButton
+        aria-labelledby="modal-title"
+        open={visible}
+        onClose={closeHandler}
+      >
+        <Modal.Header>
+          <Text id="modal-title" size={18}>
+            Start a
+            <Text b size={18}>
+              {' '}
+              New Task
+            </Text>
+          </Text>
+        </Modal.Header>
+        <form onSubmit={HandleSubmit}>
+          <Modal.Body>
             <select
               name="TaskType"
               className="options"
@@ -138,41 +284,58 @@ function Account() {
                 ))}
             </select>
             <br />
-            {/* <input type="text" placeholder="param-one" className="param-one" /> */}
-
             {tasksSelected &&
-
               tasks[Number(selected - 1)].arguments.map((arg) => {
-                return arg.input_type === "textArea" ? 
-                <textarea key={arg.id} name={arg.label} className="form-control" placeholder="Enter text here">{arg.label}</textarea> :
-                <input name={arg.label} key={arg.id} type={arg.input_type} className="form-control" placeholder={arg.label}/> })}
-            <br />
-            <textarea
-              type="text"
-              placeholder="param-two"
-              className="param-two"
-            />
-            <button type='submit'> Submit</button>
-          </form>
-        </div>
-        <div className="log-container" style={screenStyle}>
-          <div className="log inset">
-            <Button
-              type="button"
-              color="warning"
-              size="sm"
-              rounded
-              onClick={() => setControlsShown(!controlsShown)}
-              className="log-button"
-            >
-              {controlsShown ? 'Hide Controls' : 'Add Rules'}
+                if (arg.input_type === 'textarea') {
+                  return (
+                    <>
+                      <Textarea
+                        bordered
+                        key={arg.id}
+                        name={arg.label}
+                        labelPlaceholder={arg.label}
+                        className="form-control"
+                        status="secondary"
+                      ></Textarea>
+                      <br />
+                    </>
+                  );
+                } else if (arg.input_type === 'bool') {
+                  return <Switch />;
+                } else if (arg.input_type === 'date') {
+                  return <Input width="186px" label="Date" type="date" />;
+                } else if (arg.input_type === 'time') {
+                  return <Input width="186px" label="Time" type="time" />;
+                } else {
+                  return (
+                    <>
+                      <Input
+                        status="secondary"
+                        bordered
+                        labelPlaceholder={arg.label}
+                        helperText={arg.desc}
+                        name={arg.label}
+                        key={arg.id}
+                        type={arg.input_type}
+                        className="form-control"
+                        placeholder={arg.label}
+                      />
+                      <br />
+                    </>
+                  );
+                }
+              })}
+          </Modal.Body>
+          <Modal.Footer>
+            <Button auto flat color="error" onPress={closeHandler}>
+              Close
             </Button>
-            <h3>Activity Log:</h3>
-            <br />
-            {logText[0]}
-          </div>
-        </div>
-      </div>
+            <Button auto type="submit">
+              RUN
+            </Button>
+          </Modal.Footer>
+        </form>
+      </Modal>
     </div>
   );
 }

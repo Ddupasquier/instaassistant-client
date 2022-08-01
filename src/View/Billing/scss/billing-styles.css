@@ -2,26 +2,33 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: lightgray;
   overflow: auto;
 }
 .billing-container .billing-main {
   position: relative;
   align-self: center;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  justify-content: center;
+  width: 25rem;
   background: darkgray;
-  padding: 0 1.5rem 1.5rem 1.5rem;
+  padding: 1.5rem;
   border-radius: 8px;
   z-index: 10;
+  transition: 0.5s;
+}
+.billing-container .billing-main form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.billing-container .billing-main form select {
+  background: gray;
+  border-radius: 0.7rem;
+  height: 2rem;
 }
 .billing-container .billing-main .payment-options {
-  text-align: center;
-}
-.billing-container .billing-main input {
-  padding: 0 0.5rem;
-  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .billing-container .billing-main .billing-button {
   margin: auto;

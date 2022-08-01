@@ -1,7 +1,6 @@
 .insta-config {
   display: grid;
   grid-template-rows: fit-content 5vh 85vh fit-content;
-  background: rgb(44, 44, 53);
   color: rgb(175, 175, 175);
   overflow: auto;
   .config-user {
@@ -20,24 +19,11 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    margin: auto;
     gap: 2rem;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    .textarea-container {
-      min-width: 300px;
-      label {
-        font-size: 1.2rem;
-      }
-      textarea {
-        width: 100%;
-        height: 12rem;
-        resize: none;
-        overflow: auto;
-        color: rgb(175, 175, 175);
-        padding: 0.5rem;
-      }
-    }
+    width: 95%;
   }
   .config-buttons {
     display: flex;

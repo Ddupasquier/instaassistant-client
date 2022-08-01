@@ -1,48 +1,69 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState } from 'react';
-import { Button } from '@nextui-org/react';
+import { Collapse, Text, Button } from '@nextui-org/react';
 import './scss/accounts-styles.css';
-import { AccountCard } from '../../Components/AccountCard';
+import { AccountCardNext } from '../../Components/AccountCardNext';
 
 function Accounts() {
-  const [iconView, setIconView] = useState(true);
+  const [listView, setListView] = useState(true);
 
   return (
-    <div className="accounts-container">
-      <div className="accounts-main">
-        <legend>Instagram</legend>
-        <div className="instagram-container">
-          <div className="options">
-            <Button
-              type="button"
-              onClick={() => setIconView(!iconView)}
-              size="xs"
-              color="warning"
-              rounded
-            >
-              Icon View
-            </Button>
-          </div>
-          <div className="instagram-cards">
-            <AccountCard iconView={iconView} />
-            <AccountCard iconView={iconView} />
-            <AccountCard iconView={iconView} />
-            <AccountCard iconView={iconView} />
-            <AccountCard iconView={iconView} />
-            <AccountCard iconView={iconView} />
-            <AccountCard iconView={iconView} />
-            <AccountCard iconView={iconView} />
-            <AccountCard iconView={iconView} />
-            <AccountCard iconView={iconView} />
-          </div>
-        </div>
-        <div className="ads">
-          <p>Twitter - Coming soon!</p>
-          <p>TikTok - Coming Soon!</p>
-          <p>Facebook - Coming soon!</p>
+    <>
+      <div className="accounts-container">
+        <div className="accounts-main">
+          <Collapse.Group>
+            <Collapse title="Instagram" expanded>
+              <div className="instagram-container">
+                <div className="options">
+                  <Button
+                    type="button"
+                    onClick={() => setListView(!listView)}
+                    size="xs"
+                    color="warning"
+                    rounded
+                  >
+                    List View
+                  </Button>
+                  "We should put a search bar here"
+                </div>
+                <div className="instagram-cards">
+                  <AccountCardNext />
+                  <AccountCardNext />
+                  <AccountCardNext />
+                  <AccountCardNext />
+                  <AccountCardNext />
+                  <AccountCardNext />
+                  <AccountCardNext />
+                  <AccountCardNext />
+                  <AccountCardNext />
+                  <AccountCardNext />
+                  <AccountCardNext />
+                  <AccountCardNext />
+                  <AccountCardNext />
+                  <AccountCardNext />
+                  <AccountCardNext />
+                  <AccountCardNext />
+                  <AccountCardNext />
+                  <AccountCardNext />
+                </div>
+              </div>
+            </Collapse>
+            <Collapse title="TikTok">
+              <Text>Comming Soon</Text>
+            </Collapse>
+            <Collapse title="Twitter">
+              <Text>Comming Soon</Text>
+            </Collapse>
+            <Collapse title="Facebook">
+              <Text>Comming Soon</Text>
+            </Collapse>
+            <Collapse title="Youtube">
+              <Text>Comming Soon</Text>
+            </Collapse>
+          </Collapse.Group>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
