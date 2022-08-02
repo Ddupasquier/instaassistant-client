@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState } from 'react';
-import { Collapse, Text, Button } from '@nextui-org/react';
+import { Collapse, Text, Button, Input } from '@nextui-org/react';
 import './scss/accounts-styles.css';
 import { AccountCardNext } from '../../Components/AccountCardNext';
 
@@ -24,7 +24,7 @@ function Accounts() {
                   >
                     List View
                   </Button>
-                  "We should put a search bar here"
+                  <Input clearable underlined labelPlaceholder="Search"></Input>
                 </div>
                 <div className="instagram-cards">
                   <AccountCardNext />

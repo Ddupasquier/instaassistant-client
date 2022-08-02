@@ -2,7 +2,6 @@ import React from 'react';
 import { Button, Textarea, Switch, Grid } from '@nextui-org/react';
 import './scss/instaconfig-styles.css';
 import { Link } from 'react-router-dom';
-// import { Slider } from '../../Components/Slider';
 import { UserIcon } from '../../Components/UserIcon';
 
 function InstagramConfig() {
@@ -24,6 +23,25 @@ function InstagramConfig() {
     },
   ];
 
+  const switches = [
+    {
+      legend: 'Allow likes:',
+      value: true,
+    },
+    {
+      legend: 'Allow comments:',
+      value: true,
+    },
+    {
+      legend: 'Allow follows:',
+      value: true,
+    },
+    {
+      legend: 'Allow messages:',
+      value: true,
+    },
+  ];
+
   return (
     <div className="insta-config">
       <div className="config-user">
@@ -36,29 +54,27 @@ function InstagramConfig() {
       </div>
       <form>
         <div className="config-toggles">
-          <section>
-            <legend>Allow likes:</legend>
-            <Switch name="likes" size="xl" />
-          </section>
-          <section>
-            <legend>Allow follows:</legend>
-            <Switch name="follows" size="xl" />
-          </section>
-          <section>
-            <legend>Allow comments:</legend>
-            <Switch name="comments" size="xl" />
-          </section>
-          <section>
-            <legend>Allow messages:</legend>
-            <Switch name="messages" size="xl" />
-          </section>
+          <Grid.Container justify="space-evenly">
+            {switches.map((switchItem, index) => (
+              <Grid sm={2} xs={5} key={index}>
+                <section>
+                  <label>{switchItem.legend}</label>
+                  <br />
+                  <Switch
+                    label={switchItem.legend}
+                    checked={switchItem.value}
+                  />
+                </section>
+              </Grid>
+            ))}
+          </Grid.Container>
         </div>
         <div className="config-textareas">
           <Grid.Container gap={2}>
-            {textareas.map((textarea) => (
-              <Grid sm={6} xs={12}>
+            {textareas.map((textarea, index) => (
+              <Grid sm={6} xs={12} key={index}>
                 <Textarea
-                  width="100%"
+                  width="95%"
                   bordered
                   status="secondary"
                   key={textarea.legend}

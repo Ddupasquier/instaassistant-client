@@ -90,10 +90,14 @@ function Account() {
             Accounts
           </Link>
         </Button>
-        <Button type="button" color="secondary" size="md" rounded>
-          <Link to="/metrics" className="button">
-            Metrics
-          </Link>
+        <Button
+          type="button"
+          onPress={handler}
+          color="secondary"
+          size="md"
+          rounded
+        >
+          New task
         </Button>
         <Button type="button" color="secondary" size="md" rounded>
           <Link to="/config" className="button">
@@ -258,11 +262,24 @@ function Account() {
               className="options"
               value={selected}
               onChange={handleChange}
+              style={{
+                backgroundColor: 'gray',
+                borderRadius: '1rem',
+                padding: '.3rem',
+              }}
             >
-              {!tasksSelected && <option value="">Select an option</option>}
+              {!tasksSelected && (
+                <option value="" style={{ color: 'black' }}>
+                  Select an option
+                </option>
+              )}
               {tasksLoaded &&
                 tasks.map((task) => (
-                  <option key={task.id} value={task.id}>
+                  <option
+                    key={task.id}
+                    value={task.id}
+                    style={{ color: 'black' }}
+                  >
                     {task.name}
                   </option>
                 ))}

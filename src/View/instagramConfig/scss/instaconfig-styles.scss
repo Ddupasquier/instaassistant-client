@@ -8,21 +8,14 @@
     margin: auto;
   }
   .config-toggles {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+    margin: auto;
+    width: 95%;
     section {
       text-align: center;
     }
   }
   .config-textareas {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
     margin: auto;
-    gap: 2rem;
-    align-items: center;
-    justify-content: center;
     width: 95%;
   }
   .config-buttons {

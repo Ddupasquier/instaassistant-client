@@ -25,12 +25,6 @@ const AccountCardNext = () => {
             Make beautiful websites regardless of your design experience.
           </Text>
         </Card.Body>
-        <Card.Footer>
-          <Button.Group>
-            <Button>Edit</Button>
-            <Button>Task</Button>
-          </Button.Group>
-        </Card.Footer>
       </Card>
     </Link>
   );
