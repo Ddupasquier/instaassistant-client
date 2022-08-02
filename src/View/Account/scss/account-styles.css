@@ -58,52 +58,6 @@
   padding: 1rem;
   height: 35rem;
 }
-.account-container .account-main .account-controls {
-  padding: 1rem;
-  text-align: center;
-}
-.account-container .account-main .account-controls select {
-  height: 2rem;
-  width: 90%;
-  border-radius: 1rem;
-  border: 0.1rem solid #ccc;
-  padding: 0 0.5rem;
-  margin-bottom: 8px;
-  transition: box-shadow 0.5s;
-}
-.account-container .account-main .account-controls select:hover, .account-container .account-main .account-controls select:focus {
-  outline: none;
-  box-shadow: 0 0 10px rgba(0, 225, 255, 0.5);
-}
-.account-container .account-main .account-controls input {
-  height: 2rem;
-  width: 90%;
-  border-radius: 1rem;
-  border: 0.1rem solid #ccc;
-  padding: 0 0.5rem;
-  margin: auto;
-  margin-bottom: 8px;
-  transition: box-shadow 0.5s;
-}
-.account-container .account-main .account-controls input:hover, .account-container .account-main .account-controls input:focus {
-  outline: none;
-  box-shadow: 0 0 10px rgba(0, 225, 255, 0.5);
-}
-.account-container .account-main .account-controls textarea {
-  height: 14rem;
-  width: 90%;
-  border-radius: 1rem;
-  border: 0.1rem solid #ccc;
-  padding: 0.5rem;
-  margin: auto;
-  resize: none;
-  max-height: 15rem;
-  transition: box-shadow 0.5s;
-}
-.account-container .account-main .account-controls textarea:hover, .account-container .account-main .account-controls textarea:focus {
-  outline: none;
-  box-shadow: 0 0 10px rgba(0, 225, 255, 0.5);
-}
 .account-container .account-main .log-container {
   display: flex;
   flex-direction: column;
@@ -135,8 +89,24 @@
   height: -moz-fit-content;
   height: fit-content;
 }
-.account-container .account-main .log-container .log .log-button:hover, .account-container .account-main .log-container .log .log-button:focus {
-  outline: none;
-  box-shadow: 0 0 10px rgba(0, 225, 255, 0.5);
+.account-container .metric-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+}
+.account-container .metric-overlay .metric-modal {
+  width: 75%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  background: rgb(36, 36, 36);
+  border-radius: 1rem;
+  padding: 0.5rem;
 }
 /*# sourceMappingURL=account-styles.css.map */
