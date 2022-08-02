@@ -1,19 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BsGearWideConnected } from 'react-icons/bs';
-import { FaUserAlt, FaUserFriends } from 'react-icons/fa';
-import { VscGraphLine } from 'react-icons/vsc';
+import {
+  FaUserAlt,
+  FaUserFriends,
+  FaQuestionCircle,
+  FaMoneyBill,
+} from 'react-icons/fa';
 import MenuItem from './MenuItem';
 import PopOver from './PopOver';
 
 import './scss/menu-styles.css';
 
 const menuItems = [
-  {
-    name: 'Billing',
-    to: '/billing',
-    Icon: BsGearWideConnected,
-  },
   {
     name: 'Profile',
     to: '/profile',
@@ -25,9 +23,14 @@ const menuItems = [
     Icon: FaUserFriends,
   },
   {
-    name: 'Metrics',
-    to: '/metrics',
-    Icon: VscGraphLine,
+    name: 'Billing',
+    to: '/billing',
+    Icon: FaMoneyBill,
+  },
+  {
+    name: 'FAQ',
+    to: '/FAQ',
+    Icon: FaQuestionCircle,
   },
 ];
 

@@ -25,7 +25,13 @@ function Accounts() {
                   >
                     List View
                   </Button>
-                  <Input clearable underlined labelPlaceholder="Search"></Input>
+                  <Input
+                    clearable
+                    underlined
+                    labelPlaceholder="Search"
+                    color="secondary"
+                    size="xl"
+                  ></Input>
                 </div>
                 <div className="instagram-cards">
                   <AccountCardNext />
