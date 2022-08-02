@@ -1,6 +1,6 @@
 import React from 'react';
 import { UserIcon } from '../UserIcon';
-import { Card, Text, Button } from '@nextui-org/react';
+import { Card, Text } from '@nextui-org/react';
 import { Link } from 'react-router-dom';
 
 const AccountCardNext = () => {
