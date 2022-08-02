@@ -6,19 +6,25 @@
   overflow: auto;
 }
 .insta-config .config-user {
+  position: relative;
   padding: 1rem;
   margin: auto;
+  z-index: 10;
 }
 .insta-config .config-toggles {
+  position: relative;
   margin: auto;
   width: 95%;
+  z-index: 10;
 }
 .insta-config .config-toggles section {
   text-align: center;
 }
 .insta-config .config-textareas {
+  position: relative;
   margin: auto;
   width: 95%;
+  z-index: 10;
 }
 .insta-config .config-buttons {
   display: flex;
