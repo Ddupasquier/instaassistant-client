@@ -56,8 +56,8 @@ function SignUp({ setVis, setLogVis, isVis, style }) {
 export default SignUp;
 
 SignUp.propTypes = {
-  setVis: PropTypes.func.isRequired,
-  setLogVis: PropTypes.func.isRequired,
-  isVis: PropTypes.bool.isRequired,
-  style: PropTypes.func.isRequired,
+  setVis: PropTypes.func,
+  setLogVis: PropTypes.func,
+  isVis: PropTypes.bool,
+  style: PropTypes.func,
 };

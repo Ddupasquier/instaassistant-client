@@ -14,7 +14,7 @@ function MenuItem({ item, animateLogo }) {
       onMouseLeave={() => setHover(!hover)}
       onClick={() => animateLogo(item.name)}
     >
-      <div className="menu-item ">
+      <div className="menu-item" aria-labelledby={item.name}>
         <item.Icon />
       </div>
     </NavLink>

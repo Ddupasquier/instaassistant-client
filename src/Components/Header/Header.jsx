@@ -33,6 +33,7 @@ function Header({ menuSelected }) {
   });
 
   useEffect(() => {
+      if (window.innerWidth > 760) {
     const boxPositions = [
       {
         top: ['.6rem', '15vh', '10vh', '10vh'],
@@ -46,7 +47,7 @@ function Header({ menuSelected }) {
         left: ['.9rem', '25vw', '30vw', '24vw'],
         borderRadius: ['.1rem', '.8rem', '.8rem', '.8rem'],
         width: ['1rem', '13rem', '35rem', '13rem'],
-        height: ['1.5rem', '20rem', '11rem', '20rem'],
+        height: ['1.5rem', '20rem', '11rem', '60vh'],
       },
       {
         top: ['1rem', '50vh', '32vh', '10vh'],
@@ -60,7 +61,7 @@ function Header({ menuSelected }) {
         left: ['1.5rem', '70vw', '73vw', '48vw'],
         borderRadius: ['.1rem', '.8rem', '.8rem', '.8rem'],
         width: ['1rem', '13rem', '25rem', '13rem'],
-        height: ['1.5rem', '20rem', '11rem', '20rem'],
+        height: ['1.5rem', '20rem', '11rem', '60vh'],
       },
     ];
 
@@ -92,16 +93,18 @@ function Header({ menuSelected }) {
       }
     };
 
-    setBoxOneStyle(moveBoxes(0));
-    setTimeout(() => {
-      setBoxTwoStyle(moveBoxes(1));
-    }, '150');
-    setTimeout(() => {
-      setBoxThreeStyle(moveBoxes(2));
-    }, '300');
-    setTimeout(() => {
-      setBoxFourStyle(moveBoxes(3));
-    }, '450');
+  
+      setBoxOneStyle(moveBoxes(0));
+      setTimeout(() => {
+        setBoxTwoStyle(moveBoxes(1));
+      }, '150');
+      setTimeout(() => {
+        setBoxThreeStyle(moveBoxes(2));
+      }, '300');
+      setTimeout(() => {
+        setBoxFourStyle(moveBoxes(3));
+      }, '450');
+    }
   }, [menuSelected]);
 
   return (
@@ -124,5 +127,5 @@ function Header({ menuSelected }) {
 export default Header;
 
 Header.propTypes = {
-  menuSelected: PropTypes.bool.isRequired,
+  menuSelected: PropTypes.string.isRequired,
 };

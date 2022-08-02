@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import { animated } from 'react-spring';
 import './scss/login-styles.css';
 
-function Login({
-  setVis, setSignVis, isVis, style,
-}) {
+function Login({ setVis, setSignVis, isVis, style }) {
   return (
     <animated.div className="login-form-overlay" style={style}>
       <div className="login-form-container raised">
@@ -40,8 +38,8 @@ function Login({
 export default Login;
 
 Login.propTypes = {
-  setVis: PropTypes.func.isRequired,
-  setSignVis: PropTypes.func.isRequired,
-  isVis: PropTypes.bool.isRequired,
-  style: PropTypes.func.isRequired,
+  setVis: PropTypes.func,
+  setSignVis: PropTypes.func,
+  isVis: PropTypes.bool,
+  style: PropTypes.func,
 };

@@ -41,8 +41,9 @@ function Menu({ menuItemHovered, setMenuItemHovered, animateLogo }) {
             onFocus={() => setMenuItemHovered(item.name)}
             onMouseLeave={() => setMenuItemHovered('')}
             onBlur={() => setMenuItemHovered('')}
+            key={item.name}
           >
-            <MenuItem key={item.name} item={item} animateLogo={animateLogo} />
+            <MenuItem item={item} animateLogo={animateLogo} />
           </div>
         ))}
       </nav>

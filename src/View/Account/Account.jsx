@@ -289,17 +289,16 @@ function Account() {
               tasks[Number(selected - 1)].arguments.map((arg) => {
                 if (arg.input_type === 'textarea') {
                   return (
-                    <>
-                      <Textarea
-                        bordered
-                        key={arg.id}
-                        name={arg.label}
-                        labelPlaceholder={arg.label}
-                        className="form-control"
-                        status="secondary"
-                      ></Textarea>
-                      <br />
-                    </>
+                    <Textarea
+                      bordered
+                      key={arg.label}
+                      name={arg.label}
+                      labelPlaceholder={arg.label}
+                      className="form-control"
+                      status="secondary"
+                      aria-label={arg.label}
+                      aria-required="true"
+                    ></Textarea>
                   );
                 } else if (arg.input_type === 'bool') {
                   return <Switch />;

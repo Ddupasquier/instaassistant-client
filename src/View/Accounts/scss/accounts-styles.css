@@ -20,7 +20,7 @@
   display: grid;
   grid-template-rows: -webkit-fit-content auto;
   grid-template-rows: fit-content auto;
-  width: 100%;
+  width: 90vw;
   border-radius: 8px;
   box-shadow: rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }

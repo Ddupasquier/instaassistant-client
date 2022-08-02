@@ -11,7 +11,7 @@ const AccountCardNext = () => {
         isPressable
         variant="flat"
         to="/account"
-        css={{ p: '$6', mw: '250px' }}
+        css={{ p: '$5', mw: '250px' }}
       >
         <Card.Header>
           <UserIcon
