@@ -16,6 +16,7 @@ const MetricModal = ({ metricHandler, closeMetricHandler, metricVisible }) => {
       >
         <Modal.Body>
           <ChartPlaceHold />
+          Why isn't the chart appearing?
         </Modal.Body>
       </Modal>
     </>

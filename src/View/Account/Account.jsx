@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import './scss/account-styles.css';
 import { FetchInstagramTaskTypes } from '../../api';
 
-import { User, Button, Card, Text, Grid, Progress } from '@nextui-org/react';
+import { Button, Card, Text, Grid, Progress } from '@nextui-org/react';
 
 import { Link } from 'react-router-dom';
 import { ChartPlaceHold } from '../../Components/ChartPlaceHold';
 import MetricModal from './MetricModal';
 import TaskModal from './TaskModal';
+import {UserIcon} from '../../Components/UserIcon';
 
 function Account() {
   const [tasks, setTasks] = useState();
@@ -100,7 +101,7 @@ function Account() {
 
       <div className="user">
         <section>
-          <User
+          <UserIcon
             src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
             name="@Username"
             size="xl"
