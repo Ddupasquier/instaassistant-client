@@ -1,6 +1,7 @@
-.profile {
+.profile-main {
   display: flex;
   align-items: center;
-  justify-content: center;
-  background: lightgray;
+  position: relative;
+  margin: auto;
+  z-index: 100;
 }

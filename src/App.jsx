@@ -11,18 +11,21 @@ function App() {
   const [signIsVisible, setSignIsVisible] = useState(false);
   const [logIsVisible, setLogIsVisible] = useState(true);
   const [menuItemHovered, setMenuItemHovered] = useState('');
-  const [billingSelected, setBillingSeleted] = useState(false);
-  // write state to update to true if billing has been clicked
-  // write function to update state to false if billing has been clicked
+  const [menuSelected, setMenuSeleted] = useState(false);
+
 
   // TEMP VALUE
   const [user] = useState(true);
 
   const animateLogo = (name) => {
     if (name === 'Billing') {
-      setBillingSeleted(true);
+      setMenuSeleted('Billing');
+    } else if (name === 'Profile') {
+      setMenuSeleted('Profile');
+    } else if (name === 'Accounts') {
+      setMenuSeleted('Accounts');
     } else {
-      setBillingSeleted(false);
+      setMenuSeleted('');
     }
   };
 
@@ -42,7 +45,7 @@ function App() {
     <div className="App">
       {user ? (
         <div className="app">
-          <Header billingSelected={billingSelected} />
+          <Header menuSelected={menuSelected} />
           <Menu
             menuItemHovered={menuItemHovered}
             setMenuItemHovered={setMenuItemHovered}

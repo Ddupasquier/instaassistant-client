@@ -4,12 +4,14 @@
   justify-content: center;
   overflow: auto;
   .accounts-main {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: auto;
     width: 87%;
     height: fit-content;
+    z-index: 10;
     .instagram-container {
       display: grid;
       grid-template-rows: fit-content auto;

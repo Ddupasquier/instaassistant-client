@@ -1,6 +1,8 @@
-.profile {
+.profile-main {
   display: flex;
   align-items: center;
-  justify-content: center;
+  position: relative;
+  margin: auto;
+  z-index: 100;
 }
 /*# sourceMappingURL=profile-styles.css.map */

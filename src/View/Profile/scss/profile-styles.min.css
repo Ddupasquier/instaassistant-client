@@ -1,2 +1,2 @@
-.profile{display:flex;align-items:center;justify-content:center;background:#d3d3d3}
+.profile-main{display:flex;align-items:center;position:relative;margin:auto;z-index:100}
 /*# sourceMappingURL=profile-styles.min.css.map */
