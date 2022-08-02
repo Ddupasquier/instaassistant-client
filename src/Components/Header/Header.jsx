@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './scss/header-styles.css';
-// import Icon from './Icon';
+
 function Header({ menuSelected }) {
   const [boxOneStyle, setBoxOneStyle] = useState({
     top: '.6rem',
@@ -111,18 +111,6 @@ function Header({ menuSelected }) {
         <div className="box-two" style={boxTwoStyle} />
         <div className="box-three" style={boxThreeStyle} />
         <div className="box-four" style={boxFourStyle} />
-        {/* <Icon
-          billing={menuSelected}
-          top=".6rem"
-          newTop="30vh"
-          left=".6rem"
-          newLeft="30vw"
-          height="1.5rem"
-          newHeight="15rem"
-          width="1rem"
-          newWidth="10rem"
-          border=".1rem"
-        /> */}
       </div>
       <div className="site-name">
         <i>Marcus</i>
