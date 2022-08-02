@@ -19,7 +19,7 @@
       gap: 0.3rem;
       select {
         background: gray;
-        border-radius: .7rem;
+        border-radius: 0.7rem;
         height: 2rem;
       }
     }
@@ -30,6 +30,11 @@
     }
     .billing-button {
       margin: auto;
+    }
+  }
+  @media (max-width: 768px) {
+    .billing-main {
+      width: 80%;
     }
   }
 }

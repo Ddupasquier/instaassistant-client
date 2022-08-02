@@ -33,4 +33,9 @@
 .billing-container .billing-main .billing-button {
   margin: auto;
 }
+@media (max-width: 768px) {
+  .billing-container .billing-main {
+    width: 80%;
+  }
+}
 /*# sourceMappingURL=billing-styles.css.map */
