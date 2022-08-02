@@ -1,0 +1,46 @@
+.accounts-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: lightgray;
+  overflow: auto;
+  .accounts-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    width: 87%;
+    height: fit-content;
+    .instagram-container {
+      display: grid;
+      grid-template-rows: fit-content auto;
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+
+      .options {
+        button {
+          margin: 0.5rem;
+          float: right;
+        }
+      }
+      .instagram-cards {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        padding: 1rem;
+        align-items: center;
+        justify-content: left;
+        overflow-x: scroll;
+        overflow-y: hidden;
+      }
+    }
+    .ads {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-evenly;
+    }
+  }
+}

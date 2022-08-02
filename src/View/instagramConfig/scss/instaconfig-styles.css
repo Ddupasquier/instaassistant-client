@@ -2,7 +2,6 @@
   display: grid;
   grid-template-rows: -webkit-fit-content 5vh 85vh -webkit-fit-content;
   grid-template-rows: fit-content 5vh 85vh fit-content;
-  background: rgb(44, 44, 53);
   color: rgb(175, 175, 175);
   overflow: auto;
 }
@@ -22,24 +21,11 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  margin: auto;
   gap: 2rem;
   align-items: center;
   justify-content: center;
-  width: 100%;
-}
-.insta-config .config-textareas .textarea-container {
-  min-width: 300px;
-}
-.insta-config .config-textareas .textarea-container label {
-  font-size: 1.2rem;
-}
-.insta-config .config-textareas .textarea-container textarea {
-  width: 100%;
-  height: 12rem;
-  resize: none;
-  overflow: auto;
-  color: rgb(175, 175, 175);
-  padding: 0.5rem;
+  width: 95%;
 }
 .insta-config .config-buttons {
   display: flex;

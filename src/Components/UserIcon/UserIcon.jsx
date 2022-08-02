@@ -8,7 +8,6 @@ function UserIcon({ src, name, size }) {
       src={src}
       name={name}
       size={size}
-      // css={{ color: 'white' }}
     />
   );
 }
