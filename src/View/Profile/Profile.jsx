@@ -15,7 +15,7 @@ function Profile() {
     <>
       <div className="profile-main">
         <Grid.Container gap={2}>
-          <Grid sm={12} md={5} xl>
+          <Grid sm={12} xl>
             <Card
               css={{
                 mw: '330px',
