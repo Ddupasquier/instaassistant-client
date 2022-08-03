@@ -1,2 +1,2 @@
-.faq-container{display:flex;justify-content:center;align-items:center}.faq-container .faq{width:80%;height:80%;padding:1rem;background:gray;border-radius:1rem}
+.faq-container{display:flex;justify-content:center;align-items:center}.faq-container .faq{width:80%;height:80%;padding:1rem;-webkit-backdrop-filter:saturate(200%) blur(8px);backdrop-filter:saturate(200%) blur(8px);background:rgba(255,255,255,.4);border-radius:1rem}
 /*# sourceMappingURL=faq-styles.min.css.map */
