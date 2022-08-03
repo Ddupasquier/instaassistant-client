@@ -40,9 +40,9 @@ const darkTheme = createTheme({
   },
 });
 
-const lightTheme = createTheme({
-  type: 'light',
-});
+// const lightTheme = createTheme({
+//   type: 'light',
+// });
 
 function AppRoutes() {
   return (
