@@ -35,3 +35,5 @@ export const BotDeletePAth = "http://localhost:3000/bots/";
 
 export const TaskCreatePath = "https://instaassistant-api.herokuapp.com/tasks";
 export const TaskDeletePath = "https://instaassistant-api.herokuapp.com/tasks/";
+
+export const faqPath = "https://instaassistant-api.herokuapp.com/faq";

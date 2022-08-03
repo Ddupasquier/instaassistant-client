@@ -5,6 +5,7 @@ import {
   CreateAccountPath,
   BotShowPath,
   BotDeletePAth,
+  faqPath,
 } from "./endpoints";
 
 // get playlistList
@@ -50,4 +51,8 @@ export const CreateBot = (arg) => {
 
 export const DeleteBot = () => {
   return fetch(BotDeletePAth).then((response) => response.json());
+};
+
+export const GetFAQs = () => {
+  return fetch(faqPath).then((response) => response.json());
 };
