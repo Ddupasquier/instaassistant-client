@@ -10,7 +10,7 @@ function Login({ setVis, setSignVis, isVis, style }) {
 
   const [loading, setLoading] = useState(false);
 
-  const HandleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
     //* api layer call for Login
@@ -20,7 +20,7 @@ function Login({ setVis, setSignVis, isVis, style }) {
   return (
     <animated.div className="login-form-overlay" style={style}>
       <div className="login-form-container raised">
-        <form className="login" onSubmit={HandleSubmit}>
+        <form className="login" onSubmit={handleSubmit}>
           Hey, you&apos;re back!
           <h1>Login</h1>
           <Input required type="text" id="username" placeholder="EMAIL" />

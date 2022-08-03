@@ -16,7 +16,7 @@ function SignUp({ setVis, setLogVis, isVis, style }) {
 
   const [loading, setLoading] = useState(false);
 
-  const HandleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     // if pwdconf is not equal to pwd, alert user
     if (pwd !== pwdconf) {
@@ -31,7 +31,7 @@ function SignUp({ setVis, setLogVis, isVis, style }) {
   return (
     <animated.div className="signup-form-overlay" style={style}>
       <div className="signup-form-container">
-        <form className="sign-up" onSubmit={HandleSubmit}>
+        <form className="sign-up" onSubmit={handleSubmit}>
           Create your account
           <h1>Sign Up</h1>
           <Input

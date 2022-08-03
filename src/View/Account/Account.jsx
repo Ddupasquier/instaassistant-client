@@ -43,7 +43,7 @@ function Account() {
     setTasksSelected(true);
   };
 
-  const HandleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     let form = e.currentTarget;
     let formFields = new FormData(form);
@@ -245,7 +245,7 @@ function Account() {
         taskHandler={taskHandler}
         closeTaskHandler={closeTaskHandler}
         taskVisible={taskVisible}
-        handleSubmit={HandleSubmit}
+        handleSubmit={handleSubmit}
         handleChange={handleChange}
         selected={selected}
         tasksSelected={tasksSelected}
