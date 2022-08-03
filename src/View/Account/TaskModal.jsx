@@ -14,9 +14,6 @@ const TaskModal = ({
 }) => {
   return (
     <>
-      <Button auto shadow onClick={taskHandler}>
-        Open modal
-      </Button>
       <Modal
         closeButton
         aria-labelledby="modal-title"

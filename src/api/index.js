@@ -1,9 +1,3 @@
-/* eslint-disable function-paren-newline */
-/* eslint-disable comma-dangle */
-/* eslint-disable implicit-arrow-linebreak */
-/* eslint-disable quotes */
-/* eslint-disable arrow-body-style */
-
 import {
   InstagramTaskTypes,
   UserViewPath,
@@ -18,16 +12,30 @@ export const FetchInstagramTaskTypes = () => {
   return fetch(InstagramTaskTypes).then((response) => response.json());
 };
 
-export const loginFetch = () => {
-  return fetch(UserLoginPath).then((response) => response.json());
+export const loginFetch = (userInfo) => {
+  return fetch("http://localhost:3000/login", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify(userInfo),
+  }).then((response) => response.json());
 };
 
 export const GetUserInfo = () => {
   return fetch(UserViewPath).then((response) => response.json());
 };
 
-export const CreateUserPost = () => {
-  return fetch(CreateAccountPath).then((response) => response.json());
+export const CreateUserPost = (userInfo) => {
+  return fetch("http://localhost:3000/users", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify(userInfo),
+  }).then((response) => response.json());
 };
 
 export const GetBotInfo = () => {
