@@ -1,12 +1,7 @@
 .profile-main {
   display: flex;
-  flex-direction: column;
   align-items: center;
   position: relative;
   margin: auto;
   z-index: 100;
-  .theme-switch {
-    display: flex;
-    align-items: center;
-  }
 }
