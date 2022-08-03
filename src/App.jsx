@@ -14,7 +14,7 @@ function App() {
   const [menuSelected, setMenuSeleted] = useState('');
 
   // TEMP VALUE
-  const [user] = useState(true);
+  const [user] = useState(false);
 
   const animateLogo = (name) => {
     if (name === 'Billing') {

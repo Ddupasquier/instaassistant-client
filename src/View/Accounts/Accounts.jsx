@@ -51,6 +51,10 @@ function Accounts() {
                 </div>
                 <div className="instagram-cards">
                   <AccountCardNext />
+                  <AccountCardNext />
+                  <AccountCardNext />
+                  <AccountCardNext />
+                  <AccountCardNext />
                 </div>
               </div>
             </Collapse>

@@ -5,17 +5,19 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgb(255, 122, 155);
+  height: 100vh;
+  width: 100vw;
   z-index: 1;
 }
 
 .login-form-container {
   min-width: 40%;
   max-width: 1200px;
+  height: 28rem;
   text-align: center;
-  background: rgb(163, 0, 54);
+  -webkit-backdrop-filter: saturate(200%) blur(8px);
+          backdrop-filter: saturate(200%) blur(8px);
+  background: white;
   border-radius: 20px;
   outline-offset: 4px;
 }
@@ -24,7 +26,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #fff;
+  -webkit-backdrop-filter: saturate(200%) blur(8px);
+          backdrop-filter: saturate(200%) blur(8px);
+  background: rgba(255, 255, 255, 0.4);
+  color: black;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
@@ -35,35 +40,17 @@
   width: 90%;
   height: 31px;
   border-radius: 20px;
-  border: 1px solid #ccc;
   padding: 0 10px;
   margin-bottom: 8px;
-  transition: 0.5s;
-}
-.login-form-container .login input:hover, .login-form-container .login input:focus {
-  outline: none;
-  box-shadow: 0 0 8px #3eb439;
-}
-.login-form-container .login button {
-  padding: 8px 20px;
-  border-radius: 12px;
-  border: none;
-  font-size: 1.1rem;
-  background: rgb(255, 122, 155);
-  color: white;
-  transition: 0.5s;
-}
-.login-form-container .login button:hover {
-  box-shadow: 0 0 8px rgb(255, 122, 155);
 }
 .login-form-container a {
   font-family: none;
   font-size: 1.1rem;
   text-decoration: none;
-  color: white;
+  color: black;
 }
 .login-form-container a:hover {
   text-decoration: underline;
-  color: white;
+  color: black;
 }
 /*# sourceMappingURL=login-styles.css.map */

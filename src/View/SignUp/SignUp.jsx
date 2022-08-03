@@ -69,6 +69,7 @@ function SignUp({ setVis, setLogVis, isVis, style }) {
               setVis(!isVis);
               setLogVis(isVis);
             }}
+            style={{color: 'black'}}
           >
             Already Have An Account?
           </button>
