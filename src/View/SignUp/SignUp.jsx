@@ -18,6 +18,11 @@ function SignUp({ setVis, setLogVis, isVis, style }) {
 
   const HandleSubmit = (e) => {
     e.preventDefault();
+    // if pwdconf is not equal to pwd, alert user
+    if (pwd !== pwdconf) {
+      alert("Passwords do not match");
+      return;
+    }
     setLoading(true);
     CreateUserPost({ email: email, password: pwd });
     //! need to add success functionality: auto login and redirect? or success message and redirect to login?
