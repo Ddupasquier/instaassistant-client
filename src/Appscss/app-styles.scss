@@ -3,6 +3,7 @@
 body {
   font-family: Roboto;
   margin: 0;
+  // background-image: src('https://i.ibb.co/KFXV3g0/abstract-lines-1.png');
 }
 
 // FIRST ROW IS HEADER
@@ -14,6 +15,7 @@ body {
   height: 100vh;
   grid-template-rows: 3.5rem auto;
   grid-template-columns: 3rem auto;
+
   header {
     grid-column: span 2;
   }

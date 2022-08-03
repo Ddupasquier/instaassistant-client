@@ -69,17 +69,23 @@ function InstagramConfig() {
             ))}
           </Grid.Container>
         </div>
+        <br />
         <div className="config-textareas">
-          <Grid.Container gap={2}>
+          <Grid.Container gap={2.5}>
             {textareas.map((textarea, index) => (
               <Grid sm={6} xs={12} key={index}>
                 <Textarea
                   width="95%"
                   bordered
-                  status="secondary"
+                  status="default"
                   key={textarea.legend}
                   labelPlaceholder={textarea.legend}
                   legend={textarea.legend}
+                  css={{
+                    backdropFilter: 'saturate(200%) blur(8px)',
+                    background: 'rgba(255, 255, 255, 0.2)',
+                    fontWeight: 'bold',
+                  }}
                 />
               </Grid>
             ))}

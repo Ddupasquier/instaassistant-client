@@ -7,7 +7,9 @@
   width: 80%;
   height: 80%;
   padding: 1rem;
-  background: gray;
+  -webkit-backdrop-filter: saturate(200%) blur(8px);
+          backdrop-filter: saturate(200%) blur(8px);
+  background: rgba(255, 255, 255, 0.4);
   border-radius: 1rem;
 }
 /*# sourceMappingURL=faq-styles.css.map */

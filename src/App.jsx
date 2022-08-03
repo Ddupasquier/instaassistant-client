@@ -13,7 +13,6 @@ function App() {
   const [menuItemHovered, setMenuItemHovered] = useState('');
   const [menuSelected, setMenuSeleted] = useState('');
 
-
   // TEMP VALUE
   const [user] = useState(true);
 
@@ -50,6 +49,17 @@ function App() {
             menuItemHovered={menuItemHovered}
             setMenuItemHovered={setMenuItemHovered}
             animateLogo={animateLogo}
+          />
+          <img
+            src="https://i.ibb.co/KFXV3g0/abstract-lines-1.png"
+            alt="abstract-lines-1"
+            border="0"
+            style={{
+              position: 'absolute',
+              bottom: '0',
+              height: '120vh',
+              width: '100vw',
+            }}
           />
           <Outlet />
         </div>

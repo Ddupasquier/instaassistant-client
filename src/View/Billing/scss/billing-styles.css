@@ -9,7 +9,9 @@
   align-self: center;
   justify-content: center;
   width: 25rem;
-  background: darkgray;
+  -webkit-backdrop-filter: saturate(200%) blur(8px);
+          backdrop-filter: saturate(200%) blur(8px);
+  background: rgba(255, 255, 255, 0.4);
   padding: 1.5rem;
   border-radius: 8px;
   z-index: 10;
