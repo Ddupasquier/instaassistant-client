@@ -7,7 +7,7 @@ import { Billing } from './View/Billing';
 import { Profile } from './View/Profile';
 import { Account } from './View/Account';
 import { Accounts } from './View/Accounts';
-import { Metrics } from './View/Metrics';
+import {FAQ} from './View/FAQ';
 import { InstagramConfig } from './View/instagramConfig';
 import { NextUI } from './View/NextUI';
 import { Login } from './View/Login';
@@ -36,7 +36,7 @@ function AppRoutes() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/accounts" element={<Accounts />} />
           <Route path="/account" element={<Account />} />
-          <Route path="/metrics" element={<Metrics />} />
+          <Route path="/FAQ" element={<FAQ />} />
           <Route path="/config" element={<InstagramConfig />} />
           <Route path="/next" element={<NextUI />} />
           <Route path="/login" element={<Login />} />

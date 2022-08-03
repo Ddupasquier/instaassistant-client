@@ -1,38 +1,31 @@
 import React, { useState, useEffect } from 'react';
-// NextUI Import
-import {
-  User,
-  Button,
-  Card,
-  Input,
-  Modal,
-  Text,
-  Grid,
-  Textarea,
-  Switch,
-  Progress,
-} from '@nextui-org/react';
-// CSS Import
 import './scss/account-styles.css';
-// Component Import
-import { Link } from 'react-router-dom';
-// APi Imports
 import { FetchInstagramTaskTypes } from '../../api';
-// import TaskNext from '../../Components/TaskNext';
+
+import { Button, Card, Text, Grid, Progress } from '@nextui-org/react';
+
+import { Link } from 'react-router-dom';
 import { ChartPlaceHold } from '../../Components/ChartPlaceHold';
-// import PieChartPlaceHold from '../../Components/PieChartPlaceHold';
+import MetricModal from './MetricModal';
+import TaskModal from './TaskModal';
+import {UserIcon} from '../../Components/UserIcon';
 
 function Account() {
   const [tasks, setTasks] = useState();
   const [tasksLoaded, setTasksLoaded] = useState();
   const [tasksSelected, setTasksSelected] = useState(false);
   const [selected, setSelected] = useState('');
-  const [visible, setVisible] = useState(false);
-  const handler = () => setVisible(true);
+  const [taskVisible, setTaskVisible] = useState(false);
+  const [metricVisible, setMetricVisible] = useState(false);
 
-  const closeHandler = () => {
-    setVisible(false);
-    console.log('closed');
+  const metricHandler = () => setMetricVisible(true);
+  const closeMetricHandler = () => {
+    setMetricVisible(false);
+  };
+
+  const taskHandler = () => setTaskVisible(true);
+  const closeTaskHandler = () => {
+    setTaskVisible(false);
   };
 
   useEffect(() => {
@@ -90,10 +83,14 @@ function Account() {
             Accounts
           </Link>
         </Button>
-        <Button type="button" color="secondary" size="md" rounded>
-          <Link to="/metrics" className="button">
-            Metrics
-          </Link>
+        <Button
+          type="button"
+          onPress={taskHandler}
+          color="secondary"
+          size="md"
+          rounded
+        >
+          New task
         </Button>
         <Button type="button" color="secondary" size="md" rounded>
           <Link to="/config" className="button">
@@ -104,7 +101,7 @@ function Account() {
 
       <div className="user">
         <section>
-          <User
+          <UserIcon
             src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
             name="@Username"
             size="xl"
@@ -133,9 +130,9 @@ function Account() {
               <Card.Footer>
                 <div className="task-buttons">
                   <Link to="/task">
-                    <Button auto>Progress</Button>
+                    <Button rounded>Progress</Button>
                   </Link>
-                  <Button auto flat color="error">
+                  <Button rounded flat color="error">
                     Abort
                   </Button>
                 </div>
@@ -149,13 +146,11 @@ function Account() {
               <Card.Divider />
               <Card.Body>
                 <Grid.Container>
-                  <Grid sm={11}>
+                  <Grid sm={12} xs={12}>
                     <Progress color="primary" value={92} />
                   </Grid>
-                  <Grid sm={1}>
-                    <div>
-                      <Text>92%</Text>
-                    </div>
+                  <Grid sm={2}>
+                    <Text>92%</Text>
                   </Grid>
                 </Grid.Container>
               </Card.Body>
@@ -191,12 +186,22 @@ function Account() {
           <Grid sm={4} xs={12}>
             <Card variant="flat" css={{ minHeight: '400px' }}>
               <Card.Header>
-                Follower / Following - Day | Week | Month
+                Follower / Following - Day | Week | Month{' '}
               </Card.Header>
               <Card.Divider />
               <Card.Body>
                 <ChartPlaceHold />
               </Card.Body>
+              <Card.Divider />
+              <Card.Footer css={{ justifyContent: 'center' }}>
+                <Button
+                  onClick={() => setMetricVisible(true)}
+                  color="secondary"
+                  rounded
+                >
+                  Expand
+                </Button>
+              </Card.Footer>
             </Card>
           </Grid>
           <Grid sm={4} xs={12}>
@@ -218,7 +223,7 @@ function Account() {
               <div className="log-container">
                 <div className="log">
                   <Button
-                    onPress={handler}
+                    onPress={taskHandler}
                     type="button"
                     color="warning"
                     size="sm"
@@ -236,90 +241,22 @@ function Account() {
           </Card>
         </Grid.Container>
       </div>
-      <Modal
-        closeButton
-        aria-labelledby="modal-title"
-        open={visible}
-        onClose={closeHandler}
-      >
-        <Modal.Header>
-          <Text id="modal-title" size={18}>
-            Start a
-            <Text b size={18}>
-              {' '}
-              New Task
-            </Text>
-          </Text>
-        </Modal.Header>
-        <form onSubmit={HandleSubmit}>
-          <Modal.Body>
-            <select
-              name="TaskType"
-              className="options"
-              value={selected}
-              onChange={handleChange}
-            >
-              {!tasksSelected && <option value="">Select an option</option>}
-              {tasksLoaded &&
-                tasks.map((task) => (
-                  <option key={task.id} value={task.id}>
-                    {task.name}
-                  </option>
-                ))}
-            </select>
-            <br />
-            {tasksSelected &&
-              tasks[Number(selected - 1)].arguments.map((arg) => {
-                if (arg.input_type === 'textarea') {
-                  return (
-                    <>
-                      <Textarea
-                        bordered
-                        key={arg.id}
-                        name={arg.label}
-                        labelPlaceholder={arg.label}
-                        className="form-control"
-                        status="secondary"
-                      ></Textarea>
-                      <br />
-                    </>
-                  );
-                } else if (arg.input_type === 'bool') {
-                  return <Switch />;
-                } else if (arg.input_type === 'date') {
-                  return <Input width="186px" label="Date" type="date" />;
-                } else if (arg.input_type === 'time') {
-                  return <Input width="186px" label="Time" type="time" />;
-                } else {
-                  return (
-                    <>
-                      <Input
-                        status="secondary"
-                        bordered
-                        labelPlaceholder={arg.label}
-                        helperText={arg.desc}
-                        name={arg.label}
-                        key={arg.id}
-                        type={arg.input_type}
-                        className="form-control"
-                        placeholder={arg.label}
-                      />
-                      <br />
-                    </>
-                  );
-                }
-              })}
-          </Modal.Body>
-          <Modal.Footer>
-            <Button auto flat color="error" onPress={closeHandler}>
-              Close
-            </Button>
-            <Button auto type="submit">
-              RUN
-            </Button>
-          </Modal.Footer>
-        </form>
-      </Modal>
+      <TaskModal
+        taskHandler={taskHandler}
+        closeTaskHandler={closeTaskHandler}
+        taskVisible={taskVisible}
+        handleSubmit={HandleSubmit}
+        handleChange={handleChange}
+        selected={selected}
+        tasksSelected={tasksSelected}
+        tasks={tasks}
+        tasksLoaded={tasksLoaded}
+      />
+      <MetricModal
+        metricHandler={metricHandler}
+        closeMetricHandler={closeMetricHandler}
+        metricVisible={metricVisible}
+      />
     </div>
   );
 }

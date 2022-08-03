@@ -4,26 +4,25 @@
   color: rgb(175, 175, 175);
   overflow: auto;
   .config-user {
+    position: relative;
     padding: 1rem;
     margin: auto;
+    z-index: 10;
   }
   .config-toggles {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+    position: relative;
+    margin: auto;
+    width: 95%;
+    z-index: 10;
     section {
       text-align: center;
     }
   }
   .config-textareas {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    position: relative;
     margin: auto;
-    gap: 2rem;
-    align-items: center;
-    justify-content: center;
     width: 95%;
+    z-index: 10;
   }
   .config-buttons {
     display: flex;

@@ -1,11 +1,12 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import React, { useState } from 'react';
-import { Collapse, Text, Button } from '@nextui-org/react';
+import React from 'react';
+import { Collapse, Text, Button, Input } from '@nextui-org/react';
 import './scss/accounts-styles.css';
 import { AccountCardNext } from '../../Components/AccountCardNext';
 
 function Accounts() {
-  const [listView, setListView] = useState(true);
+  // const [listView, setListView] = useState(false);
+  // console.log(listView)
 
   return (
     <>
@@ -17,33 +18,22 @@ function Accounts() {
                 <div className="options">
                   <Button
                     type="button"
-                    onClick={() => setListView(!listView)}
+                    // onPress={() => setListView(!listView)}
                     size="xs"
                     color="warning"
                     rounded
                   >
                     List View
                   </Button>
-                  "We should put a search bar here"
+                  <Input
+                    clearable
+                    underlined
+                    labelPlaceholder="Search"
+                    color="secondary"
+                    size="xl"
+                  ></Input>
                 </div>
                 <div className="instagram-cards">
-                  <AccountCardNext />
-                  <AccountCardNext />
-                  <AccountCardNext />
-                  <AccountCardNext />
-                  <AccountCardNext />
-                  <AccountCardNext />
-                  <AccountCardNext />
-                  <AccountCardNext />
-                  <AccountCardNext />
-                  <AccountCardNext />
-                  <AccountCardNext />
-                  <AccountCardNext />
-                  <AccountCardNext />
-                  <AccountCardNext />
-                  <AccountCardNext />
-                  <AccountCardNext />
-                  <AccountCardNext />
                   <AccountCardNext />
                 </div>
               </div>

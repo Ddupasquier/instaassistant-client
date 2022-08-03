@@ -11,7 +11,7 @@ function App() {
   const [signIsVisible, setSignIsVisible] = useState(false);
   const [logIsVisible, setLogIsVisible] = useState(true);
   const [menuItemHovered, setMenuItemHovered] = useState('');
-  const [menuSelected, setMenuSeleted] = useState(false);
+  const [menuSelected, setMenuSeleted] = useState('');
 
 
   // TEMP VALUE

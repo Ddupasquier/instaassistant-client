@@ -1,5 +1,5 @@
-import React from "react";
-import { Modal, Button, Text, Input, Row, Checkbox } from "@nextui-org/react";
+import React from 'react';
+import { Modal, Button, Text, Input, Row, Checkbox } from '@nextui-org/react';
 
 const TaskNext = () => {
   const [visible, setVisible] = React.useState(false);
@@ -7,11 +7,11 @@ const TaskNext = () => {
 
   const closeHandler = () => {
     setVisible(false);
-    console.log("closed");
+    console.log('closed');
   };
   return (
     <div>
-      <Button auto shadow onClick={handler}>
+      <Button auto shadow onPress={handler}>
         Open modal
       </Button>
       <Modal
