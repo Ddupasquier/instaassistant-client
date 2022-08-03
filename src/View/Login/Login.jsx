@@ -33,7 +33,7 @@ function Login({ setVis, setSignVis, isVis, style }) {
           />
           <br />
           <Button type="submit">
-            {!loading ? <>Login</> : <Loading size="sm" />}
+            {!loading ? <>Login</> : <Loading size="sm" color="secondary" />}
           </Button>
         </form>
         <a href="/" className="forgot-password">

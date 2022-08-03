@@ -54,7 +54,7 @@ function SignUp({ setVis, setLogVis, isVis, style }) {
           />
           <br />
           <Button type="submit">
-            {!loading ? <>Sign Up</> : <Loading size="sm" />}
+            {!loading ? <>Sign Up</> : <Loading size="sm" color="secondary" />}
           </Button>
         </form>
         <>
