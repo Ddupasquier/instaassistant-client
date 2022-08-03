@@ -50,11 +50,13 @@ function Menu({ menuItemHovered, setMenuItemHovered, animateLogo }) {
           </div>
         ))}
       </nav>
-      <div className="pop-overs">
-        {menuItems.map((item) => (
-          <PopOver key={item.to} item={item} hovered={menuItemHovered} />
-        ))}
-      </div>
+      {window.innerWidth > 760 ? (
+        <div className="pop-overs">
+          {menuItems.map((item) => (
+            <PopOver key={item.to} item={item} hovered={menuItemHovered} />
+          ))}
+        </div>
+      ) : null}
     </>
   );
 }
