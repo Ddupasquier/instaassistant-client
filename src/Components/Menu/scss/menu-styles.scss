@@ -12,6 +12,7 @@ $secondary-font: rgb(80, 255, 182);
   justify-items: center;
   align-items: center;
   gap: 1rem;
+  position: relative;
   background: rgba(34, 34, 34);
   font-size: 1.2rem;
   padding-top: 1rem;
@@ -48,6 +49,15 @@ $secondary-font: rgb(80, 255, 182);
     aspect-ratio: 1/1;
     box-shadow: 0 0 10px rgba(0, 225, 255, 0.774);
     border-radius: 50%;
+  }
+  .menu-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: .5rem;
+    position: absolute;
+    bottom: 1rem;
   }
 }
 

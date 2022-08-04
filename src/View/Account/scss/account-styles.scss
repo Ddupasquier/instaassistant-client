@@ -2,7 +2,6 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  background: rgba(44, 44, 53);
   overflow: auto;
   z-index: 1;
   .account-head-buttons {
@@ -36,14 +35,16 @@
         div {
           border-radius: 25px;
           padding: 0.2rem 1rem;
-          background: rgb(228, 228, 228);
+          backdrop-filter: saturate(200%) blur(8px);
+    background: rgba(255, 255, 255, 0.4);
         }
       }
       &:nth-child(3) {
         div {
           border-radius: 25px;
           padding: 0.2rem 1rem;
-          background: rgb(228, 228, 228);
+          backdrop-filter: saturate(200%) blur(8px);
+    background: rgba(255, 255, 255, 0.4);
         }
       }
     }

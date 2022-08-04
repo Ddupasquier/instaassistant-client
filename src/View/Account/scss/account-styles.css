@@ -2,7 +2,6 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  background: rgb(44, 44, 53);
   overflow: auto;
   z-index: 1;
 }
@@ -40,12 +39,16 @@
 .account-container .user section:nth-child(2) div {
   border-radius: 25px;
   padding: 0.2rem 1rem;
-  background: rgb(228, 228, 228);
+  -webkit-backdrop-filter: saturate(200%) blur(8px);
+          backdrop-filter: saturate(200%) blur(8px);
+  background: rgba(255, 255, 255, 0.4);
 }
 .account-container .user section:nth-child(3) div {
   border-radius: 25px;
   padding: 0.2rem 1rem;
-  background: rgb(228, 228, 228);
+  -webkit-backdrop-filter: saturate(200%) blur(8px);
+          backdrop-filter: saturate(200%) blur(8px);
+  background: rgba(255, 255, 255, 0.4);
 }
 .account-container .user section > div {
   color: black;

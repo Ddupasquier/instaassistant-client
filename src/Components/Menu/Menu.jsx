@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   FaUserAlt,
@@ -6,10 +6,12 @@ import {
   FaQuestionCircle,
   FaMoneyBill,
 } from 'react-icons/fa';
+import { BsSunFill, BsFillMoonStarsFill } from 'react-icons/bs';
 import MenuItem from './MenuItem';
 import PopOver from './PopOver';
 
 import './scss/menu-styles.css';
+import { Switch } from '@nextui-org/react';
 
 const menuItems = [
   {
@@ -34,7 +36,21 @@ const menuItems = [
   },
 ];
 
-function Menu({ menuItemHovered, setMenuItemHovered, animateLogo }) {
+function Menu({
+  menuItemHovered,
+  setMenuItemHovered,
+  animateLogo,
+  setTheme,
+  lightTheme,
+  darkTheme,
+}) {
+  const [checked, setChecked] = useState(true);
+
+  const handleThemeChange = () => {
+    setChecked(!checked);
+    setTheme(checked ? lightTheme : darkTheme);
+  }
+
   return (
     <>
       <nav className="menu">
@@ -49,6 +65,18 @@ function Menu({ menuItemHovered, setMenuItemHovered, animateLogo }) {
             <MenuItem item={item} animateLogo={animateLogo} />
           </div>
         ))}
+        <div className="menu-bottom">
+          {checked ? (
+            <BsFillMoonStarsFill style={{ color: 'rgb(80, 255, 255)' }} />
+          ) : (
+            <BsSunFill style={{ color: 'rgb(80, 255, 255)' }} />
+          )}
+          <Switch
+            size="xs"
+            checked={checked}
+            onChange={handleThemeChange}
+          />
+        </div>
       </nav>
       {window.innerWidth > 760 ? (
         <div className="pop-overs">

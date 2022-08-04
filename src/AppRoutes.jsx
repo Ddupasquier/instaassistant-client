@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 //View Imports
@@ -18,37 +18,30 @@ import Tasks from './View/Tasks';
 // NextUI import
 import { NextUIProvider, createTheme } from '@nextui-org/react';
 
-
 const darkTheme = createTheme({
   type: 'dark',
-  theme: {
-    colors: {
-      primaryLight: '$green200',
-      primaryLightHover: '$green300',
-      primaryLightActive: '$green400',
-      primaryLightContrast: '$green600',
-      primary: '#4ADE7B',
-      primaryBorder: '$green500',
-      primaryBorderHover: '$green600',
-      primarySolidHover: '$green700',
-      primarySolidContrast: '$white',
-      primaryShadow: '$green500',
-      gradient:
-        'linear-gradient(112deg, $blue100 -25%, $pink500 -10%, $purple500 80%)',
-      backgroundImage: 'url(https://i.ibb.co/KFXV3g0/abstract-lines-1.png)',
-    },
-  },
 });
 
-// const lightTheme = createTheme({
-//   type: 'light',
-// });
+const lightTheme = createTheme({
+  type: 'light',
+});
 
 function AppRoutes() {
+  const [theme, setTheme] = useState(darkTheme);
+
   return (
-    <NextUIProvider theme={darkTheme}>
+    <NextUIProvider theme={theme}>
       <Routes>
-        <Route path="/" element={<App />}>
+        <Route
+          path="/"
+          element={
+            <App
+              setTheme={setTheme}
+              lightTheme={lightTheme}
+              darkTheme={darkTheme}
+            />
+          }
+        >
           <Route index element={<Profile />} />
           <Route path="/billing" element={<Billing />} />
           <Route path="/profile" element={<Profile />} />

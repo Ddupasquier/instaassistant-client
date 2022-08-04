@@ -7,7 +7,7 @@ import { SignUp } from './View/SignUp';
 import { Header } from './Components/Header';
 import { Menu } from './Components/Menu';
 
-function App() {
+function App({ setTheme, lightTheme, darkTheme}) {
   const [signIsVisible, setSignIsVisible] = useState(false);
   const [logIsVisible, setLogIsVisible] = useState(true);
   const [menuItemHovered, setMenuItemHovered] = useState('');
@@ -49,13 +49,16 @@ function App() {
             menuItemHovered={menuItemHovered}
             setMenuItemHovered={setMenuItemHovered}
             animateLogo={animateLogo}
+            setTheme={setTheme}
+            lightTheme={lightTheme}
+            darkTheme={darkTheme}
           />
           <img
             src="https://i.ibb.co/KFXV3g0/abstract-lines-1.png"
             alt="abstract-lines-1"
             border="0"
             style={{
-              position: 'absolute',
+              position: 'fixed',
               bottom: '0',
               height: '120vh',
               width: '100vw',

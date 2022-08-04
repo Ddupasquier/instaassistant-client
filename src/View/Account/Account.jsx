@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { ChartPlaceHold } from '../../Components/ChartPlaceHold';
 import MetricModal from './MetricModal';
 import TaskModal from './TaskModal';
-import {UserIcon} from '../../Components/UserIcon';
+import { UserIcon } from '../../Components/UserIcon';
 
 function Account() {
   const [tasks, setTasks] = useState();
@@ -121,7 +121,13 @@ function Account() {
         <Grid.Container gap={2}>
           <Grid sm={3} xs={12}></Grid>
           <Grid sm={6} xs={12}>
-            <Card variant="flat">
+            <Card
+              variant="flat"
+              css={{
+                backdropFilter: 'saturate(200%) blur(8px)',
+                background: 'rgba(255, 255, 255, 0.2)',
+              }}
+            >
               <Card.Header>Task Currently Running</Card.Header>
               <Card.Divider />
               <Card.Body>
@@ -141,7 +147,12 @@ function Account() {
           </Grid>
           <Grid sm={3} xs={12}></Grid>
           <Grid sm={4} xs={12}>
-            <Card variant="flat">
+            <Card
+              css={{
+                backdropFilter: 'saturate(200%) blur(8px)',
+                background: 'rgba(255, 255, 255, 0.2)',
+              }}
+            >
               <Card.Header>Utilization - Lifetime | 30 Days</Card.Header>
               <Card.Divider />
               <Card.Body>
@@ -157,7 +168,12 @@ function Account() {
             </Card>
           </Grid>
           <Grid sm={4} xs={12}>
-            <Card variant="flat">
+            <Card
+              css={{
+                backdropFilter: 'saturate(200%) blur(8px)',
+                background: 'rgba(255, 255, 255, 0.2)',
+              }}
+            >
               <Card.Header>Interactions Sent - Lifetime | 30 Days</Card.Header>
               <Card.Divider />
               <Card.Body>
@@ -166,7 +182,12 @@ function Account() {
             </Card>
           </Grid>
           <Grid sm={4} xs={12}>
-            <Card variant="flat">
+            <Card
+              css={{
+                backdropFilter: 'saturate(200%) blur(8px)',
+                background: 'rgba(255, 255, 255, 0.2)',
+              }}
+            >
               <Card.Header>Follower Gain - Lifetime | 30 Days</Card.Header>
               <Card.Divider />
               <Card.Body>
@@ -175,7 +196,12 @@ function Account() {
             </Card>
           </Grid>
           <Grid sm={4} xs={12}>
-            <Card variant="flat">
+            <Card
+              css={{
+                backdropFilter: 'saturate(200%) blur(8px)',
+                background: 'rgba(255, 255, 255, 0.2)',
+              }}
+            >
               <Card.Header>Interaction Limits</Card.Header>
               <Card.Divider />
               <Card.Body>
@@ -184,7 +210,13 @@ function Account() {
             </Card>
           </Grid>
           <Grid sm={4} xs={12}>
-            <Card variant="flat" css={{ minHeight: '400px' }}>
+            <Card
+              css={{
+                minHeight: '400px',
+                backdropFilter: 'saturate(200%) blur(8px)',
+                background: 'rgba(255, 255, 255, 0.2)',
+              }}
+            >
               <Card.Header>
                 Follower / Following - Day | Week | Month{' '}
               </Card.Header>
@@ -205,7 +237,13 @@ function Account() {
             </Card>
           </Grid>
           <Grid sm={4} xs={12}>
-            <Card variant="flat" css={{ minHeight: '400px' }}>
+            <Card
+              css={{
+                minHeight: '400px',
+                backdropFilter: 'saturate(200%) blur(8px)',
+                background: 'rgba(255, 255, 255, 0.2)',
+              }}
+            >
               <Card.Header>Post Scheduling</Card.Header>
               <Card.Divider />
               <Card.Body>
