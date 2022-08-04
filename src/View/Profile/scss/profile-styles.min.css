@@ -1,2 +1,2 @@
-.profile-main{display:flex;align-items:center;position:relative;margin:auto;z-index:100}
+.profile-main{display:flex;align-items:center;justify-content:center;position:relative;margin:auto;z-index:100}.profile-main .profile{width:70%;-webkit-backdrop-filter:saturate(200%) blur(8px);backdrop-filter:saturate(200%) blur(8px);background:rgba(255,255,255,.4);padding:.5rem;border-radius:8px;z-index:10;transition:.5s}.profile-main .profile .profile-header{display:flex;justify-content:space-between}.profile-main .profile .profile-content span{-webkit-backdrop-filter:saturate(200%) blur(8px);backdrop-filter:saturate(200%) blur(8px);background:rgba(0,0,0,.1);padding:.5rem;border-radius:8px}
 /*# sourceMappingURL=profile-styles.min.css.map */
