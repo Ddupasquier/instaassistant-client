@@ -19,17 +19,17 @@ const FAQ = () => {
       <div className="faq">
         <Text h1>FAQ</Text>
         <Collapse.Group>
-          {/* {faqsLoaded ? (
+          {faqsLoaded ? (
             faqs.map((faq) => (
               <Collapse title={faq.q}>
                 <Text>{faq.a}</Text>
               </Collapse>
             ))
-          ) : ( */}
-          <div>
-            <Loading />
-          </div>
-          {/* )} */}
+          ) : (
+            <div>
+              <Loading />
+            </div>
+          )}
         </Collapse.Group>
       </div>
     </div>
