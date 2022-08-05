@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./scss/signup-styles.css";
 import { animated } from "react-spring";
-import { Home } from "../Home";
 import { Button, Input, Loading, Spacer } from "@nextui-org/react";
 import { CreateUserPost } from "../../api";
 
