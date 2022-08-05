@@ -45,7 +45,7 @@ function App({ setTheme, lightTheme, darkTheme }) {
               bottom: '0',
               height: '120vh',
               width: '100vw',
-              zIndex: '1',
+              zIndex: '0',
             }}
           />
         </div>
