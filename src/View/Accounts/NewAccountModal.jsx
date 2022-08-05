@@ -41,6 +41,7 @@ function NewAccountModal({
           <Modal.Body>
             <Input
               label="Instagram username"
+              labelLeft="@"
               underlined
               css={{ width: '100%' }}
             />
