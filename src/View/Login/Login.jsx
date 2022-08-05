@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { animated } from 'react-spring';
 import './scss/login-styles.css';
-import { Button, Input, Loading } from '@nextui-org/react';
+import { Button, Input, Loading, Spacer } from '@nextui-org/react';
 import { loginFetch } from '../../api';
 
 function Login({ setVis, setSignVis, isVis, style }) {
