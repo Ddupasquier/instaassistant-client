@@ -1,25 +1,29 @@
 /* eslint-disable object-curly-newline */
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import "./scss/signup-styles.css";
-import { animated } from "react-spring";
-import { Button, Input, Loading, Spacer } from "@nextui-org/react";
-import { CreateUserPost } from "../../api";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import './scss/signup-styles.css';
+import { Button, Input, Loading, Spacer } from '@nextui-org/react';
+import { CreateUserPost } from '../../api';
 
-function SignUp({ setVis, setLogVis, isVis, style }) {
-  const [isInvited, setIsInvited] = useState(true);
-
-  const [email, setEmail] = useState("");
-  const [pwd, setPwd] = useState("");
-  const [pwdconf, setPwdconf] = useState("");
-
+function SignUp({ setLogIsVisible, logIsVisible }) {
+  const [email, setEmail] = useState('');
+  const [pwd, setPwd] = useState('');
+  const [pwdconf, setPwdconf] = useState('');
   const [loading, setLoading] = useState(false);
+
+  const signupStyle = {
+    position: 'absolute',
+    transform: logIsVisible ? 'translateX(1000px)' : 'translateX(0)',
+    // opacity: logIsVisible ? '0' : '1',
+    transition: 'all 1s ease-in-out',
+    zIndex: '3',
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // if pwdconf is not equal to pwd, alert user
     if (pwd !== pwdconf) {
-      alert("Passwords do not match");
+      alert('Passwords do not match');
       return;
     }
     setLoading(true);
@@ -28,7 +32,7 @@ function SignUp({ setVis, setLogVis, isVis, style }) {
   };
 
   return (
-    <animated.div className="signup-form-overlay" style={style}>
+    <div className="signup-overlay" style={signupStyle}>
       <div className="signup-form-container">
         <form className="sign-up" onSubmit={handleSubmit}>
           Create your account
@@ -61,7 +65,7 @@ function SignUp({ setVis, setLogVis, isVis, style }) {
             {!loading ? <>Sign Up</> : <Loading size="sm" color="secondary" />}
           </Button>
         </form>
-        <>
+        <div className="signup-footer">
           <a href="/" className="forgot-password">
             Forgot Password?
           </a>
@@ -70,24 +74,20 @@ function SignUp({ setVis, setLogVis, isVis, style }) {
             type="button"
             className="create-account"
             onClick={() => {
-              setVis(!isVis);
-              setLogVis(isVis);
+              setLogIsVisible(true);
             }}
-            style={{color: 'black'}}
+            style={{ color: 'black' }}
           >
             Already Have An Account?
           </button>
-        </>
+        </div>
       </div>
-    </animated.div>
+    </div>
   );
 }
 
 export default SignUp;
 
 SignUp.propTypes = {
-  setVis: PropTypes.func,
-  setLogVis: PropTypes.func,
-  isVis: PropTypes.bool,
-  style: PropTypes.func,
+  setLogIsVisible: PropTypes.func,
 };

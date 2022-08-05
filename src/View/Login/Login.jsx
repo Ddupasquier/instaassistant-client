@@ -1,15 +1,21 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { animated } from 'react-spring';
 import './scss/login-styles.css';
 import { Button, Input, Loading, Spacer } from '@nextui-org/react';
 import { loginFetch } from '../../api';
 
-function Login({ setVis, setSignVis, isVis, style }) {
+function Login({ setLogIsVisible, logIsVisible }) {
   const [email, setEmail] = useState('');
   const [pwd, setPwd] = useState('');
-
   const [loading, setLoading] = useState(false);
+
+  const loginStyle = {
+    position: 'absolute',
+    transform: logIsVisible ? 'translateX(0)' : 'translateX(-1000px)',
+    // opacity: logIsVisible ? '1' : '0',
+    transition: 'all 1s ease-in-out',
+    zIndex: '3',
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,7 +25,7 @@ function Login({ setVis, setSignVis, isVis, style }) {
   };
 
   return (
-    <animated.div className="login-form-overlay" style={style}>
+    <div className="login-overlay" style={loginStyle}>
       <div className="login-form-container raised">
         <form className="login" onSubmit={handleSubmit} autoComplete="off">
           Hey, you&apos;re back!
@@ -33,7 +39,7 @@ function Login({ setVis, setSignVis, isVis, style }) {
           />
           <Spacer />
           <Input
-            required="true"
+            required
             type="password"
             id="password"
             placeholder="PASSWORD"
@@ -44,31 +50,29 @@ function Login({ setVis, setSignVis, isVis, style }) {
             {!loading ? <>Login</> : <Loading size="sm" color="secondary" />}
           </Button>
         </form>
-        <a href="/" className="forgot-password">
-          Forgot Password?
-        </a>
-        <br />
-        <button
-          type="button"
-          className="create-account"
-          onClick={() => {
-            setVis(!isVis);
-            setSignVis(isVis);
-          }}
-          style={{ color: 'black' }}
-        >
-          Create Account
-        </button>
+        <div className="login-footer">
+          <a href="/" className="forgot-password">
+            Forgot Password?
+          </a>
+          <br />
+          <button
+            type="button"
+            className="create-account"
+            onClick={() => {
+              setLogIsVisible(false);
+            }}
+            style={{ color: 'black' }}
+          >
+            Create Account
+          </button>
+        </div>
       </div>
-    </animated.div>
+    </div>
   );
 }
 
 export default Login;
 
 Login.propTypes = {
-  setVis: PropTypes.func,
-  setSignVis: PropTypes.func,
-  isVis: PropTypes.bool,
-  style: PropTypes.func,
+  setLogIsVisible: PropTypes.func,
 };

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './Appscss/app-styles.css';
-import { useTransition } from 'react-spring';
 import { Outlet } from 'react-router-dom';
 import { Login } from './View/Login';
 import { SignUp } from './View/SignUp';
@@ -9,14 +8,9 @@ import { Menu } from './Components/Menu';
 import Background from './Components/Background';
 
 function App({ setTheme, lightTheme, darkTheme }) {
-  const [signIsVisible, setSignIsVisible] = useState(false);
   const [logIsVisible, setLogIsVisible] = useState(true);
   const [menuItemHovered, setMenuItemHovered] = useState('');
   const [menuSelected, setMenuSeleted] = useState('');
-
-  // TEMP VALUE
-
-
 
   const animateLogo = (name) => {
     if (name === 'Billing') {
@@ -30,21 +24,9 @@ function App({ setTheme, lightTheme, darkTheme }) {
     }
   };
 
-  const transLog = useTransition(logIsVisible, {
-    from: { transform: 'translate3d(0, -100%, 0)', zIndex: '0' },
-    enter: { transform: 'translate3d(0, 0, 0)', zIndex: '-1' },
-    leave: { transform: 'translate3d(0, -100%, 0)', zIndex: '0' },
-  });
-
-  const tranSign = useTransition(signIsVisible, {
-    from: { transform: 'translate3d(0, 100%, 0)', zIndex: '0' },
-    enter: { transform: 'translate3d(0, 0, 0)', zIndex: '-1' },
-    leave: { transform: 'translate3d(0, 100%, 0)', zIndex: '0' },
-  });
-
   return (
     <div className="App">
-      {localStorage.getItem("token") ? (
+      {localStorage.getItem('token') ? (
         <div className="app">
           <Header menuSelected={menuSelected} />
           <Menu
@@ -63,46 +45,41 @@ function App({ setTheme, lightTheme, darkTheme }) {
               bottom: '0',
               height: '120vh',
               width: '100vw',
+              zIndex: '1',
             }}
           />
         </div>
       ) : (
         <>
-          {transLog((style, item) => {
-            if (item) {
-              return (
-                <Login
-                  setVis={setLogIsVisible}
-                  isVis={logIsVisible}
-                  setSignVis={setSignIsVisible}
-                  style={style}
-                />
-              );
-            }
-            return null;
-          })}
-          {tranSign((style, item) => {
-            if (item) {
-              return (
-                <SignUp
-                  setVis={setSignIsVisible}
-                  isVis={signIsVisible}
-                  setLogVis={setLogIsVisible}
-                  style={style}
-                />
-              );
-            }
-            return null;
-          })}
           <Background
             style={{
               position: 'fixed',
               bottom: '0',
               height: '120vh',
               width: '100vw',
-              zIndex: '-100',
+              zIndex: '1',
             }}
           />
+          <div
+            className="log-sign-container"
+            style={{
+              width: '100vw',
+              height: '100vh',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              position: 'relative',
+            }}
+          >
+            <Login
+              setLogIsVisible={setLogIsVisible}
+              logIsVisible={logIsVisible}
+            />
+            <SignUp
+              setLogIsVisible={setLogIsVisible}
+              logIsVisible={logIsVisible}
+            />
+          </div>
         </>
       )}
     </div>
