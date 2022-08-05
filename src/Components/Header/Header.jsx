@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './scss/header-styles.css';
+import { Logout } from '../../api';
 
 function Header({ menuSelected }) {
   const [boxOneStyle, setBoxOneStyle] = useState({
@@ -123,7 +124,7 @@ function Header({ menuSelected }) {
         <i>Marcus</i>
         <b>Bot</b>
       </div>
-      <div className="username">Username here</div>
+      <div className="username">Username here | <a href='/' onClick={Logout}>Logout</a></div>
     </header>
   );
 }

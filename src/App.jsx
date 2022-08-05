@@ -15,7 +15,8 @@ function App({ setTheme, lightTheme, darkTheme }) {
   const [menuSelected, setMenuSeleted] = useState('');
 
   // TEMP VALUE
-  const [user] = useState(true);
+
+
 
   const animateLogo = (name) => {
     if (name === 'Billing') {
@@ -43,7 +44,7 @@ function App({ setTheme, lightTheme, darkTheme }) {
 
   return (
     <div className="App">
-      {user ? (
+      {localStorage.getItem("token") ? (
         <div className="app">
           <Header menuSelected={menuSelected} />
           <Menu

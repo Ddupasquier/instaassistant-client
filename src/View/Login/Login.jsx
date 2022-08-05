@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { animated } from 'react-spring';
 import './scss/login-styles.css';
-import { Button, Input, Loading, Spacer } from '@nextui-org/react';
+import { Button, Input, Loading } from '@nextui-org/react';
+import { loginFetch } from '../../api';
 
 function Login({ setVis, setSignVis, isVis, style }) {
   const [email, setEmail] = useState('');
@@ -13,7 +14,7 @@ function Login({ setVis, setSignVis, isVis, style }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-    //* api layer call for Login
+    loginFetch({ email: email, password: pwd })
     //! need to add success functionality: auto login and redirect? or success message and redirect to login?
   };
 
@@ -40,7 +41,7 @@ function Login({ setVis, setSignVis, isVis, style }) {
             type="password"
             id="password"
             placeholder="PASSWORD"
-            autoComplete="new-password"
+            onChange={(e) => setPwd(e.target.value)}
           />
           <Spacer />
           <Button type="submit">

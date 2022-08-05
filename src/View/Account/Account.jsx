@@ -206,6 +206,9 @@ function Account() {
               <Card.Divider />
               <Card.Body>
                 <Text h2>FOLLOWS: 657/1000 </Text>
+                <Text h2>LIKES: 657/1000 </Text>
+                <Text h2>COMMENTS: 657/1000 </Text>
+                <Text h2>MESSAGES: 657/1000 </Text>
               </Card.Body>
             </Card>
           </Grid>
