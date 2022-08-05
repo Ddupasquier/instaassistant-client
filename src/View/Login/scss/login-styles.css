@@ -17,9 +17,10 @@
   text-align: center;
   -webkit-backdrop-filter: saturate(200%) blur(8px);
           backdrop-filter: saturate(200%) blur(8px);
-  background: white;
+  background: rgba(255, 255, 255, 0.5);
   border-radius: 20px;
   outline-offset: 4px;
+  z-index: 2;
 }
 .login-form-container .login {
   display: flex;

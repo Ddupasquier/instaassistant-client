@@ -20,9 +20,10 @@ $primary-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
   height: 28rem;
   text-align: center;
   backdrop-filter: saturate(200%) blur(8px);
-  background: white;
+  background: rgba(255, 255, 255, 0.5);
   border-radius: 20px;
   outline-offset: 4px;
+  z-index: 2;
   .login {
     display: flex;
     flex-direction: column;

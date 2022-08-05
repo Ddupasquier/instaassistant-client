@@ -6,15 +6,16 @@ import { Login } from './View/Login';
 import { SignUp } from './View/SignUp';
 import { Header } from './Components/Header';
 import { Menu } from './Components/Menu';
+import Background from './Components/Background';
 
-function App({ setTheme, lightTheme, darkTheme}) {
+function App({ setTheme, lightTheme, darkTheme }) {
   const [signIsVisible, setSignIsVisible] = useState(false);
   const [logIsVisible, setLogIsVisible] = useState(true);
   const [menuItemHovered, setMenuItemHovered] = useState('');
   const [menuSelected, setMenuSeleted] = useState('');
 
   // TEMP VALUE
-  const [user] = useState(true);
+  const [user] = useState(false);
 
   const animateLogo = (name) => {
     if (name === 'Billing') {
@@ -53,10 +54,9 @@ function App({ setTheme, lightTheme, darkTheme}) {
             lightTheme={lightTheme}
             darkTheme={darkTheme}
           />
-          <img
-            src="https://i.ibb.co/KFXV3g0/abstract-lines-1.png"
-            alt="abstract-lines-1"
-            border="0"
+
+          <Outlet />
+          <Background
             style={{
               position: 'fixed',
               bottom: '0',
@@ -64,7 +64,6 @@ function App({ setTheme, lightTheme, darkTheme}) {
               width: '100vw',
             }}
           />
-          <Outlet />
         </div>
       ) : (
         <>
@@ -94,6 +93,15 @@ function App({ setTheme, lightTheme, darkTheme}) {
             }
             return null;
           })}
+          <Background
+            style={{
+              position: 'fixed',
+              bottom: '0',
+              height: '120vh',
+              width: '100vw',
+              zIndex: '-100',
+            }}
+          />
         </>
       )}
     </div>
