@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Modal, Input, Button, Text, Spacer } from '@nextui-org/react';
 
 function NewAccountModal({
@@ -6,6 +6,22 @@ function NewAccountModal({
   newAccountVisible,
   closeNewAccountHandler,
 }) {
+
+  const [pwd, setPwd] = useState("")
+  const [pwdConf, setPwdConf] = useState("")
+  const [username, setUsername] = useState("")
+
+  const HandleSubmit = (e) => {
+    e.preventDefault()
+    // post fetch to create initial login task!
+    //once responce yeilds success
+    //start set intrival to fetch task status
+    //if completed
+    // do nothing
+    //if failed
+    //fetch errors? on task or account?
+  }
+
   return (
     <>
       <Modal

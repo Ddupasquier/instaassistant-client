@@ -15,13 +15,31 @@ export const FetchInstagramTaskTypes = () => {
 
 export const loginFetch = (userInfo) => {
   return fetch("http://localhost:3000/login", {
-    method: "GET",
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
     },
     body: JSON.stringify(userInfo),
-  }).then((response) => response.json());
+  })
+    .then((resp) => {
+      return resp.json();
+    })
+    .then((resp) => {
+      if (resp.error) {
+        alert(resp.error);
+      } else {
+        localStorage.setItem("user", JSON.stringify(resp.user));
+        localStorage.setItem("token", resp.jwt);
+        window.location.replace("/");
+      }
+    });
+};
+
+export const Logout = () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
+  window.location.replace("/");
 };
 
 export const GetUserInfo = () => {
