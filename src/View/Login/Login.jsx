@@ -14,26 +14,22 @@ function Login({ setVis, setSignVis, isVis, style }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-    loginFetch({ email: email, password: pwd })
+    loginFetch({ email: email, password: pwd });
     //! need to add success functionality: auto login and redirect? or success message and redirect to login?
   };
 
   return (
     <animated.div className="login-form-overlay" style={style}>
       <div className="login-form-container raised">
-        <form
-          className="login"
-          onSubmit={handleSubmit}
-          autoComplete="off"
-        >
+        <form className="login" onSubmit={handleSubmit} autoComplete="off">
           Hey, you&apos;re back!
           <h1>Login</h1>
           <Input
-            required="true"
+            required
             type="text"
-            id="username"
+            id="email"
             placeholder="EMAIL"
-            autoComplete="new-password"
+            onChange={(e) => setEmail(e.target.value)}
           />
           <Spacer />
           <Input
