@@ -14,6 +14,13 @@ body {
   grid-column: span 2;
 }
 
+.loading {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+}
+
 .create-account {
   background: none;
   border: none;

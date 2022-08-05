@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 }
 .faq-container .faq {
   width: 80%;
@@ -11,11 +12,5 @@
           backdrop-filter: saturate(200%) blur(8px);
   background: rgba(255, 255, 255, 0.4);
   border-radius: 1rem;
-}
-.faq-container .faq div {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  margin: auto;
 }
 /*# sourceMappingURL=faq-styles.css.map */

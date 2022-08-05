@@ -18,7 +18,7 @@ const FAQ = () => {
     <div className="faq-container">
       <div className="faq">
         <Text h1>FAQ</Text>
-        <Collapse.Group>
+        <Collapse.Group >
           {faqsLoaded ? (
             faqs.map((faq) => (
               <Collapse title={faq.q}>
@@ -26,7 +26,7 @@ const FAQ = () => {
               </Collapse>
             ))
           ) : (
-            <div>
+            <div className="loading">
               <Loading />
             </div>
           )}
