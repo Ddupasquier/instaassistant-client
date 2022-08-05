@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { animated } from 'react-spring';
 import './scss/login-styles.css';
-import { Button, Input, Loading } from '@nextui-org/react';
+import { Button, Input, Loading, Spacer } from '@nextui-org/react';
 
 function Login({ setVis, setSignVis, isVis, style }) {
   const [email, setEmail] = useState('');
@@ -20,18 +20,29 @@ function Login({ setVis, setSignVis, isVis, style }) {
   return (
     <animated.div className="login-form-overlay" style={style}>
       <div className="login-form-container raised">
-        <form className="login" onSubmit={handleSubmit}>
+        <form
+          className="login"
+          onSubmit={handleSubmit}
+          autoComplete="off"
+        >
           Hey, you&apos;re back!
           <h1>Login</h1>
-          <Input required type="text" id="username" placeholder="EMAIL" />
-          <br />
           <Input
-            required
+            required="true"
+            type="text"
+            id="username"
+            placeholder="EMAIL"
+            autoComplete="new-password"
+          />
+          <Spacer />
+          <Input
+            required="true"
             type="password"
             id="password"
             placeholder="PASSWORD"
+            autoComplete="new-password"
           />
-          <br />
+          <Spacer />
           <Button type="submit">
             {!loading ? <>Login</> : <Loading size="sm" color="secondary" />}
           </Button>
@@ -47,7 +58,7 @@ function Login({ setVis, setSignVis, isVis, style }) {
             setVis(!isVis);
             setSignVis(isVis);
           }}
-          style={{color: 'black'}}
+          style={{ color: 'black' }}
         >
           Create Account
         </button>

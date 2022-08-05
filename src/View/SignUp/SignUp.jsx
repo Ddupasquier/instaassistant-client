@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import "./scss/signup-styles.css";
 import { animated } from "react-spring";
 import { Home } from "../Home";
-import { Button, Input, Loading } from "@nextui-org/react";
+import { Button, Input, Loading, Spacer } from "@nextui-org/react";
 import { CreateUserPost } from "../../api";
 
 function SignUp({ setVis, setLogVis, isVis, style }) {
@@ -41,7 +41,7 @@ function SignUp({ setVis, setLogVis, isVis, style }) {
             placeholder="EMAIL"
             onChange={(e) => setEmail(e.target.value)}
           />
-          <br />
+          <Spacer />
           <Input
             required
             type="password"
@@ -49,7 +49,7 @@ function SignUp({ setVis, setLogVis, isVis, style }) {
             placeholder="PASSWORD"
             onChange={(e) => setPwd(e.target.value)}
           />
-          <br />
+          <Spacer />
           <Input
             required
             type="password"
@@ -57,7 +57,7 @@ function SignUp({ setVis, setLogVis, isVis, style }) {
             placeholder="CONFIRM PASSWORD"
             onChange={(e) => setPwdconf(e.target.value)}
           />
-          <br />
+          <Spacer />
           <Button type="submit">
             {!loading ? <>Sign Up</> : <Loading size="sm" color="secondary" />}
           </Button>

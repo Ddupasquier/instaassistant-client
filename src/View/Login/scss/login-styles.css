@@ -37,13 +37,6 @@
   padding: 20px;
   z-index: 2;
 }
-.login-form-container .login input {
-  width: 90%;
-  height: 31px;
-  border-radius: 20px;
-  padding: 0 10px;
-  margin-bottom: 8px;
-}
 .login-form-container a {
   font-family: none;
   font-size: 1.1rem;

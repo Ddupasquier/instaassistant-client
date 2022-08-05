@@ -21,9 +21,8 @@ function NewAccountModal({
             </Text>
           </Text>
         </Modal.Header>
-
-        <Modal.Body>
-          <form>
+        <form>
+          <Modal.Body>
             <Input
               label="Instagram username"
               underlined
@@ -37,9 +36,11 @@ function NewAccountModal({
               underlined
               css={{ width: '100%' }}
             />
-            <Spacer />
-          </form>
-        </Modal.Body>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button type="submit">Add Account</Button>
+          </Modal.Footer>
+        </form>
       </Modal>
     </>
   );

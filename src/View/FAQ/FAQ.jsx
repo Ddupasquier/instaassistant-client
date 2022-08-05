@@ -20,8 +20,8 @@ const FAQ = () => {
         <Text h1>FAQ</Text>
         <Collapse.Group >
           {faqsLoaded ? (
-            faqs.map((faq) => (
-              <Collapse title={faq.q}>
+            faqs.map((faq, index) => (
+              <Collapse title={faq.q} key={index}>
                 <Text>{faq.a}</Text>
               </Collapse>
             ))
