@@ -14,7 +14,7 @@ export const FetchInstagramTaskTypes = () => {
 };
 
 export const loginFetch = (userInfo) => {
-  return fetch("http://localhost:3000/login", {
+  return fetch(UserLoginPath, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -47,7 +47,7 @@ export const GetUserInfo = () => {
 };
 
 export const CreateUserPost = (userInfo) => {
-  return fetch("http://localhost:3000/users", {
+  return fetch(CreateAccountPath, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
