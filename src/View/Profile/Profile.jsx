@@ -7,26 +7,25 @@ import { GetUserInfo } from '../../api';
 function Profile() {
   const [userInfo, setUserInfo] = useState({});
   const [userLoaded, setUserLoaded] = useState(false);
-  // const [companyName, setCompanyName] = useState('Your Mom');
+  const [companyName, setCompanyName] = useState('Your Mom');
   // const [companyEmail, setCompanyEmail] = useState('companyname@email.com');
-  // const [companyPhone, setCompanyPhone] = useState('555-555-5555');
-  // const [companyAddress, setCompanyAddress] = useState(
-  //   'P Sherman 42 Wallaby Way, Sydney'
-  // );
-  // const [companyWebsite, setCompanyWebsite] = useState('link to company site');
-  // const [accountsManaged, setAccountsManaged] = useState(
-  //   '(25) include link to accounts page'
-  // );
-  // const [billingInformation, setBillingInformation] =
-  //   useState('Maybe use this?');
-  // const [paymentStatus, setPaymentStatus] = useState('Paid');
-  // const [companyLogo, setCompanyLogo] = useState('Logo');
+  const [companyPhone, setCompanyPhone] = useState('555-555-5555');
+  const [companyAddress, setCompanyAddress] = useState(
+    'P Sherman 42 Wallaby Way, Sydney'
+  );
+  const [companyWebsite, setCompanyWebsite] = useState('link to company site');
+  const [accountsManaged, setAccountsManaged] = useState(
+    '(25) include link to accounts page'
+  );
+  const [billingInformation, setBillingInformation] =
+    useState('Maybe use this?');
+  const [paymentStatus, setPaymentStatus] = useState('Paid');
+  const [companyLogo, setCompanyLogo] = useState('Logo');
 
   useEffect(() => {
     GetUserInfo()
       .then((data) => setUserInfo(data))
-      .then(() => setUserLoaded(true))
-      .then(() => console.log(userInfo));
+      .then(() => setUserLoaded(true));
   }, []);
 
   return (
@@ -35,7 +34,7 @@ function Profile() {
         <div className="profile-header">
           <UserIcon
             src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
-            name="@Username"
+            name={companyName}
             size="xl"
           />
 
@@ -56,15 +55,18 @@ function Profile() {
               gap: '1rem',
             }}
           >
-            {/* <span>Company Name: {companyName}</span>
-            <span>Company Email: {companyEmail}</span>
-            <span>Company Phone: {companyPhone}</span>
-            <span>Company Address: {companyAddress}</span>
-            <span>Company Website: {companyWebsite}</span>
-            <span>Accounts Managed: {accountsManaged}</span>
-            <span>Billing Information: {billingInformation}</span>
-            <span>Payment Status: {paymentStatus}</span>
-            <span>Company Logo: {companyLogo}</span> */}
+            {userLoaded && (
+              <>
+                <span>Company Email: {userInfo.email}</span>
+                <span>Company Phone: {companyPhone}</span>
+                <span>Company Address: {companyAddress}</span>
+                <span>Company Website: {companyWebsite}</span>
+                <span>Accounts Managed: {accountsManaged}</span>
+                <span>Billing Information: {billingInformation}</span>
+                <span>Payment Status: {paymentStatus}</span>
+                <span>Company Logo: {companyLogo}</span>
+              </>
+            )}
           </Text>
         </div>
       </div>

@@ -40,7 +40,7 @@ export const Logout = () => {
 };
 
 export const GetUserInfo = async () => {
-  const response = await fetch(UserViewPath);
+  const response = await fetch(UserViewPath + localStorage.getItem("user"));
   return await response.json();
 };
 
