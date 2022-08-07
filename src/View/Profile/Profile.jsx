@@ -2,38 +2,31 @@ import React, { useEffect, useState } from 'react';
 import './scss/profile-styles.css';
 import { UserIcon } from '../../Components/UserIcon';
 import { Button, Text } from '@nextui-org/react';
+import { GetUserInfo } from '../../api';
 
 function Profile() {
-  const [companyName, setCompanyName] = useState('Your Mom');
-  const [companyEmail, setCompanyEmail] = useState('companyname@email.com');
-  const [companyPhone, setCompanyPhone] = useState('555-555-5555');
-  const [companyAddress, setCompanyAddress] = useState(
-    'P Sherman 42 Wallaby Way, Sydney'
-  );
-  const [companyWebsite, setCompanyWebsite] = useState('link to company site');
-  const [accountsManaged, setAccountsManaged] = useState(
-    '(25) include link to accounts page'
-  );
-  const [billingInformation, setBillingInformation] =
-    useState('Maybe use this?');
-  const [paymentStatus, setPaymentStatus] = useState('Paid');
-  const [companyLogo, setCompanyLogo] = useState('Logo');
+  const [userInfo, setUserInfo] = useState({});
+  const [userLoaded, setUserLoaded] = useState(false);
+  // const [companyName, setCompanyName] = useState('Your Mom');
+  // const [companyEmail, setCompanyEmail] = useState('companyname@email.com');
+  // const [companyPhone, setCompanyPhone] = useState('555-555-5555');
+  // const [companyAddress, setCompanyAddress] = useState(
+  //   'P Sherman 42 Wallaby Way, Sydney'
+  // );
+  // const [companyWebsite, setCompanyWebsite] = useState('link to company site');
+  // const [accountsManaged, setAccountsManaged] = useState(
+  //   '(25) include link to accounts page'
+  // );
+  // const [billingInformation, setBillingInformation] =
+  //   useState('Maybe use this?');
+  // const [paymentStatus, setPaymentStatus] = useState('Paid');
+  // const [companyLogo, setCompanyLogo] = useState('Logo');
 
   useEffect(() => {
-    // fetch company data from the server
-    // fetch('/api/company')
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     setCompanyName(data.name);
-    //     setCompanyEmail(data.email);
-    //     setCompanyPhone(data.phone);
-    //     setCompanyAddress(data.address);
-    //     setCompanyWebsite(data.website);
-    //     setAccountsManaged(data.accountsManaged);
-    //     setBillingInformation(data.billingInformation);
-    //     setPaymentInformation(data.paymentInformation);
-    //     setCompanyLogo(data.logo);
-    //   }
+    GetUserInfo()
+      .then((data) => setUserInfo(data))
+      .then(() => setUserLoaded(true))
+      .then(() => console.log(userInfo));
   }, []);
 
   return (
@@ -63,7 +56,7 @@ function Profile() {
               gap: '1rem',
             }}
           >
-            <span>Company Name: {companyName}</span>
+            {/* <span>Company Name: {companyName}</span>
             <span>Company Email: {companyEmail}</span>
             <span>Company Phone: {companyPhone}</span>
             <span>Company Address: {companyAddress}</span>
@@ -71,7 +64,7 @@ function Profile() {
             <span>Accounts Managed: {accountsManaged}</span>
             <span>Billing Information: {billingInformation}</span>
             <span>Payment Status: {paymentStatus}</span>
-            <span>Company Logo: {companyLogo}</span>
+            <span>Company Logo: {companyLogo}</span> */}
           </Text>
         </div>
       </div>
