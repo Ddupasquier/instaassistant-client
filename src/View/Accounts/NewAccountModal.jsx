@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, Input, Button, Text, Spacer } from '@nextui-org/react';
+import { CreateBot } from '../../api';
 
 function NewAccountModal({
   newAccountHandler,
@@ -13,13 +14,22 @@ function NewAccountModal({
 
   const HandleSubmit = (e) => {
     e.preventDefault()
-    // post fetch to create initial login task!
-    //once responce yeilds success
-    //start set intrival to fetch task status
-    //if completed
-    // do nothing
-    //if failed
-    //fetch errors? on task or account?
+    if (pwd !== pwdConf) {
+      alert('Passwords do not match. Double check your password is correct, then try again.');
+      return;
+    } else {
+      let payload = {username, pwd}
+      CreateBot(payload)
+      // post fetch to create initial login task!
+      //once responce yeilds success
+      //start set intrival to fetch task status
+      if (false) { //if success
+
+      } else { //if failed
+        //fetch errors? on task or account?
+        alert('We were unable to login with your provided cridentials. Check your password then try again');
+      }
+    }
   }
 
   return (
@@ -37,7 +47,7 @@ function NewAccountModal({
             </Text>
           </Text>
         </Modal.Header>
-        <form>
+        <form onSubmit={HandleSubmit}>
           <Modal.Body>
             <Input
               label="Instagram username"

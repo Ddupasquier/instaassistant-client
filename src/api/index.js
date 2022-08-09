@@ -6,9 +6,9 @@ import {
   BotShowPath,
   BotDeletePAth,
   faqPath,
+  BotCreatePath,
 } from "./endpoints";
 
-// get playlistList
 export const FetchInstagramTaskTypes = async () => {
   const response = await fetch(InstagramTaskTypes);
   return await response.json();
@@ -61,8 +61,20 @@ export const GetBotInfo = async () => {
   return await response.json();
 };
 
-export const CreateBot = async (arg) => {
-  const response = await fetch(BotShowPath[0] + arg + BotShowPath[1]);
+export const CreateBot = async (formData) => {
+  "";
+  const response = await fetch(
+    BotCreatePath[0] + localStorage.getItem("user") + BotCreatePath[1],
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        JWT: localStorage.getItem("token"),
+      },
+      body: JSON.stringify(formData),
+    }
+  );
   return await response.json();
 };
 
