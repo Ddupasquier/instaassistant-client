@@ -9,9 +9,6 @@ import { Account } from './View/Account';
 import { Accounts } from './View/Accounts';
 import { FAQ } from './View/FAQ';
 import { InstagramConfig } from './View/instagramConfig';
-import { NextUI } from './View/NextUI';
-import { Login } from './View/Login';
-import { SignUp } from './View/SignUp';
 import { Task } from './View/Task';
 import Tasks from './View/Tasks';
 
@@ -43,17 +40,14 @@ function AppRoutes() {
           }
         >
           <Route index element={<Profile />} />
-          <Route path="/billing" element={<Billing />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/billing" element={<Billing />} />
           <Route path="/accounts" element={<Accounts />} />
           <Route path="/account" element={<Account />} />
-          <Route path="/FAQ" element={<FAQ />} />
           <Route path="/config" element={<InstagramConfig />} />
-          <Route path="/next" element={<NextUI />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
           <Route path="/task" element={<Task />} />
           <Route path="/tasks" element={<Tasks />} />
+          <Route path="/FAQ" element={<FAQ />} />
         </Route>
       </Routes>
     </NextUIProvider>

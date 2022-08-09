@@ -43,7 +43,9 @@ export const Logout = () => {
 };
 
 export const GetUserInfo = () => {
-  return fetch(UserViewPath).then((response) => response.json());
+  return fetch(UserViewPath + localStorage.getItem("user")).then((response) =>
+    response.json()
+  );
 };
 
 export const CreateUserPost = (userInfo) => {
