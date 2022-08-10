@@ -54,7 +54,7 @@ function NewAccountModal({
             />
           </Modal.Body>
           <Modal.Footer>
-            <Button type="submit">Add Account</Button>
+            <Button type="submit" rounded>Add Account</Button>
           </Modal.Footer>
         </form>
       </Modal>

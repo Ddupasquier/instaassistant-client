@@ -26,7 +26,7 @@ function EditProfile({ editProfileVisible, closeEditProfileHandler }) {
           <Input label="Company Logo" underlined css={{ width: '100%' }} />
         </Modal.Body>
         <Modal.Footer>
-          <Button type="submit">Add Account</Button>
+          <Button type="submit" rounded>Add Account</Button>
         </Modal.Footer>
       </form>
     </Modal>
