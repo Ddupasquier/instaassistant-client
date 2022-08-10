@@ -1,7 +1,7 @@
 .accounts-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  padding: 2rem;
   overflow: auto;
   .accounts-main {
     position: relative;
@@ -35,13 +35,6 @@
         overflow-x: auto;
         overflow-y: hidden;
       }
-    }
-    .ads {
-      display: flex;
-      flex-direction: row;
-      gap: 1rem;
-      align-items: center;
-      justify-content: space-evenly;
     }
   }
 }

@@ -4,6 +4,7 @@ import { Collapse, Text, Button, Input } from '@nextui-org/react';
 import './scss/accounts-styles.css';
 import { AccountCardNext } from '../../Components/AccountCardNext';
 import NewAccountModal from './NewAccountModal';
+import NewAccountCardNext from '../../Components/AccountCardNext/NewAccountCardButton';
 
 function Accounts() {
   const [newAccountVisible, setNewAccountVisible] = useState(false);
@@ -19,7 +20,7 @@ function Accounts() {
     <>
       <div className="accounts-container">
         <div className="accounts-main">
-          <Collapse.Group css={{width: '100%'}}>
+          <Collapse.Group css={{ width: '100%' }}>
             <Collapse title="Instagram" expanded>
               <div className="instagram-container">
                 <div className="options">
@@ -50,11 +51,17 @@ function Accounts() {
                   ></Input>
                 </div>
                 <div className="instagram-cards">
+                  
                   <AccountCardNext />
-                  {/* <AccountCardNext />
                   <AccountCardNext />
                   <AccountCardNext />
-                  <AccountCardNext /> */}
+                  <AccountCardNext />
+                  <AccountCardNext />
+                  <AccountCardNext />
+                  <AccountCardNext />
+                  <AccountCardNext />
+                  <AccountCardNext />
+                  <NewAccountCardNext newAccountHandler={newAccountHandler} />
                 </div>
               </div>
             </Collapse>

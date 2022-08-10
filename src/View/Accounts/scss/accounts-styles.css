@@ -1,7 +1,7 @@
 .accounts-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  padding: 2rem;
   overflow: auto;
 }
 .accounts-container .accounts-main {
@@ -39,12 +39,5 @@
   justify-content: left;
   overflow-x: auto;
   overflow-y: hidden;
-}
-.accounts-container .accounts-main .ads {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  align-items: center;
-  justify-content: space-evenly;
 }
 /*# sourceMappingURL=accounts-styles.css.map */
