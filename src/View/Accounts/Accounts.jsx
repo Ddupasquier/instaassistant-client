@@ -19,7 +19,7 @@ function Accounts() {
     <>
       <div className="accounts-container">
         <div className="accounts-main">
-          <Collapse.Group>
+          <Collapse.Group css={{width: '100%'}}>
             <Collapse title="Instagram" expanded>
               <div className="instagram-container">
                 <div className="options">
@@ -51,10 +51,10 @@ function Accounts() {
                 </div>
                 <div className="instagram-cards">
                   <AccountCardNext />
+                  {/* <AccountCardNext />
                   <AccountCardNext />
                   <AccountCardNext />
-                  <AccountCardNext />
-                  <AccountCardNext />
+                  <AccountCardNext /> */}
                 </div>
               </div>
             </Collapse>

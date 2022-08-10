@@ -37,7 +37,7 @@
   padding: 1rem;
   align-items: center;
   justify-content: left;
-  overflow-x: scroll;
+  overflow-x: auto;
   overflow-y: hidden;
 }
 .accounts-container .accounts-main .ads {
