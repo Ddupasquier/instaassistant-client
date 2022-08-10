@@ -1,16 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import './scss/account-styles.css';
+import { Link, useParams } from 'react-router-dom';
+//API LAYER
 import { FetchInstagramTaskTypes, PostTask } from '../../api';
+//STYLES
+import { Button, Card, Text, Grid, Progress, Table } from '@nextui-org/react';
+import './scss/account-styles.css';
 
-import { Button, Card, Text, Grid, Progress } from '@nextui-org/react';
-
-import { Link } from 'react-router-dom';
 import { ChartPlaceHold } from '../../Components/ChartPlaceHold';
 import MetricModal from './MetricModal';
 import TaskModal from './TaskModal';
 import { UserIcon } from '../../Components/UserIcon';
+import { useSelector } from 'react-redux';
+
 
 function Account() {
+  //Route Handle
+  const { account_id } = useParams()
+  const [account ,setAccount] = useState({})
+  const { Accounts :accounts, Loading :loading } = useSelector((state) => state.accountsStore )
+
+  const [active, setActive] = useState(false)
+
+  // form control
   const [tasks, setTasks] = useState();
   const [tasksLoaded, setTasksLoaded] = useState();
   const [tasksSelected, setTasksSelected] = useState(false);
@@ -27,6 +38,10 @@ function Account() {
   const closeTaskHandler = () => {
     setTaskVisible(false);
   };
+
+  useEffect(() => {
+    accounts.map((account) => {account.id == account_id && setAccount(account)})
+  }, []);
 
   useEffect(() => {
     FetchInstagramTaskTypes()
@@ -104,7 +119,7 @@ function Account() {
         <section>
           <UserIcon
             src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
-            name="@Username"
+            name={`@${account.username}`}
             size="xl"
           />
         </section>
@@ -120,12 +135,12 @@ function Account() {
 
       <div className="account-metrics">
         <Grid.Container gap={2}>
-          <Grid sm={3} xs={12}></Grid>
+          {active && (<><Grid sm={3} xs={12}></Grid>
           <Grid sm={6} xs={12}>
             <Card
               variant="flat"
               css={{
-                backdropFilter: 'saturate(200%) blur(8px)',
+                backdropFilter: 'saturate(200%) blur(15px)',
                 background: 'rgba(255, 255, 255, 0.2)',
               }}
             >
@@ -146,23 +161,24 @@ function Account() {
               </Card.Footer>
             </Card>
           </Grid>
-          <Grid sm={3} xs={12}></Grid>
+          <Grid sm={3} xs={12}></Grid></>)}
+          
           <Grid sm={4} xs={12}>
             <Card
               css={{
-                backdropFilter: 'saturate(200%) blur(8px)',
+                backdropFilter: 'saturate(200%) blur(15px)',
                 background: 'rgba(255, 255, 255, 0.2)',
               }}
             >
-              <Card.Header>Utilization - Lifetime | 30 Days</Card.Header>
+              <Card.Header>Utilization - 30 Days</Card.Header>
               <Card.Divider />
               <Card.Body>
                 <Grid.Container>
+                  <Grid sm={2}>
+                    <Text h2>92%</Text>
+                  </Grid>
                   <Grid sm={12} xs={12}>
                     <Progress color="primary" value={92} />
-                  </Grid>
-                  <Grid sm={2}>
-                    <Text>92%</Text>
                   </Grid>
                 </Grid.Container>
               </Card.Body>
@@ -171,11 +187,11 @@ function Account() {
           <Grid sm={4} xs={12}>
             <Card
               css={{
-                backdropFilter: 'saturate(200%) blur(8px)',
+                backdropFilter: 'saturate(200%) blur(15px)',
                 background: 'rgba(255, 255, 255, 0.2)',
               }}
             >
-              <Card.Header>Interactions Sent - Lifetime | 30 Days</Card.Header>
+              <Card.Header>Interactions Sent - 30 Days</Card.Header>
               <Card.Divider />
               <Card.Body>
                 <Text h2>367409</Text>
@@ -185,51 +201,82 @@ function Account() {
           <Grid sm={4} xs={12}>
             <Card
               css={{
-                backdropFilter: 'saturate(200%) blur(8px)',
+                backdropFilter: 'saturate(200%) blur(10px)',
                 background: 'rgba(255, 255, 255, 0.2)',
               }}
             >
-              <Card.Header>Follower Gain - Lifetime | 30 Days</Card.Header>
+              <Card.Header>Follower Gain - 30 Days</Card.Header>
               <Card.Divider />
               <Card.Body>
-                <Text h2>Bordered card.</Text>
+                <Text h2>247</Text>
               </Card.Body>
             </Card>
           </Grid>
           <Grid sm={4} xs={12}>
             <Card
               css={{
-                backdropFilter: 'saturate(200%) blur(8px)',
+                backdropFilter: 'saturate(200%) blur(15px)',
                 background: 'rgba(255, 255, 255, 0.2)',
               }}
             >
               <Card.Header>Interaction Limits</Card.Header>
               <Card.Divider />
               <Card.Body>
-                <Text h2>FOLLOWS: 657/1000 </Text>
-                <Text h2>LIKES: 657/1000 </Text>
-                <Text h2>COMMENTS: 657/1000 </Text>
-                <Text h2>MESSAGES: 657/1000 </Text>
+              <Table shadow={false}
+      aria-label="Example table with static content"
+      css={{
+        height: "auto",
+        minWidth: "100%",
+      }}
+    >
+      <Table.Header>
+        <Table.Column>Interaction</Table.Column>
+        <Table.Column>Sent</Table.Column>
+        <Table.Column>Limit</Table.Column>
+      </Table.Header>
+      <Table.Body>
+        <Table.Row key="1">
+          <Table.Cell>Follow</Table.Cell>
+          <Table.Cell>750</Table.Cell>
+          <Table.Cell>1000</Table.Cell>
+        </Table.Row>
+        <Table.Row key="2">
+          <Table.Cell>Like</Table.Cell>
+          <Table.Cell>623</Table.Cell>
+          <Table.Cell>1000</Table.Cell>
+        </Table.Row>
+        <Table.Row key="3">
+          <Table.Cell>Comment</Table.Cell>
+          <Table.Cell>245</Table.Cell>
+          <Table.Cell>1000</Table.Cell>
+        </Table.Row>
+        <Table.Row key="4">
+          <Table.Cell>Message</Table.Cell>
+          <Table.Cell>999</Table.Cell>
+          <Table.Cell>1000</Table.Cell>
+        </Table.Row>
+      </Table.Body>
+    </Table>
               </Card.Body>
             </Card>
           </Grid>
           <Grid sm={4} xs={12}>
             <Card
               css={{
-                minHeight: '400px',
-                backdropFilter: 'saturate(200%) blur(8px)',
+                minHeight: '200px',
+                backdropFilter: 'saturate(200%) blur(15px)',
                 background: 'rgba(255, 255, 255, 0.2)',
               }}
             >
               <Card.Header>
-                Follower / Following - Day | Week | Month{' '}
+                Follower / Following - Week | Month
               </Card.Header>
               <Card.Divider />
               <Card.Body>
                 <ChartPlaceHold />
               </Card.Body>
               <Card.Divider />
-              <Card.Footer css={{ justifyContent: 'center' }}>
+              {/* <Card.Footer css={{ justifyContent: 'center' }}>
                 <Button
                   onClick={() => setMetricVisible(true)}
                   color="secondary"
@@ -237,7 +284,7 @@ function Account() {
                 >
                   Expand
                 </Button>
-              </Card.Footer>
+              </Card.Footer> */}
             </Card>
           </Grid>
           <Grid sm={4} xs={12}>

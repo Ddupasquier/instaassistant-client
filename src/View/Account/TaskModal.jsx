@@ -16,6 +16,7 @@ const TaskModal = ({
     <>
       <Modal
         closeButton
+        blur
         aria-labelledby="modal-title"
         open={taskVisible}
         onClose={closeTaskHandler}

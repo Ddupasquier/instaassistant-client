@@ -6,13 +6,18 @@ import { AccountCardNext } from '../../Components/AccountCardNext';
 import NewAccountModal from './NewAccountModal';
 import NewAccountCardNext from '../../Components/AccountCardNext/NewAccountCardButton';
 import { indexAccounts } from '../../api';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { GetAccounts } from "../../redux/AccountsStore/Actions"
 
 function Accounts() {
+  const { Accounts :accounts, Loading :loading } = useSelector((state) => state.accountsStore )
+  const dispatch = useDispatch()
+  
   const [newAccountVisible, setNewAccountVisible] = useState(false);
 
-  const [accounts, setAccounts] = useState({})
-  const [accountsLoaded,setAccountsLoaded] = useState(false)
+  //const [accounts, setAccounts] = useState({})
+  //const [accountsLoaded,setAccountsLoaded] = useState(false)
 
   const newAccountHandler = () => setNewAccountVisible(true);
   const closeNewAccountHandler = () => {
@@ -23,10 +28,13 @@ function Accounts() {
   // console.log(listView)
 
   useEffect(() => {
-    indexAccounts()
-      .then((data) => setAccounts(data))
-      .then(() => setAccountsLoaded(true));
+    dispatch(GetAccounts())
+    // indexAccounts()
+    //   .then((data) => setAccounts(data))
+    //   .then(() => setAccountsLoaded(true));
   }, []);
+
+  console.log(accounts)
 
   return (
     <>
@@ -63,8 +71,8 @@ function Accounts() {
                   ></Input>
                 </div>
                 <div className="instagram-cards">
-                  {accountsLoaded ?
-                    accounts.map((account) => (<AccountCardNext path={"/account/" + account.id} username={account.username} />)) : (<Loading/>)}
+                  {loading ?
+                    (<Loading/>) : accounts.map((account) => (<AccountCardNext path={"/account/" + account.id} username={account.username} />))}
                 </div>
               </div>
             </Collapse>

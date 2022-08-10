@@ -5,8 +5,8 @@ import {
 } from "./ActionTypes";
 
 const initState = {
-  accounts: [],
-  Loading: false,
+  Accounts: [],
+  Loading: null,
   Error: "",
 };
 
@@ -15,7 +15,7 @@ function reducer(state = initState, action) {
     case FETCH_ACCOUNTS:
       return { ...state, Loading: true };
     case FETCH_ACCOUNTS_SUCCESS:
-      return { ...state, Loading: false, Missions: action.missions, Error: "" };
+      return { ...state, Loading: false, Accounts: action.accounts, Error: "" };
     case FETCH_ACCOUNTS_FAIL:
       return {
         ...state,

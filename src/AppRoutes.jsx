@@ -51,7 +51,7 @@ function AppRoutes() {
             <Route path="/billing" element={<Billing />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/accounts" element={<Accounts />} />
-            <Route path="/account" element={<Account />} />
+            <Route path="/account/:account_id" element={<Account />} />
             <Route path="/FAQ" element={<FAQ />} />
             <Route path="/config" element={<InstagramConfig />} />
             <Route path="/next" element={<NextUI />} />

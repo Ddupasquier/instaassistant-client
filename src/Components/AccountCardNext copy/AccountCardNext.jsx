@@ -21,18 +21,7 @@ const AccountCardNext = ({username, path}) => {
             size="xl"
           />
         </Card.Header>
-        <Card.Body
-          css={{
-            display: 'none',
-            py: '$2',
-            '@xs': {
-              display: 'flex',
-            },
-            '@sm': {
-              display: 'flex',
-            },
-          }}
-        >
+        <Card.Body css={{ py: '$2' }}>
           <Text>
             Make beautiful websites regardless of your design experience.
           </Text>
