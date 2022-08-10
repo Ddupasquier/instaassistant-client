@@ -13,7 +13,7 @@ function SignUp({ setLogIsVisible, logIsVisible }) {
 
   const signupStyle = {
     position: 'absolute',
-    transform: logIsVisible ? 'translateX(1000px)' : 'translateX(0)',
+    transform: logIsVisible ? 'translateX(3000px)' : 'translateX(0)',
     // opacity: logIsVisible ? '0' : '1',
     transition: 'all 1s ease-in-out',
     zIndex: '3',

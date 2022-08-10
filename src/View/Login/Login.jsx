@@ -11,7 +11,7 @@ function Login({ setLogIsVisible, logIsVisible }) {
 
   const loginStyle = {
     position: 'absolute',
-    transform: logIsVisible ? 'translateX(0)' : 'translateX(-1000px)',
+    transform: logIsVisible ? 'translateX(0)' : 'translateX(-3000px)',
     // opacity: logIsVisible ? '1' : '0',
     transition: 'all 1s ease-in-out',
     zIndex: '3',
