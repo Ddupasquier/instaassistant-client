@@ -109,7 +109,7 @@ function Account() {
           New task
         </Button>
         <Button type="button" color="secondary" size="md" rounded>
-          <Link to="/config" className="button">
+          <Link to={"/config/" + account.id} className="button">
             Edit Rules
           </Link>
         </Button>

@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Textarea, Switch, Grid } from '@nextui-org/react';
 import './scss/instaconfig-styles.css';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { UserIcon } from '../../Components/UserIcon';
+import { useSelector } from 'react-redux';
 
 function InstagramConfig() {
+  const {account_id} = useParams()
+  const { Accounts :accounts, Loading :loading } = useSelector((state) => state.accountsStore )
+  const [currentAccount, setCurrentAccount] = useState({})
+
+  useEffect(() => {
+    accounts.map((account) => {account.id == account_id && setCurrentAccount(account)})
+  },[])
+
   const textareas = [
     {
       legend: 'Look Alike',
@@ -49,7 +58,7 @@ function InstagramConfig() {
         <UserIcon
           size="xl"
           src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
-          name="@Username"
+          name={"@" + currentAccount.username}
         />
       </div>
       <form>

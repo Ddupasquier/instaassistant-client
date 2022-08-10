@@ -53,7 +53,7 @@ function AppRoutes() {
             <Route path="/accounts" element={<Accounts />} />
             <Route path="/account/:account_id" element={<Account />} />
             <Route path="/FAQ" element={<FAQ />} />
-            <Route path="/config" element={<InstagramConfig />} />
+            <Route path="/config/:account_id" element={<InstagramConfig />} />
             <Route path="/next" element={<NextUI />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
