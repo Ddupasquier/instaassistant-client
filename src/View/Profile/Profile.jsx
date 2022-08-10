@@ -3,24 +3,18 @@ import './scss/profile-styles.css';
 import { UserIcon } from '../../Components/UserIcon';
 import { Button, Text } from '@nextui-org/react';
 import { GetUserInfo } from '../../api';
+import EditProfile from './EditProfile';
 
 function Profile() {
   const [userInfo, setUserInfo] = useState({});
+  console.log(userInfo)
   const [userLoaded, setUserLoaded] = useState(false);
-  const [companyName, setCompanyName] = useState('Your Mom');
-  // const [companyEmail, setCompanyEmail] = useState('companyname@email.com');
-  const [companyPhone, setCompanyPhone] = useState('555-555-5555');
-  const [companyAddress, setCompanyAddress] = useState(
-    'P Sherman 42 Wallaby Way, Sydney'
-  );
-  const [companyWebsite, setCompanyWebsite] = useState('link to company site');
-  const [accountsManaged, setAccountsManaged] = useState(
-    '(25) include link to accounts page'
-  );
-  const [billingInformation, setBillingInformation] =
-    useState('Maybe use this?');
-  const [paymentStatus, setPaymentStatus] = useState('Paid');
-  const [companyLogo, setCompanyLogo] = useState('Logo');
+  const [editProfileVisible, setEditProfileVisible] = useState(false);
+
+  const editProfileHandler = () => setEditProfileVisible(true);
+  const closeEditProfileHandler = () => {
+    setEditProfileVisible(false);
+  };
 
   useEffect(() => {
     GetUserInfo()
@@ -34,11 +28,11 @@ function Profile() {
         <div className="profile-header">
           <UserIcon
             src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
-            name={companyName}
+            name={userInfo.username}
             size="xl"
           />
 
-          <Button variant="primary">Edit</Button>
+          <Button variant="primary" onPress={editProfileHandler}>Edit</Button>
         </div>
         <div className="profile-content">
           <Text>
@@ -58,18 +52,22 @@ function Profile() {
             {userLoaded && (
               <>
                 <span>Company Email: {userInfo.email}</span>
-                <span>Company Phone: {companyPhone}</span>
-                <span>Company Address: {companyAddress}</span>
-                <span>Company Website: {companyWebsite}</span>
-                <span>Accounts Managed: {accountsManaged}</span>
-                <span>Billing Information: {billingInformation}</span>
-                <span>Payment Status: {paymentStatus}</span>
-                <span>Company Logo: {companyLogo}</span>
+                <span>Company Phone: {userInfo.phone}</span>
+                <span>Company Address: {userInfo.address}</span>
+                <span>Company Website: {userInfo.website}</span>
+                <span>Accounts Managed: {userInfo.accountsManaged}</span>
+                <span>Billing Information: {userInfo.billing}</span>
+                <span>Payment Status: {userInfo.billStatus}</span>
+                <span>Company Logo: {userInfo.logo}</span>
               </>
             )}
           </Text>
         </div>
       </div>
+      <EditProfile
+        editProfileVisible={editProfileVisible}
+        closeEditProfileHandler={closeEditProfileHandler}
+      />
     </div>
   );
 }

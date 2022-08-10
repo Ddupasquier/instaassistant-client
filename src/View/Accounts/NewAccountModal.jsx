@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Modal, Input, Button, Text, Spacer } from '@nextui-org/react';
 
 function NewAccountModal({
-  newAccountHandler,
   newAccountVisible,
   closeNewAccountHandler,
 }) {
@@ -23,7 +22,7 @@ function NewAccountModal({
   }
 
   return (
-    <>
+   
       <Modal
         closeButton
         aria-labelledby="modal-title"
@@ -59,7 +58,7 @@ function NewAccountModal({
           </Modal.Footer>
         </form>
       </Modal>
-    </>
+    
   );
 }
 

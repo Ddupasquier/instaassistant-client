@@ -15,7 +15,7 @@ function UserIcon({ src, name, size }) {
 export default UserIcon;
 
 UserIcon.propTypes = {
-  src: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
+  src: PropTypes.string,
+  name: PropTypes.string,
   size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']).isRequired,
 };
