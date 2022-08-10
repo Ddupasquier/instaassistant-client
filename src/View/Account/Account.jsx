@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './scss/account-styles.css';
-import { CreateBot, FetchInstagramTaskTypes } from '../../api';
+import { FetchInstagramTaskTypes, PostTask } from '../../api';
 
 import { Button, Card, Text, Grid, Progress } from '@nextui-org/react';
 
@@ -51,7 +51,7 @@ function Account() {
     // Format the plain form data as JSON
     let formDataJsonString = JSON.stringify(formDataObject);
     console.log(formDataJsonString);
-    CreateBot(formDataJsonString)
+    PostTask(formDataJsonString)
 
     // * let fetchOptions = {
     //   //HTTP method set to POST.

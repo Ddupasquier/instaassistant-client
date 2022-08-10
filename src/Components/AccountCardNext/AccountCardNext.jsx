@@ -3,7 +3,7 @@ import { UserIcon } from '../UserIcon';
 import { Card, Text } from '@nextui-org/react';
 import { Link } from 'react-router-dom';
 
-const AccountCardNext = () => {
+const AccountCardNext = ({username}) => {
   return (
     <Link to="/account">
       <Card
@@ -16,7 +16,7 @@ const AccountCardNext = () => {
         <Card.Header>
           <UserIcon
             src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
-            name="@Username"
+            name={"@" + username}
             size="xl"
           />
         </Card.Header>

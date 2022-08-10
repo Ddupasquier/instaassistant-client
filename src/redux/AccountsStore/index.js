@@ -1,18 +1,22 @@
-import { FETCH_MISSIONS, FETCH_SUCCESS, FETCH_FAIL } from "./ActionTypes";
+import {
+  FETCH_ACCOUNTS,
+  FETCH_ACCOUNTS_SUCCESS,
+  FETCH_ACCOUNTS_FAIL,
+} from "./ActionTypes";
 
 const initState = {
-  Missions: [],
+  accounts: [],
   Loading: false,
   Error: "",
 };
 
 function reducer(state = initState, action) {
   switch (action.type) {
-    case FETCH_MISSIONS:
+    case FETCH_ACCOUNTS:
       return { ...state, Loading: true };
-    case FETCH_SUCCESS:
+    case FETCH_ACCOUNTS_SUCCESS:
       return { ...state, Loading: false, Missions: action.missions, Error: "" };
-    case FETCH_FAIL:
+    case FETCH_ACCOUNTS_FAIL:
       return {
         ...state,
         Loading: false,

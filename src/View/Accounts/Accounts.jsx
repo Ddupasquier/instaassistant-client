@@ -1,19 +1,31 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import React, { useState } from 'react';
-import { Collapse, Text, Button, Input } from '@nextui-org/react';
+import React, { useEffect, useState } from 'react';
+import { Collapse, Text, Button, Input, Loading } from '@nextui-org/react';
 import './scss/accounts-styles.css';
 import { AccountCardNext } from '../../Components/AccountCardNext';
 import NewAccountModal from './NewAccountModal';
+import { indexAccounts } from '../../api';
+import { useSelector } from 'react-redux';
 
 function Accounts() {
   const [newAccountVisible, setNewAccountVisible] = useState(false);
+
+  const [accounts, setAccounts] = useState({})
+  const [accountsLoaded,setAccountsLoaded] = useState(false)
 
   const newAccountHandler = () => setNewAccountVisible(true);
   const closeNewAccountHandler = () => {
     setNewAccountVisible(false);
   };
+
   // const [listView, setListView] = useState(false);
   // console.log(listView)
+
+  useEffect(() => {
+    indexAccounts()
+      .then((data) => setAccounts(data))
+      .then(() => setAccountsLoaded(true));
+  }, []);
 
   return (
     <>
@@ -50,11 +62,8 @@ function Accounts() {
                   ></Input>
                 </div>
                 <div className="instagram-cards">
-                  <AccountCardNext />
-                  <AccountCardNext />
-                  <AccountCardNext />
-                  <AccountCardNext />
-                  <AccountCardNext />
+                  {accountsLoaded ?
+                    accounts.map((account) => (<AccountCardNext path={"/account/" + account.id} username={account.username} />)) : (<Loading/>)}
                 </div>
               </div>
             </Collapse>
