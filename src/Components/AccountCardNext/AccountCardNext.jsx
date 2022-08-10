@@ -20,13 +20,22 @@ const AccountCardNext = () => {
             size="xl"
           />
         </Card.Header>
-        {window.innerWidth > 760 ? (
-          <Card.Body css={{ py: '$2' }}>
-            <Text>
-              Make beautiful websites regardless of your design experience.
-            </Text>
-          </Card.Body>
-        ) : null}
+        <Card.Body
+          css={{
+            display: 'none',
+            py: '$2',
+            '@xs': {
+              display: 'flex',
+            },
+            '@sm': {
+              display: 'flex',
+            },
+          }}
+        >
+          <Text>
+            Make beautiful websites regardless of your design experience.
+          </Text>
+        </Card.Body>
       </Card>
     </Link>
   );
