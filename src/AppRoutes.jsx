@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
+// ------- REDUX -------
+import { Provider } from "react-redux";
+import store from "./redux";
+
 //View Imports
 import App from './App';
 import { Billing } from './View/Billing';
@@ -31,31 +35,33 @@ function AppRoutes() {
 
   return (
     <NextUIProvider theme={theme}>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <App
-              setTheme={setTheme}
-              lightTheme={lightTheme}
-              darkTheme={darkTheme}
-            />
-          }
-        >
-          <Route index element={<Profile />} />
-          <Route path="/billing" element={<Billing />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/accounts" element={<Accounts />} />
-          <Route path="/account" element={<Account />} />
-          <Route path="/FAQ" element={<FAQ />} />
-          <Route path="/config" element={<InstagramConfig />} />
-          <Route path="/next" element={<NextUI />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/task" element={<Task />} />
-          <Route path="/tasks" element={<Tasks />} />
-        </Route>
-      </Routes>
+      <Provider store={store}>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <App
+                setTheme={setTheme}
+                lightTheme={lightTheme}
+                darkTheme={darkTheme}
+              />
+            }
+          >
+            <Route index element={<Profile />} />
+            <Route path="/billing" element={<Billing />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/accounts" element={<Accounts />} />
+            <Route path="/account" element={<Account />} />
+            <Route path="/FAQ" element={<FAQ />} />
+            <Route path="/config" element={<InstagramConfig />} />
+            <Route path="/next" element={<NextUI />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/task" element={<Task />} />
+            <Route path="/tasks" element={<Tasks />} />
+          </Route>
+        </Routes>
+      </Provider>
     </NextUIProvider>
   );
 }
