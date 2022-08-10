@@ -3,14 +3,15 @@ import { UserIcon } from '../UserIcon';
 import { Card, Text } from '@nextui-org/react';
 import { Link } from 'react-router-dom';
 
-const AccountCardNext = ({username}) => {
+
+const AccountCardNext = ({username, path}) => {
   return (
-    <Link to="/account">
+    <Link to={path}>
       <Card
         isHoverable
         isPressable
         variant="flat"
-        to="/account"
+        to={path}
         css={{ p: '$5', mw: '250px' }}
       >
         <Card.Header>
