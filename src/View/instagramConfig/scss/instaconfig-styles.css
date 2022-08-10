@@ -4,6 +4,7 @@
   grid-template-rows: fit-content 5vh 85vh fit-content;
   color: rgb(175, 175, 175);
   overflow: auto;
+  z-index: 10;
 }
 .insta-config .config-user {
   position: relative;
@@ -15,7 +16,6 @@
   position: relative;
   margin: auto;
   width: 95%;
-  z-index: 10;
 }
 .insta-config .config-toggles section {
   text-align: center;
@@ -24,7 +24,6 @@
   position: relative;
   margin: auto;
   width: 95%;
-  z-index: 10;
 }
 .insta-config .config-buttons {
   display: flex;

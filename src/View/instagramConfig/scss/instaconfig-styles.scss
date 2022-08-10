@@ -3,6 +3,7 @@
   grid-template-rows: fit-content 5vh 85vh fit-content;
   color: rgb(175, 175, 175);
   overflow: auto;
+  z-index: 10;
   .config-user {
     position: relative;
     padding: 1rem;
@@ -13,7 +14,7 @@
     position: relative;
     margin: auto;
     width: 95%;
-    z-index: 10;
+    // z-index: 10;
     section {
       text-align: center;
     }
@@ -22,7 +23,7 @@
     position: relative;
     margin: auto;
     width: 95%;
-    z-index: 10;
+    // z-index: 10;
   }
   .config-buttons {
     display: flex;
