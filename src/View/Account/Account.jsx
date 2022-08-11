@@ -19,7 +19,7 @@ function Account() {
   const [account ,setAccount] = useState({})
   const { Accounts :accounts, Loading :loading } = useSelector((state) => state.accountsStore )
 
-  const [active, setActive] = useState(false)
+  const [active, setActive] = useState(true)
 
   // form control
   const [tasks, setTasks] = useState();
