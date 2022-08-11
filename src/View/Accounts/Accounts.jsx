@@ -8,12 +8,14 @@ import NewAccountCardNext from '../../Components/AccountCardNext/NewAccountCardB
 import { indexAccounts } from '../../api';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { GetAccounts } from "../../redux/AccountsStore/Actions"
+import { GetAccounts } from '../../redux/AccountsStore/Actions';
 
 function Accounts() {
-  const { Accounts :accounts, Loading :loading } = useSelector((state) => state.accountsStore )
-  const dispatch = useDispatch()
-  
+  const { Accounts: accounts, Loading: loading } = useSelector(
+    (state) => state.accountsStore
+  );
+  const dispatch = useDispatch();
+
   const [newAccountVisible, setNewAccountVisible] = useState(false);
 
   //const [accounts, setAccounts] = useState({})
@@ -28,13 +30,13 @@ function Accounts() {
   // console.log(listView)
 
   useEffect(() => {
-    dispatch(GetAccounts())
+    dispatch(GetAccounts());
     // indexAccounts()
     //   .then((data) => setAccounts(data))
     //   .then(() => setAccountsLoaded(true));
   }, []);
 
-  console.log(accounts)
+  // console.log(accounts);
 
   return (
     <>
@@ -71,8 +73,19 @@ function Accounts() {
                   ></Input>
                 </div>
                 <div className="instagram-cards">
-                  {loading ?
-                    (<Loading/>) : accounts.map((account) => (<AccountCardNext path={"/account/" + account.id} username={account.username} />))}
+                  {loading ? (
+                    <div className="loading" style={{ height: '13rem' }}>
+                      <Loading />
+                    </div>
+                  ) : (
+                    accounts.map((account, index) => (
+                      <AccountCardNext
+                        path={'/account/' + account.id}
+                        username={account.username}
+                        key={index}
+                      />
+                    ))
+                  )}
                 </div>
               </div>
             </Collapse>

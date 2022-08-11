@@ -11,7 +11,7 @@ function NewAccountModal({
   const [pwdConf, setPwdConf] = useState("")
   const [username, setUsername] = useState("")
 
-  const [postSuccess, setPostSuccess] = useState(false)
+  // const [postSuccess, setPostSuccess] = useState(false)
 
   const HandleSubmit = (e) => {
     e.preventDefault();
