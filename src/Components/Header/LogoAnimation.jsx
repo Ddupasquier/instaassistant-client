@@ -1,34 +1,42 @@
 import React, { useState, useEffect } from 'react';
 
+const box1init = {
+  top: '.6rem',
+  left: '.6rem',
+  borderRadius: '.1rem',
+  width: '1rem',
+  height: '1.5rem',
+};
+
+const box2init = {
+  top: '.8rem',
+  left: '.9rem',
+  borderRadius: '.1rem',
+  width: '1rem',
+  height: '1.5rem',
+};
+
+const box3init = {
+  top: '1rem',
+  left: '1.2rem',
+  borderRadius: '.1rem',
+  width: '1rem',
+  height: '1.5rem',
+};
+
+const box4init = {
+  top: '1.2rem',
+  left: '1.5rem',
+  borderRadius: '.1rem',
+  width: '1rem',
+  height: '1.5rem',
+};
+
 function LogoAnimation({ menuSelected }) {
-  const [boxOneStyle, setBoxOneStyle] = useState({
-    top: '.6rem',
-    left: '.6rem',
-    borderRadius: '.1rem',
-    width: '1rem',
-    height: '1.5rem',
-  });
-  const [boxTwoStyle, setBoxTwoStyle] = useState({
-    top: '.8rem',
-    left: '.9rem',
-    borderRadius: '.1rem',
-    width: '1rem',
-    height: '1.5rem',
-  });
-  const [boxThreeStyle, setBoxThreeStyle] = useState({
-    top: '1.2rem',
-    left: '1.5rem',
-    borderRadius: '.1rem',
-    width: '1rem',
-    height: '1.5rem',
-  });
-  const [boxFourStyle, setBoxFourStyle] = useState({
-    top: '1rem',
-    left: '1.2rem',
-    borderRadius: '.1rem',
-    width: '1rem',
-    height: '1.5rem',
-  });
+  const [boxOneStyle, setBoxOneStyle] = useState(box1init);
+  const [boxTwoStyle, setBoxTwoStyle] = useState(box2init);
+  const [boxThreeStyle, setBoxThreeStyle] = useState(box3init);
+  const [boxFourStyle, setBoxFourStyle] = useState(box4init);
 
   useEffect(() => {
     if (window.innerWidth > 760) {
@@ -36,7 +44,7 @@ function LogoAnimation({ menuSelected }) {
         // box one
         //* [in header, billing, profile, accounts]
         {
-          top: ['.6rem', '15vh', '10vh', '10vh'],
+          top: ['.6rem', '15vh', '13vh', '13vh'],
           left: ['.6rem', '15vw', '50vw', '10vw'],
           borderRadius: ['.1rem', '.8rem', '.8rem', '.8rem'],
           width: ['1rem', '13rem', '30rem', '13rem'],
@@ -48,11 +56,11 @@ function LogoAnimation({ menuSelected }) {
           left: ['.9rem', '25vw', '30vw', '24vw'],
           borderRadius: ['.1rem', '.8rem', '.8rem', '.8rem'],
           width: ['1rem', '13rem', '35rem', '13rem'],
-          height: ['1.5rem', '20rem', '11rem', '60vh'],
+          height: ['1.5rem', '20rem', '11rem', '70vh'],
         },
         // box three
         {
-          top: ['1rem', '50vh', '32vh', '10vh'],
+          top: ['1rem', '50vh', '32vh', '13vh'],
           left: ['1.2rem', '60vw', '58vw', '34vw'],
           borderRadius: ['.1rem', '.8rem', '.8rem', '.8rem'],
           width: ['1rem', '13rem', '22rem', '13rem'],
@@ -64,7 +72,7 @@ function LogoAnimation({ menuSelected }) {
           left: ['1.5rem', '70vw', '73vw', '48vw'],
           borderRadius: ['.1rem', '.8rem', '.8rem', '.8rem'],
           width: ['1rem', '13rem', '25rem', '13rem'],
-          height: ['1.5rem', '20rem', '11rem', '60vh'],
+          height: ['1.5rem', '20rem', '11rem', '70vh'],
         },
       ];
 

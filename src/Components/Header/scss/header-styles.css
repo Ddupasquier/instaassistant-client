@@ -28,24 +28,32 @@ header .site-name {
 
 .box-one {
   position: absolute;
-  background: rgb(0, 251, 255);
+  -webkit-backdrop-filter: saturate(200%) blur(8px);
+          backdrop-filter: saturate(200%) blur(8px);
+  background: rgba(0, 251, 255, 0.918);
   transition: 0.5s;
 }
 
 .box-two {
   position: absolute;
+  -webkit-backdrop-filter: saturate(200%) blur(8px);
+          backdrop-filter: saturate(200%) blur(8px);
   background: rgba(0, 251, 255, 0.65);
   transition: 0.5s;
 }
 
 .box-three {
   position: absolute;
+  -webkit-backdrop-filter: saturate(200%) blur(8px);
+          backdrop-filter: saturate(200%) blur(8px);
   background: rgba(0, 251, 255, 0.4);
   transition: 0.5s;
 }
 
 .box-four {
   position: absolute;
+  -webkit-backdrop-filter: saturate(200%) blur(8px);
+          backdrop-filter: saturate(200%) blur(8px);
   background: rgba(0, 251, 255, 0.137);
   transition: 0.5s;
 }
