@@ -67,7 +67,7 @@ export const CreateBot = async (formData) => {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        JWT: localStorage.getItem("token"),
+        Authorization: localStorage.getItem("token"),
       },
       body: JSON.stringify(formData),
     }
@@ -81,7 +81,7 @@ export const indexAccounts = async () => {
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      JWT: localStorage.getItem("token"),
+      Authorization: localStorage.getItem("token"),
     },
   });
   return await response.json();
@@ -107,7 +107,7 @@ export const PostTask = async (formData) => {
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      JWT: localStorage.getItem("token"),
+      Authorization: localStorage.getItem("token"),
     },
     body: JSON.stringify(formData),
   });

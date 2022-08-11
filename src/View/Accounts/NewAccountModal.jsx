@@ -38,7 +38,7 @@ function NewAccountModal({
 
   return (
    
-      <Modal
+      <Modal blur
         closeButton
         aria-labelledby="modal-title"
         open={newAccountVisible}
