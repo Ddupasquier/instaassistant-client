@@ -20,6 +20,7 @@ function Account() {
     (state) => state.accountsStore
   );
 
+  // Fetch Account Here To Check If Account Active
   const [active, setActive] = useState(false);
 
   // form control

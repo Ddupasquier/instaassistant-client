@@ -4,7 +4,7 @@ import { Collapse, Text, Button, Input, Loading } from '@nextui-org/react';
 import './scss/accounts-styles.css';
 import { AccountCardNext } from '../../Components/AccountCardNext';
 import NewAccountModal from './NewAccountModal';
-import NewAccountCardNext from '../../Components/AccountCardNext/NewAccountCardButton';
+import NewAccountCardButtonNext from '../../Components/AccountCardNext/NewAccountCardButton';
 import { indexAccounts } from '../../api';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -34,7 +34,7 @@ function Accounts() {
     // indexAccounts()
     //   .then((data) => setAccounts(data))
     //   .then(() => setAccountsLoaded(true));
-  }, []);
+  }, [dispatch]);
 
   // console.log(accounts);
 
@@ -86,6 +86,7 @@ function Accounts() {
                       />
                     ))
                   )}
+                  <NewAccountCardButtonNext newAccountHandler={newAccountHandler}/>
                 </div>
               </div>
             </Collapse>
