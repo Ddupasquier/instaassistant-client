@@ -6,13 +6,17 @@ import { UserIcon } from '../../Components/UserIcon';
 import { useSelector } from 'react-redux';
 
 function InstagramConfig() {
-  const {account_id} = useParams()
-  const { Accounts :accounts, Loading :loading } = useSelector((state) => state.accountsStore )
-  const [currentAccount, setCurrentAccount] = useState({})
+  const { account_id } = useParams();
+  const { Accounts: accounts, Loading: loading } = useSelector(
+    (state) => state.accountsStore
+  );
+  const [currentAccount, setCurrentAccount] = useState({});
 
   useEffect(() => {
-    accounts.map((account) => {account.id == account_id && setCurrentAccount(account)})
-  },[])
+    accounts.map((account) => {
+      return account.id === Number(account_id) && setCurrentAccount(account);
+    });
+  }, [account_id, accounts]);
 
   const textareas = [
     {
@@ -58,7 +62,7 @@ function InstagramConfig() {
         <UserIcon
           size="xl"
           src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
-          name={"@" + currentAccount.username}
+          name={'@' + currentAccount.username}
         />
       </div>
       <form>
