@@ -18,3 +18,4 @@ export const GetAccounts = () => async (dispatch) => {
       dispatch({ type: FETCH_ACCOUNTS_FAIL });
     });
 };
+
