@@ -18,25 +18,14 @@ function Accounts() {
 
   const [newAccountVisible, setNewAccountVisible] = useState(false);
 
-  //const [accounts, setAccounts] = useState({})
-  //const [accountsLoaded,setAccountsLoaded] = useState(false)
-
   const newAccountHandler = () => setNewAccountVisible(true);
   const closeNewAccountHandler = () => {
     setNewAccountVisible(false);
   };
 
-  // const [listView, setListView] = useState(false);
-  // console.log(listView)
-
   useEffect(() => {
     dispatch(GetAccounts());
-    // indexAccounts()
-    //   .then((data) => setAccounts(data))
-    //   .then(() => setAccountsLoaded(true));
   }, [dispatch]);
-
-  // console.log(accounts);
 
   return (
     <>
@@ -48,7 +37,6 @@ function Accounts() {
                 <div className="options">
                   <Button
                     type="button"
-                    // onPress={() => setListView(!listView)}
                     size="sm"
                     color="warning"
                     rounded

@@ -11,10 +11,11 @@
     z-index: 10;
   }
   .config-toggles {
+    display: flex;
+    justify-content: center;
     position: relative;
     margin: auto;
-    width: 95%;
-    // z-index: 10;
+    width: 100%;
     section {
       text-align: center;
     }
@@ -23,7 +24,6 @@
     position: relative;
     margin: auto;
     width: 95%;
-    // z-index: 10;
   }
   .config-buttons {
     display: flex;

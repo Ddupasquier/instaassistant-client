@@ -13,9 +13,11 @@
   z-index: 10;
 }
 .insta-config .config-toggles {
+  display: flex;
+  justify-content: center;
   position: relative;
   margin: auto;
-  width: 95%;
+  width: 100%;
 }
 .insta-config .config-toggles section {
   text-align: center;

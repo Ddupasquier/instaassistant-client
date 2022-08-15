@@ -10,6 +10,7 @@ function InstagramConfig() {
   const { Accounts: accounts, Loading: loading } = useSelector(
     (state) => state.accountsStore
   );
+
   const [currentAccount, setCurrentAccount] = useState({});
 
   useEffect(() => {
@@ -59,17 +60,19 @@ function InstagramConfig() {
     <div className="insta-config">
       <div className="config-user">
         <h2>Configuration</h2>
-        <UserIcon
-          size="xl"
-          src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
-          name={'@' + currentAccount.username}
-        />
+        {!loading && (
+          <UserIcon
+            size="xl"
+            src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
+            name={'@' + currentAccount.username}
+          />
+        )}
       </div>
       <form>
         <div className="config-toggles">
           <Grid.Container justify="space-evenly">
             {switches.map((switchItem, index) => (
-              <Grid sm={2} xs={5} key={index}>
+              <Grid sm={3} xs={1} key={index} justify="center">
                 <section>
                   <label>{switchItem.legend}</label>
                   <br />
@@ -105,15 +108,15 @@ function InstagramConfig() {
           </Grid.Container>
         </div>
         <div className="config-buttons">
-          <Button type="button" color="secondary" size="md" rounded>
+          <Button type="button" color="secondary" size="sm" rounded>
             Save
           </Button>
-          <Button type="button" color="secondary" size="md" rounded>
+          <Button type="button" color="secondary" size="sm" rounded>
             <Link to="/account" className="button">
               Save and Exit
             </Link>
           </Button>
-          <Button type="button" color="secondary" size="md" rounded>
+          <Button type="button" color="secondary" size="sm" rounded>
             <Link to="/account" className="button">
               Cancel
             </Link>
