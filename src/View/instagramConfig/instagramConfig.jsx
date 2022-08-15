@@ -79,6 +79,7 @@ function InstagramConfig() {
                   <Switch
                     label={switchItem.legend}
                     checked={switchItem.value}
+                    color="secondary"
                   />
                 </section>
               </Grid>
@@ -87,11 +88,11 @@ function InstagramConfig() {
         </div>
         <br />
         <div className="config-textareas">
-          <Grid.Container gap={2.5}>
+          <Grid.Container gap={2.5} justify="center">
             {textareas.map((textarea, index) => (
               <Grid sm={6} xs={12} key={index}>
                 <Textarea
-                  width="95%"
+                  width="100%"
                   bordered
                   status="default"
                   key={textarea.legend}

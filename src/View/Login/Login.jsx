@@ -28,7 +28,12 @@ function Login({ setLogIsVisible, logIsVisible }) {
     <div className="login-overlay" style={loginStyle}>
       <div className="login-form-container raised">
         <form className="login" onSubmit={handleSubmit} autoComplete="off">
-          Hey, you&apos;re back!
+          Welcome to
+          <br />
+          <h2>
+            <i>Marcus</i>
+            <b>Bot</b>
+          </h2>
           <h1>Login</h1>
           <Input
             required

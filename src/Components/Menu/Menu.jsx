@@ -49,7 +49,7 @@ function Menu({
   const handleThemeChange = () => {
     setChecked(!checked);
     setTheme(checked ? lightTheme : darkTheme);
-  }
+  };
 
   return (
     <>
@@ -72,6 +72,7 @@ function Menu({
             <BsSunFill style={{ color: 'rgb(80, 255, 255)' }} />
           )}
           <Switch
+            color="secondary"
             size="xs"
             checked={checked}
             onChange={handleThemeChange}

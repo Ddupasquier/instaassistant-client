@@ -35,7 +35,12 @@ function SignUp({ setLogIsVisible, logIsVisible }) {
     <div className="signup-overlay" style={signupStyle}>
       <div className="signup-form-container">
         <form className="sign-up" onSubmit={handleSubmit}>
-          Create your account
+          Welcome to
+          <br />
+          <h2>
+            <i>Marcus</i>
+            <b>Bot</b>
+          </h2>
           <h1>Sign Up</h1>
           <Input
             required
