@@ -9,9 +9,11 @@ export const BotCreatePath = [
   "/accounts",
 ];
 
-export const AccountPatchPath = "http://localhost:3000/accounts/";
+export const AccountPatchPath =
+  "https://instaassistant-api.herokuapp.com/accounts/";
 
-export const AccountShowPath = "http://localhost:3000/accounts/";
+export const AccountShowPath =
+  "https://instaassistant-api.herokuapp.comaccounts/";
 
 export const BotIndexPath = "https://instaassistant-api.herokuapp.com/accounts";
 export const BotDeletePAth =
