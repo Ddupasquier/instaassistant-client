@@ -1,27 +1,59 @@
 import React from 'react';
 import { Modal, Textarea, Switch, Input, Button, Text } from '@nextui-org/react';
+import { PostTask } from '../../api';
+import NewTaskFrom from './NewTaskForm';
 
 const TaskModal = ({
   closeTaskHandler,
   taskVisible,
-  handleSubmit,
   handleChange,
   selected,
   tasksSelected,
   tasks,
   tasksLoaded,
+  account_id
 }) => {
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let form = e.currentTarget;
+    let formFields = new FormData(form);
+    let formDataObject = Object.fromEntries(formFields.entries());
+    let formDataJsonString = JSON.stringify(formDataObject);
+
+    const args = []
+    for (const [key, value] of Object.entries(JSON.parse(formDataJsonString))) {
+      args.push(value);
+    }
+
+    let taskname = ""
+    tasks.forEach((task) => {
+      if (parseInt(task.id) === parseInt(args[0])) {
+        taskname = task.name
+      }  
+    })
+    
+    const body = {
+      account_id: account_id,
+      task_type: taskname,
+      arguments: args.join(";")
+    }
+    console.log(body);
+    PostTask(body)
+  };
 
   return (
     <>
       <Modal
         closeButton
         blur
+        preventClose
         aria-labelledby="modal-title"
         open={taskVisible}
         onClose={closeTaskHandler}
       >
-        <Modal.Header>
+        <NewTaskFrom />
+        {/* <Modal.Header>
           <Text id="modal-title" size={18}>
             Start a
             <Text b size={18}>
@@ -109,7 +141,7 @@ const TaskModal = ({
               RUN
             </Button>
           </Modal.Footer>
-        </form>
+        </form> */}
       </Modal>
     </>
   );

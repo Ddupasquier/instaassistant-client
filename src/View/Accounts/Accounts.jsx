@@ -61,20 +61,8 @@ function Accounts() {
                   ></Input>
                 </div>
                 <div className="instagram-cards">
-                  {loading ? (
-                    <div className="loading" style={{ height: '13rem' }}>
-                      <Loading />
-                    </div>
-                  ) : (
-                    accounts.map((account, index) => (
-                      <AccountCardNext
-                        path={'/account/' + account.id}
-                        username={account.username}
-                        key={index}
-                      />
-                    ))
-                  )}
-                  <NewAccountCardButtonNext newAccountHandler={newAccountHandler}/>
+                  {loading ?
+                    (<Loading/>) : accounts.map((account) => (<AccountCardNext path={"/instagram/account/" + account.id} username={account.username} />))}
                 </div>
               </div>
             </Collapse>
