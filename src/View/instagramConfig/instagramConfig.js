@@ -93,7 +93,7 @@ function InstagramConfig() {
 
   return (
     <>
-      {!currentAccount == {} ? (
+      {!currentAccount === {} ? (
         <Loading size="xl" />
       ) : (
         <div className="insta-config">
@@ -105,7 +105,7 @@ function InstagramConfig() {
               name={"@" + currentAccount.username}
             />
           </div>
-          <Card>
+          
             <form onSubmit={HandleSubmit}>
               <div className="config-toggles">
                 <Grid.Container justify="space-evenly">
@@ -203,7 +203,7 @@ function InstagramConfig() {
                 </Button>
               </div>
             </form>
-          </Card>
+          
         </div>
       )}
     </>
