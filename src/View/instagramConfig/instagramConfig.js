@@ -39,7 +39,6 @@ function InstagramConfig() {
   }, []);
 
   useEffect(() => {
-    console.log(currentAccount);
     setAllowLike(
       currentAccount.allow_like === null ? false : currentAccount.allow_like
     );
