@@ -8,6 +8,11 @@ export const BotCreatePath = [
   "https://instaassistant-api.herokuapp.com/users/",
   "/accounts",
 ];
+
+export const AccountPatchPath = "http://localhost:3000/accounts/";
+
+export const AccountShowPath = "http://localhost:3000/accounts/";
+
 export const BotIndexPath = "https://instaassistant-api.herokuapp.com/accounts";
 export const BotDeletePAth =
   "https://instaassistant-api.herokuapp.com/accounts/"; // Delete bot based on bot_id

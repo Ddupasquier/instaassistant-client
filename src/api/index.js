@@ -9,6 +9,8 @@ import {
   BotCreatePath,
   BotIndexPath,
   TaskCreatePath,
+  AccountPatchPath,
+  AccountShowPath,
 } from "./endpoints";
 
 // ----------- Start User
@@ -75,6 +77,19 @@ export const CreateBot = async (formData) => {
   return await response.json();
 };
 
+export const PatchAccount = async (formData, account_id) => {
+  const response = await fetch(AccountPatchPath + account_id, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: localStorage.getItem("token"),
+    },
+    body: JSON.stringify(formData),
+  });
+  return await response.json();
+};
+
 export const indexAccounts = async () => {
   const response = await fetch(BotIndexPath, {
     method: "GET",
@@ -87,8 +102,15 @@ export const indexAccounts = async () => {
   return await response.json();
 };
 
-export const GetBotInfo = async () => {
-  const response = await fetch();
+export const ShowAccount = async (id) => {
+  const response = await fetch(AccountShowPath + id, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: localStorage.getItem("token"),
+    },
+  });
   return await response.json();
 };
 

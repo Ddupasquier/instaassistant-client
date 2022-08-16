@@ -1,95 +1,71 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 //API LAYER
-import { FetchInstagramTaskTypes, PostTask } from '../../api';
+import { FetchInstagramTaskTypes } from '../../api';
 //STYLES
-import { Button, Card, Text, Grid, Progress, Table } from '@nextui-org/react';
+import { Button, Card, Text, Grid, Progress, Table, Loading } from '@nextui-org/react';
 import './scss/account-styles.css';
 
 import { ChartPlaceHold } from '../../Components/ChartPlaceHold';
-import MetricModal from './MetricModal';
 import TaskModal from './TaskModal';
 import { UserIcon } from '../../Components/UserIcon';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import InteractionTable from './InteractionTable';
+import { GetAccounts } from '../../redux/AccountsStore/Actions';
+import NewTaskFrom from './NewTaskForm';
 
 
 function Account() {
   //Route Handle
   const { account_id } = useParams()
   const [account ,setAccount] = useState({})
-  const { Accounts :accounts, Loading :loading } = useSelector((state) => state.accountsStore )
-
   const [active, setActive] = useState(true)
+  
+  // accounts handling / mapping
+  const { Accounts :accounts, Loading :loading } = useSelector((state) => state.accountsStore )
+  const dispatch = useDispatch()
+  const [refetch,  setRefetch] = useState(null)
+  const [refetchedAccounts, setRefetchedAccounts] = useState(null)
 
-  // form control
+  const MapAccounts = () => {
+    accounts.map((account) => {account.id == account_id && setAccount(account)})
+  }
+  
+  useEffect(() => {
+    if (accounts.length === 0) {
+      setRefetch(true)
+      accounts.length > 0 && dispatch(GetAccounts()).then(() => setRefetch(false)).then(() => MapAccounts())
+    } else {
+      setRefetch(false)
+      MapAccounts()
+    }
+  }, []);
+  
+  // ------ task form and module handlers ------
   const [tasks, setTasks] = useState();
   const [tasksLoaded, setTasksLoaded] = useState();
   const [tasksSelected, setTasksSelected] = useState(false);
   const [selected, setSelected] = useState('');
   const [taskVisible, setTaskVisible] = useState(false);
-  const [metricVisible, setMetricVisible] = useState(false);
-
-  const metricHandler = () => setMetricVisible(true);
-  const closeMetricHandler = () => {
-    setMetricVisible(false);
-  };
-
   const taskHandler = () => setTaskVisible(true);
   const closeTaskHandler = () => {
     setTaskVisible(false);
   };
-
-  useEffect(() => {
-    accounts.map((account) => {account.id == account_id && setAccount(account)})
-  }, []);
-
+  
   useEffect(() => {
     FetchInstagramTaskTypes()
       .then((data) => setTasks(data))
       .then(() => setTasksLoaded(true));
   }, []);
 
-  const logText = [
-    'Woah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler textWoah Lots and lots of filler text',
-  ];
-
   const handleChange = (e) => {
     setSelected(e.target.value);
     setTasksSelected(true);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    let form = e.currentTarget;
-    let formFields = new FormData(form);
-    let formDataObject = Object.fromEntries(formFields.entries());
-    // Format the plain form data as JSON
-    let formDataJsonString = JSON.stringify(formDataObject);
-    console.log(formDataJsonString);
-    PostTask(formDataJsonString)
-
-    // * let fetchOptions = {
-    //   //HTTP method set to POST.
-    //   method: 'POST',
-    //   //Set the headers that specify you're sending a JSON body request and accepting JSON response
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     Accept: 'application/json',
-    //   },
-    //   // POST request body as JSON string.
-    //   body: formDataJsonString,
-    // };
-
-    //! send enumerator change backend to accept index
-    //Call the `postFormFieldsJson()` function
-    //let responseData = await postFormFieldsAsJson({ url, formFields });
-    /*{
-	    "name": "activate",
-	    "bot_id": 2,
-	    "target": "postmalone",
-	    "arguments": "N/A"
-    }*/
-  };
+  if (refetch === true) {
+      return(<Loading size='xl'/>)
+  }
 
   return (
     <div className="account-container">
@@ -222,45 +198,11 @@ function Account() {
               <Card.Header>Interaction Limits</Card.Header>
               <Card.Divider />
               <Card.Body>
-              <Table shadow={false}
-      aria-label="Example table with static content"
-      css={{
-        height: "auto",
-        minWidth: "100%",
-      }}
-    >
-      <Table.Header>
-        <Table.Column>Interaction</Table.Column>
-        <Table.Column>Sent</Table.Column>
-        <Table.Column>Limit</Table.Column>
-      </Table.Header>
-      <Table.Body>
-        <Table.Row key="1">
-          <Table.Cell>Follow</Table.Cell>
-          <Table.Cell>750</Table.Cell>
-          <Table.Cell>1000</Table.Cell>
-        </Table.Row>
-        <Table.Row key="2">
-          <Table.Cell>Like</Table.Cell>
-          <Table.Cell>623</Table.Cell>
-          <Table.Cell>1000</Table.Cell>
-        </Table.Row>
-        <Table.Row key="3">
-          <Table.Cell>Comment</Table.Cell>
-          <Table.Cell>245</Table.Cell>
-          <Table.Cell>1000</Table.Cell>
-        </Table.Row>
-        <Table.Row key="4">
-          <Table.Cell>Message</Table.Cell>
-          <Table.Cell>999</Table.Cell>
-          <Table.Cell>1000</Table.Cell>
-        </Table.Row>
-      </Table.Body>
-    </Table>
+              <InteractionTable />
               </Card.Body>
             </Card>
           </Grid>
-          <Grid sm={4} xs={12}>
+          <Grid sm={8} xs={12}>
             <Card
               css={{
                 minHeight: '200px',
@@ -274,31 +216,6 @@ function Account() {
               <Card.Divider />
               <Card.Body>
                 <ChartPlaceHold />
-              </Card.Body>
-              <Card.Divider />
-              {/* <Card.Footer css={{ justifyContent: 'center' }}>
-                <Button
-                  onClick={() => setMetricVisible(true)}
-                  color="secondary"
-                  rounded
-                >
-                  Expand
-                </Button>
-              </Card.Footer> */}
-            </Card>
-          </Grid>
-          <Grid sm={4} xs={12}>
-            <Card
-              css={{
-                minHeight: '400px',
-                backdropFilter: 'saturate(200%) blur(8px)',
-                background: 'rgba(255, 255, 255, 0.2)',
-              }}
-            >
-              <Card.Header>Post Scheduling</Card.Header>
-              <Card.Divider />
-              <Card.Body>
-                <Text h3>Coming Soon!</Text>
               </Card.Body>
             </Card>
           </Grid>
@@ -323,7 +240,6 @@ function Account() {
                   </Button>
                   <h3>Activity Log:</h3>
                   <br />
-                  {logText[0]}
                 </div>
               </div>
             </Card.Body>
@@ -334,17 +250,12 @@ function Account() {
         taskHandler={taskHandler}
         closeTaskHandler={closeTaskHandler}
         taskVisible={taskVisible}
-        handleSubmit={handleSubmit}
         handleChange={handleChange}
         selected={selected}
         tasksSelected={tasksSelected}
         tasks={tasks}
         tasksLoaded={tasksLoaded}
-      />
-      <MetricModal
-        metricHandler={metricHandler}
-        closeMetricHandler={closeMetricHandler}
-        metricVisible={metricVisible}
+        account_id={account_id}
       />
     </div>
   );

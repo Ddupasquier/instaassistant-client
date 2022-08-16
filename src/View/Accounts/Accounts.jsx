@@ -24,14 +24,8 @@ function Accounts() {
     setNewAccountVisible(false);
   };
 
-  // const [listView, setListView] = useState(false);
-  // console.log(listView)
-
   useEffect(() => {
     dispatch(GetAccounts())
-    // indexAccounts()
-    //   .then((data) => setAccounts(data))
-    //   .then(() => setAccountsLoaded(true));
   }, []);
 
   console.log(accounts)
@@ -72,7 +66,7 @@ function Accounts() {
                 </div>
                 <div className="instagram-cards">
                   {loading ?
-                    (<Loading/>) : accounts.map((account) => (<AccountCardNext path={"/account/" + account.id} username={account.username} />))}
+                    (<Loading/>) : accounts.map((account) => (<AccountCardNext path={"/instagram/account/" + account.id} username={account.username} />))}
                 </div>
               </div>
             </Collapse>
