@@ -9,6 +9,7 @@ import NewAccountCardButtonNext from '../../Components/AccountCardNext/NewAccoun
 import { useDispatch, useSelector } from 'react-redux';
 
 import { GetAccounts } from '../../redux/AccountsStore/Actions';
+import AccountsListItem from './AccountsListItem';
 
 function Accounts() {
   const { Accounts: accounts, Loading: loading } = useSelector(
@@ -35,12 +36,7 @@ function Accounts() {
             <Collapse title="Instagram" expanded>
               <div className="instagram-container">
                 <div className="options">
-                  <Button
-                    type="button"
-                    size="sm"
-                    color="warning"
-                    rounded
-                  >
+                  <Button type="button" size="sm" color="warning" rounded>
                     List View
                   </Button>
                   <Button
@@ -60,9 +56,26 @@ function Accounts() {
                     size="xl"
                   ></Input>
                 </div>
-                <div className="instagram-cards">
-                  {loading ?
-                    (<Loading/>) : accounts.map((account) => (<AccountCardNext path={"/instagram/account/" + account.id} username={account.username} />))}
+                <div
+                  className="instagram-cards"
+                  style={{
+                    minHeight: '20rem',
+                    maxHeight: '40rem',
+                    border: 'red solid',
+                  }}
+                >
+                  {loading ? (
+                    <Loading style={{ margin: 'auto' }} />
+                  ) : (
+                    accounts.map((account, index) => (
+                      <AccountCardNext
+                        path={'/instagram/account/' + account.id}
+                        username={account.username}
+                        key={index}
+                      />
+                    ))
+                  )}
+                  <NewAccountCardButtonNext />
                 </div>
               </div>
             </Collapse>

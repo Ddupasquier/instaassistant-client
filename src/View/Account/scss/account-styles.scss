@@ -89,4 +89,27 @@
       }
     }
   }
+
+  .config {
+    .config-button {
+      position: relative;
+      width: 100%;
+      height: 3rem;
+      background: purple;
+      text-align: center;
+      cursor: pointer;
+    }
+    .config-main {
+      .config-toggles {
+        display: flex;
+        justify-content: center;
+        position: relative;
+        margin: auto;
+        width: 100%;
+        section {
+          text-align: center;
+        }
+      }
+    }
+  }
 }

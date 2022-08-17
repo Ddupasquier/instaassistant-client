@@ -1,42 +1,35 @@
-import React, { useEffect, useState } from "react";
-import {
-  Button,
-  Textarea,
-  Switch,
-  Grid,
-  Card,
-  Loading,
-} from "@nextui-org/react";
-import "./scss/instaconfig-styles.css";
-import { Link, useParams } from "react-router-dom";
-import { UserIcon } from "../../Components/UserIcon";
-import { useSelector } from "react-redux";
-import ConfigTextArea from "./ConfigTextArea";
-import { PatchAccount, ShowAccount } from "../../api";
+import React, { useState, useEffect } from 'react';
+import { Switch, Grid, Loading, Button } from '@nextui-org/react';
+import ConfigTextArea from './ConfigTextArea';
+import { PatchAccount, ShowAccount } from '../../../api';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams, Link } from 'react-router-dom';
 
-function InstagramConfig() {
+function ConfigPopup() {
   const { account_id } = useParams();
   const { Accounts: accounts, Loading: loading } = useSelector(
     (state) => state.accountsStore
   );
   const [currentAccount, setCurrentAccount] = useState({});
+  const [configShown, setConfigShown] = useState(false);
 
   const [lookalike, setLookalike] = useState();
   const [whiteList, setWhiteList] = useState();
   const [blackList, setBlackList] = useState();
   const [comments, setComments] = useState();
   const [messages, setMessages] = useState();
-
   const [allowLike, setAllowLike] = useState();
   const [allowFollow, setAllowFollow] = useState();
   const [allowComment, setAllowComment] = useState();
   const [allowMessage, setAllowMessage] = useState();
 
+  const toggleConfigShown = () => setConfigShown(!configShown);
+
   useEffect(() => {
     ShowAccount(account_id).then((data) => {
       setCurrentAccount(data);
     });
-  }, []);
+  }, [account_id]);
 
   useEffect(() => {
     setAllowLike(
@@ -54,28 +47,28 @@ function InstagramConfig() {
       currentAccount.allow_dm === null ? false : currentAccount.allow_dm
     );
     setLookalike(
-      currentAccount.look_alike === null ? "" : currentAccount.look_alike
+      currentAccount.look_alike === null ? '' : currentAccount.look_alike
     );
     setWhiteList(
-      currentAccount.white_list === null ? "" : currentAccount.white_list
+      currentAccount.white_list === null ? '' : currentAccount.white_list
     );
     setBlackList(
-      currentAccount.black_list === null ? "" : currentAccount.black_list
+      currentAccount.black_list === null ? '' : currentAccount.black_list
     );
     setComments(
-      currentAccount.comments === null ? "" : currentAccount.comments
+      currentAccount.comments === null ? '' : currentAccount.comments
     );
     setMessages(
-      currentAccount.messages === null ? "" : currentAccount.messages
+      currentAccount.messages === null ? '' : currentAccount.messages
     );
   }, [currentAccount]);
 
   const HandleSubmit = (e) => {
     e.preventDefault();
-    console.log("Regular submit");
+    console.log('Regular submit');
     const body = {
       allow_like: allowLike,
-      platform: "instagram",
+      platform: 'instagram',
       allow_comment: allowComment,
       allow_follow: allowFollow,
       allow_dm: allowMessage,
@@ -90,21 +83,32 @@ function InstagramConfig() {
     console.log(body);
   };
 
+  const shownStyle = {
+    bottom: '3rem',
+    alignSelf: 'center',
+    width: '80%',
+    background: 'red',
+    zIndex: '1000',
+  };
+
+  const hiddenStyle = {
+    bottom: '0',
+    alignSelf: 'center',
+    width: '80%',
+    background: 'red',
+    zIndex: '1000',
+  };
+
   return (
-    <>
-      {!currentAccount === {} ? (
-        <Loading size="xl" />
-      ) : (
-        <div className="insta-config">
-          <div className="config-user">
-            <h2>Configuration</h2>
-            <UserIcon
-              size="xl"
-              src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
-              name={"@" + currentAccount.username}
-            />
-          </div>
-          
+    <div className="config" style={configShown ? shownStyle : hiddenStyle}>
+      <div className="config-button" onClick={() => toggleConfigShown()}>
+        Configuration
+      </div>
+      <>
+        {!currentAccount === {} ? (
+          <Loading size="xl" />
+        ) : (
+          <div className="config-main">
             <form onSubmit={HandleSubmit}>
               <div className="config-toggles">
                 <Grid.Container justify="space-evenly">
@@ -159,7 +163,7 @@ function InstagramConfig() {
                 </Grid.Container>
               </div>
               <br />
-              <div className="config-textareas">
+              <div>
                 <Grid.Container gap={2.5}>
                   <ConfigTextArea
                     label="Look Alike"
@@ -188,13 +192,13 @@ function InstagramConfig() {
                   />
                 </Grid.Container>
               </div>
-              <div className="config-buttons">
+              <div>
                 <Button type="submit" color="secondary" size="md" rounded>
                   Save
                 </Button>
                 <Button type="button" color="secondary" size="md" rounded>
                   <Link
-                    to={"/instagram/account/" + account_id}
+                    to={'/instagram/account/' + account_id}
                     className="button"
                   >
                     Cancel
@@ -202,11 +206,11 @@ function InstagramConfig() {
                 </Button>
               </div>
             </form>
-          
-        </div>
-      )}
-    </>
+          </div>
+        )}
+      </>
+    </div>
   );
 }
 
-export default InstagramConfig;
+export default ConfigPopup;

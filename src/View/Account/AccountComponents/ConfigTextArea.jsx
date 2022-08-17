@@ -3,7 +3,7 @@ import React from "react";
 
 const ConfigTextArea = ({ label, value, set }) => {
   return (
-    <Grid sm={6} xs={12}>
+    <Grid sm={4} xs={4}>
       <Textarea
         width="95%"
         bordered

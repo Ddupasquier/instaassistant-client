@@ -94,4 +94,22 @@
   height: -moz-fit-content;
   height: fit-content;
 }
+.account-container .config .config-button {
+  position: relative;
+  width: 100%;
+  height: 3rem;
+  background: purple;
+  text-align: center;
+  cursor: pointer;
+}
+.account-container .config .config-main .config-toggles {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin: auto;
+  width: 100%;
+}
+.account-container .config .config-main .config-toggles section {
+  text-align: center;
+}
 /*# sourceMappingURL=account-styles.css.map */

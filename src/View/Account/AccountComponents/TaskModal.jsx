@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal, Textarea, Switch, Input, Button, Text } from '@nextui-org/react';
-import { PostTask } from '../../api';
+import { PostTask } from '../../../api';
 import NewTaskFrom from './NewTaskForm';
 
 const TaskModal = ({
