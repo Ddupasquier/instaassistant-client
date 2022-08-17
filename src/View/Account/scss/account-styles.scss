@@ -91,25 +91,27 @@
   }
 
   .config {
-    .config-button {
-      position: relative;
-      width: 100%;
+    // padding: 1rem;
+    .config-open {
       height: 3rem;
       background: purple;
+      border-radius: 0.5rem 0.5rem 0 0;
       text-align: center;
       cursor: pointer;
     }
     .config-main {
+      width: 100%;
       .config-toggles {
-        display: flex;
-        justify-content: center;
-        position: relative;
-        margin: auto;
-        width: 100%;
         section {
           text-align: center;
         }
       }
+    }
+    .config-buttons {
+      display: flex;
+      justify-content: space-evenly;
+      margin: 1rem;
+      width: 100%;
     }
   }
 }

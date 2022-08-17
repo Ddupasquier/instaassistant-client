@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Switch, Grid, Loading, Button } from '@nextui-org/react';
 import ConfigTextArea from './ConfigTextArea';
 import { PatchAccount, ShowAccount } from '../../../api';
@@ -6,6 +6,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
 
 function ConfigPopup() {
+  const [divHeight, setDivHeight] = useState(0);
+
+  const ref = useRef(null);
+
+  useEffect(() => {
+    setDivHeight(ref.current.offsetHeight);
+    console.log(divHeight);
+  }, [divHeight]);
+
   const { account_id } = useParams();
   const { Accounts: accounts, Loading: loading } = useSelector(
     (state) => state.accountsStore
@@ -84,24 +93,33 @@ function ConfigPopup() {
   };
 
   const shownStyle = {
-    bottom: '3rem',
+    position: 'sticky',
+    bottom: '0',
     alignSelf: 'center',
-    width: '80%',
-    background: 'red',
+    width: '95%',
+    background: 'black',
+    borderRadius: '.5rem .5rem 0 0',
     zIndex: '1000',
+    transition: 'all .8s ease-in-out',
   };
 
   const hiddenStyle = {
-    bottom: '0',
+    position: 'sticky',
+    bottom: -(divHeight - 32) + 'px',
     alignSelf: 'center',
-    width: '80%',
-    background: 'red',
+    width: '95%',
+    background: 'black',
     zIndex: '1000',
+    transition: 'all .8s ease-in-out',
   };
 
   return (
-    <div className="config" style={configShown ? shownStyle : hiddenStyle}>
-      <div className="config-button" onClick={() => toggleConfigShown()}>
+    <div
+      className="config"
+      style={configShown ? shownStyle : hiddenStyle}
+      ref={ref}
+    >
+      <div className="config-open" onClick={() => toggleConfigShown()}>
         Configuration
       </div>
       <>
@@ -111,8 +129,10 @@ function ConfigPopup() {
           <div className="config-main">
             <form onSubmit={HandleSubmit}>
               <div className="config-toggles">
-                <Grid.Container justify="space-evenly">
-                  <Grid sm={2} xs={5}>
+                <Grid.Container
+                  justify="center"
+                >
+                  <Grid sm={2} xs={2}>
                     <section>
                       <label>Allow Likes</label>
                       <br />
@@ -124,7 +144,7 @@ function ConfigPopup() {
                       />
                     </section>
                   </Grid>
-                  <Grid sm={2} xs={5}>
+                  <Grid sm={2} xs={2}>
                     <section>
                       <label>Allow Comment</label>
                       <br />
@@ -136,7 +156,7 @@ function ConfigPopup() {
                       />
                     </section>
                   </Grid>
-                  <Grid sm={2} xs={5}>
+                  <Grid sm={2} xs={2}>
                     <section>
                       <label>Allow Follow</label>
                       <br />
@@ -148,7 +168,7 @@ function ConfigPopup() {
                       />
                     </section>
                   </Grid>
-                  <Grid sm={2} xs={5}>
+                  <Grid sm={2} xs={2}>
                     <section>
                       <label>Allow Message</label>
                       <br />
@@ -164,7 +184,7 @@ function ConfigPopup() {
               </div>
               <br />
               <div>
-                <Grid.Container gap={2.5}>
+                <Grid.Container gap={1}>
                   <ConfigTextArea
                     label="Look Alike"
                     value={lookalike}
@@ -192,7 +212,7 @@ function ConfigPopup() {
                   />
                 </Grid.Container>
               </div>
-              <div>
+              <div className="config-buttons">
                 <Button type="submit" color="secondary" size="md" rounded>
                   Save
                 </Button>

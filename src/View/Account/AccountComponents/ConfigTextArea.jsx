@@ -3,9 +3,9 @@ import React from "react";
 
 const ConfigTextArea = ({ label, value, set }) => {
   return (
-    <Grid sm={4} xs={4}>
+    <Grid md={3} sm={4} xs={6}>
       <Textarea
-        width="95%"
+        width="100%"
         bordered
         status="default"
         key={label}
@@ -14,8 +14,6 @@ const ConfigTextArea = ({ label, value, set }) => {
         legend={label}
         onChange={(e) => set(e.target.value)}
         css={{
-          backdropFilter: "saturate(200%) blur(8px)",
-          background: "rgba(255, 255, 255, 0.2)",
           fontWeight: "bold",
         }}
         value={value}
