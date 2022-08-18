@@ -10,7 +10,6 @@ import './scss/account-styles.css';
 
 // * ------- COMPONENTS ------- *
 import { UserIcon } from '../../Components/UserIcon';
-import InteractionTable from './InteractionTable';
 import TaskModalNew from './TaskModalNew';
 import Utilization from './AccountComponents/Utilization';
 import Interactions from './AccountComponents/Interactions';
