@@ -1,4 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,400;0,600;1,100&family=Roboto:wght@300;400&display=swap');
+// * GLOBAL COLORS
+$color-blue: rgba(0, 225, 255)
+$color-green: rgba(0, 225, 0)
+$color-red: rgba(255, 0, 0)
+$color-yellow: rgba(255, 255, 0)
+$color-purple: rgba(255, 0, 225)
+$color-white: rgba(255, 255, 255)
+$color-black: rgba(0, 0, 0)
+$color-grey: rgba(128, 128, 128)
+$color-dark-grey: rgba(64, 64, 64)
+$color-dark-black: rgba(0, 0, 0, 0.8)
+$color-dark-white: rgba(255, 255, 255, 0.8)
+$color-dark-blue: rgba(0, 0, 255, 0.8)
+$color-dark-green: rgba(0, 255, 0, 0.8)
+$color-dark-red: rgba(255, 0, 0, 0.8)
+$color-dark-yellow: rgba(255, 255, 0, 0.8)
+$color-dark-purple: rgba(255, 0, 225, 0.8)
+$color-dark-orange: rgba(255, 165, 0, 0.8)
+
+
 
 body {
   font-family: Roboto;

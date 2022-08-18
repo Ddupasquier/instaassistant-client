@@ -59,9 +59,7 @@ function Accounts() {
                 <div
                   className="instagram-cards"
                   style={{
-                    minHeight: '20rem',
-                    maxHeight: '40rem',
-                    border: 'red solid',
+                    minHeight: '15rem',
                   }}
                 >
                   {loading ? (
