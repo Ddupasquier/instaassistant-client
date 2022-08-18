@@ -57,8 +57,8 @@ function AppRoutes() {
             <Route path="/next" element={<NextUI />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
-            {/* <Route path="/task" element={<Task />} />
-            <Route path="/tasks" element={<Tasks />} /> */}
+            <Route path="/task" element={<Task />} />
+            <Route path="/tasks" element={<Tasks />} />
           </Route>
         </Routes>
       </Provider>

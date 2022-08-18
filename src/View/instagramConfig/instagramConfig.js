@@ -104,105 +104,104 @@ function InstagramConfig() {
               name={"@" + currentAccount.username}
             />
           </div>
-          
-            <form onSubmit={HandleSubmit}>
-              <div className="config-toggles">
-                <Grid.Container justify="space-evenly">
-                  <Grid sm={2} xs={5}>
-                    <section>
-                      <label>Allow Likes</label>
-                      <br />
-                      <Switch
-                        label="Allow Likes"
-                        checked={allowLike}
-                        value={allowLike}
-                        onChange={(e) => setAllowLike(e.target.checked)}
-                      />
-                    </section>
-                  </Grid>
-                  <Grid sm={2} xs={5}>
-                    <section>
-                      <label>Allow Comment</label>
-                      <br />
-                      <Switch
-                        label="Allow Comment"
-                        checked={allowComment}
-                        value={allowComment}
-                        onChange={(e) => setAllowComment(e.target.checked)}
-                      />
-                    </section>
-                  </Grid>
-                  <Grid sm={2} xs={5}>
-                    <section>
-                      <label>Allow Follow</label>
-                      <br />
-                      <Switch
-                        label="Allow Follow"
-                        checked={allowFollow}
-                        value={allowFollow}
-                        onChange={(e) => setAllowFollow(e.target.checked)}
-                      />
-                    </section>
-                  </Grid>
-                  <Grid sm={2} xs={5}>
-                    <section>
-                      <label>Allow Message</label>
-                      <br />
-                      <Switch
-                        label="Allow Message"
-                        checked={allowMessage}
-                        value={allowMessage}
-                        onChange={(e) => setAllowMessage(e.target.checked)}
-                      />
-                    </section>
-                  </Grid>
-                </Grid.Container>
-              </div>
-              <br />
-              <div className="config-textareas">
-                <Grid.Container gap={2.5}>
-                  <ConfigTextArea
-                    label="Look Alike"
-                    value={lookalike}
-                    set={setLookalike}
-                  />
-                  <ConfigTextArea
-                    label="White List"
-                    value={whiteList}
-                    set={setWhiteList}
-                  />
-                  <ConfigTextArea
-                    label="Black List"
-                    value={blackList}
-                    set={setBlackList}
-                  />
-                  <ConfigTextArea
-                    label="Comments"
-                    value={comments}
-                    set={setComments}
-                  />
-                  <ConfigTextArea
-                    label="Direct Messages"
-                    value={messages}
-                    set={setMessages}
-                  />
-                </Grid.Container>
-              </div>
-              <div className="config-buttons">
-                <Button type="submit" color="secondary" size="md" rounded>
-                  Save
-                </Button>
-                <Button type="button" color="secondary" size="md" rounded>
-                  <Link
-                    to={"/instagram/account/" + account_id}
-                    className="button"
-                  >
-                    Cancel
-                  </Link>
-                </Button>
-              </div>
-            </form>
-          
+
+          <form onSubmit={HandleSubmit}>
+            <div className="config-toggles">
+              <Grid.Container justify="space-evenly">
+                <Grid sm={2} xs={5}>
+                  <section>
+                    <label>Allow Likes</label>
+                    <br />
+                    <Switch
+                      label="Allow Likes"
+                      checked={allowLike}
+                      value={allowLike}
+                      onChange={(e) => setAllowLike(e.target.checked)}
+                    />
+                  </section>
+                </Grid>
+                <Grid sm={2} xs={5}>
+                  <section>
+                    <label>Allow Comment</label>
+                    <br />
+                    <Switch
+                      label="Allow Comment"
+                      checked={allowComment}
+                      value={allowComment}
+                      onChange={(e) => setAllowComment(e.target.checked)}
+                    />
+                  </section>
+                </Grid>
+                <Grid sm={2} xs={5}>
+                  <section>
+                    <label>Allow Follow</label>
+                    <br />
+                    <Switch
+                      label="Allow Follow"
+                      checked={allowFollow}
+                      value={allowFollow}
+                      onChange={(e) => setAllowFollow(e.target.checked)}
+                    />
+                  </section>
+                </Grid>
+                <Grid sm={2} xs={5}>
+                  <section>
+                    <label>Allow Message</label>
+                    <br />
+                    <Switch
+                      label="Allow Message"
+                      checked={allowMessage}
+                      value={allowMessage}
+                      onChange={(e) => setAllowMessage(e.target.checked)}
+                    />
+                  </section>
+                </Grid>
+              </Grid.Container>
+            </div>
+            <br />
+            <div className="config-textareas">
+              <Grid.Container gap={2.5}>
+                <ConfigTextArea
+                  label="Look Alike"
+                  value={lookalike}
+                  set={setLookalike}
+                />
+                <ConfigTextArea
+                  label="White List"
+                  value={whiteList}
+                  set={setWhiteList}
+                />
+                <ConfigTextArea
+                  label="Black List"
+                  value={blackList}
+                  set={setBlackList}
+                />
+                <ConfigTextArea
+                  label="Comments"
+                  value={comments}
+                  set={setComments}
+                />
+                <ConfigTextArea
+                  label="Direct Messages"
+                  value={messages}
+                  set={setMessages}
+                />
+              </Grid.Container>
+            </div>
+            <div className="config-buttons">
+              <Button type="submit" color="secondary" size="md" rounded>
+                Save
+              </Button>
+              <Button type="button" color="secondary" size="md" rounded>
+                <Link
+                  to={"/instagram/account/" + account_id}
+                  className="button"
+                >
+                  Cancel
+                </Link>
+              </Button>
+            </div>
+          </form>
         </div>
       )}
     </>

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Modal, Textarea, Switch, Input, Button, Text } from '@nextui-org/react';
 import { PostTask } from '../../api';
-import NewTaskFrom from './NewTaskForm';
 
 const TaskModal = ({
   closeTaskHandler,
@@ -52,8 +51,7 @@ const TaskModal = ({
         open={taskVisible}
         onClose={closeTaskHandler}
       >
-        <NewTaskFrom />
-        {/* <Modal.Header>
+        <Modal.Header>
           <Text id="modal-title" size={18}>
             Start a
             <Text b size={18}>
@@ -141,7 +139,7 @@ const TaskModal = ({
               RUN
             </Button>
           </Modal.Footer>
-        </form> */}
+        </form>
       </Modal>
     </>
   );

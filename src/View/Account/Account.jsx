@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 //API LAYER
-import { FetchInstagramTaskTypes } from '../../api';
+import { FetchInstagramTaskTypes, ShowAccount } from '../../api';
 //STYLES
 import { Button, Card, Text, Grid, Progress, Table, Loading } from '@nextui-org/react';
 import './scss/account-styles.css';
@@ -9,36 +9,65 @@ import './scss/account-styles.css';
 import { ChartPlaceHold } from '../../Components/ChartPlaceHold';
 import TaskModal from './TaskModal';
 import { UserIcon } from '../../Components/UserIcon';
-import { useDispatch, useSelector } from 'react-redux';
 import InteractionTable from './InteractionTable';
-import { GetAccounts } from '../../redux/AccountsStore/Actions';
-import NewTaskFrom from './NewTaskForm';
+import TaskModalNew from './TaskModalNew';
 
 function Account() {
   //Route Handle
   const { account_id } = useParams()
-  const [account ,setAccount] = useState({})
+  const [account, setAccount] = useState({})
   const [active, setActive] = useState(true)
   
   // accounts handling / mapping
-  const { Accounts :accounts, Loading :loading } = useSelector((state) => state.accountsStore )
-  const dispatch = useDispatch()
-  const [refetch,  setRefetch] = useState(null)
-  const [refetchedAccounts, setRefetchedAccounts] = useState(null)
+  const [currentAccount, setCurrentAccount] = useState({});
+  const [lookalike, setLookalike] = useState();
+  const [whiteList, setWhiteList] = useState();
+  const [blackList, setBlackList] = useState();
+  const [comments, setComments] = useState();
+  const [messages, setMessages] = useState();
 
-  const MapAccounts = () => {
-    accounts.map((account) => {account.id == account_id && setAccount(account)})
-  }
-  
+  const [allowLike, setAllowLike] = useState();
+  const [allowFollow, setAllowFollow] = useState();
+  const [allowComment, setAllowComment] = useState();
+  const [allowMessage, setAllowMessage] = useState();
+
   useEffect(() => {
-    if (accounts.length === 0) {
-      setRefetch(true)
-      accounts.length > 0 && dispatch(GetAccounts()).then(() => setRefetch(false)).then(() => MapAccounts())
-    } else {
-      setRefetch(false)
-      MapAccounts()
-    }
+    ShowAccount(account_id).then((data) => {
+      setCurrentAccount(data);
+    });
   }, []);
+
+  useEffect(() => {
+    setAllowLike(
+      currentAccount.allow_like === null ? false : currentAccount.allow_like
+    );
+    setAllowComment(
+      currentAccount.allow_comment === null
+        ? false
+        : currentAccount.allow_comment
+    );
+    setAllowFollow(
+      currentAccount.allow_follow === null ? false : currentAccount.allow_follow
+    );
+    setAllowMessage(
+      currentAccount.allow_dm === null ? false : currentAccount.allow_dm
+    );
+    setLookalike(
+      currentAccount.look_alike === null ? "" : currentAccount.look_alike
+    );
+    setWhiteList(
+      currentAccount.white_list === null ? "" : currentAccount.white_list
+    );
+    setBlackList(
+      currentAccount.black_list === null ? "" : currentAccount.black_list
+    );
+    setComments(
+      currentAccount.comments === null ? "" : currentAccount.comments
+    );
+    setMessages(
+      currentAccount.messages === null ? "" : currentAccount.messages
+    );
+  }, [currentAccount]);
   
   // ------ task form and module handlers ------
   const [tasks, setTasks] = useState();
@@ -62,9 +91,6 @@ function Account() {
     setTasksSelected(true);
   };
 
-  if (refetch === true) {
-      return(<Loading size='xl'/>)
-  }
 
   return (
     <div className="account-container">
@@ -84,7 +110,7 @@ function Account() {
           New task
         </Button>
         <Button type="button" color="secondary" size="md" rounded>
-          <Link to={'/config/' + account.id} className="button">
+          <Link to={'/config/' + account_id} className="button">
             Edit Rules
           </Link>
         </Button>
@@ -94,7 +120,7 @@ function Account() {
         <section>
           <UserIcon
             src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
-            name={`@${account.username}`}
+            name={`@${currentAccount.username}`}
             size="xl"
           />
         </section>
@@ -247,7 +273,7 @@ function Account() {
           </Card>
         </Grid.Container>
       </div>
-      <TaskModal
+      <TaskModalNew
         taskHandler={taskHandler}
         closeTaskHandler={closeTaskHandler}
         taskVisible={taskVisible}
