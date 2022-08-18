@@ -81,12 +81,6 @@ function ConfigPopup() {
     textValues.forEach((value, index) => {
       textSets[index](value);
     });
-
-    setLookalike(!currentAccount.look_alike ? '' : currentAccount.look_alike);
-    setWhiteList(!currentAccount.white_list ? '' : currentAccount.white_list);
-    setBlackList(!currentAccount.black_list ? '' : currentAccount.black_list);
-    setComments(!currentAccount.comments ? '' : currentAccount.comments);
-    setMessages(!currentAccount.messages ? '' : currentAccount.messages);
   }, [currentAccount]);
 
   const HandleSubmit = (e) => {
