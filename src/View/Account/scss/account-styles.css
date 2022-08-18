@@ -95,10 +95,14 @@
   height: fit-content;
 }
 .account-container .config .config-open {
-  height: 3rem;
-  background: purple;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  background: rgb(245, 165, 36);
   border-radius: 0.5rem 0.5rem 0 0;
-  text-align: center;
+  color: black;
+  font-size: 1.2rem;
   cursor: pointer;
 }
 .account-container .config .config-main {

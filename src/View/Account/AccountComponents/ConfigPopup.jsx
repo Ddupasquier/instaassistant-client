@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import colors from './../../../GlobalStyles/global-styles.css';
 import { Switch, Grid, Loading, Button } from '@nextui-org/react';
 import ConfigTextArea from './ConfigTextArea';
 import { PatchAccount, ShowAccount } from '../../../api';
@@ -105,7 +106,7 @@ function ConfigPopup() {
 
   const hiddenStyle = {
     position: 'sticky',
-    bottom: -(divHeight - 32) + 'px',
+    bottom: -(divHeight - 30) + 'px',
     alignSelf: 'center',
     width: '95%',
     background: 'black',
