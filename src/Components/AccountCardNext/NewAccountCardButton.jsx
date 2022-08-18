@@ -1,10 +1,10 @@
 import React from 'react';
 import { GoPlus } from 'react-icons/go';
 
-function NewAccountCardButton({ newAccountHandler }) {
+function NewAccountCardButton({ handler }) {
   return (
     <button
-      onClick={newAccountHandler}
+      onClick={handler}
       style={{
         display: 'flex',
         alignItems: 'center',

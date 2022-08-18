@@ -5,12 +5,7 @@ import { Link, useParams } from 'react-router-dom';
 import { FetchInstagramTaskTypes } from '../../api';
 
 // * ------- STYLES ------- *
-import {
-  Button,
-  Card,
-  Grid,
-  Loading,
-} from '@nextui-org/react';
+import { Button, Card, Grid, Loading } from '@nextui-org/react';
 import './scss/account-styles.css';
 
 // * ------- COMPONENTS ------- *
@@ -28,8 +23,6 @@ import NewTaskFrom from './AccountComponents/NewTaskForm';
 import { useDispatch, useSelector } from 'react-redux';
 import { GetAccounts } from '../../redux/AccountsStore/Actions';
 import ConfigPopup from './AccountComponents/ConfigPopup';
-
-
 
 function Account() {
   //Route Handle
@@ -93,11 +86,11 @@ function Account() {
   return (
     <div className="account-container">
       <div className="account-head-buttons">
-        <Button type="button" color="secondary" size="md" rounded>
-          <Link to="/accounts" className="button">
+        <Link to="/accounts">
+          <Button color="secondary" size="md" rounded>
             Accounts
-          </Link>
-        </Button>
+          </Button>
+        </Link>
         <Button
           type="button"
           onPress={taskHandler}
@@ -107,11 +100,11 @@ function Account() {
         >
           New task
         </Button>
-        <Button type="button" color="secondary" size="md" rounded>
-          <Link to={'/config/' + account.id} className="button">
+        <Link to={'/config/' + account.id}>
+          <Button type="button" color="secondary" size="md" rounded>
             Edit Rules
-          </Link>
-        </Button>
+          </Button>
+        </Link>
       </div>
 
       <div className="user">

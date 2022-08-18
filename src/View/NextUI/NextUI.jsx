@@ -1,4 +1,4 @@
-import { Button, Input, Textarea } from "@nextui-org/react";
+import { Button, Input, Textarea } from '@nextui-org/react';
 function NextUI() {
   const Component = () => <Button>Click me</Button>;
 

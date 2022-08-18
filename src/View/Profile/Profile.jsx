@@ -32,7 +32,9 @@ function Profile() {
             size="xl"
           />
 
-          <Button variant="primary" onPress={editProfileHandler} rounded>Edit</Button>
+          <Button color="secondary" onPress={editProfileHandler} rounded>
+            Edit
+          </Button>
         </div>
         <div className="profile-content">
           <Text>

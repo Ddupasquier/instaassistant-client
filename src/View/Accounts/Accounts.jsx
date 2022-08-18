@@ -44,7 +44,7 @@ function Accounts() {
                     size="sm"
                     color="warning"
                     rounded
-                    onClick={newAccountHandler}
+                    onPress={newAccountHandler}
                   >
                     Add Account
                   </Button>
@@ -73,7 +73,7 @@ function Accounts() {
                       />
                     ))
                   )}
-                  <NewAccountCardButtonNext />
+                  <NewAccountCardButtonNext handler={newAccountHandler} />
                 </div>
               </div>
             </Collapse>

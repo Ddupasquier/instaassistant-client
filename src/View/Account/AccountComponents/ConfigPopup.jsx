@@ -129,9 +129,7 @@ function ConfigPopup() {
           <div className="config-main">
             <form onSubmit={HandleSubmit}>
               <div className="config-toggles">
-                <Grid.Container
-                  justify="center"
-                >
+                <Grid.Container justify="center">
                   <Grid sm={2} xs={2}>
                     <section>
                       <label>Allow Likes</label>
@@ -216,14 +214,11 @@ function ConfigPopup() {
                 <Button type="submit" color="secondary" size="md" rounded>
                   Save
                 </Button>
-                <Button type="button" color="secondary" size="md" rounded>
-                  <Link
-                    to={'/instagram/account/' + account_id}
-                    className="button"
-                  >
+                <Link to={'/instagram/account/' + account_id}>
+                  <Button type="button" color="secondary" size="md" rounded>
                     Cancel
-                  </Link>
-                </Button>
+                  </Button>
+                </Link>
               </div>
             </form>
           </div>

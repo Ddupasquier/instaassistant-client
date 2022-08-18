@@ -21,7 +21,7 @@ function Header({ menuSelected }) {
         {capFirstLetter('Company Name')} {'  '}
         <Button
           href="/"
-          onClick={Logout}
+          onPress={Logout}
           size="xs"
           color="warning"
           css={{ marginLeft: '1rem' }}

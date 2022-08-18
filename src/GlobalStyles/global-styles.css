@@ -1,4 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,400;0,600;1,100&family=Roboto:wght@300;400&display=swap");
+:export {
+  blue: rgb(0, 225, 255);
+  purple: rgb(151, 80, 221);
+  yellow: rgb(245, 165, 36);
+  black: rgb(0, 0, 0);
+  grey: rgb(128, 128, 128);
+  lightgrey: rgb(102, 102, 102);
+}
+
 body {
   font-family: Roboto;
   margin: 0;
@@ -36,12 +45,6 @@ input:-webkit-autofill {
 }
 .create-account:hover {
   text-decoration: underline;
-}
-
-.button {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
 }
 
 .head {
