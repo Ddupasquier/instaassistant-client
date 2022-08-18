@@ -13,13 +13,16 @@ function ConfigPopup() {
 
   useEffect(() => {
     setDivHeight(ref.current.offsetHeight);
-    console.log(divHeight);
   }, [divHeight]);
 
   const { account_id } = useParams();
+
+  // ! DO WE STILL NEED THIS?
   const { Accounts: accounts, Loading: loading } = useSelector(
     (state) => state.accountsStore
   );
+  // !
+
   const [currentAccount, setCurrentAccount] = useState({});
   const [configShown, setConfigShown] = useState(false);
 
@@ -42,40 +45,52 @@ function ConfigPopup() {
   }, [account_id]);
 
   useEffect(() => {
-    setAllowLike(
-      currentAccount.allow_like === null ? false : currentAccount.allow_like
-    );
-    setAllowComment(
-      currentAccount.allow_comment === null
-        ? false
-        : currentAccount.allow_comment
-    );
-    setAllowFollow(
-      currentAccount.allow_follow === null ? false : currentAccount.allow_follow
-    );
-    setAllowMessage(
-      currentAccount.allow_dm === null ? false : currentAccount.allow_dm
-    );
-    setLookalike(
-      currentAccount.look_alike === null ? '' : currentAccount.look_alike
-    );
-    setWhiteList(
-      currentAccount.white_list === null ? '' : currentAccount.white_list
-    );
-    setBlackList(
-      currentAccount.black_list === null ? '' : currentAccount.black_list
-    );
-    setComments(
-      currentAccount.comments === null ? '' : currentAccount.comments
-    );
-    setMessages(
-      currentAccount.messages === null ? '' : currentAccount.messages
-    );
+    const switchValues = [
+      currentAccount.allow_like,
+      currentAccount.allow_follow,
+      currentAccount.allow_comment,
+      currentAccount.allow_dm,
+    ];
+
+    const switchSets = [
+      setAllowLike,
+      setAllowFollow,
+      setAllowComment,
+      setAllowMessage,
+    ];
+
+    const textValues = [
+      currentAccount.look_alike,
+      currentAccount.white_list,
+      currentAccount.black_list,
+      currentAccount.comments,
+      currentAccount.messages,
+    ];
+
+    const textSets = [
+      setLookalike,
+      setWhiteList,
+      setBlackList,
+      setComments,
+      setMessages,
+    ];
+
+    switchValues.forEach((value, index) => {
+      switchSets[index](value);
+    });
+    textValues.forEach((value, index) => {
+      textSets[index](value);
+    });
+
+    setLookalike(!currentAccount.look_alike ? '' : currentAccount.look_alike);
+    setWhiteList(!currentAccount.white_list ? '' : currentAccount.white_list);
+    setBlackList(!currentAccount.black_list ? '' : currentAccount.black_list);
+    setComments(!currentAccount.comments ? '' : currentAccount.comments);
+    setMessages(!currentAccount.messages ? '' : currentAccount.messages);
   }, [currentAccount]);
 
   const HandleSubmit = (e) => {
     e.preventDefault();
-    console.log('Regular submit');
     const body = {
       allow_like: allowLike,
       platform: 'instagram',
@@ -88,9 +103,7 @@ function ConfigPopup() {
       comments: comments,
       messages: messages,
     };
-
     PatchAccount(body, account_id);
-    console.log(body);
   };
 
   const shownStyle = {
