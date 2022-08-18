@@ -1,34 +1,25 @@
-.insta-config {
-  display: grid;
-  grid-template-rows: fit-content 5vh 85vh fit-content;
-  color: rgb(175, 175, 175);
-  overflow: auto;
-  z-index: 10;
-  .config-user {
-    position: relative;
-    padding: 1rem;
-    margin: auto;
-    z-index: 10;
-  }
-  .config-toggles {
-    display: flex;
-    justify-content: center;
-    position: relative;
-    margin: auto;
-    width: 100%;
-    section {
-      text-align: center;
-    }
-  }
-  .config-textareas {
-    position: relative;
-    margin: auto;
-    width: 95%;
-  }
-  .config-buttons {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    padding: 1rem;
-  }
-}
+// .insta-config {
+//   display: grid;
+//   grid-template-rows: fit-content 5vh 85vh fit-content;
+//   color: rgb(175, 175, 175);
+//   overflow: auto;
+//   z-index: 10;
+//   .config-user {
+//     position: relative;
+//     padding: 1rem;
+//     margin: auto;
+//     z-index: 10;
+//   }
+
+//   .config-textareas {
+//     position: relative;
+//     margin: auto;
+//     width: 95%;
+//   }
+//   .config-buttons {
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-evenly;
+//     padding: 1rem;
+//   }
+// }

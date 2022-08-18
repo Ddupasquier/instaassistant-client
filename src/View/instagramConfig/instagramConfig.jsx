@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import {
   Button,
   Textarea,
@@ -6,13 +6,13 @@ import {
   Grid,
   Card,
   Loading,
-} from "@nextui-org/react";
-import "./scss/instaconfig-styles.css";
-import { Link, useParams } from "react-router-dom";
-import { UserIcon } from "../../Components/UserIcon";
-import { useSelector } from "react-redux";
-import ConfigTextArea from "./ConfigTextArea";
-import { PatchAccount, ShowAccount } from "../../api";
+} from '@nextui-org/react';
+import './scss/instaconfig-styles.css';
+import { Link, useParams } from 'react-router-dom';
+import { UserIcon } from '../../Components/UserIcon';
+import { useSelector } from 'react-redux';
+import ConfigTextArea from '../Account/AccountComponents/ConfigTextArea';
+import { PatchAccount, ShowAccount } from '../../api';
 
 function InstagramConfig() {
   const { account_id } = useParams();
@@ -36,7 +36,7 @@ function InstagramConfig() {
     ShowAccount(account_id).then((data) => {
       setCurrentAccount(data);
     });
-  }, []);
+  }, [account_id]);
 
   useEffect(() => {
     setAllowLike(
@@ -54,28 +54,28 @@ function InstagramConfig() {
       currentAccount.allow_dm === null ? false : currentAccount.allow_dm
     );
     setLookalike(
-      currentAccount.look_alike === null ? "" : currentAccount.look_alike
+      currentAccount.look_alike === null ? '' : currentAccount.look_alike
     );
     setWhiteList(
-      currentAccount.white_list === null ? "" : currentAccount.white_list
+      currentAccount.white_list === null ? '' : currentAccount.white_list
     );
     setBlackList(
-      currentAccount.black_list === null ? "" : currentAccount.black_list
+      currentAccount.black_list === null ? '' : currentAccount.black_list
     );
     setComments(
-      currentAccount.comments === null ? "" : currentAccount.comments
+      currentAccount.comments === null ? '' : currentAccount.comments
     );
     setMessages(
-      currentAccount.messages === null ? "" : currentAccount.messages
+      currentAccount.messages === null ? '' : currentAccount.messages
     );
   }, [currentAccount]);
 
   const HandleSubmit = (e) => {
     e.preventDefault();
-    console.log("Regular submit");
+    console.log('Regular submit');
     const body = {
       allow_like: allowLike,
-      platform: "instagram",
+      platform: 'instagram',
       allow_comment: allowComment,
       allow_follow: allowFollow,
       allow_dm: allowMessage,
@@ -101,7 +101,7 @@ function InstagramConfig() {
             <UserIcon
               size="xl"
               src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
-              name={"@" + currentAccount.username}
+              name={'@' + currentAccount.username}
             />
           </div>
 
@@ -192,14 +192,11 @@ function InstagramConfig() {
               <Button type="submit" color="secondary" size="md" rounded>
                 Save
               </Button>
-              <Button type="button" color="secondary" size="md" rounded>
-                <Link
-                  to={"/instagram/account/" + account_id}
-                  className="button"
-                >
+              <Link to={'/instagram/account/' + account_id}>
+                <Button type="button" color="secondary" size="md" rounded>
                   Cancel
-                </Link>
-              </Button>
+                </Button>
+              </Link>
             </div>
           </form>
         </div>

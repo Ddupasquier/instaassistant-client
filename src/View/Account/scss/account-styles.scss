@@ -89,4 +89,32 @@
       }
     }
   }
+
+  .config {
+    .config-open {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 30px;
+      background: rgb(245, 165, 36);
+      border-radius: 0.5rem 0.5rem 0 0;
+      color: black;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+    .config-main {
+      width: 100%;
+      .config-toggles {
+        section {
+          text-align: center;
+        }
+      }
+    }
+    .config-buttons {
+      display: flex;
+      justify-content: space-evenly;
+      margin: 1rem;
+      width: 100%;
+    }
+  }
 }

@@ -94,4 +94,27 @@
   height: -moz-fit-content;
   height: fit-content;
 }
+.account-container .config .config-open {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  background: rgb(245, 165, 36);
+  border-radius: 0.5rem 0.5rem 0 0;
+  color: black;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.account-container .config .config-main {
+  width: 100%;
+}
+.account-container .config .config-main .config-toggles section {
+  text-align: center;
+}
+.account-container .config .config-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 1rem;
+  width: 100%;
+}
 /*# sourceMappingURL=account-styles.css.map */

@@ -8,9 +8,7 @@ function Task() {
     <section>
       <div className="account-head-buttons">
         <Button type="button" color="secondary" size="md" rounded>
-          <Link to="/tasks" className="button">
-            All Tasks
-          </Link>
+          <Link to="/tasks">All Tasks</Link>
         </Button>
       </div>
       <div className="user">

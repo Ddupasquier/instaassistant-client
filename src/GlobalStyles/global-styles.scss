@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,400;0,600;1,100&family=Roboto:wght@300;400&display=swap');
+// * GLOBAL COLORS
+$color-blue: rgba(0, 225, 255);
+$color-purple: rgb(151, 80, 221);
+$color-yellow: rgb(245, 165, 36);
+$color-black: rgba(0, 0, 0);
+$color-grey: rgb(128, 128, 128);
+$color-lightgrey: rgb(102, 102, 102);
+
+:export {
+  blue: $color-blue;
+  purple: $color-purple;
+  yellow: $color-yellow;
+  black: $color-black;
+  grey: $color-grey;
+  lightgrey: $color-lightgrey;
+}
+
+body {
+  font-family: Roboto;
+  margin: 0;
+}
+
+// FIRST ROW IS HEADER
+// SECOND ROW, FIRST COLUMN IS MENU
+// if change size of header or menu also navigate to their respective
+// scss files and cntrl + save to update
+.app {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: 3.5rem auto;
+  grid-template-columns: 3rem auto;
+
+  header {
+    grid-column: span 2;
+  }
+}
+
+.loading {
+  width: fit-content;
+  margin: auto;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px rgb(20, 20, 20) inset;
+  box-shadow: 0 0 0px 1000px rgb(20, 20, 20) inset;
+  -webkit-text-fill-color: rgb(255, 255, 255);
+}
+
+.create-account {
+  background: none;
+  border: none;
+  color: white;
+  font-family: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.head {
+  text-align: center;
+  z-index: 1;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 9px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 0, 234, 0.486);
+  border-radius: 9px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
