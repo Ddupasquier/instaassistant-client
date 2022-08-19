@@ -4,11 +4,11 @@ import { ChartPlaceHold}  from "Components/ChartPlaceHold"
 
 function MetricChart() {
   return (
-    <Grid sm={8} xs={12}>
+    <Grid sm={8} xs={12} css={{minHeight: '30rem'}}>
       <Card
         css={{
           minHeight: '200px',
-          backdropFilter: 'saturate(200%) blur(15px)',
+          backdropFilter: 'saturate(25%) blur(15px)',
           background: 'rgba(255, 255, 255, 0.2)',
         }}
       >

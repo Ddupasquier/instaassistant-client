@@ -10,7 +10,7 @@ import './scss/account-styles.css';
 
 // * ------- COMPONENTS ------- *
 import { UserIcon } from 'Components/UserIcon';
-import TaskModalNew from './TaskModalNew';
+import TaskModalNew from './AccountComponents/TaskModalNew';
 import Utilization from './AccountComponents/Utilization';
 import Interactions from './AccountComponents/Interactions';
 import FollowerGain from './AccountComponents/FollowerGain';

@@ -44,41 +44,20 @@ function ConfigPopup() {
   }, [account_id]);
 
   useEffect(() => {
-    const switchValues = [
-      currentAccount.allow_like,
-      currentAccount.allow_follow,
-      currentAccount.allow_comment,
-      currentAccount.allow_dm,
-    ];
+    const fields = {
+      switchLikes: [setAllowLike, currentAccount.allow_like],
+      switchFollows: [setAllowFollow, currentAccount.allow_follow],
+      switchComments: [setAllowComment, currentAccount.allow_comment],
+      switchMessages: [setAllowMessage, currentAccount.allow_dm],
+      textLookalike: [setLookalike, currentAccount.look_alike],
+      textWhiteList: [setWhiteList, currentAccount.white_list],
+      textBlackList: [setBlackList, currentAccount.black_list],
+      textComments: [setComments, currentAccount.comments],
+      textMessages: [setMessages, currentAccount.messages],
+    };
 
-    const switchSets = [
-      setAllowLike,
-      setAllowFollow,
-      setAllowComment,
-      setAllowMessage,
-    ];
-
-    const textValues = [
-      currentAccount.look_alike,
-      currentAccount.white_list,
-      currentAccount.black_list,
-      currentAccount.comments,
-      currentAccount.messages,
-    ];
-
-    const textSets = [
-      setLookalike,
-      setWhiteList,
-      setBlackList,
-      setComments,
-      setMessages,
-    ];
-
-    switchValues.forEach((value, index) => {
-      switchSets[index](value);
-    });
-    textValues.forEach((value, index) => {
-      textSets[index](value);
+    Object.keys(fields).forEach((key) => {
+      fields[key][0](fields[key][1]);
     });
   }, [currentAccount]);
 
