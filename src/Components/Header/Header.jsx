@@ -25,6 +25,7 @@ function Header({ menuSelected }) {
           size="xs"
           color="warning"
           css={{ marginLeft: '1rem' }}
+          rounded
         >
           Logout
         </Button>

@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 // * ------- API LAYER ------- *
-import { FetchInstagramTaskTypes, ShowAccount } from '../../api';
+import { FetchInstagramTaskTypes, ShowAccount } from 'api';
 
 // * ------- STYLES ------- *
-import { Button, Card, Grid, Loading } from '@nextui-org/react';
+import { Button, Card, Grid } from '@nextui-org/react';
 import './scss/account-styles.css';
 
 // * ------- COMPONENTS ------- *
@@ -18,17 +18,12 @@ import TasksRunning from './AccountComponents/TasksRunning';
 import MetricChart from './AccountComponents/MetricChart';
 import InteractionLimits from './AccountComponents/InteractionLimits';
 import TaskModal from './AccountComponents/TaskModal';
-import NewTaskFrom from './AccountComponents/NewTaskForm';
-
-// * ------- REDUX ------- *
-import { useDispatch, useSelector } from 'react-redux';
-import { GetAccounts } from 'redux/AccountsStore/Actions';
 import ConfigPopup from './AccountComponents/ConfigPopup';
 
 function Account() {
-  //Route Handle
+  // * ------- ROUTE HANDLE ------- *
   const { account_id } = useParams()
-  const [account, setAccount] = useState({})
+  // const [account, setAccount] = useState({})
   const [active, setActive] = useState(true)
   
   // accounts handling / mapping
@@ -39,9 +34,10 @@ function Account() {
     ShowAccount(account_id).then((data) => {
       setCurrentAccount(data);
     });
-  }, []);
+  }, [account_id]);
 
-  // ------ task form and module handlers ------
+  // * ------- TASK FOR AND MODULE HANDLERS ------- *
+  
   const [tasks, setTasks] = useState();
   const [tasksLoaded, setTasksLoaded] = useState();
   const [tasksSelected, setTasksSelected] = useState(false);
