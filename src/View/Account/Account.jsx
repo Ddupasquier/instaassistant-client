@@ -19,20 +19,13 @@ import MetricChart from './AccountComponents/MetricChart';
 import InteractionLimits from './AccountComponents/InteractionLimits';
 import TaskModal from './AccountComponents/TaskModal';
 import NewTaskFrom from './AccountComponents/NewTaskForm';
-
-// * ------- REDUX ------- *
-import { useDispatch, useSelector } from 'react-redux';
-import { GetAccounts } from '../../redux/AccountsStore/Actions';
 import ConfigPopup from './AccountComponents/ConfigPopup';
 
 function Account() {
   //Route Handle
   const { account_id } = useParams()
-  const [account, setAccount] = useState({})
   const [active, setActive] = useState(true)
-  
-  // accounts handling / mapping
-  const [currentAccount, setCurrentAccount] = useState({});
+  const [currentAccount, setCurrentAccount] = useState(null);
 // move config state back into this component
 
   useEffect(() => {
@@ -63,98 +56,102 @@ function Account() {
     setTasksSelected(true);
   };
 
-  return (
-    <div className="account-container">
-      <div className="account-head-buttons">
-        <Link to="/accounts">
-          <Button color="secondary" size="md" rounded>
-            Accounts
+  if (currentAccount === null) {
+    return (<Loading size='xl'/>)
+  } else {
+    return (
+      <div className="account-container">
+        <div className="account-head-buttons">
+          <Link to="/accounts">
+            <Button color="secondary" size="md" rounded>
+              Accounts
+            </Button>
+          </Link>
+          <Button
+            type="button"
+            onPress={taskHandler}
+            color="secondary"
+            size="md"
+            rounded
+          >
+            New task
           </Button>
-        </Link>
-        <Button
-          type="button"
-          onPress={taskHandler}
-          color="secondary"
-          size="md"
-          rounded
-        >
-          New task
-        </Button>
-          <Link to={'/config/' + account_id} className="button">
-        <Button type="button" color="secondary" size="md" rounded>
-            Edit Rules
-          </Button>
-        </Link>
-      </div>
-
-      <div className="user">
-        <section>
-          <UserIcon
-            src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
-            name={`@${currentAccount.username}`}
-            size="xl"
-          />
-        </section>
-        <section>
-          <legend>Followers</legend>
-          <div className="followers">23.5 K</div>
-        </section>
-        <section>
-          <legend>Following</legend>
-          <div className="following">23.5 K</div>
-        </section>
-      </div>
-
-      <div className="account-metrics">
-        <Grid.Container gap={2}>
-          <TasksRunning active={active} />
-          <Utilization />
-          <Interactions />
-          <FollowerGain />
-          <InteractionLimits />
-          <MetricChart />
-        </Grid.Container>
-      </div>
-
-      <div className="account-main">
-        {/* ! CONSIDER MERGING CURRENT TASKS AND ACTIVITY LOG SOMEHOW */}
-        <Grid.Container gap={2}>
-          <Card css={{ minHeight: '400px' }}>
-            <Card.Body>
-              <div className="log-container">
-                <div className="log">
-                  <Button
-                    onPress={taskHandler}
-                    type="button"
-                    color="warning"
-                    size="sm"
-                    rounded
-                    className="log-button"
-                  >
-                    Start New Task
-                  </Button>
-                  <h3>Activity Log:</h3>
-                  <br />
+            <Link to={'/config/' + account_id} className="button">
+          <Button type="button" color="secondary" size="md" rounded>
+              Edit Rules
+            </Button>
+          </Link>
+        </div>
+  
+        <div className="user">
+          <section>
+            <UserIcon
+              src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
+              name={`@${currentAccount.username}`}
+              size="xl"
+            />
+          </section>
+          <section>
+            <legend>Followers</legend>
+            <div className="followers">23.5 K</div>
+          </section>
+          <section>
+            <legend>Following</legend>
+            <div className="following">23.5 K</div>
+          </section>
+        </div>
+  
+        <div className="account-metrics">
+          <Grid.Container gap={2}>
+            <TasksRunning active={active} />
+            <Utilization />
+            <Interactions />
+            <FollowerGain />
+            <InteractionLimits />
+            <MetricChart />
+          </Grid.Container>
+        </div>
+  
+        <div className="account-main">
+          {/* ! CONSIDER MERGING CURRENT TASKS AND ACTIVITY LOG SOMEHOW */}
+          <Grid.Container gap={2}>
+            <Card css={{ minHeight: '400px' }}>
+              <Card.Body>
+                <div className="log-container">
+                  <div className="log">
+                    <Button
+                      onPress={taskHandler}
+                      type="button"
+                      color="warning"
+                      size="sm"
+                      rounded
+                      className="log-button"
+                    >
+                      Start New Task
+                    </Button>
+                    <h3>Activity Log:</h3>
+                    <br />
+                  </div>
                 </div>
-              </div>
-            </Card.Body>
-          </Card>
-        </Grid.Container>
+              </Card.Body>
+            </Card>
+          </Grid.Container>
+        </div>
+        <TaskModalNew
+          taskHandler={taskHandler}
+          closeTaskHandler={closeTaskHandler}
+          taskVisible={taskVisible}
+          handleChange={handleChange}
+          selected={selected}
+          tasksSelected={tasksSelected}
+          tasks={tasks}
+          tasksLoaded={tasksLoaded}
+          account_id={account_id}
+        />
+        <ConfigPopup />
       </div>
-      <TaskModalNew
-        taskHandler={taskHandler}
-        closeTaskHandler={closeTaskHandler}
-        taskVisible={taskVisible}
-        handleChange={handleChange}
-        selected={selected}
-        tasksSelected={tasksSelected}
-        tasks={tasks}
-        tasksLoaded={tasksLoaded}
-        account_id={account_id}
-      />
-      <ConfigPopup />
-    </div>
-  );
+    );
+  }
 }
 
 export default Account;

@@ -21,13 +21,15 @@ const TaskModalNew = ({
   const [listType, setListType] = useState();
   const [action, setAction] = useState();
   const [schedule, setSchedule] = useState(false);
+  const [url, setUrl] = useState()
 
   useEffect(() => {
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0');
     var yyyy = today.getFullYear();
-    setTodaysDate(dd + '-' + mm + '-' + yyyy)
+    var hhmm = today.getHours() + ':' + today.getMinutes();
+    setTodaysDate(dd + '-' + mm + '-' + yyyy + ";" + hhmm)
     setDate(todaysDate)
   }, []);
 
@@ -50,13 +52,25 @@ const TaskModalNew = ({
       }  
     })
 
+    let dateFormat = ""
+    if (schedule) {
+      console.log(date)
+      console.log(todaysDate)
+        const date_n_time = date.split("T")
+        console.log(date_n_time)
+        const yyyy_mm_dd = date_n_time[0].split("-")
+        const dd_mm_yyyy = [yyyy_mm_dd[2],yyyy_mm_dd[1],yyyy_mm_dd[0]].join("-")
+        console.log(dd_mm_yyyy)
+        dateFormat = dd_mm_yyyy + ";" + date_n_time[1]
+    }
+
     const payload = {
       account_id: account_id,
       schedule: schedule,
-      date: date == null ? todaysDate : date,
+      date: schedule ? dateFormat : todaysDate,
       task_type: action,
       list_type: `${listTarget}:${listType}`,
-      list_url: "",
+      list_url: url,
       arguments: args.join(";")
     }
     console.log(payload);
@@ -70,6 +84,7 @@ const TaskModalNew = ({
         blur
         preventClose
         aria-labelledby="modal-title"
+        width='600px'
         open={taskVisible}
         onClose={closeTaskHandler}
       >
@@ -159,7 +174,29 @@ const TaskModalNew = ({
                   Post
                 </option>
               </select>
-              &nbsp;{" --> "}&nbsp;
+              {listTarget === "Account" && (
+                <Input
+                  status="secondary"
+                  bordered
+                  labelPlaceholder="Username or account URL"
+                  type="text"
+                  value={url}
+                  onChange={(e) => setUrl(e.target.value)}
+                  className="form-control"
+                />
+              )}
+              {listTarget === "Post" && (
+                <Input
+                  status="secondary"
+                  bordered
+                  labelPlaceholder="Post URL"
+                  type="text"
+                  value={url}
+                  onChange={(e) => setUrl(e.target.value)}
+                  className="form-control"
+                />
+              )}
+              <svg style={{fill: "white"}} width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M11 21.883l-6.235-7.527-.765.644 7.521 9 7.479-9-.764-.645-6.236 7.529v-21.884h-1v21.883z"/></svg>
               <select
                 name="TaskType"
                 className="options"
@@ -174,7 +211,7 @@ const TaskModalNew = ({
                 <option value="" style={{ color: "black" }}>
                   Select Target Type
                 </option>
-                {listTarget == "Account" ? (
+                {listTarget === "Account" ? (
                   <>
                     <option value="Followers" style={{ color: "black" }}>
                       Followers
@@ -201,25 +238,8 @@ const TaskModalNew = ({
                   </>
                 )}
               </select>
-              {listTarget === "Account" && (
-                <Input
-                  status="secondary"
-                  bordered
-                  labelPlaceholder="Username or account URL"
-                  type="text"
-                  className="form-control"
-                />
-              )}
-              {listTarget === "Post" && (
-                <Input
-                  status="secondary"
-                  bordered
-                  labelPlaceholder="Post URL"
-                  type="text"
-                  className="form-control"
-                />
-              )}
               <br />
+              <h5>Optional Arguments</h5>
               {/*! if message interact comment */}
               <Textarea
                 bordered
