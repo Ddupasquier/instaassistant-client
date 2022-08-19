@@ -22,13 +22,13 @@ import ConfigPopup from './AccountComponents/ConfigPopup';
 
 function Account() {
   // * ------- ROUTE HANDLE ------- *
-  const { account_id } = useParams()
+  const { account_id } = useParams();
   // const [account, setAccount] = useState({})
-  const [active, setActive] = useState(true)
-  
+  const [active, setActive] = useState(true);
+
   // accounts handling / mapping
   const [currentAccount, setCurrentAccount] = useState({});
-// move config state back into this component
+  // move config state back into this component
 
   useEffect(() => {
     ShowAccount(account_id).then((data) => {
@@ -37,7 +37,7 @@ function Account() {
   }, [account_id]);
 
   // * ------- TASK FOR AND MODULE HANDLERS ------- *
-  
+
   const [tasks, setTasks] = useState();
   const [tasksLoaded, setTasksLoaded] = useState();
   const [tasksSelected, setTasksSelected] = useState(false);
@@ -76,8 +76,8 @@ function Account() {
         >
           New task
         </Button>
-          <Link to={'/config/' + account_id} className="button">
-        <Button type="button" color="secondary" size="md" rounded>
+        <Link to={'/config/' + account_id} className="button">
+          <Button type="button" color="secondary" size="md" rounded>
             Edit Rules
           </Button>
         </Link>

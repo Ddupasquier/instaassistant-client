@@ -24,7 +24,7 @@ function Profile() {
 
   return (
     <div className="profile-main">
-      <div className="profile">
+      <div className="profile" style={{padding: '1.5rem'}}>
         <div className="profile-header">
           <UserIcon
             src="https://i.pravatar.cc/150?u=a042581f4e29026024d"

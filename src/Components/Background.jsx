@@ -9,10 +9,12 @@ const Background = ({ style }) => {
     position: 'absolute',
     bottom: '0',
     filter: 'saturate(200%) blur(3px)',
-    // border: 'red solid',
     height: '100vh',
     width: '100vw',
   };
+
+  const layerStyle = {
+  }
 
   return <div style={bgStyle} />;
 };
