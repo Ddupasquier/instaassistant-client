@@ -39,15 +39,7 @@ function App({ setTheme, lightTheme, darkTheme }) {
           />
 
           <Outlet />
-          <Background
-            style={{
-              position: 'fixed',
-              bottom: '0',
-              height: '120vh',
-              width: '100vw',
-              zIndex: '0',
-            }}
-          />
+          <Background />
         </div>
       ) : (
         <>
