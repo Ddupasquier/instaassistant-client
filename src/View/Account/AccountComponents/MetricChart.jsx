@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Grid } from '@nextui-org/react';
-import { ChartPlaceHold}  from "../../../Components/ChartPlaceHold"
+import { ChartPlaceHold}  from "Components/ChartPlaceHold"
 
 function MetricChart() {
   return (

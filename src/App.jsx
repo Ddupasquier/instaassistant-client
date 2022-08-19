@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import './GlobalStyles/global-styles.css';
+import 'GlobalStyles/global-styles.css';
 import { Outlet } from 'react-router-dom';
-import { Login } from './View/Login';
-import { SignUp } from './View/SignUp';
-import { Header } from './Components/Header';
-import { Menu } from './Components/Menu';
-import Background from './Components/Background';
+import { Login } from 'View/Login';
+import { SignUp } from 'View/SignUp';
+import { Header } from 'Components/Header';
+import { Menu } from 'Components/Menu';
+import Background from 'Components/Background';
 
 function App({ setTheme, lightTheme, darkTheme }) {
   const [logIsVisible, setLogIsVisible] = useState(true);

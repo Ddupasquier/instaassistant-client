@@ -6,18 +6,17 @@ import { Provider } from "react-redux";
 import store from "./redux";
 
 //View Imports
-import App from './App';
-import { Billing } from './View/Billing';
-import { Profile } from './View/Profile';
-import { Account } from './View/Account';
-import { Accounts } from './View/Accounts';
-import { FAQ } from './View/FAQ';
-import { InstagramConfig } from './View/instagramConfig';
-import { NextUI } from './View/NextUI';
-import { Login } from './View/Login';
-import { SignUp } from './View/SignUp';
-import { Task } from './View/Task';
-import Tasks from './View/Tasks';
+import App from 'App';
+import { Billing } from 'View/Billing';
+import { Profile } from 'View/Profile';
+import { Account } from 'View/Account';
+import { Accounts } from 'View/Accounts';
+import { FAQ } from 'View/FAQ';
+import { InstagramConfig } from 'View/instagramConfig';
+import { Login } from 'View/Login';
+import { SignUp } from 'View/SignUp';
+import { Task } from 'View/Task';
+import Tasks from 'View/Tasks';
 
 // NextUI import
 import { NextUIProvider, createTheme } from '@nextui-org/react';
@@ -54,7 +53,6 @@ function AppRoutes() {
             <Route path="/instagram/account/:account_id" element={<Account />} />
             <Route path="/FAQ" element={<FAQ />} />
             <Route path="/config/:account_id" element={<InstagramConfig />} />
-            <Route path="/next" element={<NextUI />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/task" element={<Task />} />

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './scss/signup-styles.css';
 import { Button, Input, Loading, Spacer } from '@nextui-org/react';
-import { CreateUserPost } from '../../api';
+import { CreateUserPost } from 'api';
 
 function SignUp({ setLogIsVisible, logIsVisible }) {
   const [email, setEmail] = useState('');

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Grid, Text, Button, Table } from '@nextui-org/react';
 import { Link } from 'react-router-dom';
-import { UserIcon } from '../../Components/UserIcon';
+import { UserIcon } from 'Components/UserIcon';
 
 function Task() {
   return (

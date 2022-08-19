@@ -2,6 +2,8 @@ import React from 'react';
 import { Card, Grid, Text, Progress } from '@nextui-org/react';
 
 function Utilization() {
+  const progress = 92;
+
   return (
     <Grid sm={4} xs={12}>
       <Card
@@ -14,11 +16,9 @@ function Utilization() {
         <Card.Divider />
         <Card.Body>
           <Grid.Container>
-            <Grid sm={2}>
-              <Text h2>92%</Text>
-            </Grid>
-            <Grid sm={12} xs={12}>
-              <Progress color="primary" value={92} />
+            <Grid sm={12} xs={12} css={{ alignItems: 'center', position: 'relative', gap: '1rem' }}>
+              <Text h2>{progress}%</Text>
+              <Progress shadow color="primary" size="xl" value={progress} />
             </Grid>
           </Grid.Container>
         </Card.Body>

@@ -2,13 +2,13 @@
 import React, { useEffect, useState } from 'react';
 import { Collapse, Text, Button, Input, Loading } from '@nextui-org/react';
 import './scss/accounts-styles.css';
-import { AccountCardNext } from '../../Components/AccountCardNext';
+import { AccountCardNext } from 'Components/AccountCardNext';
 import NewAccountModal from './NewAccountModal';
-import NewAccountCardButtonNext from '../../Components/AccountCardNext/NewAccountCardButton';
+import NewAccountCardButtonNext from 'Components/AccountCardNext/NewAccountCardButton';
 // import { indexAccounts } from '../../api';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { GetAccounts } from '../../redux/AccountsStore/Actions';
+import { GetAccounts } from 'redux/AccountsStore/Actions';
 import AccountsListItem from './AccountsListItem';
 
 function Accounts() {

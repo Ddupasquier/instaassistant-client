@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './scss/login-styles.css';
 import { Button, Input, Loading, Spacer } from '@nextui-org/react';
-import { loginFetch } from '../../api';
+import { loginFetch } from 'api';
 
 function Login({ setLogIsVisible, logIsVisible }) {
   const [email, setEmail] = useState('');

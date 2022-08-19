@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Modal, Textarea, Switch, Input, Button, Text, Checkbox } from '@nextui-org/react';
-import { PostTask } from '../../api';
+import { PostTask } from 'api';
 
 const TaskModalNew = ({
   closeTaskHandler,

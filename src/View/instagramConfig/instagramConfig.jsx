@@ -9,10 +9,10 @@ import {
 } from '@nextui-org/react';
 import './scss/instaconfig-styles.css';
 import { Link, useParams } from 'react-router-dom';
-import { UserIcon } from '../../Components/UserIcon';
+import { UserIcon } from 'Components/UserIcon';
 import { useSelector } from 'react-redux';
-import ConfigTextArea from '../Account/AccountComponents/ConfigTextArea';
-import { PatchAccount, ShowAccount } from '../../api';
+import ConfigTextArea from 'View/Account/AccountComponents/ConfigTextArea';
+import { PatchAccount, ShowAccount } from 'api';
 
 function InstagramConfig() {
   const { account_id } = useParams();

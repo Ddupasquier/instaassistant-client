@@ -9,7 +9,7 @@ import { Button, Card, Grid, Loading } from '@nextui-org/react';
 import './scss/account-styles.css';
 
 // * ------- COMPONENTS ------- *
-import { UserIcon } from '../../Components/UserIcon';
+import { UserIcon } from 'Components/UserIcon';
 import TaskModalNew from './TaskModalNew';
 import Utilization from './AccountComponents/Utilization';
 import Interactions from './AccountComponents/Interactions';
@@ -22,7 +22,7 @@ import NewTaskFrom from './AccountComponents/NewTaskForm';
 
 // * ------- REDUX ------- *
 import { useDispatch, useSelector } from 'react-redux';
-import { GetAccounts } from '../../redux/AccountsStore/Actions';
+import { GetAccounts } from 'redux/AccountsStore/Actions';
 import ConfigPopup from './AccountComponents/ConfigPopup';
 
 function Account() {

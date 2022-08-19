@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import colors from './../../../GlobalStyles/global-styles.css';
 import { Switch, Grid, Loading, Button } from '@nextui-org/react';
 import ConfigTextArea from './ConfigTextArea';
-import { PatchAccount, ShowAccount } from '../../../api';
+import { PatchAccount, ShowAccount } from 'api';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
 
