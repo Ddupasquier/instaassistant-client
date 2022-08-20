@@ -67,14 +67,15 @@ export default class ChartPlaceHold extends PureComponent {
           data={data}
           margin={{
             top: 5,
-            right: 30,
-            left: 20,
+            right: 5,
+            left: 0,
             bottom: 5,
           }}
+          
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
+          <XAxis dataKey="name" stroke="black"/>
+          <YAxis stroke="black"/>
           <Tooltip />
           <Legend />
           <Line

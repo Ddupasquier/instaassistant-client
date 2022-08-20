@@ -1,47 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Switch, Grid, Loading, Button } from '@nextui-org/react';
 import ConfigTextArea from './ConfigTextArea';
-import { PatchAccount, ShowAccount } from 'api';
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams, Link } from 'react-router-dom';
+import { PatchAccount } from 'api';
+import { Link } from 'react-router-dom';
 
-function ConfigPopup() {
+function ConfigPopup({ currentAccount, account_id }) {
   const [divHeight, setDivHeight] = useState(0);
-
   const ref = useRef(null);
 
   useEffect(() => {
     setDivHeight(ref.current.offsetHeight);
   }, [divHeight]);
-
-  const { account_id } = useParams();
-
-  // ! DO WE STILL NEED THIS?
-  const { Accounts: accounts, Loading: loading } = useSelector(
-    (state) => state.accountsStore
-  );
-  // !
-
-  const [currentAccount, setCurrentAccount] = useState({});
-  const [configShown, setConfigShown] = useState(false);
-
-  const [lookalike, setLookalike] = useState();
-  const [whiteList, setWhiteList] = useState();
-  const [blackList, setBlackList] = useState();
-  const [comments, setComments] = useState();
-  const [messages, setMessages] = useState();
-  const [allowLike, setAllowLike] = useState();
-  const [allowFollow, setAllowFollow] = useState();
-  const [allowComment, setAllowComment] = useState();
-  const [allowMessage, setAllowMessage] = useState();
-
-  const toggleConfigShown = () => setConfigShown(!configShown);
-
-  useEffect(() => {
-    ShowAccount(account_id).then((data) => {
-      setCurrentAccount(data);
-    });
-  }, [account_id]);
 
   useEffect(() => {
     const fields = {
@@ -61,6 +30,47 @@ function ConfigPopup() {
     });
   }, [currentAccount]);
 
+  const [configShown, setConfigShown] = useState(false);
+  const toggleConfigShown = () => setConfigShown(!configShown);
+
+  const [lookalike, setLookalike] = useState();
+  const [whiteList, setWhiteList] = useState();
+  const [blackList, setBlackList] = useState();
+  const [comments, setComments] = useState();
+  const [messages, setMessages] = useState();
+  const [allowLike, setAllowLike] = useState();
+  const [allowFollow, setAllowFollow] = useState();
+  const [allowComment, setAllowComment] = useState();
+  const [allowMessage, setAllowMessage] = useState();
+
+  const textareaValues = [
+    {
+      label: 'Look Alike',
+      value: lookalike,
+      set: setLookalike,
+    },
+    {
+      label: 'White List',
+      value: whiteList,
+      set: setWhiteList,
+    },
+    {
+      label: 'Black List',
+      value: blackList,
+      set: setBlackList,
+    },
+    {
+      label: 'Comments',
+      value: comments,
+      set: setComments,
+    },
+    {
+      label: 'Direct Messages',
+      value: messages,
+      set: setMessages,
+    },
+  ];
+
   const HandleSubmit = (e) => {
     e.preventDefault();
     const body = {
@@ -78,9 +88,9 @@ function ConfigPopup() {
     PatchAccount(body, account_id);
   };
 
-  const shownStyle = {
+  const configPosition = {
     position: 'sticky',
-    bottom: '0',
+    bottom: configShown ? '0' : -(divHeight - 30) + 'px',
     alignSelf: 'center',
     width: '95%',
     background: 'black',
@@ -89,20 +99,10 @@ function ConfigPopup() {
     transition: 'all .8s ease-in-out',
   };
 
-  const hiddenStyle = {
-    position: 'sticky',
-    bottom: -(divHeight - 30) + 'px',
-    alignSelf: 'center',
-    width: '95%',
-    background: 'black',
-    zIndex: '1000',
-    transition: 'all .8s ease-in-out',
-  };
-
   return (
     <div
       className="config"
-      style={configShown ? shownStyle : hiddenStyle}
+      style={configPosition}
       ref={ref}
     >
       <div className="config-open" onClick={() => toggleConfigShown()}>
@@ -166,34 +166,16 @@ function ConfigPopup() {
                   </Grid>
                 </Grid.Container>
               </div>
-              <br />
               <div>
                 <Grid.Container gap={1}>
-                  <ConfigTextArea
-                    label="Look Alike"
-                    value={lookalike}
-                    set={setLookalike}
-                  />
-                  <ConfigTextArea
-                    label="White List"
-                    value={whiteList}
-                    set={setWhiteList}
-                  />
-                  <ConfigTextArea
-                    label="Black List"
-                    value={blackList}
-                    set={setBlackList}
-                  />
-                  <ConfigTextArea
-                    label="Comments"
-                    value={comments}
-                    set={setComments}
-                  />
-                  <ConfigTextArea
-                    label="Direct Messages"
-                    value={messages}
-                    set={setMessages}
-                  />
+                  {textareaValues.map((textarea) => (
+                    <ConfigTextArea
+                      key={textarea.label}
+                      label={textarea.label}
+                      value={textarea.value}
+                      set={textarea.set}
+                    />
+                  ))}
                 </Grid.Container>
               </div>
               <div className="config-buttons">

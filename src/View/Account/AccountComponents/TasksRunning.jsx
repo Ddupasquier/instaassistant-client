@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Grid, Text, Button } from '@nextui-org/react';
 
-function TasksRunning({ active }) {
+function TasksRunning({ tasksActive }) {
   return (
     <>
-      {active && (
+      {tasksActive && (
         <>
           <Grid sm={3} xs={12}></Grid>
           <Grid sm={6} xs={12}>

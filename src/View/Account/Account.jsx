@@ -19,16 +19,17 @@ import MetricChart from './AccountComponents/MetricChart';
 import InteractionLimits from './AccountComponents/InteractionLimits';
 import TaskModal from './AccountComponents/TaskModal';
 import ConfigPopup from './AccountComponents/ConfigPopup';
+import ActivityLog from './AccountComponents/ActivityLog';
 
 function Account() {
   // * ------- ROUTE HANDLE ------- *
   const { account_id } = useParams();
-  // const [account, setAccount] = useState({})
-  const [active, setActive] = useState(true);
+
+  const [tasksActive, setTasksActive] = useState(true);
 
   // accounts handling / mapping
   const [currentAccount, setCurrentAccount] = useState({});
-  // move config state back into this component
+
 
   useEffect(() => {
     ShowAccount(account_id).then((data) => {
@@ -36,23 +37,23 @@ function Account() {
     });
   }, [account_id]);
 
-  // * ------- TASK FOR AND MODULE HANDLERS ------- *
-
-  const [tasks, setTasks] = useState();
-  const [tasksLoaded, setTasksLoaded] = useState();
-  const [tasksSelected, setTasksSelected] = useState(false);
-  const [selected, setSelected] = useState('');
-  const [taskVisible, setTaskVisible] = useState(false);
-  const taskHandler = () => setTaskVisible(true);
-  const closeTaskHandler = () => {
-    setTaskVisible(false);
-  };
-
   useEffect(() => {
     FetchInstagramTaskTypes()
       .then((data) => setTasks(data))
       .then(() => setTasksLoaded(true));
   }, []);
+
+  // * ------- TASK FORM AND MODULE HANDLERS ------- *
+  const [tasks, setTasks] = useState();
+  const [tasksLoaded, setTasksLoaded] = useState();
+  const [tasksSelected, setTasksSelected] = useState(false);
+  const [selected, setSelected] = useState('');
+  const [taskVisible, setTaskVisible] = useState(false);
+
+  const taskHandler = () => setTaskVisible(true);
+  const closeTaskHandler = () => {
+    setTaskVisible(false);
+  };
 
   const handleChange = (e) => {
     setSelected(e.target.value);
@@ -103,38 +104,13 @@ function Account() {
 
       <div className="account-metrics">
         <Grid.Container gap={2}>
-          <TasksRunning active={active} />
+          <TasksRunning tasksActive={tasksActive} />
           <Utilization />
           <Interactions />
           <FollowerGain />
           <InteractionLimits />
           <MetricChart />
-        </Grid.Container>
-      </div>
-
-      <div className="account-main">
-        {/* ! CONSIDER MERGING CURRENT TASKS AND ACTIVITY LOG SOMEHOW */}
-        <Grid.Container gap={2}>
-          <Card css={{ minHeight: '400px' }}>
-            <Card.Body>
-              <div className="log-container">
-                <div className="log">
-                  <Button
-                    onPress={taskHandler}
-                    type="button"
-                    color="warning"
-                    size="sm"
-                    rounded
-                    className="log-button"
-                  >
-                    Start New Task
-                  </Button>
-                  <h3>Activity Log:</h3>
-                  <br />
-                </div>
-              </div>
-            </Card.Body>
-          </Card>
+          <ActivityLog taskHandler={taskHandler} />
         </Grid.Container>
       </div>
       <TaskModalNew
@@ -148,7 +124,7 @@ function Account() {
         tasksLoaded={tasksLoaded}
         account_id={account_id}
       />
-      <ConfigPopup />
+      <ConfigPopup currentAccount={currentAccount} account_id={account_id} />
     </div>
   );
 }
