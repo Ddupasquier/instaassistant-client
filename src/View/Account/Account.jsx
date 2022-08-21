@@ -22,6 +22,51 @@ import NewTaskFrom from './AccountComponents/NewTaskForm';
 import ConfigPopup from './AccountComponents/ConfigPopup';
 
 function Account() {
+  const chart = [
+    {
+      name: 'Page A',
+      followers: 4000,
+      following: 2400,
+      amt: 2400,
+    },
+    {
+      name: 'Page B',
+      followers: 3000,
+      following: 1398,
+      amt: 2210,
+    },
+    {
+      name: 'Page C',
+      followers: 2000,
+      following: 9800,
+      amt: 2290,
+    },
+    {
+      name: 'Page D',
+      followers: 2780,
+      following: 3908,
+      amt: 2000,
+    },
+    {
+      name: 'Page E',
+      followers: 1890,
+      following: 4800,
+      amt: 2181,
+    },
+    {
+      name: 'Page F',
+      followers: 2390,
+      following: 3800,
+      amt: 2500,
+    },
+    {
+      name: 'Page G',
+      followers: 3490,
+      following: 4300,
+      amt: 2100,
+    },
+  ];
+
   //Route Handle
   const { account_id } = useParams()
   const [active, setActive] = useState(true)
@@ -32,6 +77,9 @@ function Account() {
     ShowAccount(account_id).then((data) => {
       setCurrentAccount(data);
     });
+
+    // get All tasks
+    // get all snapshots
   }, []);
 
   // ------ task form and module handlers ------
@@ -40,6 +88,16 @@ function Account() {
   const [tasksSelected, setTasksSelected] = useState(false);
   const [selected, setSelected] = useState('');
   const [taskVisible, setTaskVisible] = useState(false);
+
+  const [utilization, setUtilization] = useState(0)
+  const [interations, setInteractions] = useState(0)
+  const [followersGained, setFollowersGained] = useState(0)
+  const [follows,setFollows] = useState(0)
+  const [likes,setLikes] = useState(0)
+  const [comments,setComments] = useState(0)
+  const [messages,setMessages] = useState(0)
+  const [chartObj, setChartObj] = useState(chart)
+
   const taskHandler = () => setTaskVisible(true);
   const closeTaskHandler = () => {
     setTaskVisible(false);
@@ -104,11 +162,11 @@ function Account() {
         <div className="account-metrics">
           <Grid.Container gap={2}>
             <TasksRunning active={active} />
-            <Utilization />
-            <Interactions />
-            <FollowerGain />
-            <InteractionLimits />
-            <MetricChart />
+            <Utilization num={utilization}/>
+            <Interactions num={interations} />
+            <FollowerGain num={followersGained}/>
+            <InteractionLimits follows={follows} likes={likes} comments={comments} messages={messages} />
+            <MetricChart obj={chartObj} />
           </Grid.Container>
         </div>
   
