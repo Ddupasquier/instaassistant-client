@@ -6,7 +6,7 @@ import {
   BotShowPath,
   BotDeletePAth,
   faqPath,
-  BotCreatePath,
+  CreateAccountPath,
   BotIndexPath,
   TaskCreatePath,
   AccountPatchPath,
@@ -63,7 +63,7 @@ export const GetUserInfo = async () => {
 
 export const CreateBot = async (formData) => {
   const response = await fetch(
-    BotCreatePath[0] + localStorage.getItem("user") + BotCreatePath[1],
+    CreateAccountPath[0] + localStorage.getItem("user") + CreateAccountPath[1],
     {
       method: "POST",
       headers: {
