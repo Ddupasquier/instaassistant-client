@@ -92,7 +92,7 @@ function ConfigPopup({ currentAccount, account_id }) {
     position: 'sticky',
     bottom: configShown ? '0' : -(divHeight - 30) + 'px',
     alignSelf: 'center',
-    width: '95%',
+    width: '92.5%',
     background: 'black',
     borderRadius: '.5rem .5rem 0 0',
     zIndex: '1000',

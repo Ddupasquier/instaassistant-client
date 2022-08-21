@@ -54,9 +54,6 @@
 .account-container .user section > div {
   color: black;
 }
-.account-container .config {
-  max-width: 92.5%;
-}
 .account-container .config .config-open {
   display: flex;
   align-items: center;
