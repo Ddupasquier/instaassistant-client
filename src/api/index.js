@@ -3,7 +3,6 @@ import {
   UserViewPath,
   UserLoginPath,
   CreateUserPath,
-  BotShowPath,
   BotDeletePAth,
   faqPath,
   CreateAccountPath,

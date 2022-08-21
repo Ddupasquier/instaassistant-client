@@ -5,7 +5,7 @@ import { Link, useParams } from 'react-router-dom';
 import { FetchInstagramTaskTypes, ShowAccount } from 'api';
 
 // * ------- STYLES ------- *
-import { Button, Card, Grid } from '@nextui-org/react';
+import { Button, Card, Grid, Loading } from '@nextui-org/react';
 import './scss/account-styles.css';
 
 // * ------- COMPONENTS ------- *
@@ -68,10 +68,10 @@ function Account() {
   ];
 
   //Route Handle
-  const { account_id } = useParams()
-  const [active, setActive] = useState(true)
+  const { account_id } = useParams();
+  const [active, setActive] = useState(true);
   const [currentAccount, setCurrentAccount] = useState(null);
-// move config state back into this component
+  // move config state back into this component
 
   useEffect(() => {
     ShowAccount(account_id).then((data) => {
@@ -80,7 +80,7 @@ function Account() {
 
     // get All tasks
     // get all snapshots
-  }, []);
+  }, [account_id]);
 
   // * ------- TASK FORM AND MODULE HANDLERS ------- *
   const [tasks, setTasks] = useState();
@@ -89,20 +89,19 @@ function Account() {
   const [selected, setSelected] = useState('');
   const [taskVisible, setTaskVisible] = useState(false);
 
-  const [utilization, setUtilization] = useState(0)
-  const [interations, setInteractions] = useState(0)
-  const [followersGained, setFollowersGained] = useState(0)
-  const [follows,setFollows] = useState(0)
-  const [likes,setLikes] = useState(0)
-  const [comments,setComments] = useState(0)
-  const [messages,setMessages] = useState(0)
-  const [chartObj, setChartObj] = useState(chart)
+  const [utilization, setUtilization] = useState(0);
+  const [interations, setInteractions] = useState(0);
+  const [followersGained, setFollowersGained] = useState(0);
+  const [follows, setFollows] = useState(0);
+  const [likes, setLikes] = useState(0);
+  const [comments, setComments] = useState(0);
+  const [messages, setMessages] = useState(0);
+  const [chartObj, setChartObj] = useState(chart);
 
   const taskHandler = () => setTaskVisible(true);
   const closeTaskHandler = () => {
     setTaskVisible(false);
   };
->>>>>>> still-hooking-up-new-form-aug18
 
   useEffect(() => {
     FetchInstagramTaskTypes()
@@ -116,7 +115,7 @@ function Account() {
   };
 
   if (currentAccount === null) {
-    return (<Loading size='xl'/>)
+    return <Loading size="xl" />;
   } else {
     return (
       <div className="account-container">
@@ -135,13 +134,13 @@ function Account() {
           >
             New task
           </Button>
-            <Link to={'/config/' + account_id} className="button">
-          <Button type="button" color="secondary" size="md" rounded>
+          <Link to={'/config/' + account_id} className="button">
+            <Button type="button" color="secondary" size="md" rounded>
               Edit Rules
             </Button>
           </Link>
         </div>
-  
+
         <div className="user">
           <section>
             <UserIcon
@@ -159,18 +158,23 @@ function Account() {
             <div className="following">23.5 K</div>
           </section>
         </div>
-  
+
         <div className="account-metrics">
           <Grid.Container gap={2}>
             <TasksRunning active={active} />
-            <Utilization num={utilization}/>
+            <Utilization num={utilization} />
             <Interactions num={interations} />
-            <FollowerGain num={followersGained}/>
-            <InteractionLimits follows={follows} likes={likes} comments={comments} messages={messages} />
+            <FollowerGain num={followersGained} />
+            <InteractionLimits
+              follows={follows}
+              likes={likes}
+              comments={comments}
+              messages={messages}
+            />
             <MetricChart obj={chartObj} />
           </Grid.Container>
         </div>
-  
+
         <div className="account-main">
           {/* ! CONSIDER MERGING CURRENT TASKS AND ACTIVITY LOG SOMEHOW */}
           <Grid.Container gap={2}>
@@ -207,7 +211,7 @@ function Account() {
           tasksLoaded={tasksLoaded}
           account_id={account_id}
         />
-        <ConfigPopup />
+        <ConfigPopup currentAccount={currentAccount} account_id={account_id} />
       </div>
     );
   }
