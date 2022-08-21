@@ -1,7 +1,7 @@
 import React from 'react';
 import {Grid, Card, Text} from '@nextui-org/react';
 
-function FollowerGain() {
+function FollowerGain({num}) {
       return ( <Grid sm={4} xs={12}>
             <Card
               css={{
@@ -12,7 +12,7 @@ function FollowerGain() {
               <Card.Header>Follower Gain - 30 Days</Card.Header>
               <Card.Divider />
               <Card.Body>
-                <Text h2>247</Text>
+                <Text h2>{num}</Text>
               </Card.Body>
             </Card>
           </Grid> );

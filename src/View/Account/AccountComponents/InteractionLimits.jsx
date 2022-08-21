@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table, Grid, Card } from '@nextui-org/react';
 
-const InteractionLimits = () => {
+const InteractionLimits = ({follows, likes, comments, messages}) => {
   return (
     <Grid sm={4} xs={12}>
       <Card
@@ -29,22 +29,22 @@ const InteractionLimits = () => {
             <Table.Body>
               <Table.Row key="1">
                 <Table.Cell>Follow</Table.Cell>
-                <Table.Cell>750</Table.Cell>
+                <Table.Cell>{follows}</Table.Cell>
                 <Table.Cell>1000</Table.Cell>
               </Table.Row>
               <Table.Row key="2">
                 <Table.Cell>Like</Table.Cell>
-                <Table.Cell>623</Table.Cell>
+                <Table.Cell>{likes}</Table.Cell>
                 <Table.Cell>1000</Table.Cell>
               </Table.Row>
               <Table.Row key="3">
                 <Table.Cell>Comment</Table.Cell>
-                <Table.Cell>245</Table.Cell>
+                <Table.Cell>{comments}</Table.Cell>
                 <Table.Cell>1000</Table.Cell>
               </Table.Row>
               <Table.Row key="4">
                 <Table.Cell>Message</Table.Cell>
-                <Table.Cell>999</Table.Cell>
+                <Table.Cell>{messages}</Table.Cell>
                 <Table.Cell>1000</Table.Cell>
               </Table.Row>
             </Table.Body>
