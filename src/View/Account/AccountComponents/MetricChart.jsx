@@ -8,7 +8,7 @@ function MetricChart() {
       <Card
         css={{
           minHeight: '200px',
-          backdropFilter: 'saturate(25%) blur(15px)',
+          backdropFilter: 'saturate(0) blur(15px)',
           background: 'rgba(255, 255, 255, 0.2)',
         }}
       >

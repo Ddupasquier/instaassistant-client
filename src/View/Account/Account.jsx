@@ -77,11 +77,6 @@ function Account() {
         >
           New task
         </Button>
-        <Link to={'/config/' + account_id} className="button">
-          <Button type="button" color="secondary" size="md" rounded>
-            Edit Rules
-          </Button>
-        </Link>
       </div>
 
       <div className="user">

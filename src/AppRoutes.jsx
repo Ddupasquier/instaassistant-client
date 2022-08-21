@@ -12,7 +12,6 @@ import { Profile } from 'View/Profile';
 import { Account } from 'View/Account';
 import { Accounts } from 'View/Accounts';
 import { FAQ } from 'View/FAQ';
-import { InstagramConfig } from 'View/instagramConfig';
 import { Login } from 'View/Login';
 import { SignUp } from 'View/SignUp';
 import { Task } from 'View/Task';
@@ -52,7 +51,6 @@ function AppRoutes() {
             <Route path="/accounts" element={<Accounts />} />
             <Route path="/instagram/account/:account_id" element={<Account />} />
             <Route path="/FAQ" element={<FAQ />} />
-            <Route path="/config/:account_id" element={<InstagramConfig />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/task" element={<Task />} />
