@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Grid, Text, Progress } from '@nextui-org/react';
 
-function Utilization() {
+function Utilization({num}) {
   return (
     <Grid sm={4} xs={12}>
       <Card
@@ -15,10 +15,10 @@ function Utilization() {
         <Card.Body>
           <Grid.Container>
             <Grid sm={2}>
-              <Text h2>92%</Text>
+              <Text h2>{num}%</Text>
             </Grid>
             <Grid sm={12} xs={12}>
-              <Progress color="primary" value={92} />
+              <Progress color="primary" value={num} />
             </Grid>
           </Grid.Container>
         </Card.Body>

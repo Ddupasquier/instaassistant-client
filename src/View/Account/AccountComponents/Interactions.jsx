@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Grid, Text } from '@nextui-org/react';
 
-function Interactions() {
+function Interactions({num}) {
   return (
     <Grid sm={4} xs={12}>
       <Card
@@ -13,7 +13,7 @@ function Interactions() {
         <Card.Header>Interactions Sent - 30 Days</Card.Header>
         <Card.Divider />
         <Card.Body>
-          <Text h2>367409</Text>
+          <Text h2>{num}</Text>
         </Card.Body>
       </Card>
     </Grid>
