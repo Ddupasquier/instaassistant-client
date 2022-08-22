@@ -12,21 +12,23 @@ import { GetAccounts } from 'redux/AccountsStore/Actions';
 import AccountsListItem from './AccountsListItem';
 
 function Accounts() {
+
   const { Accounts: accounts, Loading: loading } = useSelector(
     (state) => state.accountsStore
   );
+
   const dispatch = useDispatch();
 
-  const [newAccountVisible, setNewAccountVisible] = useState(false);
+  useEffect(() => {
+    dispatch(GetAccounts());
+    console.log(accounts)
+  }, []);
 
+  const [newAccountVisible, setNewAccountVisible] = useState(false);
   const newAccountHandler = () => setNewAccountVisible(true);
   const closeNewAccountHandler = () => {
     setNewAccountVisible(false);
   };
-
-  useEffect(() => {
-    dispatch(GetAccounts());
-  }, [dispatch]);
 
   return (
     <>
@@ -62,9 +64,10 @@ function Accounts() {
                     minHeight: '15rem',
                   }}
                 >
-                  {loading ? (
+                  {loading && (
                     <Loading style={{ margin: 'auto' }} />
-                  ) : (
+                  ) }
+                  { accounts.length > 0 && (
                     accounts.map((account, index) => (
                       <AccountCardNext
                         path={'/instagram/account/' + account.id}
