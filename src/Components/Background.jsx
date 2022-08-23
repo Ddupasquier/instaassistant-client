@@ -2,13 +2,13 @@ import React from 'react';
 
 const Background = ({ style }) => {
   const bgStyle = {
-    backgroundImage: "url('https://i.ibb.co/KFXV3g0/abstract-lines-1.png')",
+    backgroundImage: "url('https://advancedwebtechnology.com/Portals/0/Images/ezgif-1-6ab989b982.jpeg?ver=FxjLZgyYJvyNBHO8IGcWmQ%3d%3d&timestamp=1661282809029')",
     backgroundPosition: 'center right',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     position: 'absolute',
     bottom: '0',
-    filter: 'saturate(200%) blur(3px)',
+    filter: '',
     height: '100vh',
     width: '100vw',
   };
