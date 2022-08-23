@@ -10,6 +10,7 @@ import {
   TaskCreatePath,
   AccountPatchPath,
   AccountShowPath,
+  snapshotPath,
 } from "./endpoints";
 
 // ----------- Start User
@@ -123,6 +124,7 @@ export const DeleteBot = async () => {
 // ---------------------- START TASKS
 
 export const PostTask = async (formData) => {
+  console.log(JSON.stringify(formData));
   const response = await fetch(TaskCreatePath, {
     method: "POST",
     headers: {
@@ -136,6 +138,22 @@ export const PostTask = async (formData) => {
 };
 
 // END TASKS
+
+// ---------- START SNAPSHOTS
+
+export const getSnapshots = async () => {
+  const response = await fetch(snapshotPath, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: localStorage.getItem("token"),
+    },
+  });
+  return await response.json();
+};
+
+// END SNAPSHOTS
 
 // --------- Static APIs
 

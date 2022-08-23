@@ -24,6 +24,9 @@ export const BotDeletePAth = baseUrl + "/accounts/"; // Delete bot based on bot_
 export const TaskCreatePath = baseUrl + "/tasks";
 export const TaskDeletePath = baseUrl + "/tasks/";
 
+//* SNAPSHOT ENDPOINTS
+export const snapshotPath = baseUrl + "/snapshots";
+
 //* START STATIC
 export const InstagramTaskTypes = baseUrl + "/task_type";
 export const faqPath = baseUrl + "/faq";
