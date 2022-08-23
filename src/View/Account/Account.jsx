@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 // * ------- API LAYER ------- *
-import { FetchInstagramTaskTypes, ShowAccount } from 'api';
+import { FetchInstagramTaskTypes, getSnapshots, ShowAccount } from 'api';
 
 // * ------- STYLES ------- *
 import { Button, Card, Grid, Loading } from '@nextui-org/react';
@@ -17,7 +17,6 @@ import FollowerGain from './AccountComponents/FollowerGain';
 import TasksRunning from './AccountComponents/TasksRunning';
 import MetricChart from './AccountComponents/MetricChart';
 import InteractionLimits from './AccountComponents/InteractionLimits';
-import TaskModal from './AccountComponents/TaskModal';
 import ConfigPopup from './AccountComponents/ConfigPopup';
 import ActivityLog from './AccountComponents/ActivityLog';
 
@@ -76,6 +75,8 @@ function Account() {
   useEffect(() => {
     ShowAccount(account_id).then((data) => {
       setCurrentAccount(data);
+      getSnapshots()
+      .then((data) => setSnapshots(data))
     });
 
     // get All tasks
@@ -89,6 +90,7 @@ function Account() {
   const [selected, setSelected] = useState('');
   const [taskVisible, setTaskVisible] = useState(false);
 
+  const [snapshots, setSnapshots] = useState(null)
   const [utilization, setUtilization] = useState(0);
   const [interations, setInteractions] = useState(0);
   const [followersGained, setFollowersGained] = useState(0);
@@ -107,6 +109,7 @@ function Account() {
     FetchInstagramTaskTypes()
       .then((data) => setTasks(data))
       .then(() => setTasksLoaded(true));
+
   }, []);
 
   const handleChange = (e) => {
@@ -139,18 +142,18 @@ function Account() {
         <div className="user">
           <section>
             <UserIcon
-              src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
+              src={snapshots ? snapshots[snapshots.length - 1].profile_pic : null}
               name={`@${currentAccount.username}`}
               size="xl"
             />
           </section>
           <section>
             <legend>Followers</legend>
-            <div className="followers">23.5 K</div>
+            <div className="followers">{snapshots ? snapshots[snapshots.length - 1].followers : 99999}</div>
           </section>
           <section>
             <legend>Following</legend>
-            <div className="following">23.5 K</div>
+            <div className="following">{snapshots ? snapshots[snapshots.length - 1].following : 99999}</div>
           </section>
         </div>
 
@@ -167,32 +170,7 @@ function Account() {
               messages={messages}
             />
             <MetricChart obj={chartObj} />
-          </Grid.Container>
-        </div>
-
-        <div className="account-main">
-          {/* ! CONSIDER MERGING CURRENT TASKS AND ACTIVITY LOG SOMEHOW */}
-          <Grid.Container gap={2}>
-            <Card css={{ minHeight: '400px' }}>
-              <Card.Body>
-                <div className="log-container">
-                  <div className="log">
-                    <Button
-                      onPress={taskHandler}
-                      type="button"
-                      color="warning"
-                      size="sm"
-                      rounded
-                      className="log-button"
-                    >
-                      Start New Task
-                    </Button>
-                    <h3>Activity Log:</h3>
-                    <br />
-                  </div>
-                </div>
-              </Card.Body>
-            </Card>
+            <ActivityLog />
           </Grid.Container>
         </div>
         <TaskModalNew

@@ -45,10 +45,10 @@ const TaskModalNew = ({
       args.push(value);
     }
 
-    let taskname = ""
+    let taskName = ""
     tasks.forEach((task) => {
       if (parseInt(task.id) === parseInt(args[0])) {
-        taskname = task.name
+        taskName = task.name
       }  
     })
 
@@ -66,15 +66,14 @@ const TaskModalNew = ({
 
     const payload = {
       account_id: account_id,
-      schedule: schedule,
       date: schedule ? dateFormat : todaysDate,
       task_type: action,
       list_type: `${listTarget}:${listType}`,
       list_url: url,
       arguments: args.join(";")
     }
-    console.log(payload);
-    //PostTask(payload)
+    console.log("stuff")
+    PostTask(payload)
   };
 
   return (
@@ -97,7 +96,7 @@ const TaskModalNew = ({
             </Text>
           </Text>
         </Modal.Header>
-        <form onSubmit={HandleSubmit}>
+        <form onSubmit={(e) => HandleSubmit(e)}>
         <Modal.Body>
           <h3>What would you like to schedule?</h3>
                 <h5>Action</h5>
