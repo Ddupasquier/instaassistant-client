@@ -9,7 +9,6 @@ import NewAccountCardButtonNext from 'Components/AccountCardNext/NewAccountCardB
 import { useDispatch, useSelector } from 'react-redux';
 
 import { GetAccounts } from 'redux/AccountsStore/Actions';
-import AccountsListItem from './AccountsListItem';
 
 function Accounts() {
 
@@ -22,7 +21,7 @@ function Accounts() {
   useEffect(() => {
     dispatch(GetAccounts());
     console.log(accounts)
-  }, []);
+  }, [accounts, dispatch]);
 
   const [newAccountVisible, setNewAccountVisible] = useState(false);
   const newAccountHandler = () => setNewAccountVisible(true);
