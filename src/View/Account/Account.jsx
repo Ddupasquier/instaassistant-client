@@ -18,6 +18,7 @@ import TasksRunning from './AccountComponents/TasksRunning';
 import MetricChart from './AccountComponents/MetricChart';
 import InteractionLimits from './AccountComponents/InteractionLimits';
 import ConfigPopup from './AccountComponents/ConfigPopup';
+import ActivityLog from './AccountComponents/ActivityLog';
 
 function Account() {
   const chart = [
@@ -169,32 +170,7 @@ function Account() {
               messages={messages}
             />
             <MetricChart obj={chartObj} />
-          </Grid.Container>
-        </div>
-
-        <div className="account-main">
-          {/* ! CONSIDER MERGING CURRENT TASKS AND ACTIVITY LOG SOMEHOW */}
-          <Grid.Container gap={2}>
-            <Card css={{ minHeight: '400px' }}>
-              <Card.Body>
-                <div className="log-container">
-                  <div className="log">
-                    <Button
-                      onPress={taskHandler}
-                      type="button"
-                      color="warning"
-                      size="sm"
-                      rounded
-                      className="log-button"
-                    >
-                      Start New Task
-                    </Button>
-                    <h3>Activity Log:</h3>
-                    <br />
-                  </div>
-                </div>
-              </Card.Body>
-            </Card>
+            <ActivityLog />
           </Grid.Container>
         </div>
         <TaskModalNew
