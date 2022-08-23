@@ -20,8 +20,7 @@ function Accounts() {
 
   useEffect(() => {
     dispatch(GetAccounts());
-    console.log(accounts)
-  }, [accounts, dispatch]);
+  }, [ dispatch]);
 
   const [newAccountVisible, setNewAccountVisible] = useState(false);
   const newAccountHandler = () => setNewAccountVisible(true);

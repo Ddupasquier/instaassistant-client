@@ -33,29 +33,29 @@ const TaskModalNew = ({
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0');
     var yyyy = today.getFullYear();
-    setTodaysDate(dd + '-' + mm + '-' + yyyy);
+    setTodaysDate(dd + '-' + mm + '-' + yyyy + ";" + today.getHours() + ":" + today.getMinutes());
     setDate(todaysDate);
   }, [todaysDate]);
 
   const HandleSubmit = (e) => {
     e.preventDefault();
-    let form = e.currentTarget;
-    let formFields = new FormData(form);
-    let formDataObject = Object.fromEntries(formFields.entries());
-    let formDataJsonString = JSON.stringify(formDataObject);
+    // let form = e.currentTarget;
+    // let formFields = new FormData(form);
+    // let formDataObject = Object.fromEntries(formFields.entries());
+    // let formDataJsonString = JSON.stringify(formDataObject);
 
-    const args = [];
-    for (const [key, value] of Object.entries(JSON.parse(formDataJsonString))) {
-      args.push(value);
-    }
+    // const args = [];
+    // for (const [key, value] of Object.entries(JSON.parse(formDataJsonString))) {
+    //   args.push(value);
+    // }
 
-    let taskname = '';
+    // let taskname = '';
     
-    tasks.forEach((task) => {
-      if (parseInt(task.id) === parseInt(args[0])) {
-        taskname = task.name;
-      }
-    });
+    // tasks.forEach((task) => {
+    //   if (parseInt(task.id) === parseInt(args[0])) {
+    //     taskname = task.name;
+    //   }
+    // });
 
     const payload = {
       account_id: account_id,
@@ -63,11 +63,11 @@ const TaskModalNew = ({
       date: date == null ? todaysDate : date,
       task_type: action,
       list_type: `${listTarget}:${listType}`,
-      list_url: '',
-      arguments: args.join(';'),
+      target_url: '',
+      // arguments: args.join(';'),
     };
     console.log(payload);
-    //PostTask(payload)
+    PostTask(payload)
   };
 
   const actions = [
@@ -100,7 +100,7 @@ const TaskModalNew = ({
             </Text>
           </Text>
         </Modal.Header>
-        <form onSubmit={HandleSubmit}>
+        <form onSubmit={(e) => HandleSubmit(e)}>
           <Modal.Body>
             <h3>What would you like to schedule?</h3>
             <h5>Action</h5>
@@ -130,7 +130,7 @@ const TaskModalNew = ({
             </select>
 
             {action === 'Post' ? (
-              <input
+              <input required
                 status="secondary"
                 alt="upload image"
                 type="file"
@@ -141,6 +141,7 @@ const TaskModalNew = ({
               <>
                 <h5>List</h5>
                 <select
+                required
                   name="Target"
                   className="options"
                   value={listTarget}
@@ -163,6 +164,7 @@ const TaskModalNew = ({
                 </select>
                 &nbsp;{' --> '}&nbsp;
                 <select
+                required
                   name="TaskType"
                   className="options"
                   value={listType}
