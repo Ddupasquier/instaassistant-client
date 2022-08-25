@@ -25,8 +25,6 @@ function Accounts() {
   const [searchTerm, setSearchTerm] = useState('');
   const [allAccounts, setAllAccounts] = useState(accounts);
 
-  // filter through accounts for search term on username
-
   const filteredAccounts = allAccounts
     .filter((account) => {
       return account.username.toLowerCase().includes(searchTerm.toLowerCase());

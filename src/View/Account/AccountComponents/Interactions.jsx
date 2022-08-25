@@ -1,12 +1,12 @@
 import React from 'react';
 import { Card, Grid, Text } from '@nextui-org/react';
 
-function Interactions({num}) {
+function Interactions({ num }) {
   return (
     <Grid sm={4} xs={12}>
       <Card
         css={{
-          backdropFilter: 'saturate(200%) blur(15px)',
+          backdropFilter: 'saturate(0) blur(15px)',
           background: 'rgba(255, 255, 255, 0.2)',
         }}
       >
