@@ -11,6 +11,8 @@ import {
   AccountPatchPath,
   AccountShowPath,
   snapshotPath,
+  TaskPath,
+  AccountTaskPath,
 } from "./endpoints";
 
 // ----------- Start User
@@ -61,7 +63,7 @@ export const GetUserInfo = async () => {
 
 // -------------- START ACCOUNTs
 
-export const CreateBot = async (formData) => {
+export const CreateAccount = async (formData) => {
   const response = await fetch(
     CreateAccountPath[0] + localStorage.getItem("user") + CreateAccountPath[1],
     {
@@ -124,8 +126,7 @@ export const DeleteBot = async () => {
 // ---------------------- START TASKS
 
 export const PostTask = async (formData) => {
-  console.log(JSON.stringify(formData));
-  const response = await fetch(TaskCreatePath, {
+  const response = await fetch(TaskPath, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -137,12 +138,36 @@ export const PostTask = async (formData) => {
   return await response.json();
 };
 
+export const GetTasks = async (account_id) => {
+  const response = await fetch(AccountTaskPath + "/" + account_id, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: localStorage.getItem("token"),
+    },
+  });
+  return await response.json();
+};
+
+export const GetTask = async (task_id) => {
+  const response = await fetch(TaskPath + "/" + task_id, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: localStorage.getItem("token"),
+    },
+  });
+  return await response.json();
+};
+
 // END TASKS
 
 // ---------- START SNAPSHOTS
 
-export const getSnapshots = async () => {
-  const response = await fetch(snapshotPath, {
+export const getSnapshots = async (account_id) => {
+  const response = await fetch(snapshotPath + "/" + account_id, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

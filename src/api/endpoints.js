@@ -21,8 +21,8 @@ export const BotIndexPath = baseUrl + "/user_accounts";
 export const BotDeletePAth = baseUrl + "/accounts/"; // Delete bot based on bot_id
 
 //* START Task for bot to complete
-export const TaskCreatePath = baseUrl + "/tasks";
-export const TaskDeletePath = baseUrl + "/tasks/";
+export const AccountTaskPath = baseUrl + "/account_tasks";
+export const TaskPath = baseUrl + "/tasks";
 
 //* SNAPSHOT ENDPOINTS
 export const snapshotPath = baseUrl + "/snapshots";
