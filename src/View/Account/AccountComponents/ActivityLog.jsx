@@ -1,7 +1,7 @@
 import React from 'react';
-import { Card, Button, Grid, Text } from '@nextui-org/react';
+import { Card, Grid, Text } from '@nextui-org/react';
 
-function ActivityLog({ taskHandler }) {
+function ActivityLog() {
   return (
     <Grid xs={12}>
       <Card css={{ minHeight: '400px' }}>

@@ -5,7 +5,7 @@ import { Link, useParams } from 'react-router-dom';
 import { FetchInstagramTaskTypes, getSnapshots, ShowAccount } from 'api';
 
 // * ------- STYLES ------- *
-import { Button, Card, Grid, Loading } from '@nextui-org/react';
+import { Button, Grid, Loading } from '@nextui-org/react';
 import './scss/account-styles.css';
 
 // * ------- COMPONENTS ------- *
@@ -76,7 +76,7 @@ function Account() {
     ShowAccount(account_id).then((data) => {
       setCurrentAccount(data);
       getSnapshots()
-      .then((data) => setSnapshots(data))
+      .then((snaps) => setSnapshots(snaps))
     });
 
     // get All tasks
@@ -91,6 +91,7 @@ function Account() {
   const [taskVisible, setTaskVisible] = useState(false);
 
   const [snapshots, setSnapshots] = useState(null)
+  // console.log(snapshots)
   const [utilization, setUtilization] = useState(0);
   const [interations, setInteractions] = useState(0);
   const [followersGained, setFollowersGained] = useState(0);
