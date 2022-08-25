@@ -11,7 +11,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { GetAccounts } from 'redux/AccountsStore/Actions';
 
 function Accounts() {
-
   const { Accounts: accounts, Loading: loading } = useSelector(
     (state) => state.accountsStore
   );
@@ -20,7 +19,21 @@ function Accounts() {
 
   useEffect(() => {
     dispatch(GetAccounts());
-  }, [ dispatch]);
+    setAllAccounts(accounts);
+  }, [accounts, dispatch]);
+
+  const [searchTerm, setSearchTerm] = useState('');
+  const [allAccounts, setAllAccounts] = useState(accounts);
+
+  // filter through accounts for search term on username
+
+  const filteredAccounts = allAccounts
+    .filter((account) => {
+      return account.username.toLowerCase().includes(searchTerm.toLowerCase());
+    })
+    .sort((a, b) => {
+      return a.username.localeCompare(b.username);
+    });
 
   const [newAccountVisible, setNewAccountVisible] = useState(false);
   const newAccountHandler = () => setNewAccountVisible(true);
@@ -54,6 +67,7 @@ function Accounts() {
                     labelPlaceholder="Search"
                     color="secondary"
                     size="xl"
+                    onChange={(e) => setSearchTerm(e.target.value)}
                   ></Input>
                 </div>
                 <div
@@ -62,18 +76,15 @@ function Accounts() {
                     minHeight: '15rem',
                   }}
                 >
-                  {loading && (
-                    <Loading style={{ margin: 'auto' }} />
-                  ) }
-                  { accounts.length > 0 && (
-                    accounts.map((account, index) => (
+                  {/* {loading && <Loading style={{ margin: 'auto' }} />} */}
+                  {accounts.length > 0 &&
+                    filteredAccounts.map((account, index) => (
                       <AccountCardNext
                         path={'/instagram/account/' + account.id}
                         username={account.username}
                         key={index}
                       />
-                    ))
-                  )}
+                    ))}
                   <NewAccountCardButtonNext handler={newAccountHandler} />
                 </div>
               </div>
