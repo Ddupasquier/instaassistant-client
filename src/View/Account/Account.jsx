@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 // * ------- API LAYER ------- *
-import { FetchInstagramTaskTypes, getSnapshots, ShowAccount } from 'api';
+import { FetchInstagramTaskTypes, getSnapshots, GetTasks, ShowAccount } from 'api';
 
 // * ------- STYLES ------- *
 import { Button, Card, Grid, Loading } from '@nextui-org/react';
@@ -21,76 +21,72 @@ import ConfigPopup from './AccountComponents/ConfigPopup';
 import ActivityLog from './AccountComponents/ActivityLog';
 
 function Account() {
-  const chart = [
+
+  const rows = [
     {
-      name: 'Page A',
-      followers: 4000,
-      following: 2400,
-      amt: 2400,
+      key: "1",
+      name: "Tony Reichert",
+      role: "CEO",
+      status: "Active",
     },
     {
-      name: 'Page B',
-      followers: 3000,
-      following: 1398,
-      amt: 2210,
+      key: "2",
+      name: "Zoey Lang",
+      role: "Technical Lead",
+      status: "Paused",
     },
     {
-      name: 'Page C',
-      followers: 2000,
-      following: 9800,
-      amt: 2290,
+      key: "3",
+      name: "Jane Fisher",
+      role: "Senior Developer",
+      status: "Active",
     },
     {
-      name: 'Page D',
-      followers: 2780,
-      following: 3908,
-      amt: 2000,
-    },
-    {
-      name: 'Page E',
-      followers: 1890,
-      following: 4800,
-      amt: 2181,
-    },
-    {
-      name: 'Page F',
-      followers: 2390,
-      following: 3800,
-      amt: 2500,
-    },
-    {
-      name: 'Page G',
-      followers: 3490,
-      following: 4300,
-      amt: 2100,
+      key: "4",
+      name: "William Howard",
+      role: "Community Manager",
+      status: "Vacation",
     },
   ];
-
+  
   //Route Handle
   const { account_id } = useParams();
-  const [active, setActive] = useState(true);
   const [currentAccount, setCurrentAccount] = useState(null);
-  // move config state back into this component
-
+  const [active, setActive] = useState(true);
+  const [snapshots, setSnapshots] = useState([{followers: 9999, following: 99999, profile_pic: ""}])
+  const [tasks, setTasks] = useState();
+  
   useEffect(() => {
     ShowAccount(account_id).then((data) => {
       setCurrentAccount(data);
-      getSnapshots()
-      .then((data) => setSnapshots(data))
+      
     });
+    getSnapshots(account_id)
+      .then((data) => {
+        if (data[0]!= null) {
+          setSnapshots(data)
+        } else {
+          setSnapshots([{followers: 9999, following: 9999, profile_pic: ""}])
+        }
+      })
 
-    // get All tasks
-    // get all snapshots
+      GetTasks(account_id)
+      .then((data) => {
+        if (data[0]!= null) {
+          setTasks(data)
+        } else {
+          setTasks(["no tasks created yet"])
+        }
+      })
   }, [account_id]);
 
   // * ------- TASK FORM AND MODULE HANDLERS ------- *
-  const [tasks, setTasks] = useState();
   const [tasksLoaded, setTasksLoaded] = useState();
   const [tasksSelected, setTasksSelected] = useState(false);
   const [selected, setSelected] = useState('');
   const [taskVisible, setTaskVisible] = useState(false);
 
-  const [snapshots, setSnapshots] = useState(null)
+  // PAGE CONTROL
   const [utilization, setUtilization] = useState(0);
   const [interations, setInteractions] = useState(0);
   const [followersGained, setFollowersGained] = useState(0);
@@ -98,26 +94,29 @@ function Account() {
   const [likes, setLikes] = useState(0);
   const [comments, setComments] = useState(0);
   const [messages, setMessages] = useState(0);
-  const [chartObj, setChartObj] = useState(chart);
+
+  useEffect(() => {
+
+    // sum up all follows_sent setFollows()
+    // sum up all likes_sent likes()
+    // sum up all Comments_Sent comments()
+    // sum up all MEssages_sent messages()
+ 
+    // sum all of above 
+
+  }, []);
 
   const taskHandler = () => setTaskVisible(true);
   const closeTaskHandler = () => {
     setTaskVisible(false);
   };
 
-  useEffect(() => {
-    FetchInstagramTaskTypes()
-      .then((data) => setTasks(data))
-      .then(() => setTasksLoaded(true));
-
-  }, []);
-
   const handleChange = (e) => {
     setSelected(e.target.value);
     setTasksSelected(true);
   };
 
-  if (currentAccount === null) {
+  if (currentAccount === null || snapshots === null) {
     return <Loading size="xl" />;
   } else {
     return (
@@ -169,8 +168,8 @@ function Account() {
               comments={comments}
               messages={messages}
             />
-            <MetricChart obj={chartObj} />
-            <ActivityLog />
+            <MetricChart />
+            <ActivityLog tasks={tasks} />
           </Grid.Container>
         </div>
         <TaskModalNew

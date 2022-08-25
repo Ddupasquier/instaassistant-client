@@ -1,5 +1,5 @@
 /* eslint-disable object-curly-newline */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './scss/signup-styles.css';
 import { Button, Input, Loading, Spacer } from '@nextui-org/react';
@@ -10,6 +10,16 @@ function SignUp({ setLogIsVisible, logIsVisible }) {
   const [pwd, setPwd] = useState('');
   const [pwdconf, setPwdconf] = useState('');
   const [loading, setLoading] = useState(false);
+  
+  const [inviteCode, setInviteCode] = useState(false)
+  const [code, setCode] = useState('')
+  console.log(code, inviteCode)
+
+  useEffect(() => {
+    if (code.length === 10) {
+      setInviteCode(true)
+    }
+  }, [code])
 
   const signupStyle = {
     position: 'absolute',
@@ -42,6 +52,13 @@ function SignUp({ setLogIsVisible, logIsVisible }) {
             <b>Bot</b>
           </h2>
           <h1>Sign Up</h1>
+        {!inviteCode ? (<Input
+            required
+            type="text"
+            id="invite-code"
+            placeholder="INVITE CODE"
+            onChange={(e) => setCode(e.target.value)}
+          />) : (<>
           <Input
             required
             type="text"
@@ -68,7 +85,7 @@ function SignUp({ setLogIsVisible, logIsVisible }) {
           <Spacer />
           <Button type="submit">
             {!loading ? <>Sign Up</> : <Loading size="sm" color="secondary" />}
-          </Button>
+          </Button></>)}
         </form>
         <div className="signup-footer">
           <a href="/" className="forgot-password">
