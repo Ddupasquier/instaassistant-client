@@ -1,21 +1,20 @@
-import { indexAccounts } from "../../api";
+import { indexAccounts } from '../../api';
 import {
-  FETCH_ACCOUNTS,
-  FETCH_ACCOUNTS_SUCCESS,
-  FETCH_ACCOUNTS_FAIL,
-} from "./ActionTypes";
+  FETCH_ACCOUNT,
+  FETCH_ACCOUNT_SUCCESS,
+  FETCH_ACCOUNT_FAIL,
+} from './ActionTypes';
 
 export const GetAccounts = () => async (dispatch) => {
-  dispatch({ type: FETCH_ACCOUNTS });
+  dispatch({ type: FETCH_ACCOUNT });
   indexAccounts()
     .then((data) => {
       dispatch({
-        type: FETCH_ACCOUNTS_SUCCESS,
+        type: FETCH_ACCOUNT_SUCCESS,
         accounts: data,
       });
     })
     .catch(() => {
-      dispatch({ type: FETCH_ACCOUNTS_FAIL });
+      dispatch({ type: FETCH_ACCOUNT_FAIL });
     });
 };
-
