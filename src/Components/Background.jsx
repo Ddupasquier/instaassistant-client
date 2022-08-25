@@ -1,8 +1,9 @@
 import React from 'react';
 
-const Background = ({ style }) => {
+const Background = () => {
   const bgStyle = {
-    backgroundImage: "url('https://advancedwebtechnology.com/Portals/0/Images/ezgif-1-6ab989b982.jpeg?ver=FxjLZgyYJvyNBHO8IGcWmQ%3d%3d&timestamp=1661282809029')",
+    backgroundImage:
+      "url('https://advancedwebtechnology.com/Portals/0/Images/ezgif-1-6ab989b982.jpeg?ver=FxjLZgyYJvyNBHO8IGcWmQ%3d%3d&timestamp=1661282809029')",
     backgroundPosition: 'center right',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
@@ -12,9 +13,6 @@ const Background = ({ style }) => {
     height: '100vh',
     width: '100vw',
   };
-
-  const layerStyle = {
-  }
 
   return <div style={bgStyle} />;
 };
