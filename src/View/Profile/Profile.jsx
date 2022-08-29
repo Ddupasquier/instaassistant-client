@@ -7,7 +7,6 @@ import EditProfile from './EditProfile';
 
 function Profile() {
   const [userInfo, setUserInfo] = useState({});
-  // console.log(userInfo)
   const [userLoaded, setUserLoaded] = useState(false);
   const [editProfileVisible, setEditProfileVisible] = useState(false);
 
@@ -24,7 +23,7 @@ function Profile() {
 
   return (
     <div className="profile-main">
-      <div className="profile" style={{padding: '1.5rem'}}>
+      <div className="profile" style={{ padding: '1.5rem' }}>
         <div className="profile-header">
           <UserIcon
             src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
@@ -69,6 +68,7 @@ function Profile() {
       <EditProfile
         editProfileVisible={editProfileVisible}
         closeEditProfileHandler={closeEditProfileHandler}
+        userInfo={userInfo}
       />
     </div>
   );

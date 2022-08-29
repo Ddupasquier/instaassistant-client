@@ -28,12 +28,17 @@ function App({ setTheme, lightTheme, darkTheme, theme }) {
     <div className="App">
       {localStorage.getItem('token') ? (
         <div className="app">
-          <Header menuSelected={menuSelected} />
+          <Header
+            menuSelected={menuSelected}
+            theme={theme}
+            darkTheme={darkTheme}
+          />
           <Menu
             menuItemHovered={menuItemHovered}
             setMenuItemHovered={setMenuItemHovered}
             animateLogo={animateLogo}
             setTheme={setTheme}
+            theme={theme}
             lightTheme={lightTheme}
             darkTheme={darkTheme}
           />
