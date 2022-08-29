@@ -7,7 +7,7 @@ import { Header } from 'Components/Header';
 import { Menu } from 'Components/Menu';
 import Background from 'Components/Background';
 
-function App({ setTheme, lightTheme, darkTheme }) {
+function App({ setTheme, lightTheme, darkTheme, theme }) {
   const [logIsVisible, setLogIsVisible] = useState(true);
   const [menuItemHovered, setMenuItemHovered] = useState('');
   const [menuSelected, setMenuSeleted] = useState('');
@@ -28,18 +28,23 @@ function App({ setTheme, lightTheme, darkTheme }) {
     <div className="App">
       {localStorage.getItem('token') ? (
         <div className="app">
-          <Header menuSelected={menuSelected} />
+          <Header
+            menuSelected={menuSelected}
+            theme={theme}
+            darkTheme={darkTheme}
+          />
           <Menu
             menuItemHovered={menuItemHovered}
             setMenuItemHovered={setMenuItemHovered}
             animateLogo={animateLogo}
             setTheme={setTheme}
+            theme={theme}
             lightTheme={lightTheme}
             darkTheme={darkTheme}
           />
 
           <Outlet />
-          <Background />
+          <Background theme={theme} darkTheme={darkTheme} />
         </div>
       ) : (
         <>

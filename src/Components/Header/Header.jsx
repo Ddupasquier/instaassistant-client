@@ -5,15 +5,20 @@ import './scss/header-styles.css';
 import { Logout } from '../../api';
 import LogoAnimation from './LogoAnimation';
 
-function Header({ menuSelected }) {
-  const {theme} = useTheme()
-  
+function Header({ menuSelected, theme, darkTheme }) {
   const capFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
   return (
-    <header style={{backgroundColor: '$menue'}}>
+    <header
+      style={{
+        backgroundColor:
+          theme === darkTheme ? 'rgb(34, 34, 34)' : 'rgb(212, 212, 212)',
+        transition: '1s',
+        // filter: theme !== darkTheme ? 'invert(1)' : 'invert(0)',
+      }}
+    >
       <LogoAnimation menuSelected={menuSelected} />
       <div className="site-name">
         <i>Marcus</i>

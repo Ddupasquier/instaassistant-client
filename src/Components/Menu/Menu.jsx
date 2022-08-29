@@ -43,8 +43,8 @@ function Menu({
   setTheme,
   lightTheme,
   darkTheme,
+  theme,
 }) {
-  const {theme} = useTheme()
   const [checked, setChecked] = useState(true);
 
   const handleThemeChange = () => {
@@ -54,7 +54,15 @@ function Menu({
 
   return (
     <>
-      <nav className="menu" style={{backgroundColor: '$menue'}}>
+      <nav
+        className="menu"
+        style={{
+          backgroundColor:
+            theme === darkTheme ? 'rgb(34, 34, 34)' : 'rgb(212, 212, 212)',
+          transition: '1s',
+          // filter: theme !== darkTheme ? 'invert(1)' : 'invert(0)',
+        }}
+      >
         {menuItems.map((item) => (
           <div
             onMouseOver={() => setMenuItemHovered(item.name)}
@@ -63,7 +71,10 @@ function Menu({
             onBlur={() => setMenuItemHovered('')}
             key={item.name}
           >
-            <MenuItem item={item} animateLogo={animateLogo} />
+            <MenuItem
+              item={item}
+              animateLogo={animateLogo}
+            />
           </div>
         ))}
         <div className="menu-bottom">
@@ -83,7 +94,7 @@ function Menu({
       {window.innerWidth > 760 ? (
         <div className="pop-overs">
           {menuItems.map((item) => (
-            <PopOver key={item.to} item={item} hovered={menuItemHovered} />
+            <PopOver key={item.to} item={item} hovered={menuItemHovered} theme={theme} darkTheme={darkTheme} />
           ))}
         </div>
       ) : null}

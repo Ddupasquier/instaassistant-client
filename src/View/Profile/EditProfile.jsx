@@ -1,7 +1,16 @@
 import React from 'react';
-import { Modal, Input, Button, Text } from '@nextui-org/react';
+import { Modal, Input, Button, Text, Grid } from '@nextui-org/react';
 
-function EditProfile({ editProfileVisible, closeEditProfileHandler }) {
+function EditProfile({
+  editProfileVisible,
+  closeEditProfileHandler,
+  userInfo,
+}) {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('submit');
+  };
+
   return (
     <Modal
       closeButton
@@ -16,14 +25,41 @@ function EditProfile({ editProfileVisible, closeEditProfileHandler }) {
           </Text>
         </Text>
       </Modal.Header>
-      <form>
+      <form onSubmit={handleSubmit}>
         <Modal.Body>
-          <Input label="Company Name" underlined css={{ width: '100%' }} />
-          <Input label="Company Email" underlined css={{ width: '100%' }} />
-          <Input label="Company Phone" underlined css={{ width: '100%' }} />
-          <Input label="Company Address" underlined css={{ width: '100%' }} />
-          <Input label="Company Website" underlined css={{ width: '100%' }} />
-          <Input label="Company Logo" underlined css={{ width: '100%' }} />
+          <Grid.Container>
+            <Grid xs={12} md={6}>
+              <Input label="Company Name" underlined css={{ width: '100%' }} />
+            </Grid>
+            <Grid xs={12} md={6}>
+              <Input label="Company Email" underlined css={{ width: '100%' }} />
+            </Grid>
+            <Grid xs={12} md={6}>
+              <Input label="Company Phone" underlined css={{ width: '100%' }} />
+            </Grid>
+            <Grid xs={12} md={6}>
+              <Input
+                label="Company Address"
+                underlined
+                css={{ width: '100%' }}
+              />
+            </Grid>
+            <Grid xs={12} md={6}>
+              <Input
+                label="Company Website"
+                underlined
+                css={{ width: '100%' }}
+              />
+            </Grid>
+            <Grid xs={12} md={6}>
+              <Input
+                label="Company Logo"
+                underlined
+                css={{ width: '100%' }}
+                disabled
+              />
+            </Grid>
+          </Grid.Container>
         </Modal.Body>
         <Modal.Footer>
           <Button type="submit" color="secondary" rounded>

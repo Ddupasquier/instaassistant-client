@@ -1,13 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function PopOver({ item, hovered }) {
+function PopOver({ item, hovered, theme, darkTheme }) {
   const popOverActive = {
     width: '9rem',
+    backgroundColor:
+      theme === darkTheme ? 'rgb(34, 34, 34)' : 'rgb(212, 212, 212)',
     translate: 'translate(-50%, -50%)',
   };
 
   const popOverInactive = {
+    backgroundColor:
+      theme === darkTheme ? 'rgb(34, 34, 34)' : 'rgb(212, 212, 212)',
     width: '0',
   };
 

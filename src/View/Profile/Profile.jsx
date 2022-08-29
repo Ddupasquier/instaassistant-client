@@ -7,7 +7,6 @@ import EditProfile from './EditProfile';
 
 function Profile() {
   const [userInfo, setUserInfo] = useState({});
-  // console.log(userInfo)
   const [userLoaded, setUserLoaded] = useState(false);
   const [editProfileVisible, setEditProfileVisible] = useState(false);
 
@@ -79,6 +78,7 @@ function Profile() {
       <EditProfile
         editProfileVisible={editProfileVisible}
         closeEditProfileHandler={closeEditProfileHandler}
+        userInfo={userInfo}
       />
     </div>
   );
