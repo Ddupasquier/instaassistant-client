@@ -13,7 +13,7 @@ function TasksRunning({ tasksActive }) {
               variant="flat"
               css={{
                 backdropFilter: 'saturate(200%) blur(15px)',
-                background: 'rgba(255, 255, 255, 0.2)',
+                background: '$myColor',
               }}
             >
               <Card.Header>Task Currently Running</Card.Header>

@@ -44,6 +44,7 @@ export const loginFetch = async (userInfo) => {
   } else {
     localStorage.setItem("user", JSON.stringify(resp_1.user));
     localStorage.setItem("token", resp_1.jwt);
+    localStorage.setItem("email", JSON.stringify(resp_1.email));
     window.location.replace("/");
   }
 };

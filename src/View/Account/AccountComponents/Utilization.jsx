@@ -7,12 +7,13 @@ function Utilization({num}) {
       <Card
         css={{
           backdropFilter: 'saturate(0) blur(15px)',
-          background: 'rgba(255, 255, 255, 0.2)',
+          background: '$myColor',
         }}
       >
         <Card.Header>Utilization - 30 Days</Card.Header>
         <Card.Divider />
         <Card.Body>
+          <Text css={{ color: '$myDarkColor' }}>NextUI with dark theme</Text>
           <Grid.Container>
             <Grid sm={2}>
               <Text h2>{num}%</Text>

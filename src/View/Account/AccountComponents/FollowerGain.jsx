@@ -6,7 +6,7 @@ function FollowerGain({num}) {
             <Card
               css={{
                 backdropFilter: 'saturate(0) blur(10px)',
-                background: 'rgba(255, 255, 255, 0.2)',
+                background: '$myColor',
               }}
             >
               <Card.Header>Follower Gain - 30 Days</Card.Header>

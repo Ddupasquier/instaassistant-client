@@ -10,7 +10,17 @@ function Billing() {
   return (
     <div className="billing-container">
       <div className="head">
-        <h3>PAYMENT SETTINGS</h3>
+        <div style={{backgroundColor: "#000"}}>
+      <Text
+        h1
+        size={60}
+        css={{
+          textGradient: "45deg, $blue600 -20%, $pink600 50%",
+        }}
+        weight="bold"
+      >
+      PAYMENT SETTINGS
+      </Text></div>
         <Text h4>
           Marcus Bot does not save any credit card information. <br />
           We bill through paypal or through the secure third party Stripe.

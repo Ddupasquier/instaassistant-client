@@ -20,7 +20,7 @@ function NewAccountModal({ newAccountVisible, closeNewAccountHandler }) {
       );
       return;
     } else {
-      let payload = { username, pwd };
+      let payload = { username, password: pwd };
       CreateAccount(payload).then((data) => {
         if (data.success) {
           this.checkStatus = setInterval(() => {

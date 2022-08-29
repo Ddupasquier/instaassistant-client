@@ -5,25 +5,18 @@ import './scss/accounts-styles.css';
 import { AccountCardNext } from 'Components/AccountCardNext';
 import NewAccountModal from './NewAccountModal';
 import NewAccountCardButtonNext from 'Components/AccountCardNext/NewAccountCardButton';
-// import { indexAccounts } from '../../api';
-import { useDispatch, useSelector } from 'react-redux';
-
-import { GetAccounts } from 'redux/AccountsStore/Actions';
+import { indexAccounts } from 'api';
 
 function Accounts() {
-  const { Accounts: accounts, Loading: loading } = useSelector(
-    (state) => state.accountsStore
-  );
 
-  const dispatch = useDispatch();
+  const [accountLoaded, setAcccountsLoaded] = useState(false)
 
   useEffect(() => {
-    dispatch(GetAccounts());
-    setAllAccounts(accounts);
-  }, [accounts, dispatch]);
+    indexAccounts().then((data) => setAllAccounts(data))
+  }, []);
 
   const [searchTerm, setSearchTerm] = useState('');
-  const [allAccounts, setAllAccounts] = useState(accounts);
+  const [allAccounts, setAllAccounts] = useState([]);
 
   const filteredAccounts = allAccounts
     .filter((account) => {
@@ -43,6 +36,26 @@ function Accounts() {
     <>
       <div className="accounts-container">
         <div className="accounts-main">
+          <Text
+        h1
+        size={60}
+        css={{
+          textGradient: "45deg, $blue600 -20%, $pink600 50%",
+        }}
+        weight="bold"
+      >
+      Account
+      </Text>
+      <Text
+        h1
+        size={60}
+        css={{
+          textGradient: "45deg, $yellow600 -20%, $red600 100%",
+        }}
+        weight="bold"
+      >
+        Management
+      </Text>
           <Collapse.Group css={{ width: '100%' }}>
             <Collapse title="Instagram" expanded>
               <div className="instagram-container">
@@ -75,7 +88,7 @@ function Accounts() {
                   }}
                 >
                   {/* {loading && <Loading style={{ margin: 'auto' }} />} */}
-                  {accounts.length > 0 &&
+                  {allAccounts.length > 0 &&
                     filteredAccounts.map((account, index) => (
                       <AccountCardNext
                         path={'/instagram/account/' + account.id}

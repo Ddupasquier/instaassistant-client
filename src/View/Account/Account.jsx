@@ -26,6 +26,7 @@ import ConfigPopup from './AccountComponents/ConfigPopup';
 import ActivityLog from './AccountComponents/ActivityLog';
 
 function Account() {
+
   const rows = [
     {
       key: '1',
@@ -60,12 +61,14 @@ function Account() {
   const [snapshots, setSnapshots] = useState([
     { followers: 9999, following: 99999, profile_pic: '' },
   ]);
-  const [tasks, setTasks] = useState(null);
+  const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
+
     ShowAccount(account_id).then((data) => {
       setCurrentAccount(data);
     });
+
     getSnapshots(account_id).then((data) => {
       if (data[0] != null) {
         setSnapshots(data);
@@ -80,6 +83,7 @@ function Account() {
       } else {
         setTasks(null);
       }
+
     });
   }, [account_id]);
 
@@ -99,12 +103,26 @@ function Account() {
   const [messages, setMessages] = useState(0);
 
   useEffect(() => {
-    // sum up all follows_sent setFollows()
-    // sum up all likes_sent likes()
-    // sum up all Comments_Sent comments()
-    // sum up all MEssages_sent messages()
-    // sum all of above
-  }, []);
+    let follows_sent = 0
+    let likes_sent = 0
+    let comments_sent = 0
+    let messages_sent = 0
+
+    tasks.map((task) => {
+      follows_sent += task.follows_sent
+      likes_sent += task.likes_sent
+      comments_sent += task.comments_sent
+      messages_sent += task.message_sent
+    })
+
+    setFollows(follows_sent)
+    setLikes(likes_sent)
+    setComments(comments_sent)
+    setMessages(messages_sent)
+    setInteractions(follows_sent + likes_sent + comments_sent + messages_sent)
+
+    setFollowersGained(snapshots[0].followers -snapshots[snapshots.length - 1].followers)
+  }, [tasks]);
 
   const taskHandler = () => setTaskVisible(true);
   const closeTaskHandler = () => {

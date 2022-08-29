@@ -7,7 +7,7 @@ function Interactions({ num }) {
       <Card
         css={{
           backdropFilter: 'saturate(0) blur(15px)',
-          background: 'rgba(255, 255, 255, 0.2)',
+          background: '$myColor',
         }}
       >
         <Card.Header>Interactions Sent - 30 Days</Card.Header>

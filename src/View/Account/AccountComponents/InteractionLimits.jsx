@@ -7,7 +7,7 @@ const InteractionLimits = ({follows, likes, comments, messages}) => {
       <Card
         css={{
           backdropFilter: 'saturate(0) blur(15px)',
-          background: 'rgba(255, 255, 255, 0.2)',
+          background: '$myColor',
         }}
       >
         <Card.Header>Interaction Limits</Card.Header>

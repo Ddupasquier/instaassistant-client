@@ -11,7 +11,7 @@ import MenuItem from './MenuItem';
 import PopOver from './PopOver';
 
 import './scss/menu-styles.css';
-import { Switch } from '@nextui-org/react';
+import { Switch, useTheme } from '@nextui-org/react';
 
 const menuItems = [
   {
@@ -44,6 +44,7 @@ function Menu({
   lightTheme,
   darkTheme,
 }) {
+  const {theme} = useTheme()
   const [checked, setChecked] = useState(true);
 
   const handleThemeChange = () => {
@@ -53,7 +54,7 @@ function Menu({
 
   return (
     <>
-      <nav className="menu">
+      <nav className="menu" style={{backgroundColor: '$menue'}}>
         {menuItems.map((item) => (
           <div
             onMouseOver={() => setMenuItemHovered(item.name)}

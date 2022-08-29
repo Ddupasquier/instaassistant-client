@@ -24,6 +24,16 @@ function Profile() {
 
   return (
     <div className="profile-main">
+                <Text
+        h1
+        size={60}
+        css={{
+          textGradient: "45deg, $blue600 -20%, $pink600 50%",
+        }}
+        weight="bold"
+      >
+      Profile: {" "}
+      </Text>
       <div className="profile" style={{padding: '1.5rem'}}>
         <div className="profile-header">
           <UserIcon
