@@ -42,6 +42,7 @@ function AppRoutes() {
                 setTheme={setTheme}
                 lightTheme={lightTheme}
                 darkTheme={darkTheme}
+                theme={theme}
               />
             }
           >
