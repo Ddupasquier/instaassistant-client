@@ -6,7 +6,7 @@ const InteractionLimits = ({follows, likes, comments, messages}) => {
     <Grid sm={4} xs={12}>
       <Card
         css={{
-          backdropFilter: 'saturate(0) blur(15px)',
+          backdropFilter: 'blur(15px)',
           background: '$myColor',
         }}
       >

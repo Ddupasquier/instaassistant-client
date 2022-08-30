@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { GetFAQs } from 'api';
 import './scss/faq-styles.css';
 
-import { Loading, Collapse, Text } from '@nextui-org/react';
+import { Loading, Collapse, Text, Card } from '@nextui-org/react';
 
 const FAQ = () => {
   const [faqs, setFaqs] = useState();
@@ -16,7 +16,7 @@ const FAQ = () => {
 
   return (
     <div className="faq-container">
-      <div className="faq">
+      <Card className="faq" css={{background: '$myColor'}}>
       <Text
         h1
         size={60}
@@ -40,7 +40,7 @@ const FAQ = () => {
             </div>
           )}
         </Collapse.Group>
-      </div>
+      </Card>
     </div>
   );
 };

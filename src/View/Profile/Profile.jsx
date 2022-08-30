@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './scss/profile-styles.css';
 import { UserIcon } from 'Components/UserIcon';
-import { Button, Text } from '@nextui-org/react';
+import { Button, Card, Text } from '@nextui-org/react';
 import { GetUserInfo } from 'api';
 import EditProfile from './EditProfile';
 
@@ -33,7 +33,7 @@ function Profile() {
       >
       Profile: {" "}
       </Text>
-      <div className="profile" style={{padding: '1.5rem'}}>
+      <Card css={{background: '$myColor'}} style={{padding: '1.5rem'}}>
         <div className="profile-header">
           <UserIcon
             src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
@@ -74,7 +74,7 @@ function Profile() {
             )}
           </Text>
         </div>
-      </div>
+      </Card>
       <EditProfile
         editProfileVisible={editProfileVisible}
         closeEditProfileHandler={closeEditProfileHandler}

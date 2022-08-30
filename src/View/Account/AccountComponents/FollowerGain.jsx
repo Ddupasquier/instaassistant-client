@@ -5,7 +5,7 @@ function FollowerGain({num}) {
       return ( <Grid sm={4} xs={12}>
             <Card
               css={{
-                backdropFilter: 'saturate(0) blur(10px)',
+                backdropFilter: 'blur(10px)',
                 background: '$myColor',
               }}
             >

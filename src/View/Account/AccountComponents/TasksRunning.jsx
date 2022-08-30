@@ -12,7 +12,7 @@ function TasksRunning({ tasksActive }) {
             <Card
               variant="flat"
               css={{
-                backdropFilter: 'saturate(200%) blur(15px)',
+                backdropFilter: 'blur(15px)',
                 background: '$myColor',
               }}
             >

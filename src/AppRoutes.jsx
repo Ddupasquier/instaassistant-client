@@ -40,7 +40,7 @@ const darkTheme = createTheme({
             link: '#5E1DAD',
       
             // you can also create your own color
-            myColor: 'rgba(0, 0, 0, 0.75)',
+            myColor: 'rgba(95, 95, 95, 0.4)',
             menue: 'rgb(34, 34, 34)'
 
       
@@ -69,7 +69,7 @@ const lightTheme = createTheme({
       link: '#5E1DAD',
 
       // you can also create your own color
-      myColor: 'rgba(255, 255, 255, 0.75)',
+      myColor: 'rgba(0, 0, 0, 0.2)',
       menue: 'rgb(212, 212, 212)'
 
       // ...  more colors

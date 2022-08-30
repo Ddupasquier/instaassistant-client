@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useEffect, useState } from 'react';
-import { Collapse, Text, Button, Input, Loading } from '@nextui-org/react';
+import { Collapse, Text, Button, Input, Loading, Card } from '@nextui-org/react';
 import './scss/accounts-styles.css';
 import { AccountCardNext } from 'Components/AccountCardNext';
 import NewAccountModal from './NewAccountModal';
@@ -35,18 +35,19 @@ function Accounts() {
   return (
     <>
       <div className="accounts-container">
-        <div className="accounts-main">
           <Text
         h1
         size={60}
         css={{
           textGradient: "45deg, $blue600 -20%, $pink600 50%",
         }}
+        style={{zIndex: 1}}
         weight="bold"
       >
       Account
       </Text>
       <Text
+      style={{zIndex: 1}}
         h1
         size={60}
         css={{
@@ -56,6 +57,14 @@ function Accounts() {
       >
         Management
       </Text>
+
+        <Card css={{
+          backdropFilter: 'saturate(0) blur(15px)',
+          background: '$myColor',
+          zIndex: 1,
+          alignItems: 'center',
+          margin: 'auto',
+        }}>
           <Collapse.Group css={{ width: '100%' }}>
             <Collapse title="Instagram" expanded>
               <div className="instagram-container">
@@ -113,7 +122,7 @@ function Accounts() {
               <Text>Coming soon!</Text>
             </Collapse>
           </Collapse.Group>
-        </div>
+        </Card>
       </div>
       <NewAccountModal
         newAccountHandler={newAccountHandler}
