@@ -10,12 +10,19 @@ function Billing() {
   return (
     <div className="view-container">
       <div className="head">
-        <div style={{ backgroundColor: '#000', width: '100vw' }}>
+        <div
+          style={{
+            backgroundColor: 'rgb(128, 128, 128, .5)',
+            width: '100vw',
+            backdropFilter: 'blur(10px)',
+          }}
+        >
           <Text
             h1
             size={60}
             css={{
-              textGradient: '45deg, $blue600 -20%, $pink600 50%',
+              // textGradient: '45deg, $blue600 -20%, $pink600 50%',
+              color: 'white',
             }}
             weight="bold"
           >

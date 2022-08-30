@@ -11,6 +11,8 @@ function EditProfile({
     console.log('submit');
   };
 
+  console.log(userInfo)
+
   return (
     <Modal
       closeButton

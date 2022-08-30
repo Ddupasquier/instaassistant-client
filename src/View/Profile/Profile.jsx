@@ -67,7 +67,6 @@ function Profile() {
                 <span>Company Address: {userInfo.address}</span>
                 <span>Company Website: {userInfo.website}</span>
                 <span>Accounts Managed: {userInfo.accountsManaged}</span>
-                <span>Billing Information: {userInfo.billing}</span>
                 <span>Payment Status: {userInfo.billStatus}</span>
                 <span>Company Logo: {userInfo.logo}</span>
               </>
