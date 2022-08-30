@@ -33,7 +33,17 @@ const TaskModalNew = ({
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0');
     var yyyy = today.getFullYear();
-    setTodaysDate(dd + '-' + mm + '-' + yyyy + ";" + today.getHours() + ":" + today.getMinutes());
+    setTodaysDate(
+      dd +
+        '-' +
+        mm +
+        '-' +
+        yyyy +
+        ';' +
+        today.getHours() +
+        ':' +
+        today.getMinutes()
+    );
     setDate(todaysDate);
   }, [todaysDate]);
 
@@ -50,7 +60,7 @@ const TaskModalNew = ({
     // }
 
     // let taskname = '';
-    
+
     // tasks.forEach((task) => {
     //   if (parseInt(task.id) === parseInt(args[0])) {
     //     taskname = task.name;
@@ -67,7 +77,7 @@ const TaskModalNew = ({
       // arguments: args.join(';'),
     };
     console.log(payload);
-    PostTask(payload)
+    PostTask(payload);
   };
 
   const actions = [
@@ -80,6 +90,10 @@ const TaskModalNew = ({
     { value: 'Black List', label: 'Black List' },
     { value: 'White List', label: 'White List' },
   ];
+
+  const [firstArgSelected, setFirstArgSelected] = useState(false);
+  const [secondArgSelected, setSecondArgSelected] = useState(false);
+  const [thirdArgSelected, setThirdArgSelected] = useState(false);
 
   return (
     <>
@@ -108,7 +122,10 @@ const TaskModalNew = ({
               name="TaskType"
               className="options"
               value={action}
-              onChange={(e) => setAction(e.target.value)}
+              onChange={(e) => {
+                setAction(e.target.value);
+                setFirstArgSelected(true);
+              }}
               style={{
                 backgroundColor: 'gray',
                 borderRadius: '1rem',
@@ -130,7 +147,8 @@ const TaskModalNew = ({
             </select>
 
             {action === 'Post' ? (
-              <input required
+              <input
+                required
                 status="secondary"
                 alt="upload image"
                 type="file"
@@ -139,117 +157,138 @@ const TaskModalNew = ({
               />
             ) : (
               <>
-                <h5>List</h5>
-                <select
-                required
-                  name="Target"
-                  className="options"
-                  value={listTarget}
-                  onChange={(e) => setListTarget(e.target.value)}
-                  style={{
-                    backgroundColor: 'gray',
-                    borderRadius: '1rem',
-                    padding: '.3rem',
-                  }}
-                >
-                  <option value="" style={{ color: 'black' }}>
-                    Select List Target
-                  </option>
-                  <option value="Account" style={{ color: 'black' }}>
-                    Account
-                  </option>
-                  <option value="Post" style={{ color: 'black' }}>
-                    Post
-                  </option>
-                </select>
-                &nbsp;{' --> '}&nbsp;
-                <select
-                required
-                  name="TaskType"
-                  className="options"
-                  value={listType}
-                  onChange={(e) => setListType(e.target.value)}
-                  style={{
-                    backgroundColor: 'gray',
-                    borderRadius: '1rem',
-                    padding: '.3rem',
-                  }}
-                >
-                  <option value="" style={{ color: 'black' }}>
-                    Select Target Type
-                  </option>
-                  {listTarget === 'Account' ? (
-                    <>
-                      <option value="Followers" style={{ color: 'black' }}>
-                        Followers
-                      </option>
-                      <option value="Following" style={{ color: 'black' }}>
-                        Following
-                      </option>
-                      <option value="Recent Post" style={{ color: 'black' }}>
-                        Recent Post
-                      </option>
-                    </>
-                  ) : (
-                    <>
-                      {' '}
+                {firstArgSelected ? (
+                  <>
+                    <h5>List</h5>
+
+                    <select
+                      required
+                      name="Target"
+                      className="options"
+                      value={listTarget}
+                      onChange={(e) => {
+                        setListTarget(e.target.value);
+                        setSecondArgSelected(true);
+                      }}
+                      style={{
+                        backgroundColor: 'gray',
+                        borderRadius: '1rem',
+                        padding: '.3rem',
+                      }}
+                    >
                       <option value="" style={{ color: 'black' }}>
-                        Interactors
+                        Select List Target
                       </option>
+                      <option value="Account" style={{ color: 'black' }}>
+                        Account
+                      </option>
+                      <option value="Post" style={{ color: 'black' }}>
+                        Post
+                      </option>
+                    </select>
+                  </>
+                ) : null}
+                {secondArgSelected ? (
+                  <>
+                    <select
+                      required
+                      name="TaskType"
+                      className="options"
+                      value={listType}
+                      onChange={(e) => {
+                        setListType(e.target.value);
+                        setThirdArgSelected(true);
+                      }}
+                      style={{
+                        backgroundColor: 'gray',
+                        borderRadius: '1rem',
+                        padding: '.3rem',
+                      }}
+                    >
                       <option value="" style={{ color: 'black' }}>
-                        Likers
+                        Select Target Type
                       </option>
-                      <option value="" style={{ color: 'black' }}>
-                        Commenters
-                      </option>
-                    </>
-                  )}
-                </select>
-                {listTarget === 'Account' && (
-                  <Input
-                    status="secondary"
-                    bordered
-                    labelPlaceholder="Username or account URL"
-                    type="text"
-                    className="form-control"
-                  />
-                )}
-                {listTarget === 'Post' && (
-                  <Input
-                    status="secondary"
-                    bordered
-                    labelPlaceholder="Post URL"
-                    type="text"
-                    className="form-control"
-                  />
-                )}
-                <br />
-                {/*! if message interact comment */}
-                <Textarea
-                  bordered
-                  color="secondary"
-                  labelPlaceholder="Bordered Textarea"
-                />
+                      {listTarget === 'Account' ? (
+                        <>
+                          <option value="Followers" style={{ color: 'black' }}>
+                            Followers
+                          </option>
+                          <option value="Following" style={{ color: 'black' }}>
+                            Following
+                          </option>
+                          <option
+                            value="Recent Post"
+                            style={{ color: 'black' }}
+                          >
+                            Recent Post
+                          </option>
+                        </>
+                      ) : (
+                        <>
+                          {' '}
+                          <option value="" style={{ color: 'black' }}>
+                            Interactors
+                          </option>
+                          <option value="" style={{ color: 'black' }}>
+                            Likers
+                          </option>
+                          <option value="" style={{ color: 'black' }}>
+                            Commenters
+                          </option>
+                        </>
+                      )}
+                    </select>
+
+                    {listTarget === 'Account' && (
+                      <Input
+                        status="secondary"
+                        bordered
+                        labelPlaceholder="Username or account URL"
+                        type="text"
+                        className="form-control"
+                      />
+                    )}
+                    {listTarget === 'Post' && (
+                      <Input
+                        status="secondary"
+                        bordered
+                        labelPlaceholder="Post URL"
+                        type="text"
+                        className="form-control"
+                      />
+                    )}
+                    <br />
+                    {/*! if message interact comment */}
+                    <Textarea
+                      bordered
+                      color="secondary"
+                      labelPlaceholder="Bordered Textarea"
+                    />
+                  </>
+                ) : null}
               </>
             )}
-            <br />
-            <Checkbox isSelected={schedule} onChange={setSchedule}>
-              Schedule
-            </Checkbox>
-            <p>
-              <em>Leave unselected to have this task run immediately</em>
-            </p>
-            {schedule && (
-              <input
-                type="datetime-local"
-                id="meeting-time"
-                name="meeting-time"
-                onChange={(e) => setDate(e.target.value)}
-                value={date}
-                min={date}
-                max="2023-01-01T00:00"
-              />
-            )}
+            {thirdArgSelected ? (
+              <>
+                <Checkbox isSelected={schedule} onChange={setSchedule}>
+                  Schedule
+                </Checkbox>
+
+                <em>Leave unselected to have this task run immediately</em>
+
+                {schedule && (
+                  <input
+                    type="datetime-local"
+                    id="meeting-time"
+                    name="meeting-time"
+                    onChange={(e) => setDate(e.target.value)}
+                    value={date}
+                    min={date}
+                    max="2023-01-01T00:00"
+                  />
+                )}
+              </>
+            ) : null}
           </Modal.Body>
           <Modal.Footer>
             <Button rounded color="error" onPress={closeTaskHandler}>

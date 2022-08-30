@@ -8,11 +8,10 @@ import NewAccountCardButtonNext from 'Components/AccountCardNext/NewAccountCardB
 import { indexAccounts } from 'api';
 
 function Accounts() {
-
-  const [accountLoaded, setAcccountsLoaded] = useState(false)
+  const [accountLoaded, setAcccountsLoaded] = useState(false);
 
   useEffect(() => {
-    indexAccounts().then((data) => setAllAccounts(data))
+    indexAccounts().then((data) => setAllAccounts(data));
   }, []);
 
   const [searchTerm, setSearchTerm] = useState('');
@@ -34,7 +33,8 @@ function Accounts() {
 
   return (
     <>
-      <div className="accounts-container">
+      <div className="view-container">
+        <div className="accounts-main">
           <Text
         h1
         size={60}

@@ -1,15 +1,7 @@
-.faq-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1;
-}
-.faq-container .faq {
+.faq {
   width: 80%;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
   padding: 1rem;
   border-radius: 1rem;
+  z-index: 1;
 }
 /*# sourceMappingURL=faq-styles.css.map */

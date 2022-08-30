@@ -23,17 +23,21 @@ function Profile() {
 
   return (
     <div className="profile-main">
-                <Text
+      <Text
         h1
         size={60}
         css={{
-          textGradient: "45deg, $blue600 -20%, $pink600 50%",
+          textGradient: '45deg, $blue600 -20%, $pink600 50%',
         }}
         weight="bold"
       >
-      Profile: {" "}
+        Profile
       </Text>
+<<<<<<< HEAD
       <Card css={{background: '$myColor'}} style={{padding: '1.5rem'}}>
+=======
+      <div className="profile" style={{ padding: '1.5rem' }}>
+>>>>>>> newStaging
         <div className="profile-header">
           <UserIcon
             src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
@@ -67,7 +71,6 @@ function Profile() {
                 <span>Company Address: {userInfo.address}</span>
                 <span>Company Website: {userInfo.website}</span>
                 <span>Accounts Managed: {userInfo.accountsManaged}</span>
-                <span>Billing Information: {userInfo.billing}</span>
                 <span>Payment Status: {userInfo.billStatus}</span>
                 <span>Company Logo: {userInfo.logo}</span>
               </>
