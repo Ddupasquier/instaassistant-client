@@ -13,7 +13,6 @@ function Utilization({num}) {
         <Card.Header>Utilization - 30 Days</Card.Header>
         <Card.Divider />
         <Card.Body>
-          <Text css={{ color: '$myDarkColor' }}>NextUI with dark theme</Text>
           <Grid.Container>
             <Grid sm={2}>
               <Text h2>{num}%</Text>

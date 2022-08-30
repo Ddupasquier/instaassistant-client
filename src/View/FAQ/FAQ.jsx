@@ -16,7 +16,7 @@ const FAQ = () => {
 
   return (
     <div className="view-container">
-      <div className="faq">
+      <Card css={{background: '$myColor'}} className="faq">
         <Text
           h1
           size={60}
@@ -40,7 +40,7 @@ const FAQ = () => {
             </div>
           )}
         </Collapse.Group>
-      </div>
+      </Card>
     </div>
   );
 };

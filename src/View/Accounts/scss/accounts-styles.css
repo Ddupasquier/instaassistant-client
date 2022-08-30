@@ -8,10 +8,6 @@
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  border-radius: 8px;
-  -webkit-backdrop-filter: saturate(200%) blur(8px);
-          backdrop-filter: saturate(200%) blur(8px);
-  background: rgba(255, 255, 255, 0.2);
   z-index: 10;
 }
 .accounts-main .instagram-container {

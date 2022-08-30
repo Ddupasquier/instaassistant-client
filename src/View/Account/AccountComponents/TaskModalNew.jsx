@@ -101,6 +101,7 @@ const TaskModalNew = ({
         closeButton
         blur
         preventClose
+        width="600px"
         aria-labelledby="modal-title"
         open={taskVisible}
         onClose={closeTaskHandler}
@@ -145,7 +146,16 @@ const TaskModalNew = ({
                 </option>
               ))}
             </select>
-
+            {action === "Interact" || action === "Message" ? (<><br/><Textarea
+              bordered
+              color="secondary"
+              labelPlaceholder="Custom Message(s)"
+            /></>) : null}
+            {action === "Interact" || action === "Comment" ? (<><br/><Textarea
+              bordered
+              color="secondary"
+              labelPlaceholder="Custom Comment(s)"
+            /></>) : null}
             {action === 'Post' ? (
               <input
                 required
@@ -190,6 +200,25 @@ const TaskModalNew = ({
                 ) : null}
                 {secondArgSelected ? (
                   <>
+                    {listTarget === 'Account' && (
+                      <Input
+                        status="secondary"
+                        bordered
+                        label="Username or account URL"
+                        type="text"
+                        className="form-control"
+                      />
+                    )}
+                    {listTarget === 'Post' && (
+                      <Input
+                        status="secondary"
+                        bordered
+                        labelPlaceholder="Post URL"
+                        type="text"
+                        className="form-control"
+                      />
+                    )}
+                  <svg style={{fill: "white"}} width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M11 21.883l-6.235-7.527-.765.644 7.521 9 7.479-9-.764-.645-6.236 7.529v-21.884h-1v21.883z"/></svg>
                     <select
                       required
                       name="TaskType"
@@ -238,32 +267,8 @@ const TaskModalNew = ({
                         </>
                       )}
                     </select>
-
-                    {listTarget === 'Account' && (
-                      <Input
-                        status="secondary"
-                        bordered
-                        labelPlaceholder="Username or account URL"
-                        type="text"
-                        className="form-control"
-                      />
-                    )}
-                    {listTarget === 'Post' && (
-                      <Input
-                        status="secondary"
-                        bordered
-                        labelPlaceholder="Post URL"
-                        type="text"
-                        className="form-control"
-                      />
-                    )}
                     <br />
                     {/*! if message interact comment */}
-                    <Textarea
-                      bordered
-                      color="secondary"
-                      labelPlaceholder="Bordered Textarea"
-                    />
                   </>
                 ) : null}
               </>

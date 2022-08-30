@@ -36,35 +36,23 @@ function Accounts() {
       <div className="view-container">
         <div className="accounts-main">
           <Text
-        h1
-        size={60}
-        css={{
+          h1
+          size={60}
+          css={{
           textGradient: "45deg, $blue600 -20%, $pink600 50%",
-        }}
-        style={{zIndex: 1}}
-        weight="bold"
-      >
-      Account
-      </Text>
-      <Text
-      style={{zIndex: 1}}
-        h1
-        size={60}
-        css={{
-          textGradient: "45deg, $yellow600 -20%, $red600 100%",
-        }}
-        weight="bold"
-      >
-        Management
-      </Text>
-
-        <Card css={{
-          backdropFilter: 'saturate(0) blur(15px)',
+          }}
+          style={{zIndex: 1}}
+          weight="bold"
+          >
+            Account Management
+          </Text>
+          <Card css={{
+          backdropFilter: 'blur(15px)',
           background: '$myColor',
           zIndex: 1,
           alignItems: 'center',
           margin: 'auto',
-        }}>
+          }}>
           <Collapse.Group css={{ width: '100%' }}>
             <Collapse title="Instagram" expanded>
               <div className="instagram-container">
@@ -96,7 +84,6 @@ function Accounts() {
                     minHeight: '15rem',
                   }}
                 >
-                  {/* {loading && <Loading style={{ margin: 'auto' }} />} */}
                   {allAccounts.length > 0 &&
                     filteredAccounts.map((account, index) => (
                       <AccountCardNext
@@ -122,15 +109,16 @@ function Accounts() {
               <Text>Coming soon!</Text>
             </Collapse>
           </Collapse.Group>
-        </Card>
+          </Card>
+        </div>
+            <NewAccountModal
+            newAccountHandler={newAccountHandler}
+            closeNewAccountHandler={closeNewAccountHandler}
+            newAccountVisible={newAccountVisible}
+          />
       </div>
-      <NewAccountModal
-        newAccountHandler={newAccountHandler}
-        closeNewAccountHandler={closeNewAccountHandler}
-        newAccountVisible={newAccountVisible}
-      />
     </>
-  );
+  )
 }
 
 export default Accounts;

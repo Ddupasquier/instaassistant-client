@@ -3,7 +3,6 @@ import { Link, useParams } from 'react-router-dom';
 
 // * ------- API LAYER ------- *
 import {
-  FetchInstagramTaskTypes,
   getSnapshots,
   GetTasks,
   ShowAccount,
@@ -79,7 +78,7 @@ function Account() {
       if (data[0] != null) {
         setTasks(data);
       } else {
-        setTasks(null);
+        setTasks([]);
       }
     });
   }, [account_id]);
@@ -105,12 +104,14 @@ function Account() {
     let comments_sent = 0;
     let messages_sent = 0;
 
-    tasks.map((task) => () => {
+    tasks.forEach((task) => {
       follows_sent += task.follows_sent;
       likes_sent += task.likes_sent;
       comments_sent += task.comments_sent;
       messages_sent += task.message_sent;
     });
+
+    console.log(tasks)
 
     setFollows(follows_sent);
     setLikes(likes_sent);
@@ -124,6 +125,7 @@ function Account() {
   }, [snapshots, tasks]);
 
   const taskHandler = () => setTaskVisible(true);
+
   const closeTaskHandler = () => {
     setTaskVisible(false);
   };
