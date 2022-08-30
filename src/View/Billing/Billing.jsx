@@ -8,19 +8,20 @@ function Billing() {
   // const [isChecked, setIsChecked] = useState(false);
 
   return (
-    <div className="billing-container">
+    <div className="view-container">
       <div className="head">
-        <div style={{backgroundColor: "#000"}}>
-      <Text
-        h1
-        size={60}
-        css={{
-          textGradient: "45deg, $blue600 -20%, $pink600 50%",
-        }}
-        weight="bold"
-      >
-      PAYMENT SETTINGS
-      </Text></div>
+        <div style={{ backgroundColor: '#000', width: '100vw' }}>
+          <Text
+            h1
+            size={60}
+            css={{
+              textGradient: '45deg, $blue600 -20%, $pink600 50%',
+            }}
+            weight="bold"
+          >
+            PAYMENT SETTINGS
+          </Text>
+        </div>
         <Text h4>
           Marcus Bot does not save any credit card information. <br />
           We bill through paypal or through the secure third party Stripe.

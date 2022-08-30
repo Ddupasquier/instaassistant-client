@@ -15,19 +15,19 @@ const FAQ = () => {
   }, []);
 
   return (
-    <div className="faq-container">
+    <div className="view-container">
       <div className="faq">
-      <Text
-        h1
-        size={60}
-        css={{
-          textGradient: "45deg, $blue600 -20%, $pink600 50%",
-        }}
-        weight="bold"
-      >
-      FAQ
-      </Text>
-        <Collapse.Group >
+        <Text
+          h1
+          size={60}
+          css={{
+            textGradient: '45deg, $blue600 -20%, $pink600 50%',
+          }}
+          weight="bold"
+        >
+          FAQ
+        </Text>
+        <Collapse.Group>
           {faqsLoaded ? (
             faqs.map((faq, index) => (
               <Collapse title={faq.q} key={index}>

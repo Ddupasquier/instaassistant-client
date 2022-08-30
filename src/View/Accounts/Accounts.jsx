@@ -8,11 +8,10 @@ import NewAccountCardButtonNext from 'Components/AccountCardNext/NewAccountCardB
 import { indexAccounts } from 'api';
 
 function Accounts() {
-
-  const [accountLoaded, setAcccountsLoaded] = useState(false)
+  const [accountLoaded, setAcccountsLoaded] = useState(false);
 
   useEffect(() => {
-    indexAccounts().then((data) => setAllAccounts(data))
+    indexAccounts().then((data) => setAllAccounts(data));
   }, []);
 
   const [searchTerm, setSearchTerm] = useState('');
@@ -34,28 +33,18 @@ function Accounts() {
 
   return (
     <>
-      <div className="accounts-container">
+      <div className="view-container">
         <div className="accounts-main">
           <Text
-        h1
-        size={60}
-        css={{
-          textGradient: "45deg, $blue600 -20%, $pink600 50%",
-        }}
-        weight="bold"
-      >
-      Account
-      </Text>
-      <Text
-        h1
-        size={60}
-        css={{
-          textGradient: "45deg, $yellow600 -20%, $red600 100%",
-        }}
-        weight="bold"
-      >
-        Management
-      </Text>
+            h1
+            size={40}
+            css={{
+              textGradient: '45deg, $blue600 -20%, $pink600 50%',
+            }}
+            weight="bold"
+          >
+            Account Management
+          </Text>
           <Collapse.Group css={{ width: '100%' }}>
             <Collapse title="Instagram" expanded>
               <div className="instagram-container">

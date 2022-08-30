@@ -1,10 +1,4 @@
-.accounts-container {
-  display: flex;
-  flex-direction: column;
-  padding: 2rem;
-  overflow: auto;
-}
-.accounts-container .accounts-main {
+.accounts-main {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -20,17 +14,17 @@
   background: rgba(255, 255, 255, 0.2);
   z-index: 10;
 }
-.accounts-container .accounts-main .instagram-container {
+.accounts-main .instagram-container {
   display: grid;
   grid-template-rows: -webkit-fit-content auto;
   grid-template-rows: fit-content auto;
   width: 100%;
 }
-.accounts-container .accounts-main .instagram-container .options button {
+.accounts-main .instagram-container .options button {
   margin: 0.5rem;
   float: right;
 }
-.accounts-container .accounts-main .instagram-container .instagram-cards {
+.accounts-main .instagram-container .instagram-cards {
   display: flex;
   flex-direction: row;
   gap: 1rem;

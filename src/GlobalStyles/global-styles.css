@@ -15,6 +15,7 @@ body {
 
 .app {
   display: grid;
+  position: relative;
   height: 100vh;
   grid-template-rows: 3.5rem auto;
   grid-template-columns: 3rem auto;
@@ -50,6 +51,16 @@ input:-webkit-autofill {
 .head {
   text-align: center;
   z-index: 1;
+}
+
+.view-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
 }
 
 ::-webkit-scrollbar {

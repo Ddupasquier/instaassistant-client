@@ -23,17 +23,17 @@ function Profile() {
 
   return (
     <div className="profile-main">
-                <Text
+      <Text
         h1
         size={60}
         css={{
-          textGradient: "45deg, $blue600 -20%, $pink600 50%",
+          textGradient: '45deg, $blue600 -20%, $pink600 50%',
         }}
         weight="bold"
       >
-      Profile: {" "}
+        Profile
       </Text>
-      <div className="profile" style={{padding: '1.5rem'}}>
+      <div className="profile" style={{ padding: '1.5rem' }}>
         <div className="profile-header">
           <UserIcon
             src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
