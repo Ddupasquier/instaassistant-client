@@ -33,11 +33,7 @@ function Profile() {
       >
         Profile
       </Text>
-<<<<<<< HEAD
       <Card css={{background: '$myColor'}} style={{padding: '1.5rem'}}>
-=======
-      <div className="profile" style={{ padding: '1.5rem' }}>
->>>>>>> newStaging
         <div className="profile-header">
           <UserIcon
             src="https://i.pravatar.cc/150?u=a042581f4e29026024d"

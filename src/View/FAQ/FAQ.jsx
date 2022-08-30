@@ -15,21 +15,6 @@ const FAQ = () => {
   }, []);
 
   return (
-<<<<<<< HEAD
-    <div className="faq-container">
-      <Card className="faq" css={{background: '$myColor'}}>
-      <Text
-        h1
-        size={60}
-        css={{
-          textGradient: "45deg, $blue600 -20%, $pink600 50%",
-        }}
-        weight="bold"
-      >
-      FAQ
-      </Text>
-        <Collapse.Group >
-=======
     <div className="view-container">
       <div className="faq">
         <Text
@@ -43,7 +28,6 @@ const FAQ = () => {
           FAQ
         </Text>
         <Collapse.Group>
->>>>>>> newStaging
           {faqsLoaded ? (
             faqs.map((faq, index) => (
               <Collapse title={faq.q} key={index}>
@@ -56,7 +40,7 @@ const FAQ = () => {
             </div>
           )}
         </Collapse.Group>
-      </Card>
+      </div>
     </div>
   );
 };
