@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
-import { Text } from '@nextui-org/react';
+import { Card, Text } from '@nextui-org/react';
 import './scss/billing-styles.css';
 import PayPal from './PayPal';
 
@@ -9,14 +9,8 @@ function Billing() {
 
   return (
     <div className="view-container">
+      <Card style={{zIndex: 1}} css={{background: '$myColor'}}>
       <div className="head">
-        <div
-          style={{
-            backgroundColor: 'rgb(128, 128, 128, .5)',
-            width: '100vw',
-            backdropFilter: 'blur(10px)',
-          }}
-        >
           <Text
             h1
             size={60}
@@ -28,7 +22,6 @@ function Billing() {
           >
             PAYMENT SETTINGS
           </Text>
-        </div>
         <Text h4>
           Marcus Bot does not save any credit card information. <br />
           We bill through paypal or through the secure third party Stripe.
@@ -36,22 +29,11 @@ function Billing() {
       </div>
       <br />
       <div className="billing-main">
-        {/* <div className="payment-options">
-          Card&nbsp;
-          <Switch
-            size="lg"
-            checked={isChecked}
-            onChange={() => setIsChecked(!isChecked)}
-          />
-          &nbsp;PayPal{' '}
-        </div>
-        <br /> */}
-        {/* {!isChecked ? ( */}
-        {/* <Credit /> */}
-        {/* ) : (  */}
-        <PayPal />
-        {/* )} */}
+        <PayPal num={1}/>
+        <PayPal num={5}/>
+        <PayPal num={10}/>
       </div>
+      </Card>
     </div>
   );
 }

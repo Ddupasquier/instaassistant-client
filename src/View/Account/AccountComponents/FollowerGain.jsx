@@ -18,4 +18,4 @@ function FollowerGain({num}) {
           </Grid> );
 }
 
-export default FollowerGain;
+export default FollowerGain;  

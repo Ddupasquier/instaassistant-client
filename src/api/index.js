@@ -13,6 +13,7 @@ import {
   snapshotPath,
   TaskPath,
   AccountTaskPath,
+  CheckoutEndpoint,
 } from "./endpoints";
 
 // ----------- Start User
@@ -194,3 +195,18 @@ export const FetchInstagramTaskTypes = async () => {
 };
 
 // END STATIC
+
+//* START PAYMENT/CHECKOUT
+
+export const CreateCheckoutSession = async (formData) => {
+  const response = await fetch(CheckoutEndpoint, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: localStorage.getItem("token"),
+    },
+    body: JSON.stringify(formData),
+  });
+  return await response.json();
+};

@@ -19,6 +19,7 @@ import Tasks from 'View/Tasks';
 
 // NextUI import
 import { NextUIProvider, createTheme } from '@nextui-org/react';
+import { Stripe } from 'View/Stripe';
 
 const darkTheme = createTheme({
   type: 'dark',
@@ -105,6 +106,7 @@ function AppRoutes() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/task" element={<Task />} />
             <Route path="/tasks" element={<Tasks />} />
+            <Route path="/stripe" element={<Stripe />} />
           </Route>
         </Routes>
       </Provider>

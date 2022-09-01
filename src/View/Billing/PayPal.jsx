@@ -1,8 +1,13 @@
 import React from 'react';
+import { useState } from 'react';
 
-function PayPal() {
+function PayPal({num}) {
+  const [price, setPrice] = useState()
   return (
     <form className="paypal-form">
+
+      <h2>{num}</h2>
+
       <select name="plan" id="plans">
         <option>Choose a plan</option>
         <option value="monthly">Monthly : $99.99 USD</option>
