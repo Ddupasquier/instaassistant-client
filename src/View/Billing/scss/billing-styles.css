@@ -1,38 +1,7 @@
-.billing-main {
-  position: relative;
-  align-self: center;
-  justify-content: center;
-  width: 25rem;
-  -webkit-backdrop-filter: saturate(200%) blur(8px);
-          backdrop-filter: saturate(200%) blur(8px);
-  background: rgba(255, 255, 255, 0.4);
-  padding: 1.5rem;
+.pkg-item {
   border-radius: 8px;
-  z-index: 10;
-  transition: 0.5s;
-}
-.billing-main form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-}
-.billing-main form select {
-  background: gray;
-  border-radius: 0.7rem;
-  height: 2rem;
-}
-.billing-main .payment-options {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.billing-main .billing-button {
-  margin: auto;
-}
-
-@media (max-width: 768px) {
-  .billing-main {
-    width: 80%;
-  }
+  width: 30%;
+  text-align: center;
+  border: rgb(0, 0, 0) solid 1px;
 }
 /*# sourceMappingURL=billing-styles.css.map */
