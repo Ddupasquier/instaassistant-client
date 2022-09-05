@@ -1,50 +1,50 @@
-import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
 
 // * ------- API LAYER ------- *
-import { getSnapshots, GetTasks, ShowAccount } from "api";
+import { getSnapshots, GetTasks, ShowAccount } from 'api';
 
 // * ------- STYLES ------- *
-import { Button, Card, Grid, Loading, Text } from "@nextui-org/react";
-import "./scss/account-styles.css";
+import { Button, Card, Grid, Loading, Text } from '@nextui-org/react';
+import './scss/account-styles.css';
 
 // * ------- COMPONENTS ------- *
-import { UserIcon } from "Components/UserIcon";
-import TaskModalNew from "./AccountComponents/TaskModalNew";
-import Utilization from "./AccountComponents/Utilization";
-import Interactions from "./AccountComponents/Interactions";
-import FollowerGain from "./AccountComponents/FollowerGain";
-import TasksRunning from "./AccountComponents/TasksRunning";
-import MetricChart from "./AccountComponents/MetricChart";
-import InteractionLimits from "./AccountComponents/InteractionLimits";
-import ConfigPopup from "./AccountComponents/ConfigPopup";
-import ActivityLog from "./AccountComponents/ActivityLog";
+import { UserIcon } from 'Components/UserIcon';
+import TaskModalNew from './AccountComponents/TaskModalNew';
+import Utilization from './AccountComponents/Utilization';
+import Interactions from './AccountComponents/Interactions';
+import FollowerGain from './AccountComponents/FollowerGain';
+import TasksRunning from './AccountComponents/TasksRunning';
+import MetricChart from './AccountComponents/MetricChart';
+import InteractionLimits from './AccountComponents/InteractionLimits';
+import ConfigPopup from './AccountComponents/ConfigPopup';
+import ActivityLog from './AccountComponents/ActivityLog';
 
 function Account() {
   const rows = [
     {
-      key: "1",
-      name: "Tony Reichert",
-      role: "CEO",
-      status: "Active",
+      key: '1',
+      name: 'Tony Reichert',
+      role: 'CEO',
+      status: 'Active',
     },
     {
-      key: "2",
-      name: "Zoey Lang",
-      role: "Technical Lead",
-      status: "Paused",
+      key: '2',
+      name: 'Zoey Lang',
+      role: 'Technical Lead',
+      status: 'Paused',
     },
     {
-      key: "3",
-      name: "Jane Fisher",
-      role: "Senior Developer",
-      status: "Active",
+      key: '3',
+      name: 'Jane Fisher',
+      role: 'Senior Developer',
+      status: 'Active',
     },
     {
-      key: "4",
-      name: "William Howard",
-      role: "Community Manager",
-      status: "Vacation",
+      key: '4',
+      name: 'William Howard',
+      role: 'Community Manager',
+      status: 'Vacation',
     },
   ];
 
@@ -53,7 +53,7 @@ function Account() {
   const [currentAccount, setCurrentAccount] = useState(null);
   const [active, setActive] = useState(true);
   const [snapshots, setSnapshots] = useState([
-    { followers: 9999, following: 99999, profile_pic: "" },
+    { followers: 9999, following: 99999, profile_pic: '' },
   ]);
   const [tasks, setTasks] = useState([]);
 
@@ -66,7 +66,7 @@ function Account() {
       if (data[0] != null) {
         setSnapshots(data);
       } else {
-        setSnapshots([{ followers: 9999, following: 9999, profile_pic: "" }]);
+        setSnapshots([{ followers: 9999, following: 9999, profile_pic: '' }]);
       }
     });
 
@@ -82,7 +82,7 @@ function Account() {
   // * ------- TASK FORM AND MODULE HANDLERS ------- *
   const [tasksLoaded, setTasksLoaded] = useState();
   const [tasksSelected, setTasksSelected] = useState(false);
-  const [selected, setSelected] = useState("");
+  const [selected, setSelected] = useState('');
   const [taskVisible, setTaskVisible] = useState(false);
 
   // PAGE CONTROL
@@ -159,86 +159,56 @@ function Account() {
               <Card
                 variant="flat"
                 css={{
-                  backdropFilter: "blur(15px)",
-                  background: "$myColor",
+                  backdropFilter: 'blur(15px)',
+                  background: '$myColor',
                 }}
               >
                 <Card.Header>
-                  <section>
-                    <UserIcon
-                      src={
-                        snapshots
-                          ? snapshots[snapshots.length - 1].profile_pic
-                          : null
-                      }
-                      name={`@${currentAccount.username}`}
-                      size="xl"
-                    />
-                  </section>
-                  <section>
-                    <legend>Followers</legend>
-                    <div className="followers">
-                      {snapshots
-                        ? snapshots[snapshots.length - 1].followers
-                        : 99999}
-                    </div>
-                  </section>
-                  <section>
-                    <legend>Following</legend>
-                    <div className="following">
-                      {snapshots
-                        ? snapshots[snapshots.length - 1].following
-                        : 99999}
-                    </div>
-                  </section>
+                  <div className="user">
+                    <section>
+                      <UserIcon
+                        src={
+                          snapshots
+                            ? snapshots[snapshots.length - 1].profile_pic
+                            : null
+                        }
+                        name={`@${currentAccount.username}`}
+                        size="xl"
+                      />
+                    </section>
+                    <section>
+                      <legend>Followers</legend>
+                      <div className="followers">
+                        {snapshots
+                          ? snapshots[snapshots.length - 1].followers
+                          : 99999}
+                      </div>
+                    </section>
+                    <section>
+                      <legend>Following</legend>
+                      <div className="following">
+                        {snapshots
+                          ? snapshots[snapshots.length - 1].following
+                          : 99999}
+                      </div>
+                    </section>
+                  </div>
                 </Card.Header>
                 <Card.Divider />
                 <Card.Body>
-                  <div>
-                    <a>
-                      <p>Update Password</p>
-                    </a>
-                    <a>
-                      <p>Update Username</p>
-                    </a>
-                    <a>
-                      <p>Update Name</p>
-                    </a>
-                    <a>
-                      <p>Update Bio</p>
-                    </a>
+                  <div className="user-links">
+                    <a href="/">Update Password</a>
+                    <a href="/">Update Username</a>
+                    <a href="/">Update Name</a>
+                    <a href="/">Update Bio</a>
                   </div>
                 </Card.Body>
-                <Card.Footer></Card.Footer>
               </Card>
             </Grid>
             <Grid sm={3} xs={12}></Grid>
           </Grid.Container>
         </>
 
-        <div className="user">
-          <section>
-            <UserIcon
-              src={
-                snapshots ? snapshots[snapshots.length - 1].profile_pic : null
-              }
-              name={`@${currentAccount.username}`}
-              size="xl"
-            />
-          </section>
-          <section>
-            <legend>Followers</legend>
-            <div className="followers">
-              {snapshots ? snapshots[snapshots.length - 1].followers : 99999}
-            </div>
-          </section>
-          <section>
-            <legend>Following</legend>
-            <div className="following">
-              {snapshots ? snapshots[snapshots.length - 1].following : 99999}
-            </div>
-          </section>
-        </div>
         <div className="account-metrics">
           <Grid.Container gap={2}>
             <TasksRunning active={active} />

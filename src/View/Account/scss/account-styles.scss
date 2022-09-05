@@ -53,6 +53,15 @@
       color: black;
     }
   }
+  .user-links {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    a {
+      color: white;
+      text-align: center;
+    }
+  }
 
   .config {
     .config-open {

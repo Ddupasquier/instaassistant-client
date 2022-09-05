@@ -54,6 +54,15 @@
 .account-container .user section > div {
   color: black;
 }
+.account-container .user-links {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+.account-container .user-links a {
+  color: white;
+  text-align: center;
+}
 .account-container .config .config-open {
   display: flex;
   align-items: center;
