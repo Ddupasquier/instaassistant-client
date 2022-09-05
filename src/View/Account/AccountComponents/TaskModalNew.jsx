@@ -49,23 +49,6 @@ const TaskModalNew = ({
 
   const HandleSubmit = (e) => {
     e.preventDefault();
-    // let form = e.currentTarget;
-    // let formFields = new FormData(form);
-    // let formDataObject = Object.fromEntries(formFields.entries());
-    // let formDataJsonString = JSON.stringify(formDataObject);
-
-    // const args = [];
-    // for (const [key, value] of Object.entries(JSON.parse(formDataJsonString))) {
-    //   args.push(value);
-    // }
-
-    // let taskname = '';
-
-    // tasks.forEach((task) => {
-    //   if (parseInt(task.id) === parseInt(args[0])) {
-    //     taskname = task.name;
-    //   }
-    // });
 
     const payload = {
       account_id: account_id,
@@ -255,20 +238,19 @@ const TaskModalNew = ({
                       ) : (
                         <>
                           {' '}
-                          <option value="" style={{ color: 'black' }}>
+                          <option value="Intewractors" style={{ color: 'black' }}>
                             Interactors
                           </option>
-                          <option value="" style={{ color: 'black' }}>
+                          <option value="Likers" style={{ color: 'black' }}>
                             Likers
                           </option>
-                          <option value="" style={{ color: 'black' }}>
+                          <option value="Commenters" style={{ color: 'black' }}>
                             Commenters
                           </option>
                         </>
                       )}
                     </select>
                     <br />
-                    {/*! if message interact comment */}
                   </>
                 ) : null}
               </>
@@ -289,7 +271,7 @@ const TaskModalNew = ({
                     onChange={(e) => setDate(e.target.value)}
                     value={date}
                     min={date}
-                    max="2023-01-01T00:00"
+                    max="2023-01-01;00:00" 
                   />
                 )}
               </>
