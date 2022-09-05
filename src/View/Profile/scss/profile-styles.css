@@ -7,20 +7,11 @@
   margin: auto;
   z-index: 100;
 }
-.profile-main .profile {
-  width: 70%;
-  -webkit-backdrop-filter: saturate(200%) blur(8px);
-          backdrop-filter: saturate(200%) blur(8px);
-  background: rgba(255, 255, 255, 0.4);
-  border-radius: 15px;
-  z-index: 10;
-  transition: 0.5s;
-}
-.profile-main .profile .profile-header {
+.profile-main .profile-header {
   display: flex;
   justify-content: space-between;
 }
-.profile-main .profile .profile-content span {
+.profile-main .profile-content span {
   -webkit-backdrop-filter: saturate(200%) blur(8px);
           backdrop-filter: saturate(200%) blur(8px);
   background: rgba(0, 0, 0, 0.1);

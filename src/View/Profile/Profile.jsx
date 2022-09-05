@@ -33,14 +33,13 @@ function Profile() {
       >
         Profile
       </Text>
-      <Card css={{background: '$myColor'}} style={{padding: '1.5rem'}}>
+      <Card css={{background: '$myColor'}} style={{padding: '1.5rem', width: '80%'}}>
         <div className="profile-header">
           <UserIcon
             src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
             name={userInfo.username}
             size="xl"
           />
-
           <Button color="secondary" onPress={editProfileHandler} rounded>
             Edit
           </Button>
