@@ -12,8 +12,8 @@ const Background = ({ theme, darkTheme }) => {
     height: '100vh',
     width: '100vw',
     transition: '1s',
-    filter:
-      theme === darkTheme ? 'blur(1px) invert(0)' : 'blur(1px) invert(100%)',
+    // filter:
+    //   theme === darkTheme ? 'blur(1px) invert(0)' : 'blur(1px) invert(100%)',
   };
 
   return <div style={bgStyle} />;
