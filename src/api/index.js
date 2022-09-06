@@ -78,7 +78,15 @@ export const CreateAccount = async (formData) => {
       body: JSON.stringify(formData),
     }
   );
-  return await response.json();
+  const resp_1 = await response.json();
+  if (resp_1.error) {
+    alert(resp_1.error);
+  } else {
+    localStorage.setItem("user", JSON.stringify(resp_1.user));
+    localStorage.setItem("token", resp_1.jwt);
+    localStorage.setItem("email", JSON.stringify(resp_1.email));
+    window.location.replace("/");
+  }
 };
 
 export const PatchAccount = async (formData, account_id) => {

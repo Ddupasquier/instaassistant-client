@@ -21,8 +21,8 @@ function Header({ menuSelected, theme, darkTheme }) {
     >
       <LogoAnimation menuSelected={menuSelected} />
       <div className="site-name">
-        <i>Marcus</i>
-        <b>Bot</b>
+        <i>Anti</i>
+        <b>Social Suite</b>
       </div>
       <div className="username">
         {capFirstLetter('Company Name')} {'  '}

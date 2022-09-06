@@ -44,17 +44,12 @@ function ActivityLog({ tasks }) {
             </Table.Header>
             {tasks !== null && (
               <Table.Body items={tasks}>
-                {tasks.map((item, i) => (
-                  <Table.Row key={item.id}>
-                    <Table.Cell>{item[i]}</Table.Cell>
-                  </Table.Row>
-                ))}
 
-                {/* {(item) => (
+                {(item) => (
                   <Table.Row key={item.key}>
                     {(columnKey) => <Table.Cell>{item[columnKey]}</Table.Cell>}
                   </Table.Row>
-                )} */}
+                )}
               </Table.Body>
             )}
           </Table>

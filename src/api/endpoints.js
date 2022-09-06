@@ -1,6 +1,6 @@
 //* User Routes
 
-const local = false;
+const local = true;
 const baseUrl = local
   ? "http://localhost:3000"
   : "https://instaassistant-api.herokuapp.com";

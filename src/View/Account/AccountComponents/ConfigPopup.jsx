@@ -23,6 +23,7 @@ function ConfigPopup({ currentAccount, account_id }) {
       textBlackList: [setBlackList, currentAccount.black_list],
       textComments: [setComments, currentAccount.comments],
       textMessages: [setMessages, currentAccount.messages],
+      textTags: [setTags, currentAccount.tags],
     };
 
     Object.keys(fields).forEach((key) => {
@@ -38,6 +39,7 @@ function ConfigPopup({ currentAccount, account_id }) {
   const [blackList, setBlackList] = useState();
   const [comments, setComments] = useState();
   const [messages, setMessages] = useState();
+  const [tags, setTags] = useState();
   const [allowLike, setAllowLike] = useState();
   const [allowFollow, setAllowFollow] = useState();
   const [allowComment, setAllowComment] = useState();
@@ -69,6 +71,11 @@ function ConfigPopup({ currentAccount, account_id }) {
       value: messages,
       set: setMessages,
     },
+    {
+      label: 'Account Tags',
+      value: tags,
+      set: setTags,
+    },
   ];
 
   const HandleSubmit = (e) => {
@@ -84,6 +91,7 @@ function ConfigPopup({ currentAccount, account_id }) {
       white_list: whiteList,
       comments: comments,
       messages: messages,
+      tags: tags,
     };
     PatchAccount(body, account_id);
   };
