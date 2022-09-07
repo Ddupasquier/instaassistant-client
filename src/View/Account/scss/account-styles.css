@@ -51,13 +51,10 @@
           backdrop-filter: saturate(200%) blur(8px);
   background: rgba(255, 255, 255, 0.4);
 }
-.account-container .user section > div {
-  color: black;
-}
 .account-container .user-links {
   display: flex;
   flex-direction: row;
-  gap: 1rem;
+  justify-content: space-evenly;
 }
 .account-container .user-links a {
   color: white;

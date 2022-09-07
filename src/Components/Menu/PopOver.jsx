@@ -7,6 +7,7 @@ function PopOver({ item, hovered, theme, darkTheme }) {
     backgroundColor:
       theme === darkTheme ? 'rgb(34, 34, 34)' : 'rgb(212, 212, 212)',
     translate: 'translate(-50%, -50%)',
+    color: theme === darkTheme ? 'rgb(80, 255, 255)' : 'black'
   };
 
   const popOverInactive = {

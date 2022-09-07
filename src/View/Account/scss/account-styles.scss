@@ -49,14 +49,11 @@
         }
       }
     }
-    section > div {
-      color: black;
-    }
   }
   .user-links {
     display: flex;
     flex-direction: row;
-    gap: 1rem;
+    justify-content: space-evenly;
     a {
       color: white;
       text-align: center;

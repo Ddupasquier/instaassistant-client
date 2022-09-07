@@ -105,7 +105,7 @@ function ConfigPopup({ currentAccount, account_id, theme, darkTheme }) {
       theme === darkTheme ? 'rgb(34, 34, 34)' : 'rgb(212, 212, 212)',
     borderRadius: '.5rem .5rem 0 0',
     zIndex: '1000',
-    transition: 'all .8s ease-in-out',
+    transition: 'bottom .8s ease-in-out',
   };
 
   const configButton = {

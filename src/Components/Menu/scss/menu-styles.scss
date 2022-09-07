@@ -23,8 +23,6 @@ $secondary-font: rgb(80, 255, 182);
     height: 2.3rem;
     aspect-ratio: 1/1;
     border-radius: 50%;
-    color: $primary-font;
-    transition: 0.5s;
     &:hover,
     &:active {
       display: flex;
@@ -82,6 +80,7 @@ $secondary-font: rgb(80, 255, 182);
     color: $primary-font;
     font-family: Montserrat;
     font-style: italic;
+    font-weight: bold;
     transition: 0.5s;
   }
 }

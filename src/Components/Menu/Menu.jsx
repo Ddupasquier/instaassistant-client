@@ -52,6 +52,10 @@ function Menu({
     setTheme(checked ? lightTheme : darkTheme);
   };
 
+  // const menuItemStyle = {
+  //   color: theme === darkTheme ? 'rgb(80, 255, 255)' : 'black',
+  // };
+
   return (
     <>
       <nav
@@ -59,8 +63,6 @@ function Menu({
         style={{
           backgroundColor:
             theme === darkTheme ? 'rgb(34, 34, 34)' : 'rgb(212, 212, 212)',
-          transition: '1s',
-          // filter: theme !== darkTheme ? 'invert(1)' : 'invert(0)',
         }}
       >
         {menuItems.map((item) => (
@@ -70,10 +72,13 @@ function Menu({
             onMouseLeave={() => setMenuItemHovered('')}
             onBlur={() => setMenuItemHovered('')}
             key={item.name}
+            // style={{menuItemStyle}}
           >
             <MenuItem
               item={item}
               animateLogo={animateLogo}
+              theme={theme}
+              darkTheme={darkTheme}
             />
           </div>
         ))}
@@ -94,7 +99,13 @@ function Menu({
       {window.innerWidth > 760 ? (
         <div className="pop-overs">
           {menuItems.map((item) => (
-            <PopOver key={item.to} item={item} hovered={menuItemHovered} theme={theme} darkTheme={darkTheme} />
+            <PopOver
+              key={item.to}
+              item={item}
+              hovered={menuItemHovered}
+              theme={theme}
+              darkTheme={darkTheme}
+            />
           ))}
         </div>
       ) : null}

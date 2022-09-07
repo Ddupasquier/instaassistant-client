@@ -126,9 +126,9 @@ function Account({ darkTheme, theme }) {
           </Button>
         </div>
         <>
-          <Grid.Container>
-            <Grid sm={3} xs={12}></Grid>
-            <Grid sm={6} xs={12}>
+          <Grid.Container justify="center">
+            {/* <Grid sm={3} xs={12}></Grid> */}
+            <Grid sm={6} xs={9}>
               <Card
                 variant="flat"
                 css={{
@@ -178,7 +178,7 @@ function Account({ darkTheme, theme }) {
                 </Card.Body>
               </Card>
             </Grid>
-            <Grid sm={3} xs={12}></Grid>
+            {/* <Grid sm={3} xs={12}></Grid> */}
           </Grid.Container>
         </>
 

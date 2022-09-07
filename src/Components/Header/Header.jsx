@@ -15,14 +15,12 @@ function Header({ menuSelected, theme, darkTheme }) {
       style={{
         backgroundColor:
           theme === darkTheme ? 'rgb(34, 34, 34)' : 'rgb(212, 212, 212)',
-        transition: '1s',
-        // filter: theme !== darkTheme ? 'invert(1)' : 'invert(0)',
       }}
     >
       <LogoAnimation menuSelected={menuSelected} />
-      <div className="site-name">
+      <div className="site-name" style={{color: theme === darkTheme ? 'rgb(80, 255, 255)' : 'black'}}>
         <i>Anti</i>
-        <b>Social Suite</b>
+        <b>SocialSuite</b>
       </div>
       <div className="username">
         {capFirstLetter('Company Name')} {'  '}

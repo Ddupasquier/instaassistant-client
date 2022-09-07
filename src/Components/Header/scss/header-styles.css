@@ -1,6 +1,7 @@
 header {
   display: grid;
   grid-template-columns: 55px 1fr 1fr;
+  background: rgb(34, 34, 34);
   width: 100%;
   z-index: 1;
 }
@@ -12,7 +13,6 @@ header div {
 header .username {
   justify-content: end;
   padding-right: 10px;
-  color: white;
   cursor: default;
 }
 header .logo {
@@ -21,7 +21,6 @@ header .logo {
 header .site-name {
   font-size: 2rem;
   font-family: Montserrat;
-  color: rgb(80, 255, 255);
   cursor: default;
 }
 
