@@ -5,7 +5,7 @@ import { Link, useParams } from 'react-router-dom';
 import { getSnapshots, GetTasks, ShowAccount } from 'api';
 
 // * ------- STYLES ------- *
-import { Button, Card, Grid, Loading, Text } from '@nextui-org/react';
+import { Button, Card, Grid, Loading } from '@nextui-org/react';
 import './scss/account-styles.css';
 
 // * ------- COMPONENTS ------- *
@@ -14,44 +14,17 @@ import TaskModalNew from './AccountComponents/TaskModalNew';
 import Utilization from './AccountComponents/Utilization';
 import Interactions from './AccountComponents/Interactions';
 import FollowerGain from './AccountComponents/FollowerGain';
-import TasksRunning from './AccountComponents/TasksRunning';
+// import TasksRunning from './AccountComponents/TasksRunning';
 import MetricChart from './AccountComponents/MetricChart';
 import InteractionLimits from './AccountComponents/InteractionLimits';
 import ConfigPopup from './AccountComponents/ConfigPopup';
-import ActivityLog from './AccountComponents/ActivityLog';
+// import ActivityLog from './AccountComponents/ActivityLog';
 
-function Account() {
-  const rows = [
-    {
-      key: '1',
-      name: 'Tony Reichert',
-      role: 'CEO',
-      status: 'Active',
-    },
-    {
-      key: '2',
-      name: 'Zoey Lang',
-      role: 'Technical Lead',
-      status: 'Paused',
-    },
-    {
-      key: '3',
-      name: 'Jane Fisher',
-      role: 'Senior Developer',
-      status: 'Active',
-    },
-    {
-      key: '4',
-      name: 'William Howard',
-      role: 'Community Manager',
-      status: 'Vacation',
-    },
-  ];
-
+function Account({ darkTheme, theme }) {
   //Route Handle
   const { account_id } = useParams();
   const [currentAccount, setCurrentAccount] = useState(null);
-  const [active, setActive] = useState(true);
+  // const [active, setActive] = useState(true);
   const [snapshots, setSnapshots] = useState([
     { followers: 9999, following: 99999, profile_pic: '' },
   ]);
@@ -80,7 +53,7 @@ function Account() {
   }, [account_id]);
 
   // * ------- TASK FORM AND MODULE HANDLERS ------- *
-  const [tasksLoaded, setTasksLoaded] = useState();
+  // const [tasksLoaded, setTasksLoaded] = useState();
   const [tasksSelected, setTasksSelected] = useState(false);
   const [selected, setSelected] = useState('');
   const [taskVisible, setTaskVisible] = useState(false);
@@ -211,7 +184,7 @@ function Account() {
 
         <div className="account-metrics">
           <Grid.Container gap={2}>
-            <TasksRunning active={active} />
+            {/* <TasksRunning active={active} /> */}
             <Utilization num={utilization} />
             <Interactions num={interations} />
             <FollowerGain num={followersGained} />
@@ -233,10 +206,15 @@ function Account() {
           selected={selected}
           tasksSelected={tasksSelected}
           tasks={tasks}
-          tasksLoaded={tasksLoaded}
+          // tasksLoaded={tasksLoaded}
           account_id={account_id}
         />
-        <ConfigPopup currentAccount={currentAccount} account_id={account_id} />
+        <ConfigPopup
+          currentAccount={currentAccount}
+          account_id={account_id}
+          darkTheme={darkTheme}
+          theme={theme}
+        />
       </div>
     );
   }

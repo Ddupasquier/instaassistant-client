@@ -4,7 +4,7 @@ import ConfigTextArea from './ConfigTextArea';
 import { PatchAccount } from 'api';
 import { Link } from 'react-router-dom';
 
-function ConfigPopup({ currentAccount, account_id }) {
+function ConfigPopup({ currentAccount, account_id, theme, darkTheme }) {
   const [divHeight, setDivHeight] = useState(0);
   const ref = useRef(null);
 
@@ -101,19 +101,24 @@ function ConfigPopup({ currentAccount, account_id }) {
     bottom: configShown ? '0' : -(divHeight - 30) + 'px',
     alignSelf: 'center',
     width: '92.5%',
-    background: 'black',
+    backgroundColor:
+      theme === darkTheme ? 'rgb(34, 34, 34)' : 'rgb(212, 212, 212)',
     borderRadius: '.5rem .5rem 0 0',
     zIndex: '1000',
     transition: 'all .8s ease-in-out',
   };
 
+  const configButton = {
+    backgroundColor: theme === darkTheme ? '#5E1DAD' : '#af6eff',
+  };
+
   return (
-    <div
-      className="config"
-      style={configPosition}
-      ref={ref}
-    >
-      <div className="config-open" onClick={() => toggleConfigShown()}>
+    <div className="config" style={configPosition} ref={ref}>
+      <div
+        className="config-open"
+        onClick={() => toggleConfigShown()}
+        style={configButton}
+      >
         Configuration
       </div>
       <>
