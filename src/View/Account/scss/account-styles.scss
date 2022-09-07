@@ -29,6 +29,7 @@
     align-items: center;
     justify-content: center;
     gap: 1rem;
+    width: 100%;
     section {
       text-align: center;
       padding: 1rem 0;
@@ -55,7 +56,6 @@
     flex-direction: row;
     justify-content: space-evenly;
     a {
-      color: white;
       text-align: center;
     }
   }
