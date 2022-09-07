@@ -9,11 +9,15 @@ function ActivityLog({ tasks }) {
     },
     {
       key: 'list_type',
-      label: 'ROLE',
+      label: 'LIST TYPE',
     },
     {
-      key: 'status',
-      label: 'STATUS',
+      key: 'target_url',
+      label: 'TARGET',
+    },
+    {
+      key: 'date',
+      label: 'Date Created',
     },
     {
       key: 'status',
