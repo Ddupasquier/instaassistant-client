@@ -94,6 +94,7 @@ function ConfigPopup({ currentAccount, account_id, theme, darkTheme }) {
       tags: tags,
     };
     PatchAccount(body, account_id);
+    window.location.reload()
   };
 
   const configPosition = {

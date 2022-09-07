@@ -5,7 +5,7 @@ import { Link, useParams } from 'react-router-dom';
 import { getSnapshots, GetTasks, ShowAccount } from 'api';
 
 // * ------- STYLES ------- *
-import { Button, Card, Grid, Loading } from '@nextui-org/react';
+import { Button, Card, Grid, Loading, Text } from '@nextui-org/react';
 import './scss/account-styles.css';
 
 // * ------- COMPONENTS ------- *
@@ -18,6 +18,7 @@ import FollowerGain from './AccountComponents/FollowerGain';
 import MetricChart from './AccountComponents/MetricChart';
 import InteractionLimits from './AccountComponents/InteractionLimits';
 import ConfigPopup from './AccountComponents/ConfigPopup';
+import Avatar from 'react-avatar';
 // import ActivityLog from './AccountComponents/ActivityLog';
 
 function Account({ darkTheme, theme }) {
@@ -159,15 +160,8 @@ function Account({ darkTheme, theme }) {
                 <Card.Header>
                   <div className="user">
                     <section>
-                      <UserIcon
-                        src={
-                          snapshots
-                            ? snapshots[snapshots.length - 1].profile_pic
-                            : null
-                        }
-                        name={`@${currentAccount.username}`}
-                        size="xl"
-                      />
+                      <Avatar name={currentAccount.username} round value="25%" size="65" textSizeRatio={2} />
+                      <Text>@{currentAccount.username}</Text>
                     </section>
                     <section>
                       <legend>Followers</legend>
