@@ -16,6 +16,7 @@ import { Login } from 'View/Login';
 import { SignUp } from 'View/SignUp';
 import { Task } from 'View/Task';
 import Tasks from 'View/Tasks';
+import { AccountUpdate } from 'View/AccountUpdate';
 
 // NextUI import
 import { NextUIProvider, createTheme } from '@nextui-org/react';
@@ -25,27 +26,27 @@ const darkTheme = createTheme({
   type: 'dark',
   theme: {
     colors: {
-      // brand colors
-      primaryLight: '$green200',
-      primaryLightHover: '$green300',
-      primaryLightActive: '$green400',
-      primaryLightContrast: '$green600',
-      primary: '#4ADE7B',
-      primaryBorder: '$green500',
-      primaryBorderHover: '$green600',
-      primarySolidHover: '$green700',
-      primarySolidContrast: '$white',
-      primaryShadow: '$green500',
+            // brand colors
+            primaryLight: '$green200',
+            primaryLightHover: '$green300',
+            primaryLightActive: '$green400',
+            primaryLightContrast: '$green600',
+            primary: '#4ADE7B',
+            primaryBorder: '$green500',
+            primaryBorderHover: '$green600',
+            primarySolidHover: '$green700',
+            primarySolidContrast: '$white',
+            primaryShadow: '$green500',
+      
+            gradient: 'linear-gradient(112deg, $blue100 -25%, $pink500 -10%, $purple500 80%)',
+            link: '#af6eff',
+      
+            // you can also create your own color
+            myColor: 'rgba(95, 95, 95, 0.55)',
+            menue: 'rgb(34, 34, 34)'
 
-      gradient:
-        'linear-gradient(112deg, $blue100 -25%, $pink500 -10%, $purple500 80%)',
-      link: '#5E1DAD',
-
-      // you can also create your own color
-      myColor: 'rgba(95, 95, 95, 0.4)',
-      menue: 'rgb(34, 34, 34)',
-
-      // ...  more colors
+      
+            // ...  more colors
     },
   },
 });
@@ -71,8 +72,8 @@ const lightTheme = createTheme({
       link: '#5E1DAD',
 
       // you can also create your own color
-      myColor: 'rgba(0, 0, 0, 0.2)',
-      menue: 'rgb(212, 212, 212)',
+      myColor: 'rgba(255, 255, 255, .7)',
+      menue: 'rgb(212, 212, 212)'
 
       // ...  more colors
     },
@@ -101,7 +102,8 @@ function AppRoutes() {
               <Route path="/billing" element={<Billing />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/accounts" element={<Accounts />} />
-              <Route
+              <Route path="/instagram/account/update" element={<AccountUpdate />} />
+            <Route
                 path="/instagram/account/:account_id"
                 element={<Account darkTheme={darkTheme}
                 theme={theme} />}
