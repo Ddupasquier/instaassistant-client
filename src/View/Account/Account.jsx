@@ -77,6 +77,7 @@ function Account() {
         setTasks([]);
       }
     });
+
   }, [account_id]);
 
   // * ------- TASK FORM AND MODULE HANDLERS ------- *
@@ -107,18 +108,38 @@ function Account() {
       messages_sent += task.message_sent;
     });
 
-    console.log(tasks);
-
     setFollows(follows_sent);
     setLikes(likes_sent);
     setComments(comments_sent);
     setMessages(messages_sent);
     setInteractions(follows_sent + likes_sent + comments_sent + messages_sent);
+    
+    if (tasks && snapshots && currentAccount){
+      let util = 0
+      console.log(currentAccount)
+      setUtilization(currentAccount.allow_follow ? util += 5 : util)
+      setUtilization(currentAccount.allow_like ? util += 5 : util)
+      setUtilization(currentAccount.allow_comment ? util += 5 : util)
+      setUtilization(currentAccount.allow_dm ? util += 5 : util)
+      if (currentAccount.messages != null){
+       let msg = currentAccount.comments.split(",")
+        setUtilization(msg.length > 5 ? util += 10 : util)
+      }
+      
+      if (currentAccount.comments != null){
+        let comms = currentAccount.comments.split(",")
+        setUtilization(comms.length > 5 ? util += 10 : util)
+      }
+
+      setUtilization(tasks.length > 7 ? util += 10 : util)
+    }
 
     setFollowersGained(
       snapshots[0].followers - snapshots[snapshots.length - 1].followers
     );
   }, [snapshots, tasks]);
+
+
 
   const taskHandler = () => setTaskVisible(true);
 
@@ -157,7 +178,6 @@ function Account() {
             <Grid sm={3} xs={12}></Grid>
             <Grid sm={6} xs={12}>
               <Card
-                variant="flat"
                 css={{
                   backdropFilter: 'blur(15px)',
                   background: '$myColor',

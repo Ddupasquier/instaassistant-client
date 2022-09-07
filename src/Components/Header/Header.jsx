@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, useTheme } from '@nextui-org/react';
+import { Button, Text, useTheme } from '@nextui-org/react';
 import './scss/header-styles.css';
 import { Logout } from '../../api';
 import LogoAnimation from './LogoAnimation';
@@ -25,7 +25,19 @@ function Header({ menuSelected, theme, darkTheme }) {
         <b>Social Suite</b>
       </div>
       <div className="username">
-        {capFirstLetter('Company Name')} {'  '}
+      <Text
+        h1
+        size={30}
+        css={{
+        textGradient: "45deg, $blue600 -20%, $pink600 50%",
+        }}
+        style={{ zIndex: 1 }}
+        weight="bold"
+        >
+          {capFirstLetter('Company Name')} {'  '}
+        </Text>
+        
+
         <Button
           href="/"
           onPress={Logout}
