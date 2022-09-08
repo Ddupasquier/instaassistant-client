@@ -32,6 +32,7 @@
   align-items: center;
   justify-content: center;
   gap: 1rem;
+  width: 100%;
 }
 .account-container .user section {
   text-align: center;
@@ -57,7 +58,6 @@
   justify-content: space-evenly;
 }
 .account-container .user-links a {
-  color: white;
   text-align: center;
 }
 .account-container .config .config-open {
