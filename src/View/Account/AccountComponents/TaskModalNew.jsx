@@ -8,6 +8,7 @@ import {
   Checkbox,
 } from '@nextui-org/react';
 import { PostTask } from 'api';
+import { IconsQuestionMark } from 'Components/icons/icons';
 
 const TaskModalNew = ({
   closeTaskHandler,
@@ -102,7 +103,7 @@ const TaskModalNew = ({
         <form onSubmit={(e) => HandleSubmit(e)}>
           <Modal.Body>
             <h3>What would you like to schedule?</h3>
-            <h5>Action</h5>
+            <h5>Action</h5><IconsQuestionMark content="Choose the action you would like your account to take." local="right"/>
             <select
               name="TaskType"
               className="options"
