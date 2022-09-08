@@ -64,14 +64,15 @@ const TaskModalNew = ({
   };
 
   const actions = [
-    { value: 'Post', label: 'Post' },
+    { value: '', label: 'Post - Coming Soon' },
     { value: 'Interact', label: 'Interact' },
+    { value: 'Follow', label: 'Follow' },
     { value: 'Like', label: 'Like' },
     { value: 'Comment', label: 'Comment' },
-    { value: 'Follow', label: 'Follow' },
     { value: 'Message', label: 'Message' },
-    { value: 'Black List', label: 'Black List' },
-    { value: 'White List', label: 'White List' },
+    { value: '', label: 'Clean - Coming Soon' },
+    { value: '', label: 'Black List - Coming Soon' },
+    { value: '', label: 'White List - Coming Soon' },
   ];
 
   const [firstArgSelected, setFirstArgSelected] = useState(false);

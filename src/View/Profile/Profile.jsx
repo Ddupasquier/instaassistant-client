@@ -4,6 +4,7 @@ import { UserIcon } from 'Components/UserIcon';
 import { Button, Card, Text } from '@nextui-org/react';
 import { GetUserInfo } from 'api';
 import EditProfile from './EditProfile';
+import Avatar from 'react-avatar';
 
 function Profile() {
   const [userInfo, setUserInfo] = useState({});
@@ -23,6 +24,7 @@ function Profile() {
 
   return (
     <div className="profile-main">
+      <Avatar name={userInfo.email} round size="80" textSizeRatio={2} />
       <Text
         h1
         size={60}
@@ -31,15 +33,10 @@ function Profile() {
         }}
         weight="bold"
       >
-        Profile
+        {userInfo.email}
       </Text>
       <Card css={{background: '$myColor'}} style={{padding: '1.5rem', width: '80%'}}>
         <div className="profile-header">
-          <UserIcon
-            src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
-            name={userInfo.username}
-            size="xl"
-          />
           <Button color="secondary" onPress={editProfileHandler} rounded>
             Edit
           </Button>
