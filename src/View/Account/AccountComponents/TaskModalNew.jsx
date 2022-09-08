@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
   Modal,
   Textarea,
@@ -6,10 +6,10 @@ import {
   Button,
   Text,
   Checkbox,
-} from '@nextui-org/react';
-import { PostTask } from 'api';
-import { IconsQuestionMark } from 'Components/icons/icons';
-import { BsFillArrowRightCircleFill } from 'react-icons/bs';
+} from "@nextui-org/react";
+import { PostTask } from "api";
+import { IconsQuestionMark } from "Components/icons/icons";
+import { BsFillArrowRightCircleFill } from "react-icons/bs";
 
 const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
   const [todaysDate, setTodaysDate] = useState();
@@ -22,18 +22,18 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
 
   useEffect(() => {
     var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0');
+    var dd = String(today.getDate()).padStart(2, "0");
+    var mm = String(today.getMonth() + 1).padStart(2, "0");
     var yyyy = today.getFullYear();
     setTodaysDate(
       dd +
-        '-' +
+        "-" +
         mm +
-        '-' +
+        "-" +
         yyyy +
-        ';' +
+        ";" +
         today.getHours() +
-        ':' +
+        ":" +
         today.getMinutes()
     );
     setDate(todaysDate);
@@ -48,7 +48,7 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
       date: date == null ? todaysDate : date,
       task_type: action,
       list_type: `${listTarget}:${listType}`,
-      target_url: '',
+      target_url: "",
       // arguments: args.join(';'),
     };
     console.log(payload);
@@ -56,15 +56,15 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
   };
 
   const actions = [
-    { value: '', label: 'Post - Coming Soon' },
-    { value: 'Interact', label: 'Interact' },
-    { value: 'Follow', label: 'Follow' },
-    { value: 'Like', label: 'Like' },
-    { value: 'Comment', label: 'Comment' },
-    { value: 'Message', label: 'Message' },
-    { value: '', label: 'Clean - Coming Soon' },
-    { value: '', label: 'Black List - Coming Soon' },
-    { value: '', label: 'White List - Coming Soon' },
+    { value: "", label: "Post - Coming Soon" },
+    { value: "Interact", label: "Interact" },
+    { value: "Follow", label: "Follow" },
+    { value: "Like", label: "Like" },
+    { value: "Comment", label: "Comment" },
+    { value: "Message", label: "Message" },
+    { value: "", label: "Clean - Coming Soon" },
+    { value: "", label: "Black List - Coming Soon" },
+    { value: "", label: "White List - Coming Soon" },
   ];
 
   const [firstArgSelected, setFirstArgSelected] = useState(false);
@@ -85,7 +85,7 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
           <Text id="modal-title" size={18}>
             Start a
             <Text b size={18}>
-              {' '}
+              {" "}
               New Task
             </Text>
           </Text>
@@ -93,11 +93,14 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
         <form onSubmit={(e) => HandleSubmit(e)}>
           <Modal.Body>
             <h3>What would you like to schedule?</h3>
-            <h5>Action</h5>
-            <IconsQuestionMark
-              content="Choose the action you would like your account to take."
-              local="right"
-            />
+            <h5>
+              Action
+              <IconsQuestionMark
+                content="Choose the action you would like your account to take."
+                local="right"
+              />
+            </h5>
+
             <select
               name="TaskType"
               className="options"
@@ -107,45 +110,25 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
                 setFirstArgSelected(true);
               }}
               style={{
-                backgroundColor: 'gray',
-                borderRadius: '1rem',
-                padding: '.3rem',
+                backgroundColor: "gray",
+                borderRadius: "1rem",
+                padding: ".3rem",
               }}
             >
-              <option value="" style={{ color: 'black' }}>
+              <option value="" style={{ color: "black" }}>
                 Select Action
               </option>
               {actions.map((action) => (
                 <option
                   key={action.value}
                   value={action.value}
-                  style={{ color: 'black' }}
+                  style={{ color: "black" }}
                 >
                   {action.label}
                 </option>
               ))}
             </select>
-            {action === 'Interact' || action === 'Message' ? (
-              <>
-                <br />
-                <Textarea
-                  bordered
-                  color="secondary"
-                  labelPlaceholder="Custom Message(s)"
-                />
-              </>
-            ) : null}
-            {action === 'Interact' || action === 'Comment' ? (
-              <>
-                <br />
-                <Textarea
-                  bordered
-                  color="secondary"
-                  labelPlaceholder="Custom Comment(s)"
-                />
-              </>
-            ) : null}
-            {action === 'Post' ? (
+            {action === "Post" ? (
               <input
                 required
                 status="secondary"
@@ -162,11 +145,11 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
                     <div
                       className="list-target-inputs"
                       style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        width: '100%',
-                        gap: '1rem',
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        width: "100%",
+                        gap: "1rem",
                       }}
                     >
                       <select
@@ -178,55 +161,25 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
                           setListTarget(e.target.value);
                         }}
                         style={{
-                          backgroundColor: 'gray',
-                          borderRadius: '1rem',
-                          padding: '.3rem',
-                          width: '100%',
+                          backgroundColor: "gray",
+                          borderRadius: "1rem",
+                          padding: ".3rem",
+                          width: "100%",
                         }}
                       >
-                        <option value="" style={{ color: 'black' }}>
+                        <option value="" style={{ color: "black" }}>
                           Select List Target
                         </option>
-                        <option value="Account" style={{ color: 'black' }}>
+                        <option value="Account" style={{ color: "black" }}>
                           Account
                         </option>
-                        <option value="Post" style={{ color: 'black' }}>
+                        <option value="Post" style={{ color: "black" }}>
                           Post
                         </option>
                       </select>
-
-                      {listTarget === 'Account' && (
-                        <Input
-                          status="secondary"
-                          bordered
-                          label="Username or account URL"
-                          type="text"
-                          className="form-control"
-                        />
-                      )}
-                      {listTarget === 'Post' && (
-                        <Input
-                          status="secondary"
-                          bordered
-                          labelPlaceholder="Post URL"
-                          type="text"
-                          className="form-control"
-                        />
-                      )}
                       <div>
                         <BsFillArrowRightCircleFill />
                       </div>
-
-                      {/* <svg
-                      style={{ fill: 'white' }}
-                      width="24"
-                      height="24"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                    >
-                      <path d="M11 21.883l-6.235-7.527-.765.644 7.521 9 7.479-9-.764-.645-6.236 7.529v-21.884h-1v21.883z" />
-                    </svg> */}
                       <select
                         required
                         name="TaskType"
@@ -237,51 +190,51 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
                           setThirdArgSelected(true);
                         }}
                         style={{
-                          backgroundColor: 'gray',
-                          borderRadius: '1rem',
-                          padding: '.3rem',
-                          width: '100%',
+                          backgroundColor: "gray",
+                          borderRadius: "1rem",
+                          padding: ".3rem",
+                          width: "100%",
                         }}
                       >
-                        <option value="" style={{ color: 'black' }}>
+                        <option value="" style={{ color: "black" }}>
                           Select Target Type
                         </option>
-                        {listTarget === 'Account' ? (
+                        {listTarget === "Account" ? (
                           <>
                             <option
                               value="Followers"
-                              style={{ color: 'black' }}
+                              style={{ color: "black" }}
                             >
                               Followers
                             </option>
                             <option
                               value="Following"
-                              style={{ color: 'black' }}
+                              style={{ color: "black" }}
                             >
                               Following
                             </option>
                             <option
                               value="Recent Post"
-                              style={{ color: 'black' }}
+                              style={{ color: "black" }}
                             >
                               Recent Post
                             </option>
                           </>
                         ) : (
                           <>
-                            {' '}
+                            {" "}
                             <option
                               value="Intewractors"
-                              style={{ color: 'black' }}
+                              style={{ color: "black" }}
                             >
                               Interactors
                             </option>
-                            <option value="Likers" style={{ color: 'black' }}>
+                            <option value="Likers" style={{ color: "black" }}>
                               Likers
                             </option>
                             <option
                               value="Commenters"
-                              style={{ color: 'black' }}
+                              style={{ color: "black" }}
                             >
                               Commenters
                             </option>
@@ -290,6 +243,49 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
                       </select>
                       <br />
                     </div>
+                    {listTarget === "Account" && (
+                      <Input
+                        status="secondary"
+                        bordered
+                        label="Username or account URL"
+                        type="text"
+                        className="form-control"
+                      />
+                    )}
+                    {listTarget === "Post" && (
+                      <Input
+                        status="secondary"
+                        bordered
+                        labelPlaceholder="Post URL"
+                        type="text"
+                        className="form-control"
+                      />
+                    )}
+                    {action === "Interact" ||
+                    action === "Message" ||
+                    action === "Comment" ? (
+                      <h5>Optional Arguments </h5>
+                    ) : null}
+                    {action === "Interact" || action === "Message" ? (
+                      <>
+                        <br />
+                        <Textarea
+                          bordered
+                          color="secondary"
+                          labelPlaceholder="Custom Message(s)"
+                        />
+                      </>
+                    ) : null}
+                    {action === "Interact" || action === "Comment" ? (
+                      <>
+                        <br />
+                        <Textarea
+                          bordered
+                          color="secondary"
+                          labelPlaceholder="Custom Comment(s)"
+                        />
+                      </>
+                    ) : null}
                   </>
                 ) : null}
               </>
@@ -297,10 +293,12 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
             {thirdArgSelected ? (
               <>
                 <Checkbox isSelected={schedule} onChange={setSchedule}>
-                  Schedule
+                  Schedule&nbsp;
+                  <IconsQuestionMark
+                    content="Leave unchecked to have this task run immediately"
+                    local="right"
+                  />
                 </Checkbox>
-
-                <em>Leave unselected to have this task run immediately</em>
 
                 {schedule && (
                   <input
@@ -311,7 +309,7 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
                     value={date}
                     min={date}
                     max="2023-01-01;00:00"
-                    style={{ color: 'black' }}
+                    style={{ color: "black" }}
                   />
                 )}
               </>
