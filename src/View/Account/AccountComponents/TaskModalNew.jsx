@@ -10,20 +10,10 @@ import {
 import { PostTask } from 'api';
 import { IconsQuestionMark } from 'Components/icons/icons';
 
-const TaskModalNew = ({
-  closeTaskHandler,
-  taskVisible,
-  handleChange,
-  selected,
-  tasksSelected,
-  tasks,
-  tasksLoaded,
-  account_id,
-}) => {
+const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
   const [todaysDate, setTodaysDate] = useState();
   const [date, setDate] = useState();
 
-  const [task, setTask] = useState();
   const [listTarget, setListTarget] = useState();
   const [listType, setListType] = useState();
   const [action, setAction] = useState();
@@ -60,7 +50,6 @@ const TaskModalNew = ({
       target_url: '',
       // arguments: args.join(';'),
     };
-    console.log(payload);
     PostTask(payload);
   };
 
@@ -103,7 +92,11 @@ const TaskModalNew = ({
         <form onSubmit={(e) => HandleSubmit(e)}>
           <Modal.Body>
             <h3>What would you like to schedule?</h3>
-            <h5>Action</h5><IconsQuestionMark content="Choose the action you would like your account to take." local="right"/>
+            <h5>Action</h5>
+            <IconsQuestionMark
+              content="Choose the action you would like your account to take."
+              local="right"
+            />
             <select
               name="TaskType"
               className="options"
@@ -131,16 +124,26 @@ const TaskModalNew = ({
                 </option>
               ))}
             </select>
-            {action === "Interact" || action === "Message" ? (<><br/><Textarea
-              bordered
-              color="secondary"
-              labelPlaceholder="Custom Message(s)"
-            /></>) : null}
-            {action === "Interact" || action === "Comment" ? (<><br/><Textarea
-              bordered
-              color="secondary"
-              labelPlaceholder="Custom Comment(s)"
-            /></>) : null}
+            {action === 'Interact' || action === 'Message' ? (
+              <>
+                <br />
+                <Textarea
+                  bordered
+                  color="secondary"
+                  labelPlaceholder="Custom Message(s)"
+                />
+              </>
+            ) : null}
+            {action === 'Interact' || action === 'Comment' ? (
+              <>
+                <br />
+                <Textarea
+                  bordered
+                  color="secondary"
+                  labelPlaceholder="Custom Comment(s)"
+                />
+              </>
+            ) : null}
             {action === 'Post' ? (
               <input
                 required
@@ -203,7 +206,16 @@ const TaskModalNew = ({
                         className="form-control"
                       />
                     )}
-                  <svg style={{fill: "white"}} width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M11 21.883l-6.235-7.527-.765.644 7.521 9 7.479-9-.764-.645-6.236 7.529v-21.884h-1v21.883z"/></svg>
+                    <svg
+                      style={{ fill: 'white' }}
+                      width="24"
+                      height="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path d="M11 21.883l-6.235-7.527-.765.644 7.521 9 7.479-9-.764-.645-6.236 7.529v-21.884h-1v21.883z" />
+                    </svg>
                     <select
                       required
                       name="TaskType"
@@ -240,7 +252,10 @@ const TaskModalNew = ({
                       ) : (
                         <>
                           {' '}
-                          <option value="Intewractors" style={{ color: 'black' }}>
+                          <option
+                            value="Intewractors"
+                            style={{ color: 'black' }}
+                          >
                             Interactors
                           </option>
                           <option value="Likers" style={{ color: 'black' }}>
@@ -273,7 +288,8 @@ const TaskModalNew = ({
                     onChange={(e) => setDate(e.target.value)}
                     value={date}
                     min={date}
-                    max="2023-01-01;00:00" 
+                    max="2023-01-01;00:00"
+                    style={{color: 'black'}}
                   />
                 )}
               </>

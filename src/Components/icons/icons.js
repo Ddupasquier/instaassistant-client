@@ -3,10 +3,10 @@ import { Tooltip } from "@nextui-org/react";
 export const IconsQuestionMark = ({ content, local }) => {
   return (
     <Tooltip
-      style={{ zIndex: 10000 }}
+      css={{ zIndex: 10000 }}
       Invert
       content={content}
-      placement={"left"}
+      placement={local}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
