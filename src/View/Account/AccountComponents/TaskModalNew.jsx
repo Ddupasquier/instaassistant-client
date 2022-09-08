@@ -9,6 +9,7 @@ import {
 } from '@nextui-org/react';
 import { PostTask } from 'api';
 import { IconsQuestionMark } from 'Components/icons/icons';
+import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 
 const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
   const [todaysDate, setTodaysDate] = useState();
@@ -50,6 +51,7 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
       target_url: '',
       // arguments: args.join(';'),
     };
+    console.log(payload);
     PostTask(payload);
   };
 
@@ -66,7 +68,6 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
   ];
 
   const [firstArgSelected, setFirstArgSelected] = useState(false);
-  const [secondArgSelected, setSecondArgSelected] = useState(false);
   const [thirdArgSelected, setThirdArgSelected] = useState(false);
 
   return (
@@ -158,55 +159,65 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
                 {firstArgSelected ? (
                   <>
                     <h5>List</h5>
-
-                    <select
-                      required
-                      name="Target"
-                      className="options"
-                      value={listTarget}
-                      onChange={(e) => {
-                        setListTarget(e.target.value);
-                        setSecondArgSelected(true);
-                      }}
+                    <div
+                      className="list-target-inputs"
                       style={{
-                        backgroundColor: 'gray',
-                        borderRadius: '1rem',
-                        padding: '.3rem',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        width: '100%',
+                        gap: '1rem',
                       }}
                     >
-                      <option value="" style={{ color: 'black' }}>
-                        Select List Target
-                      </option>
-                      <option value="Account" style={{ color: 'black' }}>
-                        Account
-                      </option>
-                      <option value="Post" style={{ color: 'black' }}>
-                        Post
-                      </option>
-                    </select>
-                  </>
-                ) : null}
-                {secondArgSelected ? (
-                  <>
-                    {listTarget === 'Account' && (
-                      <Input
-                        status="secondary"
-                        bordered
-                        label="Username or account URL"
-                        type="text"
-                        className="form-control"
-                      />
-                    )}
-                    {listTarget === 'Post' && (
-                      <Input
-                        status="secondary"
-                        bordered
-                        labelPlaceholder="Post URL"
-                        type="text"
-                        className="form-control"
-                      />
-                    )}
-                    <svg
+                      <select
+                        required
+                        name="Target"
+                        className="options"
+                        value={listTarget}
+                        onChange={(e) => {
+                          setListTarget(e.target.value);
+                        }}
+                        style={{
+                          backgroundColor: 'gray',
+                          borderRadius: '1rem',
+                          padding: '.3rem',
+                          width: '100%',
+                        }}
+                      >
+                        <option value="" style={{ color: 'black' }}>
+                          Select List Target
+                        </option>
+                        <option value="Account" style={{ color: 'black' }}>
+                          Account
+                        </option>
+                        <option value="Post" style={{ color: 'black' }}>
+                          Post
+                        </option>
+                      </select>
+
+                      {listTarget === 'Account' && (
+                        <Input
+                          status="secondary"
+                          bordered
+                          label="Username or account URL"
+                          type="text"
+                          className="form-control"
+                        />
+                      )}
+                      {listTarget === 'Post' && (
+                        <Input
+                          status="secondary"
+                          bordered
+                          labelPlaceholder="Post URL"
+                          type="text"
+                          className="form-control"
+                        />
+                      )}
+                      <div>
+                        <BsFillArrowRightCircleFill />
+                      </div>
+
+                      {/* <svg
                       style={{ fill: 'white' }}
                       width="24"
                       height="24"
@@ -215,59 +226,70 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
                       clip-rule="evenodd"
                     >
                       <path d="M11 21.883l-6.235-7.527-.765.644 7.521 9 7.479-9-.764-.645-6.236 7.529v-21.884h-1v21.883z" />
-                    </svg>
-                    <select
-                      required
-                      name="TaskType"
-                      className="options"
-                      value={listType}
-                      onChange={(e) => {
-                        setListType(e.target.value);
-                        setThirdArgSelected(true);
-                      }}
-                      style={{
-                        backgroundColor: 'gray',
-                        borderRadius: '1rem',
-                        padding: '.3rem',
-                      }}
-                    >
-                      <option value="" style={{ color: 'black' }}>
-                        Select Target Type
-                      </option>
-                      {listTarget === 'Account' ? (
-                        <>
-                          <option value="Followers" style={{ color: 'black' }}>
-                            Followers
-                          </option>
-                          <option value="Following" style={{ color: 'black' }}>
-                            Following
-                          </option>
-                          <option
-                            value="Recent Post"
-                            style={{ color: 'black' }}
-                          >
-                            Recent Post
-                          </option>
-                        </>
-                      ) : (
-                        <>
-                          {' '}
-                          <option
-                            value="Intewractors"
-                            style={{ color: 'black' }}
-                          >
-                            Interactors
-                          </option>
-                          <option value="Likers" style={{ color: 'black' }}>
-                            Likers
-                          </option>
-                          <option value="Commenters" style={{ color: 'black' }}>
-                            Commenters
-                          </option>
-                        </>
-                      )}
-                    </select>
-                    <br />
+                    </svg> */}
+                      <select
+                        required
+                        name="TaskType"
+                        className="options"
+                        value={listType}
+                        onChange={(e) => {
+                          setListType(e.target.value);
+                          setThirdArgSelected(true);
+                        }}
+                        style={{
+                          backgroundColor: 'gray',
+                          borderRadius: '1rem',
+                          padding: '.3rem',
+                          width: '100%',
+                        }}
+                      >
+                        <option value="" style={{ color: 'black' }}>
+                          Select Target Type
+                        </option>
+                        {listTarget === 'Account' ? (
+                          <>
+                            <option
+                              value="Followers"
+                              style={{ color: 'black' }}
+                            >
+                              Followers
+                            </option>
+                            <option
+                              value="Following"
+                              style={{ color: 'black' }}
+                            >
+                              Following
+                            </option>
+                            <option
+                              value="Recent Post"
+                              style={{ color: 'black' }}
+                            >
+                              Recent Post
+                            </option>
+                          </>
+                        ) : (
+                          <>
+                            {' '}
+                            <option
+                              value="Intewractors"
+                              style={{ color: 'black' }}
+                            >
+                              Interactors
+                            </option>
+                            <option value="Likers" style={{ color: 'black' }}>
+                              Likers
+                            </option>
+                            <option
+                              value="Commenters"
+                              style={{ color: 'black' }}
+                            >
+                              Commenters
+                            </option>
+                          </>
+                        )}
+                      </select>
+                      <br />
+                    </div>
                   </>
                 ) : null}
               </>
