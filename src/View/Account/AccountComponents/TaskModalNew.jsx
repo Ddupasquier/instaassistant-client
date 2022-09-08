@@ -289,7 +289,7 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
                     value={date}
                     min={date}
                     max="2023-01-01;00:00"
-                    style={{color: 'black'}}
+                    style={{ color: 'black' }}
                   />
                 )}
               </>
