@@ -3,6 +3,7 @@ import { Switch, Grid, Loading, Button } from '@nextui-org/react';
 import ConfigTextArea from './ConfigTextArea';
 import { PatchAccount } from 'api';
 import { Link } from 'react-router-dom';
+import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 
 function ConfigPopup({ currentAccount, account_id, theme, darkTheme }) {
   const [divHeight, setDivHeight] = useState(0);
@@ -94,7 +95,7 @@ function ConfigPopup({ currentAccount, account_id, theme, darkTheme }) {
       tags: tags,
     };
     PatchAccount(body, account_id);
-    window.location.reload()
+    window.location.reload();
   };
 
   const configPosition = {
@@ -121,6 +122,11 @@ function ConfigPopup({ currentAccount, account_id, theme, darkTheme }) {
         style={configButton}
       >
         Configuration
+        {configShown ? (
+          <IoIosArrowDown size={20} />
+        ) : (
+          <IoIosArrowUp size={20} />
+        )}
       </div>
       <>
         {!currentAccount === {} ? (
