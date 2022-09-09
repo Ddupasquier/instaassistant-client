@@ -5,8 +5,10 @@ export const IconsQuestionMark = ({ content, local }) => {
     <Tooltip
       css={{ zIndex: 10000 }}
       Invert
+      enterDelay={1000}
       content={content}
       placement={local}
+      width="250px"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
