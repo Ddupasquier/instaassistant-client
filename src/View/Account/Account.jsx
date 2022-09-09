@@ -5,27 +5,26 @@ import { Link, useParams } from 'react-router-dom';
 import { getSnapshots, GetTasks, ShowAccount } from 'api';
 
 // * ------- STYLES ------- *
+import { FiInstagram } from 'react-icons/fi';
+import { IoLogoYoutube } from 'react-icons/io';
+import { IoLogoTiktok } from 'react-icons/io5';
 import { Button, Card, Grid, Loading, Text } from '@nextui-org/react';
 import './scss/account-styles.css';
 
 // * ------- COMPONENTS ------- *
-import { UserIcon } from 'Components/UserIcon';
 import TaskModalNew from './AccountComponents/TaskModalNew';
 import Utilization from './AccountComponents/Utilization';
 import Interactions from './AccountComponents/Interactions';
 import FollowerGain from './AccountComponents/FollowerGain';
-// import TasksRunning from './AccountComponents/TasksRunning';
 import MetricChart from './AccountComponents/MetricChart';
 import InteractionLimits from './AccountComponents/InteractionLimits';
 import ConfigPopup from './AccountComponents/ConfigPopup';
 import Avatar from 'react-avatar';
-// import ActivityLog from './AccountComponents/ActivityLog';
 
 function Account({ darkTheme, theme }) {
   //Route Handle
   const { account_id } = useParams();
   const [currentAccount, setCurrentAccount] = useState(null);
-  // const [active, setActive] = useState(true);
   const [snapshots, setSnapshots] = useState([
     { followers: 9999, following: 99999, profile_pic: '' },
   ]);
@@ -51,11 +50,9 @@ function Account({ darkTheme, theme }) {
         setTasks([]);
       }
     });
-
   }, [account_id]);
 
   // * ------- TASK FORM AND MODULE HANDLERS ------- *
-  // const [tasksLoaded, setTasksLoaded] = useState();
   const [tasksSelected, setTasksSelected] = useState(false);
   const [selected, setSelected] = useState('');
   const [taskVisible, setTaskVisible] = useState(false);
@@ -87,33 +84,30 @@ function Account({ darkTheme, theme }) {
     setComments(comments_sent);
     setMessages(messages_sent);
     setInteractions(follows_sent + likes_sent + comments_sent + messages_sent);
-    
-    if (tasks && snapshots && currentAccount){
-      let util = 0
-      console.log(currentAccount)
-      setUtilization(currentAccount.allow_follow ? util += 5 : util)
-      setUtilization(currentAccount.allow_like ? util += 5 : util)
-      setUtilization(currentAccount.allow_comment ? util += 5 : util)
-      setUtilization(currentAccount.allow_dm ? util += 5 : util)
-      if (currentAccount.messages != null){
-       let msg = currentAccount.comments.split(",")
-        setUtilization(msg.length > 5 ? util += 10 : util)
-      }
-      
-      if (currentAccount.comments != null){
-        let comms = currentAccount.comments.split(",")
-        setUtilization(comms.length > 5 ? util += 10 : util)
+
+    if (tasks && snapshots && currentAccount) {
+      let util = 0;
+      setUtilization(currentAccount.allow_follow ? (util += 5) : util);
+      setUtilization(currentAccount.allow_like ? (util += 5) : util);
+      setUtilization(currentAccount.allow_comment ? (util += 5) : util);
+      setUtilization(currentAccount.allow_dm ? (util += 5) : util);
+      if (currentAccount.messages != null) {
+        let msg = currentAccount.comments.split(',');
+        setUtilization(msg.length > 5 ? (util += 10) : util);
       }
 
-      setUtilization(tasks.length > 7 ? util += 10 : util)
+      if (currentAccount.comments != null) {
+        let comms = currentAccount.comments.split(',');
+        setUtilization(comms.length > 5 ? (util += 10) : util);
+      }
+
+      setUtilization(tasks.length > 7 ? (util += 10) : util);
     }
 
     setFollowersGained(
       snapshots[0].followers - snapshots[snapshots.length - 1].followers
     );
-  }, [snapshots, tasks]);
-
-
+  }, [currentAccount, snapshots, tasks]);
 
   const taskHandler = () => setTaskVisible(true);
 
@@ -124,6 +118,18 @@ function Account({ darkTheme, theme }) {
   const handleChange = (e) => {
     setSelected(e.target.value);
     setTasksSelected(true);
+  };
+
+  const platformIcon = () => {
+    if (currentAccount.platform === 'INSTAGRAM') {
+      return <FiInstagram size="20" />;
+    } else if (currentAccount.platform === 'YOUTUBE') {
+      return <IoLogoYoutube size="20" />;
+    } else if (currentAccount.platform === 'TIKTOK') {
+      return <IoLogoTiktok size="20" />;
+    } else {
+      return <FiInstagram size="20" />;
+    }
   };
 
   if (currentAccount === null || snapshots === null) {
@@ -157,10 +163,22 @@ function Account({ darkTheme, theme }) {
                   background: '$myColor',
                 }}
               >
-                <Card.Header>
+                <Card.Header css={{ position: 'relative' }}>
+                  <div
+                    style={{ position: 'absolute', top: '1rem', right: '1rem' }}
+                  >
+                    {platformIcon()}
+                  </div>
+
                   <div className="user">
                     <section>
-                      <Avatar name={currentAccount.username} round value="25%" size="65" textSizeRatio={2} />
+                      <Avatar
+                        name={currentAccount.username}
+                        round
+                        value="25%"
+                        size="65"
+                        textSizeRatio={2}
+                      />
                       <Text>@{currentAccount.username}</Text>
                     </section>
                     <section>
