@@ -128,6 +128,8 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
                 </option>
               ))}
             </select>
+            <h5>Description:</h5>
+            <p>action.description</p>
             {action === "Post" ? (
               <input
                 required
@@ -220,7 +222,9 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
                               Recent Post
                             </option>
                           </>
-                        ) : (
+                        ) : null}
+
+                        {listTarget === "Post" ? (
                           <>
                             {" "}
                             <option
@@ -239,7 +243,7 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
                               Commenters
                             </option>
                           </>
-                        )}
+                        ) : null}
                       </select>
                       <br />
                     </div>
