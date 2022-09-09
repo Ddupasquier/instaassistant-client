@@ -53,11 +53,19 @@ export const loginFetch = async (userInfo) => {
 export const Logout = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("user");
+  localStorage.removeItem("email");
   window.location.replace("/");
 };
 
 export const GetUserInfo = async () => {
-  const response = await fetch(UserViewPath + localStorage.getItem("user"));
+  const response = await fetch(UserViewPath + localStorage.getItem("user"), {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: localStorage.getItem("token"),
+    },
+  });
   return await response.json();
 };
 
@@ -82,10 +90,7 @@ export const CreateAccount = async (formData) => {
   if (resp_1.error) {
     alert(resp_1.error);
   } else {
-    localStorage.setItem("user", JSON.stringify(resp_1.user));
-    localStorage.setItem("token", resp_1.jwt);
-    localStorage.setItem("email", JSON.stringify(resp_1.email));
-    window.location.replace("/");
+    window.location.replace("/accounts");
   }
 };
 
