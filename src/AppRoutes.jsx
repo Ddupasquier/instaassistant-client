@@ -21,6 +21,7 @@ import { AccountUpdate } from 'View/AccountUpdate';
 // NextUI import
 import { NextUIProvider, createTheme } from '@nextui-org/react';
 import { Stripe } from 'View/Stripe';
+import { AccountsNew } from 'View/AccountsNew';
 
 const darkTheme = createTheme({
   type: 'dark',
@@ -101,7 +102,7 @@ function AppRoutes() {
               <Route index element={<Profile />} />
               <Route path="/billing" element={<Billing />} />
               <Route path="/profile" element={<Profile />} />
-              <Route path="/accounts" element={<Accounts />} />
+              <Route path="/accounts" element={<AccountsNew />} />
               <Route path="/instagram/account/update" element={<AccountUpdate />} />
             <Route
                 path="/instagram/account/:account_id"
