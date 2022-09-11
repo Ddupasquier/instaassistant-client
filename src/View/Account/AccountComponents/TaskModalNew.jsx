@@ -18,6 +18,7 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
   const [listTarget, setListTarget] = useState();
   const [listType, setListType] = useState();
   const [action, setAction] = useState();
+  console.log(action)
   const [schedule, setSchedule] = useState(false);
 
   useEffect(() => {
@@ -51,7 +52,6 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
       target_url: "",
       // arguments: args.join(';'),
     };
-    console.log(payload);
     PostTask(payload);
   };
 
@@ -120,7 +120,7 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
               </option>
               {actions.map((action) => (
                 <option
-                  key={action.value}
+                  key={action.id}
                   value={action.value}
                   style={{ color: "black" }}
                 >
