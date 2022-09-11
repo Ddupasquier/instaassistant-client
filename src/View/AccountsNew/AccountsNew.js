@@ -90,6 +90,13 @@ function AccountsNew() {
     setPlatformFilter(e.target.value);
   };
 
+  const [selected, setSelected] = useState(new Set(["Platform"]));
+
+  const selectedValue = React.useMemo(
+    () => Array.from(selected).join(", ").replaceAll("_", " "),
+    [selected]
+  );
+
   const renderCell = (user, columnKey) => {
     const cellValue = user[columnKey];
     switch (columnKey) {
@@ -194,13 +201,22 @@ function AccountsNew() {
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
               <Dropdown>
-                <Dropdown.Button color="default" flat>
-                  {platformFilter}
+                <Dropdown.Button
+                  flat
+                  color="secondary"
+                  css={{ tt: "capitalize" }}
+                >
+                  {selectedValue}
                 </Dropdown.Button>
-                <Dropdown.Menu aria-label="Static Actions">
-                  <Dropdown.Item onClick={HandleFilter} value="Instagram">
-                    Instagram
-                  </Dropdown.Item>
+                <Dropdown.Menu
+                  aria-label="Single selection actions"
+                  color="secondary"
+                  disallowEmptySelection
+                  selectionMode="single"
+                  selectedKeys={selected}
+                  onSelectionChange={setSelected}
+                >
+                  <Dropdown.Item key="Instagram">Instagram</Dropdown.Item>
                   <Dropdown.Item key="Twitter">Twitter</Dropdown.Item>
                   <Dropdown.Item key="TikTok">TikTok</Dropdown.Item>
                   <Dropdown.Item key="Facebook">Facebook</Dropdown.Item>
