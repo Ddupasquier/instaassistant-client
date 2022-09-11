@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Grid, Text, Progress } from '@nextui-org/react';
+import { IconsQuestionMark } from 'Components/icons/icons';
 
 function Utilization({num}) {
   return (
@@ -10,7 +11,10 @@ function Utilization({num}) {
           background: '$myColor',
         }}
       >
-        <Card.Header>Utilization - 30 Days</Card.Header>
+        <Card.Header>Utilization&nbsp;<IconsQuestionMark
+                    content="Utilization is representative of how much/well you are using our application."
+                    local="top"
+                  /></Card.Header>
         <Card.Divider />
         <Card.Body>
           <Grid.Container>
