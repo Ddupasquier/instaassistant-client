@@ -10,7 +10,7 @@ import App from 'App';
 import { Billing } from 'View/Billing';
 import { Profile } from 'View/Profile';
 import { Account } from 'View/Account';
-import { Accounts } from 'View/Accounts';
+// import { Accounts } from 'View/Accounts';
 import { FAQ } from 'View/FAQ';
 import { Login } from 'View/Login';
 import { SignUp } from 'View/SignUp';
@@ -21,7 +21,7 @@ import { AccountUpdate } from 'View/AccountUpdate';
 // NextUI import
 import { NextUIProvider, createTheme } from '@nextui-org/react';
 import { Stripe } from 'View/Stripe';
-import { AccountsNew } from 'View/AccountsNew';
+import { AccountsNew } from 'View/Accounts';
 
 const darkTheme = createTheme({
   type: 'dark',
@@ -102,10 +102,10 @@ function AppRoutes() {
               <Route index element={<Profile />} />
               <Route path="/billing" element={<Billing />} />
               <Route path="/profile" element={<Profile />} />
-              <Route path="/accounts" element={<Accounts />} />
+              <Route path="/accounts" element={<AccountsNew />} />
               <Route path="/instagram/account/update" element={<AccountUpdate />} />
             <Route
-                path="/instagram/account/:account_id"
+                path="/accounts/instagram/:account_id"
                 element={<Account darkTheme={darkTheme}
                 theme={theme} />}
               />

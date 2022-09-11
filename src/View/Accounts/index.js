@@ -1,3 +1,3 @@
 /* eslint-disable import/prefer-default-export */
-export { default as Accounts } from './Accounts';
-export {default as NewAccountModal} from './NewAccountModal';
+export { default as AccountsNew } from "./AccountsNew";
+export { default as NewAccountModal } from "./NewAccountModal";

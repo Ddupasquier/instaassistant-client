@@ -73,6 +73,7 @@ input:-webkit-autofill {
   height: 100%;
   width: 100%;
   overflow: auto;
+  z-index: 1;
 }
 
 ::-webkit-scrollbar {
