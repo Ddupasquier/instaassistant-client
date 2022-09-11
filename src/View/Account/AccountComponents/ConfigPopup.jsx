@@ -193,6 +193,8 @@ function ConfigPopup({ currentAccount, account_id, theme, darkTheme }) {
                       label={textarea.label}
                       value={textarea.value || ''}
                       set={textarea.set}
+                      toolTipContent={"test"}
+                      toolTipLocal={"top"}
                     />
                   ))}
                 </Grid.Container>
