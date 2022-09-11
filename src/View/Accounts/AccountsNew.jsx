@@ -189,6 +189,7 @@ function AccountsNew() {
             borderRadius: '0',
             padding: '1rem',
             height: 'fit-content',
+            backdropFilter: 'blur(15px)',
           }}
         >
           <Input

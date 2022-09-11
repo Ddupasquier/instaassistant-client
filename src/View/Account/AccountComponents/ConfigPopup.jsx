@@ -120,6 +120,11 @@ function ConfigPopup({ currentAccount, account_id, theme, darkTheme }) {
         onClick={() => toggleConfigShown()}
         style={configButton}
       >
+        {configShown ? (
+          <IoIosArrowDown size={20} />
+        ) : (
+          <IoIosArrowUp size={20} />
+        )}
         Configuration
         {configShown ? (
           <IoIosArrowDown size={20} />
