@@ -102,7 +102,7 @@ function AppRoutes() {
               <Route index element={<Profile />} />
               <Route path="/billing" element={<Billing />} />
               <Route path="/profile" element={<Profile />} />
-              <Route path="/accounts" element={<AccountsNew />} />
+              <Route path="/accounts" element={<Accounts />} />
               <Route path="/instagram/account/update" element={<AccountUpdate />} />
             <Route
                 path="/instagram/account/:account_id"
