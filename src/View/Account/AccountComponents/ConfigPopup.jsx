@@ -94,8 +94,7 @@ function ConfigPopup({ currentAccount, account_id, theme, darkTheme }) {
       messages: messages,
       tags: tags,
     };
-    PatchAccount(body, account_id);
-    window.location.reload();
+    PatchAccount(body, account_id).then(window.location.reload());
   };
 
   const configPosition = {
@@ -192,7 +191,7 @@ function ConfigPopup({ currentAccount, account_id, theme, darkTheme }) {
                     <ConfigTextArea
                       key={textarea.label}
                       label={textarea.label}
-                      value={textarea.value}
+                      value={textarea.value || ''}
                       set={textarea.set}
                     />
                   ))}

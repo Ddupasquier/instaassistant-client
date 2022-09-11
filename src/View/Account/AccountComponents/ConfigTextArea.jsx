@@ -1,7 +1,8 @@
 import { Textarea, Grid } from "@nextui-org/react";
 import React from "react";
 
-const ConfigTextArea = ({ label, value = '', set }) => {
+const ConfigTextArea = ({ label, value, set }) => {
+
   return (
     <Grid md={3} sm={4} xs={6}>
       <Textarea
@@ -16,7 +17,7 @@ const ConfigTextArea = ({ label, value = '', set }) => {
         css={{
           fontWeight: "bold",
         }}
-        value={value}
+        value={value || ""}
       />
     </Grid>
   );

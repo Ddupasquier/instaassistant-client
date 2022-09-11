@@ -18,6 +18,7 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
   const [listTarget, setListTarget] = useState();
   const [listType, setListType] = useState();
   const [action, setAction] = useState();
+  console.log(action)
   const [schedule, setSchedule] = useState(false);
 
   useEffect(() => {
@@ -51,7 +52,6 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
       target_url: '',
       // arguments: args.join(';'),
     };
-    console.log(payload);
     PostTask(payload);
   };
 
@@ -117,7 +117,7 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
               </option>
               {actions.map((action) => (
                 <option
-                  key={action.value}
+                  key={action.id}
                   value={action.value}
                   style={{ color: 'black' }}
                 >
@@ -216,17 +216,6 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
                       <div>
                         <BsFillArrowRightCircleFill />
                       </div>
-
-                      {/* <svg
-                      style={{ fill: 'white' }}
-                      width="24"
-                      height="24"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                    >
-                      <path d="M11 21.883l-6.235-7.527-.765.644 7.521 9 7.479-9-.764-.645-6.236 7.529v-21.884h-1v21.883z" />
-                    </svg> */}
                       <select
                         required
                         name="TaskType"
