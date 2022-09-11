@@ -18,7 +18,6 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
   const [listTarget, setListTarget] = useState();
   const [listType, setListType] = useState();
   const [action, setAction] = useState();
-  console.log(action)
   const [schedule, setSchedule] = useState(false);
 
   useEffect(() => {
