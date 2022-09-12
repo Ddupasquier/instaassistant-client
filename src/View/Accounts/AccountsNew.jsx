@@ -168,17 +168,7 @@ function AccountsNew() {
   return (
     <>
       <div className="accounts-container">
-        <Text
-          h1
-          size={60}
-          css={{
-            textGradient: '45deg, $blue600 -20%, $pink600 50%',
-            height: 'fit-content',
-          }}
-          weight="bold"
-        >
-          Account Management
-        </Text>
+       
         <Card
           css={{
             background: '$myColor',
@@ -191,15 +181,17 @@ function AccountsNew() {
             height: 'fit-content',
             backdropFilter: 'blur(15px)',
           }}
+        > <Text
+          h1
+          size={60}
+          css={{
+            textGradient: '45deg, $blue600 -20%, $pink600 50%',
+            height: 'fit-content',
+          }}
+          weight="bold"
         >
-          <Input
-            clearable
-            underlined
-            placeholder="Search"
-            color="secondary"
-            size="xl"
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
+          Account Management
+        </Text>
           <Dropdown>
             <Dropdown.Button flat color="secondary" css={{ tt: 'capitalize' }}>
               {selectedValue}
@@ -212,12 +204,21 @@ function AccountsNew() {
               selectedKeys={selected}
               onSelectionChange={setSelected}
             >
+              <Dropdown.Item key="All">All</Dropdown.Item>
               <Dropdown.Item key="Instagram">Instagram</Dropdown.Item>
               <Dropdown.Item key="Twitter">Twitter</Dropdown.Item>
               <Dropdown.Item key="TikTok">TikTok</Dropdown.Item>
               <Dropdown.Item key="Facebook">Facebook</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
+          <Input
+            clearable
+            underlined
+            placeholder="Search"
+            color="secondary"
+            size="xl"
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
           <Button
             type="button"
             size="sm"

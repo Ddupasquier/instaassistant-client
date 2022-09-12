@@ -21,8 +21,6 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
   const [action, setAction] = useState();
   const [schedule, setSchedule] = useState(false);
 
-
-
   useEffect(() => {
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, "0");
@@ -48,11 +46,11 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
     const payload = {
       account_id: account_id,
       schedule: schedule,
-      date: date == null ? todaysDate : date,
+      date: !schedule ? todaysDate : `${selectedDay}-${selectedValue}-0000;${selectedHour}:00`,
       task_type: action,
       list_type: `${listTarget}:${listType}`,
       target_url: "",
-      // arguments: args.join(';'),
+      // need to be added to api
     };
     PostTask(payload);
   };
@@ -73,18 +71,22 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
   const [thirdArgSelected, setThirdArgSelected] = useState(false);
 
   //* DATE SELECTION
-  const [month, setMonth] = useState(new Set(["Jan"]));
-
+  const [month, setMonth] = useState(new Set(["Month"]));
   const selectedValue = React.useMemo(
     () => Array.from(month).join(", ").replaceAll("_", " "),
     [month]
   );
 
-  const [day, setDay] = useState(new Set([1]));
-
+  const [day, setDay] = useState(new Set(["Day"]));
   const selectedDay = React.useMemo(
-    () => parseInt(Array.from(day).join("").replaceAll("_", " ")),
+    () => Array.from(day).join(", ").replaceAll("_", " "),
     [day]
+  );
+
+  const [hour, setHour] = useState(new Set(["Hour"]));
+  const selectedHour = React.useMemo(
+    () => Array.from(hour).join(", ").replaceAll("_", " "),
+    [hour]
   );
 
   const Month_Days = {
@@ -260,7 +262,7 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
                           <>
                             {" "}
                             <option
-                              value="Intewractors"
+                              value="Interactors"
                               style={{ color: "black" }}
                             >
                               Interactors
@@ -279,16 +281,18 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
                       </select>
                       <br />
                     </div>
-                    {listTarget === "Account" && (
+
+                    {listTarget === "Account" && listType != null ? (
                       <Input
                         status="secondary"
                         bordered
                         label="Username or account URL"
                         type="text"
                         className="form-control"
-                      />
-                    )}
-                    {listTarget === "Post" && (
+                      />)
+                     : null}
+
+                    {listTarget === "Post" && listType != null ? (
                       <Input
                         status="secondary"
                         bordered
@@ -296,11 +300,15 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
                         type="text"
                         className="form-control"
                       />
-                    )}
+                    ) : null}
+                    {listTarget != null && listType != null ? (<>
                     {action === "Interact" ||
                     action === "Message" ||
                     action === "Comment" ? (
-                      <h5>Optional Arguments </h5>
+                      <h5>Optional Arguments <IconsQuestionMark
+                      content="Optional arguments will overwrite your config for this task alone."
+                      local="right"
+                    /> </h5>
                     ) : null}
                     {action === "Interact" || action === "Message" ? (
                       <>
@@ -312,16 +320,18 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
                         />
                       </>
                     ) : null}
-                    {action === "Interact" || action === "Comment" ? (
-                      <>
-                        <br />
-                        <Textarea
-                          bordered
-                          color="secondary"
-                          labelPlaceholder="Custom Comment(s)"
-                        />
-                      </>
-                    ) : null}
+                      {action === "Interact" || action === "Comment" ? (
+                        <>
+                          <br />
+                          <Textarea
+                            bordered
+                            color="secondary"
+                            labelPlaceholder="Custom Comment(s)"
+                          />
+                        </>
+                      ) : null}
+                    </>) : null}
+                    
                   </>
                 ) : null}
               </>
@@ -337,6 +347,7 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
                 </Checkbox>
 
                 {schedule && (<>
+                <div style={{display: "flex"}}>
                   <Dropdown>
                   <Dropdown.Button
                   flat
@@ -397,17 +408,50 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
                   <Dropdown.Item key="12">12</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
-
-                  <input
-                    type="datetime-local"
-                    id="meeting-time"
-                    name="meeting-time"
-                    onChange={(e) => setDate(e.target.value)}
-                    value={date}
-                    min={date}
-                    max="2023-01-01;00:00"
-                    style={{ color: "black" }}
-                  /></>
+              <Dropdown>
+                  <Dropdown.Button
+                  flat
+                  color="secondary"
+                  css={{ tt: "capitalize" }}
+                >
+                  {selectedHour}
+                </Dropdown.Button>
+                <Dropdown.Menu
+                  aria-label="Single selection actions"
+                  color="secondary"
+                  disallowEmptySelection
+                  selectionMode="single"
+                  selectedKeys={hour}
+                  onSelectionChange={setHour}
+                > 
+                  <Dropdown.Item key="1">0:00 (12:00 am)</Dropdown.Item>
+                  <Dropdown.Item key="1">1:00</Dropdown.Item>
+                  <Dropdown.Item key="2">2:00</Dropdown.Item>
+                  <Dropdown.Item key="3">3:00</Dropdown.Item>
+                  <Dropdown.Item key="4">4:00</Dropdown.Item>
+                  <Dropdown.Item key="5">5:00</Dropdown.Item>
+                  <Dropdown.Item key="6">6:00</Dropdown.Item>
+                  <Dropdown.Item key="7">7:00</Dropdown.Item>
+                  <Dropdown.Item key="8">8:00</Dropdown.Item>
+                  <Dropdown.Item key="9">9:00</Dropdown.Item>
+                  <Dropdown.Item key="10">10:00</Dropdown.Item>
+                  <Dropdown.Item key="11">11:00</Dropdown.Item>
+                  <Dropdown.Item key="12">12:00 (12:00 noon)</Dropdown.Item>
+                  <Dropdown.Item key="13">13:00</Dropdown.Item>
+                  <Dropdown.Item key="14">14:00</Dropdown.Item>
+                  <Dropdown.Item key="15">15:00</Dropdown.Item>
+                  <Dropdown.Item key="16">16:00</Dropdown.Item>
+                  <Dropdown.Item key="17">17:00</Dropdown.Item>
+                  <Dropdown.Item key="18">18:00</Dropdown.Item>
+                  <Dropdown.Item key="19">19:00</Dropdown.Item>
+                  <Dropdown.Item key="20">20:00</Dropdown.Item>
+                  <Dropdown.Item key="21">21:00</Dropdown.Item>
+                  <Dropdown.Item key="22">22:00</Dropdown.Item>
+                  <Dropdown.Item key="23">23:00</Dropdown.Item>
+                  <Dropdown.Item key="24">24:00</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+              </div></>
                 )}
               </>
             ) : null}

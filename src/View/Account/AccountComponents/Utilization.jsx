@@ -13,7 +13,7 @@ function Utilization({num}) {
       >
         <Card.Header>Utilization&nbsp;<IconsQuestionMark
                     content="Utilization is representative of how much/well you are using our application."
-                    local="top"
+                    local="topStart"
                   /></Card.Header>
         <Card.Divider />
         <Card.Body>

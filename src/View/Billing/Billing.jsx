@@ -65,7 +65,10 @@ function Billing() {
         }}
       >
         <div className="head">
-          <Text h1 size={50} css={{ color: 'white' }} weight="bold">
+          <Text h1 size={50} weight="bold" css={{
+            textGradient: '45deg, $blue600 -20%, $pink600 50%',
+            height: 'fit-content',
+          }}>
             OUR PACKAGES
           </Text>
           <Text h4>
@@ -80,21 +83,21 @@ function Billing() {
             justifyContent: 'space-around',
           }}
         >
-          <div className="pkg-item" style={{ background: '$myColor' }}>
+          <div className="pkg-item">
             <Text size={20} h5>
               Professional Plan
               <br />
-              $49 /mo*
+              $99 /mo*
             </Text>
             <Text size={18} h5>
               1 User
               <br />
-              10 Social Accounts
+              1 Social Account(s)
             </Text>
             <Text size={15} h5>
-              $500 ad spend for social boosts Discover the best time to publish
-              Access messages in one inbox Schedule in bulk Access to free
-              integrations Live in-dash chat support
+              manage your daily social media outreach with the 
+              click of a button. spend 3 minutes a day and send up to 30,000 interactions a 
+              month with AntiSocial Suite.
             </Text>
             <Spacer />
             <form onSubmit={handleSubmit}>
@@ -118,14 +121,15 @@ function Billing() {
               $179 /mo*
             </Text>
             <Text size={18} h5>
-              3 User
+              1 User
               <br />
-              20 Social Accounts
+              5 Social Accounts
             </Text>
             <Text size={15} h5>
-              $2000 ad spend for social boosts Analytics & reports Access
-              messages in one inbox Schedule in bulk Access to free integrations
-              Live in-dash chat support
+              Perfect for starting MS marketing. manage your main
+               account and 4 slave accounts to do your bidding. Taking your outreach 
+               potential from 30K to 150K monthly. program your 
+              slave accounts to interact with your content to give your comments and likes a boost
             </Text>
             <Spacer />
             <form onSubmit={handleSubmit}>
@@ -146,17 +150,16 @@ function Billing() {
             <Text size={20} h5>
               Enterprise Plan
               <br />
-              Contact for pricing
+              299 /mo*
             </Text>
             <Text size={18} h5>
-              5+ User
+              1 User
               <br />
-              50 Social Accounts
+              10 Social Accounts
             </Text>
             <Text size={15} h5>
-              Publishing approvals Employee advocacy Social advertising Social
-              customer care App directory with 150+ tools Priority support and
-              training
+              Packed full of power and potential. send up to 300K interactions monthly.
+              getting the word out has never been so easy!
             </Text>
             <Spacer />
             <form onSubmit={handleSubmit}>
@@ -173,6 +176,8 @@ function Billing() {
               Cancel Anytime.
             </Text>
           </div>
+            <h4>Don't see a package that works for you? contact us about business and enterprise level packages</h4>
+          
         </Card.Body>
       </Card>
     </div>

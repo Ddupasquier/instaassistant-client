@@ -12,7 +12,7 @@ function FollowerGain({num}) {
             >
               <Card.Header>Follower Gain&nbsp;<IconsQuestionMark
                     content="Followers gained over the specified time"
-                    local="top"
+                    local="topEnd"
                   /></Card.Header>
               <Card.Divider />
               <Card.Body>
