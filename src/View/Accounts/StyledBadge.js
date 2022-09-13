@@ -21,7 +21,7 @@ export const StyledBadge = styled("span", {
         bg: "$successLight",
         color: "$successLightContrast",
       },
-      paused: {
+      idle: {
         bg: "$errorLight",
         color: "$errorLightContrast",
       },

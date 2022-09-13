@@ -4,8 +4,6 @@ import { Card, Grid, Text, Button } from '@nextui-org/react';
 
 function TasksRunning({ tasksActive }) {
   return (
-    <>
-      {tasksActive && (
         <>
           <Grid sm={3} xs={12}></Grid>
           <Grid sm={6} xs={12}>
@@ -35,8 +33,6 @@ function TasksRunning({ tasksActive }) {
           </Grid>
           <Grid sm={3} xs={12}></Grid>
         </>
-      )}
-    </>
   );
 }
 

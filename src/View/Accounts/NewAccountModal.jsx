@@ -20,7 +20,7 @@ function NewAccountModal({ newAccountVisible, closeNewAccountHandler }) {
       );
       return;
     } else {
-      let payload = { username, password: pwd };
+      let payload = { username, password: pwd, platform: "instagram" };
       CreateAccount(payload).then((data) => {
         if (data.success) {
           this.checkStatus = setInterval(() => {

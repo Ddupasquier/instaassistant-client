@@ -62,7 +62,7 @@ function AccountsNew() {
     { name: 'PLATFORM', uid: 'platform' },
     { name: 'CONFIG', uid: 'config' },
     { name: 'TAGS', uid: 'tags' },
-    { name: 'STATUS', uid: 'status' },
+    { name: 'STATUS', uid: 'active' },
     { name: 'ACTIONS', uid: 'actions' },
   ];
 
@@ -98,7 +98,7 @@ function AccountsNew() {
                 name={user.username}
                 round
                 value="25%"
-                size="65"
+                size="45"
                 textSizeRatio={2}
               />
               <Text>@{user.username}</Text>
@@ -110,7 +110,7 @@ function AccountsNew() {
           <Col>
             <Row>
               <Text b size={14} css={{ tt: 'capitalize' }}>
-                {'Instagram'}
+                {user.platform}
               </Text>
             </Row>
             <Row>
@@ -120,8 +120,8 @@ function AccountsNew() {
             </Row>
           </Col>
         );
-      case 'status':
-        return <StyledBadge type={user.status}>{cellValue}</StyledBadge>;
+      case 'active':
+        return <StyledBadge type={user.active ? "active" : "idle"}>{user.active ? "active" : "idle"}</StyledBadge>;
 
       case 'config':
         return (

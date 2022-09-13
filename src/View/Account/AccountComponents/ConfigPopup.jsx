@@ -142,6 +142,18 @@ function ConfigPopup({ currentAccount, account_id, theme, darkTheme }) {
                 <Grid.Container justify="center">
                   <Grid sm={2} xs={2}>
                     <section>
+                      <label>Allow Follow</label>
+                      <br />
+                      <Switch
+                        label="Allow Follow"
+                        checked={allowFollow}
+                        value={allowFollow}
+                        onChange={(e) => setAllowFollow(e.target.checked)}
+                      />
+                    </section>
+                  </Grid>
+                  <Grid sm={2} xs={2}>
+                    <section>
                       <label>Allow Likes</label>
                       <br />
                       <Switch
@@ -161,18 +173,6 @@ function ConfigPopup({ currentAccount, account_id, theme, darkTheme }) {
                         checked={allowComment}
                         value={allowComment}
                         onChange={(e) => setAllowComment(e.target.checked)}
-                      />
-                    </section>
-                  </Grid>
-                  <Grid sm={2} xs={2}>
-                    <section>
-                      <label>Allow Follow</label>
-                      <br />
-                      <Switch
-                        label="Allow Follow"
-                        checked={allowFollow}
-                        value={allowFollow}
-                        onChange={(e) => setAllowFollow(e.target.checked)}
                       />
                     </section>
                   </Grid>

@@ -15,6 +15,7 @@ import { BsFillArrowRightCircleFill } from "react-icons/bs";
 const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
   const [todaysDate, setTodaysDate] = useState();
   const [date, setDate] = useState();
+  const [year,setYear] = useState();
 
   const [listTarget, setListTarget] = useState();
   const [listType, setListType] = useState();
@@ -26,6 +27,7 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
     var dd = String(today.getDate()).padStart(2, "0");
     var mm = String(today.getMonth() + 1).padStart(2, "0");
     var yyyy = today.getFullYear();
+    setYear(yyyy)
     setTodaysDate(
       dd +
         "-" +
@@ -46,7 +48,7 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
     const payload = {
       account_id: account_id,
       schedule: schedule,
-      date: !schedule ? todaysDate : `${selectedDay}-${selectedValue}-0000;${selectedHour}:00`,
+      date: !schedule ? todaysDate : `${selectedDay}-${selectedValue}-${year};${selectedHour}:00`,
       task_type: action,
       list_type: `${listTarget}:${listType}`,
       target_url: "",

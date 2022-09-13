@@ -1,32 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 
 // * ------- API LAYER ------- *
-import { getSnapshots, GetTasks, ShowAccount } from 'api';
+import { getSnapshots, GetTasks, ShowAccount } from "api";
 
 // * ------- STYLES ------- *
-import { FiInstagram } from 'react-icons/fi';
-import { IoLogoYoutube } from 'react-icons/io';
-import { IoLogoTiktok } from 'react-icons/io5';
-import { Button, Card, Grid, Loading, Text } from '@nextui-org/react';
-import './scss/account-styles.css';
+import { FiInstagram, FiSettings } from "react-icons/fi";
+import { IoLogoYoutube } from "react-icons/io";
+import { IoLogoTiktok } from "react-icons/io5";
+import { Button, Card, Dropdown, Grid, Loading, Text } from "@nextui-org/react";
+import "./scss/account-styles.css";
 
 // * ------- COMPONENTS ------- *
-import TaskModalNew from './AccountComponents/TaskModalNew';
-import Utilization from './AccountComponents/Utilization';
-import Interactions from './AccountComponents/Interactions';
-import FollowerGain from './AccountComponents/FollowerGain';
-import MetricChart from './AccountComponents/MetricChart';
-import InteractionLimits from './AccountComponents/InteractionLimits';
-import ConfigPopup from './AccountComponents/ConfigPopup';
-import Avatar from 'react-avatar';
+import TaskModalNew from "./AccountComponents/TaskModalNew";
+import Utilization from "./AccountComponents/Utilization";
+import Interactions from "./AccountComponents/Interactions";
+import FollowerGain from "./AccountComponents/FollowerGain";
+import MetricChart from "./AccountComponents/MetricChart";
+import InteractionLimits from "./AccountComponents/InteractionLimits";
+import ConfigPopup from "./AccountComponents/ConfigPopup";
+import Avatar from "react-avatar";
+import { TasksRunning } from ".";
 
 function Account({ darkTheme, theme }) {
   //Route Handle
   const { account_id } = useParams();
   const [currentAccount, setCurrentAccount] = useState(null);
   const [snapshots, setSnapshots] = useState([
-    { followers: 9999, following: 99999, profile_pic: '' },
+    { followers: 9999, following: 99999, profile_pic: "" },
   ]);
   const [tasks, setTasks] = useState([]);
 
@@ -39,7 +40,7 @@ function Account({ darkTheme, theme }) {
       if (data[0] != null) {
         setSnapshots(data);
       } else {
-        setSnapshots([{ followers: 9999, following: 9999, profile_pic: '' }]);
+        setSnapshots([{ followers: 9999, following: 9999, profile_pic: "" }]);
       }
     });
 
@@ -54,7 +55,7 @@ function Account({ darkTheme, theme }) {
 
   // * ------- TASK FORM AND MODULE HANDLERS ------- *
   const [tasksSelected, setTasksSelected] = useState(false);
-  const [selected, setSelected] = useState('');
+  const [selected, setSelected] = useState("");
   const [taskVisible, setTaskVisible] = useState(false);
 
   // PAGE CONTROL
@@ -92,12 +93,12 @@ function Account({ darkTheme, theme }) {
       setUtilization(currentAccount.allow_comment ? (util += 5) : util);
       setUtilization(currentAccount.allow_dm ? (util += 5) : util);
       if (currentAccount.messages != null) {
-        let msg = currentAccount.comments.split(',');
+        let msg = currentAccount.comments.split(",");
         setUtilization(msg.length > 5 ? (util += 10) : util);
       }
 
       if (currentAccount.comments != null) {
-        let comms = currentAccount.comments.split(',');
+        let comms = currentAccount.comments.split(",");
         setUtilization(comms.length > 5 ? (util += 10) : util);
       }
 
@@ -121,11 +122,11 @@ function Account({ darkTheme, theme }) {
   };
 
   const platformIcon = () => {
-    if (currentAccount.platform === 'INSTAGRAM') {
+    if (currentAccount.platform === "INSTAGRAM") {
       return <FiInstagram size="20" />;
-    } else if (currentAccount.platform === 'YOUTUBE') {
+    } else if (currentAccount.platform === "YOUTUBE") {
       return <IoLogoYoutube size="20" />;
-    } else if (currentAccount.platform === 'TIKTOK') {
+    } else if (currentAccount.platform === "TIKTOK") {
       return <IoLogoTiktok size="20" />;
     } else {
       return <FiInstagram size="20" />;
@@ -137,6 +138,7 @@ function Account({ darkTheme, theme }) {
   } else {
     return (
       <div className="account-container">
+        {console.log(currentAccount)}
         <div className="account-head-buttons">
           <Link to="/accounts">
             <Button color="secondary" size="md" rounded>
@@ -159,13 +161,13 @@ function Account({ darkTheme, theme }) {
             <Grid sm={6} xs={9}>
               <Card
                 css={{
-                  backdropFilter: 'blur(15px)',
-                  background: '$myColor',
+                  backdropFilter: "blur(15px)",
+                  background: "$myColor",
                 }}
               >
-                <Card.Header css={{ position: 'relative' }}>
+                <Card.Header css={{ position: "relative" }}>
                   <div
-                    style={{ position: 'absolute', top: '1rem', right: '1rem' }}
+                    style={{ position: "absolute", top: "1rem", right: "1rem" }}
                   >
                     {platformIcon()}
                   </div>
@@ -197,17 +199,35 @@ function Account({ darkTheme, theme }) {
                           : 99999}
                       </div>
                     </section>
+                    <Dropdown>
+                      <Dropdown.Button>
+                        <FiSettings />
+                      </Dropdown.Button>
+                      <Dropdown.Menu color="primary" aria-label="User Actions">
+                        <Dropdown.Item key="profile">
+                          <Text
+                            b
+                            color="inherit"
+                            onClick={taskHandler}
+                            css={{ d: "flex" }}
+                          >
+                            Create Task
+                          </Text>
+                        </Dropdown.Item>
+                        <Dropdown.Item key="Edit">
+                          <Text b color="inherit" css={{ d: "flex" }}>
+                            Edit Profile
+                          </Text>
+                        </Dropdown.Item>
+                        <Dropdown.Item key="Delete">
+                          <Text b color="inherit" css={{ d: "flex" }}>
+                            Delete
+                          </Text>
+                        </Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown>
                   </div>
                 </Card.Header>
-                <Card.Divider />
-                <Card.Body>
-                  <div className="user-links">
-                    <a href="/">Update Password</a>
-                    <a href="/">Update Username</a>
-                    <a href="/">Update Name</a>
-                    <a href="/">Update Bio</a>
-                  </div>
-                </Card.Body>
               </Card>
             </Grid>
             {/* <Grid sm={3} xs={12}></Grid> */}
@@ -216,7 +236,8 @@ function Account({ darkTheme, theme }) {
 
         <div className="account-metrics">
           <Grid.Container gap={2}>
-            {/* <TasksRunning active={active} /> */}
+            {currentAccount.active && <TasksRunning active={"task"} />}
+
             <Utilization num={utilization} />
             <Interactions num={interations} />
             <FollowerGain num={followersGained} />
