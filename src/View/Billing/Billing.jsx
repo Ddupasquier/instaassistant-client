@@ -1,7 +1,8 @@
 import React from 'react';
-import { Card, Text, Spacer, Button } from '@nextui-org/react';
+import { Card, Text } from '@nextui-org/react';
 import './scss/billing-styles.css';
 import { CreateCheckoutSession } from 'api';
+import Package from './Package';
 
 function Billing() {
   const handleSubmit = (e) => {
@@ -83,101 +84,9 @@ function Billing() {
             justifyContent: 'space-around',
           }}
         >
-          <div className="pkg-item">
-            <Text size={20} h5>
-              Professional Plan
-              <br />
-              $99 /mo*
-            </Text>
-            <Text size={18} h5>
-              1 User
-              <br />
-              1 Social Account(s)
-            </Text>
-            <Text size={15} h5>
-              manage your daily social media outreach with the 
-              click of a button. spend 3 minutes a day and send up to 30,000 interactions a 
-              month with AntiSocial Suite.
-            </Text>
-            <Spacer />
-            <form onSubmit={handleSubmit}>
-              <input
-                type="hidden"
-                name="priceId"
-                value="price_G0FvDp6vZvdwRZ"
-              />
-              <Button style={{ zIndex: 1, float: 'right' }} type="submit">
-                Checkout
-              </Button>
-            </form>
-            <Text size={12} h5 color="red">
-              Cancel Anytime.
-            </Text>
-          </div>
-          <div className="pkg-item" style={{ background: '$myColor' }}>
-            <Text size={20} h5>
-              Team Plan
-              <br />
-              $179 /mo*
-            </Text>
-            <Text size={18} h5>
-              1 User
-              <br />
-              5 Social Accounts
-            </Text>
-            <Text size={15} h5>
-              Perfect for starting MS marketing. manage your main
-               account and 4 slave accounts to do your bidding. Taking your outreach 
-               potential from 30K to 150K monthly. program your 
-              slave accounts to interact with your content to give your comments and likes a boost
-            </Text>
-            <Spacer />
-            <form onSubmit={handleSubmit}>
-              <input
-                type="hidden"
-                name="priceId"
-                value="price_G0FvDp6vZvdwRZ"
-              />
-              <Button style={{ zIndex: 1, float: 'right' }} type="submit">
-                Checkout
-              </Button>
-            </form>
-            <Text size={12} h5 color="red">
-              Cancel Anytime.
-            </Text>
-          </div>
-          <div className="pkg-item" style={{ background: '$myColor' }}>
-            <Text size={20} h5>
-              Enterprise Plan
-              <br />
-              299 /mo*
-            </Text>
-            <Text size={18} h5>
-              1 User
-              <br />
-              10 Social Accounts
-            </Text>
-            <Text size={15} h5>
-              Packed full of power and potential. send up to 300K interactions monthly.
-              getting the word out has never been so easy!
-            </Text>
-            <Spacer />
-            <form onSubmit={handleSubmit}>
-              <input
-                type="hidden"
-                name="priceId"
-                value="price_G0FvDp6vZvdwRZ"
-              />
-              <Button style={{ zIndex: 1, float: 'right' }} type="submit">
-                Checkout
-              </Button>
-            </form>
-            <Text size={12} h5 color="red">
-              Cancel Anytime.
-            </Text>
-          </div>
-            <h4>Don't see a package that works for you? contact us about business and enterprise level packages</h4>
-          
+          {packages.map((pkg) => (
+            <Package {...pkg} handleSubmit={handleSubmit} />
+          ))}
         </Card.Body>
       </Card>
     </div>
