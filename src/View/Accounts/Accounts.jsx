@@ -17,11 +17,6 @@ import './scss/accounts-styles.css';
 import NewAccountModal from './NewAccountModal';
 import { indexAccounts } from 'api';
 import { Link } from 'react-router-dom';
-
-import { StyledBadge } from './StyledBadge';
-import { IconButton } from './IconButton';
-import { EyeIcon } from './EyeIcon';
-import { DeleteIcon } from './DeleteIcon';
 import Avatar from 'react-avatar';
 
 // ICON IMPORTS
@@ -29,8 +24,12 @@ import { BsEmojiSunglasses } from 'react-icons/bs'; //follow
 import { AiOutlineMessage } from 'react-icons/ai'; //comment
 import { FaRegEnvelopeOpen } from 'react-icons/fa'; //dm
 import { FiHeart } from 'react-icons/fi'; //like
+import { StyledBadge } from './StyledBadge';
+import { IconButton } from './IconButton';
+import { EyeIcon } from './EyeIcon';
+import { DeleteIcon } from './DeleteIcon';
 
-function AccountsNew() {
+function Accounts() {
   const [accountLoaded, setAcccountsLoaded] = useState(false);
 
   useEffect(() => {
@@ -268,4 +267,4 @@ function AccountsNew() {
   );
 }
 
-export default AccountsNew;
+export default Accounts;
