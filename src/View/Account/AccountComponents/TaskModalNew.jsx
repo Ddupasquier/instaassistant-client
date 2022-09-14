@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import {
   Modal,
   Textarea,
@@ -7,10 +7,10 @@ import {
   Text,
   Checkbox,
   Dropdown,
-} from "@nextui-org/react";
-import { PostTask } from "api";
-import { IconsQuestionMark } from "Components/icons/icons";
-import { BsFillArrowRightCircleFill } from "react-icons/bs";
+} from '@nextui-org/react';
+import { PostTask } from 'api';
+import { IconsQuestionMark } from 'Components/icons/icons';
+import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 
 const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
   const [todaysDate, setTodaysDate] = useState();
@@ -24,19 +24,19 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
 
   useEffect(() => {
     var today = new Date();
-    var dd = String(today.getDate()).padStart(2, "0");
-    var mm = String(today.getMonth() + 1).padStart(2, "0");
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0');
     var yyyy = today.getFullYear();
     setYear(yyyy)
     setTodaysDate(
       dd +
-        "-" +
+        '-' +
         mm +
-        "-" +
+        '-' +
         yyyy +
-        ";" +
+        ';' +
         today.getHours() +
-        ":" +
+        ':' +
         today.getMinutes()
     );
     setDate(todaysDate);
@@ -58,15 +58,15 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
   };
 
   const actions = [
-    { value: "", label: "Post - Coming Soon" },
-    { value: "Interact", label: "Interact" },
-    { value: "Follow", label: "Follow" },
-    { value: "Like", label: "Like" },
-    { value: "Comment", label: "Comment" },
-    { value: "Message", label: "Message" },
-    { value: "", label: "Clean - Coming Soon" },
-    { value: "", label: "Black List - Coming Soon" },
-    { value: "", label: "White List - Coming Soon" },
+    { value: '', label: 'Post - Coming Soon' },
+    { value: 'Interact', label: 'Interact' },
+    { value: 'Follow', label: 'Follow' },
+    { value: 'Like', label: 'Like' },
+    { value: 'Comment', label: 'Comment' },
+    { value: 'Message', label: 'Message' },
+    { value: '', label: 'Clean - Coming Soon' },
+    { value: '', label: 'Black List - Coming Soon' },
+    { value: '', label: 'White List - Coming Soon' },
   ];
 
   const [firstArgSelected, setFirstArgSelected] = useState(false);
@@ -75,7 +75,7 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
   //* DATE SELECTION
   const [month, setMonth] = useState(new Set(["Month"]));
   const selectedValue = React.useMemo(
-    () => Array.from(month).join(", ").replaceAll("_", " "),
+    () => Array.from(month).join(', ').replaceAll('_', ' '),
     [month]
   );
 
@@ -121,7 +121,7 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
           <Text id="modal-title" size={18}>
             Start a
             <Text b size={18}>
-              {" "}
+              {' '}
               New Task
             </Text>
           </Text>
@@ -146,27 +146,27 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
                 setFirstArgSelected(true);
               }}
               style={{
-                backgroundColor: "gray",
-                borderRadius: "1rem",
-                padding: ".3rem",
+                backgroundColor: 'gray',
+                borderRadius: '1rem',
+                padding: '.3rem',
               }}
             >
-              <option value="" style={{ color: "black" }}>
+              <option value="" style={{ color: 'black' }}>
                 Select Action
               </option>
-              {actions.map((action) => (
+              {actions.map((action, i) => (
                 <option
-                  key={action.id}
+                  key={i}
                   value={action.value}
-                  style={{ color: "black" }}
+                  style={{ color: 'black' }}
                 >
                   {action.label}
                 </option>
               ))}
             </select>
-            <h5>Description:</h5>
-            <p>action.description</p>
-            {action === "Post" ? (
+            {/* <h5>Description:</h5>
+            <p>action.description</p> */}
+            {action === 'Post' ? (
               <input
                 required
                 status="secondary"
@@ -177,17 +177,17 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
               />
             ) : (
               <>
-                {firstArgSelected ? (
+                {firstArgSelected && (
                   <>
                     <h5>List</h5>
                     <div
                       className="list-target-inputs"
                       style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        width: "100%",
-                        gap: "1rem",
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        width: '100%',
+                        gap: '1rem',
                       }}
                     >
                       <select
@@ -199,19 +199,19 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
                           setListTarget(e.target.value);
                         }}
                         style={{
-                          backgroundColor: "gray",
-                          borderRadius: "1rem",
-                          padding: ".3rem",
-                          width: "100%",
+                          backgroundColor: 'gray',
+                          borderRadius: '1rem',
+                          padding: '.3rem',
+                          width: '100%',
                         }}
                       >
-                        <option value="" style={{ color: "black" }}>
+                        <option value="" style={{ color: 'black' }}>
                           Select List Target
                         </option>
-                        <option value="Account" style={{ color: "black" }}>
+                        <option value="Account" style={{ color: 'black' }}>
                           Account
                         </option>
-                        <option value="Post" style={{ color: "black" }}>
+                        <option value="Post" style={{ color: 'black' }}>
                           Post
                         </option>
                       </select>
@@ -228,58 +228,58 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
                           setThirdArgSelected(true);
                         }}
                         style={{
-                          backgroundColor: "gray",
-                          borderRadius: "1rem",
-                          padding: ".3rem",
-                          width: "100%",
+                          backgroundColor: 'gray',
+                          borderRadius: '1rem',
+                          padding: '.3rem',
+                          width: '100%',
                         }}
                       >
-                        <option value="" style={{ color: "black" }}>
+                        <option value="" style={{ color: 'black' }}>
                           Select Target Type
                         </option>
-                        {listTarget === "Account" ? (
+                        {listTarget === 'Account' && (
                           <>
                             <option
                               value="Followers"
-                              style={{ color: "black" }}
+                              style={{ color: 'black' }}
                             >
                               Followers
                             </option>
                             <option
                               value="Following"
-                              style={{ color: "black" }}
+                              style={{ color: 'black' }}
                             >
                               Following
                             </option>
                             <option
                               value="Recent Post"
-                              style={{ color: "black" }}
+                              style={{ color: 'black' }}
                             >
                               Recent Post
                             </option>
                           </>
-                        ) : null}
+                        )}
 
-                        {listTarget === "Post" ? (
+                        {listTarget === 'Post' && (
                           <>
-                            {" "}
+                            {' '}
                             <option
                               value="Interactors"
-                              style={{ color: "black" }}
+                              style={{ color: 'black' }}
                             >
                               Interactors
                             </option>
-                            <option value="Likers" style={{ color: "black" }}>
+                            <option value="Likers" style={{ color: 'black' }}>
                               Likers
                             </option>
                             <option
                               value="Commenters"
-                              style={{ color: "black" }}
+                              style={{ color: 'black' }}
                             >
                               Commenters
                             </option>
                           </>
-                        ) : null}
+                        )}
                       </select>
                       <br />
                     </div>
@@ -335,7 +335,7 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
                     </>) : null}
                     
                   </>
-                ) : null}
+                )}
               </>
             )}
             {thirdArgSelected ? (
