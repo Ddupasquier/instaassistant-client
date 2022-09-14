@@ -15,7 +15,7 @@ import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
   const [todaysDate, setTodaysDate] = useState();
   const [date, setDate] = useState();
-  const [year,setYear] = useState();
+  const [year, setYear] = useState();
 
   const [listTarget, setListTarget] = useState();
   const [listType, setListType] = useState();
@@ -27,7 +27,7 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0');
     var yyyy = today.getFullYear();
-    setYear(yyyy)
+    setYear(yyyy);
     setTodaysDate(
       dd +
         '-' +
@@ -48,10 +48,12 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
     const payload = {
       account_id: account_id,
       schedule: schedule,
-      date: !schedule ? todaysDate : `${selectedDay}-${selectedValue}-${year};${selectedHour}:00`,
+      date: !schedule
+        ? todaysDate
+        : `${selectedDay}-${selectedValue}-${year};${selectedHour}:00`,
       task_type: action,
       list_type: `${listTarget}:${listType}`,
-      target_url: "",
+      target_url: '',
       // need to be added to api
     };
     PostTask(payload);
@@ -73,38 +75,38 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
   const [thirdArgSelected, setThirdArgSelected] = useState(false);
 
   //* DATE SELECTION
-  const [month, setMonth] = useState(new Set(["Month"]));
+  const [month, setMonth] = useState(new Set(['Month']));
   const selectedValue = React.useMemo(
     () => Array.from(month).join(', ').replaceAll('_', ' '),
     [month]
   );
 
-  const [day, setDay] = useState(new Set(["Day"]));
+  const [day, setDay] = useState(new Set(['Day']));
   const selectedDay = React.useMemo(
-    () => Array.from(day).join(", ").replaceAll("_", " "),
+    () => Array.from(day).join(', ').replaceAll('_', ' '),
     [day]
   );
 
-  const [hour, setHour] = useState(new Set(["Hour"]));
+  const [hour, setHour] = useState(new Set(['Hour']));
   const selectedHour = React.useMemo(
-    () => Array.from(hour).join(", ").replaceAll("_", " "),
+    () => Array.from(hour).join(', ').replaceAll('_', ' '),
     [hour]
   );
 
   const Month_Days = {
-    "January": 31,
-    "February": 28,
-    "March": 31,
-    "April": 30, 
-    "May": 31,
-    "June": 30,
-    "July": 31,
-    "August": 31,
-    "September": 30,
-    "October": 31,
-    "November": 30,
-    "December": 31,
-  }
+    January: 31,
+    February: 28,
+    March: 31,
+    April: 30,
+    May: 31,
+    June: 30,
+    July: 31,
+    August: 31,
+    September: 30,
+    October: 31,
+    November: 30,
+    December: 31,
+  };
 
   return (
     <>
@@ -129,13 +131,13 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
         <form onSubmit={(e) => HandleSubmit(e)}>
           <Modal.Body>
             <h3>What would you like to schedule?</h3>
-            <h5>
+            <div style={{ display: 'flex', gap: '.5rem' }}>
               Action
               <IconsQuestionMark
                 content="Choose the action you would like your account to take."
                 local="right"
               />
-            </h5>
+            </div>
 
             <select
               name="TaskType"
@@ -155,11 +157,7 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
                 Select Action
               </option>
               {actions.map((action, i) => (
-                <option
-                  key={i}
-                  value={action.value}
-                  style={{ color: 'black' }}
-                >
+                <option key={i} value={action.value} style={{ color: 'black' }}>
                   {action.label}
                 </option>
               ))}
@@ -179,7 +177,13 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
               <>
                 {firstArgSelected && (
                   <>
-                    <h5>List</h5>
+                    <div style={{ display: 'flex', gap: '.5rem' }}>
+                      List
+                      <IconsQuestionMark
+                        content="Choose the action you would like your account to take."
+                        local="right"
+                      />
+                    </div>
                     <div
                       className="list-target-inputs"
                       style={{
@@ -284,17 +288,17 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
                       <br />
                     </div>
 
-                    {listTarget === "Account" && listType != null ? (
+                    {listTarget === 'Account' && listType != null ? (
                       <Input
                         status="secondary"
                         bordered
                         label="Username or account URL"
                         type="text"
                         className="form-control"
-                      />)
-                     : null}
+                      />
+                    ) : null}
 
-                    {listTarget === "Post" && listType != null ? (
+                    {listTarget === 'Post' && listType != null ? (
                       <Input
                         status="secondary"
                         bordered
@@ -303,37 +307,41 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
                         className="form-control"
                       />
                     ) : null}
-                    {listTarget != null && listType != null ? (<>
-                    {action === "Interact" ||
-                    action === "Message" ||
-                    action === "Comment" ? (
-                      <h5>Optional Arguments <IconsQuestionMark
-                      content="Optional arguments will overwrite your config for this task alone."
-                      local="right"
-                    /> </h5>
-                    ) : null}
-                    {action === "Interact" || action === "Message" ? (
+                    {listTarget != null && listType != null ? (
                       <>
-                        <br />
-                        <Textarea
-                          bordered
-                          color="secondary"
-                          labelPlaceholder="Custom Message(s)"
-                        />
+                        {action === 'Interact' ||
+                        action === 'Message' ||
+                        action === 'Comment' ? (
+                          <h5>
+                            Optional Arguments{' '}
+                            <IconsQuestionMark
+                              content="Optional arguments will overwrite your config for this task alone."
+                              local="right"
+                            />{' '}
+                          </h5>
+                        ) : null}
+                        {action === 'Interact' || action === 'Message' ? (
+                          <>
+                            <br />
+                            <Textarea
+                              bordered
+                              color="secondary"
+                              labelPlaceholder="Custom Message(s)"
+                            />
+                          </>
+                        ) : null}
+                        {action === 'Interact' || action === 'Comment' ? (
+                          <>
+                            <br />
+                            <Textarea
+                              bordered
+                              color="secondary"
+                              labelPlaceholder="Custom Comment(s)"
+                            />
+                          </>
+                        ) : null}
                       </>
                     ) : null}
-                      {action === "Interact" || action === "Comment" ? (
-                        <>
-                          <br />
-                          <Textarea
-                            bordered
-                            color="secondary"
-                            labelPlaceholder="Custom Comment(s)"
-                          />
-                        </>
-                      ) : null}
-                    </>) : null}
-                    
                   </>
                 )}
               </>
@@ -348,112 +356,118 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
                   />
                 </Checkbox>
 
-                {schedule && (<>
-                <div style={{display: "flex"}}>
-                  <Dropdown>
-                  <Dropdown.Button
-                  flat
-                  color="secondary"
-                  css={{ tt: "capitalize" }}
-                >
-                  {selectedValue}
-                </Dropdown.Button>
-                <Dropdown.Menu
-                  aria-label="Single selection actions"
-                  color="secondary"
-                  disallowEmptySelection
-                  selectionMode="single"
-                  selectedKeys={month}
-                  onSelectionChange={setMonth}
-                >
-                  <Dropdown.Item key="January">January</Dropdown.Item>
-                  <Dropdown.Item key="Febuary">Febuary</Dropdown.Item>
-                  <Dropdown.Item key="March">March</Dropdown.Item>
-                  <Dropdown.Item key="April">April</Dropdown.Item>
-                  <Dropdown.Item key="May">May</Dropdown.Item>
-                  <Dropdown.Item key="June">June</Dropdown.Item>
-                  <Dropdown.Item key="July">July</Dropdown.Item>
-                  <Dropdown.Item key="August">August</Dropdown.Item>
-                  <Dropdown.Item key="September">September</Dropdown.Item>
-                  <Dropdown.Item key="October">October</Dropdown.Item>
-                  <Dropdown.Item key="November">November</Dropdown.Item>
-                  <Dropdown.Item key="December">December</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-              <Dropdown>
-                  <Dropdown.Button
-                  flat
-                  color="secondary"
-                  css={{ tt: "capitalize" }}
-                >
-                  {selectedDay}
-                </Dropdown.Button>
-                <Dropdown.Menu
-                  aria-label="Single selection actions"
-                  color="secondary"
-                  disallowEmptySelection
-                  selectionMode="single"
-                  selectedKeys={day}
-                  onSelectionChange={setDay}
-                >
-                  <Dropdown.Item key="1">1</Dropdown.Item>
-                  <Dropdown.Item key="2">2</Dropdown.Item>
-                  <Dropdown.Item key="3">3</Dropdown.Item>
-                  <Dropdown.Item key="4">4</Dropdown.Item>
-                  <Dropdown.Item key="5">5</Dropdown.Item>
-                  <Dropdown.Item key="6">6</Dropdown.Item>
-                  <Dropdown.Item key="7">7</Dropdown.Item>
-                  <Dropdown.Item key="8">8</Dropdown.Item>
-                  <Dropdown.Item key="9">9</Dropdown.Item>
-                  <Dropdown.Item key="10">10</Dropdown.Item>
-                  <Dropdown.Item key="11">11</Dropdown.Item>
-                  <Dropdown.Item key="12">12</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-              <Dropdown>
-                  <Dropdown.Button
-                  flat
-                  color="secondary"
-                  css={{ tt: "capitalize" }}
-                >
-                  {selectedHour}
-                </Dropdown.Button>
-                <Dropdown.Menu
-                  aria-label="Single selection actions"
-                  color="secondary"
-                  disallowEmptySelection
-                  selectionMode="single"
-                  selectedKeys={hour}
-                  onSelectionChange={setHour}
-                > 
-                  <Dropdown.Item key="1">0:00 (12:00 am)</Dropdown.Item>
-                  <Dropdown.Item key="1">1:00</Dropdown.Item>
-                  <Dropdown.Item key="2">2:00</Dropdown.Item>
-                  <Dropdown.Item key="3">3:00</Dropdown.Item>
-                  <Dropdown.Item key="4">4:00</Dropdown.Item>
-                  <Dropdown.Item key="5">5:00</Dropdown.Item>
-                  <Dropdown.Item key="6">6:00</Dropdown.Item>
-                  <Dropdown.Item key="7">7:00</Dropdown.Item>
-                  <Dropdown.Item key="8">8:00</Dropdown.Item>
-                  <Dropdown.Item key="9">9:00</Dropdown.Item>
-                  <Dropdown.Item key="10">10:00</Dropdown.Item>
-                  <Dropdown.Item key="11">11:00</Dropdown.Item>
-                  <Dropdown.Item key="12">12:00 (12:00 noon)</Dropdown.Item>
-                  <Dropdown.Item key="13">13:00</Dropdown.Item>
-                  <Dropdown.Item key="14">14:00</Dropdown.Item>
-                  <Dropdown.Item key="15">15:00</Dropdown.Item>
-                  <Dropdown.Item key="16">16:00</Dropdown.Item>
-                  <Dropdown.Item key="17">17:00</Dropdown.Item>
-                  <Dropdown.Item key="18">18:00</Dropdown.Item>
-                  <Dropdown.Item key="19">19:00</Dropdown.Item>
-                  <Dropdown.Item key="20">20:00</Dropdown.Item>
-                  <Dropdown.Item key="21">21:00</Dropdown.Item>
-                  <Dropdown.Item key="22">22:00</Dropdown.Item>
-                  <Dropdown.Item key="23">23:00</Dropdown.Item>
-                  <Dropdown.Item key="24">24:00</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-              </div></>
+                {schedule && (
+                  <>
+                    <div style={{ display: 'flex' }}>
+                      <Dropdown>
+                        <Dropdown.Button
+                          flat
+                          color="secondary"
+                          css={{ tt: 'capitalize' }}
+                        >
+                          {selectedValue}
+                        </Dropdown.Button>
+                        <Dropdown.Menu
+                          aria-label="Single selection actions"
+                          color="secondary"
+                          disallowEmptySelection
+                          selectionMode="single"
+                          selectedKeys={month}
+                          onSelectionChange={setMonth}
+                        >
+                          <Dropdown.Item key="January">January</Dropdown.Item>
+                          <Dropdown.Item key="Febuary">Febuary</Dropdown.Item>
+                          <Dropdown.Item key="March">March</Dropdown.Item>
+                          <Dropdown.Item key="April">April</Dropdown.Item>
+                          <Dropdown.Item key="May">May</Dropdown.Item>
+                          <Dropdown.Item key="June">June</Dropdown.Item>
+                          <Dropdown.Item key="July">July</Dropdown.Item>
+                          <Dropdown.Item key="August">August</Dropdown.Item>
+                          <Dropdown.Item key="September">
+                            September
+                          </Dropdown.Item>
+                          <Dropdown.Item key="October">October</Dropdown.Item>
+                          <Dropdown.Item key="November">November</Dropdown.Item>
+                          <Dropdown.Item key="December">December</Dropdown.Item>
+                        </Dropdown.Menu>
+                      </Dropdown>
+                      <Dropdown>
+                        <Dropdown.Button
+                          flat
+                          color="secondary"
+                          css={{ tt: 'capitalize' }}
+                        >
+                          {selectedDay}
+                        </Dropdown.Button>
+                        <Dropdown.Menu
+                          aria-label="Single selection actions"
+                          color="secondary"
+                          disallowEmptySelection
+                          selectionMode="single"
+                          selectedKeys={day}
+                          onSelectionChange={setDay}
+                        >
+                          <Dropdown.Item key="1">1</Dropdown.Item>
+                          <Dropdown.Item key="2">2</Dropdown.Item>
+                          <Dropdown.Item key="3">3</Dropdown.Item>
+                          <Dropdown.Item key="4">4</Dropdown.Item>
+                          <Dropdown.Item key="5">5</Dropdown.Item>
+                          <Dropdown.Item key="6">6</Dropdown.Item>
+                          <Dropdown.Item key="7">7</Dropdown.Item>
+                          <Dropdown.Item key="8">8</Dropdown.Item>
+                          <Dropdown.Item key="9">9</Dropdown.Item>
+                          <Dropdown.Item key="10">10</Dropdown.Item>
+                          <Dropdown.Item key="11">11</Dropdown.Item>
+                          <Dropdown.Item key="12">12</Dropdown.Item>
+                        </Dropdown.Menu>
+                      </Dropdown>
+                      <Dropdown>
+                        <Dropdown.Button
+                          flat
+                          color="secondary"
+                          css={{ tt: 'capitalize' }}
+                        >
+                          {selectedHour}
+                        </Dropdown.Button>
+                        <Dropdown.Menu
+                          aria-label="Single selection actions"
+                          color="secondary"
+                          disallowEmptySelection
+                          selectionMode="single"
+                          selectedKeys={hour}
+                          onSelectionChange={setHour}
+                        >
+                          <Dropdown.Item key="1">0:00 (12:00 am)</Dropdown.Item>
+                          <Dropdown.Item key="1">1:00</Dropdown.Item>
+                          <Dropdown.Item key="2">2:00</Dropdown.Item>
+                          <Dropdown.Item key="3">3:00</Dropdown.Item>
+                          <Dropdown.Item key="4">4:00</Dropdown.Item>
+                          <Dropdown.Item key="5">5:00</Dropdown.Item>
+                          <Dropdown.Item key="6">6:00</Dropdown.Item>
+                          <Dropdown.Item key="7">7:00</Dropdown.Item>
+                          <Dropdown.Item key="8">8:00</Dropdown.Item>
+                          <Dropdown.Item key="9">9:00</Dropdown.Item>
+                          <Dropdown.Item key="10">10:00</Dropdown.Item>
+                          <Dropdown.Item key="11">11:00</Dropdown.Item>
+                          <Dropdown.Item key="12">
+                            12:00 (12:00 noon)
+                          </Dropdown.Item>
+                          <Dropdown.Item key="13">13:00</Dropdown.Item>
+                          <Dropdown.Item key="14">14:00</Dropdown.Item>
+                          <Dropdown.Item key="15">15:00</Dropdown.Item>
+                          <Dropdown.Item key="16">16:00</Dropdown.Item>
+                          <Dropdown.Item key="17">17:00</Dropdown.Item>
+                          <Dropdown.Item key="18">18:00</Dropdown.Item>
+                          <Dropdown.Item key="19">19:00</Dropdown.Item>
+                          <Dropdown.Item key="20">20:00</Dropdown.Item>
+                          <Dropdown.Item key="21">21:00</Dropdown.Item>
+                          <Dropdown.Item key="22">22:00</Dropdown.Item>
+                          <Dropdown.Item key="23">23:00</Dropdown.Item>
+                          <Dropdown.Item key="24">24:00</Dropdown.Item>
+                        </Dropdown.Menu>
+                      </Dropdown>
+                    </div>
+                  </>
                 )}
               </>
             ) : null}
