@@ -86,11 +86,13 @@ export const CreateAccount = async (formData) => {
       body: JSON.stringify(formData),
     }
   );
+
   const resp_1 = await response.json();
+
   if (resp_1.error) {
     alert(resp_1.error);
   } else {
-    window.location.replace("/accounts");
+    return resp_1;
   }
 };
 
@@ -131,8 +133,15 @@ export const ShowAccount = async (id) => {
   return await response.json();
 };
 
-export const DeleteBot = async () => {
-  const response = await fetch(BotDeletePAth);
+export const DeleteBot = async (id) => {
+  const response = await fetch(BotDeletePAth + id, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: localStorage.getItem("token"),
+    },
+  });
   return await response.json();
 };
 

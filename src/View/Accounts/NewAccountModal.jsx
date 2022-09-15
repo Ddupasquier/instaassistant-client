@@ -23,6 +23,7 @@ function NewAccountModal({ newAccountVisible, closeNewAccountHandler }) {
       let payload = { username, password: pwd, platform: "instagram" };
       CreateAccount(payload).then((data) => {
         if (data.success) {
+          alert("we got a success")
           this.checkStatus = setInterval(() => {
             GetTask(data.task_id).then((data) => {
               if (data.error){

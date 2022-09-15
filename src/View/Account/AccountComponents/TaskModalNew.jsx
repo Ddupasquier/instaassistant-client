@@ -21,6 +21,9 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
   const [listType, setListType] = useState();
   const [action, setAction] = useState();
   const [schedule, setSchedule] = useState(false);
+  const [targetUrl, setTargetUrl] = useState()
+  const [customMessages, setCustomMessages] = useState()
+  const [customComments, setCustomComments] = useState()
 
   useEffect(() => {
     var today = new Date();
@@ -42,6 +45,7 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
     setDate(todaysDate);
   }, [todaysDate]);
 
+
   const HandleSubmit = (e) => {
     e.preventDefault();
 
@@ -53,9 +57,11 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
         : `${selectedDay}-${selectedValue}-${year};${selectedHour}:00`,
       task_type: action,
       list_type: `${listTarget}:${listType}`,
-      target_url: '',
-      // need to be added to api
+      target_url: targetUrl,
+      custom_messages: customMessages,
+      custom_comments: customComments,
     };
+    console.log(payload)
     PostTask(payload);
   };
 
@@ -292,9 +298,12 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
                       <Input
                         status="secondary"
                         bordered
+                        required
                         label="Username or account URL"
                         type="text"
                         className="form-control"
+                        value={targetUrl}
+                        onChange={(e) => setTargetUrl(e.target.value)}
                       />
                     ) : null}
 
@@ -302,9 +311,12 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
                       <Input
                         status="secondary"
                         bordered
+                        required
                         labelPlaceholder="Post URL"
                         type="text"
                         className="form-control"
+                        value={targetUrl}
+                        onChange={(e) => setTargetUrl(e.target.value)}
                       />
                     ) : null}
                     {listTarget != null && listType != null ? (
@@ -312,13 +324,13 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
                         {action === 'Interact' ||
                         action === 'Message' ||
                         action === 'Comment' ? (
-                          <h5>
-                            Optional Arguments{' '}
+                          <div style={{ display: 'flex', gap: '.5rem' }}>
+                            Optional Arguments
                             <IconsQuestionMark
                               content="Optional arguments will overwrite your config for this task alone."
                               local="right"
-                            />{' '}
-                          </h5>
+                            />
+                          </div>
                         ) : null}
                         {action === 'Interact' || action === 'Message' ? (
                           <>
@@ -327,6 +339,8 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
                               bordered
                               color="secondary"
                               labelPlaceholder="Custom Message(s)"
+                              value={customMessages}
+                              onChange={(e) => setCustomMessages(e.target.value)}
                             />
                           </>
                         ) : null}
@@ -337,6 +351,8 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
                               bordered
                               color="secondary"
                               labelPlaceholder="Custom Comment(s)"
+                              value={customComments}
+                              onChange={(e) => setCustomComments(e.target.value)}
                             />
                           </>
                         ) : null}
@@ -375,20 +391,20 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
                           selectedKeys={month}
                           onSelectionChange={setMonth}
                         >
-                          <Dropdown.Item key="January">January</Dropdown.Item>
-                          <Dropdown.Item key="Febuary">Febuary</Dropdown.Item>
-                          <Dropdown.Item key="March">March</Dropdown.Item>
-                          <Dropdown.Item key="April">April</Dropdown.Item>
-                          <Dropdown.Item key="May">May</Dropdown.Item>
-                          <Dropdown.Item key="June">June</Dropdown.Item>
-                          <Dropdown.Item key="July">July</Dropdown.Item>
-                          <Dropdown.Item key="August">August</Dropdown.Item>
-                          <Dropdown.Item key="September">
+                          <Dropdown.Item key="01">January</Dropdown.Item>
+                          <Dropdown.Item key="02">Febuary</Dropdown.Item>
+                          <Dropdown.Item key="03">March</Dropdown.Item>
+                          <Dropdown.Item key="04">April</Dropdown.Item>
+                          <Dropdown.Item key="05">May</Dropdown.Item>
+                          <Dropdown.Item key="06">June</Dropdown.Item>
+                          <Dropdown.Item key="07">July</Dropdown.Item>
+                          <Dropdown.Item key="08">August</Dropdown.Item>
+                          <Dropdown.Item key="09">
                             September
                           </Dropdown.Item>
-                          <Dropdown.Item key="October">October</Dropdown.Item>
-                          <Dropdown.Item key="November">November</Dropdown.Item>
-                          <Dropdown.Item key="December">December</Dropdown.Item>
+                          <Dropdown.Item key="10">October</Dropdown.Item>
+                          <Dropdown.Item key="11">November</Dropdown.Item>
+                          <Dropdown.Item key="12">December</Dropdown.Item>
                         </Dropdown.Menu>
                       </Dropdown>
                       <Dropdown>
