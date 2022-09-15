@@ -177,7 +177,7 @@ function Accounts() {
             alignItems: 'center',
             borderRadius: '0',
             padding: '1rem',
-            height: 'fit-content',
+            height: '10%',
             backdropFilter: 'blur(15px)',
           }}
         > <Text
@@ -228,7 +228,7 @@ function Accounts() {
             Add Account
           </Button>
         </Card>
-        <Card css={{ borderRadius: '0', height: '85.5%', overflow: 'auto' }}>
+        <Card css={{ borderRadius: '0', height: '90%', overflow: 'auto' }}>
           <Table
             aria-label="Example table with custom cells"
             css={{
