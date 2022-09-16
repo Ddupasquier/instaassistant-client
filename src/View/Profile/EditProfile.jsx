@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Input, Button, Text, Grid } from '@nextui-org/react';
+import { Modal, Input, Button, Text, Grid, Card } from '@nextui-org/react';
 
 function EditProfile({
   editProfileVisible,
@@ -11,7 +11,7 @@ function EditProfile({
     console.log('submit');
   };
 
-  console.log(userInfo)
+  console.log(userInfo);
 
   return (
     <Modal
@@ -31,34 +31,45 @@ function EditProfile({
         <Modal.Body>
           <Grid.Container>
             <Grid xs={12} md={6}>
-              <Input label="Company Name" underlined css={{ width: '100%' }} />
+              <Input label="Company Name" underlined css={{ width: '90%' }} />
             </Grid>
             <Grid xs={12} md={6}>
-              <Input label="Company Email" underlined css={{ width: '100%' }} />
+              <Input label="Company Email" underlined css={{ width: '90%' }} />
             </Grid>
             <Grid xs={12} md={6}>
-              <Input label="Company Phone" underlined css={{ width: '100%' }} />
-            </Grid>
-            <Grid xs={12} md={6}>
-              <Input
-                label="Company Address"
-                underlined
-                css={{ width: '100%' }}
-              />
+              <Input label="Company Phone" underlined css={{ width: '90%' }} />
             </Grid>
             <Grid xs={12} md={6}>
               <Input
                 label="Company Website"
                 underlined
-                css={{ width: '100%' }}
+                css={{ width: '90%' }}
               />
             </Grid>
-            <Grid xs={12} md={6}>
+            <Grid xs={12} md={12}>
               <Input
                 label="Company Logo"
                 underlined
                 css={{ width: '100%' }}
                 disabled
+              />
+            </Grid>
+            <Card.Divider css={{ margin: '1rem 0 1rem 0' }} />
+            <Grid xs={12} md={12}>
+              <Input
+                label="Current Password"
+                underlined
+                css={{ width: '90%' }}
+              />
+            </Grid>
+            <Grid xs={12} md={6}>
+              <Input label="New Password" underlined css={{ width: '90%' }} />
+            </Grid>
+            <Grid xs={12} md={6}>
+              <Input
+                label="Confirm Password"
+                underlined
+                css={{ width: '90%' }}
               />
             </Grid>
           </Grid.Container>

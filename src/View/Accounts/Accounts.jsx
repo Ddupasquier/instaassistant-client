@@ -120,7 +120,11 @@ function Accounts() {
           </Col>
         );
       case 'active':
-        return <StyledBadge type={user.active ? "active" : "idle"}>{user.active ? "active" : "idle"}</StyledBadge>;
+        return (
+          <StyledBadge type={user.active ? 'active' : 'idle'}>
+            {user.active ? 'active' : 'idle'}
+          </StyledBadge>
+        );
 
       case 'config':
         return (
@@ -167,7 +171,6 @@ function Accounts() {
   return (
     <>
       <div className="accounts-container">
-       
         <Card
           css={{
             background: '$myColor',
@@ -180,17 +183,19 @@ function Accounts() {
             height: '10%',
             backdropFilter: 'blur(15px)',
           }}
-        > <Text
-          h1
-          size={60}
-          css={{
-            textGradient: '45deg, $blue600 -20%, $pink600 50%',
-            height: 'fit-content',
-          }}
-          weight="bold"
         >
-          Account Management
-        </Text>
+          {' '}
+          <Text
+            h1
+            size={60}
+            css={{
+              textGradient: '45deg, $blue600 -20%, $pink600 50%',
+              height: 'fit-content',
+            }}
+            weight="bold"
+          >
+            Account Management
+          </Text>
           <Dropdown>
             <Dropdown.Button flat color="secondary" css={{ tt: 'capitalize' }}>
               {selectedValue}
@@ -230,7 +235,7 @@ function Accounts() {
         </Card>
         <Card css={{ borderRadius: '0', height: '90%', overflow: 'auto' }}>
           <Table
-            aria-label="Example table with custom cells"
+            aria-label="managed accounts table"
             css={{
               height: 'auto',
               minWidth: '100%',
