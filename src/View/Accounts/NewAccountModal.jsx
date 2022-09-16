@@ -29,7 +29,7 @@ function NewAccountModal({ newAccountVisible, closeNewAccountHandler }) {
               if (data.error){
                 console.log(data.error)
               } else if (data.status === "COMPLETED"){
-                console.log("We were able to successfully log you in")
+                window.location.replace("/accounts/instagram/" + data.account_id);
               } else if (data.status === "IN_PROGRESS"){
                 console.log("Logging in...")
                 setTryingLogin(true)
