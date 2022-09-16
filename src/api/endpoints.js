@@ -18,7 +18,7 @@ export const AccountShowPath = baseUrl + "/accounts/";
 
 export const BotIndexPath = baseUrl + "/user_accounts";
 
-export const BotDeletePAth = baseUrl + "/accounts/"; // Delete bot based on bot_id
+export const BotAccountPath = baseUrl + "/accounts/"; // Delete bot based on bot_id
 
 //* START Task for bot to complete
 export const AccountTaskPath = baseUrl + "/account_tasks";

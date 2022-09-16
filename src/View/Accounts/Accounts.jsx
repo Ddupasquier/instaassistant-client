@@ -28,9 +28,11 @@ import { StyledBadge } from './StyledBadge';
 import { IconButton } from './IconButton';
 import { EyeIcon } from './EyeIcon';
 import { DeleteIcon } from './DeleteIcon';
+import DeleteConfirm from './DeleteConfirm';
 
 function Accounts() {
   const [accountLoaded, setAcccountsLoaded] = useState(false);
+  const [userToDelete, setUserToDelete] = useState(null);
 
   useEffect(() => {
     indexAccounts().then((data) => setAllAccounts(data));
@@ -38,6 +40,13 @@ function Accounts() {
 
   const [searchTerm, setSearchTerm] = useState('');
   const [allAccounts, setAllAccounts] = useState([]);
+  const [deleteConfirmVisible, setDeleteConfirmVisible] = useState(false);
+
+  const handleDeleteConfirmVisible = () => setDeleteConfirmVisible(true);
+
+  const closeDeleteConfirmHandler = () => {
+    setDeleteConfirmVisible(false);
+  };
 
   const filteredAccounts = allAccounts
     .filter((account) => {
@@ -156,7 +165,12 @@ function Accounts() {
                 color="error"
                 onClick={() => console.log('Delete user', user.id)}
               >
-                <IconButton>
+                <IconButton
+                  onClick={() => {
+                    handleDeleteConfirmVisible();
+                    setUserToDelete(user);
+                  }}
+                >
                   <DeleteIcon size={20} fill="#FF0080" />
                 </IconButton>
               </Tooltip>
@@ -269,6 +283,11 @@ function Accounts() {
         newAccountHandler={newAccountHandler}
         closeNewAccountHandler={closeNewAccountHandler}
         newAccountVisible={newAccountVisible}
+      />
+      <DeleteConfirm
+        deleteConfirmVisible={deleteConfirmVisible}
+        closeDeleteConfirmHandler={closeDeleteConfirmHandler}
+        userInfo={userToDelete}
       />
     </>
   );
