@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Modal, Input, Button, Text, Spacer, Loading } from '@nextui-org/react';
 import { CreateAccount, CreateBot, GetTask } from 'api';
 
@@ -9,8 +9,8 @@ function NewAccountModal({ newAccountVisible, closeNewAccountHandler }) {
 
   // const [postSuccess, setPostSuccess] = useState(false)
 
-  const [newAccountSetup, setNewAccountSetup] = useState(null)
-  const [tryingLogin, setTryingLogin] = useState(null)
+  const [newAccountSetup, setNewAccountSetup] = useState(null);
+  const [tryingLogin, setTryingLogin] = useState(null);
 
   const HandleSubmit = (e) => {
     e.preventDefault();
@@ -20,7 +20,7 @@ function NewAccountModal({ newAccountVisible, closeNewAccountHandler }) {
       );
       return;
     } else {
-      let payload = { username, password: pwd, platform: "instagram" };
+      let payload = { username, password: pwd, platform: 'instagram' };
       CreateAccount(payload).then((data) => {
         if (data.success) {
           alert("we got a success")
@@ -36,8 +36,8 @@ function NewAccountModal({ newAccountVisible, closeNewAccountHandler }) {
               } else if (data.status === "SCHEDULED") {
                 setNewAccountSetup(true)
               }
-            })
-          }, 1000)
+            });
+          }, 1000);
         } else if (data.error) {
           alert(data.error);
         }
@@ -45,7 +45,7 @@ function NewAccountModal({ newAccountVisible, closeNewAccountHandler }) {
     }
   };
 
-  const [loggingIn, setLoggingIn] = useState(false)
+  const [loggingIn, setLoggingIn] = useState(false);
 
   return (
     <Modal
@@ -55,52 +55,63 @@ function NewAccountModal({ newAccountVisible, closeNewAccountHandler }) {
       aria-labelledby="modal-title"
       open={newAccountVisible}
       onClose={closeNewAccountHandler}
-    >{newAccountSetup === null && (<><Modal.Header>
-        <Text id="modal-title" size={18}>
-          <Text b size={18}>
-            Add New Account
-          </Text>
-        </Text>
-      </Modal.Header>
-      <form onSubmit={HandleSubmit}>
-        <Modal.Body>
-          <Input
-            label="username"
-            labelLeft="@"
-            underlined
-            css={{ width: '100%' }}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <Spacer />
-          <Input
-            label="Password"
-            underlined
-            css={{ width: '100%' }}
-            onChange={(e) => setPwd(e.target.value)}
-          />
-          <Spacer />
-          <Input
-            label="Confirm password"
-            underlined
-            css={{ width: '100%' }}
-            onChange={(e) => setPwdConf(e.target.value)}
-          />
-        </Modal.Body>
-        <Modal.Footer>
-          <Button type="submit" color="secondary" rounded>
-            Add Account
-          </Button>
-        </Modal.Footer>
-      </form></>)}
+    >
+      {newAccountSetup === null && (
+        <>
+          <Modal.Header>
+            <Text id="modal-title" size={18}>
+              <Text b size={18}>
+                Add New Account
+              </Text>
+            </Text>
+          </Modal.Header>
+          <form onSubmit={HandleSubmit}>
+            <Modal.Body>
+              <Input
+                label="username"
+                labelLeft="@"
+                underlined
+                css={{ width: '100%' }}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+              <Spacer />
+              <Input
+                label="Password"
+                underlined
+                css={{ width: '100%' }}
+                onChange={(e) => setPwd(e.target.value)}
+              />
+              <Spacer />
+              <Input
+                label="Confirm password"
+                underlined
+                css={{ width: '100%' }}
+                onChange={(e) => setPwdConf(e.target.value)}
+              />
+            </Modal.Body>
+            <Modal.Footer>
+              <Button type="submit" color="secondary" rounded>
+                Add Account
+              </Button>
+            </Modal.Footer>
+          </form>
+        </>
+      )}
 
-      {newAccountSetup === true && (<>
-
-      <h2>Completing first time account setup</h2>
-      <p>This could take up to 60s</p>
-      <Loading size='xl'/>
-      {tryingLogin ? (<><p>grabbing follower information for analytics</p></>) : (<>Establishing connection...</>)}
-      </>)}
-      
+      {newAccountSetup === true && (
+        <>
+          <h2>Completing first time account setup</h2>
+          <p>This could take up to 60s</p>
+          <Loading size="xl" />
+          {tryingLogin ? (
+            <>
+              <p>grabbing follower information for analytics</p>
+            </>
+          ) : (
+            <>Establishing connection...</>
+          )}
+        </>
+      )}
     </Modal>
   );
 }

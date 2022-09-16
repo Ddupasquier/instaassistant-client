@@ -28,9 +28,11 @@ import { StyledBadge } from './StyledBadge';
 import { IconButton } from './IconButton';
 import { EyeIcon } from './EyeIcon';
 import { DeleteIcon } from './DeleteIcon';
+import DeleteConfirm from './DeleteConfirm';
 
 function Accounts() {
   const [accountLoaded, setAcccountsLoaded] = useState(false);
+  const [userToDelete, setUserToDelete] = useState(null);
 
   useEffect(() => {
     indexAccounts().then((data) => setAllAccounts(data));
@@ -38,6 +40,13 @@ function Accounts() {
 
   const [searchTerm, setSearchTerm] = useState('');
   const [allAccounts, setAllAccounts] = useState([]);
+  const [deleteConfirmVisible, setDeleteConfirmVisible] = useState(false);
+
+  const handleDeleteConfirmVisible = () => setDeleteConfirmVisible(true);
+
+  const closeDeleteConfirmHandler = () => {
+    setDeleteConfirmVisible(false);
+  };
 
   const filteredAccounts = allAccounts
     .filter((account) => {
@@ -120,7 +129,11 @@ function Accounts() {
           </Col>
         );
       case 'active':
-        return <StyledBadge type={user.active ? "active" : "idle"}>{user.active ? "active" : "idle"}</StyledBadge>;
+        return (
+          <StyledBadge type={user.active ? 'active' : 'idle'}>
+            {user.active ? 'active' : 'idle'}
+          </StyledBadge>
+        );
 
       case 'config':
         return (
@@ -152,7 +165,12 @@ function Accounts() {
                 color="error"
                 onClick={() => console.log('Delete user', user.id)}
               >
-                <IconButton>
+                <IconButton
+                  onClick={() => {
+                    handleDeleteConfirmVisible();
+                    setUserToDelete(user);
+                  }}
+                >
                   <DeleteIcon size={20} fill="#FF0080" />
                 </IconButton>
               </Tooltip>
@@ -167,7 +185,6 @@ function Accounts() {
   return (
     <>
       <div className="accounts-container">
-       
         <Card
           css={{
             background: '$myColor',
@@ -180,17 +197,19 @@ function Accounts() {
             height: '10%',
             backdropFilter: 'blur(15px)',
           }}
-        > <Text
-          h1
-          size={60}
-          css={{
-            textGradient: '45deg, $blue600 -20%, $pink600 50%',
-            height: 'fit-content',
-          }}
-          weight="bold"
         >
-          Account Management
-        </Text>
+          {' '}
+          <Text
+            h1
+            size={60}
+            css={{
+              textGradient: '45deg, $blue600 -20%, $pink600 50%',
+              height: 'fit-content',
+            }}
+            weight="bold"
+          >
+            Account Management
+          </Text>
           <Dropdown>
             <Dropdown.Button flat color="secondary" css={{ tt: 'capitalize' }}>
               {selectedValue}
@@ -230,7 +249,7 @@ function Accounts() {
         </Card>
         <Card css={{ borderRadius: '0', height: '90%', overflow: 'auto' }}>
           <Table
-            aria-label="Example table with custom cells"
+            aria-label="managed accounts table"
             css={{
               height: 'auto',
               minWidth: '100%',
@@ -264,6 +283,11 @@ function Accounts() {
         newAccountHandler={newAccountHandler}
         closeNewAccountHandler={closeNewAccountHandler}
         newAccountVisible={newAccountVisible}
+      />
+      <DeleteConfirm
+        deleteConfirmVisible={deleteConfirmVisible}
+        closeDeleteConfirmHandler={closeDeleteConfirmHandler}
+        userInfo={userToDelete}
       />
     </>
   );
