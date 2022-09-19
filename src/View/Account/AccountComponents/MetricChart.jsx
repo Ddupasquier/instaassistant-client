@@ -1,8 +1,10 @@
 import React from 'react';
 import { Card, Grid } from '@nextui-org/react';
-import { ChartPlaceHold}  from "Components/ChartPlaceHold"
+import { FollowersChart } from 'Components/MetricsCharts';
+import UtilizationChart from 'Components/MetricsCharts/UtilizationChart';
 
-function MetricChart({obj}) {
+
+function MetricChart({data}) {
   return (
     <Grid sm={8} xs={12} css={{minHeight: '30rem'}}>
       <Card
@@ -15,7 +17,8 @@ function MetricChart({obj}) {
         <Card.Header>Follower / Following - Week | Month</Card.Header>
         <Card.Divider />
         <Card.Body>
-          <ChartPlaceHold obj={obj}/>
+          <FollowersChart />
+          <UtilizationChart />
         </Card.Body>
       </Card>
     </Grid>
