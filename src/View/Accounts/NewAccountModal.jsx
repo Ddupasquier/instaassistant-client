@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, Input, Button, Text, Spacer, Loading } from '@nextui-org/react';
-import { CreateAccount, CreateBot, GetTask } from 'api';
+import { CreateAccount, CreateBot, DeleteAccount, GetTask } from 'api';
 
 function NewAccountModal({ newAccountVisible, closeNewAccountHandler }) {
   const [pwd, setPwd] = useState('');

@@ -13,8 +13,12 @@ function DeleteConfirm({
     e.preventDefault();
     if (usernameConfirm === userInfo.username) {
       DeleteAccount(userInfo.id).then((data) => {
-        data.success ? closeDeleteConfirmHandler() : alert(data.error);
-        console.log(data, data.error)
+        closeDeleteConfirmHandler()
+        if (data.success){
+          window.location.replace("/accounts");
+        } else if (data.error){
+          alert(data.error)
+        }
       });
     }
   };

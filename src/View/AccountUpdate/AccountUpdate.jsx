@@ -67,6 +67,7 @@ const AccountUpdate = () => {
                 </Text>
               </Button>
             </Link>
+            <Button>Un-stuck My Account</Button>
           </Card.Footer>
         </Card>
       </div>
