@@ -75,11 +75,19 @@ function UtilizationChart({ data }) {
       plugins: {
         legend: {
           position: 'bottom',
+          labels: {
+            color: '$font',
+          }
         },
       },
       scales: {
         x: {
           display: false,
+        },
+        y: {
+          ticks: {
+            color: '$font',
+          },
         },
       },
     });

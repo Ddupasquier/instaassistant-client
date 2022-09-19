@@ -2,11 +2,11 @@ import React from 'react';
 import { Card, Grid } from '@nextui-org/react';
 import { FollowersChart } from 'Components/MetricsCharts';
 import UtilizationChart from 'Components/MetricsCharts/UtilizationChart';
+import { IconsQuestionMark } from 'Components/icons/icons';
 
-
-function MetricChart({data}) {
+function MetricChart({ data }) {
   return (
-    <Grid sm={8} xs={12} css={{minHeight: '30rem'}}>
+    <Grid sm={6} xs={12} css={{ minHeight: '30rem' }}>
       <Card
         css={{
           minHeight: '200px',
@@ -14,7 +14,14 @@ function MetricChart({data}) {
           background: '$myColor',
         }}
       >
-        <Card.Header>Follower / Following - Week | Month</Card.Header>
+        <Card.Header>
+          Follower / Following - Week | Month&nbsp;
+          <IconsQuestionMark
+            content="Total number of follows, likes, comments and Messages sent on your behalf."
+            local="top"
+          />
+        </Card.Header>
+
         <Card.Divider />
         <Card.Body>
           <FollowersChart />

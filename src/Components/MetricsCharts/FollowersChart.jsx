@@ -81,12 +81,27 @@ function FollowersChart({ data }) {
       plugins: {
         legend: {
           position: 'top',
+          labels: {
+            color: '$font',
+          }
+        },
+      },
+      scales: {
+        x: {
+          ticks: {
+            color: '$font',
+          },
+        },
+        y: {
+          ticks: {
+            color: '$font',
+          },
         },
       },
     });
   }, []);
 
-  return <Line options={chartOptions} data={followerData} height="100" />;
+  return <Line options={chartOptions} data={followerData} height="125" />;
 }
 
 export default FollowersChart;

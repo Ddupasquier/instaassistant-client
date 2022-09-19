@@ -32,7 +32,8 @@ const darkTheme = createTheme({
       link: '#af6eff',
       // you can also create your own color
       myColor: 'rgba(95, 95, 95, 0.55)',
-      menue: 'rgb(34, 34, 34)'
+      menue: 'rgb(34, 34, 34)',
+      font: '#fff',
       // ...  more colors
     },
   },
@@ -46,7 +47,8 @@ const lightTheme = createTheme({
       link: '#5E1DAD',
       // you can also create your own color
       myColor: 'rgba(255, 255, 255, .7)',
-      menue: 'rgb(212, 212, 212)'
+      menue: 'rgb(212, 212, 212)',
+      font: '#000',
       // ...  more colors
     },
   },

@@ -235,9 +235,9 @@ function Account({ darkTheme, theme }) {
 
         <div className="account-metrics">
           <Grid.Container gap={2}>
-            {currentAccount.active && <TasksRunning active={'task'} />}
+            {/* {currentAccount.active && <TasksRunning active={'task'} />} */}
 
-            <Utilization num={utilization} />
+            {/* <Utilization num={utilization} /> */}
             <Interactions num={interations} />
             <FollowerGain num={followersGained} />
             <InteractionLimits

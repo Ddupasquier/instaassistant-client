@@ -5,7 +5,7 @@ export const IconsQuestionMark = ({ content, local }) => {
     <Tooltip
       css={{ zIndex: 10000 }}
       invert="true"
-      enterDelay={1000}
+      enterDelay={500}
       content={content}
       placement={local}
       width="250px"

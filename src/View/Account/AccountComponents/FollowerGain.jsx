@@ -3,7 +3,7 @@ import {Grid, Card, Text} from '@nextui-org/react';
 import { IconsQuestionMark } from 'Components/icons/icons';
 
 function FollowerGain({num}) {
-      return ( <Grid sm={4} xs={12}>
+      return ( <Grid sm={6} xs={12}>
             <Card
               css={{
                 backdropFilter: 'blur(10px)',

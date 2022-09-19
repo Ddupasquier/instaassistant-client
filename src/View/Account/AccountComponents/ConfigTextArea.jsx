@@ -1,14 +1,16 @@
-import { Textarea, Grid } from "@nextui-org/react";
-import { IconsQuestionMark } from "Components/icons/icons";
-import React from "react";
+import { Textarea, Grid } from '@nextui-org/react';
+import { IconsQuestionMark } from 'Components/icons/icons';
+import React from 'react';
 
-const ConfigTextArea = ({ label, value = '', set, toolTipContent, toolTipLocal }) => {
+const ConfigTextArea = ({
+  label,
+  value = '',
+  set,
+  toolTipContent,
+  toolTipLocal,
+}) => {
   return (
     <Grid md={3} sm={4} xs={6}>
-      <IconsQuestionMark
-                content={toolTipContent}
-                local={toolTipLocal}
-              />
       <Textarea
         width="100%"
         bordered
@@ -19,9 +21,13 @@ const ConfigTextArea = ({ label, value = '', set, toolTipContent, toolTipLocal }
         legend={label}
         onChange={(e) => set(e.target.value)}
         css={{
-          fontWeight: "bold",
+          fontWeight: 'bold',
         }}
-        value={value || ""}
+        value={value || ''}
+      />
+      <IconsQuestionMark
+        content={toolTipContent}
+        local={toolTipLocal}
       />
     </Grid>
   );

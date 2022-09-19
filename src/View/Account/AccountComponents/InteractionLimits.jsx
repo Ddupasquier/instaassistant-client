@@ -3,7 +3,7 @@ import { Table, Grid, Card } from '@nextui-org/react';
 
 const InteractionLimits = ({follows, likes, comments, messages}) => {
   return (
-    <Grid sm={4} xs={12}>
+    <Grid sm={6} xs={12}>
       <Card
         css={{
           backdropFilter: 'blur(15px)',
