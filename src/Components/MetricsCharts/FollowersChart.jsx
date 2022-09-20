@@ -25,7 +25,13 @@ ChartJS.register(
   Filler
 );
 
-function FollowersChart({ data }) {
+function FollowersChart({ snapshots }) {
+  console.log('from chart', snapshots);
+
+  // map to array of follwers from snapshots
+  const followers = snapshots.map((snapshot) => snapshot.followers);
+  const following = snapshots.map((snapshot) => snapshot.following);
+
   const [followerData, setFollowerData] = useState({
     datasets: [],
   });
@@ -59,7 +65,7 @@ function FollowersChart({ data }) {
       datasets: [
         {
           label: 'Following',
-          data: getRandomFollowers(),
+          data: following,
           backgroundColor: 'rgba(255, 99, 132, 0.2)',
           borderColor: 'rgba(255, 99, 132, 1)',
           borderWidth: 1,
@@ -67,7 +73,7 @@ function FollowersChart({ data }) {
         },
         {
           label: 'Followers',
-          data: getRandomFollowers(),
+          data: followers,
           backgroundColor: 'rgba(54, 162, 235, 0.2)',
           borderColor: 'rgba(54, 162, 235, 1)',
           borderWidth: 1,
@@ -83,7 +89,7 @@ function FollowersChart({ data }) {
           position: 'top',
           labels: {
             color: '$font',
-          }
+          },
         },
       },
       scales: {
@@ -101,7 +107,7 @@ function FollowersChart({ data }) {
     });
   }, []);
 
-  return <Line options={chartOptions} data={followerData} height="125" />;
+  return <Line options={chartOptions} data={followerData} />;
 }
 
 export default FollowersChart;

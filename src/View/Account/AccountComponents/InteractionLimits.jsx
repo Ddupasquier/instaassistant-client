@@ -1,7 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Table, Grid, Card } from '@nextui-org/react';
+import LimitsRadial from 'Components/MetricsCharts/LimitsRadial';
 
-const InteractionLimits = ({follows, likes, comments, messages}) => {
+const InteractionLimits = ({ follows, likes, comments, messages }) => {
+  const [data, setData] = useState({
+    follows: follows,
+    likes: likes,
+    comments: comments,
+    messages: messages,
+  });
+
+  useEffect(() => {
+    setData({
+      follows: follows || 0,
+      likes: likes || 0,
+      comments: comments || 0,
+      messages: messages || 0,
+    });
+  }, [follows, likes, comments, messages]);
+
   return (
     <Grid sm={6} xs={12}>
       <Card
@@ -13,7 +30,8 @@ const InteractionLimits = ({follows, likes, comments, messages}) => {
         <Card.Header>Interaction Limits</Card.Header>
         <Card.Divider />
         <Card.Body>
-          <Table
+          <LimitsRadial data={data} />
+          {/* <Table
             shadow={false}
             aria-label="Example table with static content"
             css={{
@@ -48,7 +66,7 @@ const InteractionLimits = ({follows, likes, comments, messages}) => {
                 <Table.Cell>1000</Table.Cell>
               </Table.Row>
             </Table.Body>
-          </Table>
+          </Table> */}
         </Card.Body>
       </Card>
     </Grid>
