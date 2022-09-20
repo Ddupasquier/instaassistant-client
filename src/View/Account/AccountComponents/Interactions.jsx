@@ -3,6 +3,7 @@ import { Card, Grid, Text } from '@nextui-org/react';
 import { IconsQuestionMark } from 'Components/icons/icons';
 
 function Interactions({ num }) {
+  console.log(num)
   return (
     <Grid sm={4} xs={12}>
       <Card

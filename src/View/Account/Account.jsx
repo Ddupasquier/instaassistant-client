@@ -29,7 +29,9 @@ function Account({ darkTheme, theme }) {
   const [snapshots, setSnapshots] = useState([
     { followers: 9999, following: 99999, profile_pic: '' },
   ]);
-  console.log('from account', snapshots);
+
+
+  // console.log('from account', snapshots);
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
@@ -59,7 +61,7 @@ function Account({ darkTheme, theme }) {
 
   // PAGE CONTROL
   const [utilization, setUtilization] = useState(0);
-  const [interations, setInteractions] = useState(0);
+  const [interactions, setInteractions] = useState(0);
   const [followersGained, setFollowersGained] = useState(0);
   const [follows, setFollows] = useState(0);
   const [likes, setLikes] = useState(0);
@@ -76,7 +78,7 @@ function Account({ darkTheme, theme }) {
       follows_sent += task.follows_sent;
       likes_sent += task.likes_sent;
       comments_sent += task.comments_sent;
-      messages_sent += task.message_sent;
+      messages_sent += task.messages_sent;
     });
 
     setFollows(follows_sent);
@@ -91,12 +93,12 @@ function Account({ darkTheme, theme }) {
       setUtilization(currentAccount.allow_like ? (util += 5) : util);
       setUtilization(currentAccount.allow_comment ? (util += 5) : util);
       setUtilization(currentAccount.allow_dm ? (util += 5) : util);
-      if (currentAccount.messages != null) {
+      if (currentAccount.messages !== null) {
         let msg = currentAccount.comments.split(',');
         setUtilization(msg.length > 5 ? (util += 10) : util);
       }
 
-      if (currentAccount.comments != null) {
+      if (currentAccount.comments !== null) {
         let comms = currentAccount.comments.split(',');
         setUtilization(comms.length > 5 ? (util += 10) : util);
       }
@@ -237,7 +239,7 @@ function Account({ darkTheme, theme }) {
             {/* {currentAccount.active && <TasksRunning active={'task'} />} */}
 
             <Utilization num={utilization} />
-            <Interactions num={interations} />
+            <Interactions num={interactions} />
             <FollowerGain num={followersGained} />
             <InteractionLimits
               follows={follows}

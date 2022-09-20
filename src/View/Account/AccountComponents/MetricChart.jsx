@@ -7,7 +7,7 @@ import { IconsQuestionMark } from 'Components/icons/icons';
 function MetricChart({ snapshots }) {
 
   return (
-    <Grid sm={6} xs={12}>
+    <Grid sm={8} xs={12}>
       <Card
         css={{
           backdropFilter: 'blur(15px)',

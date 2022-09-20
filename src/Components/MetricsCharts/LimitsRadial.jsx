@@ -42,7 +42,7 @@ function LimitsRadial({ data: { follows, likes, comments, messages } }) {
       datasets: [
         {
           label: 'Utilization',
-          data: [follows, likes, comments, 500],
+          data: [follows, likes, comments, messages],
           backgroundColor: [
             'rgb(255, 0, 150, .3)',
             'rgb(0, 150, 150, .3)',
@@ -82,10 +82,14 @@ function LimitsRadial({ data: { follows, likes, comments, messages } }) {
   }, [comments, follows, likes, messages]);
 
   return (
-    <PolarArea
+    <Bar
       options={chartOptions}
       data={followerData}
     />
+    // <PolarArea
+    //   options={chartOptions}
+    //   data={followerData}
+    // />
   );
 }
 

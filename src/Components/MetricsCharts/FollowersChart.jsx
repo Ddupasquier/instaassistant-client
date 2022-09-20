@@ -26,11 +26,13 @@ ChartJS.register(
 );
 
 function FollowersChart({ snapshots }) {
-  console.log('from chart', snapshots);
+  const [snaps, setSnaps] = useState([]);
 
-  // map to array of follwers from snapshots
-  const followers = snapshots.map((snapshot) => snapshot.followers);
-  const following = snapshots.map((snapshot) => snapshot.following);
+  useEffect(() => {
+    if (snapshots) {
+      setSnaps(snapshots);
+    }
+  }, [snapshots]);
 
   const [followerData, setFollowerData] = useState({
     datasets: [],
@@ -50,22 +52,21 @@ function FollowersChart({ snapshots }) {
     return days;
   };
 
-  // arr of thirty random numbers between 1000 and 20000
-  const getRandomFollowers = () => {
-    const followers = [];
-    for (let i = 0; i < 30; i++) {
-      followers.push(Math.floor(Math.random() * 19000) + 1000);
-    }
-    return followers;
-  };
-
   useEffect(() => {
+    const followers = () => {
+      if (snaps) return snaps.map((snapshot) => snapshot.followers);
+    };
+
+    const following = () => {
+      if (snaps) return snaps.map((snapshot) => snapshot.following);
+    };
+
     setFollowerData({
       labels: getDaysThisMonth(),
       datasets: [
         {
           label: 'Following',
-          data: following,
+          data: following(),
           backgroundColor: 'rgba(255, 99, 132, 0.2)',
           borderColor: 'rgba(255, 99, 132, 1)',
           borderWidth: 1,
@@ -73,7 +74,7 @@ function FollowersChart({ snapshots }) {
         },
         {
           label: 'Followers',
-          data: followers,
+          data: followers(),
           backgroundColor: 'rgba(54, 162, 235, 0.2)',
           borderColor: 'rgba(54, 162, 235, 1)',
           borderWidth: 1,
@@ -105,7 +106,7 @@ function FollowersChart({ snapshots }) {
         },
       },
     });
-  }, []);
+  }, [snaps]);
 
   return <Line options={chartOptions} data={followerData} />;
 }
