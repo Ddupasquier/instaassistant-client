@@ -11,7 +11,7 @@ function Utilization({num}) {
           background: '$myColor',
         }}
       >
-        <Card.Header>Utilization&nbsp;<IconsQuestionMark
+        <Card.Header>Utilization Today&nbsp;<IconsQuestionMark
                     content="Utilization is representative of how much/well you are using our application."
                     local="topStart"
                   /></Card.Header>

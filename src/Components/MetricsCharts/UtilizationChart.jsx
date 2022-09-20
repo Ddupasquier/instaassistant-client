@@ -93,7 +93,7 @@ function UtilizationChart({ data }) {
     });
   }, []);
 
-  return <Line options={chartOptions} data={followerData} height="30" />;
+  return <Line options={chartOptions} data={followerData} />;
 }
 
 export default UtilizationChart;

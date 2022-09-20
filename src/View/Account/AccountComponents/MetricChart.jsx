@@ -4,12 +4,12 @@ import { FollowersChart } from 'Components/MetricsCharts';
 import UtilizationChart from 'Components/MetricsCharts/UtilizationChart';
 import { IconsQuestionMark } from 'Components/icons/icons';
 
-function MetricChart({ data }) {
+function MetricChart({ snapshots }) {
+
   return (
-    <Grid sm={6} xs={12} css={{ minHeight: '30rem' }}>
+    <Grid sm={6} xs={12}>
       <Card
         css={{
-          minHeight: '200px',
           backdropFilter: 'blur(15px)',
           background: '$myColor',
         }}
@@ -24,7 +24,7 @@ function MetricChart({ data }) {
 
         <Card.Divider />
         <Card.Body>
-          <FollowersChart />
+          <FollowersChart snapshots={snapshots} />
           <UtilizationChart />
         </Card.Body>
       </Card>

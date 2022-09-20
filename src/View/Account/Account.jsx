@@ -29,6 +29,7 @@ function Account({ darkTheme, theme }) {
   const [snapshots, setSnapshots] = useState([
     { followers: 9999, following: 99999, profile_pic: '' },
   ]);
+  console.log('from account', snapshots);
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
@@ -37,15 +38,13 @@ function Account({ darkTheme, theme }) {
     });
 
     getSnapshots(account_id).then((data) => {
-      if (data[0] != null) {
+      if (data[0]) {
         setSnapshots(data);
-      } else {
-        setSnapshots([{ followers: 9999, following: 9999, profile_pic: '' }]);
       }
     });
 
     GetTasks(account_id).then((data) => {
-      if (data[0] != null) {
+      if (data[0]) {
         setTasks(data);
       } else {
         setTasks([]);
@@ -237,7 +236,7 @@ function Account({ darkTheme, theme }) {
           <Grid.Container gap={2}>
             {/* {currentAccount.active && <TasksRunning active={'task'} />} */}
 
-            {/* <Utilization num={utilization} /> */}
+            <Utilization num={utilization} />
             <Interactions num={interations} />
             <FollowerGain num={followersGained} />
             <InteractionLimits
@@ -246,7 +245,7 @@ function Account({ darkTheme, theme }) {
               comments={comments}
               messages={messages}
             />
-            <MetricChart />
+            <MetricChart snapshots={snapshots} />
             {/* <ActivityLog tasks={tasks} /> */}
           </Grid.Container>
         </div>
