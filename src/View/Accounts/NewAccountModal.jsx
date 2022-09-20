@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, Input, Button, Text, Spacer, Loading } from '@nextui-org/react';
-import { CreateAccount, CreateBot, GetTask } from 'api';
+import { CreateAccount, CreateBot, DeleteAccount, GetTask } from 'api';
 
 function NewAccountModal({ newAccountVisible, closeNewAccountHandler }) {
   const [pwd, setPwd] = useState('');
@@ -77,6 +77,7 @@ function NewAccountModal({ newAccountVisible, closeNewAccountHandler }) {
               <Spacer />
               <Input.Password
                 label="Password"
+                type="password"
                 underlined
                 css={{ width: '100%' }}
                 onChange={(e) => setPwd(e.target.value)}
@@ -84,6 +85,7 @@ function NewAccountModal({ newAccountVisible, closeNewAccountHandler }) {
               <Spacer />
               <Input.Password
                 label="Confirm password"
+                type="password"
                 underlined
                 css={{ width: '100%' }}
                 onChange={(e) => setPwdConf(e.target.value)}

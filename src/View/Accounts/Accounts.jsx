@@ -29,6 +29,7 @@ import { IconButton } from './IconButton';
 import { EyeIcon } from './EyeIcon';
 import { DeleteIcon } from './DeleteIcon';
 import DeleteConfirm from './DeleteConfirm';
+// import { Base64Test } from 'View/Base64Test';
 
 function Accounts() {
   const [accountLoaded, setAcccountsLoaded] = useState(false);
@@ -289,6 +290,7 @@ function Accounts() {
         closeDeleteConfirmHandler={closeDeleteConfirmHandler}
         userInfo={userToDelete}
       />
+      {/* <Base64Test/> */}
     </>
   );
 }

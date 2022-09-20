@@ -55,7 +55,7 @@ const lightTheme = createTheme({
 });
 
 function AppRoutes() {
-  const [theme, setTheme] = useState(darkTheme);
+  const [theme, setTheme] = useState(lightTheme);
 
   return (
     <NextUIProvider theme={theme}>
@@ -76,7 +76,7 @@ function AppRoutes() {
               <Route path="/billing" element={<Billing />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/accounts" element={<Accounts />} />
-              <Route path="/instagram/account/update" element={<AccountUpdate />} />
+              <Route path="/accounts/instagram/:account_id/update" element={<AccountUpdate />} />
             <Route
                 path="/accounts/instagram/:account_id"
                 element={<Account darkTheme={darkTheme}
