@@ -75,14 +75,14 @@ function NewAccountModal({ newAccountVisible, closeNewAccountHandler }) {
                 onChange={(e) => setUsername(e.target.value)}
               />
               <Spacer />
-              <Input
+              <Input.Password
                 label="Password"
                 underlined
                 css={{ width: '100%' }}
                 onChange={(e) => setPwd(e.target.value)}
               />
               <Spacer />
-              <Input
+              <Input.Password
                 label="Confirm password"
                 underlined
                 css={{ width: '100%' }}
