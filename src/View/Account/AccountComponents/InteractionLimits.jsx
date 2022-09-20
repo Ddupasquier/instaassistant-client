@@ -1,5 +1,9 @@
 import React from 'react';
 import { Table, Grid, Card } from '@nextui-org/react';
+import { BsEmojiSunglasses } from 'react-icons/bs'; //follow
+import { AiOutlineMessage } from 'react-icons/ai'; //comment
+import { FaRegEnvelopeOpen } from 'react-icons/fa'; //dm
+import { FiHeart } from 'react-icons/fi'; //like
 
 const InteractionLimits = ({follows, likes, comments, messages}) => {
   return (
@@ -28,22 +32,22 @@ const InteractionLimits = ({follows, likes, comments, messages}) => {
             </Table.Header>
             <Table.Body>
               <Table.Row key="1">
-                <Table.Cell>Follow</Table.Cell>
+                <Table.Cell><BsEmojiSunglasses /> Follow</Table.Cell>
                 <Table.Cell>{follows}</Table.Cell>
                 <Table.Cell>1000</Table.Cell>
               </Table.Row>
               <Table.Row key="2">
-                <Table.Cell>Like</Table.Cell>
+                <Table.Cell><FiHeart /> Like</Table.Cell>
                 <Table.Cell>{likes}</Table.Cell>
                 <Table.Cell>1000</Table.Cell>
               </Table.Row>
               <Table.Row key="3">
-                <Table.Cell>Comment</Table.Cell>
+                <Table.Cell><AiOutlineMessage /> Comment</Table.Cell>
                 <Table.Cell>{comments}</Table.Cell>
                 <Table.Cell>1000</Table.Cell>
               </Table.Row>
               <Table.Row key="4">
-                <Table.Cell>Message</Table.Cell>
+                <Table.Cell><FaRegEnvelopeOpen /> Message</Table.Cell>
                 <Table.Cell>{messages}</Table.Cell>
                 <Table.Cell>1000</Table.Cell>
               </Table.Row>
