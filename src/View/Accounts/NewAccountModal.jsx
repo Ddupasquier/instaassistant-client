@@ -77,6 +77,7 @@ function NewAccountModal({ newAccountVisible, closeNewAccountHandler }) {
               <Spacer />
               <Input
                 label="Password"
+                type="password"
                 underlined
                 css={{ width: '100%' }}
                 onChange={(e) => setPwd(e.target.value)}
@@ -84,6 +85,7 @@ function NewAccountModal({ newAccountVisible, closeNewAccountHandler }) {
               <Spacer />
               <Input
                 label="Confirm password"
+                type="password"
                 underlined
                 css={{ width: '100%' }}
                 onChange={(e) => setPwdConf(e.target.value)}

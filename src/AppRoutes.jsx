@@ -53,7 +53,7 @@ const lightTheme = createTheme({
 });
 
 function AppRoutes() {
-  const [theme, setTheme] = useState(darkTheme);
+  const [theme, setTheme] = useState(lightTheme);
 
   return (
     <NextUIProvider theme={theme}>
