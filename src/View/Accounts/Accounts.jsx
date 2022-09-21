@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-one-expression-per-line */
 import React, { useEffect, useState } from 'react';
 
 import {
@@ -28,7 +27,7 @@ import { StyledBadge } from './StyledBadge';
 import { IconButton } from './IconButton';
 import { EyeIcon } from './EyeIcon';
 import { DeleteIcon } from './DeleteIcon';
-import DeleteConfirm from './DeleteConfirm';
+import DeleteConfirm from '../../Components/DeleteConfirm';
 // import { Base64Test } from 'View/Base64Test';
 
 function Accounts() {

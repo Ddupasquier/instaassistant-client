@@ -19,17 +19,26 @@ import FollowerGain from './AccountComponents/FollowerGain';
 import MetricChart from './AccountComponents/MetricChart';
 import InteractionLimits from './AccountComponents/InteractionLimits';
 import ConfigPopup from './AccountComponents/ConfigPopup';
+import DeleteConfirm from 'Components/DeleteConfirm';
 import Avatar from 'react-avatar';
-import { TasksRunning } from '.';
+// import { TasksRunning } from '.';
 
 function Account({ darkTheme, theme }) {
+  const [deleteConfirmVisible, setDeleteConfirmVisible] = useState(false);
+  console.log('deleteConfirmVisible', deleteConfirmVisible);
+
+  const handleDeleteConfirmVisible = () => setDeleteConfirmVisible(true);
+
+  const closeDeleteConfirmHandler = () => {
+    setDeleteConfirmVisible(false);
+  };
+
   //Route Handle
   const { account_id } = useParams();
   const [currentAccount, setCurrentAccount] = useState(null);
   const [snapshots, setSnapshots] = useState([
     { followers: 9999, following: 99999, profile_pic: '' },
   ]);
-
 
   // console.log('from account', snapshots);
   const [tasks, setTasks] = useState([]);
@@ -220,7 +229,12 @@ function Account({ darkTheme, theme }) {
                           </Text>
                         </Dropdown.Item>
                         <Dropdown.Item key="Delete">
-                          <Text b color="inherit" css={{ d: 'flex' }}>
+                          <Text
+                            b
+                            color="inherit"
+                            css={{ d: 'flex' }}
+                            onClick={handleDeleteConfirmVisible}
+                          >
                             Delete
                           </Text>
                         </Dropdown.Item>
@@ -267,6 +281,11 @@ function Account({ darkTheme, theme }) {
           account_id={account_id}
           darkTheme={darkTheme}
           theme={theme}
+        />
+        <DeleteConfirm
+          deleteConfirmVisible={deleteConfirmVisible}
+          closeDeleteConfirmHandler={closeDeleteConfirmHandler}
+          userInfo={account_id}
         />
       </div>
     );
