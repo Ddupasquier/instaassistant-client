@@ -24,24 +24,73 @@ import Avatar from 'react-avatar';
 // import { TasksRunning } from '.';
 
 function Account({ darkTheme, theme }) {
+  // * ------- DESCTRUCTURING URL PARAMS ------- *
+  const { account_id } = useParams();
+
+  // * ------- TASK FORM AND MODAL HANDLERS ------- *
   const [deleteConfirmVisible, setDeleteConfirmVisible] = useState(false);
+  const [taskVisible, setTaskVisible] = useState(false);
 
   const handleDeleteConfirmVisible = () => setDeleteConfirmVisible(true);
+  const taskHandler = () => setTaskVisible(true);
 
   const closeDeleteConfirmHandler = () => {
     setDeleteConfirmVisible(false);
   };
+  const closeTaskHandler = () => {
+    setTaskVisible(false);
+  };
+  const handleChange = (e) => {
+    setSelected(e.target.value);
+    setTasksSelected(true);
+  };
 
-  //Route Handle
-  const { account_id } = useParams();
+  const [tasksSelected, setTasksSelected] = useState(false);
+  const [selected, setSelected] = useState('');
+
+  // * ------- STATE ------- *
   const [currentAccount, setCurrentAccount] = useState(null);
   const [snapshots, setSnapshots] = useState([
     { followers: 9999, following: 99999, profile_pic: '' },
   ]);
-
-  // console.log('from account', snapshots);
   const [tasks, setTasks] = useState([]);
+  const [utilization, setUtilization] = useState(0);
+  const [interactions, setInteractions] = useState(0);
+  const [followersGained, setFollowersGained] = useState(0);
+  const [follows, setFollows] = useState(0);
+  const [likes, setLikes] = useState(0);
+  const [comments, setComments] = useState(0);
+  const [messages, setMessages] = useState(0);
 
+  /** description
+   * @param {string} account_id
+   * @returns {object} account
+   * @description Fetches account data from API
+   * @example
+   * const account = await ShowAccount(account_id)
+   * @see ShowAccount
+   * @see getSnapshots
+   * @see GetTasks
+   * @see useEffect
+   * @see useState
+   * @see setSnapshots
+   * @see setTasks
+   * @see setUtilization
+   * @see setInteractions
+   * @see setFollowersGained
+   * @see setFollows
+   * @see setLikes
+   * @see setComments
+   * @see setMessages
+   * @see setCurrentAccount
+   * @see setSnapshots
+   * @see setTasks
+   * @see setUtilization
+   * @see setInteractions
+   * @todo
+   * - [ ] Add error handling
+   * - [ ] Simplify code
+   */
   useEffect(() => {
     ShowAccount(account_id).then((data) => {
       setCurrentAccount(data);
@@ -61,20 +110,6 @@ function Account({ darkTheme, theme }) {
       }
     });
   }, [account_id]);
-
-  // * ------- TASK FORM AND MODULE HANDLERS ------- *
-  const [tasksSelected, setTasksSelected] = useState(false);
-  const [selected, setSelected] = useState('');
-  const [taskVisible, setTaskVisible] = useState(false);
-
-  // PAGE CONTROL
-  const [utilization, setUtilization] = useState(0);
-  const [interactions, setInteractions] = useState(0);
-  const [followersGained, setFollowersGained] = useState(0);
-  const [follows, setFollows] = useState(0);
-  const [likes, setLikes] = useState(0);
-  const [comments, setComments] = useState(0);
-  const [messages, setMessages] = useState(0);
 
   useEffect(() => {
     let follows_sent = 0;
@@ -119,17 +154,7 @@ function Account({ darkTheme, theme }) {
     );
   }, [currentAccount, snapshots, tasks]);
 
-  const taskHandler = () => setTaskVisible(true);
-
-  const closeTaskHandler = () => {
-    setTaskVisible(false);
-  };
-
-  const handleChange = (e) => {
-    setSelected(e.target.value);
-    setTasksSelected(true);
-  };
-
+  // * ------- RENDER ICONS ------- *
   const platformIcon = () => {
     if (currentAccount.platform === 'INSTAGRAM') {
       return <FiInstagram size="20" />;
@@ -143,7 +168,12 @@ function Account({ darkTheme, theme }) {
   };
 
   if (currentAccount === null || snapshots === null) {
-    return <Loading size="xl" />;
+    return (
+      <Loading
+        size="xl"
+        style={{ position: 'absolute', top: '50%', left: '50%' }}
+      />
+    );
   } else {
     return (
       <div className="account-container">
@@ -165,7 +195,6 @@ function Account({ darkTheme, theme }) {
         </div>
         <>
           <Grid.Container justify="center">
-            {/* <Grid sm={3} xs={12}></Grid> */}
             <Grid sm={6} xs={9}>
               <Card
                 css={{
@@ -253,14 +282,11 @@ function Account({ darkTheme, theme }) {
                 </Card.Header>
               </Card>
             </Grid>
-            {/* <Grid sm={3} xs={12}></Grid> */}
           </Grid.Container>
         </>
 
         <div className="account-metrics">
           <Grid.Container gap={2}>
-            {/* {currentAccount.active && <TasksRunning active={'task'} />} */}
-
             <Utilization num={utilization} />
             <Interactions num={interactions} />
             <FollowerGain num={followersGained} />
@@ -282,7 +308,6 @@ function Account({ darkTheme, theme }) {
           selected={selected}
           tasksSelected={tasksSelected}
           tasks={tasks}
-          // tasksLoaded={tasksLoaded}
           account_id={account_id}
         />
         <ConfigPopup
