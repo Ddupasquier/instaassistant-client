@@ -14,16 +14,17 @@ import {
   TaskPath,
   AccountTaskPath,
   CheckoutEndpoint,
-} from './endpoints';
+  unstickAccountPath,
+} from "./endpoints";
 
 // ----------- Start User
 
 export const CreateUserPost = async (userInfo) => {
   const response = await fetch(CreateUserPath, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
+      "Content-Type": "application/json",
+      Accept: "application/json",
     },
     body: JSON.stringify(userInfo),
   });
@@ -32,10 +33,10 @@ export const CreateUserPost = async (userInfo) => {
 
 export const loginFetch = async (userInfo) => {
   const resp = await fetch(UserLoginPath, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
+      "Content-Type": "application/json",
+      Accept: "application/json",
     },
     body: JSON.stringify(userInfo),
   });
@@ -43,27 +44,27 @@ export const loginFetch = async (userInfo) => {
   if (resp_1.error) {
     alert(resp_1.error);
   } else {
-    localStorage.setItem('user', JSON.stringify(resp_1.user));
-    localStorage.setItem('token', resp_1.jwt);
-    localStorage.setItem('email', JSON.stringify(resp_1.email));
-    window.location.replace('/');
+    localStorage.setItem("user", JSON.stringify(resp_1.user));
+    localStorage.setItem("token", resp_1.jwt);
+    localStorage.setItem("email", JSON.stringify(resp_1.email));
+    window.location.replace("/");
   }
 };
 
 export const Logout = () => {
-  localStorage.removeItem('token');
-  localStorage.removeItem('user');
-  localStorage.removeItem('email');
-  window.location.replace('/');
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
+  localStorage.removeItem("email");
+  window.location.replace("/");
 };
 
 export const GetUserInfo = async () => {
-  const response = await fetch(UserViewPath + localStorage.getItem('user'), {
-    method: 'GET',
+  const response = await fetch(UserViewPath + localStorage.getItem("user"), {
+    method: "GET",
     headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Authorization: localStorage.getItem('token'),
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: localStorage.getItem("token"),
     },
   });
   return await response.json();
@@ -75,13 +76,13 @@ export const GetUserInfo = async () => {
 
 export const CreateAccount = async (formData) => {
   const response = await fetch(
-    CreateAccountPath[0] + localStorage.getItem('user') + CreateAccountPath[1],
+    CreateAccountPath[0] + localStorage.getItem("user") + CreateAccountPath[1],
     {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-        Authorization: localStorage.getItem('token'),
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: localStorage.getItem("token"),
       },
       body: JSON.stringify(formData),
     }
@@ -98,11 +99,11 @@ export const CreateAccount = async (formData) => {
 
 export const PatchAccount = async (formData, account_id) => {
   const response = await fetch(AccountPatchPath + account_id, {
-    method: 'PATCH',
+    method: "PATCH",
     headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Authorization: localStorage.getItem('token'),
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: localStorage.getItem("token"),
     },
     body: JSON.stringify(formData),
   });
@@ -111,11 +112,11 @@ export const PatchAccount = async (formData, account_id) => {
 
 export const indexAccounts = async () => {
   const response = await fetch(BotIndexPath, {
-    method: 'GET',
+    method: "GET",
     headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Authorization: localStorage.getItem('token'),
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: localStorage.getItem("token"),
     },
   });
   return await response.json();
@@ -123,11 +124,11 @@ export const indexAccounts = async () => {
 
 export const ShowAccount = async (id) => {
   const response = await fetch(AccountShowPath + id, {
-    method: 'GET',
+    method: "GET",
     headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Authorization: localStorage.getItem('token'),
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: localStorage.getItem("token"),
     },
   });
   return await response.json();
@@ -146,12 +147,12 @@ export const DeleteAccount = async (id) => {
 };
 
 export const unstickAccount = async (account_id) => {
-  const response = await fetch(unstickAccount + '/' + account_id, {
-    method: 'GET',
+  const response = await fetch(unstickAccountPath + account_id, {
+    method: "GET",
     headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Authorization: localStorage.getItem('token'),
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: localStorage.getItem("token"),
     },
   });
   return await response.json();
@@ -163,11 +164,11 @@ export const unstickAccount = async (account_id) => {
 
 export const PostTask = async (formData) => {
   const response = await fetch(TaskPath, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Authorization: localStorage.getItem('token'),
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: localStorage.getItem("token"),
     },
     body: JSON.stringify(formData),
   });
@@ -175,24 +176,24 @@ export const PostTask = async (formData) => {
 };
 
 export const GetTasks = async (account_id) => {
-  const response = await fetch(AccountTaskPath + '/' + account_id, {
-    method: 'GET',
+  const response = await fetch(AccountTaskPath + "/" + account_id, {
+    method: "GET",
     headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Authorization: localStorage.getItem('token'),
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: localStorage.getItem("token"),
     },
   });
   return await response.json();
 };
 
 export const GetTask = async (task_id) => {
-  const response = await fetch(TaskPath + '/' + task_id, {
-    method: 'GET',
+  const response = await fetch(TaskPath + "/" + task_id, {
+    method: "GET",
     headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Authorization: localStorage.getItem('token'),
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: localStorage.getItem("token"),
     },
   });
   return await response.json();
@@ -203,12 +204,12 @@ export const GetTask = async (task_id) => {
 // ---------- START SNAPSHOTS
 
 export const getSnapshots = async (account_id) => {
-  const response = await fetch(snapshotPath + '/' + account_id, {
-    method: 'GET',
+  const response = await fetch(snapshotPath + "/" + account_id, {
+    method: "GET",
     headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Authorization: localStorage.getItem('token'),
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: localStorage.getItem("token"),
     },
   });
   return await response.json();
@@ -234,11 +235,11 @@ export const FetchInstagramTaskTypes = async () => {
 
 export const CreateCheckoutSession = async (formData) => {
   const response = await fetch(CheckoutEndpoint, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Authorization: localStorage.getItem('token'),
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: localStorage.getItem("token"),
     },
     body: JSON.stringify(formData),
   });

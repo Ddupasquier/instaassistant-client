@@ -15,7 +15,7 @@ function MetricChart({ snapshots }) {
         }}
       >
         <Card.Header>
-          Follower / Following - Week | Month&nbsp;
+          Follower / Following - 30 days &nbsp;
           <IconsQuestionMark
             content="Total number of follows, likes, comments and Messages sent on your behalf."
             local="top"

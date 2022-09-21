@@ -29,22 +29,22 @@ const AccountUpdate = () => {
           <Card.Body>
             <form>
               <div>
-                <Input bordered label="Name:" placeholder="Name" />
+                <Input disabled bordered label="Name:" placeholder="Name" />
               </div>
               <div>
-                <Input bordered label="Username:" placeholder="Username" />
+                <Input disabled bordered label="Username:" placeholder="Username" />
               </div>
               <div>
-                <Input bordered label="Bio:" placeholder="Bio" />
+                <Input disabled bordered label="Bio:" placeholder="Bio" />
               </div>
               <div>
-                <Input bordered label="Email:" placeholder="Email" />
+                <Input disabled bordered label="Email:" placeholder="Email" />
               </div>
               <div>
-                <Input bordered label="Phone:" placeholder="Phone Number" />
+                <Input disabled bordered label="Phone:" placeholder="Phone Number" />
               </div>
               <div>
-                <Input bordered label="Full Name:" placeholder="Website" />
+                <Input disabled bordered label="Full Name:" placeholder="Website" />
               </div>
               <div>
                 <Input disabled bordered label="Gender:" placeholder="Gender" />

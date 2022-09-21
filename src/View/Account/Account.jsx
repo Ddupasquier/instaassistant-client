@@ -115,7 +115,7 @@ function Account({ darkTheme, theme }) {
     }
 
     setFollowersGained(
-      snapshots[0].followers - snapshots[snapshots.length - 1].followers
+       snapshots[snapshots.length - 1].followers - snapshots[0].followers
     );
   }, [currentAccount, snapshots, tasks]);
 
@@ -190,6 +190,14 @@ function Account({ darkTheme, theme }) {
                         textSizeRatio={2}
                       />
                       <Text>@{currentAccount.username}</Text>
+                    </section>
+                    <section>
+                      <legend>Posts</legend>
+                      <div className="followers">
+                        {snapshots
+                          ? snapshots[snapshots.length - 1].posts
+                          : 99999}
+                      </div>
                     </section>
                     <section>
                       <legend>Followers</legend>

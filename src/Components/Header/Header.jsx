@@ -32,7 +32,7 @@ function Header({ menuSelected, theme, darkTheme }) {
         style={{ zIndex: 1 }}
         weight="bold"
         >
-          {capFirstLetter('Company Name')} {'  '}
+          {localStorage.getItem('email').replace(/['"]+/g, '')} {'  '}
         </Text>
         
 

@@ -27,7 +27,7 @@ const InteractionLimits = ({ follows, likes, comments, messages }) => {
           background: '$myColor',
         }}
       >
-        <Card.Header>Interaction Limits</Card.Header>
+        <Card.Header>Daily Interaction Limits</Card.Header>
         <Card.Divider />
         <Card.Body>
           <LimitsRadial data={data} />
