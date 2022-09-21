@@ -78,8 +78,7 @@ function LimitsBars({ data: { follows, likes, comments, messages } }) {
     });
   }, [comments, follows, likes, messages]);
 
-
-  const smallScreenCheck = window.innerWidth <= 960 ? "200" : "420";
+  const smallScreenCheck = window.innerWidth <= 960 ? '200' : '420';
 
   return (
     <Bar options={chartOptions} data={followerData} height={smallScreenCheck} />

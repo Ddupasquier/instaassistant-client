@@ -49,6 +49,14 @@
           background: rgba(255, 255, 255, 0.4);
         }
       }
+      &:nth-child(4) {
+        div {
+          border-radius: 25px;
+          padding: 0.2rem 1rem;
+          backdrop-filter: saturate(200%) blur(8px);
+          background: rgba(255, 255, 255, 0.4);
+        }
+      }
     }
   }
   .user-links {
@@ -72,6 +80,7 @@
     }
     .config-main {
       width: 100%;
+      padding: 1.5rem;
       .config-toggles {
         section {
           text-align: center;
@@ -89,6 +98,6 @@
 
 .config-tooltip {
   position: absolute;
-  right: .6rem;
+  right: 0.6rem;
   top: 2.2rem;
 }

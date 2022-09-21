@@ -52,6 +52,13 @@
           backdrop-filter: saturate(200%) blur(8px);
   background: rgba(255, 255, 255, 0.4);
 }
+.account-container .user section:nth-child(4) div {
+  border-radius: 25px;
+  padding: 0.2rem 1rem;
+  -webkit-backdrop-filter: saturate(200%) blur(8px);
+          backdrop-filter: saturate(200%) blur(8px);
+  background: rgba(255, 255, 255, 0.4);
+}
 .account-container .user-links {
   display: flex;
   flex-direction: row;
@@ -71,6 +78,7 @@
 }
 .account-container .config .config-main {
   width: 100%;
+  padding: 1.5rem;
 }
 .account-container .config .config-main .config-toggles section {
   text-align: center;

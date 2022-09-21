@@ -51,37 +51,37 @@ function ConfigPopup({ currentAccount, account_id, theme, darkTheme }) {
       label: 'Look Alike',
       value: lookalike,
       set: setLookalike,
-      tool: "This list is used to store account that you think are similar to your own."
+      tool: 'This list is used to store account that you think are similar to your own.',
     },
     {
       label: 'White List',
       value: whiteList,
       set: setWhiteList,
-      tool: "This list is used to store accounts that we will not un-follow."
+      tool: 'This list is used to store accounts that we will not un-follow.',
     },
     {
       label: 'Black List',
       value: blackList,
       set: setBlackList,
-      tool: "This list is used to store accounts that we will not interact with."
+      tool: 'This list is used to store accounts that we will not interact with.',
     },
     {
       label: 'Comments',
       value: comments,
       set: setComments,
-      tool: "This list is used to store generic comments AntiSocialSuite can send on your behalf."
+      tool: 'This list is used to store generic comments AntiSocialSuite can send on your behalf.',
     },
     {
       label: 'Direct Messages',
       value: messages,
       set: setMessages,
-      tool: "This list is used to store generic comments AntiSocialSuite can send on your behalf."
+      tool: 'This list is used to store generic comments AntiSocialSuite can send on your behalf.',
     },
     {
       label: 'Account Tags',
       value: tags,
       set: setTags,
-      tool: 'use tags so you can easily find this account on the "accounts page."'
+      tool: 'use tags so you can easily find this account on the "accounts page."',
     },
   ];
 
@@ -100,7 +100,7 @@ function ConfigPopup({ currentAccount, account_id, theme, darkTheme }) {
       messages: messages,
       tags: tags,
     };
-      PatchAccount(body, account_id).then(window.location.reload());
+    PatchAccount(body, account_id).then(window.location.reload());
   };
 
   const configPosition = {
