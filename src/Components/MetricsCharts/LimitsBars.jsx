@@ -29,7 +29,7 @@ ChartJS.register(
   ArcElement
 );
 
-function LimitsRadial({ data: { follows, likes, comments, messages } }) {
+function LimitsBars({ data: { follows, likes, comments, messages } }) {
   const [followerData, setFollowerData] = useState({
     datasets: [],
   });
@@ -44,16 +44,16 @@ function LimitsRadial({ data: { follows, likes, comments, messages } }) {
           label: 'Utilization',
           data: [follows, likes, comments, messages],
           backgroundColor: [
-            'rgb(255, 0, 150, .3)',
-            'rgb(0, 150, 150, .3)',
-            'rgb(0, 90, 150, .3)',
-            'rgb(100, 150, 0, .3)',
+            'rgb(45, 0, 255, .7)',
+            'rgb(85, 0, 255, .7)',
+            'rgb(125, 0, 255, .7)',
+            'rgb(165, 0, 255, .7)',
           ],
           borderColor: [
-            'rgb(150, 0, 0, .3)',
-            'rgb(0, 150, 0, .3)',
-            'rgb(0, 0, 150, .3)',
-            'rgb(150, 150, 0, .3)',
+            'rgb(45, 0, 255, .7)',
+            'rgb(85, 0, 255, .7)',
+            'rgb(125, 0, 255, .7)',
+            'rgb(165, 0, 255, .7)',
           ],
           borderWidth: 1,
           fill: 'origin',
@@ -65,10 +65,7 @@ function LimitsRadial({ data: { follows, likes, comments, messages } }) {
       responsive: true,
       plugins: {
         legend: {
-          position: 'bottom',
-          labels: {
-            color: '$font',
-          },
+          display: false,
         },
       },
       scales: {
@@ -82,10 +79,7 @@ function LimitsRadial({ data: { follows, likes, comments, messages } }) {
   }, [comments, follows, likes, messages]);
 
   return (
-    <Bar
-      options={chartOptions}
-      data={followerData}
-    />
+    <Bar options={chartOptions} data={followerData} height="420" />
     // <PolarArea
     //   options={chartOptions}
     //   data={followerData}
@@ -93,4 +87,4 @@ function LimitsRadial({ data: { follows, likes, comments, messages } }) {
   );
 }
 
-export default LimitsRadial;
+export default LimitsBars;

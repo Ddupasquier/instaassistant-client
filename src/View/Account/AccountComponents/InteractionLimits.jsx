@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Grid, Card } from '@nextui-org/react';
-import LimitsRadial from 'Components/MetricsCharts/LimitsRadial';
+import LimitsRadial from 'Components/MetricsCharts/LimitsBars';
 
 const InteractionLimits = ({ follows, likes, comments, messages }) => {
   const [data, setData] = useState({

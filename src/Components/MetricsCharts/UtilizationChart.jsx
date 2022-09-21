@@ -77,7 +77,7 @@ function UtilizationChart({ data }) {
           position: 'bottom',
           labels: {
             color: '$font',
-          }
+          },
         },
       },
       scales: {
@@ -93,7 +93,7 @@ function UtilizationChart({ data }) {
     });
   }, []);
 
-  return <Line options={chartOptions} data={followerData} />;
+  return <Line options={chartOptions} data={followerData} height="50" />;
 }
 
 export default UtilizationChart;
