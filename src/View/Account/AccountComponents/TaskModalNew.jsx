@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import {
   Modal,
   Textarea,
@@ -21,9 +21,9 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
   const [listType, setListType] = useState();
   const [action, setAction] = useState();
   const [schedule, setSchedule] = useState(false);
-  const [targetUrl, setTargetUrl] = useState()
-  const [customMessages, setCustomMessages] = useState()
-  const [customComments, setCustomComments] = useState()
+  const [targetUrl, setTargetUrl] = useState();
+  const [customMessages, setCustomMessages] = useState();
+  const [customComments, setCustomComments] = useState();
 
   useEffect(() => {
     var today = new Date();
@@ -45,7 +45,6 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
     setDate(todaysDate);
   }, [todaysDate]);
 
-
   const HandleSubmit = (e) => {
     e.preventDefault();
 
@@ -61,7 +60,7 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
       custom_messages: customMessages,
       custom_comments: customComments,
     };
-    console.log(payload)
+    console.log(payload);
     PostTask(payload);
   };
 
@@ -82,36 +81,91 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
 
   //* DATE SELECTION
   const [month, setMonth] = useState(new Set(['Month']));
-  const selectedValue = React.useMemo(
+  const selectedValue = useMemo(
     () => Array.from(month).join(', ').replaceAll('_', ' '),
     [month]
   );
 
   const [day, setDay] = useState(new Set(['Day']));
-  const selectedDay = React.useMemo(
+  const selectedDay = useMemo(
     () => Array.from(day).join(', ').replaceAll('_', ' '),
     [day]
   );
 
   const [hour, setHour] = useState(new Set(['Hour']));
-  const selectedHour = React.useMemo(
+  const selectedHour = useMemo(
     () => Array.from(hour).join(', ').replaceAll('_', ' '),
     [hour]
   );
 
-  const Month_Days = {
-    January: 31,
-    February: 28,
-    March: 31,
-    April: 30,
-    May: 31,
-    June: 30,
-    July: 31,
-    August: 31,
-    September: 30,
-    October: 31,
-    November: 30,
-    December: 31,
+  // return THIS month
+  const thisMonth = new Date().getMonth() + 1;
+
+  // return THIS year
+  const thisYear = new Date().getFullYear();
+
+  const daysThisMonth = () => {
+    const days = [];
+    for (let i = 1; i <= new Date(thisYear, thisMonth, 0).getDate(); i++) {
+      days.push(String(i));
+    }
+    return days;
+  };
+
+  const days = daysThisMonth().map((day) => {
+    return <Dropdown.Item key={day}>{day}</Dropdown.Item>;
+  });
+
+  const hoursThisDay = () => {
+    let i = 1;
+    let count = 12;
+    const hours = [];
+
+    while (hours.length < 24) {
+      if (count > 12) count = 1;
+      if (i < 12) {
+        hours.push(`${count}:00AM`);
+      } else {
+        hours.push(`${count}:00PM`);
+      }
+      i++;
+      count++;
+    }
+    return hours;
+  };
+
+  const hours = hoursThisDay().map((hour, i) => {
+    return <Dropdown.Item key={i}>{hour}</Dropdown.Item>;
+  });
+
+  const pastMonths = () => {
+    const pastMonths = [];
+    const today = new Date();
+    const currentMonth = today.getMonth();
+    for (let i = 0; i < currentMonth; i++) {
+      pastMonths.push(String(i + 1));
+    }
+    return pastMonths;
+  };
+
+  const pastDays = () => {
+    const pastDays = [];
+    const today = new Date();
+    const currentDay = today.getDate();
+    for (let i = 0; i < currentDay; i++) {
+      pastDays.push(String(i + 1));
+    }
+    return pastDays;
+  };
+
+  const pastHours = () => {
+    const pastHours = [];
+    const today = new Date();
+    const currentHour = today.getHours();
+    for (let i = 0; i < currentHour; i++) {
+      pastHours.push(String(i + 1));
+    }
+    return pastHours;
   };
 
   return (
@@ -340,7 +394,9 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
                               color="secondary"
                               labelPlaceholder="Custom Message(s)"
                               value={customMessages}
-                              onChange={(e) => setCustomMessages(e.target.value)}
+                              onChange={(e) =>
+                                setCustomMessages(e.target.value)
+                              }
                             />
                           </>
                         ) : null}
@@ -352,7 +408,9 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
                               color="secondary"
                               labelPlaceholder="Custom Comment(s)"
                               value={customComments}
-                              onChange={(e) => setCustomComments(e.target.value)}
+                              onChange={(e) =>
+                                setCustomComments(e.target.value)
+                              }
                             />
                           </>
                         ) : null}
@@ -390,18 +448,17 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
                           selectionMode="single"
                           selectedKeys={month}
                           onSelectionChange={setMonth}
+                          disabledKeys={pastMonths()}
                         >
-                          <Dropdown.Item key="01">January</Dropdown.Item>
-                          <Dropdown.Item key="02">Febuary</Dropdown.Item>
-                          <Dropdown.Item key="03">March</Dropdown.Item>
-                          <Dropdown.Item key="04">April</Dropdown.Item>
-                          <Dropdown.Item key="05">May</Dropdown.Item>
-                          <Dropdown.Item key="06">June</Dropdown.Item>
-                          <Dropdown.Item key="07">July</Dropdown.Item>
-                          <Dropdown.Item key="08">August</Dropdown.Item>
-                          <Dropdown.Item key="09">
-                            September
-                          </Dropdown.Item>
+                          <Dropdown.Item key="1">January</Dropdown.Item>
+                          <Dropdown.Item key="2">Febuary</Dropdown.Item>
+                          <Dropdown.Item key="3">March</Dropdown.Item>
+                          <Dropdown.Item key="4">April</Dropdown.Item>
+                          <Dropdown.Item key="5">May</Dropdown.Item>
+                          <Dropdown.Item key="6">June</Dropdown.Item>
+                          <Dropdown.Item key="7">July</Dropdown.Item>
+                          <Dropdown.Item key="8">August</Dropdown.Item>
+                          <Dropdown.Item key="9">September</Dropdown.Item>
                           <Dropdown.Item key="10">October</Dropdown.Item>
                           <Dropdown.Item key="11">November</Dropdown.Item>
                           <Dropdown.Item key="12">December</Dropdown.Item>
@@ -422,19 +479,9 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
                           selectionMode="single"
                           selectedKeys={day}
                           onSelectionChange={setDay}
+                          disabledKeys={pastDays()}
                         >
-                          <Dropdown.Item key="1">1</Dropdown.Item>
-                          <Dropdown.Item key="2">2</Dropdown.Item>
-                          <Dropdown.Item key="3">3</Dropdown.Item>
-                          <Dropdown.Item key="4">4</Dropdown.Item>
-                          <Dropdown.Item key="5">5</Dropdown.Item>
-                          <Dropdown.Item key="6">6</Dropdown.Item>
-                          <Dropdown.Item key="7">7</Dropdown.Item>
-                          <Dropdown.Item key="8">8</Dropdown.Item>
-                          <Dropdown.Item key="9">9</Dropdown.Item>
-                          <Dropdown.Item key="10">10</Dropdown.Item>
-                          <Dropdown.Item key="11">11</Dropdown.Item>
-                          <Dropdown.Item key="12">12</Dropdown.Item>
+                          {days}
                         </Dropdown.Menu>
                       </Dropdown>
                       <Dropdown>
@@ -452,34 +499,9 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
                           selectionMode="single"
                           selectedKeys={hour}
                           onSelectionChange={setHour}
+                          disabledKeys={pastHours()}
                         >
-                          <Dropdown.Item key="1">0:00 (12:00 am)</Dropdown.Item>
-                          <Dropdown.Item key="1">1:00</Dropdown.Item>
-                          <Dropdown.Item key="2">2:00</Dropdown.Item>
-                          <Dropdown.Item key="3">3:00</Dropdown.Item>
-                          <Dropdown.Item key="4">4:00</Dropdown.Item>
-                          <Dropdown.Item key="5">5:00</Dropdown.Item>
-                          <Dropdown.Item key="6">6:00</Dropdown.Item>
-                          <Dropdown.Item key="7">7:00</Dropdown.Item>
-                          <Dropdown.Item key="8">8:00</Dropdown.Item>
-                          <Dropdown.Item key="9">9:00</Dropdown.Item>
-                          <Dropdown.Item key="10">10:00</Dropdown.Item>
-                          <Dropdown.Item key="11">11:00</Dropdown.Item>
-                          <Dropdown.Item key="12">
-                            12:00 (12:00 noon)
-                          </Dropdown.Item>
-                          <Dropdown.Item key="13">13:00</Dropdown.Item>
-                          <Dropdown.Item key="14">14:00</Dropdown.Item>
-                          <Dropdown.Item key="15">15:00</Dropdown.Item>
-                          <Dropdown.Item key="16">16:00</Dropdown.Item>
-                          <Dropdown.Item key="17">17:00</Dropdown.Item>
-                          <Dropdown.Item key="18">18:00</Dropdown.Item>
-                          <Dropdown.Item key="19">19:00</Dropdown.Item>
-                          <Dropdown.Item key="20">20:00</Dropdown.Item>
-                          <Dropdown.Item key="21">21:00</Dropdown.Item>
-                          <Dropdown.Item key="22">22:00</Dropdown.Item>
-                          <Dropdown.Item key="23">23:00</Dropdown.Item>
-                          <Dropdown.Item key="24">24:00</Dropdown.Item>
+                          {hours}
                         </Dropdown.Menu>
                       </Dropdown>
                     </div>
