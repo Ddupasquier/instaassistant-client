@@ -25,7 +25,6 @@ import Avatar from 'react-avatar';
 
 function Account({ darkTheme, theme }) {
   const [deleteConfirmVisible, setDeleteConfirmVisible] = useState(false);
-  console.log('deleteConfirmVisible', deleteConfirmVisible);
 
   const handleDeleteConfirmVisible = () => setDeleteConfirmVisible(true);
 
@@ -285,7 +284,7 @@ function Account({ darkTheme, theme }) {
         <DeleteConfirm
           deleteConfirmVisible={deleteConfirmVisible}
           closeDeleteConfirmHandler={closeDeleteConfirmHandler}
-          userInfo={account_id}
+          userInfo={currentAccount}
         />
       </div>
     );
