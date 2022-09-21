@@ -14,6 +14,7 @@ import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 
 const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
   const [todaysDate, setTodaysDate] = useState();
+
   const [date, setDate] = useState();
   const [year, setYear] = useState();
 
@@ -60,7 +61,6 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
       custom_messages: customMessages,
       custom_comments: customComments,
     };
-    console.log(payload);
     PostTask(payload);
   };
 
@@ -153,7 +153,7 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
     const today = new Date();
     const currentDay = today.getDate();
     for (let i = 0; i < currentDay; i++) {
-      pastDays.push(String(i + 1));
+      pastDays.push(String(i));
     }
     return pastDays;
   };
