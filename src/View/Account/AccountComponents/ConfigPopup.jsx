@@ -94,7 +94,9 @@ function ConfigPopup({ currentAccount, account_id, theme, darkTheme }) {
       messages: messages,
       tags: tags,
     };
-    PatchAccount(body, account_id).then(window.location.reload());
+    setTimeout(() => {
+      PatchAccount(body, account_id).then(window.location.reload());
+    }, 2000);
   };
 
   const configPosition = {
@@ -198,8 +200,8 @@ function ConfigPopup({ currentAccount, account_id, theme, darkTheme }) {
                       label={textarea.label}
                       value={textarea.value || ''}
                       set={textarea.set}
-                      toolTipContent={"test"}
-                      toolTipLocal={"top"}
+                      toolTipContent={'test'}
+                      toolTipLocal={'top'}
                     />
                   ))}
                 </Grid.Container>

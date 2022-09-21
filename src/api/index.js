@@ -71,7 +71,7 @@ export const GetUserInfo = async () => {
 
 // END USER
 
-// -------------- START ACCOUNTs
+// -------------- START ACCOUNTS
 
 export const CreateAccount = async (formData) => {
   const response = await fetch(
@@ -140,6 +140,18 @@ export const DeleteAccount = async (id) => {
       "Content-Type": "application/json",
       Accept: "application/json",
       Authorization: localStorage.getItem("token"),
+    },
+  });
+  return await response.json();
+};
+
+export const unstickAccount = async (account_id) => {
+  const response = await fetch(unstickAccount + '/' + account_id, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: localStorage.getItem('token'),
     },
   });
   return await response.json();

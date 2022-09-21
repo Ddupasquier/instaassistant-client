@@ -223,9 +223,11 @@ function Account({ darkTheme, theme }) {
                           </Text>
                         </Dropdown.Item>
                         <Dropdown.Item key="Edit">
-                          <Text b color="inherit" css={{ d: 'flex' }}>
-                            Edit Profile
-                          </Text>
+                          <Link to={`/accounts/instagram/${account_id}/update`}>
+                            <Text b color="inherit" css={{ d: 'flex' }}>
+                              Edit Profile
+                            </Text>
+                          </Link>
                         </Dropdown.Item>
                         <Dropdown.Item key="Delete">
                           <Text

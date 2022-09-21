@@ -1,6 +1,14 @@
-const { Input, Text, Card, Link, Button } = require("@nextui-org/react");
+import { useParams } from 'react-router-dom';
+import { Input, Text, Card, Link, Button } from '@nextui-org/react';
+import { unstickAccount } from 'api';
 
 const AccountUpdate = () => {
+  const { account_id } = useParams();
+
+  const handleUnstick = () => {
+    unstickAccount(account_id);
+  };
+
   return (
     <>
       <div style={{ zIndex: 10 }}>
@@ -10,7 +18,7 @@ const AccountUpdate = () => {
               h1
               size={50}
               css={{
-                textGradient: "45deg, $blue600 -20%, $pink600 50%",
+                textGradient: '45deg, $blue600 -20%, $pink600 50%',
               }}
               style={{ zIndex: 1 }}
               weight="bold"
@@ -58,7 +66,7 @@ const AccountUpdate = () => {
                   h1
                   size={20}
                   css={{
-                    textGradient: "45deg, $blue600 -20%, $pink600 50%",
+                    textGradient: '45deg, $blue600 -20%, $pink600 50%',
                   }}
                   style={{ zIndex: 1 }}
                   weight="bold"
@@ -67,7 +75,7 @@ const AccountUpdate = () => {
                 </Text>
               </Button>
             </Link>
-            <Button>Un-stuck My Account</Button>
+            <Button onClick={handleUnstick}>Un-stuck My Account</Button>
           </Card.Footer>
         </Card>
       </div>
