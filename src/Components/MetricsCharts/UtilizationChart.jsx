@@ -61,8 +61,8 @@ function UtilizationChart({ data }) {
         {
           label: 'Utilization',
           data: getRandomUtilization(),
-          backgroundColor: 'rgba(132, 0, 132, 0.2)',
-          borderColor: 'rgba(132, 0, 132, 1)',
+          backgroundColor: 'rgb(165, 0, 255, .4)',
+          borderColor: 'rgb(165, 0, 255, .4)',
           borderWidth: 1,
           fill: 'origin',
           tension: 0.4,
