@@ -61,6 +61,7 @@ const TaskModalNew = ({ closeTaskHandler, taskVisible, account_id }) => {
       custom_messages: customMessages,
       custom_comments: customComments,
     };
+    console.log(payload)
     PostTask(payload);
   };
 

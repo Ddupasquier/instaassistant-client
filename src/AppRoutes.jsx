@@ -14,14 +14,14 @@ import { Account } from 'View/Account';
 import { FAQ } from 'View/FAQ';
 import { Login } from 'View/Login';
 import { SignUp } from 'View/SignUp';
-import { Task } from 'View/Task';
-import Tasks from 'View/Tasks';
 import { AccountUpdate } from 'View/AccountUpdate';
 import { Accounts } from 'View/Accounts';
+import { Stripe } from 'View/Stripe';
+import TaskModal from 'View/Account/AccountComponents/TaskModal';
 
 // NextUI import
 import { NextUIProvider, createTheme } from '@nextui-org/react';
-import { Stripe } from 'View/Stripe';
+
 
 
 const darkTheme = createTheme({
@@ -76,6 +76,7 @@ function AppRoutes() {
               <Route path="/billing" element={<Billing />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/accounts" element={<Accounts />} />
+              <Route path="/testmodal" element={<TaskModal />} />
               <Route path="/accounts/instagram/:account_id/update" element={<AccountUpdate />} />
             <Route
                 path="/accounts/instagram/:account_id"
@@ -85,8 +86,6 @@ function AppRoutes() {
               <Route path="/FAQ" element={<FAQ />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<SignUp />} />
-              <Route path="/task" element={<Task />} />
-              <Route path="/tasks" element={<Tasks />} />
               <Route path="/stripe" element={<Stripe />} />
             </Route>
           </Routes>
