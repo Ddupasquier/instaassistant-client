@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { getDaysThisMonth, getRandomUtilization } from './utils';
 import { Bar, Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -32,27 +33,7 @@ function UtilizationChart({ data }) {
 
   const [chartOptions, setChartOptions] = useState({});
 
-  const getDaysThisMonth = () => {
-    const days = [];
-    const date = new Date();
-    const year = date.getFullYear();
-    const month = date.getMonth();
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-    for (let i = 1; i <= daysInMonth; i++) {
-      days.push(`${month + 1}/${i}`);
-    }
-    return days;
-  };
-
-  //   array of 30 random numbers between 0 and 100
-
-  const getRandomUtilization = () => {
-    const utilization = [];
-    for (let i = 0; i < 30; i++) {
-      utilization.push(Math.floor(Math.random() * 100));
-    }
-    return utilization;
-  };
+  
 
   useEffect(() => {
     setFollowerData({
@@ -85,6 +66,7 @@ function UtilizationChart({ data }) {
           display: false,
         },
         y: {
+          
           ticks: {
             color: '$font',
           },

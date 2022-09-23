@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { getDaysThisMonth } from './utils';
 import { Bar, Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -27,6 +28,10 @@ ChartJS.register(
 
 function FollowersChart({ snapshots }) {
   const [snaps, setSnaps] = useState([]);
+  const [followerData, setFollowerData] = useState({
+    datasets: [],
+  });
+  const [chartOptions, setChartOptions] = useState({});
 
   useEffect(() => {
     if (snapshots) {
@@ -34,33 +39,13 @@ function FollowersChart({ snapshots }) {
     }
   }, [snapshots]);
 
-  const [followerData, setFollowerData] = useState({
-    datasets: [],
-  });
-
-  const [chartOptions, setChartOptions] = useState({});
-
-  const getDaysThisMonth = () => {
-    const days = [];
-    const date = new Date();
-    const year = date.getFullYear();
-    const month = date.getMonth();
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-    for (let i = 1; i <= daysInMonth; i++) {
-      days.push(`${month + 1}/${i}`);
-    }
-    return days;
-  };
-
   useEffect(() => {
     const followers = () => {
       if (snaps) return snaps.map((snapshot) => snapshot.followers);
     };
-
     const following = () => {
       if (snaps) return snaps.map((snapshot) => snapshot.following);
     };
-
     setFollowerData({
       labels: getDaysThisMonth(),
       datasets: [

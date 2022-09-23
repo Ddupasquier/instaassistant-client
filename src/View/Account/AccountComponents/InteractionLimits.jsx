@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Grid, Card } from '@nextui-org/react';
-import LimitsRadial from 'Components/Charts/LimitsBars';
+import LimitsDoughnut from 'Components/Charts/LimitsBars';
 
 const InteractionLimits = ({ follows, likes, comments, messages }) => {
   const [data, setData] = useState({
@@ -29,8 +29,8 @@ const InteractionLimits = ({ follows, likes, comments, messages }) => {
       >
         <Card.Header>Daily Interaction Limits</Card.Header>
         <Card.Divider />
-        <Card.Body>
-          <LimitsRadial data={data} />
+        <Card.Body css={{ justifyContent: 'center' }}>
+          <LimitsDoughnut data={data} />
         </Card.Body>
       </Card>
     </Grid>
