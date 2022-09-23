@@ -10,41 +10,21 @@ import {
   listTargets,
   accountListTypes,
   postListTypes,
+  today,
+  thisTime,
 } from './constants';
 
 function TaskModal({ closeTaskHandler, taskVisible, account_id }) {
   const [actionSelected, setActionSelected] = useState('');
   const [listTargetSelected, setListTargetSelected] = useState('');
   const [listTypeSelected, setListTypeSelected] = useState('');
-  const taskVisibleStandin = true;
+  const [schedule, setSchedule] = useState(false);
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  // const payload = {
-  //   account_id: account_id,
-  //   schedule: schedule,
-  //   date: !schedule
-  //     ? todaysDate
-  //     : `${selectedDay}-${selectedValue}-${year};${selectedHour}:00`,
-  //   task_type: action,
-  //   list_type: `${listTarget}:${listType}`,
-  //   target_url: targetUrl,
-  //   custom_messages: customMessages,
-  //   custom_comments: customComments,
-  // };
-  // console.log(payload)
-  // PostTask(payload);
-  // };
-
-  const handleSubmitt = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
-    // const payload = {
-    //   account_id: account_id,
-    //   task_type: e.target.action.value,
-    // };
-    console.log(data);
+    console.log('data', data);
     const payload = {
       account_id: account_id,
       task_type: data.action,
@@ -52,7 +32,11 @@ function TaskModal({ closeTaskHandler, taskVisible, account_id }) {
       target_url: data.targetUrl,
       custom_messages: data.customMessages,
       custom_comments: data.customComments,
+      schedule: schedule,
+      date: `${data.date}T${data.time}`,
     };
+      // PostTask(payload);
+    console.log('payload', payload);
   };
 
   return (
@@ -62,7 +46,7 @@ function TaskModal({ closeTaskHandler, taskVisible, account_id }) {
       preventClose
       width="600px"
       aria-labelledby="modal-title"
-      open={taskVisibleStandin}
+      open={taskVisible}
       onClose={closeTaskHandler}
     >
       <Modal.Header>
@@ -70,7 +54,7 @@ function TaskModal({ closeTaskHandler, taskVisible, account_id }) {
           Start a New Task
         </Text>
       </Modal.Header>
-      <form onSubmit={handleSubmitt}>
+      <form onSubmit={handleSubmit}>
         <Modal.Body css={{ gap: '1rem' }}>
           <div style={{ display: 'flex', gap: '.5rem' }}>
             Action
@@ -182,7 +166,7 @@ function TaskModal({ closeTaskHandler, taskVisible, account_id }) {
             <>
               <Input
                 labelPlaceholder="Target URL"
-                name="targetURL"
+                name="targetUrl"
                 status="secondary"
                 type="text"
                 bordered
@@ -209,6 +193,39 @@ function TaskModal({ closeTaskHandler, taskVisible, account_id }) {
                 bordered
                 color="secondary"
               />
+              <div
+                style={{ display: 'flex', gap: '.5rem', alignItems: 'center' }}
+              >
+                <label
+                  htmlFor="schedule"
+                  style={{ display: 'flex', gap: '.5rem' }}
+                >
+                  <input
+                    type="checkbox"
+                    name="schedule"
+                    onChange={() => setSchedule(true)}
+                  />
+                  Schedule?
+                </label>
+                {schedule && (
+                  <>
+                    <input
+                      defaultValue={today}
+                      type="date"
+                      name="date"
+                      min={today}
+                      style={{ width: '100%' }}
+                    />
+                    <input
+                      defaultValue={thisTime}
+                      type="time"
+                      name="time"
+                      min={thisTime}
+                      style={{ width: '100%' }}
+                    />
+                  </>
+                )}
+              </div>
             </>
           )}
         </Modal.Body>

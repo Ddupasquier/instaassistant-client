@@ -12,7 +12,6 @@ import { Button, Card, Dropdown, Grid, Loading, Text } from '@nextui-org/react';
 import './scss/account-styles.css';
 
 // * ------- COMPONENTS ------- *
-import TaskModalNew from './AccountComponents/TaskModalNew';
 import Utilization from './AccountComponents/Utilization';
 import Interactions from './AccountComponents/Interactions';
 import FollowerGain from './AccountComponents/FollowerGain';
@@ -21,6 +20,7 @@ import InteractionLimits from './AccountComponents/InteractionLimits';
 import ConfigPopup from './AccountComponents/ConfigPopup';
 import DeleteConfirm from 'Components/DeleteConfirm';
 import Avatar from 'react-avatar';
+import TaskModal from './AccountComponents/TaskModal';
 // import { TasksRunning } from '.';
 
 function Account({ darkTheme, theme }) {
@@ -300,14 +300,9 @@ function Account({ darkTheme, theme }) {
             {/* <ActivityLog tasks={tasks} /> */}
           </Grid.Container>
         </div>
-        <TaskModalNew
-          taskHandler={taskHandler}
+        <TaskModal
           closeTaskHandler={closeTaskHandler}
           taskVisible={taskVisible}
-          handleChange={handleChange}
-          selected={selected}
-          tasksSelected={tasksSelected}
-          tasks={tasks}
           account_id={account_id}
         />
         <ConfigPopup
