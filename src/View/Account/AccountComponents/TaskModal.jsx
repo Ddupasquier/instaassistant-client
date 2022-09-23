@@ -1,13 +1,5 @@
-import React, { useEffect, useState, useMemo } from 'react';
-import {
-  Modal,
-  Textarea,
-  Input,
-  Button,
-  Text,
-  Checkbox,
-  Dropdown,
-} from '@nextui-org/react';
+import React, { useState } from 'react';
+import { Modal, Textarea, Input, Button, Text } from '@nextui-org/react';
 import { PostTask } from 'api';
 import { IconsQuestionMark } from 'Components/icons/icons';
 import { BsFillArrowRightCircleFill } from 'react-icons/bs';
@@ -26,23 +18,23 @@ function TaskModal({ closeTaskHandler, taskVisible, account_id }) {
   const [listTypeSelected, setListTypeSelected] = useState('');
   const taskVisibleStandin = true;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // const payload = {
-    //   account_id: account_id,
-    //   schedule: schedule,
-    //   date: !schedule
-    //     ? todaysDate
-    //     : `${selectedDay}-${selectedValue}-${year};${selectedHour}:00`,
-    //   task_type: action,
-    //   list_type: `${listTarget}:${listType}`,
-    //   target_url: targetUrl,
-    //   custom_messages: customMessages,
-    //   custom_comments: customComments,
-    // };
-    // console.log(payload)
-    // PostTask(payload);
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  // const payload = {
+  //   account_id: account_id,
+  //   schedule: schedule,
+  //   date: !schedule
+  //     ? todaysDate
+  //     : `${selectedDay}-${selectedValue}-${year};${selectedHour}:00`,
+  //   task_type: action,
+  //   list_type: `${listTarget}:${listType}`,
+  //   target_url: targetUrl,
+  //   custom_messages: customMessages,
+  //   custom_comments: customComments,
+  // };
+  // console.log(payload)
+  // PostTask(payload);
+  // };
 
   const handleSubmitt = (e) => {
     e.preventDefault();
