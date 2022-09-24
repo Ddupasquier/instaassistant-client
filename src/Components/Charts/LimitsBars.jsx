@@ -127,10 +127,7 @@ function LimitsBars({ data: { follows, likes, comments, messages }, toggle }) {
   return (
     <>
       {!toggle ? (
-        <Doughnut
-          options={chartOptions}
-          data={followerData}
-        />
+        <Doughnut options={chartOptions} data={followerData} />
       ) : (
         <Bar
           options={chartOptions}

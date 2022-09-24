@@ -10,7 +10,6 @@ import App from 'App';
 import { Billing } from 'View/Billing';
 import { Profile } from 'View/Profile';
 import { Account } from 'View/Account';
-// import { Accounts } from 'View/Accounts';
 import { FAQ } from 'View/FAQ';
 import { Login } from 'View/Login';
 import { SignUp } from 'View/SignUp';
@@ -76,7 +75,6 @@ function AppRoutes() {
               <Route path="/billing" element={<Billing />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/accounts" element={<Accounts />} />
-              <Route path="/testmodal" element={<TaskModal />} />
               <Route path="/accounts/instagram/:account_id/update" element={<AccountUpdate />} />
             <Route
                 path="/accounts/instagram/:account_id"
