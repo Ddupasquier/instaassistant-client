@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Bar, Line, PolarArea, Doughnut } from 'react-chartjs-2';
+import { Bar, Doughnut } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
-  PointElement,
-  LineElement,
   CategoryScale,
   LinearScale,
   BarElement,
@@ -11,13 +9,10 @@ import {
   Tooltip,
   Legend,
   Filler,
-  RadialLinearScale,
   ArcElement,
 } from 'chart.js';
 
 ChartJS.register(
-  PointElement,
-  LineElement,
   CategoryScale,
   LinearScale,
   BarElement,
@@ -25,27 +20,77 @@ ChartJS.register(
   Tooltip,
   Legend,
   Filler,
-  RadialLinearScale,
+
   ArcElement
 );
 
-function LimitsBars({ data: { follows, likes, comments, messages } }) {
+function LimitsBars({ data: { follows, likes, comments, messages }, toggle }) {
   const [followerData, setFollowerData] = useState({
     datasets: [],
   });
-
   const [chartOptions, setChartOptions] = useState({});
 
   let unused = 1000 - follows - likes - comments - messages;
 
   useEffect(() => {
+    const checkToggleLabel = () => {
+      if (!toggle) {
+        return ['Follows', 'Likes', 'Comments', 'Messages', 'Unused'];
+      } else {
+        return ['Follows', 'Likes', 'Comments', 'Messages'];
+      }
+    };
+
+    const checkToggleData = () => {
+      if (!toggle) {
+        return [follows, likes, comments, messages, unused];
+      } else {
+        return [follows, likes, comments, messages];
+      }
+    };
+
+    const checkToggleYAxis = () => {
+      if (!toggle) {
+        return {
+          display: false,
+        };
+      } else {
+        return {
+          display: true,
+          ticks: {
+            font: '$font',
+            beginAtZero: true,
+            max: 1000,
+            stepSize: 100,
+          },
+        };
+      }
+    };
+
+    const checkToggleLegend = () => {
+      if (!toggle) {
+        return {
+          display: true,
+          position: 'top',
+          labels: {
+            padding: 20,
+            color: '$font',
+            boxWidth: 10,
+          },
+        };
+      } else {
+        return {
+          display: false,
+        };
+      }
+    };
+
     setFollowerData({
-      labels: ['Follows', 'Likes', 'Comments', 'Messages', 'Unused'],
+      labels: checkToggleLabel(),
       datasets: [
         {
           label: 'Utilization',
-          data: [follows, likes, comments, messages, unused],
-          clip: false,
+          data: checkToggleData(),
           backgroundColor: [
             'rgb(45, 0, 255, .7)',
             'rgb(85, 0, 255, .7)',
@@ -69,30 +114,31 @@ function LimitsBars({ data: { follows, likes, comments, messages } }) {
       title: 'Utilization',
       responsive: true,
       plugins: {
-        legend: {
-          align: 'justify',
-          position: 'top',
-          labels: {
-            color: '$font',
-            boxWidth: 20,
-          },
-        },
+        legend: checkToggleLegend(),
       },
       scales: {
-        y: {
-          display: false,
-          ticks: {
-            color: '$font',
-          },
-        },
+        y: checkToggleYAxis(),
       },
     });
-  }, [comments, follows, likes, messages, unused]);
+  }, [comments, follows, likes, messages, toggle, unused]);
 
-  const smallScreenCheck = window.innerWidth <= 960 ? '200' : '420';
+  const smallScreenCheck = window.innerWidth <= 960 ? '200' : '320';
 
   return (
-    <Doughnut options={chartOptions} data={followerData} height="420" />
+    <>
+      {!toggle ? (
+        <Doughnut
+          options={chartOptions}
+          data={followerData}
+        />
+      ) : (
+        <Bar
+          options={chartOptions}
+          data={followerData}
+          height={smallScreenCheck}
+        />
+      )}
+    </>
   );
 }
 

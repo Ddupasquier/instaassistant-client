@@ -10,9 +10,10 @@ import {
   listTargets,
   accountListTypes,
   postListTypes,
-  today,
-  thisTime,
 } from './constants';
+
+// * ------- UTILS ------- * //
+import { today, thisTime } from './utils';
 
 function TaskModal({ closeTaskHandler, taskVisible, account_id }) {
   const [actionSelected, setActionSelected] = useState('');
@@ -35,7 +36,7 @@ function TaskModal({ closeTaskHandler, taskVisible, account_id }) {
       schedule: schedule,
       date: `${data.date}T${data.time}`,
     };
-      // PostTask(payload);
+    // PostTask(payload);
     console.log('payload', payload);
   };
 

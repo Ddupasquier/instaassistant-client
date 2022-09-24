@@ -1,13 +1,11 @@
-export const getDaysThisMonth = () => {
+export const getDaysLast30Days = () => {
   const days = [];
   const date = new Date();
-  const year = date.getFullYear();
-  const month = date.getMonth();
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
-  for (let i = 1; i <= daysInMonth; i++) {
-    days.push(`${month + 1}/${i}`);
+  for (let i = 0; i < 30; i++) {
+    const day = new Date(date.getTime() - i * 24 * 60 * 60 * 1000);
+    days.push(`${day.getMonth() + 1}/${day.getDate()}`);
   }
-  return days;
+  return days.reverse();
 };
 
 export const getRandomUtilization = () => {

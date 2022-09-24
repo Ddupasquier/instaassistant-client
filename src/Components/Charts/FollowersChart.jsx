@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { getDaysThisMonth } from './utils';
-import { Bar, Line } from 'react-chartjs-2';
+import { getDaysLast30Days } from './utils';
+import { Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
   PointElement,
   LineElement,
   CategoryScale,
   LinearScale,
-  BarElement,
   Title,
   Tooltip,
   Legend,
@@ -19,7 +18,6 @@ ChartJS.register(
   LineElement,
   CategoryScale,
   LinearScale,
-  BarElement,
   Title,
   Tooltip,
   Legend,
@@ -47,7 +45,7 @@ function FollowersChart({ snapshots }) {
       if (snaps) return snaps.map((snapshot) => snapshot.following);
     };
     setFollowerData({
-      labels: getDaysThisMonth(),
+      labels: getDaysLast30Days(),
       datasets: [
         {
           label: 'Following',
@@ -93,7 +91,7 @@ function FollowersChart({ snapshots }) {
     });
   }, [snaps]);
 
-  return <Line options={chartOptions} data={followerData} />;
+  return <Line options={chartOptions} data={followerData} height="110" />;
 }
 
 export default FollowersChart;

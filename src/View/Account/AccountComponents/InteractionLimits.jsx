@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Card } from '@nextui-org/react';
-import LimitsDoughnut from 'Components/Charts/LimitsBars';
+import { Grid, Card, Button } from '@nextui-org/react';
+import LimitsChart from 'Components/Charts/LimitsBars';
 
 const InteractionLimits = ({ follows, likes, comments, messages }) => {
+  const [chartToggle, setChartToggle] = useState(false);
+
   const [data, setData] = useState({
     follows: follows,
     likes: likes,
@@ -27,10 +29,20 @@ const InteractionLimits = ({ follows, likes, comments, messages }) => {
           background: '$myColor',
         }}
       >
-        <Card.Header>Daily Interaction Limits</Card.Header>
+        <Card.Header css={{ justifyContent: 'space-between' }}>
+          <span>Daily Interaction Limits</span>
+          <Button
+            color="secondary"
+            size="sm"
+            rounded
+            onPress={() => setChartToggle(!chartToggle)}
+          >
+            Dougnut/Bar
+          </Button>
+        </Card.Header>
         <Card.Divider />
         <Card.Body css={{ justifyContent: 'center' }}>
-          <LimitsDoughnut data={data} />
+          <LimitsChart data={data} toggle={chartToggle} />
         </Card.Body>
       </Card>
     </Grid>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { getDaysThisMonth, getRandomUtilization } from './utils';
-import { Bar, Line } from 'react-chartjs-2';
+import { getRandomUtilization } from './utils';
+import { Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
   PointElement,
@@ -33,11 +33,9 @@ function UtilizationChart({ data }) {
 
   const [chartOptions, setChartOptions] = useState({});
 
-  
-
   useEffect(() => {
     setFollowerData({
-      labels: getDaysThisMonth(),
+      labels: [...Array(31).keys()],
       datasets: [
         {
           label: 'Utilization',
@@ -66,7 +64,6 @@ function UtilizationChart({ data }) {
           display: false,
         },
         y: {
-          
           ticks: {
             color: '$font',
           },
