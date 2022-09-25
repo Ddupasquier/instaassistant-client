@@ -16,7 +16,6 @@ import { SignUp } from 'View/SignUp';
 import { AccountUpdate } from 'View/AccountUpdate';
 import { Accounts } from 'View/Accounts';
 import { Stripe } from 'View/Stripe';
-import TaskModal from 'View/Account/AccountComponents/TaskModal';
 
 // NextUI import
 import { NextUIProvider, createTheme } from '@nextui-org/react';

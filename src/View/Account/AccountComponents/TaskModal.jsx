@@ -25,19 +25,19 @@ function TaskModal({ closeTaskHandler, taskVisible, account_id }) {
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
-    console.log('data', data);
     const payload = {
       account_id: account_id,
       task_type: data.action,
-      list_type: data.listType,
+      list_type: `${data.listTarget}:${data.listType}`,
       target_url: data.targetUrl,
       custom_messages: data.customMessages,
       custom_comments: data.customComments,
       schedule: schedule,
-      date: `${data.date}T${data.time}`,
+      date: schedule
+        ? new Date(`${data.date} ${data.time}`).toUTCString()
+        : new Date().toUTCString(),
     };
-    // PostTask(payload);
-    console.log('payload', payload);
+    PostTask(payload);
   };
 
   return (

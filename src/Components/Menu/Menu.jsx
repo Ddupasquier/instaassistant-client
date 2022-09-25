@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import {
   FaUserAlt,
   FaUserFriends,
@@ -11,7 +10,7 @@ import MenuItem from './MenuItem';
 import PopOver from './PopOver';
 
 import './scss/menu-styles.css';
-import { Switch, useTheme } from '@nextui-org/react';
+import { Switch } from '@nextui-org/react';
 
 const menuItems = [
   {
@@ -45,7 +44,7 @@ function Menu({
   darkTheme,
   theme,
 }) {
-  const [checked, setChecked] = useState(true);
+  const [checked, setChecked] = useState(false);
 
   const handleThemeChange = () => {
     setChecked(!checked);
@@ -72,7 +71,6 @@ function Menu({
             onMouseLeave={() => setMenuItemHovered('')}
             onBlur={() => setMenuItemHovered('')}
             key={item.name}
-            // style={{menuItemStyle}}
           >
             <MenuItem
               item={item}
@@ -83,7 +81,7 @@ function Menu({
           </div>
         ))}
         <div className="menu-bottom">
-          {checked ? (
+          {!checked ? (
             <BsFillMoonStarsFill style={{ color: 'rgb(80, 255, 255)' }} />
           ) : (
             <BsSunFill style={{ color: 'rgb(80, 255, 255)' }} />
@@ -114,9 +112,3 @@ function Menu({
 }
 
 export default Menu;
-
-Menu.propTypes = {
-  menuItemHovered: PropTypes.string.isRequired,
-  setMenuItemHovered: PropTypes.func.isRequired,
-  animateLogo: PropTypes.func.isRequired,
-};

@@ -10,6 +10,7 @@ import {
   Button,
   Input,
   Dropdown,
+  Loading,
 } from '@nextui-org/react';
 
 import './scss/accounts-styles.css';
@@ -31,7 +32,6 @@ import DeleteConfirm from '../../Components/DeleteConfirm';
 // import { Base64Test } from 'View/Base64Test';
 
 function Accounts() {
-  const [accountLoaded, setAcccountsLoaded] = useState(false);
   const [userToDelete, setUserToDelete] = useState(null);
 
   useEffect(() => {
@@ -139,9 +139,13 @@ function Accounts() {
         return (
           <Col>
             <Row css={{ display: 'flex', gap: '.4rem' }}>
-              {user.allow_follow && <BsEmojiSunglasses title="Following enabled"/>}
+              {user.allow_follow && (
+                <BsEmojiSunglasses title="Following enabled" />
+              )}
               {user.allow_like && <FiHeart title="Liking enabled" />}
-              {user.allow_comment && <AiOutlineMessage title="Commenting enabled" />}
+              {user.allow_comment && (
+                <AiOutlineMessage title="Commenting enabled" />
+              )}
               {user.allow_dm && <FaRegEnvelopeOpen title="Messaging enabled" />}
             </Row>
           </Col>
@@ -248,35 +252,49 @@ function Accounts() {
           </Button>
         </Card>
         <Card css={{ borderRadius: '0', height: '90%', overflow: 'auto' }}>
-          <Table
-            aria-label="managed accounts table"
-            css={{
-              height: 'auto',
-              minWidth: '100%',
-            }}
-            selectionMode="none"
-          >
-            <Table.Header columns={columns}>
-              {(column) => (
-                <Table.Column
-                  key={column.uid}
-                  hideHeader={column.uid === 'actions'}
-                  align={column.uid === 'actions' ? 'center' : 'start'}
-                >
-                  {column.name}
-                </Table.Column>
-              )}
-            </Table.Header>
-            <Table.Body items={filteredAccounts}>
-              {(item) => (
-                <Table.Row>
-                  {(columnKey) => (
-                    <Table.Cell>{renderCell(item, columnKey)}</Table.Cell>
-                  )}
-                </Table.Row>
-              )}
-            </Table.Body>
-          </Table>
+          {allAccounts.length > 0 ? (
+            <Table
+              aria-label="managed accounts table"
+              css={{
+                height: 'auto',
+                minWidth: '100%',
+              }}
+              selectionMode="none"
+            >
+              <Table.Header columns={columns}>
+                {(column) => (
+                  <Table.Column
+                    key={column.uid}
+                    hideHeader={column.uid === 'actions'}
+                    align={column.uid === 'actions' ? 'center' : 'start'}
+                  >
+                    {column.name}
+                  </Table.Column>
+                )}
+              </Table.Header>
+              <Table.Body items={filteredAccounts}>
+                {(item) => (
+                  <Table.Row>
+                    {(columnKey) => (
+                      <Table.Cell>{renderCell(item, columnKey)}</Table.Cell>
+                    )}
+                  </Table.Row>
+                )}
+              </Table.Body>
+            </Table>
+          ) : (
+            <div
+              style={{
+                height: '100%',
+                width: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <Loading size="xl" />
+            </div>
+          )}
         </Card>
       </div>
       <NewAccountModal

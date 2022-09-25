@@ -98,13 +98,6 @@ function LimitsBars({ data: { follows, likes, comments, messages }, toggle }) {
             'rgb(165, 0, 255, .7)',
             'rgb(165, 0, 255, .0)',
           ],
-          borderColor: [
-            'rgb(45, 0, 255, .7)',
-            'rgb(85, 0, 255, .7)',
-            'rgb(125, 0, 255, .7)',
-            'rgb(165, 0, 255, .7)',
-            'rgb(150, 150, 150, .5)',
-          ],
           borderWidth: 1,
           fill: 'origin',
         },

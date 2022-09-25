@@ -8,6 +8,8 @@ import { getSnapshots, GetTasks, ShowAccount } from 'api';
 import { FiInstagram, FiSettings } from 'react-icons/fi';
 import { IoLogoYoutube } from 'react-icons/io';
 import { IoLogoTiktok } from 'react-icons/io5';
+
+
 import { Button, Card, Dropdown, Grid, Loading, Text } from '@nextui-org/react';
 import './scss/account-styles.css';
 
@@ -21,7 +23,7 @@ import ConfigPopup from './AccountComponents/ConfigPopup';
 import DeleteConfirm from 'Components/DeleteConfirm';
 import Avatar from 'react-avatar';
 import TaskModal from './AccountComponents/TaskModal';
-// import { TasksRunning } from '.';
+import { TasksRunning } from '.';
 
 function Account({ darkTheme, theme }) {
   // * ------- DESCTRUCTURING URL PARAMS ------- *
@@ -40,13 +42,6 @@ function Account({ darkTheme, theme }) {
   const closeTaskHandler = () => {
     setTaskVisible(false);
   };
-  const handleChange = (e) => {
-    setSelected(e.target.value);
-    setTasksSelected(true);
-  };
-
-  const [tasksSelected, setTasksSelected] = useState(false);
-  const [selected, setSelected] = useState('');
 
   // * ------- STATE ------- *
   const [currentAccount, setCurrentAccount] = useState(null);
@@ -150,7 +145,7 @@ function Account({ darkTheme, theme }) {
     }
 
     setFollowersGained(
-       snapshots[snapshots.length - 1].followers - snapshots[0].followers
+      snapshots[snapshots.length - 1].followers - snapshots[0].followers
     );
   }, [currentAccount, snapshots, tasks]);
 
@@ -261,7 +256,11 @@ function Account({ darkTheme, theme }) {
                         </Dropdown.Item>
                         <Dropdown.Item key="Edit">
                           <Link to={`/accounts/instagram/${account_id}/update`}>
-                            <Text b color="inherit" css={{ d: 'flex', color: 'black' }}>
+                            <Text
+                              b
+                              color="inherit"
+                              css={{ d: 'flex', color: 'black' }}
+                            >
                               Edit Profile
                             </Text>
                           </Link>
@@ -287,6 +286,7 @@ function Account({ darkTheme, theme }) {
 
         <div className="account-metrics">
           <Grid.Container gap={2}>
+            <TasksRunning tasksActive={currentAccount.active} />
             <Utilization num={utilization} />
             <Interactions num={interactions} />
             <FollowerGain num={followersGained} />

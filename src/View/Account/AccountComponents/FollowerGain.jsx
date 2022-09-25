@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid, Card, Text } from '@nextui-org/react';
 import { IconsQuestionMark } from 'Components/icons/icons';
+import { AiOutlineUserAdd, AiOutlineUserDelete } from 'react-icons/ai';
 
 function FollowerGain({ num }) {
   return (
@@ -20,7 +21,23 @@ function FollowerGain({ num }) {
         </Card.Header>
         <Card.Divider />
         <Card.Body>
-          <Text h2>{num}</Text>
+          {/* <Text h2>
+            {num > 0 ? <AiOutlineUserAdd /> : <AiOutlineUserDelete />} {num}
+          </Text> */}
+          <div className="display-grid">
+            <div>
+              {num > 0 ? (
+                <AiOutlineUserAdd size="45" />
+              ) : (
+                <AiOutlineUserDelete size="45" />
+              )}
+            </div>
+            <div>
+              <Text h2 name="interactions-today">
+                {num}
+              </Text>
+            </div>
+          </div>
         </Card.Body>
       </Card>
     </Grid>
