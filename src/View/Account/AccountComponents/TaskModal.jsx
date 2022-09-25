@@ -27,13 +27,13 @@ function TaskModal({ closeTaskHandler, taskVisible, account_id }) {
     const data = Object.fromEntries(formData.entries());
     console.log('data', data);
     const payload = {
-      account_id: account_id,
+      account_id,
       task_type: data.action,
       list_type: data.listType,
       target_url: data.targetUrl,
       custom_messages: data.customMessages,
       custom_comments: data.customComments,
-      schedule: schedule,
+      schedule,
       date: `${data.date}T${data.time}`,
     };
     // PostTask(payload);

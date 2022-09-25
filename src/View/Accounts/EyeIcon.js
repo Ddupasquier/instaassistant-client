@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const EyeIcon = ({ fill, size, height, width, ...props }) => {
   return (
     <svg

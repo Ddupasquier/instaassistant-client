@@ -3,8 +3,12 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ['plugin:react/recommended', 'standard'],
-  extends: ['react-app', 'plugin:jsx-a11y/strict'],
+  extends: [
+    'plugin:react/recommended',
+    'standard',
+    'react-app',
+    'plugin:jsx-a11y/strict',
+  ],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -16,8 +20,10 @@ module.exports = {
   rules: {
     'react/prop-types': 0,
     semi: [2, 'always'],
-    // 'comma-dangle': [2, 'ignore'],
     'space-before-function-paren': 0,
-    'multiline-ternary': ['error', 'never'],
+    'comma-dangle': 0,
+    indent: 0,
+    camelcase: 0,
+    'multiline-ternary': 0,
   },
 };

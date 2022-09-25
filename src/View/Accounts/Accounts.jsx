@@ -19,10 +19,10 @@ import { Link } from 'react-router-dom';
 import Avatar from 'react-avatar';
 
 // ICON IMPORTS
-import { BsEmojiSunglasses } from 'react-icons/bs'; //follow
-import { AiOutlineMessage } from 'react-icons/ai'; //comment
-import { FaRegEnvelopeOpen } from 'react-icons/fa'; //dm
-import { FiHeart } from 'react-icons/fi'; //like
+import { BsEmojiSunglasses } from 'react-icons/bs'; // follow
+import { AiOutlineMessage } from 'react-icons/ai'; // comment
+import { FaRegEnvelopeOpen } from 'react-icons/fa'; // dm
+import { FiHeart } from 'react-icons/fi'; // like
 import { StyledBadge } from './StyledBadge';
 import { IconButton } from './IconButton';
 import { EyeIcon } from './EyeIcon';

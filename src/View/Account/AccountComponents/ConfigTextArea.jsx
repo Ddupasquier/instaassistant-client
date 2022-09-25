@@ -1,4 +1,4 @@
-import { Textarea, Grid, Spacer } from '@nextui-org/react';
+import { Textarea, Grid } from '@nextui-org/react';
 import { IconsQuestionMark } from 'Components/icons/icons';
 import React from 'react';
 

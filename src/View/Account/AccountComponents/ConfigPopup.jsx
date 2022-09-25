@@ -125,6 +125,7 @@ function ConfigPopup({ currentAccount, account_id, theme, darkTheme }) {
         className="config-open"
         onClick={() => toggleConfigShown()}
         style={configButton}
+        aria-hidden="true"
       >
         {configShown ? (
           <IoIosArrowDown size={20} />
@@ -148,9 +149,10 @@ function ConfigPopup({ currentAccount, account_id, theme, darkTheme }) {
                 <Grid.Container justify="center">
                   <Grid sm={2} xs={2}>
                     <section>
-                      <label>Allow Follow</label>
+                      <label htmlFor="switchFollows">Allow Follow</label>
                       <br />
                       <Switch
+                        name="switchFollows"
                         label="Allow Follow"
                         checked={allowFollow}
                         value={allowFollow}
@@ -160,9 +162,10 @@ function ConfigPopup({ currentAccount, account_id, theme, darkTheme }) {
                   </Grid>
                   <Grid sm={2} xs={2}>
                     <section>
-                      <label>Allow Likes</label>
+                      <label htmlFor="switchLikes">Allow Likes</label>
                       <br />
                       <Switch
+                        name="switchLikes"
                         label="Allow Likes"
                         checked={allowLike}
                         value={allowLike}
@@ -172,9 +175,10 @@ function ConfigPopup({ currentAccount, account_id, theme, darkTheme }) {
                   </Grid>
                   <Grid sm={2} xs={2}>
                     <section>
-                      <label>Allow Comment</label>
+                      <label htmlFor="switchComments">Allow Comment</label>
                       <br />
                       <Switch
+                        name="switchComments"
                         label="Allow Comment"
                         checked={allowComment}
                         value={allowComment}
@@ -184,9 +188,10 @@ function ConfigPopup({ currentAccount, account_id, theme, darkTheme }) {
                   </Grid>
                   <Grid sm={2} xs={2}>
                     <section>
-                      <label>Allow Message</label>
+                      <label htmlFor="switchMessages">Allow Message</label>
                       <br />
                       <Switch
+                        name="switchMessages"
                         label="Allow Message"
                         checked={allowMessage}
                         value={allowMessage}
