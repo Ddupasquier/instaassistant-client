@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './scss/profile-styles.css';
-import { UserIcon } from 'Components/UserIcon';
 import { Button, Card, Text } from '@nextui-org/react';
 import { GetUserInfo } from 'api';
 import EditProfile from './EditProfile';

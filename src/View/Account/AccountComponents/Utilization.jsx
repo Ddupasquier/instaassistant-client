@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Grid, Text, Progress } from '@nextui-org/react';
 import { IconsQuestionMark } from 'Components/icons/icons';
 
-function Utilization({num}) {
+function Utilization({ num }) {
   return (
     <Grid sm={4} xs={12}>
       <Card
@@ -11,10 +11,13 @@ function Utilization({num}) {
           background: '$myColor',
         }}
       >
-        <Card.Header>Utilization Today&nbsp;<IconsQuestionMark
-                    content="Utilization is representative of how much/well you are using our application."
-                    local="topStart"
-                  /></Card.Header>
+        <Card.Header>
+          <label htmlFor="utilization-progress">Utilization Today</label>&nbsp;
+          <IconsQuestionMark
+            content="Utilization is representative of how much/well you are using our application."
+            local="topStart"
+          />
+        </Card.Header>
         <Card.Divider />
         <Card.Body>
           <Grid.Container>
@@ -22,7 +25,11 @@ function Utilization({num}) {
               <Text h2>{num}%</Text>
             </Grid>
             <Grid sm={12} xs={12}>
-              <Progress color="primary" value={num} />
+              <Progress
+                color="primary"
+                value={num}
+                name="utilization-progress"
+              />
             </Grid>
           </Grid.Container>
         </Card.Body>

@@ -139,10 +139,10 @@ function Accounts() {
         return (
           <Col>
             <Row css={{ display: 'flex', gap: '.4rem' }}>
-              {user.allow_follow && <BsEmojiSunglasses />}
-              {user.allow_like && <FiHeart />}
-              {user.allow_comment && <AiOutlineMessage />}
-              {user.allow_dm && <FaRegEnvelopeOpen />}
+              {user.allow_follow && <BsEmojiSunglasses title="Following enabled"/>}
+              {user.allow_like && <FiHeart title="Liking enabled" />}
+              {user.allow_comment && <AiOutlineMessage title="Commenting enabled" />}
+              {user.allow_dm && <FaRegEnvelopeOpen title="Messaging enabled" />}
             </Row>
           </Col>
         );

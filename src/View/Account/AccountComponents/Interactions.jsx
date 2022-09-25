@@ -12,7 +12,7 @@ function Interactions({ num }) {
         }}
       >
         <Card.Header>
-          Interactions Sent&nbsp;
+          <label htmlFor="interactions-today">Interactions Sent</label>&nbsp;
           <IconsQuestionMark
             content="Total number of follows, likes, comments and Messages sent on your behalf."
             local="top"
@@ -20,7 +20,9 @@ function Interactions({ num }) {
         </Card.Header>
         <Card.Divider />
         <Card.Body>
-          <Text h2>{num}</Text>
+          <Text h2 name="interactions-today">
+            {num}
+          </Text>
         </Card.Body>
       </Card>
     </Grid>
