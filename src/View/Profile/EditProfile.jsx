@@ -59,7 +59,7 @@ function EditProfile({
               <Input
                 label="Current Password"
                 underlined
-                css={{ width: '90%' }}
+                css={{ width: '100%' }}
               />
             </Grid>
             <Grid xs={12} md={6}>

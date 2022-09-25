@@ -234,7 +234,7 @@ function TaskModal({ closeTaskHandler, taskVisible, account_id }) {
           <Button rounded color="warning" onPress={closeTaskHandler}>
             Cancel
           </Button>
-          <Button rounded color="secondary" type="submit">
+          <Button rounded color="secondary" type="submit" disabled={actionSelected === '' ? true : false}>
             Run
           </Button>
         </Modal.Footer>
