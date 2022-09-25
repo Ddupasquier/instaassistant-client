@@ -150,7 +150,7 @@ function Account({ darkTheme, theme }) {
     }
 
     setFollowersGained(
-       snapshots[snapshots.length - 1].followers - snapshots[0].followers
+      snapshots[snapshots.length - 1].followers - snapshots[0].followers
     );
   }, [currentAccount, snapshots, tasks]);
 
@@ -261,7 +261,11 @@ function Account({ darkTheme, theme }) {
                         </Dropdown.Item>
                         <Dropdown.Item key="Edit">
                           <Link to={`/accounts/instagram/${account_id}/update`}>
-                            <Text b color="inherit" css={{ d: 'flex', color: 'black' }}>
+                            <Text
+                              b
+                              color="inherit"
+                              css={{ d: 'flex', color: 'black' }}
+                            >
                               Edit Profile
                             </Text>
                           </Link>

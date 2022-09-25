@@ -26,4 +26,3 @@ export const postListTypes = [
   { value: 'Likers', label: 'Likers' },
   { value: 'Commenters', label: 'Commenters' },
 ];
-

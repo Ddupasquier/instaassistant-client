@@ -1,6 +1,4 @@
-/* eslint-disable object-curly-newline */
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import './scss/signup-styles.css';
 import { Button, Input, Loading, Spacer } from '@nextui-org/react';
 import { CreateUserPost } from 'api';
@@ -10,21 +8,20 @@ function SignUp({ setLogIsVisible, logIsVisible }) {
   const [pwd, setPwd] = useState('');
   const [pwdconf, setPwdconf] = useState('');
   const [loading, setLoading] = useState(false);
-  
-  const [inviteCode, setInviteCode] = useState(false)
-  const [code, setCode] = useState('')
-  console.log(code, inviteCode)
+
+  const [inviteCode, setInviteCode] = useState(false);
+  const [code, setCode] = useState('');
+  console.log(code, inviteCode);
 
   useEffect(() => {
     if (code.length === 10) {
-      setInviteCode(true)
+      setInviteCode(true);
     }
-  }, [code])
+  }, [code]);
 
   const signupStyle = {
     position: 'absolute',
     transform: logIsVisible ? 'translateX(3000px)' : 'translateX(0)',
-    // opacity: logIsVisible ? '0' : '1',
     transition: 'all 1s ease-in-out',
     zIndex: '3',
   };
@@ -52,40 +49,49 @@ function SignUp({ setLogIsVisible, logIsVisible }) {
             <b>Bot</b>
           </h2>
           <h1>Sign Up</h1>
-        {!inviteCode ? (<Input
-            required
-            type="text"
-            id="invite-code"
-            placeholder="INVITE CODE"
-            onChange={(e) => setCode(e.target.value)}
-          />) : (<>
-          <Input
-            required
-            type="text"
-            id="username"
-            placeholder="EMAIL"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <Spacer />
-          <Input
-            required
-            type="password"
-            id="password"
-            placeholder="PASSWORD"
-            onChange={(e) => setPwd(e.target.value)}
-          />
-          <Spacer />
-          <Input
-            required
-            type="password"
-            id="confirmPassword"
-            placeholder="CONFIRM PASSWORD"
-            onChange={(e) => setPwdconf(e.target.value)}
-          />
-          <Spacer />
-          <Button type="submit">
-            {!loading ? <>Sign Up</> : <Loading size="sm" color="secondary" />}
-          </Button></>)}
+          {!inviteCode ? (
+            <Input
+              required
+              type="text"
+              id="invite-code"
+              placeholder="INVITE CODE"
+              onChange={(e) => setCode(e.target.value)}
+            />
+          ) : (
+            <>
+              <Input
+                required
+                type="text"
+                id="username"
+                placeholder="EMAIL"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <Spacer />
+              <Input
+                required
+                type="password"
+                id="password"
+                placeholder="PASSWORD"
+                onChange={(e) => setPwd(e.target.value)}
+              />
+              <Spacer />
+              <Input
+                required
+                type="password"
+                id="confirmPassword"
+                placeholder="CONFIRM PASSWORD"
+                onChange={(e) => setPwdconf(e.target.value)}
+              />
+              <Spacer />
+              <Button type="submit">
+                {!loading ? (
+                  <>Sign Up</>
+                ) : (
+                  <Loading size="sm" color="secondary" />
+                )}
+              </Button>
+            </>
+          )}
         </form>
         <div className="signup-footer">
           <a href="/" className="forgot-password">
@@ -109,7 +115,3 @@ function SignUp({ setLogIsVisible, logIsVisible }) {
 }
 
 export default SignUp;
-
-SignUp.propTypes = {
-  setLogIsVisible: PropTypes.func,
-};

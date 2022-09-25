@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, useModal, Button, Text } from "@nextui-org/react";
+import { Modal, useModal, Button, Text } from '@nextui-org/react';
 
 export default function App() {
   const { setVisible, bindings } = useModal();
@@ -22,9 +22,7 @@ export default function App() {
           </Text>
         </Modal.Header>
         <Modal.Body>
-          <Text id="modal-description">
-            
-          </Text>
+          <Text id="modal-description"></Text>
         </Modal.Body>
         <Modal.Footer>
           <Button flat auto color="error" onPress={() => setVisible(false)}>
@@ -36,4 +34,3 @@ export default function App() {
     </div>
   );
 }
-

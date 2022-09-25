@@ -1,6 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Button, Text, useTheme } from '@nextui-org/react';
+import { Button, Text } from '@nextui-org/react';
 import './scss/header-styles.css';
 import { Logout } from '../../api';
 import LogoAnimation from './LogoAnimation';
@@ -18,23 +17,25 @@ function Header({ menuSelected, theme, darkTheme }) {
       }}
     >
       <LogoAnimation menuSelected={menuSelected} />
-      <div className="site-name" style={{color: theme === darkTheme ? 'rgb(80, 255, 255)' : 'black'}}>
+      <div
+        className="site-name"
+        style={{ color: theme === darkTheme ? 'rgb(80, 255, 255)' : 'black' }}
+      >
         <i>Anti</i>
         <b>SocialSuite</b>
       </div>
       <div className="username">
-      <Text
-        h1
-        size={30}
-        css={{
-        textGradient: "45deg, $blue600 -20%, $pink600 50%",
-        }}
-        style={{ zIndex: 1 }}
-        weight="bold"
+        <Text
+          h1
+          size={30}
+          css={{
+            textGradient: '45deg, $blue600 -20%, $pink600 50%',
+          }}
+          style={{ zIndex: 1 }}
+          weight="bold"
         >
           {localStorage.getItem('email').replace(/['"]+/g, '')} {'  '}
         </Text>
-        
 
         <Button
           href="/"
@@ -52,7 +53,3 @@ function Header({ menuSelected, theme, darkTheme }) {
 }
 
 export default Header;
-
-Header.propTypes = {
-  menuSelected: PropTypes.string.isRequired,
-};

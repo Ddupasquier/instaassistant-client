@@ -1,2 +1,1 @@
-import TaskNext from "./TaskNext";
-export default TaskNext;
+export { default as TaskNext } from './TaskNext';

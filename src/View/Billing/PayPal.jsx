@@ -1,11 +1,10 @@
 import React from 'react';
 import { useState } from 'react';
 
-function PayPal({num}) {
-  const [price, setPrice] = useState()
+function PayPal({ num }) {
+  const [price, setPrice] = useState();
   return (
     <form className="paypal-form">
-
       <h2>{num}</h2>
 
       <select name="plan" id="plans">

@@ -20,7 +20,7 @@ function Interactions({ num }) {
         </Card.Header>
         <Card.Divider />
         <Card.Body>
-          <Text h2 name="interactions-today">
+          <Text h2 id="interactions-today">
             {num}
           </Text>
         </Card.Body>

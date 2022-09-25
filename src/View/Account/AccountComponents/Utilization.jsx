@@ -22,14 +22,12 @@ function Utilization({ num }) {
         <Card.Body>
           <Grid.Container>
             <Grid sm={2}>
-              <Text h2>{num}%</Text>
+              <Text h2 id="utilization-progress">
+                {num}%
+              </Text>
             </Grid>
             <Grid sm={12} xs={12}>
-              <Progress
-                color="primary"
-                value={num}
-                name="utilization-progress"
-              />
+              <Progress color="primary" value={num} />
             </Grid>
           </Grid.Container>
         </Card.Body>

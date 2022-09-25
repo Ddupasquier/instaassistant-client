@@ -10,7 +10,7 @@ const ConfigTextArea = ({
   toolTipLocal,
 }) => {
   return (
-    <Grid sm={4} xs={12} css={{position: 'relative'}}>
+    <Grid sm={4} xs={12} css={{ position: 'relative' }}>
       <Textarea
         width="100%"
         bordered

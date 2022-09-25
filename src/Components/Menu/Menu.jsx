@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import {
   FaUserAlt,
   FaUserFriends,
@@ -11,7 +10,7 @@ import MenuItem from './MenuItem';
 import PopOver from './PopOver';
 
 import './scss/menu-styles.css';
-import { Switch, useTheme } from '@nextui-org/react';
+import { Switch } from '@nextui-org/react';
 
 const menuItems = [
   {
@@ -52,10 +51,6 @@ function Menu({
     setTheme(checked ? lightTheme : darkTheme);
   };
 
-  // const menuItemStyle = {
-  //   color: theme === darkTheme ? 'rgb(80, 255, 255)' : 'black',
-  // };
-
   return (
     <>
       <nav
@@ -72,7 +67,6 @@ function Menu({
             onMouseLeave={() => setMenuItemHovered('')}
             onBlur={() => setMenuItemHovered('')}
             key={item.name}
-            // style={{menuItemStyle}}
           >
             <MenuItem
               item={item}
@@ -114,9 +108,3 @@ function Menu({
 }
 
 export default Menu;
-
-Menu.propTypes = {
-  menuItemHovered: PropTypes.string.isRequired,
-  setMenuItemHovered: PropTypes.func.isRequired,
-  animateLogo: PropTypes.func.isRequired,
-};

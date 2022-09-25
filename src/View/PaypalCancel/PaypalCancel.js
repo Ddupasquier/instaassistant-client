@@ -1,4 +1,4 @@
-const { Text } = require("@nextui-org/react");
+const { Text } = require('@nextui-org/react');
 
 const PaypalCancel = () => {
   return (

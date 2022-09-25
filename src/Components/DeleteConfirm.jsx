@@ -13,11 +13,11 @@ function DeleteConfirm({
     e.preventDefault();
     if (usernameConfirm === userInfo.username) {
       DeleteAccount(userInfo.id).then((data) => {
-        closeDeleteConfirmHandler()
-        if (data.success){
-          window.location.replace("/accounts");
-        } else if (data.error){
-          alert(data.error)
+        closeDeleteConfirmHandler();
+        if (data.success) {
+          window.location.replace('/accounts');
+        } else if (data.error) {
+          alert(data.error);
         }
       });
     }

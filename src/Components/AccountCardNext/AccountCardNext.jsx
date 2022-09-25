@@ -4,21 +4,21 @@ import { Card, Text } from '@nextui-org/react';
 import { Link } from 'react-router-dom';
 
 const AccountCardNext = ({ username, path }) => {
-  const text = "Make beautiful websites regardless of your design experience."
+  const text = 'Make beautiful websites regardless of your design experience.';
 
   const truncateName = (username) => {
     if (username.length > 14) {
       return username.substring(0, 14) + '...';
     }
-    return username
+    return username;
   };
 
   const truncateText = (text) => {
     if (text.length > 65) {
       return text.substring(0, 65) + '...';
     }
-    return text
-  }
+    return text;
+  };
 
   return (
     <Link to={path}>
@@ -48,9 +48,7 @@ const AccountCardNext = ({ username, path }) => {
             },
           }}
         >
-          <Text>
-            {truncateText(text)}
-          </Text>
+          <Text>{truncateText(text)}</Text>
         </Card.Body>
       </Card>
     </Link>

@@ -21,13 +21,12 @@ import TaskModal from 'View/Account/AccountComponents/TaskModal';
 // NextUI import
 import { NextUIProvider, createTheme } from '@nextui-org/react';
 
-
-
 const darkTheme = createTheme({
   type: 'dark',
   theme: {
     colors: {
-      gradient: 'linear-gradient(112deg, $blue100 -25%, $pink500 -10%, $purple500 80%)',
+      gradient:
+        'linear-gradient(112deg, $blue100 -25%, $pink500 -10%, $purple500 80%)',
       link: '#af6eff',
       // you can also create your own color
       myColor: 'rgba(95, 95, 95, 0.55)',
@@ -42,7 +41,8 @@ const lightTheme = createTheme({
   type: 'light',
   theme: {
     colors: {
-      gradient: 'linear-gradient(112deg, $blue100 -25%, $pink500 -10%, $purple500 80%)',
+      gradient:
+        'linear-gradient(112deg, $blue100 -25%, $pink500 -10%, $purple500 80%)',
       link: '#5E1DAD',
       // you can also create your own color
       myColor: 'rgba(255, 255, 255, .7)',
@@ -59,34 +59,36 @@ function AppRoutes() {
   return (
     <NextUIProvider theme={theme}>
       <Provider store={store}>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <App
-                  setTheme={setTheme}
-                  lightTheme={lightTheme}
-                  darkTheme={darkTheme}
-                  theme={theme}
-                />
-              }
-            >
-              <Route index element={<Profile />} />
-              <Route path="/billing" element={<Billing />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/accounts" element={<Accounts />} />
-              <Route path="/accounts/instagram/:account_id/update" element={<AccountUpdate />} />
-            <Route
-                path="/accounts/instagram/:account_id"
-                element={<Account darkTheme={darkTheme}
-                theme={theme} />}
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <App
+                setTheme={setTheme}
+                lightTheme={lightTheme}
+                darkTheme={darkTheme}
+                theme={theme}
               />
-              <Route path="/FAQ" element={<FAQ />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<SignUp />} />
-              <Route path="/stripe" element={<Stripe />} />
-            </Route>
-          </Routes>
+            }
+          >
+            <Route index element={<Profile />} />
+            <Route path="/billing" element={<Billing />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/accounts" element={<Accounts />} />
+            <Route
+              path="/accounts/instagram/:account_id/update"
+              element={<AccountUpdate />}
+            />
+            <Route
+              path="/accounts/instagram/:account_id"
+              element={<Account darkTheme={darkTheme} theme={theme} />}
+            />
+            <Route path="/FAQ" element={<FAQ />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/stripe" element={<Stripe />} />
+          </Route>
+        </Routes>
       </Provider>
     </NextUIProvider>
   );

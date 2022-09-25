@@ -1,1 +1,1 @@
-export {default as AccountCardNext} from "./AccountCardNext";
+export { default as AccountCardNext } from './AccountCardNext';

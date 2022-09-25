@@ -1,1 +1,1 @@
-export { default as AccountUpdate } from "./AccountUpdate";
+export { default as AccountUpdate } from './AccountUpdate';

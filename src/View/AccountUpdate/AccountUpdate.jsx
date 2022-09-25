@@ -32,7 +32,12 @@ const AccountUpdate = () => {
                 <Input disabled bordered label="Name:" placeholder="Name" />
               </div>
               <div>
-                <Input disabled bordered label="Username:" placeholder="Username" />
+                <Input
+                  disabled
+                  bordered
+                  label="Username:"
+                  placeholder="Username"
+                />
               </div>
               <div>
                 <Input disabled bordered label="Bio:" placeholder="Bio" />
@@ -41,10 +46,20 @@ const AccountUpdate = () => {
                 <Input disabled bordered label="Email:" placeholder="Email" />
               </div>
               <div>
-                <Input disabled bordered label="Phone:" placeholder="Phone Number" />
+                <Input
+                  disabled
+                  bordered
+                  label="Phone:"
+                  placeholder="Phone Number"
+                />
               </div>
               <div>
-                <Input disabled bordered label="Full Name:" placeholder="Website" />
+                <Input
+                  disabled
+                  bordered
+                  label="Full Name:"
+                  placeholder="Website"
+                />
               </div>
               <div>
                 <Input disabled bordered label="Gender:" placeholder="Gender" />
