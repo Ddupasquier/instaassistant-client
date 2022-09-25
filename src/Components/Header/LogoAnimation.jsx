@@ -78,25 +78,25 @@ function LogoAnimation({ menuSelected }) {
 
       const moveBoxes = (num) => {
         if (menuSelected === 'Billing') {
-          let res = {};
+          const res = {};
           for (const rule in boxPositions[num]) {
             res[rule] = boxPositions[num][rule][1];
           }
           return res;
         } else if (menuSelected === 'Profile') {
-          let res = {};
+          const res = {};
           for (const rule in boxPositions[num]) {
             res[rule] = boxPositions[num][rule][2];
           }
           return res;
         } else if (menuSelected === 'Accounts') {
-          let res = {};
+          const res = {};
           for (const rule in boxPositions[num]) {
             res[rule] = boxPositions[num][rule][3];
           }
           return res;
         } else {
-          let res = {};
+          const res = {};
           for (const rule in boxPositions[num]) {
             res[rule] = boxPositions[num][rule][0];
           }

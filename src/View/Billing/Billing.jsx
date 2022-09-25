@@ -89,8 +89,8 @@ function Billing() {
             justifyContent: 'space-around',
           }}
         >
-          {packages.map((pkg) => (
-            <Package {...pkg} handleSubmit={handleSubmit} />
+          {packages.map((pkg, i) => (
+            <Package key={i} {...pkg} handleSubmit={handleSubmit} />
           ))}
         </Card.Body>
       </Card>

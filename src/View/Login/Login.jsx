@@ -19,7 +19,7 @@ function Login({ setLogIsVisible, logIsVisible }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-    loginFetch({ email: email, password: pwd });
+    loginFetch({ email, password: pwd });
     //! need to add success functionality: auto login and redirect? or success message and redirect to login?
   };
 

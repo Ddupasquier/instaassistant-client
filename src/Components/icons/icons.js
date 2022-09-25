@@ -1,3 +1,4 @@
+import React from 'react';
 import { Tooltip } from '@nextui-org/react';
 
 export const IconsQuestionMark = ({ content, local }) => {

@@ -5,7 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './redux';
 
-//View Imports
+// View Imports
 import App from 'App';
 import { Billing } from 'View/Billing';
 import { Profile } from 'View/Profile';

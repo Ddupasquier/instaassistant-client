@@ -1,3 +1,4 @@
+import React from 'react';
 const { Loading, Link } = require('@nextui-org/react');
 
 const PaypalSuccess = () => {

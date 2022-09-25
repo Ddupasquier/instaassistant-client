@@ -60,13 +60,15 @@ function Menu({
             theme === darkTheme ? 'rgb(34, 34, 34)' : 'rgb(212, 212, 212)',
         }}
       >
-        {menuItems.map((item) => (
+        {menuItems.map((item, i) => (
           <div
             onMouseOver={() => setMenuItemHovered(item.name)}
             onFocus={() => setMenuItemHovered(item.name)}
             onMouseLeave={() => setMenuItemHovered('')}
             onBlur={() => setMenuItemHovered('')}
             key={item.name}
+            role="menuitem"
+            tabIndex={i}
           >
             <MenuItem
               item={item}

@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import { Button, Card, Text } from '@nextui-org/react';
 import { CreateCheckoutSession } from 'api';
