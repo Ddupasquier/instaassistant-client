@@ -37,6 +37,7 @@ function TaskModal({ closeTaskHandler, taskVisible, account_id }) {
         ? new Date(`${data.date} ${data.time}`).toUTCString()
         : new Date().toUTCString(),
     };
+    console.log(payload);
     PostTask(payload);
   };
 
