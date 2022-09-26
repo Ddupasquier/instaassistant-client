@@ -13,7 +13,7 @@ function Utilization({ num }) {
         }}
       >
         <Card.Header>
-          <label htmlFor="utilization-progress">Utilization Today</label>&nbsp;
+          <label htmlFor="utilization-progress">Utilization Today </label>&nbsp;
           <IconsQuestionMark
             content="Utilization is representative of how much/well you are using our application."
             local="topStart"
