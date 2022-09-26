@@ -34,7 +34,10 @@ function Profile() {
       >
         {userInfo.email}
       </Text>
-      <Card css={{background: '$myColor'}} style={{padding: '1.5rem', width: '80%'}}>
+      <Card
+        css={{ background: '$myColor' }}
+        style={{ padding: '1.5rem', width: '80%' }}
+      >
         <div className="profile-header">
           <Button color="secondary" onPress={editProfileHandler} rounded>
             Edit

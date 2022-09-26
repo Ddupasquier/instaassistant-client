@@ -66,10 +66,15 @@ function Billing() {
         }}
       >
         <div className="head">
-          <Text h1 size={50} weight="bold" css={{
-            textGradient: '45deg, $blue600 -20%, $pink600 50%',
-            height: 'fit-content',
-          }}>
+          <Text
+            h1
+            size={50}
+            weight="bold"
+            css={{
+              textGradient: '45deg, $blue600 -20%, $pink600 50%',
+              height: 'fit-content',
+            }}
+          >
             OUR PACKAGES
           </Text>
           <Text h4>
@@ -84,8 +89,8 @@ function Billing() {
             justifyContent: 'space-around',
           }}
         >
-          {packages.map((pkg) => (
-            <Package {...pkg} handleSubmit={handleSubmit} />
+          {packages.map((pkg, i) => (
+            <Package key={i} {...pkg} handleSubmit={handleSubmit} />
           ))}
         </Card.Body>
       </Card>

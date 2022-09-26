@@ -132,12 +132,12 @@ function Account({ darkTheme, theme }) {
       setUtilization(currentAccount.allow_comment ? (util += 5) : util);
       setUtilization(currentAccount.allow_dm ? (util += 5) : util);
       if (currentAccount.messages !== null) {
-        let msg = currentAccount.comments.split(',');
+        const msg = currentAccount.comments.split(',');
         setUtilization(msg.length > 5 ? (util += 10) : util);
       }
 
       if (currentAccount.comments !== null) {
-        let comms = currentAccount.comments.split(',');
+        const comms = currentAccount.comments.split(',');
         setUtilization(comms.length > 5 ? (util += 10) : util);
       }
 

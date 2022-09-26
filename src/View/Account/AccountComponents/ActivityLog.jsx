@@ -48,7 +48,6 @@ function ActivityLog({ tasks }) {
             </Table.Header>
             {tasks !== null && (
               <Table.Body items={tasks}>
-
                 {(item) => (
                   <Table.Row key={item.key}>
                     {(columnKey) => <Table.Cell>{item[columnKey]}</Table.Cell>}

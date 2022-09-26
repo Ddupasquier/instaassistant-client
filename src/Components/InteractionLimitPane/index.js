@@ -1,1 +1,1 @@
-export { default as InteractionLimitPane } from "./AccountCardNext";
+export { default as InteractionLimitPane } from './AccountCardNext';

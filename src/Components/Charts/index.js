@@ -1,1 +1,1 @@
-export {default as FollowersChart} from './FollowersChart';
+export { default as FollowersChart } from './FollowersChart';

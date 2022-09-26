@@ -5,7 +5,6 @@ import UtilizationChart from 'Components/Charts/UtilizationChart';
 import { IconsQuestionMark } from 'Components/icons/icons';
 
 function MetricChart({ snapshots }) {
-
   return (
     <Grid sm={8} xs={12}>
       <Card

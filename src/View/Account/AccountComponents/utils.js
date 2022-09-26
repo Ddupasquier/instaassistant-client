@@ -4,7 +4,6 @@
  */
 export const today = new Date().toISOString().slice(0, 10);
 
-
 /** description
  * @return {string} - date
  * @example '16:52'

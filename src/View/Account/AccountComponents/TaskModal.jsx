@@ -26,7 +26,7 @@ function TaskModal({ closeTaskHandler, taskVisible, account_id }) {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     const payload = {
-      account_id: account_id,
+      account_id,
       task_type: data.action,
       list_type: `${data.listTarget}:${data.listType}`,
       target_url: data.targetUrl,

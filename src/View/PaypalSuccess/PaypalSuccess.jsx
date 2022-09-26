@@ -1,4 +1,5 @@
-const { Loading, Link } = require("@nextui-org/react");
+import React from 'react';
+const { Loading, Link } = require('@nextui-org/react');
 
 const PaypalSuccess = () => {
   const handlePaymentUpdate = () => {

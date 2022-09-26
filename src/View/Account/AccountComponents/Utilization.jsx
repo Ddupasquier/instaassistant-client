@@ -29,11 +29,7 @@ function Utilization({ num }) {
               </Text>
             </Grid>
             <Grid sm={12} xs={12}>
-              <Progress
-                color="primary"
-                value={num}
-                name="utilization-progress"
-              />
+              <Progress color="primary" value={num} />
             </Grid>
           </Grid.Container>
         </Card.Body>

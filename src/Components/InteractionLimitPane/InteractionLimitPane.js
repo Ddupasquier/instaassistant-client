@@ -1,16 +1,16 @@
-import React from "react";
-import { UserIcon } from "../UserIcon";
-import { Card, Grid, Text } from "@nextui-org/react";
-import { Link } from "react-router-dom";
-import { Table } from "react-bootstrap";
+import React from 'react';
+import { UserIcon } from '../UserIcon';
+import { Card, Grid, Text } from '@nextui-org/react';
+import { Link } from 'react-router-dom';
+import { Table } from 'react-bootstrap';
 
 const InteractionLimitPane = ({ username, path }) => {
   return (
     <Grid sm={4} xs={12}>
       <Card
         css={{
-          backdropFilter: "saturate(200%) blur(15px)",
-          background: "rgba(255, 255, 255, 0.2)",
+          backdropFilter: 'saturate(200%) blur(15px)',
+          background: 'rgba(255, 255, 255, 0.2)',
         }}
       >
         <Card.Header>Interaction Limits</Card.Header>
@@ -20,8 +20,8 @@ const InteractionLimitPane = ({ username, path }) => {
             shadow={false}
             aria-label="Example table with static content"
             css={{
-              height: "auto",
-              minWidth: "100%",
+              height: 'auto',
+              minWidth: '100%',
             }}
           >
             <Table.Header>

@@ -20,7 +20,6 @@ ChartJS.register(
   Tooltip,
   Legend,
   Filler,
-
   ArcElement
 );
 
@@ -30,7 +29,7 @@ function LimitsBars({ data: { follows, likes, comments, messages }, toggle }) {
   });
   const [chartOptions, setChartOptions] = useState({});
 
-  let unused = 1000 - follows - likes - comments - messages;
+  const unused = 1000 - follows - likes - comments - messages;
 
   useEffect(() => {
     const checkToggleLabel = () => {

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
 function MenuItem({ item, animateLogo, theme, darkTheme }) {
@@ -14,7 +13,11 @@ function MenuItem({ item, animateLogo, theme, darkTheme }) {
       onMouseLeave={() => setHover(!hover)}
       onClick={() => animateLogo(item.name)}
     >
-      <div className="menu-item" aria-labelledby={item.name} style={{color: theme === darkTheme ? 'rgb(80, 255, 255)' : 'black'}}>
+      <div
+        className="menu-item"
+        aria-labelledby={item.name}
+        style={{ color: theme === darkTheme ? 'rgb(80, 255, 255)' : 'black' }}
+      >
         <item.Icon />
       </div>
     </NavLink>
@@ -22,12 +25,3 @@ function MenuItem({ item, animateLogo, theme, darkTheme }) {
 }
 
 export default MenuItem;
-
-MenuItem.propTypes = {
-  item: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    to: PropTypes.string.isRequired,
-    Icon: PropTypes.func.isRequired,
-  }).isRequired,
-  animateLogo: PropTypes.func.isRequired,
-};

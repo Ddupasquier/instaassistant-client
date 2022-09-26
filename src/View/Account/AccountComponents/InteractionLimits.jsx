@@ -6,10 +6,10 @@ const InteractionLimits = ({ follows, likes, comments, messages }) => {
   const [chartToggle, setChartToggle] = useState(false);
 
   const [data, setData] = useState({
-    follows: follows,
-    likes: likes,
-    comments: comments,
-    messages: messages,
+    follows,
+    likes,
+    comments,
+    messages,
   });
 
   useEffect(() => {

@@ -2,37 +2,37 @@
 
 const local = false;
 const baseUrl = local
-  ? "http://localhost:3000"
-  : "https://instaassistant-api.herokuapp.com";
+  ? 'http://localhost:3000'
+  : 'https://instaassistant-api.herokuapp.com';
 
-export const CreateUserPath = baseUrl + "/users";
-export const UserLoginPath = baseUrl + "/login";
-export const UserViewPath = baseUrl + "/users/";
+export const CreateUserPath = baseUrl + '/users';
+export const UserLoginPath = baseUrl + '/login';
+export const UserViewPath = baseUrl + '/users/';
 
 //* START ACCOUNT
-export const CreateAccountPath = [baseUrl + "/users/", "/accounts"];
+export const CreateAccountPath = [baseUrl + '/users/', '/accounts'];
 
-export const AccountPatchPath = baseUrl + "/accounts/";
+export const AccountPatchPath = baseUrl + '/accounts/';
 
-export const AccountShowPath = baseUrl + "/accounts/";
+export const AccountShowPath = baseUrl + '/accounts/';
 
-export const BotIndexPath = baseUrl + "/user_accounts";
+export const BotIndexPath = baseUrl + '/user_accounts';
 
-export const BotAccountPath = baseUrl + "/accounts/"; // Delete bot based on bot_id
+export const BotAccountPath = baseUrl + '/accounts/'; // Delete bot based on bot_id
 
-export const unstickAccountPath = baseUrl + "/unstuck/";
+export const unstickAccountPath = baseUrl + '/unstuck/';
 
 //* START Task for bot to complete
-export const AccountTaskPath = baseUrl + "/account_tasks";
-export const TaskPath = baseUrl + "/tasks";
+export const AccountTaskPath = baseUrl + '/account_tasks';
+export const TaskPath = baseUrl + '/tasks';
 
 //* SNAPSHOT ENDPOINTS
-export const snapshotPath = baseUrl + "/snapshots";
+export const snapshotPath = baseUrl + '/snapshots';
 
 //* START STATIC
-export const InstagramTaskTypes = baseUrl + "/task_type";
-export const faqPath = baseUrl + "/faq";
+export const InstagramTaskTypes = baseUrl + '/task_type';
+export const faqPath = baseUrl + '/faq';
 
 //* Payment/Checkout
 
-export const CheckoutEndpoint = baseUrl + "/create-checkout-session";
+export const CheckoutEndpoint = baseUrl + '/create-checkout-session';

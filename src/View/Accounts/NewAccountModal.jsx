@@ -18,23 +18,24 @@ function NewAccountModal({ newAccountVisible, closeNewAccountHandler }) {
       alert(
         'Passwords do not match. Double check your password is correct, then try again.'
       );
-      return;
     } else {
-      let payload = { username, password: pwd, platform: 'instagram' };
+      const payload = { username, password: pwd, platform: 'instagram' };
       CreateAccount(payload).then((data) => {
         if (data.success) {
-          alert("we got a success")
+          alert('we got a success');
           this.checkStatus = setInterval(() => {
             GetTask(data.task_id).then((data) => {
-              if (data.error){
-                console.log(data.error)
-              } else if (data.status === "COMPLETED"){
-                window.location.replace("/accounts/instagram/" + data.account_id);
-              } else if (data.status === "IN_PROGRESS"){
-                console.log("Logging in...")
-                setTryingLogin(true)
-              } else if (data.status === "SCHEDULED") {
-                setNewAccountSetup(true)
+              if (data.error) {
+                console.log(data.error);
+              } else if (data.status === 'COMPLETED') {
+                window.location.replace(
+                  '/accounts/instagram/' + data.account_id
+                );
+              } else if (data.status === 'IN_PROGRESS') {
+                console.log('Logging in...');
+                setTryingLogin(true);
+              } else if (data.status === 'SCHEDULED') {
+                setNewAccountSetup(true);
               }
             });
           }, 1000);

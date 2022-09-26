@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import './scss/login-styles.css';
 import { Button, Input, Loading, Spacer } from '@nextui-org/react';
 import { loginFetch } from 'api';
@@ -20,7 +19,7 @@ function Login({ setLogIsVisible, logIsVisible }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-    loginFetch({ email: email, password: pwd });
+    loginFetch({ email, password: pwd });
     //! need to add success functionality: auto login and redirect? or success message and redirect to login?
   };
 
@@ -77,7 +76,3 @@ function Login({ setLogIsVisible, logIsVisible }) {
 }
 
 export default Login;
-
-Login.propTypes = {
-  setLogIsVisible: PropTypes.func,
-};
