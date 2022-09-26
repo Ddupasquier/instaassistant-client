@@ -100,7 +100,9 @@ function ConfigPopup({ currentAccount, account_id, theme, darkTheme }) {
       messages,
       tags,
     };
-    PatchAccount(body, account_id).then(window.location.reload());
+    PatchAccount(body, account_id).then(
+      setTimeout(() => window.location.reload(), 1000)
+    );
   };
 
   const configPosition = {
