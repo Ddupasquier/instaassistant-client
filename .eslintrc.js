@@ -25,5 +25,6 @@ module.exports = {
     indent: 0,
     camelcase: 0,
     'multiline-ternary': 0,
+    quotes: 0,
   },
 };
