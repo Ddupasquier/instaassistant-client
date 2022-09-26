@@ -34,7 +34,7 @@ function SignUp({ setLogIsVisible, logIsVisible }) {
       return;
     }
     setLoading(true);
-    CreateUserPost({ email: email, password: pwd });
+    CreateUserPost({ email, password: pwd });
     //! need to add success functionality: auto login and redirect? or success message and redirect to login?
   };
 

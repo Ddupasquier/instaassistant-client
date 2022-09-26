@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Grid, Text, Progress } from '@nextui-org/react';
 import { IconsQuestionMark } from 'Components/icons/icons';
-import { GiGears } from 'react-icons/gi';
+// import { GiGears } from 'react-icons/gi';
 
 function Utilization({ num }) {
   return (

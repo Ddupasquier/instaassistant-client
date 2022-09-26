@@ -7,7 +7,6 @@ import {
   faqPath,
   CreateAccountPath,
   BotIndexPath,
-  TaskCreatePath,
   AccountPatchPath,
   AccountShowPath,
   snapshotPath,

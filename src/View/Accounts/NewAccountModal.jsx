@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, Input, Button, Text, Spacer, Loading } from '@nextui-org/react';
-import { CreateAccount, CreateBot, DeleteAccount, GetTask } from 'api';
+import { CreateAccount, GetTask } from 'api';
 
 function NewAccountModal({ newAccountVisible, closeNewAccountHandler }) {
   const [pwd, setPwd] = useState('');
@@ -45,8 +45,6 @@ function NewAccountModal({ newAccountVisible, closeNewAccountHandler }) {
       });
     }
   };
-
-  const [loggingIn, setLoggingIn] = useState(false);
 
   return (
     <Modal

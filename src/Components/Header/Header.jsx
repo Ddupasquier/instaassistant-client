@@ -5,10 +5,6 @@ import { Logout } from '../../api';
 import LogoAnimation from './LogoAnimation';
 
 function Header({ menuSelected, theme, darkTheme }) {
-  const capFirstLetter = (string) => {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  };
-
   return (
     <header
       style={{

@@ -96,9 +96,9 @@ function ConfigPopup({ currentAccount, account_id, theme, darkTheme }) {
       look_alike: lookalike,
       black_list: blackList,
       white_list: whiteList,
-      comments: comments,
-      messages: messages,
-      tags: tags,
+      comments,
+      messages,
+      tags,
     };
     PatchAccount(body, account_id).then(window.location.reload());
   };
