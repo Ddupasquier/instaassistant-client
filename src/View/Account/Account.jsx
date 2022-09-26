@@ -9,7 +9,6 @@ import { FiInstagram, FiSettings } from 'react-icons/fi';
 import { IoLogoYoutube } from 'react-icons/io';
 import { IoLogoTiktok } from 'react-icons/io5';
 
-
 import { Button, Card, Dropdown, Grid, Loading, Text } from '@nextui-org/react';
 import './scss/account-styles.css';
 

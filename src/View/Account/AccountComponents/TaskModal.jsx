@@ -32,7 +32,7 @@ function TaskModal({ closeTaskHandler, taskVisible, account_id }) {
       target_url: data.targetUrl,
       custom_messages: data.customMessages,
       custom_comments: data.customComments,
-      schedule: schedule,
+      schedule,
       date: schedule
         ? new Date(`${data.date} ${data.time}`).toUTCString()
         : new Date().toUTCString(),
@@ -234,7 +234,7 @@ function TaskModal({ closeTaskHandler, taskVisible, account_id }) {
           <Button rounded color="warning" onPress={closeTaskHandler}>
             Cancel
           </Button>
-          <Button rounded color="secondary" type="submit" disabled={actionSelected === '' ? true : false}>
+          <Button rounded color="secondary" type="submit" disabled={!actionSelected}>
             Run
           </Button>
         </Modal.Footer>
