@@ -31,7 +31,7 @@ function ForgotPassword({ forgPassShown, setForgPassShown }) {
             required
             type="text"
             id="email"
-            placeholder="EMAIL"
+            placeholder="ENTIRE EMAIL ADDRESS"
             aria-label="Email"
           />
           <Spacer />
