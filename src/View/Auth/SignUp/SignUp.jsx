@@ -3,7 +3,12 @@ import './scss/signup-styles.css';
 import { Button, Input, Loading, Spacer } from '@nextui-org/react';
 import { CreateUserPost } from 'api';
 
-function SignUp({ setLogIsVisible, logIsVisible }) {
+function SignUp({
+  setLogIsVisible,
+  logIsVisible,
+  forgPassShown,
+  setForgPassShown,
+}) {
   const [email, setEmail] = useState('');
   const [pwd, setPwd] = useState('');
   const [pwdconf, setPwdconf] = useState('');
@@ -11,7 +16,6 @@ function SignUp({ setLogIsVisible, logIsVisible }) {
 
   const [inviteCode, setInviteCode] = useState(false);
   const [code, setCode] = useState('');
-  console.log(code, inviteCode);
 
   useEffect(() => {
     if (code.length === 10) {
@@ -45,8 +49,7 @@ function SignUp({ setLogIsVisible, logIsVisible }) {
           Welcome to
           <br />
           <h2>
-            <i>Marcus</i>
-            <b>Bot</b>
+            <i>Anti</i> <b>SocialSuite</b>
           </h2>
           <h1>Sign Up</h1>
           {!inviteCode ? (
@@ -56,6 +59,7 @@ function SignUp({ setLogIsVisible, logIsVisible }) {
               id="invite-code"
               placeholder="INVITE CODE"
               onChange={(e) => setCode(e.target.value)}
+              aria-label="Invite Code"
             />
           ) : (
             <>
@@ -65,6 +69,7 @@ function SignUp({ setLogIsVisible, logIsVisible }) {
                 id="username"
                 placeholder="EMAIL"
                 onChange={(e) => setEmail(e.target.value)}
+                aria-label="Email"
               />
               <Spacer />
               <Input
@@ -73,6 +78,7 @@ function SignUp({ setLogIsVisible, logIsVisible }) {
                 id="password"
                 placeholder="PASSWORD"
                 onChange={(e) => setPwd(e.target.value)}
+                aria-label="Password"
               />
               <Spacer />
               <Input
@@ -81,6 +87,7 @@ function SignUp({ setLogIsVisible, logIsVisible }) {
                 id="confirmPassword"
                 placeholder="CONFIRM PASSWORD"
                 onChange={(e) => setPwdconf(e.target.value)}
+                aria-label="Confirm Password"
               />
               <Spacer />
               <Button type="submit">
@@ -94,9 +101,13 @@ function SignUp({ setLogIsVisible, logIsVisible }) {
           )}
         </form>
         <div className="signup-footer">
-          <a href="/" className="forgot-password">
-            Forgot Password?
-          </a>
+          Forgot Password?{' '}
+          <button
+            className="create-account"
+            onClick={() => setForgPassShown(true)}
+          >
+            Reset
+          </button>
           <br />
           <button
             type="button"

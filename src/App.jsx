@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import 'GlobalStyles/global-styles.css';
 import { Outlet } from 'react-router-dom';
-import { Login } from 'View/Login';
-import { SignUp } from 'View/SignUp';
+import { Login } from 'View/Auth/Login';
+import { SignUp } from 'View/Auth/SignUp';
 import { Header } from 'Components/Header';
 import { Menu } from 'Components/Menu';
 import Background from 'Components/Background';
+import { ForgotPassword } from 'View/Auth/ForgotPassword';
 
 function App({ setTheme, lightTheme, darkTheme, theme }) {
   const [logIsVisible, setLogIsVisible] = useState(true);
+  const [forgPassShown, setForgPassShown] = useState(false);
   const [menuItemHovered, setMenuItemHovered] = useState('');
   const [menuSelected, setMenuSeleted] = useState('');
 
@@ -71,10 +73,20 @@ function App({ setTheme, lightTheme, darkTheme, theme }) {
             <Login
               setLogIsVisible={setLogIsVisible}
               logIsVisible={logIsVisible}
+              setForgPassShown={setForgPassShown}
+              forgPassShown={forgPassShown}
             />
             <SignUp
               setLogIsVisible={setLogIsVisible}
               logIsVisible={logIsVisible}
+              setForgPassShown={setForgPassShown}
+              forgPassShown={forgPassShown}
+            />
+            <ForgotPassword
+              setLogIsVisible={setLogIsVisible}
+              logIsVisible={logIsVisible}
+              setForgPassShown={setForgPassShown}
+              forgPassShown={forgPassShown}
             />
           </div>
         </>

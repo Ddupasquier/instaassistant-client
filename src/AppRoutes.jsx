@@ -11,8 +11,6 @@ import { Billing } from 'View/Billing';
 import { Profile } from 'View/Profile';
 import { Account } from 'View/Account';
 import { FAQ } from 'View/FAQ';
-import { Login } from 'View/Login';
-import { SignUp } from 'View/SignUp';
 import { AccountUpdate } from 'View/AccountUpdate';
 import { Accounts } from 'View/Accounts';
 import { Stripe } from 'View/Stripe';
@@ -83,8 +81,6 @@ function AppRoutes() {
               element={<Account darkTheme={darkTheme} theme={theme} />}
             />
             <Route path="/FAQ" element={<FAQ />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<SignUp />} />
             <Route path="/stripe" element={<Stripe />} />
           </Route>
         </Routes>

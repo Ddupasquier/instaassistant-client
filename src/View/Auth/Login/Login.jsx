@@ -3,7 +3,12 @@ import './scss/login-styles.css';
 import { Button, Input, Loading, Spacer } from '@nextui-org/react';
 import { loginFetch } from 'api';
 
-function Login({ setLogIsVisible, logIsVisible }) {
+function Login({
+  setLogIsVisible,
+  logIsVisible,
+  forgPassShown,
+  setForgPassShown,
+}) {
   const [email, setEmail] = useState('');
   const [pwd, setPwd] = useState('');
   const [loading, setLoading] = useState(false);
@@ -26,12 +31,11 @@ function Login({ setLogIsVisible, logIsVisible }) {
   return (
     <div className="login-overlay" style={loginStyle}>
       <div className="login-form-container raised">
-        <form className="login" onSubmit={handleSubmit} autoComplete="off">
+        <form className="login" onSubmit={handleSubmit}>
           Welcome to
           <br />
           <h2>
-            <i>Marcus</i>
-            <b>Bot</b>
+            <i>Anti</i> <b>SocialSuite</b>
           </h2>
           <h1>Login</h1>
           <Input
@@ -40,6 +44,7 @@ function Login({ setLogIsVisible, logIsVisible }) {
             id="email"
             placeholder="EMAIL"
             onChange={(e) => setEmail(e.target.value)}
+            aria-label="Email"
           />
           <Spacer />
           <Input
@@ -48,6 +53,7 @@ function Login({ setLogIsVisible, logIsVisible }) {
             id="password"
             placeholder="PASSWORD"
             onChange={(e) => setPwd(e.target.value)}
+            aria-label="Password"
           />
           <Spacer />
           <Button type="submit">
@@ -55,9 +61,13 @@ function Login({ setLogIsVisible, logIsVisible }) {
           </Button>
         </form>
         <div className="login-footer">
-          <a href="/" className="forgot-password">
-            Forgot Password?
-          </a>
+          Forgot Password?{' '}
+          <button
+            className="create-account"
+            onClick={() => setForgPassShown(true)}
+          >
+            Reset
+          </button>
           <br />
           <button
             type="button"
@@ -65,7 +75,6 @@ function Login({ setLogIsVisible, logIsVisible }) {
             onClick={() => {
               setLogIsVisible(false);
             }}
-            style={{ color: 'black' }}
           >
             Create Account
           </button>
