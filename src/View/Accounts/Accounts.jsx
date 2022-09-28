@@ -274,7 +274,7 @@ function Accounts() {
                   </Table.Row>
                 )}
               </Table.Body>
-              {/* TODO: fix filter to work on other paginated pages */}
+              {/* TODO: fix filter to work on other paginated pages. Maybe on focus of input. */}
               <Table.Pagination
                 rounded
                 shadow
