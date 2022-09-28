@@ -28,7 +28,11 @@ export const CreateUserPost = async (userInfo) => {
     },
     body: JSON.stringify(userInfo),
   });
-  return await response.json();
+  if (response.ok) {
+    return await response.json();
+  } else {
+    throw new Error('Something went wrong');
+  }
 };
 
 export const loginFetch = async (userInfo) => {

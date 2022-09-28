@@ -3,12 +3,7 @@ import './scss/signup-styles.css';
 import { Button, Input, Loading, Spacer } from '@nextui-org/react';
 import { CreateUserPost } from 'api';
 
-function SignUp({
-  setLogIsVisible,
-  logIsVisible,
-  forgPassShown,
-  setForgPassShown,
-}) {
+function SignUp({ setLogIsVisible, logIsVisible, setForgPassShown }) {
   const [email, setEmail] = useState('');
   const [pwd, setPwd] = useState('');
   const [pwdconf, setPwdconf] = useState('');
@@ -38,8 +33,7 @@ function SignUp({
       return;
     }
     setLoading(true);
-    CreateUserPost({ email, password: pwd });
-    //! need to add success functionality: auto login and redirect? or success message and redirect to login?
+    CreateUserPost({ email, password: pwd }).then(setLogIsVisible(true));
   };
 
   return (

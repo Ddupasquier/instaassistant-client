@@ -31,7 +31,7 @@ function ForgotPassword({ forgPassShown, setForgPassShown }) {
           <Input
             required
             type="text"
-            id="email"
+            id="entire-email"
             placeholder="ENTIRE EMAIL ADDRESS"
             aria-label="Email"
             onChange={(e) => setEmail(e.target.value)}
