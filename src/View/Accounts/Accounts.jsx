@@ -9,7 +9,6 @@ import {
   Card,
   Button,
   Input,
-  Dropdown,
   Loading,
 } from '@nextui-org/react';
 
@@ -32,6 +31,7 @@ import DeleteConfirm from '../../Components/DeleteConfirm';
 // import { Base64Test } from 'View/Base64Test';
 
 function Accounts() {
+  const [pageNum, setPageNum] = useState(1);
   const [userToDelete, setUserToDelete] = useState(null);
 
   useEffect(() => {
@@ -73,24 +73,6 @@ function Accounts() {
     { name: 'STATUS', uid: 'active' },
     { name: 'ACTIONS', uid: 'actions' },
   ];
-
-  // t.integer :user_id
-  // t.string :platform
-  // t.string :username
-  // t.string :tags
-  // t.boolean :allow_follow
-  // t.boolean :allow_like
-  // t.boolean :allow_comment
-  // t.boolean :allow_dm
-
-  // figure a way to have status on ruby json return
-
-  const [selected, setSelected] = useState(new Set(['Platform']));
-
-  const selectedValue = React.useMemo(
-    () => Array.from(selected).join(', ').replaceAll('_', ' '),
-    [selected]
-  );
 
   const renderCell = (user, columnKey) => {
     const cellValue = user[columnKey];
@@ -214,7 +196,7 @@ function Accounts() {
           >
             Account Management
           </Text>
-          <Dropdown>
+          {/* <Dropdown>
             <Dropdown.Button flat color="secondary" css={{ tt: 'capitalize' }}>
               {selectedValue}
             </Dropdown.Button>
@@ -232,14 +214,17 @@ function Accounts() {
               <Dropdown.Item key="TikTok">TikTok</Dropdown.Item>
               <Dropdown.Item key="Facebook">Facebook</Dropdown.Item>
             </Dropdown.Menu>
-          </Dropdown>
+          </Dropdown> */}
           <Input
             clearable
             underlined
             placeholder="Search"
             color="secondary"
             size="xl"
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+              setPageNum(1);
+            }}
           />
           <Button
             type="button"
@@ -251,15 +236,23 @@ function Accounts() {
             Add Account
           </Button>
         </Card>
-        <Card css={{ borderRadius: '0', height: '90%', overflow: 'auto' }}>
+
+        <Card
+          css={{
+            borderRadius: '0',
+            height: '90%',
+            overflow: 'auto',
+          }}
+        >
           {allAccounts.length > 0 ? (
             <Table
-              aria-label="managed accounts table"
+              aria-label="managed accounts pagination table"
               css={{
-                height: 'auto',
+                height: '100%',
                 minWidth: '100%',
               }}
               selectionMode="none"
+              shadow={false}
             >
               <Table.Header columns={columns}>
                 {(column) => (
@@ -281,6 +274,16 @@ function Accounts() {
                   </Table.Row>
                 )}
               </Table.Body>
+              {/* TODO: fix filter to work on other paginated pages */}
+              <Table.Pagination
+                rounded
+                shadow
+                noMargin
+                align="center"
+                page={pageNum}
+                rowsPerPage={12}
+                onPageChange={(page) => console.log({ page })}
+              />
             </Table>
           ) : (
             <div
