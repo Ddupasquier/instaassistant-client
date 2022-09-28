@@ -1,6 +1,6 @@
 //* User Routes
 
-const local = false;
+const local = true;
 const baseUrl = local
   ? 'http://localhost:3000'
   : 'https://instaassistant-api.herokuapp.com';
@@ -36,3 +36,6 @@ export const faqPath = baseUrl + '/faq';
 //* Payment/Checkout
 
 export const CheckoutEndpoint = baseUrl + '/create-checkout-session';
+
+// * PASSWORD PATHS
+export const GenerateResetTokenPath = baseUrl + '/users/gen_reset_password';

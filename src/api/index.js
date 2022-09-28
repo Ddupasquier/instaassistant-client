@@ -14,6 +14,7 @@ import {
   AccountTaskPath,
   CheckoutEndpoint,
   unstickAccountPath,
+  GenerateResetTokenPath,
 } from './endpoints';
 
 // ----------- Start User
@@ -243,4 +244,23 @@ export const CreateCheckoutSession = async (formData) => {
     body: JSON.stringify(formData),
   });
   return await response.json();
+};
+
+export const GenerateResetToken = async (formData) => {
+  const response = await fetch(GenerateResetTokenPath, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify(formData),
+  });
+  const resp_1 = await response.json();
+
+  if (resp_1.error) {
+    alert(resp_1.error);
+  } else if (resp_1.success) {
+    console.log('success');
+    return resp_1;
+  }
 };

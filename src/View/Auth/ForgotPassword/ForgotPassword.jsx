@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './scss/password-styles.css';
 import { Button, Input, Spacer } from '@nextui-org/react';
+import { GenerateResetToken } from 'api/index';
 
 function ForgotPassword({ forgPassShown, setForgPassShown }) {
+  const [email, setEmail] = useState('');
+
   const passwordStyle = {
     position: 'absolute',
     transform: forgPassShown ? 'translateY(0)' : 'translateY(-3000px)',
@@ -12,9 +15,7 @@ function ForgotPassword({ forgPassShown, setForgPassShown }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // setLoading(true);
-    // passwordFetch({ email, password: pwd });
-    //! need to add success functionality: auto password and redirect? or success message and redirect to password?
+    GenerateResetToken({ email });
   };
 
   return (
@@ -33,12 +34,16 @@ function ForgotPassword({ forgPassShown, setForgPassShown }) {
             id="email"
             placeholder="ENTIRE EMAIL ADDRESS"
             aria-label="Email"
+            onChange={(e) => setEmail(e.target.value)}
           />
           <Spacer />
           <Button type="submit">Reset</Button>
         </form>
         <div className="password-footer">
-          <button className="create-account" onClick={() => setForgPassShown(false)}>
+          <button
+            className="create-account"
+            onClick={() => setForgPassShown(false)}
+          >
             I didn&apos;t forget my password
           </button>
         </div>
