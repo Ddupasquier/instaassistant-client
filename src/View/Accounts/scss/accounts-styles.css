@@ -1,11 +1,13 @@
 .accounts-container {
-  z-index: 10;
+  z-index: 3;
+  height: 100%;
+  border: 1px solid green;
+  overflow: auto;
 }
 
 table {
   background: none;
   width: 100%;
-  border: black solid;
 }
 table td {
   text-align: center;

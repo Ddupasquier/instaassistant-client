@@ -183,8 +183,8 @@ function Accounts() {
   return (
     <>
       <div className="accounts-container">
-        <Card
-          css={{
+        <div
+          style={{
             background: '$myColor',
             display: 'flex',
             flexDirection: 'row',
@@ -248,7 +248,7 @@ function Accounts() {
           >
             Add Account
           </Button>
-        </Card>
+        </div>
 
         {/* <Card
           css={{
