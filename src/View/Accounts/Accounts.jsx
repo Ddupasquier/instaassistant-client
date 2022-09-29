@@ -48,16 +48,22 @@ function Accounts() {
     setDeleteConfirmVisible(false);
   };
 
-  const filteredAccounts = allAccounts
-    .filter((account) => {
-      return (
-        account.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        account.tags.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-    })
-    .sort((a, b) => {
-      return a.username.localeCompare(b.username);
-    });
+  const filterAccounts = () => {
+    if (allAccounts) {
+      return allAccounts
+        .filter((account) => {
+          return (
+            account.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            account.tags.toLowerCase().includes(searchTerm.toLowerCase())
+          );
+        })
+        .sort((a, b) => {
+          return a.username.localeCompare(b.username);
+        });
+    } else {
+      return "There doesn't seem to be an account associated with this profile. Please add an account to continue.";
+    }
+  };
 
   const [newAccountVisible, setNewAccountVisible] = useState(false);
   const newAccountHandler = () => setNewAccountVisible(true);
@@ -224,6 +230,7 @@ function Accounts() {
             onChange={(e) => {
               setSearchTerm(e.target.value);
               setPageNum(1);
+              console.log(pageNum);
             }}
           />
           <Button
@@ -265,7 +272,7 @@ function Accounts() {
                   </Table.Column>
                 )}
               </Table.Header>
-              <Table.Body items={filteredAccounts}>
+              <Table.Body items={filterAccounts()}>
                 {(item) => (
                   <Table.Row>
                     {(columnKey) => (
@@ -274,15 +281,18 @@ function Accounts() {
                   </Table.Row>
                 )}
               </Table.Body>
-              {/* TODO: fix filter to work on other paginated pages. Maybe on focus of input. */}
+
               <Table.Pagination
+                aria-label="Pagination"
+                page={pageNum}
+                onPageChange={(page) => {
+                  setPageNum(page);
+                }}
+                rowsPerPage={2}
+                align="center"
                 rounded
                 shadow
                 noMargin
-                align="center"
-                page={pageNum}
-                rowsPerPage={12}
-                onPageChange={(page) => console.log({ page })}
               />
             </Table>
           ) : (
