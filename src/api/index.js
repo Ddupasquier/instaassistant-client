@@ -15,6 +15,8 @@ import {
   CheckoutEndpoint,
   unstickAccountPath,
   GenerateResetTokenPath,
+  editProfilePath,
+  accountsManagedPath,
 } from './endpoints';
 
 // ----------- Start User
@@ -64,6 +66,38 @@ export const Logout = () => {
 
 export const GetUserInfo = async () => {
   const response = await fetch(UserViewPath + localStorage.getItem('user'), {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: localStorage.getItem('token'),
+    },
+  });
+  return await response.json();
+};
+
+export const EditProfilePatch = async (newData) => {
+  console.log('newData', newData);
+  const response = await fetch(editProfilePath, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: localStorage.getItem('token'),
+    },
+    body: JSON.stringify(newData),
+  });
+  if (response.success) {
+    console.log('success');
+    return await response.json();
+  } else {
+    console.log('failed from client');
+    throw new Error('Something went wrong');
+  }
+};
+
+export const GetAccountsManaged = async () => {
+  const response = await fetch(accountsManagedPath, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
