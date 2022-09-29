@@ -6,6 +6,7 @@ function ChangePassword({
   closeChangePasswordHandler,
   userInfo,
 }) {
+  /** TODO hook up change password */
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -15,7 +16,7 @@ function ChangePassword({
       confirm_password: data.confirm_password || '',
     };
     console.log(payload);
-//     PostTask(payload);
+    //     PostTask(payload);
   };
 
   return (
