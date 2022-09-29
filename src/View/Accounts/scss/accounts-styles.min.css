@@ -1,2 +1,2 @@
-.accounts-container{z-index:10}
+.accounts-container{z-index:10}table{background:none;width:100%;border:#000 solid}table td{text-align:center}table tr{background:#fff}table .borderless tbody tr td,table .borderless tbody tr th,table .borderless thead tr th{border:none}table .username-column{display:flex;align-items:center;gap:1rem;text-align:left;padding-left:3rem}table .config-column>*{margin-right:.5rem}table .actions-column>*{margin-right:.5rem}
 /*# sourceMappingURL=accounts-styles.min.css.map */

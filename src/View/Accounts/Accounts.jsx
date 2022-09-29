@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
 import {
-  Table,
-  Row,
-  Col,
-  Tooltip,
+  // Table,
+  // Row,
+  // Col,
+  // Tooltip,
   Text,
   Card,
   Button,
@@ -19,14 +19,20 @@ import { Link } from 'react-router-dom';
 import Avatar from 'react-avatar';
 
 // ICON IMPORTS
-import { BsEmojiSunglasses } from 'react-icons/bs'; // follow
+// import { BsEmojiSunglasses } from 'react-icons/bs'; // follow
 import { AiOutlineMessage } from 'react-icons/ai'; // comment
 import { FaRegEnvelopeOpen } from 'react-icons/fa'; // dm
-import { FiHeart } from 'react-icons/fi'; // like
-import { StyledBadge } from './StyledBadge';
-import { IconButton } from './IconButton';
-import { EyeIcon } from './EyeIcon';
-import { DeleteIcon } from './DeleteIcon';
+import {
+  FiHeart,
+  FiUserPlus,
+  FiUserMinus,
+  FiTrash2,
+  FiEye,
+} from 'react-icons/fi'; // like
+// import { StyledBadge } from './StyledBadge';
+// import { IconButton } from './IconButton';
+// import { EyeIcon } from './EyeIcon';
+// import { DeleteIcon } from './DeleteIcon';
 import DeleteConfirm from '../../Components/DeleteConfirm';
 // import { Base64Test } from 'View/Base64Test';
 
@@ -71,108 +77,108 @@ function Accounts() {
     setNewAccountVisible(false);
   };
 
-  const columns = [
-    { name: 'ACCOUNT', uid: 'username' },
-    { name: 'PLATFORM', uid: 'platform' },
-    { name: 'CONFIG', uid: 'config' },
-    { name: 'TAGS', uid: 'tags' },
-    { name: 'STATUS', uid: 'active' },
-    { name: 'ACTIONS', uid: 'actions' },
-  ];
+  // const columns = [
+  //   { name: 'ACCOUNT', uid: 'username' },
+  //   { name: 'PLATFORM', uid: 'platform' },
+  //   { name: 'CONFIG', uid: 'config' },
+  //   { name: 'TAGS', uid: 'tags' },
+  //   { name: 'STATUS', uid: 'active' },
+  //   { name: 'ACTIONS', uid: 'actions' },
+  // ];
 
-  const renderCell = (user, columnKey) => {
-    const cellValue = user[columnKey];
-    switch (columnKey) {
-      case 'username':
-        return (
-          <Link to={`/accounts/instagram/${user.id}`}>
-            <div
-              className="avatar"
-              style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}
-            >
-              <Avatar
-                name={user.username}
-                round
-                value="25%"
-                size="45"
-                textSizeRatio={2}
-              />
-              <Text>@{user.username}</Text>
-            </div>
-          </Link>
-        );
-      case 'platform':
-        return (
-          <Col>
-            <Row>
-              <Text b size={14} css={{ tt: 'capitalize' }}>
-                {user.platform}
-              </Text>
-            </Row>
-            <Row>
-              <Text b size={13} css={{ tt: 'capitalize', color: '$accents7' }}>
-                {user.team}
-              </Text>
-            </Row>
-          </Col>
-        );
-      case 'active':
-        return (
-          <StyledBadge type={user.active ? 'active' : 'idle'}>
-            {user.active ? 'active' : 'idle'}
-          </StyledBadge>
-        );
+  // const renderCell = (user, columnKey) => {
+  //   const cellValue = user[columnKey];
+  //   switch (columnKey) {
+  //     case 'username':
+  //       return (
+  //         <Link to={`/accounts/instagram/${user.id}`}>
+  //           <div
+  //             className="avatar"
+  //             style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}
+  //           >
+  //             <Avatar
+  //               name={user.username}
+  //               round
+  //               value="25%"
+  //               size="45"
+  //               textSizeRatio={2}
+  //             />
+  //             <Text>@{user.username}</Text>
+  //           </div>
+  //         </Link>
+  //       );
+  //     case 'platform':
+  //       return (
+  //         <Col>
+  //           <Row>
+  //             <Text b size={14} css={{ tt: 'capitalize' }}>
+  //               {user.platform}
+  //             </Text>
+  //           </Row>
+  //           <Row>
+  //             <Text b size={13} css={{ tt: 'capitalize', color: '$accents7' }}>
+  //               {user.team}
+  //             </Text>
+  //           </Row>
+  //         </Col>
+  //       );
+  //     case 'active':
+  //       return (
+  //         <StyledBadge type={user.active ? 'active' : 'idle'}>
+  //           {user.active ? 'active' : 'idle'}
+  //         </StyledBadge>
+  //       );
 
-      case 'config':
-        return (
-          <Col>
-            <Row css={{ display: 'flex', gap: '.4rem' }}>
-              {user.allow_follow && (
-                <BsEmojiSunglasses title="Following enabled" />
-              )}
-              {user.allow_like && <FiHeart title="Liking enabled" />}
-              {user.allow_comment && (
-                <AiOutlineMessage title="Commenting enabled" />
-              )}
-              {user.allow_dm && <FaRegEnvelopeOpen title="Messaging enabled" />}
-            </Row>
-          </Col>
-        );
+  //     case 'config':
+  //       return (
+  //         <Col>
+  //           <Row css={{ display: 'flex', gap: '.4rem' }}>
+  //             {user.allow_follow && (
+  //               <BsEmojiSunglasses title="Following enabled" />
+  //             )}
+  //             {user.allow_like && <FiHeart title="Liking enabled" />}
+  //             {user.allow_comment && (
+  //               <AiOutlineMessage title="Commenting enabled" />
+  //             )}
+  //             {user.allow_dm && <FaRegEnvelopeOpen title="Messaging enabled" />}
+  //           </Row>
+  //         </Col>
+  //       );
 
-      case 'actions':
-        return (
-          <Row justify="center" align="center">
-            <Col css={{ d: 'flex' }}>
-              <Tooltip content="Details">
-                <IconButton onClick={() => console.log('View user', user.id)}>
-                  <Link to={`/accounts/instagram/${user.id}`}>
-                    <EyeIcon size={20} fill="#979797" />
-                  </Link>
-                </IconButton>
-              </Tooltip>
-            </Col>
-            <Col css={{ d: 'flex' }}>
-              <Tooltip
-                content="Delete user"
-                color="error"
-                onClick={() => console.log('Delete user', user.id)}
-              >
-                <IconButton
-                  onClick={() => {
-                    handleDeleteConfirmVisible();
-                    setUserToDelete(user);
-                  }}
-                >
-                  <DeleteIcon size={20} fill="#FF0080" />
-                </IconButton>
-              </Tooltip>
-            </Col>
-          </Row>
-        );
-      default:
-        return cellValue;
-    }
-  };
+  //     case 'actions':
+  //       return (
+  //         <Row justify="center" align="center">
+  //           <Col css={{ d: 'flex' }}>
+  //             <Tooltip content="Details">
+  //               <IconButton onClick={() => console.log('View user', user.id)}>
+  //                 <Link to={`/accounts/instagram/${user.id}`}>
+  //                   <EyeIcon size={20} fill="#979797" />
+  //                 </Link>
+  //               </IconButton>
+  //             </Tooltip>
+  //           </Col>
+  //           <Col css={{ d: 'flex' }}>
+  //             <Tooltip
+  //               content="Delete user"
+  //               color="error"
+  //               onClick={() => console.log('Delete user', user.id)}
+  //             >
+  //               <IconButton
+  //                 onClick={() => {
+  //                   handleDeleteConfirmVisible();
+  //                   setUserToDelete(user);
+  //                 }}
+  //               >
+  //                 <DeleteIcon size={20} fill="#FF0080" />
+  //               </IconButton>
+  //             </Tooltip>
+  //           </Col>
+  //         </Row>
+  //       );
+  //     default:
+  //       return cellValue;
+  //   }
+  // };
 
   return (
     <>
@@ -244,71 +250,88 @@ function Accounts() {
           </Button>
         </Card>
 
-        <Card
+        {/* <Card
           css={{
             borderRadius: '0',
             height: '90%',
             overflow: 'auto',
           }}
-        >
-          {allAccounts.length > 0 ? (
-            <Table
-              aria-label="managed accounts pagination table"
-              css={{
-                height: '100%',
-                minWidth: '100%',
-              }}
-              selectionMode="none"
-              shadow={false}
-            >
-              <Table.Header columns={columns}>
-                {(column) => (
-                  <Table.Column
-                    key={column.uid}
-                    hideHeader={column.uid === 'actions'}
-                    align={column.uid === 'actions' ? 'center' : 'start'}
-                  >
-                    {column.name}
-                  </Table.Column>
-                )}
-              </Table.Header>
-              <Table.Body items={filterAccounts()}>
-                {(item) => (
-                  <Table.Row>
-                    {(columnKey) => (
-                      <Table.Cell>{renderCell(item, columnKey)}</Table.Cell>
+        > */}
+        {allAccounts.length > 0 ? (
+          <table className="table borderless">
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Platform</th>
+                <th>Active</th>
+                <th>Config</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filterAccounts().map((user) => (
+                <tr key={user.id}>
+                  <td className="username-column">
+                    <Avatar
+                      name={user.username}
+                      round
+                      value="25%"
+                      size="45"
+                      textSizeRatio={2}
+                    />
+                    {user.username}
+                  </td>
+                  <td>{user.platform}</td>
+                  <td>{user.active ? 'Yes' : 'No'}</td>
+                  <td className="config-column">
+                    {user.allow_like && <FiHeart title="Liking enabled" />}
+                    {user.allow_comment && (
+                      <AiOutlineMessage title="Commenting enabled" />
                     )}
-                  </Table.Row>
-                )}
-              </Table.Body>
-
-              <Table.Pagination
-                aria-label="Pagination"
-                page={pageNum}
-                onPageChange={(page) => {
-                  setPageNum(page);
-                }}
-                rowsPerPage={2}
-                align="center"
-                rounded
-                shadow
-                noMargin
-              />
-            </Table>
-          ) : (
-            <div
-              style={{
-                height: '100%',
-                width: '100%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              <Loading size="xl" />
-            </div>
-          )}
-        </Card>
+                    {user.allow_dm && (
+                      <FaRegEnvelopeOpen title="Messaging enabled" />
+                    )}
+                    {user.allow_follow && (
+                      <FiUserPlus title="Following enabled" />
+                    )}
+                    {user.allow_unfollow && (
+                      <FiUserMinus title="Unfollowing enabled" />
+                    )}
+                  </td>
+                  <td className="actions-column">
+                    <Link
+                      to={`/accounts/instagram/${user.id}`}
+                      css={{ color: '$font' }}
+                    >
+                      <FiEye title="View account" size="20" />
+                    </Link>
+                    <FiTrash2
+                      title="Delete account"
+                      onClick={() => {
+                        handleDeleteConfirmVisible();
+                        setUserToDelete(user);
+                      }}
+                      size="20"
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <div
+            style={{
+              height: '100%',
+              width: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <Loading size="xl" />
+          </div>
+        )}
+        {/* </Card> */}
       </div>
       <NewAccountModal
         newAccountHandler={newAccountHandler}
