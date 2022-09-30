@@ -1,43 +1,26 @@
 import React, { useEffect, useState } from 'react';
 
-import {
-  // Table,
-  // Row,
-  // Col,
-  // Tooltip,
-  Text,
-  Card,
-  Button,
-  Input,
-  Loading,
-} from '@nextui-org/react';
+import { Text, Button, Input, Loading } from '@nextui-org/react';
 
 import './scss/accounts-styles.css';
 import NewAccountModal from './NewAccountModal';
+import DeleteConfirm from '../../Components/DeleteConfirm';
 import { indexAccounts } from 'api';
 import { Link } from 'react-router-dom';
 import Avatar from 'react-avatar';
 
 // ICON IMPORTS
-// import { BsEmojiSunglasses } from 'react-icons/bs'; // follow
-import { AiOutlineMessage } from 'react-icons/ai'; // comment
-import { FaRegEnvelopeOpen } from 'react-icons/fa'; // dm
+import { AiOutlineMessage } from 'react-icons/ai';
+import { FaRegEnvelopeOpen } from 'react-icons/fa';
 import {
   FiHeart,
   FiUserPlus,
   FiUserMinus,
   FiTrash2,
   FiEye,
-} from 'react-icons/fi'; // like
-// import { StyledBadge } from './StyledBadge';
-// import { IconButton } from './IconButton';
-// import { EyeIcon } from './EyeIcon';
-// import { DeleteIcon } from './DeleteIcon';
-import DeleteConfirm from '../../Components/DeleteConfirm';
-// import { Base64Test } from 'View/Base64Test';
+} from 'react-icons/fi';
 
 function Accounts() {
-  const [pageNum, setPageNum] = useState(1);
   const [userToDelete, setUserToDelete] = useState(null);
 
   useEffect(() => {
@@ -132,8 +115,6 @@ function Accounts() {
             size="xl"
             onChange={(e) => {
               setSearchTerm(e.target.value);
-              setPageNum(1);
-              console.log(pageNum);
             }}
           />
           <Button
