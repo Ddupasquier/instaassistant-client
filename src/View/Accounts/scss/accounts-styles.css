@@ -1,4 +1,35 @@
 .accounts-container {
-  z-index: 10;
+  z-index: 3;
+  height: 100%;
+  overflow: auto;
+}
+
+table {
+  background: none;
+  width: 100%;
+}
+table td {
+  text-align: center;
+}
+table tr {
+  background: white;
+}
+table .borderless tbody tr td,
+table .borderless tbody tr th,
+table .borderless thead tr th {
+  border: none;
+}
+table .username-column {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-align: left;
+  padding-left: 3rem;
+}
+table .config-column > * {
+  margin-right: 0.5rem;
+}
+table .actions-column > * {
+  margin-right: 0.5rem;
 }
 /*# sourceMappingURL=accounts-styles.css.map */

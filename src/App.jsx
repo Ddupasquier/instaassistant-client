@@ -7,6 +7,7 @@ import { Header } from 'Components/Header';
 import { Menu } from 'Components/Menu';
 import Background from 'Components/Background';
 import { ForgotPassword } from 'View/Auth/ForgotPassword';
+import BackgroundAnimation from 'Components/Background/BackgroundAnimation';
 
 function App({ setTheme, lightTheme, darkTheme, theme }) {
   const [logIsVisible, setLogIsVisible] = useState(true);
@@ -46,7 +47,8 @@ function App({ setTheme, lightTheme, darkTheme, theme }) {
           />
 
           <Outlet />
-          <Background theme={theme} darkTheme={darkTheme} />
+          {/* <Background theme={theme} darkTheme={darkTheme} /> */}
+          <BackgroundAnimation />
         </div>
       ) : (
         <>
