@@ -5,7 +5,6 @@ import { Login } from 'View/Auth/Login';
 import { SignUp } from 'View/Auth/SignUp';
 import { Header } from 'Components/Header';
 import { Menu } from 'Components/Menu';
-import Background from 'Components/Background';
 import { ForgotPassword } from 'View/Auth/ForgotPassword';
 import BackgroundAnimation from 'Components/Background/BackgroundAnimation';
 
@@ -47,20 +46,11 @@ function App({ setTheme, lightTheme, darkTheme, theme }) {
           />
 
           <Outlet />
-          {/* <Background theme={theme} darkTheme={darkTheme} /> */}
           <BackgroundAnimation />
         </div>
       ) : (
         <>
-          <Background
-            style={{
-              position: 'fixed',
-              bottom: '0',
-              height: '120vh',
-              width: '100vw',
-              zIndex: '1',
-            }}
-          />
+          <BackgroundAnimation />
           <div
             className="log-sign-container"
             style={{
