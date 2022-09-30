@@ -1,15 +1,22 @@
 import React, { useEffect, useState } from 'react';
-
-import { Text, Button, Input, Loading } from '@nextui-org/react';
-
-import './scss/accounts-styles.css';
-import NewAccountModal from './NewAccountModal';
-import DeleteConfirm from '../../Components/DeleteConfirm';
-import { indexAccounts } from 'api';
 import { Link } from 'react-router-dom';
 import Avatar from 'react-avatar';
+import './scss/accounts-styles.css';
 
-// ICON IMPORTS
+// * NEXTUI IMPORTS
+import { Text, Button, Input, Loading, styled } from '@nextui-org/react';
+
+// * COMPONENT IMPORTS
+import NewAccountModal from './NewAccountModal';
+import DeleteConfirm from '../../Components/DeleteConfirm';
+
+// * UTILS IMPORTS
+import { capitalizeFirstLetter } from 'utils';
+
+// * ENDPOINT
+import { indexAccounts } from 'api';
+
+// * ICON IMPORTS
 import { AiOutlineMessage } from 'react-icons/ai';
 import { FaRegEnvelopeOpen } from 'react-icons/fa';
 import {
@@ -22,14 +29,54 @@ import {
 
 function Accounts() {
   const [userToDelete, setUserToDelete] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [allAccounts, setAllAccounts] = useState([]);
+  const [deleteConfirmVisible, setDeleteConfirmVisible] = useState(false);
+
+  const Tr = styled('tr', {
+    background: '$solid',
+    borderRadius: '10px',
+    boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
+    transition: 'all 0.2s ease-in-out',
+    '&:hover': {
+      boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)',
+    },
+  });
+
+  const Eye = styled(FiEye, {
+    color: '$font',
+    fontSize: '1.5rem',
+    cursor: 'pointer',
+    transition: 'all 0.2s ease-in-out',
+    '&:hover': {
+      color: '$primary',
+    },
+  });
+
+  const Trash = styled(FiTrash2, {
+    color: '$font',
+    fontSize: '1.5rem',
+    cursor: 'pointer',
+    transition: 'all 0.2s ease-in-out',
+    '&:hover': {
+      color: '$error',
+    },
+  });
+
+  const Username = styled('a', {
+    color: '$font',
+    fontSize: '1.2rem',
+    fontWeight: 'bold',
+    textDecoration: 'none',
+    transition: 'all 0.2s ease-in-out',
+    '&:hover': {
+      color: '$primary',
+    },
+  });
 
   useEffect(() => {
     indexAccounts().then((data) => setAllAccounts(data));
   }, []);
-
-  const [searchTerm, setSearchTerm] = useState('');
-  const [allAccounts, setAllAccounts] = useState([]);
-  const [deleteConfirmVisible, setDeleteConfirmVisible] = useState(false);
 
   const handleDeleteConfirmVisible = () => setDeleteConfirmVisible(true);
 
@@ -65,7 +112,6 @@ function Accounts() {
       <div className="accounts-container">
         <div
           style={{
-            background: '$myColor',
             display: 'flex',
             flexDirection: 'row',
             justifyContent: 'space-between',
@@ -73,7 +119,6 @@ function Accounts() {
             borderRadius: '0',
             padding: '1rem',
             height: '10%',
-            backdropFilter: 'blur(15px)',
           }}
         >
           {' '}
@@ -132,7 +177,7 @@ function Accounts() {
           <table className="table borderless">
             <thead>
               <tr>
-                <th>Username</th>
+                <th className="username-column">Username</th>
                 <th>Platform</th>
                 <th>Tags</th>
                 <th>Active</th>
@@ -142,7 +187,7 @@ function Accounts() {
             </thead>
             <tbody>
               {filterAccounts().map((user) => (
-                <tr key={user.id}>
+                <Tr key={user.id}>
                   <td className="username-column">
                     <Avatar
                       name={user.username}
@@ -151,16 +196,13 @@ function Accounts() {
                       size="45"
                       textSizeRatio={2}
                     />
-                    <Link
-                      to={`/accounts/instagram/${user.id}`}
-                      style={{ color: '$font' }}
-                    >
-                      {user.username}
-                    </Link>
+                    <Username href={`/accounts/instagram/${user.id}`}>
+                      @{user.username}
+                    </Username>
                   </td>
-                  <td>{user.platform}</td>
+                  <td>{capitalizeFirstLetter(user.platform)}</td>
                   <td>{user.tags}</td>
-                  <td>{user.active ? 'Yes' : 'No'}</td>
+                  <td>{user.active ? 'Active' : 'Idle'}</td>
                   <td className="config-column">
                     {user.allow_like && <FiHeart title="Liking enabled" />}
                     {user.allow_comment && (
@@ -177,13 +219,10 @@ function Accounts() {
                     )}
                   </td>
                   <td className="actions-column">
-                    <Link
-                      to={`/accounts/instagram/${user.id}`}
-                      css={{ color: '$font' }}
-                    >
-                      <FiEye title="View account" size="20" />
+                    <Link to={`/accounts/instagram/${user.id}`}>
+                      <Eye title="View account" size="20" />
                     </Link>
-                    <FiTrash2
+                    <Trash
                       title="Delete account"
                       onClick={() => {
                         handleDeleteConfirmVisible();
@@ -192,7 +231,7 @@ function Accounts() {
                       size="20"
                     />
                   </td>
-                </tr>
+                </Tr>
               ))}
             </tbody>
           </table>

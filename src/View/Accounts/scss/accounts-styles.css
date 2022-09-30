@@ -10,14 +10,13 @@ table {
 }
 table td {
   text-align: center;
+  padding: 0.5rem;
 }
 table tr {
-  background: white;
+  vertical-align: center;
 }
-table .borderless tbody tr td,
-table .borderless tbody tr th,
-table .borderless thead tr th {
-  border: none;
+table thead tr th {
+  margin: 1rem;
 }
 table .username-column {
   display: flex;
