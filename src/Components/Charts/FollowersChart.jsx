@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getDaysLast30Days } from './utils';
 import { Line } from 'react-chartjs-2';
+import { useTheme } from '@nextui-org/react';
 import {
   Chart as ChartJS,
   PointElement,
@@ -25,6 +26,7 @@ ChartJS.register(
 );
 
 function FollowersChart({ snapshots }) {
+  const { theme } = useTheme();
   const [snaps, setSnaps] = useState([]);
   const [followerData, setFollowerData] = useState({
     datasets: [],
@@ -72,24 +74,24 @@ function FollowersChart({ snapshots }) {
         legend: {
           position: 'top',
           labels: {
-            color: '$font',
+            color: theme.colors.font.value,
           },
         },
       },
       scales: {
         x: {
           ticks: {
-            color: '$font',
+            color: theme.colors.font.value,
           },
         },
         y: {
           ticks: {
-            color: '$font',
+            color: theme.colors.font.value,
           },
         },
       },
     });
-  }, [snaps]);
+  }, [snaps, theme.colors.font.value]);
 
   return <Line options={chartOptions} data={followerData} height="110" />;
 }

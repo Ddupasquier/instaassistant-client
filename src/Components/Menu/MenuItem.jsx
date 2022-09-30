@@ -1,8 +1,17 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { styled } from '@nextui-org/react';
 
-function MenuItem({ item, animateLogo, theme, darkTheme }) {
+function MenuItem({ item, animateLogo }) {
   const [hover, setHover] = useState(false);
+
+  const NavItem = styled('div', {
+    color: '$font',
+    backgroundColor: '$menu',
+    '&:hover': {
+      backgroundColor: '$menuHover',
+    },
+  });
 
   return (
     <NavLink
@@ -13,13 +22,9 @@ function MenuItem({ item, animateLogo, theme, darkTheme }) {
       onMouseLeave={() => setHover(!hover)}
       onClick={() => animateLogo(item.name)}
     >
-      <div
-        className="menu-item"
-        aria-labelledby={item.name}
-        style={{ color: theme === darkTheme ? 'rgb(80, 255, 255)' : 'black' }}
-      >
+      <NavItem className="menu-item" aria-labelledby={item.name}>
         <item.Icon />
-      </div>
+      </NavItem>
     </NavLink>
   );
 }
