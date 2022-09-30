@@ -77,109 +77,6 @@ function Accounts() {
     setNewAccountVisible(false);
   };
 
-  // const columns = [
-  //   { name: 'ACCOUNT', uid: 'username' },
-  //   { name: 'PLATFORM', uid: 'platform' },
-  //   { name: 'CONFIG', uid: 'config' },
-  //   { name: 'TAGS', uid: 'tags' },
-  //   { name: 'STATUS', uid: 'active' },
-  //   { name: 'ACTIONS', uid: 'actions' },
-  // ];
-
-  // const renderCell = (user, columnKey) => {
-  //   const cellValue = user[columnKey];
-  //   switch (columnKey) {
-  //     case 'username':
-  //       return (
-  //         <Link to={`/accounts/instagram/${user.id}`}>
-  //           <div
-  //             className="avatar"
-  //             style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}
-  //           >
-  //             <Avatar
-  //               name={user.username}
-  //               round
-  //               value="25%"
-  //               size="45"
-  //               textSizeRatio={2}
-  //             />
-  //             <Text>@{user.username}</Text>
-  //           </div>
-  //         </Link>
-  //       );
-  //     case 'platform':
-  //       return (
-  //         <Col>
-  //           <Row>
-  //             <Text b size={14} css={{ tt: 'capitalize' }}>
-  //               {user.platform}
-  //             </Text>
-  //           </Row>
-  //           <Row>
-  //             <Text b size={13} css={{ tt: 'capitalize', color: '$accents7' }}>
-  //               {user.team}
-  //             </Text>
-  //           </Row>
-  //         </Col>
-  //       );
-  //     case 'active':
-  //       return (
-  //         <StyledBadge type={user.active ? 'active' : 'idle'}>
-  //           {user.active ? 'active' : 'idle'}
-  //         </StyledBadge>
-  //       );
-
-  //     case 'config':
-  //       return (
-  //         <Col>
-  //           <Row css={{ display: 'flex', gap: '.4rem' }}>
-  //             {user.allow_follow && (
-  //               <BsEmojiSunglasses title="Following enabled" />
-  //             )}
-  //             {user.allow_like && <FiHeart title="Liking enabled" />}
-  //             {user.allow_comment && (
-  //               <AiOutlineMessage title="Commenting enabled" />
-  //             )}
-  //             {user.allow_dm && <FaRegEnvelopeOpen title="Messaging enabled" />}
-  //           </Row>
-  //         </Col>
-  //       );
-
-  //     case 'actions':
-  //       return (
-  //         <Row justify="center" align="center">
-  //           <Col css={{ d: 'flex' }}>
-  //             <Tooltip content="Details">
-  //               <IconButton onClick={() => console.log('View user', user.id)}>
-  //                 <Link to={`/accounts/instagram/${user.id}`}>
-  //                   <EyeIcon size={20} fill="#979797" />
-  //                 </Link>
-  //               </IconButton>
-  //             </Tooltip>
-  //           </Col>
-  //           <Col css={{ d: 'flex' }}>
-  //             <Tooltip
-  //               content="Delete user"
-  //               color="error"
-  //               onClick={() => console.log('Delete user', user.id)}
-  //             >
-  //               <IconButton
-  //                 onClick={() => {
-  //                   handleDeleteConfirmVisible();
-  //                   setUserToDelete(user);
-  //                 }}
-  //               >
-  //                 <DeleteIcon size={20} fill="#FF0080" />
-  //               </IconButton>
-  //             </Tooltip>
-  //           </Col>
-  //         </Row>
-  //       );
-  //     default:
-  //       return cellValue;
-  //   }
-  // };
-
   return (
     <>
       <div className="accounts-container">
@@ -250,19 +147,13 @@ function Accounts() {
           </Button>
         </div>
 
-        {/* <Card
-          css={{
-            borderRadius: '0',
-            height: '90%',
-            overflow: 'auto',
-          }}
-        > */}
         {allAccounts.length > 0 ? (
           <table className="table borderless">
             <thead>
               <tr>
                 <th>Username</th>
                 <th>Platform</th>
+                <th>Tags</th>
                 <th>Active</th>
                 <th>Config</th>
                 <th>Actions</th>
@@ -279,9 +170,15 @@ function Accounts() {
                       size="45"
                       textSizeRatio={2}
                     />
-                    {user.username}
+                    <Link
+                      to={`/accounts/instagram/${user.id}`}
+                      style={{ color: '$font' }}
+                    >
+                      {user.username}
+                    </Link>
                   </td>
                   <td>{user.platform}</td>
+                  <td>{user.tags}</td>
                   <td>{user.active ? 'Yes' : 'No'}</td>
                   <td className="config-column">
                     {user.allow_like && <FiHeart title="Liking enabled" />}
@@ -331,7 +228,6 @@ function Accounts() {
             <Loading size="xl" />
           </div>
         )}
-        {/* </Card> */}
       </div>
       <NewAccountModal
         newAccountHandler={newAccountHandler}
