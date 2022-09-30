@@ -1,7 +1,9 @@
 .faq {
   width: 80%;
   padding: 1rem;
+  -webkit-backdrop-filter: saturate(200%) blur(8px);
+          backdrop-filter: saturate(200%) blur(8px);
+  background: rgba(255, 255, 255, 0.4);
   border-radius: 1rem;
   z-index: 1;
 }
-/*# sourceMappingURL=faq-styles.css.map */
