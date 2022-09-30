@@ -17,6 +17,7 @@ import { Stripe } from 'View/Stripe';
 
 // NextUI import
 import { NextUIProvider, createTheme } from '@nextui-org/react';
+import BackgroundAnimation from 'Components/Background/BackgroundAnimation';
 
 const darkTheme = createTheme({
   type: 'dark',
@@ -82,6 +83,7 @@ function AppRoutes() {
             />
             <Route path="/FAQ" element={<FAQ />} />
             <Route path="/stripe" element={<Stripe />} />
+            <Route path="test-bg" element={<BackgroundAnimation />} />
           </Route>
         </Routes>
       </Provider>
