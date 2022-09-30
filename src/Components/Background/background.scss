@@ -12,7 +12,7 @@
   height: 25rem;
   background: rgba(242, 103, 255, 0.5);
   border-radius: 24% 76% 77% 23% / 30% 30% 70% 70%;
-  filter: blur(5rem);
+  filter: blur(6rem);
   animation: shape1 25s infinite;
 }
 
@@ -51,8 +51,8 @@
   height: 25rem;
   background: rgb(103, 214, 255, 0.5);
   border-radius: 73% 27% 77% 23% / 53% 4% 96% 47%;
-  filter: blur(5rem);
-  animation: shape2 20s infinite;
+  filter: blur(10rem);
+  animation: shape2 35s infinite;
 }
 
 @keyframes shape2 {
@@ -67,7 +67,7 @@
     width: 50rem;
   }
   50% {
-    transform: translate(-90%, -90%);
+    transform: translate(-70%, -70%);
     border-radius: 60% 40% 0% 100% / 1% 74% 26% 99%;
   }
   75% {
@@ -88,7 +88,7 @@
   height: 25rem;
   background: rgb(103, 214, 255, 0.5);
   border-radius: 70% 30% 80% 20% / 42% 25% 75% 58%;
-  filter: blur(5rem);
+  filter: blur(10rem);
   animation: shape3 35s infinite;
 }
 
