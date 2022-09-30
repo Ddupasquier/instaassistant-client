@@ -28,7 +28,7 @@ header .site-name {
   position: absolute;
   -webkit-backdrop-filter: saturate(200%) blur(8px);
           backdrop-filter: saturate(200%) blur(8px);
-  background: rgba(0, 251, 255, 0.918);
+  background: rgba(0, 251, 255, 0.9);
   transition: 0.5s;
 }
 
@@ -36,7 +36,7 @@ header .site-name {
   position: absolute;
   -webkit-backdrop-filter: saturate(200%) blur(8px);
           backdrop-filter: saturate(200%) blur(8px);
-  background: rgba(0, 251, 255, 0.65);
+  background: rgba(0, 251, 255, 0.6);
   transition: 0.5s;
 }
 
@@ -52,7 +52,7 @@ header .site-name {
   position: absolute;
   -webkit-backdrop-filter: saturate(200%) blur(8px);
           backdrop-filter: saturate(200%) blur(8px);
-  background: rgba(0, 251, 255, 0.137);
+  background: rgba(0, 251, 255, 0.1);
   transition: 0.5s;
 }
 /*# sourceMappingURL=header-styles.css.map */

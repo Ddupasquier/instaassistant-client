@@ -30,13 +30,13 @@ header {
 .box-one {
   position: absolute;
   backdrop-filter: saturate(200%) blur(8px);
-  background: rgba(0, 251, 255, 0.918);
+  background: rgba(0, 251, 255, 0.9);
   transition: 0.5s;
 }
 .box-two {
   position: absolute;
   backdrop-filter: saturate(200%) blur(8px);
-  background: rgba(0, 251, 255, 0.65);
+  background: rgba(0, 251, 255, 0.6);
   transition: 0.5s;
 }
 .box-three {
@@ -48,6 +48,6 @@ header {
 .box-four {
   position: absolute;
   backdrop-filter: saturate(200%) blur(8px);
-  background: rgba(0, 251, 255, 0.137);
+  background: rgba(0, 251, 255, 0.1);
   transition: 0.5s;
 }
