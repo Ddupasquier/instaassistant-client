@@ -4,7 +4,7 @@ import Avatar from 'react-avatar';
 import './scss/accounts-styles.css';
 
 // * NEXTUI IMPORTS
-import { Text, Button, Input, Loading, styled } from '@nextui-org/react';
+import { Text, Button, Input, Loading } from '@nextui-org/react';
 
 // * STYLED COMPONENTS
 import { Tr, Eye, Trash, Username } from './styled.js';
