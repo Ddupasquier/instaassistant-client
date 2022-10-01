@@ -31,7 +31,11 @@ function Package({
       <Spacer />
       <form onSubmit={handleSubmit}>
         <input type="hidden" name="priceId" value="price_G0FvDp6vZvdwRZ" />
-        <Button css={{ zIndex: 1, float: 'right' }} type="submit">
+        <Button
+          css={{ zIndex: 1, float: 'right' }}
+          type="submit"
+          color="secondary"
+        >
           Checkout
         </Button>
       </form>

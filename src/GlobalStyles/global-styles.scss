@@ -1,20 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,400;0,600;1,100&family=Roboto:wght@300;400&display=swap');
-// * GLOBAL COLORS
-$color-blue: rgba(0, 225, 255);
-$color-purple: rgb(151, 80, 221);
-$color-yellow: rgb(245, 165, 36);
-$color-black: rgba(0, 0, 0);
-$color-grey: rgb(128, 128, 128);
-$color-lightgrey: rgb(102, 102, 102);
-
-:export {
-  blue: $color-blue;
-  purple: $color-purple;
-  yellow: $color-yellow;
-  black: $color-black;
-  grey: $color-grey;
-  lightgrey: $color-lightgrey;
-}
 
 body {
   font-family: Roboto;
@@ -87,7 +71,7 @@ input:-webkit-autofill {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 0, 234, 0.486);
+  background: rgba(255, 0, 255, 0.5);
   border-radius: 9px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);

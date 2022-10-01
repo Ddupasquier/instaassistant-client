@@ -1,25 +1,25 @@
 import React from 'react';
-import { Button, Text } from '@nextui-org/react';
+import { Button, Text, styled } from '@nextui-org/react';
 import './scss/header-styles.css';
 import { Logout } from '../../api';
 import LogoAnimation from './LogoAnimation';
 
-function Header({ menuSelected, theme, darkTheme }) {
+function Header({ menuSelected }) {
+  const Header = styled('header', {
+    backgroundColor: '$menu',
+  });
+
+  const LogoName = styled('div', {
+    color: '$font',
+  });
+
   return (
-    <header
-      style={{
-        backgroundColor:
-          theme === darkTheme ? 'rgb(34, 34, 34)' : 'rgb(212, 212, 212)',
-      }}
-    >
+    <Header>
       <LogoAnimation menuSelected={menuSelected} />
-      <div
-        className="site-name"
-        style={{ color: theme === darkTheme ? 'rgb(80, 255, 255)' : 'black' }}
-      >
+      <LogoName className="site-name">
         <i>Anti</i>
         <b>SocialSuite</b>
-      </div>
+      </LogoName>
       <div className="username">
         <Text
           h1
@@ -44,7 +44,7 @@ function Header({ menuSelected, theme, darkTheme }) {
           Logout
         </Button>
       </div>
-    </header>
+    </Header>
   );
 }
 

@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
+import './scss/menu-styles.css';
+
 import {
   FaUserAlt,
   FaUserFriends,
@@ -8,9 +10,8 @@ import {
 import { BsSunFill, BsFillMoonStarsFill } from 'react-icons/bs';
 import MenuItem from './MenuItem';
 import PopOver from './PopOver';
-
-import './scss/menu-styles.css';
-import { Switch } from '@nextui-org/react';
+import { styled, Switch } from '@nextui-org/react';
+import useDarkMode from 'use-dark-mode';
 
 const menuItems = [
   {
@@ -35,31 +36,16 @@ const menuItems = [
   },
 ];
 
-function Menu({
-  menuItemHovered,
-  setMenuItemHovered,
-  animateLogo,
-  setTheme,
-  lightTheme,
-  darkTheme,
-  theme,
-}) {
-  const [checked, setChecked] = useState(false);
+function Menu({ menuItemHovered, setMenuItemHovered, animateLogo }) {
+  const darkMode = useDarkMode(false);
 
-  const handleThemeChange = () => {
-    setChecked(!checked);
-    setTheme(checked ? lightTheme : darkTheme);
-  };
+  const Nav = styled('nav', {
+    backgroundColor: '$menu',
+  });
 
   return (
     <>
-      <nav
-        className="menu"
-        style={{
-          backgroundColor:
-            theme === darkTheme ? 'rgb(34, 34, 34)' : 'rgb(212, 212, 212)',
-        }}
-      >
+      <Nav className="menu">
         {menuItems.map((item, i) => (
           <div
             onMouseOver={() => setMenuItemHovered(item.name)}
@@ -70,38 +56,23 @@ function Menu({
             role="menuitem"
             tabIndex={i}
           >
-            <MenuItem
-              item={item}
-              animateLogo={animateLogo}
-              theme={theme}
-              darkTheme={darkTheme}
-            />
+            <MenuItem item={item} animateLogo={animateLogo} />
           </div>
         ))}
         <div className="menu-bottom">
-          {!checked ? (
-            <BsFillMoonStarsFill style={{ color: 'rgb(80, 255, 255)' }} />
-          ) : (
-            <BsSunFill style={{ color: 'rgb(80, 255, 255)' }} />
-          )}
+          {!darkMode.value ? <BsFillMoonStarsFill /> : <BsSunFill />}
           <Switch
             color="secondary"
             size="xs"
-            checked={checked}
-            onChange={handleThemeChange}
+            checked={darkMode.value}
+            onChange={() => darkMode.toggle()}
           />
         </div>
-      </nav>
+      </Nav>
       {window.innerWidth > 760 ? (
         <div className="pop-overs">
           {menuItems.map((item) => (
-            <PopOver
-              key={item.to}
-              item={item}
-              hovered={menuItemHovered}
-              theme={theme}
-              darkTheme={darkTheme}
-            />
+            <PopOver key={item.to} item={item} hovered={menuItemHovered} />
           ))}
         </div>
       ) : null}

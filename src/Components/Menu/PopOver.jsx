@@ -1,17 +1,17 @@
 import React from 'react';
+import useDarkMode from 'use-dark-mode';
 
-function PopOver({ item, hovered, theme, darkTheme }) {
+function PopOver({ item, hovered }) {
+  const darkMode = useDarkMode(false);
   const popOverActive = {
     width: '9rem',
-    backgroundColor:
-      theme === darkTheme ? 'rgb(34, 34, 34)' : 'rgb(212, 212, 212)',
+    backgroundColor: darkMode.value ? 'rgb(34, 34, 34)' : 'rgb(212, 212, 212)',
     translate: 'translate(-50%, -50%)',
-    color: theme === darkTheme ? 'rgb(80, 255, 255)' : 'black',
+    color: darkMode.value ? 'rgb(80, 255, 255)' : 'black',
   };
 
   const popOverInactive = {
-    backgroundColor:
-      theme === darkTheme ? 'rgb(34, 34, 34)' : 'rgb(212, 212, 212)',
+    backgroundColor: darkMode.value ? 'rgb(34, 34, 34)' : 'rgb(212, 212, 212)',
     width: '0',
   };
 

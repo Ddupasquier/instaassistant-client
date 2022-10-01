@@ -100,9 +100,16 @@ function ConfigPopup({ currentAccount, account_id, theme, darkTheme }) {
       messages,
       tags,
     };
-    PatchAccount(body, account_id).then(
-      setTimeout(() => window.location.reload(), 1000)
-    );
+    async function doStuff() {
+      await new Promise((resolve) => {
+        setTimeout(() => {
+          PatchAccount(body, account_id);
+          resolve();
+        }, 1000);
+      });
+      window.location.reload();
+    }
+    doStuff();
   };
 
   const configPosition = {
