@@ -6,6 +6,9 @@ import './scss/accounts-styles.css';
 // * NEXTUI IMPORTS
 import { Text, Button, Input, Loading, styled } from '@nextui-org/react';
 
+// * STYLED COMPONENTS
+import { Tr, Eye, Trash, Username } from './styled.js';
+
 // * COMPONENT IMPORTS
 import NewAccountModal from './NewAccountModal';
 import DeleteConfirm from '../../Components/DeleteConfirm';
@@ -19,60 +22,13 @@ import { indexAccounts } from 'api';
 // * ICON IMPORTS
 import { AiOutlineMessage } from 'react-icons/ai';
 import { FaRegEnvelopeOpen } from 'react-icons/fa';
-import {
-  FiHeart,
-  FiUserPlus,
-  FiUserMinus,
-  FiTrash2,
-  FiEye,
-} from 'react-icons/fi';
+import { FiHeart, FiUserPlus, FiUserMinus } from 'react-icons/fi';
 
 function Accounts() {
   const [userToDelete, setUserToDelete] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [allAccounts, setAllAccounts] = useState([]);
   const [deleteConfirmVisible, setDeleteConfirmVisible] = useState(false);
-
-  const Tr = styled('tr', {
-    background: '$solid',
-    borderRadius: '10px',
-    boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
-    transition: 'all 0.2s ease-in-out',
-    '&:hover': {
-      boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)',
-    },
-  });
-
-  const Eye = styled(FiEye, {
-    color: '$font',
-    fontSize: '1.5rem',
-    cursor: 'pointer',
-    transition: 'all 0.2s ease-in-out',
-    '&:hover': {
-      color: '$primary',
-    },
-  });
-
-  const Trash = styled(FiTrash2, {
-    color: '$font',
-    fontSize: '1.5rem',
-    cursor: 'pointer',
-    transition: 'all 0.2s ease-in-out',
-    '&:hover': {
-      color: '$error',
-    },
-  });
-
-  const Username = styled('a', {
-    color: '$font',
-    fontSize: '1.2rem',
-    fontWeight: 'bold',
-    textDecoration: 'none',
-    transition: 'all 0.2s ease-in-out',
-    '&:hover': {
-      color: '$primary',
-    },
-  });
 
   useEffect(() => {
     indexAccounts().then((data) => setAllAccounts(data));
@@ -118,7 +74,7 @@ function Accounts() {
             alignItems: 'center',
             borderRadius: '0',
             padding: '1rem',
-            height: '10%',
+            maxHeight: '10%',
           }}
         >
           {' '}
@@ -174,7 +130,7 @@ function Accounts() {
         </div>
 
         {allAccounts.length > 0 ? (
-          <table className="table borderless">
+          <table>
             <thead>
               <tr>
                 <th className="username-column">Username</th>
