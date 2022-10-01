@@ -21,6 +21,7 @@ const darkTheme = createTheme({
       menu: 'rgb(34, 34, 34)',
       font: '#fff',
       solid: '#000000',
+      invert: 'invert(0)',
     },
   },
 });
@@ -36,6 +37,7 @@ const lightTheme = createTheme({
       menu: 'rgb(212, 212, 212)',
       font: '#000',
       solid: '#ffffff',
+      invert: 'invert(1)',
     },
   },
 });
