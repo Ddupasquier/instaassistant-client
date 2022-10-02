@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getDaysLast30Days } from './utils';
+import { getDaysLast30Days } from 'utils';
 import { Line } from 'react-chartjs-2';
 import { useTheme } from '@nextui-org/react';
 import {

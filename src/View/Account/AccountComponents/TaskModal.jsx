@@ -20,7 +20,7 @@ import {
 } from './constants';
 
 // * ------- UTILS ------- * //
-import { today, thisTime } from './utils';
+import { today, thisTime } from 'utils';
 
 function TaskModal({ closeTaskHandler, taskVisible, account_id }) {
   const [actionSelected, setActionSelected] = useState('');
