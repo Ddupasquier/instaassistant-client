@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 const box1init = {
   top: '.6rem',
@@ -32,11 +32,11 @@ const box4init = {
   height: '1.5rem',
 };
 
-function LogoAnimation({ menuSelected }) {
-  const [boxOneStyle, setBoxOneStyle] = useState(box1init);
-  const [boxTwoStyle, setBoxTwoStyle] = useState(box2init);
-  const [boxThreeStyle, setBoxThreeStyle] = useState(box3init);
-  const [boxFourStyle, setBoxFourStyle] = useState(box4init);
+function LogoAnimation() {
+  // const [boxOneStyle, setBoxOneStyle] = useState(box1init);
+  // const [boxTwoStyle, setBoxTwoStyle] = useState(box2init);
+  // const [boxThreeStyle, setBoxThreeStyle] = useState(box3init);
+  // const [boxFourStyle, setBoxFourStyle] = useState(box4init);
 
   // useEffect(() => {
   //   if (window.innerWidth > 760) {
@@ -119,10 +119,10 @@ function LogoAnimation({ menuSelected }) {
 
   return (
     <div className="logo">
-      <div className="box-one" style={boxOneStyle} />
-      <div className="box-two" style={boxTwoStyle} />
-      <div className="box-three" style={boxThreeStyle} />
-      <div className="box-four" style={boxFourStyle} />
+      <div className="box-one" style={box1init} />
+      <div className="box-two" style={box2init} />
+      <div className="box-three" style={box3init} />
+      <div className="box-four" style={box4init} />
     </div>
   );
 }
