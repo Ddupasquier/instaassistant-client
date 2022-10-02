@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import 'GlobalStyles/global-styles.css';
-import useDarkMode from 'use-dark-mode';
 import { Outlet } from 'react-router-dom';
 import { Login } from 'View/Auth/Login';
 import { SignUp } from 'View/Auth/SignUp';
@@ -9,6 +8,7 @@ import { Menu } from 'Components/Menu';
 import { ForgotPassword } from 'View/Auth/ForgotPassword';
 import BackgroundAnimation from 'Components/Background/BackgroundAnimation';
 import { createTheme, NextUIProvider } from '@nextui-org/react';
+import { ThemeContext } from 'themeContext';
 
 const darkTheme = createTheme({
   type: 'dark',
@@ -43,7 +43,7 @@ const lightTheme = createTheme({
 });
 
 function App() {
-  const darkMode = useDarkMode(false);
+  const { isDark } = useContext(ThemeContext);
 
   const [logIsVisible, setLogIsVisible] = useState(true);
   const [forgPassShown, setForgPassShown] = useState(false);
@@ -63,7 +63,7 @@ function App() {
   };
 
   return (
-    <NextUIProvider theme={darkMode.value ? darkTheme : lightTheme}>
+    <NextUIProvider theme={isDark ? darkTheme : lightTheme}>
       <div className="App">
         {localStorage.getItem('token') ? (
           <div className="app">

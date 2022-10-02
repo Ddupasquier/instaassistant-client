@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ThemeContext } from 'themeContext';
 import './scss/menu-styles.css';
 
 import {
@@ -11,7 +12,6 @@ import { BsSunFill, BsFillMoonStarsFill } from 'react-icons/bs';
 import MenuItem from './MenuItem';
 import PopOver from './PopOver';
 import { styled, Switch } from '@nextui-org/react';
-import useDarkMode from 'use-dark-mode';
 
 const menuItems = [
   {
@@ -37,7 +37,7 @@ const menuItems = [
 ];
 
 function Menu({ menuItemHovered, setMenuItemHovered, animateLogo }) {
-  const darkMode = useDarkMode(false);
+  const { isDark, toggleFunction } = useContext(ThemeContext);
 
   const Nav = styled('nav', {
     backgroundColor: '$menu',
@@ -60,12 +60,12 @@ function Menu({ menuItemHovered, setMenuItemHovered, animateLogo }) {
           </div>
         ))}
         <div className="menu-bottom">
-          {!darkMode.value ? <BsFillMoonStarsFill /> : <BsSunFill />}
+          {isDark ? <BsSunFill /> : <BsFillMoonStarsFill />}
           <Switch
             color="secondary"
             size="xs"
-            checked={darkMode.value}
-            onChange={() => darkMode.toggle()}
+            checked={isDark}
+            onChange={toggleFunction}
           />
         </div>
       </Nav>
