@@ -215,35 +215,35 @@ function Account({ darkTheme, theme }) {
                       <Text>@{currentAccount.username}</Text>
                     </section>
                     <section>
-                      <legend>Posts</legend>
-                      <div className="followers">
-                        {snapshots
+                      <legend htmlFor="posts-count">Posts</legend>
+                      <div id="posts-count" className="followers">
+                        {snapshots.posts
                           ? snapshots[snapshots.length - 1].posts
                           : 99999}
                       </div>
                     </section>
                     <section>
-                      <legend>Followers</legend>
-                      <div className="followers">
-                        {snapshots
+                      <legend htmlFor="followers-count">Followers</legend>
+                      <div id="followers-count" className="followers">
+                        {snapshots.followers
                           ? snapshots[snapshots.length - 1].followers
                           : 99999}
                       </div>
                     </section>
                     <section>
-                      <legend>Following</legend>
-                      <div className="following">
-                        {snapshots
+                      <legend htmlFor="following-count">Following</legend>
+                      <div id="following-count" className="following">
+                        {snapshots.following
                           ? snapshots[snapshots.length - 1].following
                           : 99999}
                       </div>
                     </section>
                     <Dropdown>
-                      <Dropdown.Button>
+                      <Dropdown.Button color="secondary">
                         <FiSettings />
                       </Dropdown.Button>
                       <Dropdown.Menu color="primary" aria-label="User Actions">
-                        <Dropdown.Item key="profile">
+                        <Dropdown.Item key="profile" aria-label="create-task">
                           <Text
                             b
                             color="inherit"
@@ -253,18 +253,18 @@ function Account({ darkTheme, theme }) {
                             Create Task
                           </Text>
                         </Dropdown.Item>
-                        <Dropdown.Item key="Edit">
+                        <Dropdown.Item key="Edit" aria-label="edit-account">
                           <Link to={`/accounts/instagram/${account_id}/update`}>
                             <Text
                               b
                               color="inherit"
                               css={{ d: 'flex', color: 'black' }}
                             >
-                              Edit Profile
+                              Edit Account
                             </Text>
                           </Link>
                         </Dropdown.Item>
-                        <Dropdown.Item key="Delete">
+                        <Dropdown.Item key="Delete" aria-label="delete-account">
                           <Text
                             b
                             color="inherit"

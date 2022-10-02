@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
-import { Modal, Textarea, Input, Button, Text } from '@nextui-org/react';
+import {
+  Modal,
+  Textarea,
+  Input,
+  Button,
+  Text,
+  styled,
+} from '@nextui-org/react';
 import { PostTask } from 'api';
 import { IconsQuestionMark } from 'Components/icons/icons';
 import { BsFillArrowRightCircleFill } from 'react-icons/bs';
@@ -20,6 +27,28 @@ function TaskModal({ closeTaskHandler, taskVisible, account_id }) {
   const [listTargetSelected, setListTargetSelected] = useState('');
   const [listTypeSelected, setListTypeSelected] = useState('');
   const [schedule, setSchedule] = useState(false);
+
+  const Time = styled('input', {
+    width: '100%',
+    height: '100%',
+    border: 'none',
+    outline: 'none',
+    fontSize: '1.2rem',
+    color: 'black',
+    backgroundColor: 'white',
+    padding: '0.5rem',
+  });
+
+  const Date = styled('input', {
+    width: '100%',
+    height: '100%',
+    border: 'none',
+    outline: 'none',
+    fontSize: '1.2rem',
+    color: 'black',
+    backgroundColor: 'white',
+    padding: '0.5rem',
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -211,14 +240,14 @@ function TaskModal({ closeTaskHandler, taskVisible, account_id }) {
                 </label>
                 {schedule && (
                   <>
-                    <input
+                    <Date
                       defaultValue={today}
                       type="date"
                       name="date"
                       min={today}
                       style={{ width: '100%' }}
                     />
-                    <input
+                    <Time
                       defaultValue={thisTime}
                       type="time"
                       name="time"
@@ -235,7 +264,12 @@ function TaskModal({ closeTaskHandler, taskVisible, account_id }) {
           <Button rounded color="warning" onPress={closeTaskHandler}>
             Cancel
           </Button>
-          <Button rounded color="secondary" type="submit" disabled={!actionSelected}>
+          <Button
+            rounded
+            color="secondary"
+            type="submit"
+            disabled={!actionSelected}
+          >
             Run
           </Button>
         </Modal.Footer>

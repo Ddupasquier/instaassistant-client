@@ -112,6 +112,7 @@ function Accounts() {
             clearable
             underlined
             placeholder="Search"
+            aria-label="search"
             color="secondary"
             size="xl"
             onChange={(e) => {
@@ -130,21 +131,23 @@ function Accounts() {
         </div>
 
         {allAccounts.length > 0 ? (
-          <table>
+          <table role="table" aria-label="accounts-table">
             <thead>
               <tr>
-                <th className="username-column">Username</th>
-                <th>Platform</th>
-                <th>Tags</th>
-                <th>Active</th>
-                <th>Config</th>
-                <th>Actions</th>
+                <th className="username-column" scope="username">
+                  Username
+                </th>
+                <th scope="platform">Platform</th>
+                <th scope="tags">Tags</th>
+                <th scope="active">Active</th>
+                <th scope="config">Config</th>
+                <th scope="actions">Actions</th>
               </tr>
             </thead>
             <tbody>
-              {filterAccounts().map((user) => (
-                <Tr key={user.id}>
-                  <td className="username-column">
+              {filterAccounts().map((user, i) => (
+                <Tr key={user.id} role="row" aria-rowindex={i}>
+                  <td className="username-column" aria-label="username-cell" role="cell">
                     <Avatar
                       name={user.username}
                       round
@@ -156,10 +159,14 @@ function Accounts() {
                       @{user.username}
                     </Username>
                   </td>
-                  <td>{capitalizeFirstLetter(user.platform)}</td>
-                  <td>{user.tags}</td>
-                  <td>{user.active ? 'Active' : 'Idle'}</td>
-                  <td className="config-column">
+                  <td aria-label="platform-cell" role="cell">
+                    {capitalizeFirstLetter(user.platform)}
+                  </td>
+                  <td aria-label="tags-cell" role="cell">{user.tags}</td>
+                  <td aria-label="active-cell" role="cell">
+                    {user.active ? 'Active' : 'Idle'}
+                  </td>
+                  <td className="config-column" aria-label="config-cell" role="cell">
                     {user.allow_like && <FiHeart title="Liking enabled" />}
                     {user.allow_comment && (
                       <AiOutlineMessage title="Commenting enabled" />
@@ -174,7 +181,7 @@ function Accounts() {
                       <FiUserMinus title="Unfollowing enabled" />
                     )}
                   </td>
-                  <td className="actions-column">
+                  <td className="actions-column" aria-label="actions-cell" role="cell">
                     <Link to={`/accounts/instagram/${user.id}`}>
                       <Eye title="View account" size="20" />
                     </Link>

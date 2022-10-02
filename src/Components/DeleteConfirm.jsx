@@ -40,6 +40,7 @@ function DeleteConfirm({
         <Modal.Body>
           <Input
             labelLeft="@"
+            aria-label="confirm-delete-username"
             underlined
             css={{ width: '100%' }}
             onChange={(e) => setUsernameConfirm(e.target.value)}
