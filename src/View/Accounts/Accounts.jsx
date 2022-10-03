@@ -160,7 +160,7 @@ function Accounts() {
                       textSizeRatio={2}
                     />
                     <Username href={`/accounts/instagram/${user.id}`}>
-                      {user.username}
+                      @{user.username}
                     </Username>
                   </td>
                   <td aria-label="platform-cell" role="cell">
