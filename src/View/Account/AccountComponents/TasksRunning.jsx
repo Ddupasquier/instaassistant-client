@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Grid, Text, Button } from '@nextui-org/react';
+import ElipsesAnimation from 'Components/Elipses/ElipsesAnimation';
 
 function TasksRunning({ tasksActive }) {
   // if (tasksActive.length > 0) {
@@ -15,7 +16,10 @@ function TasksRunning({ tasksActive }) {
             background: '$myColor',
           }}
         >
-          <Card.Header>Task Currently Running</Card.Header>
+          <Card.Header>
+            Task Currently Running
+            <ElipsesAnimation font="1rem" />
+          </Card.Header>
           <Card.Divider />
           <Card.Body>
             <Text h3>Activate: @Username</Text>
