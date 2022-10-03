@@ -16,7 +16,7 @@ const FAQ = () => {
 
   return (
     <div className="view-container">
-      <Card css={{ background: '$myColor' }} className="faq">
+      <Card css={{ background: '$myColor', width: '90%' }} className="faq">
         <Text
           h1
           size={60}
