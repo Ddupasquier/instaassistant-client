@@ -15,13 +15,15 @@ function MenuItem({ item }) {
 
   return (
     <NavLink
+      name={item.name}
+      role="menuitem"
       to={item.to}
       exact="true"
       activeclassname="active"
       onMouseEnter={() => setHover(!hover)}
       onMouseLeave={() => setHover(!hover)}
     >
-      <NavItem className="menu-item" aria-labelledby={item.name}>
+      <NavItem className="menu-item">
         <item.Icon />
       </NavItem>
     </NavLink>

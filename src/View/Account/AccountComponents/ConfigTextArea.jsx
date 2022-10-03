@@ -17,7 +17,6 @@ const ConfigTextArea = ({
         status="default"
         key={label}
         label={label}
-        placeholder="Enter your name"
         legend={label}
         onChange={(e) => set(e.target.value)}
         css={{

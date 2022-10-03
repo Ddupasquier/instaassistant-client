@@ -24,7 +24,7 @@ import Avatar from 'react-avatar';
 import TaskModal from './AccountComponents/TaskModal';
 import { TasksRunning } from '.';
 
-function Account({ darkTheme, theme }) {
+function Account() {
   // * ------- DESCTRUCTURING URL PARAMS ------- *
   const { account_id } = useParams();
 
@@ -307,8 +307,6 @@ function Account({ darkTheme, theme }) {
         <ConfigPopup
           currentAccount={currentAccount}
           account_id={account_id}
-          darkTheme={darkTheme}
-          theme={theme}
         />
         <DeleteConfirm
           deleteConfirmVisible={deleteConfirmVisible}

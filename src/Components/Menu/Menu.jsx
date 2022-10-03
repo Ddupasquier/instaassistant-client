@@ -45,7 +45,7 @@ function Menu({ menuItemHovered, setMenuItemHovered }) {
 
   return (
     <>
-      <Nav className="menu">
+      <Nav className="menu" role="menu">
         {menuItems.map((item, i) => (
           <div
             onMouseOver={() => setMenuItemHovered(item.name)}
@@ -53,7 +53,7 @@ function Menu({ menuItemHovered, setMenuItemHovered }) {
             onMouseLeave={() => setMenuItemHovered('')}
             onBlur={() => setMenuItemHovered('')}
             key={item.name}
-            role="menuitem"
+            role="presentation"
             tabIndex={i}
           >
             <MenuItem item={item} />
@@ -62,10 +62,13 @@ function Menu({ menuItemHovered, setMenuItemHovered }) {
         <div className="menu-bottom">
           {isDark ? <BsSunFill /> : <BsFillMoonStarsFill />}
           <Switch
+            aria-label="Toggle dark mode"
             color="secondary"
             size="xs"
             checked={isDark}
+            aria-checked={isDark}
             onChange={toggleFunction}
+            role="switch"
           />
         </div>
       </Nav>

@@ -90,7 +90,7 @@ function LimitsBars({ data: { follows, likes, comments, messages }, toggle }) {
       labels: checkToggleLabel(),
       datasets: [
         {
-          label: 'Utilization',
+          label: 'Interactions',
           data: checkToggleData(),
           backgroundColor: [
             'rgb(45, 0, 255, .7)',
@@ -99,13 +99,14 @@ function LimitsBars({ data: { follows, likes, comments, messages }, toggle }) {
             'rgb(165, 0, 255, .7)',
             'rgb(165, 0, 255, .0)',
           ],
+          borderColor: theme.colors.font.value,
           borderWidth: 1,
           fill: 'origin',
         },
       ],
     });
     setChartOptions({
-      title: 'Utilization',
+      title: 'Interactions',
       responsive: true,
       plugins: {
         legend: checkToggleLegend(),

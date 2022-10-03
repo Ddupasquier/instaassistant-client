@@ -31,7 +31,7 @@ function Profile() {
   }, []);
 
   return (
-    <div className="profile-main">
+    <div className="profile-main" role="region">
       <Avatar name={userInfo.email} round size="80" textSizeRatio={2} />
       <Text
         h1
@@ -58,8 +58,8 @@ function Profile() {
         <br />
         <div className="profile-content">
           <Text align="center">
-            Thank you for becoming a Marcus Bot user. make sure your billing
-            information is up to date or change your email/pass word form this
+            Thank you for becoming a AntiSocialSuite user. Make sure your billing
+            information is up to date or change your email/password from this
             page.
           </Text>
           <br />
