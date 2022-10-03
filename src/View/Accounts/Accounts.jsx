@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { truncateString } from 'utils.js';
 import { Link } from 'react-router-dom';
 import Avatar from 'react-avatar';
 import './scss/accounts-styles.css';
