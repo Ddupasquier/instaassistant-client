@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Switch, Grid, Loading, Button } from '@nextui-org/react';
+import { Switch, Grid, Loading, Button, useTheme } from '@nextui-org/react';
 import ConfigTextArea from './ConfigTextArea';
 import { PatchAccount } from 'api';
 import { Link } from 'react-router-dom';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 
-function ConfigPopup({ currentAccount, account_id, theme, darkTheme }) {
+function ConfigPopup({ currentAccount, account_id }) {
+  const { theme } = useTheme();
   const [divHeight, setDivHeight] = useState(0);
   const ref = useRef(null);
 
@@ -117,15 +118,14 @@ function ConfigPopup({ currentAccount, account_id, theme, darkTheme }) {
     bottom: configShown ? '0' : -(divHeight - 30) + 'px',
     alignSelf: 'center',
     width: '92.5%',
-    backgroundColor:
-      theme === darkTheme ? 'rgb(34, 34, 34)' : 'rgb(212, 212, 212)',
+    backgroundColor: theme.colors.solid.value,
     borderRadius: '.5rem .5rem 0 0',
     zIndex: '1000',
     transition: 'bottom .8s ease-in-out',
   };
 
   const configButton = {
-    backgroundColor: theme === darkTheme ? '#5E1DAD' : '#af6eff',
+    backgroundColor: theme.colors.configButton.value,
   };
 
   return (
@@ -166,6 +166,7 @@ function ConfigPopup({ currentAccount, account_id, theme, darkTheme }) {
                         checked={allowFollow}
                         value={allowFollow}
                         onChange={(e) => setAllowFollow(e.target.checked)}
+                        color="warning"
                       />
                     </section>
                   </Grid>
@@ -179,6 +180,7 @@ function ConfigPopup({ currentAccount, account_id, theme, darkTheme }) {
                         checked={allowLike}
                         value={allowLike}
                         onChange={(e) => setAllowLike(e.target.checked)}
+                        color="warning"
                       />
                     </section>
                   </Grid>
@@ -192,6 +194,7 @@ function ConfigPopup({ currentAccount, account_id, theme, darkTheme }) {
                         checked={allowComment}
                         value={allowComment}
                         onChange={(e) => setAllowComment(e.target.checked)}
+                        color="warning"
                       />
                     </section>
                   </Grid>
@@ -205,6 +208,7 @@ function ConfigPopup({ currentAccount, account_id, theme, darkTheme }) {
                         checked={allowMessage}
                         value={allowMessage}
                         onChange={(e) => setAllowMessage(e.target.checked)}
+                        color="warning"
                       />
                     </section>
                   </Grid>

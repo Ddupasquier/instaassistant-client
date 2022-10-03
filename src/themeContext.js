@@ -24,7 +24,7 @@ const ThemeProvider = ({ children }) => {
         font4: 'rgba(255, 255, 255, 0.4)',
         font1: 'rgba(255, 255, 255, 0.1)',
         solid: '#000000',
-        invert: 'invert(0)',
+        configButton: 'rgba(165, 0, 255, 0.7)'
       },
     },
   });
@@ -44,7 +44,7 @@ const ThemeProvider = ({ children }) => {
         font4: 'rgba(0, 0, 0, 0.4)',
         font1: 'rgba(0, 0, 0, 0.1)',
         solid: '#ffffff',
-        invert: 'invert(1)',
+        configButton: 'rgba(125, 0, 255, 0.7)'
       },
     },
   });
