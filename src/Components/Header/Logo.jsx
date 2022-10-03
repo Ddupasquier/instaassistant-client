@@ -1,36 +1,49 @@
+import { styled } from '@nextui-org/react';
 import React from 'react';
 
-const box1init = {
+const Box1 = styled('div', {
   top: '.6rem',
   left: '.6rem',
   borderRadius: '.1rem',
   width: '1rem',
   height: '1.5rem',
-};
+  position: 'absolute',
+  backdropFilter: 'saturate(200%) blur(8px)',
+  background: '$font9',
+});
 
-const box2init = {
+const Box2 = styled('div', {
   top: '.8rem',
   left: '.9rem',
   borderRadius: '.1rem',
   width: '1rem',
   height: '1.5rem',
-};
+  position: 'absolute',
+  backdropFilter: 'saturate(200%) blur(8px)',
+  background: '$font6',
+});
 
-const box3init = {
+const Box3 = styled('div', {
   top: '1rem',
   left: '1.2rem',
   borderRadius: '.1rem',
   width: '1rem',
   height: '1.5rem',
-};
+  position: 'absolute',
+  backdropFilter: 'saturate(200%) blur(8px)',
+  background: '$font4',
+});
 
-const box4init = {
+const Box4 = styled('div', {
   top: '1.2rem',
   left: '1.5rem',
   borderRadius: '.1rem',
   width: '1rem',
   height: '1.5rem',
-};
+  position: 'absolute',
+  backdropFilter: 'saturate(200%) blur(8px)',
+  background: '$font1',
+});
 
 function LogoAnimation() {
   // const [boxOneStyle, setBoxOneStyle] = useState(box1init);
@@ -119,10 +132,10 @@ function LogoAnimation() {
 
   return (
     <div className="logo">
-      <div className="box-one" style={box1init} />
-      <div className="box-two" style={box2init} />
-      <div className="box-three" style={box3init} />
-      <div className="box-four" style={box4init} />
+      <Box1 />
+      <Box2 />
+      <Box3 />
+      <Box4 />
     </div>
   );
 }

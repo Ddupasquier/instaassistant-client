@@ -12,29 +12,27 @@ function App() {
   const [logIsVisible, setLogIsVisible] = useState(true);
   const [forgPassShown, setForgPassShown] = useState(false);
   const [menuItemHovered, setMenuItemHovered] = useState('');
-  const [menuSelected, setMenuSeleted] = useState('');
 
-  const animateLogo = (name) => {
-    if (name === 'Billing') {
-      setMenuSeleted('Billing');
-    } else if (name === 'Profile') {
-      setMenuSeleted('Profile');
-    } else if (name === 'Accounts') {
-      setMenuSeleted('Accounts');
-    } else {
-      setMenuSeleted('');
-    }
-  };
+  // const animateLogo = (name) => {
+  //   if (name === 'Billing') {
+  //     setMenuSeleted('Billing');
+  //   } else if (name === 'Profile') {
+  //     setMenuSeleted('Profile');
+  //   } else if (name === 'Accounts') {
+  //     setMenuSeleted('Accounts');
+  //   } else {
+  //     setMenuSeleted('');
+  //   }
+  // };
 
   return (
     <div className="App">
       {localStorage.getItem('token') ? (
         <div className="app">
-          <Header menuSelected={menuSelected} />
+          <Header />
           <Menu
             menuItemHovered={menuItemHovered}
             setMenuItemHovered={setMenuItemHovered}
-            animateLogo={animateLogo}
           />
 
           <Outlet />

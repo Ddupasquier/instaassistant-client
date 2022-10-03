@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { styled } from '@nextui-org/react';
 
-function MenuItem({ item, animateLogo }) {
+function MenuItem({ item }) {
   const [hover, setHover] = useState(false);
 
   const NavItem = styled('div', {
@@ -20,7 +20,6 @@ function MenuItem({ item, animateLogo }) {
       activeclassname="active"
       onMouseEnter={() => setHover(!hover)}
       onMouseLeave={() => setHover(!hover)}
-      onClick={() => animateLogo(item.name)}
     >
       <NavItem className="menu-item" aria-labelledby={item.name}>
         <item.Icon />

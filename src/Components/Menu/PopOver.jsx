@@ -8,7 +8,7 @@ function PopOver({ item, hovered }) {
     width: '9rem',
     backgroundColor: isDark ? 'rgb(34, 34, 34)' : 'rgb(212, 212, 212)',
     translate: 'translate(-50%, -50%)',
-    color: isDark ? 'rgb(80, 255, 255)' : 'black',
+    color: isDark ? 'white' : 'black',
   };
 
   const popOverInactive = {

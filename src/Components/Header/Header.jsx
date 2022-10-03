@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Text, styled } from '@nextui-org/react';
 import './scss/header-styles.css';
 import { Logout } from '../../api';
-import LogoAnimation from './LogoAnimation';
+import Logo from './Logo';
 
 function Header({ menuSelected }) {
   const Header = styled('header', {
@@ -15,7 +15,7 @@ function Header({ menuSelected }) {
 
   return (
     <Header>
-      <LogoAnimation menuSelected={menuSelected} />
+      <Logo />
       <LogoName className="site-name">
         <i>Anti</i>
         <b>SocialSuite</b>

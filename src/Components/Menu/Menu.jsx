@@ -36,7 +36,7 @@ const menuItems = [
   },
 ];
 
-function Menu({ menuItemHovered, setMenuItemHovered, animateLogo }) {
+function Menu({ menuItemHovered, setMenuItemHovered }) {
   const { isDark, toggleFunction } = useContext(ThemeContext);
 
   const Nav = styled('nav', {
@@ -56,7 +56,7 @@ function Menu({ menuItemHovered, setMenuItemHovered, animateLogo }) {
             role="menuitem"
             tabIndex={i}
           >
-            <MenuItem item={item} animateLogo={animateLogo} />
+            <MenuItem item={item} />
           </div>
         ))}
         <div className="menu-bottom">

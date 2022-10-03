@@ -5,7 +5,6 @@
   align-items: center;
   gap: 1rem;
   position: relative;
-  // background: rgba(34, 34, 34);
   font-size: 1.2rem;
   padding-top: 1rem;
   z-index: 100;
@@ -17,18 +16,6 @@
     height: 2.3rem;
     aspect-ratio: 1/1;
     border-radius: 50%;
-    &:hover,
-    &:active {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255, 255, 255, 0.2);
-      color: rgb(0, 225, 255, 0.774);
-      height: 2.3rem;
-      aspect-ratio: 1/1;
-      border-radius: 50%;
-      box-shadow: 0 0 10px rgba(0, 251, 255, 0.6);
-    }
   }
   .active {
     display: flex;
@@ -37,7 +24,6 @@
     background: rgba(255, 255, 255, 0.5);
     height: 2.3rem;
     aspect-ratio: 1/1;
-    box-shadow: 0 0 10px rgba(0, 225, 255, 0.6);
     border-radius: 50%;
   }
   .menu-bottom {
@@ -61,7 +47,7 @@
   left: 0.5rem;
   bottom: 0;
   padding-top: 70px;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   z-index: 99;
   .pop-over {
     display: flex;
