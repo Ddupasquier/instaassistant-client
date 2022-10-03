@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { truncateString } from 'utils.js';
 import { Link } from 'react-router-dom';
 import Avatar from 'react-avatar';
 import './scss/accounts-styles.css';
@@ -147,26 +148,36 @@ function Accounts() {
             <tbody>
               {filterAccounts().map((user, i) => (
                 <Tr key={user.id} role="row" aria-rowindex={i}>
-                  <td className="username-column" aria-label="username-cell" role="cell">
+                  <td
+                    className="username-column"
+                    aria-label="username-cell"
+                    role="cell"
+                  >
                     <Avatar
                       name={user.username}
                       round
                       value="25%"
-                      size="45"
+                      size="35"
                       textSizeRatio={2}
                     />
                     <Username href={`/accounts/instagram/${user.id}`}>
-                      @{user.username}
+                      {user.username}
                     </Username>
                   </td>
                   <td aria-label="platform-cell" role="cell">
                     {capitalizeFirstLetter(user.platform)}
                   </td>
-                  <td aria-label="tags-cell" role="cell">{user.tags}</td>
+                  <td aria-label="tags-cell" role="cell">
+                    {user.tags}
+                  </td>
                   <td aria-label="active-cell" role="cell">
                     {user.active ? 'Active' : 'Idle'}
                   </td>
-                  <td className="config-column" aria-label="config-cell" role="cell">
+                  <td
+                    className="config-column"
+                    aria-label="config-cell"
+                    role="cell"
+                  >
                     {user.allow_like && <FiHeart title="Liking enabled" />}
                     {user.allow_comment && (
                       <AiOutlineMessage title="Commenting enabled" />
@@ -181,7 +192,11 @@ function Accounts() {
                       <FiUserMinus title="Unfollowing enabled" />
                     )}
                   </td>
-                  <td className="actions-column" aria-label="actions-cell" role="cell">
+                  <td
+                    className="actions-column"
+                    aria-label="actions-cell"
+                    role="cell"
+                  >
                     <Link to={`/accounts/instagram/${user.id}`}>
                       <Eye title="View account" size="20" />
                     </Link>

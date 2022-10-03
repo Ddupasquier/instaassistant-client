@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getRandomUtilization } from 'utils';
 import { Line } from 'react-chartjs-2';
+import { useTheme } from '@nextui-org/react';
 import {
   Chart as ChartJS,
   PointElement,
@@ -27,6 +28,7 @@ ChartJS.register(
 );
 
 function UtilizationChart({ data }) {
+  const { theme } = useTheme();
   const [followerData, setFollowerData] = useState({
     datasets: [],
   });
@@ -55,7 +57,7 @@ function UtilizationChart({ data }) {
         legend: {
           position: 'bottom',
           labels: {
-            color: '$font',
+            color: theme.colors.font.value,
           },
         },
       },
@@ -65,12 +67,12 @@ function UtilizationChart({ data }) {
         },
         y: {
           ticks: {
-            color: '$font',
+            color: theme.colors.font.value,
           },
         },
       },
     });
-  }, []);
+  }, [theme.colors.font.value]);
 
   return <Line options={chartOptions} data={followerData} height="50" />;
 }

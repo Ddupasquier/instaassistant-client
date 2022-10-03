@@ -33,7 +33,7 @@ export const Trash = styled(FiTrash2, {
 
 export const Username = styled('a', {
   color: '$font',
-  fontSize: '1.2rem',
+  fontSize: '1rem',
   fontWeight: 'bold',
   textDecoration: 'none',
   transition: 'all 0.2s ease-in-out',

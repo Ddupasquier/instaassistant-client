@@ -10,7 +10,7 @@
   left: 70%;
   width: 25rem;
   height: 25rem;
-  background: rgba(242, 103, 255, 0.5);
+  background: rgba(255, 0, 255, 0.3);
   border-radius: 24% 76% 77% 23%/30% 30% 70% 70%;
   filter: blur(6rem);
   -webkit-animation: shape1 20s infinite;
@@ -76,9 +76,9 @@
   left: 40%;
   width: 35rem;
   height: 25rem;
-  background: rgba(103, 214, 255, 0.5);
+  background: rgba(0, 251, 255, 0.3);
   border-radius: 73% 27% 77% 23%/53% 4% 96% 47%;
-  filter: blur(10rem);
+  filter: blur(12rem);
   -webkit-animation: shape2 35s infinite;
           animation: shape2 35s infinite;
 }
@@ -138,9 +138,9 @@
   left: 80%;
   width: 25rem;
   height: 25rem;
-  background: rgba(103, 214, 255, 0.5);
+  background: rgba(0, 251, 255, 0.5);
   border-radius: 70% 30% 80% 20%/42% 25% 75% 58%;
-  filter: blur(10rem);
+  filter: blur(14rem);
   -webkit-animation: shape3 35s infinite;
           animation: shape3 35s infinite;
 }
@@ -200,7 +200,7 @@
   left: 70%;
   width: 25rem;
   height: 25rem;
-  background: rgba(242, 103, 255, 0.5);
+  background: rgba(255, 0, 255, 0.3);
   border-radius: 24% 76% 77% 23%/30% 30% 70% 70%;
   filter: blur(5rem);
 }
@@ -211,7 +211,7 @@
   left: 40%;
   width: 35rem;
   height: 25rem;
-  background: rgba(103, 214, 255, 0.5);
+  background: rgba(0, 251, 255, 0.3);
   border-radius: 73% 27% 77% 23%/53% 4% 96% 47%;
   filter: blur(5rem);
 }
@@ -222,7 +222,7 @@
   left: 80%;
   width: 25rem;
   height: 25rem;
-  background: rgba(103, 214, 255, 0.5);
+  background: rgba(0, 251, 255, 0.5);
   border-radius: 70% 30% 80% 20%/42% 25% 75% 58%;
   filter: blur(5rem);
 }

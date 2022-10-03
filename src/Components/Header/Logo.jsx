@@ -45,7 +45,7 @@ const Box4 = styled('div', {
   background: '$font1',
 });
 
-function LogoAnimation() {
+function Logo() {
   // const [boxOneStyle, setBoxOneStyle] = useState(box1init);
   // const [boxTwoStyle, setBoxTwoStyle] = useState(box2init);
   // const [boxThreeStyle, setBoxThreeStyle] = useState(box3init);
@@ -140,4 +140,4 @@ function LogoAnimation() {
   );
 }
 
-export default LogoAnimation;
+export default Logo;

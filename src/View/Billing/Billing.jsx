@@ -63,6 +63,7 @@ function Billing() {
           background: '$myColor',
           width: '80%',
           backdropFilter: 'blur(15px)',
+          margin: '3rem',
         }}
       >
         <div className="head">
@@ -78,15 +79,17 @@ function Billing() {
             OUR PACKAGES
           </Text>
           <Text h4>
-            Marcus Bot does not save any credit card information. <br />
-            We bill through paypal or through the secure third party Stripe.
+            AntiSocialSuite does not save any credit card information. <br />
+            We bill through Stripe.
           </Text>
         </div>
         <Card.Body
           css={{
             display: 'flex',
             flexDirection: 'row',
-            justifyContent: 'space-around',
+            justifyContent: 'space-evenly',
+            flexWrap: 'wrap',
+            gap: '1rem',
           }}
         >
           {packages.map((pkg, i) => (

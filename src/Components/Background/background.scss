@@ -1,3 +1,5 @@
+@use '../../globals/colors.scss' as colors;
+
 .animation-container {
   position: fixed;
   height: 100%;
@@ -10,7 +12,7 @@
   left: 70%;
   width: 25rem;
   height: 25rem;
-  background: rgba(242, 103, 255, 0.5);
+  background: colors.$pink3;
   border-radius: 24% 76% 77% 23% / 30% 30% 70% 70%;
   filter: blur(6rem);
   animation: shape1 20s infinite;
@@ -49,9 +51,9 @@
   left: 40%;
   width: 35rem;
   height: 25rem;
-  background: rgb(103, 214, 255, 0.5);
+  background: colors.$ice-blue3;
   border-radius: 73% 27% 77% 23% / 53% 4% 96% 47%;
-  filter: blur(10rem);
+  filter: blur(12rem);
   animation: shape2 35s infinite;
 }
 
@@ -86,9 +88,9 @@
   left: 80%;
   width: 25rem;
   height: 25rem;
-  background: rgb(103, 214, 255, 0.5);
+  background: colors.$ice-blue5;
   border-radius: 70% 30% 80% 20% / 42% 25% 75% 58%;
-  filter: blur(10rem);
+  filter: blur(14rem);
   animation: shape3 35s infinite;
 }
 
@@ -123,7 +125,7 @@
   left: 70%;
   width: 25rem;
   height: 25rem;
-  background: rgba(242, 103, 255, 0.5);
+  background: colors.$pink3;
   border-radius: 24% 76% 77% 23% / 30% 30% 70% 70%;
   filter: blur(5rem);
   // animation: shape1 20s infinite;
@@ -135,7 +137,7 @@
   left: 40%;
   width: 35rem;
   height: 25rem;
-  background: rgb(103, 214, 255, 0.5);
+  background: colors.$ice-blue3;
   border-radius: 73% 27% 77% 23% / 53% 4% 96% 47%;
   filter: blur(5rem);
   // animation: shape2 15s infinite;
@@ -147,7 +149,7 @@
   left: 80%;
   width: 25rem;
   height: 25rem;
-  background: rgb(103, 214, 255, 0.5);
+  background: colors.$ice-blue5;
   border-radius: 70% 30% 80% 20% / 42% 25% 75% 58%;
   filter: blur(5rem);
   // animation: shape3 30s infinite;

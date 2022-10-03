@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Bar, Doughnut } from 'react-chartjs-2';
+import { useTheme } from '@nextui-org/react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -24,6 +25,7 @@ ChartJS.register(
 );
 
 function LimitsBars({ data: { follows, likes, comments, messages }, toggle }) {
+  const { theme } = useTheme();
   const [followerData, setFollowerData] = useState({
     datasets: [],
   });
@@ -57,7 +59,7 @@ function LimitsBars({ data: { follows, likes, comments, messages }, toggle }) {
         return {
           display: true,
           ticks: {
-            font: '$font',
+            font: theme.colors.font.value,
             beginAtZero: true,
             max: 1000,
             stepSize: 100,
@@ -73,7 +75,7 @@ function LimitsBars({ data: { follows, likes, comments, messages }, toggle }) {
           position: 'top',
           labels: {
             padding: 20,
-            color: '$font',
+            color: theme.colors.font.value,
             boxWidth: 10,
           },
         };
@@ -112,7 +114,7 @@ function LimitsBars({ data: { follows, likes, comments, messages }, toggle }) {
         y: checkToggleYAxis(),
       },
     });
-  }, [comments, follows, likes, messages, toggle, unused]);
+  }, [comments, follows, likes, messages, theme.colors.font.value, toggle, unused]);
 
   const smallScreenCheck = window.innerWidth <= 960 ? '200' : '320';
 

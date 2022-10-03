@@ -1,10 +1,10 @@
 import React from 'react';
 import { Button, Text, styled } from '@nextui-org/react';
 import './scss/header-styles.css';
-import { Logout } from '../../api';
+import { Logout } from 'api';
 import Logo from './Logo';
 
-function Header({ menuSelected }) {
+function Header() {
   const Header = styled('header', {
     backgroundColor: '$menu',
   });
@@ -23,9 +23,9 @@ function Header({ menuSelected }) {
       <div className="username">
         <Text
           h1
-          size={30}
+          size={20}
           css={{
-            textGradient: '45deg, $blue600 -20%, $pink600 50%',
+            color: '$font',
           }}
           style={{ zIndex: 1 }}
           weight="bold"

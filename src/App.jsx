@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import 'GlobalStyles/global-styles.css';
+import 'globals/global-classes.css';
 import { Outlet } from 'react-router-dom';
 import { Login } from 'View/Auth/Login';
 import { SignUp } from 'View/Auth/SignUp';
