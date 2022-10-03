@@ -16,6 +16,7 @@
     height: 2.3rem;
     aspect-ratio: 1/1;
     border-radius: 50%;
+    pointer-events: none;
   }
   .active {
     display: flex;
