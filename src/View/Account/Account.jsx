@@ -242,7 +242,7 @@ function Account({ darkTheme, theme }) {
                       <Dropdown.Button color="secondary">
                         <FiSettings />
                       </Dropdown.Button>
-                      <Dropdown.Menu color="primary" aria-label="User Actions">
+                      <Dropdown.Menu color="secondary" aria-label="User Actions">
                         <Dropdown.Item key="profile" aria-label="create-task">
                           <Text
                             b
@@ -258,7 +258,7 @@ function Account({ darkTheme, theme }) {
                             <Text
                               b
                               color="inherit"
-                              css={{ d: 'flex', color: 'black' }}
+                              css={{ d: 'flex', color: '$font' }}
                             >
                               Edit Account
                             </Text>
@@ -267,7 +267,7 @@ function Account({ darkTheme, theme }) {
                         <Dropdown.Item key="Delete" aria-label="delete-account">
                           <Text
                             b
-                            color="inherit"
+                            color="error"
                             css={{ d: 'flex' }}
                             onClick={handleDeleteConfirmVisible}
                           >
