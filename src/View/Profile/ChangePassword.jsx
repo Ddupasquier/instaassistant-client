@@ -1,5 +1,6 @@
 import React from 'react';
 import { Modal, Input, Button, Text, Grid } from '@nextui-org/react';
+import { ChangePasswordPatch } from 'api';
 
 function ChangePassword({
   changePasswordVisible,
@@ -12,11 +13,14 @@ function ChangePassword({
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     const payload = {
-      old_password: data.old_password || '',
-      confirm_password: data.confirm_password || '',
+      current_password: data.current_password,
+      new_password:
+        data.new_password === data.confirm_password
+          ? data.new_password
+          : alert('Passwords do not match'),
     };
-    console.log(payload);
-    //     PostTask(payload);
+    ChangePasswordPatch(payload);
+    // .then(closeChangePasswordHandler());
   };
 
   return (
@@ -38,16 +42,23 @@ function ChangePassword({
           <Grid.Container>
             <Grid xs={12} md={12}>
               <Input
+                name="current_password"
                 label="Current Password"
                 underlined
                 css={{ width: '100%' }}
               />
             </Grid>
             <Grid xs={12} md={6}>
-              <Input label="New Password" underlined css={{ width: '95%' }} />
+              <Input
+                name="new_password"
+                label="New Password"
+                underlined
+                css={{ width: '95%' }}
+              />
             </Grid>
             <Grid xs={12} md={6}>
               <Input
+                name="confirm_password"
                 label="Confirm Password"
                 underlined
                 css={{ width: '100%' }}

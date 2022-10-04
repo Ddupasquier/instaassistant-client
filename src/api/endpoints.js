@@ -1,6 +1,6 @@
 //* User Routes
 
-const local = false;
+const local = true;
 const baseUrl = local
   ? 'http://localhost:3000'
   : 'https://instaassistant-api.herokuapp.com';
@@ -23,6 +23,8 @@ export const BotAccountPath = baseUrl + '/accounts/'; // Delete bot based on bot
 export const unstickAccountPath = baseUrl + '/unstuck/';
 
 export const editProfilePath = baseUrl + '/edit_profile';
+
+export const changePasswordPath = baseUrl + '/change_password';
 
 export const accountsManagedPath = baseUrl + '/managed_accounts';
 

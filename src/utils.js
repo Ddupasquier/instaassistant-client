@@ -2,12 +2,13 @@ export const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
 /**
- *
  * @param {string} string
- * @returns {string} string
- * @descriptionthe first letter of a string to upperCase
+ * @returns {string}
  * @example
- * toCamelCase('helloworld') // returns 'Helloworld'
+ * returns 'Hello World'
+ * capitalizeFirstLetter('hello world')
+ * @example
+ * returns 'Hello World'
  */
 
 export const truncateString = (string) => {
@@ -17,12 +18,11 @@ export const truncateString = (string) => {
   return string;
 };
 /**
- *
  * @param {string} string
  * @returns {string} string
- * @descriptionthe truncates a string to a specified length
+ * @description truncate a string to 12 characters
  * @example
- * truncate('helloworldzzzzzzz') // returns 'helloworldzz...'
+ * truncateString('helloworld') // returns 'hello...'
  */
 
 export const getDaysLast30Days = () => {
@@ -35,11 +35,10 @@ export const getDaysLast30Days = () => {
   return days.reverse();
 };
 /**
- *
- * @returns {string} array of strings
- * @description returns an array of dates as strings
+ * @returns {array} array
+ * @description returns an array of the last 30 days
  * @example
- * getArray('days') // returns ['9/2, '9/3', '9/4', '9/5', '9/6', '9/7', '9/8']
+ * getDaysLast30Days() // returns ['1/1', '1/2', '1/3', '1/4', '1/5', '1/6', '1/7', '1/8', '1/9', '1/10', '1/11', '1/12', '1/13', '1/14', '1/15', '1/16', '1/17', '1/18', '1/19', '1/20', '1/21', '1/22', '1/23', '1/24', '1/25', '1/26', '1/27', '1/28', '1/29', '1/30']
  */
 
 export const getRandomUtilization = () => {
@@ -50,19 +49,21 @@ export const getRandomUtilization = () => {
   return utilization;
 };
 /**
- *
- * @returns {integer} array of integers
- * @description returns an array of 30 randomized integers
+ * @returns {number} array of numbers
+ * @description returns an array of random numbers
  * @example
- * getArray('utilization') // returns [12, 25, 98, 54, 95, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58]
+ * getRandomUtilization() // returns [23, 45, 67, 89, 12, 34, 56]
+ * @todo
+ * - add a parameter to specify the length of the array
  */
 
 export const today = new Date().toISOString().slice(0, 10);
 /**
- *
- * @returns {string} - yyyy-mm-dd
- * @description returns the current date in yyyy-mm-dd format
- * @example '2022-09-23'
+ * @returns {string} date
+ * @description returns the current date in the format YYYY-MM-DD
+ * @example
+ * today // returns '2020-09-02'
+ * @see https://stackoverflow.com/questions/23593052/format-javascript-date-as-yyyy-mm-dd
  */
 
 export const thisTime = new Date().toLocaleTimeString('en-US', {
@@ -72,8 +73,25 @@ export const thisTime = new Date().toLocaleTimeString('en-US', {
   minute: 'numeric',
 });
 /**
- *
- * @return {string} - date
- * @description returns the current time in hh:mm format (24 hour clock) current time zone
- * @example '16:52'
+ * @returns {string} - hh:mm
+ * @description returns the current time in hh:mm format
+ * @example '12:00'
+ * @example '23:59'
+ */
+
+export const formatPhoneNumber = (phoneNumberString) => {
+  const cleaned = ('' + phoneNumberString).replace(/\D/g, '');
+  const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+  if (match) {
+    return '(' + match[1] + ') ' + match[2] + '-' + match[3];
+  }
+  return null;
+};
+/**
+ * @param {string} phoneNumberString
+ * @returns {string} formatted phone number
+ * @description takes in a string phone number and formats it to (xxx) xxx-xxxx
+ * @example
+ * formatPhoneNumber('1234567890') // returns '(123) 456-7890'
+ * formatPhoneNumber('123456789') // returns null
  */

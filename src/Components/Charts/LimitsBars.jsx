@@ -99,7 +99,7 @@ function LimitsBars({ data: { follows, likes, comments, messages }, toggle }) {
             'rgb(165, 0, 255, .7)',
             'rgb(165, 0, 255, .0)',
           ],
-          borderColor: theme.colors.font.value,
+          borderColor: theme.colors.tableLines.value,
           borderWidth: 1,
           fill: 'origin',
         },
@@ -115,7 +115,7 @@ function LimitsBars({ data: { follows, likes, comments, messages }, toggle }) {
         y: checkToggleYAxis(),
       },
     });
-  }, [comments, follows, likes, messages, theme.colors.font.value, toggle, unused]);
+  }, [comments, follows, likes, messages, theme.colors.font.value, theme.colors.tableLines.value, toggle, unused]);
 
   const smallScreenCheck = window.innerWidth <= 960 ? '200' : '320';
 

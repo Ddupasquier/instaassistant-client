@@ -19,8 +19,8 @@ function EditProfile({
       website: data.website || '',
       profile_pic: data.profile_pic || '',
     };
-    console.log(payload);
-    EditProfilePatch(payload);
+    // console.log(payload);
+    EditProfilePatch(payload).then(window.location.reload());
   };
 
   return (

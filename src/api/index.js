@@ -16,6 +16,7 @@ import {
   unstickAccountPath,
   GenerateResetTokenPath,
   editProfilePath,
+  changePasswordPath,
   accountsManagedPath,
 } from './endpoints';
 
@@ -48,7 +49,7 @@ export const loginFetch = async (userInfo) => {
   });
   const resp_1 = await resp.json();
   if (resp_1.error) {
-    alert(resp_1.error);
+    console.log(resp_1.error);
   } else {
     localStorage.setItem('user', JSON.stringify(resp_1.user));
     localStorage.setItem('token', resp_1.jwt);
@@ -87,12 +88,33 @@ export const EditProfilePatch = async (newData) => {
     },
     body: JSON.stringify(newData),
   });
-  if (response.success) {
+  if (response.ok) {
     console.log('success');
     return await response.json();
   } else {
     console.log('failed from client');
     throw new Error('Something went wrong');
+  }
+};
+
+export const ChangePasswordPatch = async (newData) => {
+  console.log('newData', newData);
+  const response = await fetch(changePasswordPath, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: localStorage.getItem('token'),
+    },
+    body: JSON.stringify(newData),
+  });
+  const resp = await response.json();
+
+  if (resp.error) {
+    alert(resp.error);
+  } else if (resp.success) {
+    console.log('success');
+    return resp;
   }
 };
 

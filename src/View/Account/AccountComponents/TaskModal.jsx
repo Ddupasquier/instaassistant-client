@@ -54,6 +54,7 @@ function TaskModal({ closeTaskHandler, taskVisible, account_id }) {
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
+    // console.log('task data', data);
     const payload = {
       account_id,
       task_type: data.action,
@@ -66,7 +67,7 @@ function TaskModal({ closeTaskHandler, taskVisible, account_id }) {
         ? new Date(`${data.date} ${data.time}`).toUTCString()
         : new Date().toUTCString(),
     };
-    console.log(payload);
+    // console.log(payload);
     PostTask(payload);
   };
 

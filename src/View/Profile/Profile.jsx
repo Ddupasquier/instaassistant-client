@@ -5,6 +5,7 @@ import { GetUserInfo, GetAccountsManaged } from 'api';
 import EditProfile from './EditProfile';
 import ChangePassword from './ChangePassword';
 import Avatar from 'react-avatar';
+import { formatPhoneNumber } from 'utils';
 
 function Profile() {
   const [userInfo, setUserInfo] = useState({});
@@ -58,9 +59,9 @@ function Profile() {
         <br />
         <div className="profile-content">
           <Text align="center">
-            Thank you for becoming a AntiSocialSuite user. Make sure your billing
-            information is up to date or change your email/password from this
-            page.
+            Thank you for becoming a AntiSocialSuite user. Make sure your
+            billing information is up to date or change your email/password from
+            this page.
           </Text>
           <br />
           <Text
@@ -75,7 +76,7 @@ function Profile() {
             {userLoaded && (
               <>
                 <span>Company Email: {userInfo.email}</span>
-                <span>Company Phone: {userInfo.phone_number}</span>
+                <span>Company Phone: {formatPhoneNumber(userInfo.phone_number)}</span>
                 <span>Company Website: {userInfo.website}</span>
                 <span>Accounts Managed: {managed}</span>
                 <span>Payment Status: {userInfo.billing_status}</span>
