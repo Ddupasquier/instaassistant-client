@@ -7,14 +7,14 @@ import store from './redux';
 
 // View Imports
 import App from 'App';
-import { Billing } from 'View/Billing';
-import { Profile } from 'View/Profile';
-import { Account } from 'View/Account';
-import { FAQ } from 'View/FAQ';
-import { AccountUpdate } from 'View/AccountUpdate';
-import { Accounts } from 'View/Accounts';
-import { Stripe } from 'View/Stripe';
-import BackgroundAnimation from 'Components/Background/BackgroundAnimation';
+import { Billing } from 'views/Billing';
+import { Profile } from 'views/Profile';
+import { Account } from 'views/Account';
+import { FAQ } from 'views/FAQ';
+import { AccountUpdate } from 'views/AccountUpdate';
+import { Accounts } from 'views/Accounts';
+import { Stripe } from 'views/Stripe';
+import BackgroundAnimation from 'components/Background/BackgroundAnimation';
 
 function AppRoutes() {
   return (

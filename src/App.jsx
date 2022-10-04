@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import 'globals/global-classes.css';
 import { Outlet } from 'react-router-dom';
-import { Login } from 'View/Auth/Login';
-import { SignUp } from 'View/Auth/SignUp';
-import { Header } from 'Components/Header';
-import { Menu } from 'Components/Menu';
-import { ForgotPassword } from 'View/Auth/ForgotPassword';
-import BackgroundAnimation from 'Components/Background/BackgroundAnimation';
+import { Login } from 'views/Auth/Login';
+import { SignUp } from 'views/Auth/SignUp';
+import { Header } from 'components/Header';
+import { Menu } from 'components/Menu';
+import { ForgotPassword } from 'views/Auth/ForgotPassword';
+import BackgroundAnimation from 'components/Background/BackgroundAnimation';
 
 function App() {
   const [logIsVisible, setLogIsVisible] = useState(true);

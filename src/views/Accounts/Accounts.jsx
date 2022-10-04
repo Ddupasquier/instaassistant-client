@@ -11,7 +11,7 @@ import { Tr, Eye, Trash, Username } from './styled.js';
 
 // * COMPONENT IMPORTS
 import NewAccountModal from './NewAccountModal';
-import DeleteConfirm from '../../Components/DeleteConfirm';
+import DeleteConfirm from '../../components/DeleteConfirm';
 
 // * UTILS IMPORTS
 import { capitalizeFirstLetter } from 'utils';

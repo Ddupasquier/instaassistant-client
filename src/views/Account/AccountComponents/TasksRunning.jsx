@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Grid, Text, Button } from '@nextui-org/react';
-import ElipsesAnimation from 'Components/Elipses/ElipsesAnimation';
+import ElipsesAnimation from 'components/Elipses/ElipsesAnimation';
 
 function TasksRunning({ tasksActive }) {
   // if (tasksActive.length > 0) {

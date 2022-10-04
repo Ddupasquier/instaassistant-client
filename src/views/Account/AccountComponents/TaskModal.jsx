@@ -8,7 +8,7 @@ import {
   styled,
 } from '@nextui-org/react';
 import { PostTask } from 'api';
-import { IconsQuestionMark } from 'Components/icons/icons';
+import { IconsQuestionMark } from 'components/icons/icons';
 import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 
 // * ------- CONSTANTS ------- * //

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Grid, Card, Button } from '@nextui-org/react';
-import LimitsChart from 'Components/Charts/LimitsBars';
+import LimitsChart from 'components/Charts/LimitsBars';
 
 const InteractionLimits = ({ follows, likes, comments, messages }) => {
   const [chartToggle, setChartToggle] = useState(false);

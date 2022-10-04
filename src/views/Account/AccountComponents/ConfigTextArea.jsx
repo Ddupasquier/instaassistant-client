@@ -1,5 +1,5 @@
 import { Textarea, Grid } from '@nextui-org/react';
-import { IconsQuestionMark } from 'Components/icons/icons';
+import { IconsQuestionMark } from 'components/icons/icons';
 import React from 'react';
 
 const ConfigTextArea = ({

@@ -19,7 +19,7 @@ import FollowerGain from './AccountComponents/FollowerGain';
 import MetricChart from './AccountComponents/MetricChart';
 import InteractionLimits from './AccountComponents/InteractionLimits';
 import ConfigPopup from './AccountComponents/ConfigPopup';
-import DeleteConfirm from 'Components/DeleteConfirm';
+import DeleteConfirm from 'components/DeleteConfirm';
 import Avatar from 'react-avatar';
 import TaskModal from './AccountComponents/TaskModal';
 import { TasksRunning } from '.';
