@@ -17,6 +17,8 @@ function CurrentTasks() {
       .then(() => setTasksLoaded(true));
   }, [account_id]);
 
+  console.log(tasks);
+
   return (
     <div className="view-container">
       <Card

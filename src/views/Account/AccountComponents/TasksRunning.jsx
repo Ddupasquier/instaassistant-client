@@ -8,13 +8,13 @@ function TasksRunning({ tasksActive }) {
   // if (tasksActive.length > 0) {
   return (
     <>
-      <Grid sm={3} xs={12}></Grid>
-      <Grid sm={6} xs={12}>
+      <Grid md={4} sm={12} xs={12}>
         <Card
           variant="flat"
           css={{
+            color: '$solid',
             backdropFilter: 'blur(15px)',
-            background: '$myColor',
+            background: '$myColorInvert',
           }}
         >
           <Card.Header>
@@ -22,22 +22,31 @@ function TasksRunning({ tasksActive }) {
             <ElipsesAnimation font="1rem" />
           </Card.Header>
           <Card.Divider />
-          <Card.Body>
-            <Text h3>Activate: @Username</Text>
-          </Card.Body>
-          <Card.Footer>
+          <Card.Body
+            css={{ flexDirection: 'row', justifyContent: 'space-evenly' }}
+          >
             <div className="task-buttons">
-              <Link to={`/accounts/instagram/${account_id}/tasks`}>
-                <Button rounded>Progress</Button>
+              <Link
+                to={`/accounts/instagram/${account_id}/tasks`}
+                className="task-button"
+              >
+                <Button rounded css={{ width: '100%' }} size="sm">
+                  Progress
+                </Button>
               </Link>
-              <Button rounded flat color="error">
+              <Button
+                rounded
+                flat
+                color="error"
+                className="task-button"
+                size="sm"
+              >
                 Abort
               </Button>
             </div>
-          </Card.Footer>
+          </Card.Body>
         </Card>
       </Grid>
-      <Grid sm={3} xs={12}></Grid>
     </>
   );
 }

@@ -4,6 +4,8 @@
   flex-direction: column;
   overflow: auto;
   z-index: 10;
+  width: 100%;
+  padding: 0 4rem;
 }
 .account-container .account-head-buttons {
   display: flex;
@@ -17,18 +19,19 @@
   padding: 2rem;
   z-index: 10;
 }
-.account-container .account-metrics {
-  align-self: center;
-  width: 95%;
-}
-.account-container .account-metrics .task-buttons {
+.account-container .task-buttons {
   display: flex;
-  justify-content: space-evenly;
-  margin: auto;
-  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.account-container .task-button {
+  flex: 6;
 }
 .account-container .user {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: 1rem;
@@ -38,6 +41,13 @@
   text-align: center;
   padding: 1rem 0;
 }
+.account-container .user section:nth-child(1) div {
+  border-radius: 25px;
+  padding: 0.2rem 1rem;
+  -webkit-backdrop-filter: saturate(200%) blur(8px);
+          backdrop-filter: saturate(200%) blur(8px);
+  background: rgba(255, 255, 255, 0.4);
+}
 .account-container .user section:nth-child(2) div {
   border-radius: 25px;
   padding: 0.2rem 1rem;
@@ -46,13 +56,6 @@
   background: rgba(255, 255, 255, 0.4);
 }
 .account-container .user section:nth-child(3) div {
-  border-radius: 25px;
-  padding: 0.2rem 1rem;
-  -webkit-backdrop-filter: saturate(200%) blur(8px);
-          backdrop-filter: saturate(200%) blur(8px);
-  background: rgba(255, 255, 255, 0.4);
-}
-.account-container .user section:nth-child(4) div {
   border-radius: 25px;
   padding: 0.2rem 1rem;
   -webkit-backdrop-filter: saturate(200%) blur(8px);
