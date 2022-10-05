@@ -1,9 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Card, Grid, Text, Button } from '@nextui-org/react';
 import ElipsesAnimation from 'components/Elipses/ElipsesAnimation';
 
 function TasksRunning({ tasksActive }) {
+  const { account_id } = useParams();
   // if (tasksActive.length > 0) {
   return (
     <>
@@ -26,7 +27,7 @@ function TasksRunning({ tasksActive }) {
           </Card.Body>
           <Card.Footer>
             <div className="task-buttons">
-              <Link to="/task">
+              <Link to={`/accounts/instagram/${account_id}/tasks`}>
                 <Button rounded>Progress</Button>
               </Link>
               <Button rounded flat color="error">

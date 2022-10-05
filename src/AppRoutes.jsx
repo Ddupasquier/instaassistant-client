@@ -12,6 +12,7 @@ import { Profile } from 'views/Profile';
 import { Account } from 'views/Account';
 import { FAQ } from 'views/FAQ';
 import { AccountUpdate } from 'views/AccountUpdate';
+import CurrentTasks from 'views/TasksRunning/CurrentTasks';
 import { Accounts } from 'views/Accounts';
 import { Stripe } from 'views/Stripe';
 import BackgroundAnimation from 'components/Background/BackgroundAnimation';
@@ -30,6 +31,10 @@ function AppRoutes() {
             element={<AccountUpdate />}
           />
           <Route path="/accounts/instagram/:account_id" element={<Account />} />
+          <Route
+            path="/accounts/instagram/:account_id/tasks"
+            element={<CurrentTasks />}
+          />
           <Route path="/FAQ" element={<FAQ />} />
           <Route path="/stripe" element={<Stripe />} />
           <Route path="test-bg" element={<BackgroundAnimation />} />
