@@ -179,7 +179,12 @@ export const indexAccounts = async () => {
       Authorization: localStorage.getItem('token'),
     },
   });
-  return await response.json();
+  const res = await response.json();
+  if (res.error) {
+    alert(res.error);
+  } else {
+    return res;
+  }
 };
 
 export const ShowAccount = async (id) => {
