@@ -23,6 +23,7 @@ import DeleteConfirm from 'components/DeleteConfirm';
 import Avatar from 'react-avatar';
 import TaskModal from './AccountComponents/TaskModal';
 import { TasksRunning } from '.';
+import Bubble from './AccountComponents/Bubble';
 
 function Account() {
   // * ------- DESCTRUCTURING URL PARAMS ------- *
@@ -221,30 +222,21 @@ function Account() {
                         gap: '1rem',
                       }}
                     >
-                      <section>
-                        <legend htmlFor="posts-count">Posts</legend>
-                        <div id="posts-count" className="followers">
-                          {snapshots.posts
-                            ? snapshots[snapshots.length - 1].posts
-                            : 99999}
-                        </div>
-                      </section>
-                      <section>
-                        <legend htmlFor="followers-count">Followers</legend>
-                        <div id="followers-count" className="followers">
-                          {snapshots.followers
-                            ? snapshots[snapshots.length - 1].followers
-                            : 99999}
-                        </div>
-                      </section>
-                      <section>
-                        <legend htmlFor="following-count">Following</legend>
-                        <div id="following-count" className="following">
-                          {snapshots.following
-                            ? snapshots[snapshots.length - 1].following
-                            : 99999}
-                        </div>
-                      </section>
+                      <Bubble
+                        htmlFor={'posts-count'}
+                        num={snapshots.posts}
+                        name={'Posts'}
+                      />
+                      <Bubble
+                        htmlFor={'followers-count'}
+                        num={snapshots.followers}
+                        name={'Followers'}
+                      />
+                      <Bubble
+                        htmlFor={'following-count'}
+                        num={snapshots.following}
+                        name={'Following'}
+                      />
                     </div>
                     <br />
                     <Dropdown>

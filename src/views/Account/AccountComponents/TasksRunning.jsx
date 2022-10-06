@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Card, Grid, Text, Button } from '@nextui-org/react';
+import { Card, Grid, Button } from '@nextui-org/react';
 import ElipsesAnimation from 'components/Elipses/ElipsesAnimation';
 
 function TasksRunning({ tasksActive }) {

@@ -37,31 +37,6 @@
   gap: 1rem;
   width: 100%;
 }
-.account-container .user section {
-  text-align: center;
-  padding: 1rem 0;
-}
-.account-container .user section:nth-child(1) div {
-  border-radius: 25px;
-  padding: 0.2rem 1rem;
-  -webkit-backdrop-filter: saturate(200%) blur(8px);
-          backdrop-filter: saturate(200%) blur(8px);
-  background: rgba(255, 255, 255, 0.4);
-}
-.account-container .user section:nth-child(2) div {
-  border-radius: 25px;
-  padding: 0.2rem 1rem;
-  -webkit-backdrop-filter: saturate(200%) blur(8px);
-          backdrop-filter: saturate(200%) blur(8px);
-  background: rgba(255, 255, 255, 0.4);
-}
-.account-container .user section:nth-child(3) div {
-  border-radius: 25px;
-  padding: 0.2rem 1rem;
-  -webkit-backdrop-filter: saturate(200%) blur(8px);
-          backdrop-filter: saturate(200%) blur(8px);
-  background: rgba(255, 255, 255, 0.4);
-}
 .account-container .user-links {
   display: flex;
   flex-direction: row;
