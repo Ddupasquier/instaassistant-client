@@ -1,4 +1,9 @@
-import React, { Suspense, useState, useTransition } from "react";
+import React, {
+  startTransition,
+  Suspense,
+  useState,
+  useTransition,
+} from "react";
 import { Link } from "react-router-dom";
 import Avatar from "react-avatar";
 import "./scss/accounts-styles.css";
@@ -9,7 +14,7 @@ import ErrorFallback from "components/ErrorFallback";
 import useSWR from "swr";
 
 // * NEXTUI IMPORTS
-import { Text, Button, Input } from "@nextui-org/react";
+import { Text, Button, Input, Loading } from "@nextui-org/react";
 
 // * STYLED COMPONENTS
 import { Tr, Eye, Trash, Task, Username } from "./styled.js";
@@ -36,7 +41,7 @@ function Accounts() {
   const [searchTerm, setSearchTerm] = useState("");
   const [deleteConfirmVisible, setDeleteConfirmVisible] = useState(false);
   const [isUpdating, startUpdating] = useTransition(false);
-  const { data, err } = useSWR("/api/accounts", accountsFetcher(searchTerm));
+  const { data, err } = useSWR("/api/accounts", indexAccounts);
 
   const handleDeleteConfirmVisible = () => setDeleteConfirmVisible(true);
 
@@ -44,9 +49,11 @@ function Accounts() {
     setDeleteConfirmVisible(false);
   };
 
-  /*   const filterAccounts = () => {
-    if (data) {
-      return data
+  const filterAccounts = (acctArr) => {
+    console.log(acctArr);
+    console.log("filter..");
+    if (acctArr) {
+      return acctArr
         .filter((account) => {
           return (
             account.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -57,9 +64,9 @@ function Accounts() {
           return a.username.localeCompare(b.username);
         });
     } else {
-      return "There doesn't seem to be an account associated with this profile. Please add an account to continue.";
+      return [];
     }
-  }; */
+  };
 
   const [newAccountVisible, setNewAccountVisible] = useState(false);
   const newAccountHandler = () => setNewAccountVisible(true);
@@ -133,9 +140,6 @@ function Accounts() {
             Add Account
           </Button>
         </div>
-
-        {/* {data ? ( */}
-
         <table role="table" aria-label="accounts-table">
           <thead>
             <tr>
@@ -150,25 +154,15 @@ function Accounts() {
             </tr>
           </thead>
           <tbody>
-            <Suspense fallback={"poop"}>
-              {/**
-               * If message property exists, no accts found
-               * if message property does not exist, should be an array of accounts
-               * TODO: Improve error handling
-               */}
-              {/*   {data.message
-                  ? <p>{data.message}</p>
-                  :  */}
-              {startUpdating(() => {
-                data.map((user, i) => (
-                  <AccountsRow
-                    key={i}
-                    user={user}
-                    setDeleteConfirmVisible={setDeleteConfirmVisible}
-                    setUserToDelete={setUserToDelete}
-                  />
-                ));
-              })}
+            <Suspense fallback={"Fallback"}>
+              {filterAccounts(data).map((user, i) => (
+                <AccountsRow
+                  key={i}
+                  user={user}
+                  setDeleteConfirmVisible={setDeleteConfirmVisible}
+                  setUserToDelete={setUserToDelete}
+                />
+              ))}
             </Suspense>
           </tbody>
         </table>

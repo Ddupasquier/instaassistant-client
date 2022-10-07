@@ -117,7 +117,7 @@ export const formatPhoneNumber = (phoneNumberString) => {
  * @function filterAccounts
  * accepts an array of accounts and a string to filter by
  */
-export const filterAccounts = (data, searchTerm) => {
+export const filterAccounts = async (data, searchTerm) => {
   if (data) {
     return data
       .filter((account) => {

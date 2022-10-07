@@ -19,11 +19,13 @@ function AppRoutes() {
   return (
     <SWRConfig
       value={{
-        fetcher: (resource, init) =>
-          fetch(resource, init).then((res) => res.json()),
+/*         fetcher: (resource, init) =>
+          fetch(resource, init).then((res) => res.json()), */
         suspense: true,
       }}
     >
+      {// TODO: delete ErrorBoundary if necessary, if kept, add Reset method
+       }
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <Routes>
           <Route path="/" element={<App />}>
