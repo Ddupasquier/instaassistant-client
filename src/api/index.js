@@ -167,7 +167,12 @@ export const PatchAccount = async (formData, account_id) => {
     },
     body: JSON.stringify(formData),
   });
-  return await response.json();
+  const res = await response.json();
+  if (res.error) {
+    alert(res.error);
+  } else {
+    return res;
+  }
 };
 
 export const indexAccounts = async () => {
