@@ -154,16 +154,17 @@ function Accounts() {
           </thead>
           <tbody>
             <ErrorBoundary FallbackComponent={ErrorFallback}>
-            <Suspense fallback={"Fallback"}>
-              {filterAccounts(data).map((user, i) => (
-                <AccountsRow
-                  key={i}
-                  user={user}
-                  setDeleteConfirmVisible={setDeleteConfirmVisible}
-                  setUserToDelete={setUserToDelete}
-                />
-              ))}
-            </Suspense>
+              <Suspense fallback={"Fallback"}>
+                {data &&
+                  filterAccounts(data).map((user, i) => (
+                    <AccountsRow
+                      key={i}
+                      user={user}
+                      setDeleteConfirmVisible={setDeleteConfirmVisible}
+                      setUserToDelete={setUserToDelete}
+                    />
+                  ))}
+              </Suspense>
             </ErrorBoundary>
           </tbody>
         </table>
