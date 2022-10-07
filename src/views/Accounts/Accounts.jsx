@@ -35,7 +35,7 @@ function Accounts() {
   const [searchTerm, setSearchTerm] = useState("");
   const [deleteConfirmVisible, setDeleteConfirmVisible] = useState(false);
 
-  const { data, err } = useSWR("/api/accounts", accountsFetcher);
+  const { data, err } = useSWR("/api/accounts", accountsFetcher(searchTerm));
 
   const handleDeleteConfirmVisible = () => setDeleteConfirmVisible(true);
 
