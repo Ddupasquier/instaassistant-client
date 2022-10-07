@@ -50,8 +50,6 @@ function Accounts() {
   };
 
   const filterAccounts = (acctArr) => {
-    console.log(acctArr);
-    console.log("filter..");
     if (acctArr) {
       return acctArr
         .filter((account) => {
@@ -64,6 +62,7 @@ function Accounts() {
           return a.username.localeCompare(b.username);
         });
     } else {
+      // TODO: Add "none found" message, but shouldn't return data type that cannot be iterated over. Possible solution would be to add another check prior to mapping--"if !data[0].id, return "none found" message" type solution
       return [];
     }
   };

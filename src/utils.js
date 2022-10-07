@@ -112,39 +112,3 @@ export const formatPhoneNumber = (phoneNumberString) => {
  * formatPhoneNumber('1234567890') // returns '(123) 456-7890'
  * formatPhoneNumber('123456789') // returns null
  */
-
-/**
- * @function filterAccounts
- * accepts an array of accounts and a string to filter by
- */
-export const filterAccounts = async (data, searchTerm) => {
-  if (data) {
-    return data
-      .filter((account) => {
-        return (
-          account.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          account.tags.toLowerCase().includes(searchTerm.toLowerCase())
-        );
-      })
-      .sort((a, b) => {
-        return a.username.localeCompare(b.username);
-      });
-  } else {
-    return {
-      message:
-        "There doesn't seem to be an account associated with this profile. Please add an account to continue.",
-    };
-  }
-};
-/**
- * @function accountsFetcher
- * must pass searchTerm for the filter function to work
- * @returns {array} array of accounts OR {message: string} IF no accounts are found
- */
-
-export async function accountsFetcher(searchTerm) {
-  const data = indexAccounts();
-  return data && data.length > 0
-    ? filterAccounts(data, searchTerm)
-    : data.message;
-}
