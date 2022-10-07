@@ -36,7 +36,7 @@ const FAQ = () => {
             ))
           ) : (
             <div className="loading">
-              <Loading />
+              <Loading size="xl" />
             </div>
           )}
         </Collapse.Group>
