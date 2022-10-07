@@ -153,6 +153,7 @@ function Accounts() {
             </tr>
           </thead>
           <tbody>
+            <ErrorBoundary FallbackComponent={ErrorFallback}>
             <Suspense fallback={"Fallback"}>
               {filterAccounts(data).map((user, i) => (
                 <AccountsRow
@@ -163,6 +164,7 @@ function Accounts() {
                 />
               ))}
             </Suspense>
+            </ErrorBoundary>
           </tbody>
         </table>
       </div>
