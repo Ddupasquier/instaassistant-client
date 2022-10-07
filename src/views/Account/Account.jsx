@@ -205,7 +205,14 @@ function Account() {
                   </div>
 
                   <div className="user">
-                    <section>
+                    <div
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                      }}
+                    >
                       <Avatar
                         name={currentAccount.username}
                         round
@@ -214,7 +221,7 @@ function Account() {
                         textSizeRatio={2}
                       />
                       <Text>@{currentAccount.username}</Text>
-                    </section>
+                    </div>
                     <div
                       style={{
                         display: 'flex',
