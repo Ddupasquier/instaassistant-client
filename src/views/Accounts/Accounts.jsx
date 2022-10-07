@@ -43,7 +43,7 @@ function Accounts() {
     setDeleteConfirmVisible(false);
   };
 
-  const filterAccounts = () => {
+/*   const filterAccounts = () => {
     if (data) {
       return data
         .filter((account) => {
@@ -58,7 +58,7 @@ function Accounts() {
     } else {
       return "There doesn't seem to be an account associated with this profile. Please add an account to continue.";
     }
-  };
+  }; */
 
   const [newAccountVisible, setNewAccountVisible] = useState(false);
   const newAccountHandler = () => setNewAccountVisible(true);
@@ -134,6 +134,8 @@ function Accounts() {
         </div>
 
         {/* {data ? ( */}
+        <Suspense fallback="Parent suspense">
+
         <table role="table" aria-label="accounts-table">
           <thead>
             <tr>
@@ -154,23 +156,24 @@ function Accounts() {
                  * If message property exists, no accts found
                  * if message property does not exist, should be an array of accounts
                  * TODO: Improve error handling
-                 */}
-                {data.message
+                */}
+              {/*   {data.message
                   ? <p>{data.message}</p>
-                  : data.map((user, i) => (
-                      <Tr key={user.id} role="row" aria-rowindex={i}>
+                  :  */}
+                  {data.map((user, i) => (
+                    <Tr key={user.id} role="row" aria-rowindex={i}>
                         <td
                           className="username-column"
                           aria-label="username-cell"
                           role="cell"
-                        >
+                          >
                           <Avatar
                             name={user.username}
                             round
                             value="25%"
                             size="35"
                             textSizeRatio={2}
-                          />
+                            />
                           <Username href={`/accounts/instagram/${user.id}`}>
                             @{user.username}
                           </Username>
@@ -188,28 +191,28 @@ function Accounts() {
                           className="config-column"
                           aria-label="config-cell"
                           role="cell"
-                        >
+                          >
                           {user.allow_like && (
                             <FiHeart title="Liking enabled" />
-                          )}
+                            )}
                           {user.allow_comment && (
                             <AiOutlineMessage title="Commenting enabled" />
-                          )}
+                            )}
                           {user.allow_dm && (
                             <FaRegEnvelopeOpen title="Messaging enabled" />
-                          )}
+                            )}
                           {user.allow_follow && (
                             <FiUserPlus title="Following enabled" />
-                          )}
+                            )}
                           {user.allow_unfollow && (
                             <FiUserMinus title="Unfollowing enabled" />
-                          )}
+                            )}
                         </td>
                         <td
                           className="actions-column"
                           aria-label="actions-cell"
                           role="cell"
-                        >
+                          >
                           <Link to={`/accounts/instagram/${user.id}`}>
                             <Eye title="View account" size="20" />
                           </Link>
@@ -221,7 +224,7 @@ function Accounts() {
                               setUserToDelete(user);
                             }}
                             size="20"
-                          />
+                            />
                         </td>
                       </Tr>
                     ))}
@@ -229,17 +232,18 @@ function Accounts() {
             </ErrorBoundary>
           </tbody>
         </table>
+      </Suspense>
       </div>
       <NewAccountModal
         newAccountHandler={newAccountHandler}
         closeNewAccountHandler={closeNewAccountHandler}
         newAccountVisible={newAccountVisible}
-      />
+        />
       <DeleteConfirm
         deleteConfirmVisible={deleteConfirmVisible}
         closeDeleteConfirmHandler={closeDeleteConfirmHandler}
         userInfo={userToDelete}
-      />
+        />
       {/* <Base64Test/> */}
     </>
   );

@@ -144,5 +144,7 @@ export const filterAccounts = (data, searchTerm) => {
 
 export async function accountsFetcher(searchTerm) {
   const data = indexAccounts();
-  return data && data.length > 0 ? filterAccounts(data, searchTerm) : data.message;
+  return data && data.length > 0
+    ? filterAccounts(data, searchTerm)
+    : data.message;
 }
