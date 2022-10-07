@@ -174,7 +174,10 @@ export const PatchAccount = async (formData, account_id) => {
     return res;
   }
 };
-
+/**
+ * 
+ * FIXME: Should return error in event of error.
+ */
 export const indexAccounts = async () => {
   const response = await fetch(BotIndexPath, {
     method: 'GET',
