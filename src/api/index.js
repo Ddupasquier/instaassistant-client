@@ -49,9 +49,6 @@ export const loginFetch = async (userInfo) => {
   });
   const resp_1 = await resp.json();
   if (resp_1.error) {
-    // TODO: delete next line when resolved
-    console.log(userInfo);
-    console.log(resp_1);
     console.log(resp_1.error);
   } else {
     localStorage.setItem("user", JSON.stringify(resp_1.user));

@@ -135,46 +135,43 @@ function Accounts() {
         </div>
 
         {/* {data ? ( */}
-        <Suspense fallback="Parent suspense">
-          <table role="table" aria-label="accounts-table">
-            <thead>
-              <tr>
-                <th className="username-column" scope="username">
-                  Username
-                </th>
-                <th scope="platform">Platform</th>
-                <th scope="tags">Tags</th>
-                <th scope="active">Active</th>
-                <th scope="config">Config</th>
-                <th scope="actions">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <ErrorBoundary FallbackComponent={ErrorFallback}>
-                <Suspense fallback={"poop"}>
-                  {/**
-                   * If message property exists, no accts found
-                   * if message property does not exist, should be an array of accounts
-                   * TODO: Improve error handling
-                   */}
-                  {/*   {data.message
+
+        <table role="table" aria-label="accounts-table">
+          <thead>
+            <tr>
+              <th className="username-column" scope="username">
+                Username
+              </th>
+              <th scope="platform">Platform</th>
+              <th scope="tags">Tags</th>
+              <th scope="active">Active</th>
+              <th scope="config">Config</th>
+              <th scope="actions">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <Suspense fallback={"poop"}>
+              {/**
+               * If message property exists, no accts found
+               * if message property does not exist, should be an array of accounts
+               * TODO: Improve error handling
+               */}
+              {/*   {data.message
                   ? <p>{data.message}</p>
                   :  */}
-                  {startUpdating(
-                    data.map((user, i) => (
-                      <AccountsRow
-                        key={i}
-                        user={user}
-                        setDeleteConfirmVisible={setDeleteConfirmVisible}
-                        setUserToDelete={setUserToDelete}
-                      />
-                    ))
-                  )}
-                </Suspense>
-              </ErrorBoundary>
-            </tbody>
-          </table>
-        </Suspense>
+              {startUpdating(() => {
+                data.map((user, i) => (
+                  <AccountsRow
+                    key={i}
+                    user={user}
+                    setDeleteConfirmVisible={setDeleteConfirmVisible}
+                    setUserToDelete={setUserToDelete}
+                  />
+                ));
+              })}
+            </Suspense>
+          </tbody>
+        </table>
       </div>
       <NewAccountModal
         newAccountHandler={newAccountHandler}
