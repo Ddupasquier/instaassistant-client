@@ -35,7 +35,7 @@ import { FiHeart, FiUserPlus, FiUserMinus } from "react-icons/fi";
  * @param user object, handleDeleteConfirmVisible and setUserToDelete function
  * @returns row for user account
  */
-function AccountsRow({ user, handleDeleteConfirmVisible, setUserToDelete }) {
+function AccountsRow({ user, handleDeleteConfirmVisible, setUserToDelete, i }) {
   return (
     <Tr key={user.id} role="row" aria-rowindex={i}>
       <td className="username-column" aria-label="username-cell" role="cell">
