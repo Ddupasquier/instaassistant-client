@@ -1,3 +1,5 @@
+import { indexAccounts } from "api";
+
 export const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
@@ -13,7 +15,7 @@ export const capitalizeFirstLetter = (string) => {
 
 export const truncateString = (string) => {
   if (string.length > 12) {
-    return string.slice(0, 12) + '...';
+    return string.slice(0, 12) + "...";
   }
   return string;
 };
@@ -66,11 +68,11 @@ export const today = new Date().toISOString().slice(0, 10);
  * @see https://stackoverflow.com/questions/23593052/format-javascript-date-as-yyyy-mm-dd
  */
 
-export const thisTime = new Date().toLocaleTimeString('en-US', {
+export const thisTime = new Date().toLocaleTimeString("en-US", {
   timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
   hour12: false,
-  hour: 'numeric',
-  minute: 'numeric',
+  hour: "numeric",
+  minute: "numeric",
 });
 /**
  * @returns {string} - hh:mm
@@ -84,21 +86,21 @@ export const convertToUserTime = (time) => {
   const date = new Date(time);
   const options = {
     timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-    month: 'numeric',
-    day: 'numeric',
-    year: 'numeric',
+    month: "numeric",
+    day: "numeric",
+    year: "numeric",
     hour12: true,
-    hour: 'numeric',
-    minute: 'numeric',
+    hour: "numeric",
+    minute: "numeric",
   };
-  return date.toLocaleString('en-US', options);
+  return date.toLocaleString("en-US", options);
 };
 
 export const formatPhoneNumber = (phoneNumberString) => {
-  const cleaned = ('' + phoneNumberString).replace(/\D/g, '');
+  const cleaned = ("" + phoneNumberString).replace(/\D/g, "");
   const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
   if (match) {
-    return '(' + match[1] + ') ' + match[2] + '-' + match[3];
+    return "(" + match[1] + ") " + match[2] + "-" + match[3];
   }
   return null;
 };
@@ -110,3 +112,37 @@ export const formatPhoneNumber = (phoneNumberString) => {
  * formatPhoneNumber('1234567890') // returns '(123) 456-7890'
  * formatPhoneNumber('123456789') // returns null
  */
+
+/**
+ * @function filterAccounts
+ * accepts an array of accounts and a string to filter by
+ */
+export const filterAccounts = (data, searchTerm) => {
+  if (data) {
+    return data
+      .filter((account) => {
+        return (
+          account.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          account.tags.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+      })
+      .sort((a, b) => {
+        return a.username.localeCompare(b.username);
+      });
+  } else {
+    return {
+      message:
+        "There doesn't seem to be an account associated with this profile. Please add an account to continue.",
+    };
+  }
+};
+/**
+ * @function accountsFetcher
+ * must pass searchTerm for the filter function to work
+ * @returns {array} array of accounts OR {message: string} IF no accounts are found
+ */
+
+export async function accountsFetcher(searchTerm) {
+  const data = indexAccounts();
+  return data && data.length > 0 ? filterAccounts(data, searchTerm) : data.message;
+}
