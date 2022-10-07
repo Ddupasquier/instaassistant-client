@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Card, Text } from '@nextui-org/react';
-import { IconsQuestionMark } from 'Components/icons/icons';
+import { IconsQuestionMark } from 'components/icons/icons';
 import { AiOutlineUserAdd, AiOutlineUserDelete } from 'react-icons/ai';
 
 function FollowerGain({ num }) {

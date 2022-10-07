@@ -7,11 +7,11 @@ import './scss/accounts-styles.css';
 import { Text, Button, Input, Loading } from '@nextui-org/react';
 
 // * STYLED COMPONENTS
-import { Tr, Eye, Trash, Username } from './styled.js';
+import { Tr, Eye, Trash, Task, Username } from './styled.js';
 
 // * COMPONENT IMPORTS
 import NewAccountModal from './NewAccountModal';
-import DeleteConfirm from '../../Components/DeleteConfirm';
+import DeleteConfirm from '../../components/DeleteConfirm';
 
 // * UTILS IMPORTS
 import { capitalizeFirstLetter } from 'utils';
@@ -199,6 +199,7 @@ function Accounts() {
                     <Link to={`/accounts/instagram/${user.id}`}>
                       <Eye title="View account" size="20" />
                     </Link>
+                    <Task size="20" />
                     <Trash
                       title="Delete account"
                       onClick={() => {

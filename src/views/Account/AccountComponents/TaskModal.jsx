@@ -8,7 +8,7 @@ import {
   styled,
 } from '@nextui-org/react';
 import { PostTask } from 'api';
-import { IconsQuestionMark } from 'Components/icons/icons';
+import { IconsQuestionMark } from 'components/icons/icons';
 import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 
 // * ------- CONSTANTS ------- * //
@@ -28,7 +28,7 @@ function TaskModal({ closeTaskHandler, taskVisible, account_id }) {
   const [listTypeSelected, setListTypeSelected] = useState('');
   const [schedule, setSchedule] = useState(false);
 
-  const Time = styled('input', {
+  const TimeStyle = styled('input', {
     width: '100%',
     height: '100%',
     border: 'none',
@@ -39,7 +39,7 @@ function TaskModal({ closeTaskHandler, taskVisible, account_id }) {
     padding: '0.5rem',
   });
 
-  const Date = styled('input', {
+  const DateStyle = styled('input', {
     width: '100%',
     height: '100%',
     border: 'none',
@@ -54,7 +54,8 @@ function TaskModal({ closeTaskHandler, taskVisible, account_id }) {
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
-    // console.log('task data', data);
+    const notScheduled = new Date(`${data.date} ${data.time}`).toUTCString();
+    const scheduled = new Date().toUTCString();
     const payload = {
       account_id,
       task_type: data.action,
@@ -63,11 +64,8 @@ function TaskModal({ closeTaskHandler, taskVisible, account_id }) {
       custom_messages: data.customMessages,
       custom_comments: data.customComments,
       schedule,
-      date: schedule
-        ? new Date(`${data.date} ${data.time}`).toUTCString()
-        : new Date().toUTCString(),
+      date: schedule ? scheduled : notScheduled,
     };
-    // console.log(payload);
     PostTask(payload);
   };
 
@@ -241,14 +239,14 @@ function TaskModal({ closeTaskHandler, taskVisible, account_id }) {
                 </label>
                 {schedule && (
                   <>
-                    <Date
+                    <DateStyle
                       defaultValue={today}
                       type="date"
                       name="date"
                       min={today}
                       style={{ width: '100%' }}
                     />
-                    <Time
+                    <TimeStyle
                       defaultValue={thisTime}
                       type="time"
                       name="time"

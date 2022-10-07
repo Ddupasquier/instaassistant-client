@@ -4,6 +4,8 @@
   flex-direction: column;
   overflow: auto;
   z-index: 10;
+  width: 100%;
+  padding: 0 4rem;
   .account-head-buttons {
     display: flex;
     align-items: center;
@@ -14,50 +16,25 @@
     padding: 2rem;
     z-index: 10;
   }
-  .account-metrics {
-    align-self: center;
-    width: 95%;
-    .task-buttons {
-      display: flex;
-      justify-content: space-evenly;
-      margin: auto;
-      width: 100%;
-    }
+
+  .task-buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
   }
+  .task-button {
+    flex: 6;
+  }
+
   .user {
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     gap: 1rem;
     width: 100%;
-    section {
-      text-align: center;
-      padding: 1rem 0;
-      &:nth-child(2) {
-        div {
-          border-radius: 25px;
-          padding: 0.2rem 1rem;
-          backdrop-filter: saturate(200%) blur(8px);
-          background: rgba(255, 255, 255, 0.4);
-        }
-      }
-      &:nth-child(3) {
-        div {
-          border-radius: 25px;
-          padding: 0.2rem 1rem;
-          backdrop-filter: saturate(200%) blur(8px);
-          background: rgba(255, 255, 255, 0.4);
-        }
-      }
-      &:nth-child(4) {
-        div {
-          border-radius: 25px;
-          padding: 0.2rem 1rem;
-          backdrop-filter: saturate(200%) blur(8px);
-          background: rgba(255, 255, 255, 0.4);
-        }
-      }
-    }
   }
   .user-links {
     display: flex;

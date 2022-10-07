@@ -19,10 +19,11 @@ import FollowerGain from './AccountComponents/FollowerGain';
 import MetricChart from './AccountComponents/MetricChart';
 import InteractionLimits from './AccountComponents/InteractionLimits';
 import ConfigPopup from './AccountComponents/ConfigPopup';
-import DeleteConfirm from 'Components/DeleteConfirm';
+import DeleteConfirm from 'components/DeleteConfirm';
 import Avatar from 'react-avatar';
 import TaskModal from './AccountComponents/TaskModal';
 import { TasksRunning } from '.';
+import Bubble from './AccountComponents/Bubble';
 
 function Account() {
   // * ------- DESCTRUCTURING URL PARAMS ------- *
@@ -56,35 +57,6 @@ function Account() {
   const [comments, setComments] = useState(0);
   const [messages, setMessages] = useState(0);
 
-  /** description
-   * @param {string} account_id
-   * @returns {object} account
-   * @description Fetches account data from API
-   * @example
-   * const account = await ShowAccount(account_id)
-   * @see ShowAccount
-   * @see getSnapshots
-   * @see GetTasks
-   * @see useEffect
-   * @see useState
-   * @see setSnapshots
-   * @see setTasks
-   * @see setUtilization
-   * @see setInteractions
-   * @see setFollowersGained
-   * @see setFollows
-   * @see setLikes
-   * @see setComments
-   * @see setMessages
-   * @see setCurrentAccount
-   * @see setSnapshots
-   * @see setTasks
-   * @see setUtilization
-   * @see setInteractions
-   * @todo
-   * - [ ] Add error handling
-   * - [ ] Simplify code
-   */
   useEffect(() => {
     ShowAccount(account_id).then((data) => {
       setCurrentAccount(data);
@@ -188,8 +160,8 @@ function Account() {
           </Button>
         </div>
         <>
-          <Grid.Container justify="center">
-            <Grid sm={6} xs={9}>
+          <Grid.Container justify="center" gap="2">
+            <Grid css={{ flex: '8' }}>
               <Card
                 css={{
                   backdropFilter: 'blur(15px)',
@@ -204,7 +176,14 @@ function Account() {
                   </div>
 
                   <div className="user">
-                    <section>
+                    <div
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                      }}
+                    >
                       <Avatar
                         name={currentAccount.username}
                         round
@@ -213,36 +192,39 @@ function Account() {
                         textSizeRatio={2}
                       />
                       <Text>@{currentAccount.username}</Text>
-                    </section>
-                    <section>
-                      <legend htmlFor="posts-count">Posts</legend>
-                      <div id="posts-count" className="followers">
-                        {snapshots.posts
-                          ? snapshots[snapshots.length - 1].posts
-                          : 99999}
-                      </div>
-                    </section>
-                    <section>
-                      <legend htmlFor="followers-count">Followers</legend>
-                      <div id="followers-count" className="followers">
-                        {snapshots.followers
-                          ? snapshots[snapshots.length - 1].followers
-                          : 99999}
-                      </div>
-                    </section>
-                    <section>
-                      <legend htmlFor="following-count">Following</legend>
-                      <div id="following-count" className="following">
-                        {snapshots.following
-                          ? snapshots[snapshots.length - 1].following
-                          : 99999}
-                      </div>
-                    </section>
+                    </div>
+                    <div
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        gap: '1rem',
+                      }}
+                    >
+                      <Bubble
+                        htmlFor={'posts-count'}
+                        num={snapshots.posts}
+                        name={'Posts'}
+                      />
+                      <Bubble
+                        htmlFor={'followers-count'}
+                        num={snapshots.followers}
+                        name={'Followers'}
+                      />
+                      <Bubble
+                        htmlFor={'following-count'}
+                        num={snapshots.following}
+                        name={'Following'}
+                      />
+                    </div>
+                    <br />
                     <Dropdown>
                       <Dropdown.Button color="secondary">
                         <FiSettings />
                       </Dropdown.Button>
-                      <Dropdown.Menu color="secondary" aria-label="User Actions">
+                      <Dropdown.Menu
+                        color="secondary"
+                        aria-label="User Actions"
+                      >
                         <Dropdown.Item key="profile" aria-label="create-task">
                           <Text
                             b
@@ -280,12 +262,12 @@ function Account() {
                 </Card.Header>
               </Card>
             </Grid>
+            <TasksRunning tasksActive={currentAccount.active} />
           </Grid.Container>
         </>
 
         <div className="account-metrics">
           <Grid.Container gap={2}>
-            <TasksRunning tasksActive={currentAccount.active} />
             <Utilization num={utilization} />
             <Interactions num={interactions} />
             <FollowerGain num={followersGained} />
@@ -304,10 +286,7 @@ function Account() {
           taskVisible={taskVisible}
           account_id={account_id}
         />
-        <ConfigPopup
-          currentAccount={currentAccount}
-          account_id={account_id}
-        />
+        <ConfigPopup currentAccount={currentAccount} account_id={account_id} />
         <DeleteConfirm
           deleteConfirmVisible={deleteConfirmVisible}
           closeDeleteConfirmHandler={closeDeleteConfirmHandler}

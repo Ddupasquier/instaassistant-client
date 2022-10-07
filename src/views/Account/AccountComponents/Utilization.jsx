@@ -1,7 +1,6 @@
 import React from 'react';
 import { Card, Grid, Text, Progress } from '@nextui-org/react';
-import { IconsQuestionMark } from 'Components/icons/icons';
-// import { GiGears } from 'react-icons/gi';
+import { IconsQuestionMark } from 'components/icons/icons';
 
 function Utilization({ num }) {
   return (
@@ -24,12 +23,11 @@ function Utilization({ num }) {
           <Grid.Container>
             <Grid sm={2}>
               <Text h2>
-                {/* {<GiGears />} */}
                 {num}%
               </Text>
             </Grid>
             <Grid sm={12} xs={12}>
-              <Progress color="primary" value={num} />
+              <Progress color="primary" value={num} role="progressbar" />
             </Grid>
           </Grid.Container>
         </Card.Body>

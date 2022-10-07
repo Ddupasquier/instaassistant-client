@@ -79,6 +79,21 @@ export const thisTime = new Date().toLocaleTimeString('en-US', {
  * @example '23:59'
  */
 
+// take in time/date in this format 'dd-mm-yyyy;hh:mm' and convert it to the user's local time in 'mm/dd/dd hh:mm' 12hour format
+export const convertToUserTime = (time) => {
+  const date = new Date(time);
+  const options = {
+    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    month: 'numeric',
+    day: 'numeric',
+    year: 'numeric',
+    hour12: true,
+    hour: 'numeric',
+    minute: 'numeric',
+  };
+  return date.toLocaleString('en-US', options);
+};
+
 export const formatPhoneNumber = (phoneNumberString) => {
   const cleaned = ('' + phoneNumberString).replace(/\D/g, '');
   const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Grid, Text } from '@nextui-org/react';
-import { IconsQuestionMark } from 'Components/icons/icons';
+import { IconsQuestionMark } from 'components/icons/icons';
 import { AiOutlineInteraction } from 'react-icons/ai';
 
 function Interactions({ num }) {

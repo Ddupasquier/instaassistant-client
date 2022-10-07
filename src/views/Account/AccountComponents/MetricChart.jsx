@@ -1,8 +1,8 @@
 import React from 'react';
 import { Card, Grid } from '@nextui-org/react';
-import { FollowersChart } from 'Components/Charts';
-import UtilizationChart from 'Components/Charts/UtilizationChart';
-import { IconsQuestionMark } from 'Components/icons/icons';
+import { FollowersChart } from 'components/Charts';
+import UtilizationChart from 'components/Charts/UtilizationChart';
+import { IconsQuestionMark } from 'components/icons/icons';
 
 function MetricChart({ snapshots }) {
   return (
