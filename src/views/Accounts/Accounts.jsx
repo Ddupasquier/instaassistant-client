@@ -1,41 +1,41 @@
-import React, { Suspense, useState } from 'react';
-import { Link } from 'react-router-dom';
-import Avatar from 'react-avatar';
-import './scss/accounts-styles.css';
+import React, { Suspense, useState } from "react";
+import { Link } from "react-router-dom";
+import Avatar from "react-avatar";
+import "./scss/accounts-styles.css";
 
-import { ErrorBoundary } from 'react-error-boundary';
-import ErrorFallback from 'components/ErrorFallback';
+import { ErrorBoundary } from "react-error-boundary";
+import ErrorFallback from "components/ErrorFallback";
 
-import useSWR from 'swr';
+import useSWR from "swr";
 
 // * NEXTUI IMPORTS
-import { Text, Button, Input } from '@nextui-org/react';
+import { Text, Button, Input } from "@nextui-org/react";
 
 // * STYLED COMPONENTS
-import { Tr, Eye, Trash, Task, Username } from './styled.js';
+import { Tr, Eye, Trash, Task, Username } from "./styled.js";
 
 // * COMPONENT IMPORTS
-import NewAccountModal from './NewAccountModal';
-import DeleteConfirm from '../../components/DeleteConfirm';
-import Loader from 'components/Loader';
+import NewAccountModal from "./NewAccountModal";
+import DeleteConfirm from "../../components/DeleteConfirm";
+import Loader from "components/Loader";
 
 // * UTILS IMPORTS
-import { capitalizeFirstLetter } from 'utils';
+import { accountsFetcher, capitalizeFirstLetter } from "utils";
 
 // * ENDPOINT
-import { indexAccounts } from 'api';
+import { indexAccounts } from "api";
 
 // * ICON IMPORTS
-import { AiOutlineMessage } from 'react-icons/ai';
-import { FaRegEnvelopeOpen } from 'react-icons/fa';
-import { FiHeart, FiUserPlus, FiUserMinus } from 'react-icons/fi';
+import { AiOutlineMessage } from "react-icons/ai";
+import { FaRegEnvelopeOpen } from "react-icons/fa";
+import { FiHeart, FiUserPlus, FiUserMinus } from "react-icons/fi";
 
 function Accounts() {
   const [userToDelete, setUserToDelete] = useState(null);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [deleteConfirmVisible, setDeleteConfirmVisible] = useState(false);
 
-  const { data, err } = useSWR('/api/accounts', indexAccounts);
+  const { data, err } = useSWR("/api/accounts", accountsFetcher);
 
   const handleDeleteConfirmVisible = () => setDeleteConfirmVisible(true);
 
@@ -71,22 +71,22 @@ function Accounts() {
       <div className="accounts-container">
         <div
           style={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            borderRadius: '0',
-            padding: '1rem',
-            maxHeight: '10%',
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            borderRadius: "0",
+            padding: "1rem",
+            maxHeight: "10%",
           }}
         >
-          {' '}
+          {" "}
           <Text
             h1
             size={60}
             css={{
-              textGradient: '45deg, $blue600 -20%, $pink600 50%',
-              height: 'fit-content',
+              textGradient: "45deg, $blue600 -20%, $pink600 50%",
+              height: "fit-content",
             }}
             weight="bold"
           >
@@ -150,73 +150,81 @@ function Accounts() {
           <tbody>
             <ErrorBoundary FallbackComponent={ErrorFallback}>
               <Suspense fallback={"poop"}>
-                {data &&
-                  filterAccounts().map((user, i) => (
-                    <Tr key={user.id} role="row" aria-rowindex={i}>
-                      <td
-                        className="username-column"
-                        aria-label="username-cell"
-                        role="cell"
-                      >
-                        <Avatar
-                          name={user.username}
-                          round
-                          value="25%"
-                          size="35"
-                          textSizeRatio={2}
-                        />
-                        <Username href={`/accounts/instagram/${user.id}`}>
-                          @{user.username}
-                        </Username>
-                      </td>
-                      <td aria-label="platform-cell" role="cell">
-                        {capitalizeFirstLetter(user.platform)}
-                      </td>
-                      <td aria-label="tags-cell" role="cell">
-                        {user.tags}
-                      </td>
-                      <td aria-label="active-cell" role="cell">
-                        {user.active ? 'Active' : 'Idle'}
-                      </td>
-                      <td
-                        className="config-column"
-                        aria-label="config-cell"
-                        role="cell"
-                      >
-                        {user.allow_like && <FiHeart title="Liking enabled" />}
-                        {user.allow_comment && (
-                          <AiOutlineMessage title="Commenting enabled" />
-                        )}
-                        {user.allow_dm && (
-                          <FaRegEnvelopeOpen title="Messaging enabled" />
-                        )}
-                        {user.allow_follow && (
-                          <FiUserPlus title="Following enabled" />
-                        )}
-                        {user.allow_unfollow && (
-                          <FiUserMinus title="Unfollowing enabled" />
-                        )}
-                      </td>
-                      <td
-                        className="actions-column"
-                        aria-label="actions-cell"
-                        role="cell"
-                      >
-                        <Link to={`/accounts/instagram/${user.id}`}>
-                          <Eye title="View account" size="20" />
-                        </Link>
-                        <Task size="20" />
-                        <Trash
-                          title="Delete account"
-                          onClick={() => {
-                            handleDeleteConfirmVisible();
-                            setUserToDelete(user);
-                          }}
-                          size="20"
-                        />
-                      </td>
-                    </Tr>
-                  ))}
+                {/**
+                 * If message property exists, no accts found
+                 * if message property does not exist, should be an array of accounts
+                 * TODO: Improve error handling
+                 */}
+                {data.message
+                  ? <p>{data.message}</p>
+                  : data.map((user, i) => (
+                      <Tr key={user.id} role="row" aria-rowindex={i}>
+                        <td
+                          className="username-column"
+                          aria-label="username-cell"
+                          role="cell"
+                        >
+                          <Avatar
+                            name={user.username}
+                            round
+                            value="25%"
+                            size="35"
+                            textSizeRatio={2}
+                          />
+                          <Username href={`/accounts/instagram/${user.id}`}>
+                            @{user.username}
+                          </Username>
+                        </td>
+                        <td aria-label="platform-cell" role="cell">
+                          {capitalizeFirstLetter(user.platform)}
+                        </td>
+                        <td aria-label="tags-cell" role="cell">
+                          {user.tags}
+                        </td>
+                        <td aria-label="active-cell" role="cell">
+                          {user.active ? "Active" : "Idle"}
+                        </td>
+                        <td
+                          className="config-column"
+                          aria-label="config-cell"
+                          role="cell"
+                        >
+                          {user.allow_like && (
+                            <FiHeart title="Liking enabled" />
+                          )}
+                          {user.allow_comment && (
+                            <AiOutlineMessage title="Commenting enabled" />
+                          )}
+                          {user.allow_dm && (
+                            <FaRegEnvelopeOpen title="Messaging enabled" />
+                          )}
+                          {user.allow_follow && (
+                            <FiUserPlus title="Following enabled" />
+                          )}
+                          {user.allow_unfollow && (
+                            <FiUserMinus title="Unfollowing enabled" />
+                          )}
+                        </td>
+                        <td
+                          className="actions-column"
+                          aria-label="actions-cell"
+                          role="cell"
+                        >
+                          <Link to={`/accounts/instagram/${user.id}`}>
+                            <Eye title="View account" size="20" />
+                          </Link>
+                          <Task size="20" />
+                          <Trash
+                            title="Delete account"
+                            onClick={() => {
+                              handleDeleteConfirmVisible();
+                              setUserToDelete(user);
+                            }}
+                            size="20"
+                          />
+                        </td>
+                      </Tr>
+                    ))}
               </Suspense>
             </ErrorBoundary>
           </tbody>
