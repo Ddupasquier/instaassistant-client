@@ -1,7 +1,7 @@
 import React, { Suspense, useState } from "react";
 import { Link } from "react-router-dom";
 import Avatar from "react-avatar";
-import "./scss/accounts-styles.css";
+import "../../views/Accounts/scss/accounts-styles.css";
 
 import { ErrorBoundary } from "react-error-boundary";
 import ErrorFallback from "components/ErrorFallback";
@@ -12,10 +12,10 @@ import useSWR from "swr";
 import { Text, Button, Input } from "@nextui-org/react";
 
 // * STYLED COMPONENTS
-import { Tr, Eye, Trash, Task, Username } from "./styled.js";
+import { Tr, Eye, Trash, Task, Username } from "../../views/Accounts/styled.js";
 
 // * COMPONENT IMPORTS
-import NewAccountModal from "./NewAccountModal";
+import NewAccountModal from "../../views/Accounts/NewAccountModal";
 import DeleteConfirm from "../../components/DeleteConfirm";
 import Loader from "components/Loader";
 
