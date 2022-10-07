@@ -57,35 +57,6 @@ function Account() {
   const [comments, setComments] = useState(0);
   const [messages, setMessages] = useState(0);
 
-  /** description
-   * @param {string} account_id
-   * @returns {object} account
-   * @description Fetches account data from API
-   * @example
-   * const account = await ShowAccount(account_id)
-   * @see ShowAccount
-   * @see getSnapshots
-   * @see GetTasks
-   * @see useEffect
-   * @see useState
-   * @see setSnapshots
-   * @see setTasks
-   * @see setUtilization
-   * @see setInteractions
-   * @see setFollowersGained
-   * @see setFollows
-   * @see setLikes
-   * @see setComments
-   * @see setMessages
-   * @see setCurrentAccount
-   * @see setSnapshots
-   * @see setTasks
-   * @see setUtilization
-   * @see setInteractions
-   * @todo
-   * - [ ] Add error handling
-   * - [ ] Simplify code
-   */
   useEffect(() => {
     ShowAccount(account_id).then((data) => {
       setCurrentAccount(data);
