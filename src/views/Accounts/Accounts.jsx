@@ -35,36 +35,18 @@ import { AiOutlineMessage } from "react-icons/ai";
 import { FaRegEnvelopeOpen } from "react-icons/fa";
 import { FiHeart, FiUserPlus, FiUserMinus } from "react-icons/fi";
 import AccountsRow from "components/Tables/AccountsRow";
+import AccountsTable from "components/Tables/AccountsTable";
 
 function Accounts() {
   const [userToDelete, setUserToDelete] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [deleteConfirmVisible, setDeleteConfirmVisible] = useState(false);
   const [isUpdating, startUpdating] = useTransition(false);
-  const { data, err } = useSWR("/api/accounts", indexAccounts);
 
   const handleDeleteConfirmVisible = () => setDeleteConfirmVisible(true);
 
   const closeDeleteConfirmHandler = () => {
     setDeleteConfirmVisible(false);
-  };
-
-  const filterAccounts = (acctArr) => {
-    if (acctArr) {
-      return acctArr
-        .filter((account) => {
-          return (
-            account.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            account.tags.toLowerCase().includes(searchTerm.toLowerCase())
-          );
-        })
-        .sort((a, b) => {
-          return a.username.localeCompare(b.username);
-        });
-    } else {
-      // TODO: Add "none found" message, but shouldn't return data type that cannot be iterated over. Possible solution would be to add another check prior to mapping--"if !data[0].id, return "none found" message" type solution
-      return [];
-    }
   };
 
   const [newAccountVisible, setNewAccountVisible] = useState(false);
@@ -139,35 +121,11 @@ function Accounts() {
             Add Account
           </Button>
         </div>
-        <table role="table" aria-label="accounts-table">
-          <thead>
-            <tr>
-              <th className="username-column" scope="username">
-                Username
-              </th>
-              <th scope="platform">Platform</th>
-              <th scope="tags">Tags</th>
-              <th scope="active">Active</th>
-              <th scope="config">Config</th>
-              <th scope="actions">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <ErrorBoundary FallbackComponent={ErrorFallback}>
-              <Suspense fallback={"Fallback"}>
-                {data &&
-                  filterAccounts(data).map((user, i) => (
-                    <AccountsRow
-                      key={i}
-                      user={user}
-                      setDeleteConfirmVisible={setDeleteConfirmVisible}
-                      setUserToDelete={setUserToDelete}
-                    />
-                  ))}
-              </Suspense>
-            </ErrorBoundary>
-          </tbody>
-        </table>
+        <AccountsTable
+          searchTerm={searchTerm}
+          setUserToDelete={setUserToDelete}
+          setDeleteConfirmVisible={setDeleteConfirmVisible}
+        />
       </div>
       <NewAccountModal
         newAccountHandler={newAccountHandler}
