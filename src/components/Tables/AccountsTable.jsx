@@ -1,24 +1,18 @@
-import React, { Suspense, useEffect } from "react";
+import React from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import { filterAccounts, returnAccounts } from "utils";
+import { returnAccounts } from "utils";
 import AccountsRow from "./AccountsRow";
 import ErrorFallback from "components/ErrorFallback";
 import useSWR from "swr";
 import { indexAccounts } from "api";
 
-function AccountsTable(
-    {
-  isUpdating,
+function AccountsTable({
   searchTerm,
   setUserToDelete,
-  setDeleteConfirmVisible
-    }
-) {
+  setDeleteConfirmVisible,
+}) {
+  // TODO: handle error, "no accounts found" message
   const { data, err } = useSWR("/api/accounts", indexAccounts);
-
-  useEffect(() => {
-    console.log("searchTerm", searchTerm);
-  }, [searchTerm]);
 
   return (
     <table role="table" aria-label="accounts-table">
@@ -36,14 +30,16 @@ function AccountsTable(
       </thead>
       <tbody>
         <ErrorBoundary FallbackComponent={ErrorFallback}>
-          {returnAccounts(data, searchTerm).map((user, i) => (
-            <AccountsRow
-              key={i}
-              user={user}
-              setDeleteConfirmVisible={setDeleteConfirmVisible}
-              setUserToDelete={setUserToDelete}
-            />
-          ))}
+          {err
+            ? "Error"
+            : returnAccounts(data, searchTerm).map((user, i) => (
+                <AccountsRow
+                  key={i}
+                  user={user}
+                  setDeleteConfirmVisible={setDeleteConfirmVisible}
+                  setUserToDelete={setUserToDelete}
+                />
+              ))}
         </ErrorBoundary>
       </tbody>
     </table>

@@ -1,42 +1,19 @@
 import React, {
-  startTransition,
   Suspense,
   useState,
   useTransition,
-  useEffect,
-  useDeferredValue,
 } from "react";
-import { Link } from "react-router-dom";
-import Avatar from "react-avatar";
+
 import "./scss/accounts-styles.css";
 
-import { ErrorBoundary } from "react-error-boundary";
-import ErrorFallback from "components/ErrorFallback";
-
-import useSWR from "swr";
-
 // * NEXTUI IMPORTS
-import { Text, Button, Input, Loading } from "@nextui-org/react";
-
-// * STYLED COMPONENTS
-import { Tr, Eye, Trash, Task, Username } from "./styled.js";
+import { Text, Button, Input } from "@nextui-org/react";
 
 // * COMPONENT IMPORTS
 import NewAccountModal from "./NewAccountModal";
 import DeleteConfirm from "../../components/DeleteConfirm";
 import Loader from "components/Loader";
 
-// * UTILS IMPORTS
-import { accountsFetcher, capitalizeFirstLetter } from "utils";
-
-// * ENDPOINT
-import { indexAccounts } from "api";
-
-// * ICON IMPORTS
-import { AiOutlineMessage } from "react-icons/ai";
-import { FaRegEnvelopeOpen } from "react-icons/fa";
-import { FiHeart, FiUserPlus, FiUserMinus } from "react-icons/fi";
-import AccountsRow from "components/Tables/AccountsRow";
 import AccountsTable from "components/Tables/AccountsTable";
 
 function Accounts() {
@@ -45,6 +22,7 @@ function Accounts() {
   const [deleteConfirmVisible, setDeleteConfirmVisible] = useState(false);
   const [isUpdating, startUpdating] = useTransition();
 
+  // TODO: Was this utilized somewhere?
   const handleDeleteConfirmVisible = () => setDeleteConfirmVisible(true);
 
   const closeDeleteConfirmHandler = () => {
@@ -57,8 +35,7 @@ function Accounts() {
     setNewAccountVisible(false);
   };
   /**
-   * TODO: not causing rerender
-   * TODO: Prevent transition from starting if there is already a pending update
+   * TODO: Evaluate useDefferedValue with timeout arg for searchTerm instead of useTransition
    */
   function updateSearchTerm(newVal) {
     startUpdating(() => {
