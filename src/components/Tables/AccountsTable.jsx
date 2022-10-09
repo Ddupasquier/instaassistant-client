@@ -10,6 +10,7 @@ function AccountsTable({
   searchTerm,
   setUserToDelete,
   setDeleteConfirmVisible,
+  handleDeleteConfirmVisible,
 }) {
   // TODO: handle error, "no accounts found" message
   const { data, err } = useSWR("/api/accounts", indexAccounts);
@@ -38,6 +39,7 @@ function AccountsTable({
                   user={user}
                   setDeleteConfirmVisible={setDeleteConfirmVisible}
                   setUserToDelete={setUserToDelete}
+                  handleDeleteConfirmVisible={handleDeleteConfirmVisible}
                 />
               ))}
         </ErrorBoundary>

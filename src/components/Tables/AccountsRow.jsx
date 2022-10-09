@@ -1,18 +1,18 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import Avatar from "react-avatar";
-import "../../views/Accounts/scss/accounts-styles.css";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Avatar from 'react-avatar';
+import '../../views/Accounts/scss/accounts-styles.css';
 
 // * STYLED COMPONENTS
-import { Tr, Eye, Trash, Task, Username } from "../../views/Accounts/styled.js";
+import { Tr, Eye, Trash, Task, Username } from '../../views/Accounts/styled.js';
 
 // * UTILS IMPORTS
-import { capitalizeFirstLetter } from "utils";
+import { capitalizeFirstLetter } from 'utils';
 
 // * ICON IMPORTS
-import { AiOutlineMessage } from "react-icons/ai";
-import { FaRegEnvelopeOpen } from "react-icons/fa";
-import { FiHeart, FiUserPlus, FiUserMinus } from "react-icons/fi";
+import { AiOutlineMessage } from 'react-icons/ai';
+import { FaRegEnvelopeOpen } from 'react-icons/fa';
+import { FiHeart, FiUserPlus, FiUserMinus } from 'react-icons/fi';
 /**
  * @function AccountsRow
  * @description Renders a row for each account
@@ -41,7 +41,7 @@ function AccountsRow({ user, handleDeleteConfirmVisible, setUserToDelete, i }) {
         {user.tags}
       </td>
       <td aria-label="active-cell" role="cell">
-        {user.active ? "Active" : "Idle"}
+        {user.active ? 'Active' : 'Idle'}
       </td>
       <td className="config-column" aria-label="config-cell" role="cell">
         {user.allow_like && <FiHeart title="Liking enabled" />}

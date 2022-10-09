@@ -1,30 +1,24 @@
-import React, {
-  Suspense,
-  useState,
-  useTransition,
-} from "react";
+import React, { Suspense, useState, useTransition } from 'react';
 
-import "./scss/accounts-styles.css";
+import './scss/accounts-styles.css';
 
 // * NEXTUI IMPORTS
-import { Text, Button, Input } from "@nextui-org/react";
+import { Text, Button, Input } from '@nextui-org/react';
 
 // * COMPONENT IMPORTS
-import NewAccountModal from "./NewAccountModal";
-import DeleteConfirm from "../../components/DeleteConfirm";
-import Loader from "components/Loader";
+import NewAccountModal from './NewAccountModal';
+import DeleteConfirm from '../../components/DeleteConfirm';
+import Loader from 'components/Loader';
 
-import AccountsTable from "components/Tables/AccountsTable";
+import AccountsTable from 'components/Tables/AccountsTable';
 
 function Accounts() {
   const [userToDelete, setUserToDelete] = useState(null);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
   const [deleteConfirmVisible, setDeleteConfirmVisible] = useState(false);
   const [isUpdating, startUpdating] = useTransition();
 
-  // TODO: Was this utilized somewhere?
   const handleDeleteConfirmVisible = () => setDeleteConfirmVisible(true);
-
   const closeDeleteConfirmHandler = () => {
     setDeleteConfirmVisible(false);
   };
@@ -34,6 +28,7 @@ function Accounts() {
   const closeNewAccountHandler = () => {
     setNewAccountVisible(false);
   };
+
   /**
    * TODO: Evaluate useDefferedValue with timeout arg for searchTerm instead of useTransition
    */
@@ -48,22 +43,22 @@ function Accounts() {
       <div className="accounts-container">
         <div
           style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-            borderRadius: "0",
-            padding: "1rem",
-            maxHeight: "10%",
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            borderRadius: '0',
+            padding: '1rem',
+            maxHeight: '10%',
           }}
         >
-          {" "}
+          {' '}
           <Text
             h1
             size={60}
             css={{
-              textGradient: "45deg, $blue600 -20%, $pink600 50%",
-              height: "fit-content",
+              textGradient: '45deg, $blue600 -20%, $pink600 50%',
+              height: 'fit-content',
             }}
             weight="bold"
           >
@@ -118,6 +113,7 @@ function Accounts() {
               searchTerm={searchTerm}
               setUserToDelete={setUserToDelete}
               setDeleteConfirmVisible={setDeleteConfirmVisible}
+              handleDeleteConfirmVisible={handleDeleteConfirmVisible}
             />
           </Suspense>
         )}
