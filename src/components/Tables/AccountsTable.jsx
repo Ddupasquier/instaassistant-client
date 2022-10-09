@@ -1,13 +1,22 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import { filterAccounts } from "utils";
+import { filterAccounts, returnAccounts } from "utils";
 import AccountsRow from "./AccountsRow";
 import ErrorFallback from "components/ErrorFallback";
 import useSWR from "swr";
 import { indexAccounts } from "api";
 
-function AccountsTable(searchTerm, setUserToDelete, setDeleteConfirmVisible) {
-    const { data, err } = useSWR("/api/accounts", indexAccounts);
+function AccountsTable(
+  isUpdating,
+  searchTerm,
+  setUserToDelete,
+  setDeleteConfirmVisible
+) {
+  const { data, err } = useSWR("/api/accounts", indexAccounts);
+
+  useEffect(() => {
+    console.log("searchTerm", searchTerm);
+  }, [searchTerm]);
 
   return (
     <table role="table" aria-label="accounts-table">
@@ -24,19 +33,16 @@ function AccountsTable(searchTerm, setUserToDelete, setDeleteConfirmVisible) {
         </tr>
       </thead>
       <tbody>
-      <ErrorBoundary FallbackComponent={ErrorFallback}>
-              <Suspense fallback={"Fallback"}>
-                {
-                  filterAccounts(data).map((user, i) => (
-                    <AccountsRow
-                      key={i}
-                      user={user}
-                      setDeleteConfirmVisible={setDeleteConfirmVisible}
-                      setUserToDelete={setUserToDelete}
-                    />
-                  ))}
-              </Suspense>
-            </ErrorBoundary>
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          {returnAccounts(data, searchTerm).map((user, i) => (
+            <AccountsRow
+              key={i}
+              user={user}
+              setDeleteConfirmVisible={setDeleteConfirmVisible}
+              setUserToDelete={setUserToDelete}
+            />
+          ))}
+        </ErrorBoundary>
       </tbody>
     </table>
   );

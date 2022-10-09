@@ -3,6 +3,7 @@ import React, {
   Suspense,
   useState,
   useTransition,
+  useEffect,
 } from "react";
 import { Link } from "react-router-dom";
 import Avatar from "react-avatar";
@@ -41,7 +42,7 @@ function Accounts() {
   const [userToDelete, setUserToDelete] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [deleteConfirmVisible, setDeleteConfirmVisible] = useState(false);
-  const [isUpdating, startUpdating] = useTransition(false);
+  const [isUpdating, startUpdating] = useTransition();
 
   const handleDeleteConfirmVisible = () => setDeleteConfirmVisible(true);
 
@@ -54,6 +55,20 @@ function Accounts() {
   const closeNewAccountHandler = () => {
     setNewAccountVisible(false);
   };
+  /**
+   * TODO: not causing rerender
+   * TODO: Prevent transition from starting if there is already a pending update
+   */
+  function updateSearchTerm(newVal) {
+    startUpdating(() => {
+      setSearchTerm(newVal);
+      !isUpdating && console.log("not updating");
+    });
+  }
+
+  useEffect(() => {
+    console.log("searchTerm", searchTerm);
+  }, [searchTerm]);
 
   return (
     <>
@@ -108,7 +123,7 @@ function Accounts() {
             color="secondary"
             size="xl"
             onChange={(e) => {
-              setSearchTerm(e.target.value);
+              updateSearchTerm(e.target.value);
             }}
           />
           <Button
@@ -121,11 +136,18 @@ function Accounts() {
             Add Account
           </Button>
         </div>
-        <AccountsTable
-          searchTerm={searchTerm}
-          setUserToDelete={setUserToDelete}
-          setDeleteConfirmVisible={setDeleteConfirmVisible}
-        />
+        {isUpdating ? (
+          <Loader />
+        ) : (
+          <Suspense fallback={<Loader />}>
+            <AccountsTable
+              isUpdating={isUpdating}
+              searchTerm={searchTerm}
+              setUserToDelete={setUserToDelete}
+              setDeleteConfirmVisible={setDeleteConfirmVisible}
+            />
+          </Suspense>
+        )}
       </div>
       <NewAccountModal
         newAccountHandler={newAccountHandler}

@@ -112,23 +112,28 @@ export const formatPhoneNumber = (phoneNumberString) => {
  * formatPhoneNumber('1234567890') // returns '(123) 456-7890'
  * formatPhoneNumber('123456789') // returns null
  */
+
 /**
  * @function filterAccounts
  */
- export function filterAccounts (acctArr, searchTerm) {
-  if (acctArr) {
-    return acctArr
-      .filter((account) => {
-        return (
-          account.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          account.tags.toLowerCase().includes(searchTerm.toLowerCase())
-        );
-      })
-      .sort((a, b) => {
-        return a.username.localeCompare(b.username);
-      });
-  } else {
-    // TODO: Add "none found" message, but shouldn't return data type that cannot be iterated over. Possible solution would be to add another check prior to mapping--"if !data[0].id, return "none found" message" type solution
-    return [];
-  }
-};
+export function filterAccounts(acctArr, searchTerm) {
+  const term = searchTerm.toLowerCase();
+  return acctArr.filter((account) => {
+    return (
+      account.username.toLowerCase().includes(term) ||
+      account.tags.toLowerCase().includes(term)
+    );
+  });
+}
+
+/**
+ * @function returnAccounts
+ * @params {array} accounts , {string} searchTerm
+ * @returns {array} accounts sorted by username or filtered by searchTerm + sorted by username
+ **/
+export function returnAccounts(acctArr, searchTerm) {
+  const accounts = searchTerm && searchTerm.length > 0 ? filterAccounts(acctArr, searchTerm) : acctArr;
+  return accounts.sort((a, b) => {
+    return a.username.localeCompare(b.username);
+  });
+}
