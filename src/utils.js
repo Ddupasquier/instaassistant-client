@@ -115,6 +115,10 @@ export const formatPhoneNumber = (phoneNumberString) => {
 
 /**
  * @function filterAccounts
+ * @param {array} accounts - array of accounts
+ * @param {string} searchTerm - term to filter by
+ * @description filters accounts by username or tags
+ * @returns {array} filtered accounts
  */
 export function filterAccounts(acctArr, searchTerm) {
   const term = searchTerm.toLowerCase();
@@ -128,7 +132,8 @@ export function filterAccounts(acctArr, searchTerm) {
 
 /**
  * @function returnAccounts
- * @params {array} accounts , {string} searchTerm
+ * @param {array} accounts
+ * @param {string} searchTerm
  * @returns {array} accounts sorted by username or filtered by searchTerm + sorted by username
  **/
 export function returnAccounts(acctArr, searchTerm) {
