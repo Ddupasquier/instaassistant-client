@@ -38,7 +38,6 @@ import { FiHeart, FiUserPlus, FiUserMinus } from "react-icons/fi";
 import AccountsRow from "components/Tables/AccountsRow";
 import AccountsTable from "components/Tables/AccountsTable";
 
-
 function Accounts() {
   const [userToDelete, setUserToDelete] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
