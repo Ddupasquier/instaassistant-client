@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect } from "react";
+import React, { Suspense, useEffect, useDeferredValue } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { filterAccounts, returnAccounts } from "utils";
 import AccountsRow from "./AccountsRow";
@@ -13,7 +13,7 @@ function AccountsTable(
   setDeleteConfirmVisible
 ) {
   const { data, err } = useSWR("/api/accounts", indexAccounts);
-
+  const term = useDeferredValue(searchTerm, { timeoutMs: 500 });
   useEffect(() => {
     console.log("searchTerm", searchTerm);
   }, [searchTerm]);
@@ -34,7 +34,7 @@ function AccountsTable(
       </thead>
       <tbody>
         <ErrorBoundary FallbackComponent={ErrorFallback}>
-          {returnAccounts(data, searchTerm).map((user, i) => (
+          {returnAccounts(data, term).map((user, i) => (
             <AccountsRow
               key={i}
               user={user}
