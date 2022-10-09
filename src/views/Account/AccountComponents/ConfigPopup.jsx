@@ -101,16 +101,22 @@ function ConfigPopup({ currentAccount, account_id }) {
       messages,
       tags,
     };
-    async function doStuff() {
-      await new Promise((resolve) => {
-        setTimeout(() => {
-          PatchAccount(body, account_id);
-          resolve();
-        }, 1000);
-      });
+    // async function doStuff() {
+    //   await new Promise((resolve) => {
+    //     setTimeout(() => {
+    //       PatchAccount(body, account_id);
+    //       resolve();
+    //     }, 2000);
+    //   }).then(() => {
+    //     window.location.reload();
+    //   });
+    // }
+    // doStuff();
+
+    PatchAccount(body, account_id);
+    setTimeout(() => {
       window.location.reload();
-    }
-    doStuff();
+    }, 3000);
   };
 
   const configPosition = {
