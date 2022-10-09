@@ -32,7 +32,7 @@ function DeleteConfirm({
     >
       <Modal.Header>
         <Text id="modal-title" b transform="uppercase" size={18}>
-          Are you sure you want to delete {`${userInfo.username}`}?
+          Are you sure you want to delete this account?
           <Text size={18}>Type the account username to confirm</Text>
         </Text>
       </Modal.Header>
