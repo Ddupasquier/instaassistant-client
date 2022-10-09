@@ -4,6 +4,7 @@ import React, {
   useState,
   useTransition,
   useEffect,
+  useDeferredValue,
 } from "react";
 import { Link } from "react-router-dom";
 import Avatar from "react-avatar";
@@ -62,13 +63,8 @@ function Accounts() {
   function updateSearchTerm(newVal) {
     startUpdating(() => {
       setSearchTerm(newVal);
-      !isUpdating && console.log("not updating");
     });
   }
-
-  useEffect(() => {
-    console.log("searchTerm", searchTerm);
-  }, [searchTerm]);
 
   return (
     <>
