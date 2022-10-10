@@ -1,31 +1,33 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
-import { SWRConfig } from "swr";
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { SWRConfig } from 'swr';
 
 // View Imports
-import App from "App";
-import { Billing } from "views/Billing";
-import { Profile } from "views/Profile";
-import { Account } from "views/Account";
-import { FAQ } from "views/FAQ";
-import { AccountUpdate } from "views/AccountUpdate";
-import CurrentTasks from "views/TasksRunning/CurrentTasks";
-import { Accounts } from "views/Accounts";
-import { Stripe } from "views/Stripe";
-import BackgroundAnimation from "components/Background/BackgroundAnimation";
-import { ErrorBoundary } from "react-error-boundary";
-import ErrorFallback from "components/ErrorFallback";
+import App from 'App';
+import { Billing } from 'views/Billing';
+import { Profile } from 'views/Profile';
+import { Account } from 'views/Account';
+import { FAQ } from 'views/FAQ';
+import { AccountUpdate } from 'views/AccountUpdate';
+import ScheduledTasks from 'views/Tasks/ScheduledTasks';
+import CurrentTask from 'views/Tasks/CurrentTask';
+import { Accounts } from 'views/Accounts';
+import { Stripe } from 'views/Stripe';
+import BackgroundAnimation from 'components/Background/BackgroundAnimation';
+import { ErrorBoundary } from 'react-error-boundary';
+import ErrorFallback from 'components/ErrorFallback';
 function AppRoutes() {
   return (
     <SWRConfig
       value={{
-/*         fetcher: (resource, init) =>
+        /*         fetcher: (resource, init) =>
           fetch(resource, init).then((res) => res.json()), */
         suspense: true,
       }}
     >
-      {// TODO: delete ErrorBoundary if necessary, if kept, add Reset method
-       }
+      {
+        // TODO: delete ErrorBoundary if necessary, if kept, add Reset method
+      }
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <Routes>
           <Route path="/" element={<App />}>
@@ -43,7 +45,11 @@ function AppRoutes() {
             />
             <Route
               path="/accounts/instagram/:account_id/tasks"
-              element={<CurrentTasks />}
+              element={<ScheduledTasks />}
+            />
+            <Route
+              path="/accounts/instagram/:account_id/tasks/:task_id"
+              element={<CurrentTask />}
             />
             <Route path="/FAQ" element={<FAQ />} />
             <Route path="/stripe" element={<Stripe />} />

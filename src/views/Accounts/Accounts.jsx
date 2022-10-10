@@ -1,5 +1,4 @@
 import React, { Suspense, useState, useTransition } from 'react';
-
 import './scss/accounts-styles.css';
 
 // * NEXTUI IMPORTS
@@ -9,7 +8,6 @@ import { Text, Button, Input } from '@nextui-org/react';
 import NewAccountModal from './NewAccountModal';
 import DeleteConfirm from '../../components/DeleteConfirm';
 import Loader from 'components/Loader';
-
 import AccountsTable from 'components/Tables/AccountsTable';
 
 function Accounts() {

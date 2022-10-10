@@ -27,7 +27,7 @@ function TasksRunning({ tasksActive }) {
           >
             <div className="task-buttons">
               <Link
-                to={`/accounts/instagram/${account_id}/tasks`}
+                to={`/accounts/instagram/${account_id}/tasks/current`}
                 className="task-button"
               >
                 <Button rounded css={{ width: '100%' }} size="sm">
