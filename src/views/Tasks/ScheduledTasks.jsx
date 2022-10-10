@@ -1,25 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+// import { useParams, Link } from 'react-router-dom';
 import { Card, Loading, Collapse } from '@nextui-org/react';
-import { GetTasks } from 'api';
+// import { GetTasks } from 'api';
 import { convertToUserTime } from 'utils';
+import TasksTable from 'components/Tables/TasksTable';
+import Loader from 'components/Loader';
+import { GetTasks } from 'api';
 
 function ScheduledTasks() {
+  // const [isUpdating, startUpdating] = useTransition();
   const { account_id } = useParams();
 
   const [tasks, setTasks] = useState();
   const [tasksLoaded, setTasksLoaded] = useState(false);
 
   useEffect(() => {
-    GetTasks(account_id)
-      .then((data) => setTasks(data))
-      .then(() => setTasksLoaded(true));
+    GetTasks(account_id).then((data) => setTasks(data))
+    .then(() => setTasksLoaded(true));
   }, [account_id]);
 
-  // console.log(tasks);
+  console.log('tasks', tasks);
 
   return (
     <div className="view-container">
+      {/* <Suspense fallback={<Loader />}> */}
+      {/* <TasksTable tasks={tasks} /> */}
+      {/* </Suspense> */}
       <Card
         style={{ zIndex: 1 }}
         css={{

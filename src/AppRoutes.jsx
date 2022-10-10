@@ -16,6 +16,7 @@ import { Stripe } from 'views/Stripe';
 import BackgroundAnimation from 'components/Background/BackgroundAnimation';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorFallback from 'components/ErrorFallback';
+
 function AppRoutes() {
   return (
     <SWRConfig
@@ -23,6 +24,7 @@ function AppRoutes() {
         /*         fetcher: (resource, init) =>
           fetch(resource, init).then((res) => res.json()), */
         suspense: true,
+        shouldRetryOnError: false,
       }}
     >
       {

@@ -14,15 +14,16 @@ import { AiOutlineMessage } from 'react-icons/ai';
 import { FaRegEnvelopeOpen } from 'react-icons/fa';
 import { FiHeart, FiUserPlus, FiUserMinus } from 'react-icons/fi';
 /**
- * @function AccountsRow
- * @description Renders a row for each account
- * @param user object, handleDeleteConfirmVisible and setUserToDelete function
+ * @function TasksRow
+ * @description Renders a row for each task
+ * @param tasks object
  * @returns row for user account
  */
-function AccountsRow({ user, handleDeleteConfirmVisible, setUserToDelete, i }) {
+function TasksRow({ i, task }) {
   return (
-    <Tr key={user.id} role="row" aria-rowindex={i}>
-      <td className="username-column" aria-label="username-cell" role="cell">
+    <Tr key={i} role="row" aria-rowindex={i}>
+      {task.task_type}
+      {/* <td className="username-column" aria-label="username-cell" role="cell">
         <Avatar
           name={user.username}
           round
@@ -65,9 +66,9 @@ function AccountsRow({ user, handleDeleteConfirmVisible, setUserToDelete, i }) {
           }}
           size="20"
         />
-      </td>
+      </td> */}
     </Tr>
   );
 }
 
-export default AccountsRow;
+export default TasksRow;
