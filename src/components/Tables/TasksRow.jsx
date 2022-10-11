@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Avatar from 'react-avatar';
 import 'views/Accounts/scss/accounts-styles.css';
 
@@ -7,7 +7,7 @@ import 'views/Accounts/scss/accounts-styles.css';
 import { Tr, Eye, Trash, Task, Username } from 'components/styled.js';
 
 // * UTILS IMPORTS
-import { capitalizeFirstLetter } from 'utils';
+import { capitalizeFirstLetter, convertToUserTime } from 'utils';
 
 // * ICON IMPORTS
 import { AiOutlineMessage } from 'react-icons/ai';
@@ -20,53 +20,35 @@ import { FiHeart, FiUserPlus, FiUserMinus } from 'react-icons/fi';
  * @returns row for user account
  */
 function TasksRow({ i, task }) {
+  const { account_id } = useParams();
   return (
-    <Tr key={i} role="row" aria-rowindex={i}>
-      {task.task_type}
-      {/* <td className="username-column" aria-label="username-cell" role="cell">
-        <Avatar
-          name={user.username}
-          round
-          value="25%"
-          size="35"
-          textSizeRatio={2}
-        />
-        <Username href={`/accounts/instagram/${user.id}`}>
-          @{user.username}
-        </Username>
+    <Tr key={task.id} role="row" aria-rowindex={i}>
+      {/* <td>
+        {task.id}
+      </td> */}
+      <td className="username-column" aria-label="username-cell" role="cell">
+        {task.task_type}
       </td>
       <td aria-label="platform-cell" role="cell">
-        {capitalizeFirstLetter(user.platform)}
+        {task.target_url}
       </td>
       <td aria-label="tags-cell" role="cell">
-        {user.tags}
+        {convertToUserTime(task.date)}
       </td>
       <td aria-label="active-cell" role="cell">
-        {user.active ? 'Active' : 'Idle'}
+        {convertToUserTime(task.date_created)}
       </td>
       <td className="config-column" aria-label="config-cell" role="cell">
-        {user.allow_like && <FiHeart title="Liking enabled" />}
-        {user.allow_comment && <AiOutlineMessage title="Commenting enabled" />}
-        {user.allow_dm && <FaRegEnvelopeOpen title="Messaging enabled" />}
-        {user.allow_follow && <FiUserPlus title="Following enabled" />}
-        {user.allow_unfollow && <FiUserMinus title="Unfollowing enabled" />}
+        {task.likes_sent}
+        {task.comments_sent}
+        {task.follows_sent}
+        {task.messages_sent}
       </td>
       <td className="actions-column" aria-label="actions-cell" role="cell">
-        <Link to={`/accounts/instagram/${user.id}`}>
-          <Eye title="View account" size="20" />
-        </Link>
-        <Link to={`/accounts/instagram/${user.id}/tasks`}>
+        <Link to={`/accounts/instagram/${account_id}/tasks/${task.id}`}>
           <Task size="20" />
         </Link>
-        <Trash
-          title="Delete account"
-          onClick={() => {
-            handleDeleteConfirmVisible();
-            setUserToDelete(user);
-          }}
-          size="20"
-        />
-      </td> */}
+      </td>
     </Tr>
   );
 }

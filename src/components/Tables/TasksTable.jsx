@@ -7,6 +7,7 @@ import useSWR from 'swr';
 import { GetTasks } from 'api';
 
 function TasksTable({ tasks }) {
+  console.log('tasks', tasks);
   const { account_id } = useParams();
   // console.log(account_id);
   // TODO: handle error, "no accounts found" message
@@ -19,21 +20,19 @@ function TasksTable({ tasks }) {
           <th className="task-name-column" scope="col">
             Task
           </th>
-          <th scope="col">Scheduled at</th>
-          <th scope="col">Created at</th>
-          <th scope="col">Likes sent</th>
-          <th scope="col">Follows sent</th>
-          <th scope="col">Comments sent</th>
+          <th scope="col">List</th>
+          <th scope="col">Target</th>
+          <th scope="col">Scheduled</th>
+          <th scope="col">Created</th>
+          <th scope="col">Sent</th>
+          <th scope="col">Actions</th>
         </tr>
       </thead>
       <tbody>
-        {tasks &&
-          tasks.map((task) => (
-            <tr key={task.id}>
-              <td>{task.task_type}</td>
-            </tr>
-          ))}
-
+        {/* {tasks.map((task) => (
+          <TasksRow key={task.id} {...task} />
+        ))} */}
+        {tasks && tasks.map((task) => <TasksRow key={task.id} task={task} />)}
         {/* <ErrorBoundary FallbackComponent={ErrorFallback}>
           {err
             ? 'Error'

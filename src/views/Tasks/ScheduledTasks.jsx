@@ -12,22 +12,21 @@ function ScheduledTasks() {
   // const [isUpdating, startUpdating] = useTransition();
   const { account_id } = useParams();
 
-  const [tasks, setTasks] = useState();
+  const [tasks, setTasks] = useState([]);
   const [tasksLoaded, setTasksLoaded] = useState(false);
 
   useEffect(() => {
-    GetTasks(account_id).then((data) => setTasks(data))
-    .then(() => setTasksLoaded(true));
+    GetTasks(account_id)
+      .then((data) => setTasks(data))
+      .then(() => setTasksLoaded(true));
   }, [account_id]);
 
-  console.log('tasks', tasks);
-
   return (
-    <div className="view-container">
+    <div className="accounts-container">
       {/* <Suspense fallback={<Loader />}> */}
       {/* <TasksTable tasks={tasks} /> */}
       {/* </Suspense> */}
-      <Card
+      {/* <Card
         style={{ zIndex: 1 }}
         css={{
           background: '$myColor',
@@ -58,7 +57,8 @@ function ScheduledTasks() {
         ) : (
           <Loading />
         )}
-      </Card>
+      </Card> */}
+      <TasksTable tasks={tasks} />
     </div>
   );
 }
