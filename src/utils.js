@@ -2,6 +2,7 @@ export const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
 /**
+ * @function capitalizeFirstLetter
  * @param {string} string
  * @returns {string}
  * @example
@@ -18,6 +19,7 @@ export const truncateString = (string) => {
   return string;
 };
 /**
+ * @function truncateString
  * @param {string} string
  * @returns {string} string
  * @description truncate a string to 12 characters
@@ -35,6 +37,7 @@ export const getDaysLast30Days = () => {
   return days.reverse();
 };
 /**
+ * @function getDaysLast30Days
  * @returns {array} array
  * @description returns an array of the last 30 days
  * @example
@@ -49,6 +52,7 @@ export const getRandomUtilization = () => {
   return utilization;
 };
 /**
+ * @function getRandomUtilization
  * @returns {number} array of numbers
  * @description returns an array of random numbers
  * @example
@@ -59,6 +63,7 @@ export const getRandomUtilization = () => {
 
 export const today = new Date().toISOString().slice(0, 10);
 /**
+ * @variable today
  * @returns {string} date
  * @description returns the current date in the format YYYY-MM-DD
  * @example
@@ -73,6 +78,7 @@ export const thisTime = new Date().toLocaleTimeString("en-US", {
   minute: "numeric",
 });
 /**
+ * @variable thisTime
  * @returns {string} - hh:mm
  * @description returns the current time in hh:mm format
  * @example '12:00'
@@ -93,6 +99,15 @@ export const convertToUserTime = (time) => {
   };
   return date.toLocaleString("en-US", options);
 };
+/**
+ * @function convertToUserTime
+ * @param {string} time
+ * @returns {string} time
+ * @description takes in time/date in this format 'dd-mm-yyyy;hh:mm' and convert it to the user's local time in 'mm/dd/dd hh:mm' 12hour format
+ * @example
+ * convertToUserTime('2020-09-02T12:00:00.000Z') // returns '9/2/2020, 8:00:00 AM'
+ * @see https://stackoverflow.com/questions/23593052/format-javascript-date-as-yyyy-mm-dd
+ */
 
 export const formatPhoneNumber = (phoneNumberString) => {
   const cleaned = ("" + phoneNumberString).replace(/\D/g, "");
@@ -103,6 +118,7 @@ export const formatPhoneNumber = (phoneNumberString) => {
   return null;
 };
 /**
+ * @function formatPhoneNumber
  * @param {string} phoneNumberString
  * @returns {string} formatted phone number
  * @description takes in a string phone number and formats it to (xxx) xxx-xxxx
@@ -111,13 +127,7 @@ export const formatPhoneNumber = (phoneNumberString) => {
  * formatPhoneNumber('123456789') // returns null
  */
 
-/**
- * @function filterAccounts
- * @param {array} accounts - array of accounts
- * @param {string} searchTerm - term to filter by
- * @description filters accounts by username or tags
- * @returns {array} filtered accounts
- */
+
 export function filterAccounts(acctArr, searchTerm) {
   const term = searchTerm.toLowerCase();
   return acctArr.filter((account) => {
@@ -127,16 +137,23 @@ export function filterAccounts(acctArr, searchTerm) {
     );
   });
 }
-
 /**
- * @function returnAccounts
- * @param {array} accounts
- * @param {string} searchTerm
- * @returns {array} accounts sorted by username or filtered by searchTerm + sorted by username
- **/
+ * @function filterAccounts
+ * @param {array} accounts - array of accounts
+ * @param {string} searchTerm - term to filter by
+ * @description filters accounts by username or tags
+ * @returns {array} filtered accounts
+ */
+
 export function returnAccounts(acctArr, searchTerm) {
   const accounts = searchTerm && searchTerm.length > 0 ? filterAccounts(acctArr, searchTerm) : acctArr;
   return accounts.sort((a, b) => {
     return a.username.localeCompare(b.username);
   });
 }
+/**
+ * @function returnAccounts
+ * @param {array} accounts
+ * @param {string} searchTerm
+ * @returns {array} accounts sorted by username or filtered by searchTerm + sorted by username
+ **/
