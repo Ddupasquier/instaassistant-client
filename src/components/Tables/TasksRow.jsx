@@ -29,6 +29,9 @@ function TasksRow({ i, task }) {
       <td className="username-column" aria-label="username-cell" role="cell">
         {task.task_type}
       </td>
+      <td>
+        {task.list_type}
+      </td>
       <td aria-label="platform-cell" role="cell">
         {task.target_url}
       </td>
