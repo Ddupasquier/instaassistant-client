@@ -14,7 +14,7 @@ export const capitalizeFirstLetter = (string) => {
 
 export const truncateString = (string) => {
   if (string.length > 12) {
-    return string.slice(0, 12) + "...";
+    return string.slice(0, 12) + '...';
   }
   return string;
 };
@@ -71,11 +71,11 @@ export const today = new Date().toISOString().slice(0, 10);
  * @see https://stackoverflow.com/questions/23593052/format-javascript-date-as-yyyy-mm-dd
  */
 
-export const thisTime = new Date().toLocaleTimeString("en-US", {
+export const thisTime = new Date().toLocaleTimeString('en-US', {
   timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
   hour12: false,
-  hour: "numeric",
-  minute: "numeric",
+  hour: 'numeric',
+  minute: 'numeric',
 });
 /**
  * @variable thisTime
@@ -90,14 +90,14 @@ export const convertToUserTime = (time) => {
   const date = new Date(time);
   const options = {
     timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-    month: "numeric",
-    day: "numeric",
-    year: "numeric",
+    month: 'numeric',
+    day: 'numeric',
+    year: 'numeric',
     hour12: true,
-    hour: "numeric",
-    minute: "numeric",
+    hour: 'numeric',
+    minute: 'numeric',
   };
-  return date.toLocaleString("en-US", options);
+  return date.toLocaleString('en-US', options);
 };
 /**
  * @function convertToUserTime
@@ -110,10 +110,10 @@ export const convertToUserTime = (time) => {
  */
 
 export const formatPhoneNumber = (phoneNumberString) => {
-  const cleaned = ("" + phoneNumberString).replace(/\D/g, "");
+  const cleaned = ('' + phoneNumberString).replace(/\D/g, '');
   const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
   if (match) {
-    return "(" + match[1] + ") " + match[2] + "-" + match[3];
+    return '(' + match[1] + ') ' + match[2] + '-' + match[3];
   }
   return null;
 };
@@ -126,7 +126,6 @@ export const formatPhoneNumber = (phoneNumberString) => {
  * formatPhoneNumber('1234567890') // returns '(123) 456-7890'
  * formatPhoneNumber('123456789') // returns null
  */
-
 
 export function filterAccounts(acctArr, searchTerm) {
   const term = searchTerm.toLowerCase();
@@ -146,7 +145,10 @@ export function filterAccounts(acctArr, searchTerm) {
  */
 
 export function returnAccounts(acctArr, searchTerm) {
-  const accounts = searchTerm && searchTerm.length > 0 ? filterAccounts(acctArr, searchTerm) : acctArr;
+  const accounts =
+    searchTerm && searchTerm.length > 0
+      ? filterAccounts(acctArr, searchTerm)
+      : acctArr;
   return accounts.sort((a, b) => {
     return a.username.localeCompare(b.username);
   });
