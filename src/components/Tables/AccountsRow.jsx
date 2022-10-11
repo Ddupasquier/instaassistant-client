@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Avatar from 'react-avatar';
-import '../../views/Accounts/scss/accounts-styles.css';
+import 'views/Accounts/scss/accounts-styles.css';
 
 // * STYLED COMPONENTS
-import { Tr, Eye, Trash, Task, Username } from '../../views/Accounts/styled.js';
+import { Tr, Eye, Trash, Task, Username } from 'views/Accounts/styled.js';
 
 // * UTILS IMPORTS
 import { capitalizeFirstLetter } from 'utils';
@@ -54,7 +54,9 @@ function AccountsRow({ user, handleDeleteConfirmVisible, setUserToDelete, i }) {
         <Link to={`/accounts/instagram/${user.id}`}>
           <Eye title="View account" size="20" />
         </Link>
-        <Task size="20" />
+        <Link to={`/accounts/instagram/${user.id}/tasks`}>
+          <Task size="20" />
+        </Link>
         <Trash
           title="Delete account"
           onClick={() => {
