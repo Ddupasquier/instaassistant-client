@@ -163,7 +163,7 @@ function Account() {
           <Grid.Container
             justify="center"
             gap="2"
-            css={{ display: 'flex', alignItems: 'stretch' }}
+            css={{ alignItems: 'stretch' }}
           >
             <Grid css={{ flex: '8' }}>
               <Card
