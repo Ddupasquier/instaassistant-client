@@ -160,12 +160,17 @@ function Account() {
           </Button>
         </div>
         <>
-          <Grid.Container justify="center" gap="2">
+          <Grid.Container
+            justify="center"
+            gap="2"
+            css={{ display: 'flex', alignItems: 'stretch' }}
+          >
             <Grid css={{ flex: '8' }}>
               <Card
                 css={{
                   backdropFilter: 'blur(15px)',
                   background: '$myColor',
+                  height: '100%',
                 }}
               >
                 <Card.Header css={{ position: 'relative' }}>
