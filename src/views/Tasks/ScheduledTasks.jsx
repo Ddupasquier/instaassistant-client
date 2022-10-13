@@ -2,7 +2,6 @@ import React, { Suspense, useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 // import { useParams, Link } from 'react-router-dom';
 import { Card, Loading, Collapse } from '@nextui-org/react';
-// import { GetTasks } from 'api';
 import { convertToUserTime } from 'utils';
 import TasksTable from 'components/Tables/TasksTable';
 import Loader from 'components/Loader';
