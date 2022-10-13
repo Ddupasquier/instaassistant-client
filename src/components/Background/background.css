@@ -2,8 +2,183 @@
   position: fixed;
   height: 100%;
   width: 100%;
+  filter: blur(5rem);
 }
 
+.shape1 {
+  position: absolute;
+  top: 42%;
+  left: 70%;
+  width: 25rem;
+  height: 25rem;
+  background: rgba(255, 0, 255, 0.3);
+  border-radius: 24% 76% 77% 23%/30% 30% 70% 70%;
+  will-change: transform;
+  -webkit-animation: shape1 20s infinite;
+          animation: shape1 20s infinite;
+}
+
+@-webkit-keyframes shape1 {
+  0% {
+    transform: translate(0, 0);
+    border-radius: 24% 76% 77% 23%/30% 30% 70% 70%;
+  }
+  25% {
+    transform: translate(-55%, -10%) scale(4, 2);
+    border-radius: 28% 72% 81% 19%/78% 25% 75% 22%;
+  }
+  50% {
+    transform: translate(-90%, -10%);
+    border-radius: 60% 40% 0% 100%/1% 74% 26% 99%;
+  }
+  75% {
+    transform: translate(-30%, -10%) scale(2, 1);
+    border-radius: 0% 100% 100% 0%/0% 100% 100% 0%;
+  }
+  100% {
+    transform: translate(0%, 0%);
+    border-radius: 24% 76% 77% 23%/30% 30% 70% 70%;
+  }
+}
+
+@keyframes shape1 {
+  0% {
+    transform: translate(0, 0);
+    border-radius: 24% 76% 77% 23%/30% 30% 70% 70%;
+  }
+  25% {
+    transform: translate(-55%, -10%) scale(4, 2);
+    border-radius: 28% 72% 81% 19%/78% 25% 75% 22%;
+  }
+  50% {
+    transform: translate(-90%, -10%);
+    border-radius: 60% 40% 0% 100%/1% 74% 26% 99%;
+  }
+  75% {
+    transform: translate(-30%, -10%) scale(2, 1);
+    border-radius: 0% 100% 100% 0%/0% 100% 100% 0%;
+  }
+  100% {
+    transform: translate(0%, 0%);
+    border-radius: 24% 76% 77% 23%/30% 30% 70% 70%;
+  }
+}
+.shape2 {
+  position: absolute;
+  top: 33%;
+  left: 40%;
+  width: 35rem;
+  height: 25rem;
+  background: rgba(0, 251, 255, 0.3);
+  border-radius: 73% 27% 77% 23%/53% 4% 96% 47%;
+  will-change: transform;
+  -webkit-animation: shape2 35s infinite;
+          animation: shape2 35s infinite;
+}
+
+@-webkit-keyframes shape2 {
+  0% {
+    transform: translate(0, 0);
+    border-radius: 73% 27% 77% 23%/53% 4% 96% 47%;
+  }
+  25% {
+    transform: translate(-55%, -55%) scale(2, 2);
+    border-radius: 28% 72% 81% 19%/78% 25% 75% 22%;
+  }
+  50% {
+    transform: translate(-70%, -70%);
+    border-radius: 60% 40% 0% 100%/1% 74% 26% 99%;
+  }
+  75% {
+    transform: translate(-30%, -30%);
+    border-radius: 0% 100% 100% 0%/0% 100% 100% 0%;
+  }
+  100% {
+    transform: translate(0%, 0%);
+    border-radius: 73% 27% 77% 23%/53% 4% 96% 47%;
+  }
+}
+
+@keyframes shape2 {
+  0% {
+    transform: translate(0, 0);
+    border-radius: 73% 27% 77% 23%/53% 4% 96% 47%;
+  }
+  25% {
+    transform: translate(-55%, -55%) scale(2, 2);
+    border-radius: 28% 72% 81% 19%/78% 25% 75% 22%;
+  }
+  50% {
+    transform: translate(-70%, -70%);
+    border-radius: 60% 40% 0% 100%/1% 74% 26% 99%;
+  }
+  75% {
+    transform: translate(-30%, -30%);
+    border-radius: 0% 100% 100% 0%/0% 100% 100% 0%;
+  }
+  100% {
+    transform: translate(0%, 0%);
+    border-radius: 73% 27% 77% 23%/53% 4% 96% 47%;
+  }
+}
+.shape3 {
+  position: absolute;
+  top: 20%;
+  left: 80%;
+  width: 25rem;
+  height: 25rem;
+  background: rgba(0, 251, 255, 0.5);
+  border-radius: 70% 30% 80% 20%/42% 25% 75% 58%;
+  will-change: transform;
+  -webkit-animation: shape3 40s infinite;
+          animation: shape3 40s infinite;
+}
+
+@-webkit-keyframes shape3 {
+  0% {
+    transform: translate(0, 0);
+    border-radius: 70% 30% 80% 20%/42% 25% 75% 58%;
+  }
+  25% {
+    transform: translate(-125%, -25%) scale(2, 2);
+    border-radius: 28% 72% 81% 19%/78% 25% 75% 22%;
+  }
+  50% {
+    transform: translate(-90%, -35%);
+    border-radius: 60% 40% 0% 100%/1% 74% 26% 99%;
+  }
+  75% {
+    transform: translate(-30%, -40%);
+    border-radius: 0% 100% 100% 0%/0% 100% 100% 0%;
+  }
+  100% {
+    transform: translate(0%, 0%);
+    border-radius: 70% 30% 80% 20%/42% 25% 75% 58%;
+  }
+}
+
+@keyframes shape3 {
+  0% {
+    transform: translate(0, 0);
+    border-radius: 70% 30% 80% 20%/42% 25% 75% 58%;
+  }
+  25% {
+    transform: translate(-125%, -25%) scale(2, 2);
+    border-radius: 28% 72% 81% 19%/78% 25% 75% 22%;
+  }
+  50% {
+    transform: translate(-90%, -35%);
+    border-radius: 60% 40% 0% 100%/1% 74% 26% 99%;
+  }
+  75% {
+    transform: translate(-30%, -40%);
+    border-radius: 0% 100% 100% 0%/0% 100% 100% 0%;
+  }
+  100% {
+    transform: translate(0%, 0%);
+    border-radius: 70% 30% 80% 20%/42% 25% 75% 58%;
+  }
+}
 .shape4 {
   position: absolute;
   top: 42%;
@@ -12,7 +187,6 @@
   height: 25rem;
   background: rgba(255, 0, 255, 0.3);
   border-radius: 24% 76% 77% 23%/30% 30% 70% 70%;
-  filter: blur(5rem);
 }
 
 .shape5 {
@@ -23,16 +197,14 @@
   height: 25rem;
   background: rgba(0, 251, 255, 0.3);
   border-radius: 73% 27% 77% 23%/53% 4% 96% 47%;
-  filter: blur(5rem);
 }
 
 .shape6 {
   position: absolute;
   top: 20%;
-  left: 80%;
-  width: 25rem;
+  left: 70%;
+  width: 30rem;
   height: 25rem;
   background: rgba(0, 251, 255, 0.5);
   border-radius: 70% 30% 80% 20%/42% 25% 75% 58%;
-  filter: blur(5rem);
 }
