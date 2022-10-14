@@ -77,7 +77,7 @@ function UtilizationChart({ data }) {
         },
       },
     });
-  }, [theme.colors.font.value]);
+  }, [randData, theme.colors.font.value]);
 
   return <Line options={chartOptions} data={followerData} height="50" />;
 }
