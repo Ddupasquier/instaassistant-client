@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import './scss/login-styles.css';
-import { Button, Input, Loading, Spacer } from '@nextui-org/react';
+import { Button, Input, Spacer } from '@nextui-org/react';
 import { loginFetch } from 'api';
 
 function Login({ setLogIsVisible, logIsVisible, setForgPassShown }) {
   const [email, setEmail] = useState('');
   const [pwd, setPwd] = useState('');
-  const [loading, setLoading] = useState(false);
 
   const loginStyle = {
     position: 'absolute',
@@ -17,7 +16,6 @@ function Login({ setLogIsVisible, logIsVisible, setForgPassShown }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
     loginFetch({ email, password: pwd });
   };
 
