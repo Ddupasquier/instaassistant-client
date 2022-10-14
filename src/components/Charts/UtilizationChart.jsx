@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { getRandomUtilization } from 'utils';
 import { Line } from 'react-chartjs-2';
 import { useTheme } from '@nextui-org/react';
@@ -33,6 +33,11 @@ function UtilizationChart({ data }) {
     datasets: [],
   });
 
+  const randData = useMemo(() => {
+    console.log('randData');
+    return getRandomUtilization();
+  }, []);
+
   const [chartOptions, setChartOptions] = useState({});
 
   useEffect(() => {
@@ -41,7 +46,7 @@ function UtilizationChart({ data }) {
       datasets: [
         {
           label: 'Utilization',
-          data: getRandomUtilization(),
+          data: randData,
           backgroundColor: 'rgb(165, 0, 255, .4)',
           borderColor: 'rgb(165, 0, 255, .4)',
           borderWidth: 1,
