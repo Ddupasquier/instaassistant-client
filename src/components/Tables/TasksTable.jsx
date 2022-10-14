@@ -1,18 +1,7 @@
-import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { ErrorBoundary } from 'react-error-boundary';
+import React from 'react';
 import TasksRow from './TasksRow';
-import ErrorFallback from 'components/ErrorFallback';
-import useSWR from 'swr';
-import { GetTasks } from 'api';
 
 function TasksTable({ tasks }) {
-  console.log('tasks', tasks);
-  const { account_id } = useParams();
-  // console.log(account_id);
-  // TODO: handle error, "no accounts found" message
-  // const { data, err } = useSWR('/api/tasks', GetTasks(account_id));
-  // console.log(data);
   return (
     <table role="table" aria-label="tasks-table">
       <thead>

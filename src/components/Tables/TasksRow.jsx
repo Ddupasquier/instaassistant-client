@@ -1,18 +1,17 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import Avatar from 'react-avatar';
 import 'views/Accounts/scss/accounts-styles.css';
 
 // * STYLED COMPONENTS
-import { Tr, Eye, Trash, Task, Username } from 'components/styled.js';
+import { Tr, Task } from 'components/styled.js';
 
 // * UTILS IMPORTS
-import { capitalizeFirstLetter, convertToUserTime } from 'utils';
+import { convertToUserTime } from 'utils';
 
 // * ICON IMPORTS
-import { AiOutlineMessage } from 'react-icons/ai';
-import { FaRegEnvelopeOpen } from 'react-icons/fa';
-import { FiHeart, FiUserPlus, FiUserMinus } from 'react-icons/fi';
+// import { AiOutlineMessage } from 'react-icons/ai';
+// import { FaRegEnvelopeOpen } from 'react-icons/fa';
+// import { FiHeart, FiUserPlus, FiUserMinus } from 'react-icons/fi';
 /**
  * @function TasksRow
  * @description Renders a row for each task
@@ -29,9 +28,7 @@ function TasksRow({ i, task }) {
       <td className="username-column" aria-label="username-cell" role="cell">
         {task.task_type}
       </td>
-      <td>
-        {task.list_type}
-      </td>
+      <td>{task.list_type}</td>
       <td aria-label="platform-cell" role="cell">
         {task.target_url}
       </td>
