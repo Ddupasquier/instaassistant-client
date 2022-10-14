@@ -4,7 +4,7 @@ import Avatar from 'react-avatar';
 import 'views/Accounts/scss/accounts-styles.css';
 
 // * STYLED COMPONENTS
-import { Tr, Eye, Trash, Task, Username } from 'views/Accounts/styled.js';
+import { Tr, Eye, Trash, Task, Username } from 'components/styled.js';
 
 // * UTILS IMPORTS
 import { capitalizeFirstLetter } from 'utils';
