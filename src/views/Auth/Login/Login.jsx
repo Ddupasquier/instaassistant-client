@@ -3,12 +3,7 @@ import './scss/login-styles.css';
 import { Button, Input, Loading, Spacer } from '@nextui-org/react';
 import { loginFetch } from 'api';
 
-function Login({
-  setLogIsVisible,
-  logIsVisible,
-  forgPassShown,
-  setForgPassShown,
-}) {
+function Login({ setLogIsVisible, logIsVisible, setForgPassShown }) {
   const [email, setEmail] = useState('');
   const [pwd, setPwd] = useState('');
   const [loading, setLoading] = useState(false);
@@ -16,7 +11,6 @@ function Login({
   const loginStyle = {
     position: 'absolute',
     transform: logIsVisible ? 'translateX(0)' : 'translateX(-3000px)',
-    // opacity: logIsVisible ? '1' : '0',
     transition: 'all 1s ease-in-out',
     zIndex: '3',
   };
@@ -25,7 +19,6 @@ function Login({
     e.preventDefault();
     setLoading(true);
     loginFetch({ email, password: pwd });
-    //! need to add success functionality: auto login and redirect? or success message and redirect to login?
   };
 
   return (
@@ -56,9 +49,7 @@ function Login({
             aria-label="Password"
           />
           <Spacer />
-          <Button type="submit">
-            {!loading ? <>Login</> : <Loading size="sm" color="secondary" />}
-          </Button>
+          <Button type="submit">Login</Button>
         </form>
         <div className="login-footer">
           Forgot Password?{' '}

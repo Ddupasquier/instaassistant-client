@@ -49,7 +49,8 @@ export const loginFetch = async (userInfo) => {
   });
   const resp_1 = await resp.json();
   if (resp_1.error) {
-    console.log(resp_1.error);
+    alert(resp_1.error, "The email or password you provided is incorrect!");
+    throw new Error(resp_1.error);
   } else {
     localStorage.setItem('user', JSON.stringify(resp_1.user));
     localStorage.setItem('token', resp_1.jwt);
