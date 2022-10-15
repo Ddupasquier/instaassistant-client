@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 // * ------- API LAYER ------- *
 import { getSnapshots, GetTasks, ShowAccount } from 'api';
 
-import { Button, Grid, Loading } from '@nextui-org/react';
+import { Grid, Loading } from '@nextui-org/react';
 import './scss/account-styles.css';
 
 // * ------- COMPONENTS ------- *
