@@ -4,12 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 // * ------- API LAYER ------- *
 import { getSnapshots, GetTasks, ShowAccount } from 'api';
 
-// * ------- STYLES ------- *
-import { FiInstagram, FiSettings } from 'react-icons/fi';
-import { IoLogoYoutube } from 'react-icons/io';
-import { IoLogoTiktok } from 'react-icons/io5';
-
-import { Button, Card, Dropdown, Grid, Loading, Text } from '@nextui-org/react';
+import { Button, Grid, Loading } from '@nextui-org/react';
 import './scss/account-styles.css';
 
 // * ------- COMPONENTS ------- *
@@ -20,10 +15,11 @@ import MetricChart from './AccountComponents/MetricChart';
 import InteractionLimits from './AccountComponents/InteractionLimits';
 import ConfigPopup from './AccountComponents/ConfigPopup';
 import DeleteConfirm from 'components/DeleteConfirm';
-import Avatar from 'react-avatar';
+
 import TaskModal from './AccountComponents/TaskModal';
 import { TasksRunning } from '.';
-import Bubble from './AccountComponents/Bubble';
+
+import AccountInfo from 'components/AccountInfo';
 
 function Account() {
   // * ------- DESCTRUCTURING URL PARAMS ------- *
@@ -120,19 +116,6 @@ function Account() {
     );
   }, [currentAccount, snapshots, tasks]);
 
-  // * ------- RENDER ICONS ------- *
-  const platformIcon = () => {
-    if (currentAccount.platform === 'INSTAGRAM') {
-      return <FiInstagram size="20" />;
-    } else if (currentAccount.platform === 'YOUTUBE') {
-      return <IoLogoYoutube size="20" />;
-    } else if (currentAccount.platform === 'TIKTOK') {
-      return <IoLogoTiktok size="20" />;
-    } else {
-      return <FiInstagram size="20" />;
-    }
-  };
-
   if (currentAccount === null || snapshots === null) {
     return (
       <Loading
@@ -143,133 +126,21 @@ function Account() {
   } else {
     return (
       <div className="account-container">
-        <div className="account-head-buttons">
-          <Link to="/accounts">
-            <Button color="secondary" size="md" rounded>
-              Accounts
-            </Button>
-          </Link>
-          <Button
-            type="button"
-            onPress={taskHandler}
-            color="secondary"
-            size="md"
-            rounded
-          >
-            New task
-          </Button>
-        </div>
-        <>
-          <Grid.Container
-            justify="center"
-            gap="2"
-            css={{ alignItems: 'stretch' }}
-          >
-            <Grid css={{ flex: '8' }}>
-              <Card
-                css={{
-                  backdropFilter: 'blur(15px)',
-                  background: '$myColor',
-                  height: '100%',
-                }}
-              >
-                <Card.Header css={{ position: 'relative' }}>
-                  <div
-                    style={{ position: 'absolute', top: '1rem', right: '1rem' }}
-                  >
-                    {platformIcon()}
-                  </div>
-
-                  <div className="user">
-                    <div
-                      style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                      }}
-                    >
-                      <Avatar
-                        name={currentAccount.username}
-                        round
-                        value="25%"
-                        size="65"
-                        textSizeRatio={2}
-                      />
-                      <Text>@{currentAccount.username}</Text>
-                    </div>
-                    <div
-                      style={{
-                        display: 'flex',
-                        flexDirection: 'row',
-                        gap: '1rem',
-                      }}
-                    >
-                      <Bubble
-                        htmlFor={'posts-count'}
-                        num={snapshots.posts}
-                        name={'Posts'}
-                      />
-                      <Bubble
-                        htmlFor={'followers-count'}
-                        num={snapshots.followers}
-                        name={'Followers'}
-                      />
-                      <Bubble
-                        htmlFor={'following-count'}
-                        num={snapshots.following}
-                        name={'Following'}
-                      />
-                    </div>
-                    <br />
-                    <Dropdown>
-                      <Dropdown.Button color="secondary">
-                        <FiSettings />
-                      </Dropdown.Button>
-                      <Dropdown.Menu
-                        color="secondary"
-                        aria-label="User Actions"
-                      >
-                        <Dropdown.Item key="profile" aria-label="create-task">
-                          <Text
-                            b
-                            color="inherit"
-                            onClick={taskHandler}
-                            css={{ d: 'flex' }}
-                          >
-                            Create Task
-                          </Text>
-                        </Dropdown.Item>
-                        <Dropdown.Item key="Edit" aria-label="edit-account">
-                          <Link to={`/accounts/instagram/${account_id}/update`}>
-                            <Text
-                              b
-                              color="inherit"
-                              css={{ d: 'flex', color: '$font' }}
-                            >
-                              Edit Account
-                            </Text>
-                          </Link>
-                        </Dropdown.Item>
-                        <Dropdown.Item key="Delete" aria-label="delete-account">
-                          <Text
-                            b
-                            color="error"
-                            css={{ d: 'flex' }}
-                            onClick={handleDeleteConfirmVisible}
-                          >
-                            Delete
-                          </Text>
-                        </Dropdown.Item>
-                      </Dropdown.Menu>
-                    </Dropdown>
-                  </div>
-                </Card.Header>
-              </Card>
-            </Grid>
+        <Grid.Container
+          justify="center"
+          gap="2"
+          css={{ alignItems: 'stretch' }}
+        >
+          <>
+            <AccountInfo
+              handleDeleteConfirmVisible={handleDeleteConfirmVisible}
+              currentAccount={currentAccount}
+              taskHandler={taskHandler}
+              snapshots={snapshots}
+            />
             <TasksRunning tasksActive={currentAccount.active} />
-          </Grid.Container>
-        </>
+          </>
+        </Grid.Container>
 
         <div className="account-metrics">
           <Grid.Container gap={2}>

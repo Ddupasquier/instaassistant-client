@@ -7,18 +7,6 @@
   width: 100%;
   padding: 0 4rem;
 }
-.account-container .account-head-buttons {
-  display: flex;
-  align-items: center;
-  align-self: center;
-  justify-content: space-evenly;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  width: 100%;
-  padding: 2rem;
-  z-index: 10;
-}
 .account-container .task-buttons {
   display: flex;
   flex-direction: row;
@@ -33,9 +21,10 @@
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   gap: 1rem;
   width: 100%;
+  height: 100%;
 }
 .account-container .user-links {
   display: flex;
