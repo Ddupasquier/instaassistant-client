@@ -54,6 +54,7 @@ function TaskModal({ closeTaskHandler, taskVisible, account_id }) {
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
+    console.log(data);
     const scheduledDate = new Date(`${data.date} ${data.time}`).toUTCString();
     const notScheduled = new Date().toUTCString();
     const payload = {
@@ -68,6 +69,7 @@ function TaskModal({ closeTaskHandler, taskVisible, account_id }) {
       date_created: notScheduled,
     };
     PostTask(payload);
+    closeTaskHandler();
   };
 
   return (

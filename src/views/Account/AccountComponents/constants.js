@@ -1,5 +1,4 @@
 export const actions = [
-  { value: '', label: 'Post - Coming Soon' },
   { value: 'Interact', label: 'Interact' },
   { value: 'Follow', label: 'Follow' },
   { value: 'Like', label: 'Like' },
