@@ -22,7 +22,8 @@ function Bubble({ htmlFor, num, name }) {
     <div style={bubbleStyle}>
       <legend htmlFor={htmlFor}>{name}</legend>
       <div id={htmlFor} style={number}>
-        {num ? num[num.length - 1] : 0}
+        {/* {num ? num[num.length - 1] : 0} */}
+        {num}
       </div>
     </div>
   );

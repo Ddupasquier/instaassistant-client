@@ -1,6 +1,6 @@
 import React from 'react';
 import Avatar from 'react-avatar';
-import Bubble from 'views/Account/AccountComponents/Bubble';
+import Bubble from 'components/Bubble';
 import { useParams, Link } from 'react-router-dom';
 import { Grid, Card, Text, Dropdown, Button } from '@nextui-org/react';
 import { FiInstagram, FiSettings } from 'react-icons/fi';
@@ -42,7 +42,12 @@ function AccountInfo({
 
         <div className="user">
           <Link to="/accounts">
-            <Button size="sm" color="warning" css={{ padding: '0', minWidth: '2rem' }} rounded>
+            <Button
+              size="sm"
+              color="warning"
+              css={{ padding: '0', minWidth: '2rem' }}
+              rounded
+            >
               <IoChevronBack size="20" />
             </Button>
           </Link>
@@ -73,17 +78,17 @@ function AccountInfo({
           >
             <Bubble
               htmlFor={'posts-count'}
-              num={snapshots.posts}
+              num={snapshots[snapshots.length - 1].posts}
               name={'Posts'}
             />
             <Bubble
               htmlFor={'followers-count'}
-              num={snapshots.followers}
+              num={snapshots[snapshots.length - 1].followers}
               name={'Followers'}
             />
             <Bubble
               htmlFor={'following-count'}
-              num={snapshots.following}
+              num={snapshots[snapshots.length - 1].following}
               name={'Following'}
             />
           </div>
