@@ -1,11 +1,4 @@
-.account-container {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
-  z-index: 10;
-  width: 100%;
-  padding: 0 4rem;
+
 
   .task-buttons {
     display: flex;
@@ -62,7 +55,7 @@
       width: 100%;
     }
   }
-}
+
 
 .config-tooltip {
   position: absolute;

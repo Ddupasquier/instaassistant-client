@@ -33,7 +33,7 @@ function AppRoutes() {
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <Routes>
           <Route path="/" element={<App />}>
-            <Route index element={<Profile />} />
+            <Route index element={<Accounts />} />
             <Route path="/billing" element={<Billing />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/accounts" element={<Accounts />} />

@@ -1,22 +1,15 @@
-.account-container {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
-  z-index: 10;
-  width: 100%;
-  padding: 0 4rem;
-}
-.account-container .task-buttons {
+.task-buttons {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 1rem;
 }
-.account-container .task-button {
+
+.task-button {
   flex: 6;
 }
-.account-container .user {
+
+.user {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -26,15 +19,17 @@
   width: 100%;
   height: 100%;
 }
-.account-container .user-links {
+
+.user-links {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 }
-.account-container .user-links a {
+.user-links a {
   text-align: center;
 }
-.account-container .config .config-open {
+
+.config .config-open {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -43,14 +38,14 @@
   font-size: 1.2rem;
   cursor: pointer;
 }
-.account-container .config .config-main {
+.config .config-main {
   width: 100%;
   padding: 1.5rem;
 }
-.account-container .config .config-main .config-toggles section {
+.config .config-main .config-toggles section {
   text-align: center;
 }
-.account-container .config .config-buttons {
+.config .config-buttons {
   display: flex;
   justify-content: space-evenly;
   margin: 1rem;

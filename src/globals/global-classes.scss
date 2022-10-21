@@ -59,6 +59,17 @@ input:-webkit-autofill {
   overflow: auto;
   z-index: 1;
 }
+.account-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  z-index: 1;
+  width: 100%;
+  padding: 0 4rem;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
 
 ::-webkit-scrollbar {
   width: 12px;
