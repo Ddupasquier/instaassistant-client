@@ -44,4 +44,4 @@ export const faqPath = baseUrl + '/faq';
 export const CheckoutEndpoint = baseUrl + '/create-checkout-session';
 
 // * PASSWORD PATHS
-export const GenerateResetTokenPath = baseUrl + '/users/gen_reset_password';
+export const GenerateResetTokenPath = baseUrl + '/gen_reset_password';

@@ -56,6 +56,7 @@ function AppRoutes() {
             <Route path="/FAQ" element={<FAQ />} />
             <Route path="/stripe" element={<Stripe />} />
             <Route path="test-bg" element={<BackgroundAnimation />} />
+            <Route path="/password_reset/:reset_token" element={<div>Success</div>} />
           </Route>
         </Routes>
       </ErrorBoundary>
