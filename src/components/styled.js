@@ -4,8 +4,11 @@ import { BiTask } from 'react-icons/bi';
 
 export const Tr = styled('tr', {
   background: '$solid',
-  borderRadius: '10px',
   transition: 'all 0.2s ease-in-out',
+  '&:hover': {
+    filter: 'brightness(95%)',
+    transform: 'translateY(-4px)',
+  },
 });
 
 export const Eye = styled(FiEye, {

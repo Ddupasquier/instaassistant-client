@@ -45,6 +45,7 @@ function Account() {
     { followers: 9999, following: 99999, profile_pic: '' },
   ]);
   const [tasks, setTasks] = useState([]);
+  const [runningTask, setRunningTask] = useState(0);
   const [utilization, setUtilization] = useState(0);
   const [interactions, setInteractions] = useState(0);
   const [followersGained, setFollowersGained] = useState(0);
@@ -67,6 +68,7 @@ function Account() {
     GetTasks(account_id).then((data) => {
       if (data[0]) {
         setTasks(data);
+        setRunningTask(data[0].id);
       } else {
         setTasks([]);
       }
@@ -138,7 +140,10 @@ function Account() {
               taskHandler={taskHandler}
               snapshots={snapshots}
             />
-            <TasksRunning tasksActive={currentAccount.active} />
+            <TasksRunning
+              tasksActive={currentAccount.active}
+              task={runningTask}
+            />
           </>
         </Grid.Container>
 
@@ -161,11 +166,7 @@ function Account() {
           taskVisible={taskVisible}
           account_id={account_id}
         />
-        <ConfigPopup
-          currentAccount={currentAccount}
-          account_id={account_id}
-
-        />
+        <ConfigPopup currentAccount={currentAccount} account_id={account_id} />
         <DeleteConfirm
           deleteConfirmVisible={deleteConfirmVisible}
           closeDeleteConfirmHandler={closeDeleteConfirmHandler}

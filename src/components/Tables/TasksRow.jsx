@@ -26,7 +26,12 @@ function TasksRow({ i, task }) {
         {task.id}
       </td> */}
       <td className="username-column" aria-label="username-cell" role="cell">
-        {task.task_type}
+        <Link
+          to={`/accounts/instagram/${account_id}/tasks/${task.id}`}
+          style={{ color: 'black', fontWeight: '700' }}
+        >
+          {task.task_type}
+        </Link>
       </td>
       <td>{task.list_type}</td>
       <td aria-label="platform-cell" role="cell">

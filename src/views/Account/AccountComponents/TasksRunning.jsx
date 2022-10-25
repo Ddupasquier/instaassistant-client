@@ -3,7 +3,12 @@ import { Link, useParams } from 'react-router-dom';
 import { Card, Grid, Button } from '@nextui-org/react';
 import ElipsesAnimation from 'components/Elipses/ElipsesAnimation';
 
-function TasksRunning({ tasksActive }) {
+function TasksRunning({ tasksActive, task }) {
+  // let currentTask;
+  // if (tasks) {
+  //   currentTask = tasks[0];
+  // }
+  // console.log(currentTask);
   const { account_id } = useParams();
   // if (tasksActive.length > 0) {
   return (
@@ -26,7 +31,7 @@ function TasksRunning({ tasksActive }) {
           >
             <div className="task-buttons">
               <Link
-                to={`/accounts/instagram/${account_id}/tasks/current`}
+                to={`/accounts/instagram/${account_id}/tasks/${task}`}
                 className="task-button"
               >
                 <Button rounded css={{ width: '100%' }} size="sm">

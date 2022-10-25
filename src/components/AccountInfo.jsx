@@ -2,10 +2,11 @@ import React from 'react';
 import Avatar from 'react-avatar';
 import Bubble from 'components/Bubble';
 import { useParams, Link } from 'react-router-dom';
-import { Grid, Card, Text, Dropdown, Button } from '@nextui-org/react';
+import { Grid, Card, Text, Dropdown } from '@nextui-org/react';
 import { FiInstagram, FiSettings } from 'react-icons/fi';
 import { IoLogoYoutube } from 'react-icons/io';
-import { IoLogoTiktok, IoChevronBack } from 'react-icons/io5';
+import { IoLogoTiktok } from 'react-icons/io5';
+import BackButton from './BackButton';
 
 function AccountInfo({
   handleDeleteConfirmVisible,
@@ -41,16 +42,7 @@ function AccountInfo({
         </div>
 
         <div className="user">
-          <Link to="/accounts">
-            <Button
-              size="sm"
-              color="warning"
-              css={{ padding: '0', minWidth: '2rem' }}
-              rounded
-            >
-              <IoChevronBack size="20" />
-            </Button>
-          </Link>
+          <BackButton />
 
           <div
             style={{

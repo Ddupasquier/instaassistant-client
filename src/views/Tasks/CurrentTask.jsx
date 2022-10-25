@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { GetTask } from 'api';
+import { GetTask, ShowAccount } from 'api';
 import { Card, Text } from '@nextui-org/react';
 import { convertToUserTime } from 'utils';
 import Bubble from 'components/Bubble';
-import AccountInfo from 'components/AccountInfo';
+import AccountInfoMin from 'components/AccountInfoMin';
+import BackButton from '../../components/BackButton';
+import Loader from 'components/Loader';
 
 function CurrentTask() {
-  const { task_id } = useParams();
+  const { task_id, account_id } = useParams();
+  const [currentAccount, setCurrentAccount] = useState();
   const [task, setTask] = useState();
   const [taskLoaded, setTaskLoaded] = useState(false);
 
@@ -15,7 +18,11 @@ function CurrentTask() {
     GetTask(task_id)
       .then((data) => setTask(data))
       .then(() => setTaskLoaded(true));
-  }, [task_id]);
+
+    ShowAccount(account_id).then((data) => {
+      setCurrentAccount(data);
+    });
+  }, [account_id, task_id]);
 
   return (
     <div className="view-container">
@@ -30,13 +37,16 @@ function CurrentTask() {
       >
         {taskLoaded ? (
           <>
-            <Card.Header css={{ gap: '1rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <Card.Header css={{ gap: '1rem', justifyContent: 'space-between' }}>
+              <div
+                style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}
+              >
+                <BackButton />
                 <h1>{task.task_type}</h1>
                 <div>Created: {convertToUserTime(task.date_created)}</div>
                 <div>Scheduled: {convertToUserTime(task.date)}</div>
               </div>
-              <AccountInfo />
+              <AccountInfoMin currentAccount={currentAccount} />
             </Card.Header>
             <Card.Body
               css={{
@@ -148,114 +158,12 @@ function CurrentTask() {
                 Log Output
                 <br />
                 Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
                 <br /> */}
               </Card.Body>
             </Card>
           </>
         ) : (
-          <p>Loading...</p>
+          <Loader />
         )}
       </Card>
     </div>
