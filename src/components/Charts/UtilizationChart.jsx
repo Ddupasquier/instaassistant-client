@@ -34,7 +34,6 @@ function UtilizationChart({ data }) {
   });
 
   const randData = useMemo(() => {
-    console.log('randData');
     return getRandomUtilization();
   }, []);
 

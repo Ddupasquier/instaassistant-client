@@ -142,7 +142,7 @@ function Account() {
           </>
         </Grid.Container>
 
-        <div className="account-metrics">
+        <div>
           <Grid.Container gap={2}>
             <Utilization num={utilization} />
             <Interactions num={interactions} />
@@ -154,7 +154,6 @@ function Account() {
               messages={messages}
             />
             <MetricChart snapshots={snapshots} />
-            {/* <ActivityLog tasks={tasks} /> */}
           </Grid.Container>
         </div>
         <TaskModal
@@ -162,7 +161,11 @@ function Account() {
           taskVisible={taskVisible}
           account_id={account_id}
         />
-        <ConfigPopup currentAccount={currentAccount} account_id={account_id} />
+        <ConfigPopup
+          currentAccount={currentAccount}
+          account_id={account_id}
+
+        />
         <DeleteConfirm
           deleteConfirmVisible={deleteConfirmVisible}
           closeDeleteConfirmHandler={closeDeleteConfirmHandler}

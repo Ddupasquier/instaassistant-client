@@ -5,7 +5,7 @@ import { PatchAccount } from 'api';
 import { Link } from 'react-router-dom';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 
-function ConfigPopup({ currentAccount, account_id }) {
+function ConfigPopup({ currentAccount, account_id, width }) {
   const { theme } = useTheme();
   const [divHeight, setDivHeight] = useState(0);
   const ref = useRef(null);

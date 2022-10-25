@@ -1,61 +1,58 @@
+.task-buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.task-button {
+  flex: 6;
+}
 
-
-  .task-buttons {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 1rem;
+.user {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 1rem;
+  width: 100%;
+  height: 100%;
+}
+.user-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  a {
+    text-align: center;
   }
-  .task-button {
-    flex: 6;
-  }
+}
 
-  .user {
+.config {
+  .config-open {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
     align-items: center;
-    justify-content: space-evenly;
-    gap: 1rem;
+    justify-content: center;
+    height: 30px;
+    border-radius: 0.4rem 0.4rem 0 0;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  .config-main {
     width: 100%;
-    height: 100%;
-  }
-  .user-links {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    a {
-      text-align: center;
-    }
-  }
-
-  .config {
-    .config-open {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 30px;
-      border-radius: 0.4rem 0.4rem 0 0;
-      font-size: 1.2rem;
-      cursor: pointer;
-    }
-    .config-main {
-      width: 100%;
-      padding: 1.5rem;
-      .config-toggles {
-        section {
-          text-align: center;
-        }
+    padding: 1.5rem;
+    .config-toggles {
+      section {
+        text-align: center;
       }
     }
-    .config-buttons {
-      display: flex;
-      justify-content: space-evenly;
-      margin: 1rem;
-      width: 100%;
-    }
   }
-
+  .config-buttons {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 1rem;
+    width: 100%;
+  }
+}
 
 .config-tooltip {
   position: absolute;

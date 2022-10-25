@@ -8,7 +8,6 @@ function Interactions({ num }) {
     <Grid sm={4} xs={12}>
       <Card
         css={{
-          backdropFilter: 'blur(15px)',
           background: '$myColor',
         }}
       >

@@ -4,6 +4,7 @@ import { GetTask } from 'api';
 import { Card, Text } from '@nextui-org/react';
 import { convertToUserTime } from 'utils';
 import Bubble from 'components/Bubble';
+import AccountInfo from 'components/AccountInfo';
 
 function CurrentTask() {
   const { task_id } = useParams();
@@ -23,7 +24,6 @@ function CurrentTask() {
         css={{
           background: '$myColor',
           width: '90%',
-          backdropFilter: 'blur(15px)',
           margin: '3rem',
           overflow: 'auto',
         }}
@@ -31,9 +31,12 @@ function CurrentTask() {
         {taskLoaded ? (
           <>
             <Card.Header css={{ gap: '1rem' }}>
-              <h1>{task.task_type}</h1>
-              <div>Created: {convertToUserTime(task.date_created)}</div>
-              <div>Scheduled: {convertToUserTime(task.date)}</div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                <h1>{task.task_type}</h1>
+                <div>Created: {convertToUserTime(task.date_created)}</div>
+                <div>Scheduled: {convertToUserTime(task.date)}</div>
+              </div>
+              <AccountInfo />
             </Card.Header>
             <Card.Body
               css={{
@@ -43,11 +46,6 @@ function CurrentTask() {
                 background: '$myColor',
               }}
             >
-              {/* <Card>{task.follows_sent}</Card> */}
-              {/* <Card>{task.likes_sent}</Card> */}
-              {/* <Card>{task.comments_sent}</Card> */}
-              {/* <Card>{task.messages_sent}</Card> */}
-
               <Bubble
                 htmlFor="follows-sent"
                 num={task.follows_sent}

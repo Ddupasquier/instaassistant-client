@@ -7,7 +7,6 @@ function Utilization({ num }) {
     <Grid sm={4} xs={12}>
       <Card
         css={{
-          backdropFilter: 'blur(15px)',
           background: '$myColor',
         }}
       >
@@ -22,9 +21,7 @@ function Utilization({ num }) {
         <Card.Body>
           <Grid.Container>
             <Grid sm={2}>
-              <Text h2>
-                {num}%
-              </Text>
+              <Text h2>{num}%</Text>
             </Grid>
             <Grid sm={12} xs={12}>
               <Progress color="primary" value={num} role="progressbar" />

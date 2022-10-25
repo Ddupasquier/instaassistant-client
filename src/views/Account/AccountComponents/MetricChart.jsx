@@ -9,7 +9,6 @@ function MetricChart({ snapshots }) {
     <Grid sm={8} xs={12}>
       <Card
         css={{
-          backdropFilter: 'blur(15px)',
           background: '$myColor',
         }}
       >

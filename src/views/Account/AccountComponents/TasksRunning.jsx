@@ -13,7 +13,6 @@ function TasksRunning({ tasksActive }) {
           variant="flat"
           css={{
             color: '$solid',
-            backdropFilter: 'blur(15px)',
             background: '$myColorInvert',
           }}
         >

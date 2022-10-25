@@ -8,7 +8,6 @@ function FollowerGain({ num }) {
     <Grid sm={4} xs={12}>
       <Card
         css={{
-          backdropFilter: 'blur(10px)',
           background: '$myColor',
         }}
       >
@@ -21,9 +20,6 @@ function FollowerGain({ num }) {
         </Card.Header>
         <Card.Divider />
         <Card.Body>
-          {/* <Text h2>
-            {num > 0 ? <AiOutlineUserAdd /> : <AiOutlineUserDelete />} {num}
-          </Text> */}
           <div className="display-grid">
             <div>
               {num > 0 ? (

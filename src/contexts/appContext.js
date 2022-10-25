@@ -3,8 +3,9 @@ import { createTheme, NextUIProvider } from '@nextui-org/react';
 
 const ThemeContext = createContext(false);
 
-const ThemeProvider = ({ children }) => {
+const ContextProvider = ({ children }) => {
   const [isDark, setIsDark] = useState(false);
+
   const toggleFunction = () => {
     setIsDark(!isDark);
   };
@@ -61,4 +62,5 @@ const ThemeProvider = ({ children }) => {
     </ThemeContext.Provider>
   );
 };
-export { ThemeContext, ThemeProvider };
+
+export { ThemeContext, ContextProvider };
