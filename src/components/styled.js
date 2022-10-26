@@ -51,3 +51,19 @@ export const Username = styled('a', {
     color: '$primary',
   },
 });
+
+export const Select = styled('select', {
+  background: 'none',
+  outline: '2px solid #b6b6b67c',
+  border: 'none',
+  color: '$font',
+  padding: '0.5rem',
+  borderRadius: '0.8rem',
+  fontSize: '1rem',
+  fontWeight: 'bold',
+  cursor: 'pointer',
+  transition: 'all 0.2s ease-in-out',
+  '&:hover': {
+    outline: '2px solid #6200ff',
+  },
+});

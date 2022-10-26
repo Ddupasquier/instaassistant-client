@@ -249,6 +249,7 @@ export const PostTask = async (formData) => {
   const res = await response.json();
   if (res.error) {
     alert('Something went wrong. Please try again later!', res.error);
+    console.log('nope', res.error);
     throw new Error(res.error);
   } else {
     return res;

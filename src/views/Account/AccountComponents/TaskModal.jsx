@@ -22,6 +22,7 @@ import {
 
 // * ------- UTILS ------- * //
 import { today, thisTime } from 'utils';
+import DropDown from 'components/DropDown';
 
 function TaskModal({ account_id }) {
   const { isTaskModalOpen, closeTaskHandler } = useContext(TaskModalContext);
@@ -53,16 +54,17 @@ function TaskModal({ account_id }) {
     padding: '0.5rem',
   });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
+    console.log('data', data);
     const scheduledDate = new Date(`${data.date} ${data.time}`).toUTCString();
     const notScheduled = new Date().toUTCString();
     const payload = {
       account_id,
-      task_type: data.action,
-      list_type: `${data.listTarget}:${data.listType}`,
+      task_type: data.Action,
+      list_type: `${data.ListTarget}:${data.ListType}`,
       target_url: data.targetUrl,
       custom_messages: data.customMessages,
       custom_comments: data.customComments,
@@ -70,10 +72,14 @@ function TaskModal({ account_id }) {
       date: schedule ? scheduledDate : notScheduled,
       date_created: notScheduled,
     };
-    const res = await PostTask(payload);
+    console.log('payload', payload);
+    const res = PostTask(payload);
     if (res.error) {
       console.log(res.error);
-      alert('Something went wrong. Please try again in a few minutes!', res.error);
+      // alert(
+      //   'Something went wrong. Please try again in a few minutes!',
+      //   res.error
+      // );
     } else {
       closeTaskHandler();
     }
@@ -104,7 +110,31 @@ function TaskModal({ account_id }) {
             />
           </div>
 
-          <select
+          <DropDown
+            options={actions}
+            setter={setActionSelected}
+            name={'Action'}
+          />
+          {actionSelected && (
+            <DropDown
+              options={listTargets}
+              setter={setListTargetSelected}
+              name={'ListTarget'}
+            />
+          )}
+          {listTargetSelected && (
+            <DropDown
+              options={
+                listTargetSelected === 'Account'
+                  ? accountListTypes
+                  : postListTypes
+              }
+              setter={setListTypeSelected}
+              name={'ListType'}
+            />
+          )}
+
+          {/* <select
             name="action"
             required
             style={{
@@ -199,8 +229,8 @@ function TaskModal({ account_id }) {
                       ))}
                 </select>
               </>
-            )}
-          </div>
+            )} */}
+          {/* </div> */}
 
           {listTypeSelected && (
             <>
