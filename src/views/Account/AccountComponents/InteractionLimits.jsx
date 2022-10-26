@@ -36,7 +36,7 @@ const InteractionLimits = ({ follows, likes, comments, messages }) => {
             rounded
             onPress={() => setChartToggle(!chartToggle)}
           >
-            Dougnut/Bar
+            {chartToggle ? "Dougnut" : "Bars"}
           </Button>
         </Card.Header>
         <Card.Divider />
