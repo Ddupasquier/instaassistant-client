@@ -70,10 +70,10 @@ function TaskModal({ account_id }) {
       date: schedule ? scheduledDate : notScheduled,
       date_created: notScheduled,
     };
-    const postTask = await PostTask(payload);
-    if (postTask.error) {
-      console.log(postTask.error);
-      alert('Something went wrong. Please try again later!', postTask.error);
+    const res = await PostTask(payload);
+    if (res.error) {
+      console.log(res.error);
+      alert('Something went wrong. Please try again in a few minutes!', res.error);
     } else {
       closeTaskHandler();
     }

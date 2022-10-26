@@ -26,7 +26,7 @@ header .site-name {
   cursor: default;
 }
 
-.box-one {
+/* .box-one {
   position: absolute;
   -webkit-backdrop-filter: saturate(200%) blur(8px);
           backdrop-filter: saturate(200%) blur(8px);
@@ -56,4 +56,4 @@ header .site-name {
           backdrop-filter: saturate(200%) blur(8px);
   background: rgba(0, 251, 255, 0.1);
   transition: 0.5s;
-}
+} */

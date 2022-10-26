@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './scss/profile-styles.css';
-import { Button, Card, Text } from '@nextui-org/react';
+import { Button, Card } from '@nextui-org/react';
 import { GetUserInfo, GetAccountsManaged } from 'api';
 import EditProfile from './EditProfile';
 import ChangePassword from './ChangePassword';
@@ -57,15 +56,7 @@ function Profile() {
           }}
         >
           {userLoaded ? (
-            <Text
-              css={{
-                display: 'flex',
-                flexDirection: 'row',
-                flexWrap: 'wrap',
-                justifyContent: 'space-evenly',
-                gap: '1rem',
-              }}
-            >
+            <>
               <Bubble
                 htmlFor="phone"
                 num={formatPhoneNumber(userInfo.phone_number)}
@@ -78,7 +69,7 @@ function Profile() {
                 num={userInfo.billing_status}
                 name="Billing Status"
               />
-            </Text>
+            </>
           ) : (
             <Loader />
           )}
@@ -112,7 +103,6 @@ function Profile() {
               userInfo={userInfo}
             />
           </div>
-          {/* </Card.Body> */}
         </Card>
       </Card>
     </div>

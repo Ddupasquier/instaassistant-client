@@ -62,7 +62,6 @@ function Billing() {
         css={{
           background: '$myColor',
           width: '80%',
-          backdropFilter: 'blur(15px)',
           margin: '3rem',
         }}
       >

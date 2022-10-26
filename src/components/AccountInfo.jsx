@@ -33,7 +33,6 @@ function AccountInfo({
     <Grid css={{ flex: '8' }}>
       <Card
         css={{
-          backdropFilter: 'blur(15px)',
           background: '$myColor',
           height: '100%',
         }}
