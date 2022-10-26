@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import { TaskModalContext } from 'contexts/modalContext';
 
 // * ------- API LAYER ------- *
 import { getSnapshots, GetTasks, ShowAccount } from 'api';
@@ -15,28 +16,24 @@ import MetricChart from './AccountComponents/MetricChart';
 import InteractionLimits from './AccountComponents/InteractionLimits';
 import ConfigPopup from './AccountComponents/ConfigPopup';
 import DeleteConfirm from 'components/DeleteConfirm';
-
 import TaskModal from './AccountComponents/TaskModal';
 import { TasksRunning } from '.';
 
 import AccountInfo from 'components/AccountInfo';
 
 function Account() {
+  const { toggleTaskModal } = useContext(TaskModalContext);
+
   // * ------- DESCTRUCTURING URL PARAMS ------- *
   const { account_id } = useParams();
 
   // * ------- TASK FORM AND MODAL HANDLERS ------- *
   const [deleteConfirmVisible, setDeleteConfirmVisible] = useState(false);
-  const [taskVisible, setTaskVisible] = useState(false);
 
   const handleDeleteConfirmVisible = () => setDeleteConfirmVisible(true);
-  const taskHandler = () => setTaskVisible(true);
 
   const closeDeleteConfirmHandler = () => {
     setDeleteConfirmVisible(false);
-  };
-  const closeTaskHandler = () => {
-    setTaskVisible(false);
   };
 
   // * ------- STATE ------- *
@@ -69,6 +66,8 @@ function Account() {
       if (data[0]) {
         setTasks(data);
         setRunningTask(data[0].id);
+        /* TODO: This is a hack to get the task id for the running task.
+         *  This should be changed to a filter or find for THE active task for the account. */
       } else {
         setTasks([]);
       }
@@ -137,7 +136,7 @@ function Account() {
             <AccountInfo
               handleDeleteConfirmVisible={handleDeleteConfirmVisible}
               currentAccount={currentAccount}
-              taskHandler={taskHandler}
+              taskHandler={toggleTaskModal}
               snapshots={snapshots}
             />
             <TasksRunning
@@ -162,8 +161,6 @@ function Account() {
           </Grid.Container>
         </div>
         <TaskModal
-          closeTaskHandler={closeTaskHandler}
-          taskVisible={taskVisible}
           account_id={account_id}
         />
         <ConfigPopup currentAccount={currentAccount} account_id={account_id} />

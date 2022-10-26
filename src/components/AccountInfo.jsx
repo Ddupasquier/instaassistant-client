@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Avatar from 'react-avatar';
 import Bubble from 'components/Bubble';
 import { useParams, Link } from 'react-router-dom';
@@ -7,13 +7,14 @@ import { FiInstagram, FiSettings } from 'react-icons/fi';
 import { IoLogoYoutube } from 'react-icons/io';
 import { IoLogoTiktok } from 'react-icons/io5';
 import BackButton from './BackButton';
+import { TaskModalContext } from 'contexts/modalContext';
 
 function AccountInfo({
   handleDeleteConfirmVisible,
-  taskHandler,
   currentAccount,
   snapshots,
 }) {
+  const { taskHandler } = useContext(TaskModalContext);
   const { account_id } = useParams();
 
   const platformIcon = () => {

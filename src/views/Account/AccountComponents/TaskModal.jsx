@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   Modal,
   Textarea,
@@ -10,6 +10,7 @@ import {
 import { PostTask } from 'api';
 import { IconsQuestionMark } from 'components/icons/icons';
 import { BsFillArrowRightCircleFill } from 'react-icons/bs';
+import { TaskModalContext } from 'contexts/modalContext';
 
 // * ------- CONSTANTS ------- * //
 import {
@@ -22,7 +23,9 @@ import {
 // * ------- UTILS ------- * //
 import { today, thisTime } from 'utils';
 
-function TaskModal({ closeTaskHandler, taskVisible, account_id }) {
+function TaskModal({ account_id }) {
+  const { isTaskModalOpen, closeTaskHandler } = useContext(TaskModalContext);
+
   const [actionSelected, setActionSelected] = useState('');
   const [listTargetSelected, setListTargetSelected] = useState('');
   const [listTypeSelected, setListTypeSelected] = useState('');
@@ -50,11 +53,10 @@ function TaskModal({ closeTaskHandler, taskVisible, account_id }) {
     padding: '0.5rem',
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
-    console.log(data);
     const scheduledDate = new Date(`${data.date} ${data.time}`).toUTCString();
     const notScheduled = new Date().toUTCString();
     const payload = {
@@ -68,8 +70,13 @@ function TaskModal({ closeTaskHandler, taskVisible, account_id }) {
       date: schedule ? scheduledDate : notScheduled,
       date_created: notScheduled,
     };
-    PostTask(payload);
-    closeTaskHandler();
+    const postTask = await PostTask(payload);
+    if (postTask.error) {
+      console.log(postTask.error);
+      alert('Something went wrong. Please try again later!', postTask.error);
+    } else {
+      closeTaskHandler();
+    }
   };
 
   return (
@@ -79,7 +86,7 @@ function TaskModal({ closeTaskHandler, taskVisible, account_id }) {
       preventClose
       width="600px"
       aria-labelledby="modal-title"
-      open={taskVisible}
+      open={isTaskModalOpen}
       onClose={closeTaskHandler}
     >
       <Modal.Header>

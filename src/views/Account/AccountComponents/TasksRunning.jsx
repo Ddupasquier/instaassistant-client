@@ -4,13 +4,7 @@ import { Card, Grid, Button } from '@nextui-org/react';
 import ElipsesAnimation from 'components/Elipses/ElipsesAnimation';
 
 function TasksRunning({ tasksActive, task }) {
-  // let currentTask;
-  // if (tasks) {
-  //   currentTask = tasks[0];
-  // }
-  // console.log(currentTask);
   const { account_id } = useParams();
-  // if (tasksActive.length > 0) {
   return (
     <>
       <Grid md={4} sm={12} xs={12}>

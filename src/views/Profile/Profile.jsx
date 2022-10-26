@@ -6,6 +6,8 @@ import EditProfile from './EditProfile';
 import ChangePassword from './ChangePassword';
 import Avatar from 'react-avatar';
 import { formatPhoneNumber } from 'utils';
+import Loader from 'components/Loader';
+import Bubble from 'components/Bubble';
 
 function Profile() {
   const [userInfo, setUserInfo] = useState({});
@@ -32,70 +34,87 @@ function Profile() {
   }, []);
 
   return (
-    <div className="profile-main" role="region">
-      <Avatar name={userInfo.email} round size="80" textSizeRatio={2} />
-      <Text
-        h1
-        size={60}
-        css={{
-          textGradient: '45deg, $blue600 -20%, $pink600 50%',
-        }}
-        weight="bold"
-      >
-        {userInfo.email}
-      </Text>
+    <div className="view-container">
       <Card
-        css={{ background: '$myColor' }}
-        style={{ padding: '1.5rem', width: '80%' }}
+        style={{ zIndex: 1 }}
+        css={{
+          background: '$myColor',
+          width: '60%',
+          margin: '3rem',
+          overflow: 'auto',
+        }}
       >
-        <div className="profile-header">
-          <Button color="secondary" onPress={editProfileHandler} rounded>
-            Edit
-          </Button>
-          <Button color="secondary" onPress={changePasswordHandler} rounded>
-            Change Password
-          </Button>
-        </div>
-        <br />
-        <div className="profile-content">
-          <Text align="center">
-            Thank you for becoming a AntiSocialSuite user. Make sure your
-            billing information is up to date or change your email/password from
-            this page.
-          </Text>
-          <br />
-          <Text
-            css={{
+        <Card.Header css={{ flexDirection: 'column' }}>
+          <Avatar name={userInfo.email} round size="80" textSizeRatio={2} />
+          <h1>{userInfo.email}</h1>
+        </Card.Header>
+        <Card.Body
+          css={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-evenly',
+            background: '$myColor',
+          }}
+        >
+          {userLoaded ? (
+            <Text
+              css={{
+                display: 'flex',
+                flexDirection: 'row',
+                flexWrap: 'wrap',
+                justifyContent: 'space-evenly',
+                gap: '1rem',
+              }}
+            >
+              <Bubble
+                htmlFor="phone"
+                num={formatPhoneNumber(userInfo.phone_number)}
+                name="Phone Number"
+              />
+              <Bubble htmlFor="website" num={userInfo.website} name="Website" />
+              <Bubble htmlFor={managed} num={managed} name="Accounts Managed" />
+              <Bubble
+                htmlFor="billing"
+                num={userInfo.billing_status}
+                name="Billing Status"
+              />
+            </Text>
+          ) : (
+            <Loader />
+          )}
+        </Card.Body>
+
+        <Card css={{ borderRadius: '0' }}>
+          <div
+            style={{
               display: 'flex',
-              flexDirection: 'row',
+              alignItems: 'center',
+              width: '100%',
+              justifyContent: 'space-between',
               flexWrap: 'wrap',
-              justifyContent: 'space-evenly',
-              gap: '1rem',
+              padding: '1rem',
             }}
           >
-            {userLoaded && (
-              <>
-                <span>Company Email: {userInfo.email}</span>
-                <span>Company Phone: {formatPhoneNumber(userInfo.phone_number)}</span>
-                <span>Company Website: {userInfo.website}</span>
-                <span>Accounts Managed: {managed}</span>
-                <span>Payment Status: {userInfo.billing_status}</span>
-                {/* <span>Company Logo: {userInfo.profile_pic}</span> */}
-              </>
-            )}
-          </Text>
-        </div>
+            <Button color="secondary" onPress={editProfileHandler} rounded>
+              Edit
+            </Button>
+            <Button color="secondary" onPress={changePasswordHandler} rounded>
+              Change Password
+            </Button>
+            <EditProfile
+              editProfileVisible={editProfileVisible}
+              closeEditProfileHandler={closeEditProfileHandler}
+              userInfo={userInfo}
+            />
+            <ChangePassword
+              changePasswordVisible={changePasswordVisible}
+              closeChangePasswordHandler={closeChangePasswordHandler}
+              userInfo={userInfo}
+            />
+          </div>
+          {/* </Card.Body> */}
+        </Card>
       </Card>
-      <EditProfile
-        editProfileVisible={editProfileVisible}
-        closeEditProfileHandler={closeEditProfileHandler}
-        userInfo={userInfo}
-      />
-      <ChangePassword
-        changePasswordVisible={changePasswordVisible}
-        closeChangePasswordHandler={closeChangePasswordHandler}
-        userInfo={userInfo}
-      />
     </div>
   );
 }

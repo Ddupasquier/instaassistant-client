@@ -27,9 +27,6 @@ function Accounts() {
     setNewAccountVisible(false);
   };
 
-  /**
-   * TODO: Evaluate useDefferedValue with timeout arg for searchTerm instead of useTransition
-   */
   function updateSearchTerm(newVal) {
     startUpdating(() => {
       setSearchTerm(newVal);

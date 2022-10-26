@@ -2,12 +2,7 @@ import React from 'react';
 import { Modal, Input, Button, Text, Grid } from '@nextui-org/react';
 import { ChangePasswordPatch } from 'api';
 
-function ChangePassword({
-  changePasswordVisible,
-  closeChangePasswordHandler,
-  userInfo,
-}) {
-  /** TODO hook up change password */
+function ChangePassword({ changePasswordVisible, closeChangePasswordHandler }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -19,8 +14,7 @@ function ChangePassword({
           ? data.new_password
           : alert('Passwords do not match'),
     };
-    ChangePasswordPatch(payload);
-    // .then(closeChangePasswordHandler());
+    ChangePasswordPatch(payload).then(closeChangePasswordHandler());
   };
 
   return (

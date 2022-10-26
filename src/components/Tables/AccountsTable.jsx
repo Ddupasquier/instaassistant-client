@@ -12,7 +12,6 @@ function AccountsTable({
   setDeleteConfirmVisible,
   handleDeleteConfirmVisible,
 }) {
-  // TODO: handle error, "no accounts found" message
   const { data, err } = useSWR('/api/accounts', indexAccounts);
 
   return (

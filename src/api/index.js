@@ -49,7 +49,7 @@ export const loginFetch = async (userInfo) => {
   });
   const resp_1 = await resp.json();
   if (resp_1.error) {
-    alert(resp_1.error, "The email or password you provided is incorrect!");
+    alert(resp_1.error, 'The email or password you provided is incorrect!');
     throw new Error(resp_1.error);
   } else {
     localStorage.setItem('user', JSON.stringify(resp_1.user));
@@ -248,6 +248,7 @@ export const PostTask = async (formData) => {
   });
   const res = await response.json();
   if (res.error) {
+    alert('Something went wrong. Please try again later!', res.error);
     throw new Error(res.error);
   } else {
     return res;
