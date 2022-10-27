@@ -38,25 +38,25 @@ function AppRoutes() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/accounts" element={<Accounts />} />
             <Route
-              path="/accounts/instagram/:account_id/update"
+              path="/accounts/:account_id/update"
               element={<AccountUpdate />}
             />
+            <Route path="/accounts/:account_id" element={<Account />} />
             <Route
-              path="/accounts/instagram/:account_id"
-              element={<Account />}
-            />
-            <Route
-              path="/accounts/instagram/:account_id/tasks"
+              path="/accounts/:account_id/tasks"
               element={<ScheduledTasks />}
             />
             <Route
-              path="/accounts/instagram/:account_id/tasks/:task_id"
+              path="/accounts/:account_id/tasks/:task_id"
               element={<CurrentTask />}
             />
             <Route path="/FAQ" element={<FAQ />} />
             <Route path="/stripe" element={<Stripe />} />
             <Route path="test-bg" element={<BackgroundAnimation />} />
-            <Route path="/password_reset/:reset_token" element={<div>Success</div>} />
+            <Route
+              path="/password_reset/:reset_token"
+              element={<div>Success</div>}
+            />
           </Route>
         </Routes>
       </ErrorBoundary>

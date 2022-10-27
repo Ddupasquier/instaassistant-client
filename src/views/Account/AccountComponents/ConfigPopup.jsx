@@ -238,7 +238,7 @@ function ConfigPopup({ currentAccount, account_id, width }) {
                 <Button type="submit" color="secondary" size="md" rounded>
                   Save
                 </Button>
-                <Link to={'/instagram/account/' + account_id}>
+                <Link to={'/account/' + account_id}>
                   <Button type="button" color="secondary" size="md" rounded>
                     Cancel
                   </Button>

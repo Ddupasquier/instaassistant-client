@@ -101,14 +101,14 @@ function AccountInfo({
                 </Text>
               </Dropdown.Item>
               <Dropdown.Item key="scheduled-tasks" aria-label="scheduled-tasks">
-                <Link to={`/accounts/instagram/${account_id}/tasks`}>
+                <Link to={`/accounts/${account_id}/tasks`}>
                   <Text b color="inherit" css={{ d: 'flex', color: '$font' }}>
                     Scheduled Tasks
                   </Text>
                 </Link>
               </Dropdown.Item>
               <Dropdown.Item key="Edit" aria-label="edit-account">
-                <Link to={`/accounts/instagram/${account_id}/update`}>
+                <Link to={`/accounts/${account_id}/update`}>
                   <Text b color="inherit" css={{ d: 'flex', color: '$font' }}>
                     Edit Account
                   </Text>

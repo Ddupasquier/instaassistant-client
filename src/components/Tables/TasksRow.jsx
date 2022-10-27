@@ -27,7 +27,7 @@ function TasksRow({ i, task }) {
       </td> */}
       <td className="username-column" aria-label="username-cell" role="cell">
         <Link
-          to={`/accounts/instagram/${account_id}/tasks/${task.id}`}
+          to={`/accounts/${account_id}/tasks/${task.id}`}
           style={{ color: 'black', fontWeight: '700' }}
         >
           {task.task_type}
@@ -50,7 +50,7 @@ function TasksRow({ i, task }) {
         {task.messages_sent}
       </td>
       <td className="actions-column" aria-label="actions-cell" role="cell">
-        <Link to={`/accounts/instagram/${account_id}/tasks/${task.id}`}>
+        <Link to={`/accounts/${account_id}/tasks/${task.id}`}>
           <Task size="20" />
         </Link>
       </td>

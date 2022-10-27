@@ -30,9 +30,7 @@ function AccountsRow({ user, handleDeleteConfirmVisible, setUserToDelete, i }) {
           size="35"
           textSizeRatio={2}
         />
-        <Username href={`/accounts/instagram/${user.id}`}>
-          @{user.username}
-        </Username>
+        <Username href={`/accounts/${user.id}`}>@{user.username}</Username>
       </td>
       <td aria-label="platform-cell" role="cell">
         {capitalizeFirstLetter(user.platform)}
@@ -51,10 +49,10 @@ function AccountsRow({ user, handleDeleteConfirmVisible, setUserToDelete, i }) {
         {user.allow_unfollow && <FiUserMinus title="Unfollowing enabled" />}
       </td>
       <td className="actions-column" aria-label="actions-cell" role="cell">
-        <Link to={`/accounts/instagram/${user.id}`}>
+        <Link to={`/accounts/${user.id}`}>
           <Eye title="View account" size="20" />
         </Link>
-        <Link to={`/accounts/instagram/${user.id}/tasks`}>
+        <Link to={`/accounts/${user.id}/tasks`}>
           <Task size="20" />
         </Link>
         <Trash

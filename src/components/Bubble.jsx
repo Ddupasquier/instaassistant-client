@@ -17,12 +17,11 @@ const number = {
   fontWeight: 'bold',
 };
 
-function Bubble({ htmlFor, num, name }) {
+function Bubble({ htmlFor, num = 'N/A', name }) {
   return (
     <div style={bubbleStyle}>
       <legend htmlFor={htmlFor}>{name}</legend>
       <div id={htmlFor} style={number}>
-        {/* {num ? num[num.length - 1] : 0} */}
         {num}
       </div>
     </div>
