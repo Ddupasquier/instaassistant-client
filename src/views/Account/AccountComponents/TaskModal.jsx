@@ -9,7 +9,6 @@ import {
 } from '@nextui-org/react';
 import { PostTask } from 'api';
 import { IconsQuestionMark } from 'components/icons/icons';
-import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 import { TaskModalContext } from 'contexts/modalContext';
 
 // * ------- CONSTANTS ------- * //

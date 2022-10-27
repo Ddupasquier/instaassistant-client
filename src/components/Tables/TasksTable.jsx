@@ -4,12 +4,12 @@ import TasksRow from './TasksRow';
 function TasksTable({ tasks }) {
   const tableRef = useRef(null);
 
-  const rowsPerPage = () => {
-    const table = tableRef.current;
-    const tableHeight = table.offsetHeight;
-    const rowHeight = table.rows[0].offsetHeight;
-    return Math.floor(tableHeight / rowHeight);
-  };
+  // const rowsPerPage = () => {
+  //   const table = tableRef.current;
+  //   const tableHeight = table.offsetHeight;
+  //   const rowHeight = table.rows[0].offsetHeight;
+  //   return Math.floor(tableHeight / rowHeight);
+  // };
 
   return (
     <table
