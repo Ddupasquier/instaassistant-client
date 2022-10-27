@@ -1,31 +1,31 @@
 import { Textarea, Grid } from '@nextui-org/react';
-import { IconsQuestionMark } from 'components/icons/icons';
+import { TooltipPop } from 'components/Tooltip';
 import React from 'react';
 
 const ConfigTextArea = ({
   label,
   value = '',
-  set,
+  name,
   toolTipContent,
   toolTipLocal,
 }) => {
   return (
     <Grid sm={4} xs={12} css={{ position: 'relative' }}>
       <Textarea
+        name={name}
         width="100%"
         bordered
         status="default"
         key={label}
         label={label}
         legend={label}
-        onChange={(e) => set(e.target.value)}
         css={{
           fontWeight: 'bold',
         }}
         value={value || ''}
       />
       <div className="config-tooltip">
-        <IconsQuestionMark content={toolTipContent} local={toolTipLocal} />
+        <TooltipPop content={toolTipContent} local={toolTipLocal} />
       </div>
     </Grid>
   );

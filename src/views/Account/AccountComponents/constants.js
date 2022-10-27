@@ -1,3 +1,4 @@
+/* -------------------- TASK MODAL CONSTANTS ------------------- */
 export const actions = [
   { value: 'Interact', label: 'Interact' },
   { value: 'Follow', label: 'Follow' },

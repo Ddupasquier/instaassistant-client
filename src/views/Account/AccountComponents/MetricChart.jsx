@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Grid } from '@nextui-org/react';
 import { FollowersChart } from 'components/Charts';
 import UtilizationChart from 'components/Charts/UtilizationChart';
-import { IconsQuestionMark } from 'components/icons/icons';
+import { TooltipPop } from 'components/Tooltip';
 
 function MetricChart({ snapshots }) {
   return (
@@ -14,7 +14,7 @@ function MetricChart({ snapshots }) {
       >
         <Card.Header>
           Follower / Following - 30 days &nbsp;
-          <IconsQuestionMark
+          <TooltipPop
             content="Total number of follows, likes, comments and Messages sent on your behalf."
             local="top"
           />

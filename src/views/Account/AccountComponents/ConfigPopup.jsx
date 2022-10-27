@@ -5,10 +5,15 @@ import { PatchAccount } from 'api';
 import { Link } from 'react-router-dom';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 
-function ConfigPopup({ currentAccount, account_id, width }) {
+function ConfigPopup({ currentAccount, account_id }) {
   const { theme } = useTheme();
-  const [divHeight, setDivHeight] = useState(0);
   const ref = useRef(null);
+
+  const [divHeight, setDivHeight] = useState(0);
+  const [allowLike, setAllowLike] = useState();
+  const [allowFollow, setAllowFollow] = useState();
+  const [allowComment, setAllowComment] = useState();
+  const [allowMessage, setAllowMessage] = useState();
 
   useEffect(() => {
     setDivHeight(ref.current.offsetHeight);
@@ -20,12 +25,6 @@ function ConfigPopup({ currentAccount, account_id, width }) {
       switchFollows: [setAllowFollow, currentAccount.allow_follow],
       switchComments: [setAllowComment, currentAccount.allow_comment],
       switchMessages: [setAllowMessage, currentAccount.allow_dm],
-      textLookalike: [setLookalike, currentAccount.look_alike],
-      textWhiteList: [setWhiteList, currentAccount.white_list],
-      textBlackList: [setBlackList, currentAccount.black_list],
-      textComments: [setComments, currentAccount.comments],
-      textMessages: [setMessages, currentAccount.messages],
-      textTags: [setTags, currentAccount.tags],
     };
 
     Object.keys(fields).forEach((key) => {
@@ -36,84 +35,63 @@ function ConfigPopup({ currentAccount, account_id, width }) {
   const [configShown, setConfigShown] = useState(false);
   const toggleConfigShown = () => setConfigShown(!configShown);
 
-  const [lookalike, setLookalike] = useState();
-  const [whiteList, setWhiteList] = useState();
-  const [blackList, setBlackList] = useState();
-  const [comments, setComments] = useState();
-  const [messages, setMessages] = useState();
-  const [tags, setTags] = useState();
-  const [allowLike, setAllowLike] = useState();
-  const [allowFollow, setAllowFollow] = useState();
-  const [allowComment, setAllowComment] = useState();
-  const [allowMessage, setAllowMessage] = useState();
-
   const textareaValues = [
     {
+      name: 'lookalike',
       label: 'Look Alike',
-      value: lookalike,
-      set: setLookalike,
+      value: currentAccount.look_alike,
       tool: 'This list is used to store account that you think are similar to your own.',
     },
     {
+      name: 'whiteList',
       label: 'White List',
-      value: whiteList,
-      set: setWhiteList,
+      value: currentAccount.white_list,
       tool: 'This list is used to store accounts that we will not un-follow.',
     },
     {
+      name: 'blackList',
       label: 'Black List',
-      value: blackList,
-      set: setBlackList,
+      value: currentAccount.black_list,
       tool: 'This list is used to store accounts that we will not interact with.',
     },
     {
+      name: 'comments',
       label: 'Comments',
-      value: comments,
-      set: setComments,
+      value: currentAccount.comments,
       tool: 'This list is used to store generic comments AntiSocialSuite can send on your behalf.',
     },
     {
+      name: 'messages',
       label: 'Direct Messages',
-      value: messages,
-      set: setMessages,
+      value: currentAccount.messages,
       tool: 'This list is used to store generic comments AntiSocialSuite can send on your behalf.',
     },
     {
+      name: 'tags',
       label: 'Account Tags',
-      value: tags,
-      set: setTags,
+      value: currentAccount.tags,
       tool: 'use tags so you can easily find this account on the "accounts page."',
     },
   ];
 
-  const HandleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const body = {
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+    const payload = {
       allow_like: allowLike,
-      platform: 'instagram',
       allow_comment: allowComment,
       allow_follow: allowFollow,
       allow_dm: allowMessage,
-      look_alike: lookalike,
-      black_list: blackList,
-      white_list: whiteList,
-      comments,
-      messages,
-      tags,
+      platform: currentAccount.platform,
+      look_alike: data.lookalike,
+      white_list: data.whiteList,
+      black_list: data.blackList,
+      comments: data.comments,
+      messages: data.messages,
+      tags: data.tags,
     };
-    // async function doStuff() {
-    //   await new Promise((resolve) => {
-    //     setTimeout(() => {
-    //       PatchAccount(body, account_id);
-    //       resolve();
-    //     }, 2000);
-    //   }).then(() => {
-    //     window.location.reload();
-    //   });
-    // }
-    // doStuff();
-
-    PatchAccount(body, account_id);
+    PatchAccount(payload, account_id);
     setTimeout(() => {
       window.location.reload();
     }, 3000);
@@ -159,7 +137,7 @@ function ConfigPopup({ currentAccount, account_id, width }) {
           <Loading size="xl" />
         ) : (
           <div className="config-main">
-            <form onSubmit={HandleSubmit}>
+            <form onSubmit={handleSubmit}>
               <div className="config-toggles">
                 <Grid.Container justify="center">
                   <Grid sm={2} xs={2}>
@@ -227,7 +205,7 @@ function ConfigPopup({ currentAccount, account_id, width }) {
                       key={textarea.label}
                       label={textarea.label}
                       value={textarea.value || ''}
-                      set={textarea.set}
+                      name={textarea.name}
                       toolTipContent={textarea.tool}
                       toolTipLocal={'top'}
                     />

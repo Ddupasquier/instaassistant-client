@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Card, Text } from '@nextui-org/react';
-import { IconsQuestionMark } from 'components/icons/icons';
+import { TooltipPop } from 'components/Tooltip';
 import { AiOutlineUserAdd, AiOutlineUserDelete } from 'react-icons/ai';
 
 function FollowerGain({ num }) {
@@ -13,7 +13,7 @@ function FollowerGain({ num }) {
       >
         <Card.Header>
           Follower Gain&nbsp;
-          <IconsQuestionMark
+          <TooltipPop
             content="Followers gained over the specified time"
             local="topEnd"
           />

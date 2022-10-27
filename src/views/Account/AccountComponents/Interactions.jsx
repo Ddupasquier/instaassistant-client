@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Grid, Text } from '@nextui-org/react';
-import { IconsQuestionMark } from 'components/icons/icons';
+import { TooltipPop } from 'components/Tooltip';
 import { AiOutlineInteraction } from 'react-icons/ai';
 
 function Interactions({ num }) {
@@ -13,7 +13,7 @@ function Interactions({ num }) {
       >
         <Card.Header>
           <label htmlFor="interactions-today">Interactions Sent</label>&nbsp;
-          <IconsQuestionMark
+          <TooltipPop
             content="Total number of follows, likes, comments and Messages sent on your behalf."
             local="top"
           />

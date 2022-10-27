@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Grid, Text, Progress } from '@nextui-org/react';
-import { IconsQuestionMark } from 'components/icons/icons';
+import { TooltipPop } from 'components/Tooltip';
 
 function Utilization({ num }) {
   return (
@@ -12,7 +12,7 @@ function Utilization({ num }) {
       >
         <Card.Header>
           <label htmlFor="utilization-progress">Utilization Today </label>&nbsp;
-          <IconsQuestionMark
+          <TooltipPop
             content="Utilization is representative of how much/well you are using our application."
             local="topStart"
           />

@@ -8,7 +8,7 @@ import {
   styled,
 } from '@nextui-org/react';
 import { PostTask } from 'api';
-import { IconsQuestionMark } from 'components/icons/icons';
+import { TooltipPop } from 'components/Tooltip';
 import { TaskModalContext } from 'contexts/modalContext';
 
 // * ------- CONSTANTS ------- * //
@@ -103,7 +103,7 @@ function TaskModal({ account_id }) {
         <Modal.Body css={{ gap: '1rem' }}>
           <div style={{ display: 'flex', gap: '.5rem' }}>
             Action
-            <IconsQuestionMark
+            <TooltipPop
               content="Choose the action you would like your account to take."
               local="right"
             />
@@ -145,7 +145,7 @@ function TaskModal({ account_id }) {
               />
               <div style={{ display: 'flex', gap: '.5rem' }}>
                 Optional Arguments
-                <IconsQuestionMark
+                <TooltipPop
                   content="Optional arguments will overwrite your config for this task alone."
                   local="right"
                 />
