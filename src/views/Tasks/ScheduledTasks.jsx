@@ -19,11 +19,8 @@ function ScheduledTasks() {
 
   return (
     <div className="accounts-container">
-      <h1 style={{ margin: '0 1rem' }}>Scheduled Tasks {height}</h1>
-      {/* <span>
-        Window size: {width} x {height}
-      </span> */}
-      {tasksLoaded ? <TasksTable tasks={tasks} /> : <Loader />}
+      <h1 style={{ margin: '0 1rem' }}>Scheduled Tasks</h1>
+      {tasksLoaded ? <TasksTable tasks={tasks} height={height} /> : <Loader />}
     </div>
   );
 }

@@ -14,7 +14,11 @@ function Auth() {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          position: 'relative',
+          position: 'absolute',
+          top: '0',
+          left: '0',
+          height: '100vh',
+          width: '100vw',
         }}
       >
         <Login

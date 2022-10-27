@@ -8,20 +8,16 @@ import { Tr, Task } from 'components/styled.js';
 // * UTILS IMPORTS
 import { convertToUserTime } from 'utils';
 
-// * ICON IMPORTS
-// import { AiOutlineMessage } from 'react-icons/ai';
-// import { FaRegEnvelopeOpen } from 'react-icons/fa';
-// import { FiHeart, FiUserPlus, FiUserMinus } from 'react-icons/fi';
 /**
  * @function TasksRow
  * @description Renders a row for each task
  * @param tasks object
  * @returns row for user account
  */
-function TasksRow({ i, task }) {
+function TasksRow({ i, task, rowRef }) {
   const { account_id } = useParams();
   return (
-    <Tr key={task.id} role="row" aria-rowindex={i}>
+    <Tr key={task.id} role="row" aria-rowindex={i} ref={rowRef}>
       {/* <td>
         {task.id}
       </td> */}
@@ -43,12 +39,12 @@ function TasksRow({ i, task }) {
       <td aria-label="active-cell" role="cell">
         {convertToUserTime(task.date_created)}
       </td>
-      <td className="config-column" aria-label="config-cell" role="cell">
+      {/* <td className="config-column" aria-label="config-cell" role="cell">
         {task.likes_sent}
         {task.comments_sent}
         {task.follows_sent}
         {task.messages_sent}
-      </td>
+      </td> */}
       <td className="actions-column" aria-label="actions-cell" role="cell">
         <Link to={`/accounts/${account_id}/tasks/${task.id}`}>
           <Task size="20" />

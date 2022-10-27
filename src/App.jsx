@@ -22,16 +22,18 @@ function App() {
 
   return (
     <div className="App">
-        <div className="app">
-          <Header />
+      <div className="app">
+        <Header />
+        {localStorage.getItem('email') && (
           <Menu
             menuItemHovered={menuItemHovered}
             setMenuItemHovered={setMenuItemHovered}
           />
+        )}
 
-          <Outlet />
-          <BackgroundAnimation />
-        </div>
+        <Outlet />
+        <BackgroundAnimation />
+      </div>
     </div>
   );
 }

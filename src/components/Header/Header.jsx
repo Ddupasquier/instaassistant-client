@@ -20,30 +20,31 @@ function Header() {
         <i>Anti</i>
         <b>SocialSuite</b>
       </LogoName>
-      <div className="username">
-        <Text
-          h1
-          size={20}
-          css={{
-            color: '$font',
-          }}
-          style={{ zIndex: 1 }}
-          weight="bold"
-        >
-          {/* {localStorage.getItem('email').replace(/['"]+/g, '')} {'  '} */}
-        </Text>
-
-        <Button
-          href="/"
-          onPress={Logout}
-          size="xs"
-          color="warning"
-          css={{ marginLeft: '1rem' }}
-          rounded
-        >
-          Logout
-        </Button>
-      </div>
+      {localStorage.getItem('email') ? (
+        <div className="username">
+          <Text
+            h1
+            size={20}
+            css={{
+              color: '$font',
+            }}
+            style={{ zIndex: 1 }}
+            weight="bold"
+          >
+            {localStorage.getItem('email').replace(/['"]+/g, '')}
+          </Text>
+          <Button
+            href="/"
+            onPress={Logout}
+            size="xs"
+            color="warning"
+            css={{ marginLeft: '1rem' }}
+            rounded
+          >
+            Logout
+          </Button>
+        </div>
+      ) : null}
     </Header>
   );
 }
