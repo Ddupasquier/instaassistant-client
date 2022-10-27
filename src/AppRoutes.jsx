@@ -4,6 +4,7 @@ import { SWRConfig } from 'swr';
 
 // View Imports
 import App from 'App';
+import Auth from 'views/Auth/Auth';
 import { Billing } from 'views/Billing';
 import { Profile } from 'views/Profile';
 import { Account } from 'views/Account';
@@ -33,7 +34,11 @@ function AppRoutes() {
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <Routes>
           <Route path="/" element={<App />}>
-            <Route index element={<Accounts />} />
+            <Route
+              index
+              element={localStorage.getItem('token') ? <Accounts /> : <Auth />}
+            />
+            <Route path="/auth" element={<Auth />} />
             <Route path="/billing" element={<Billing />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/accounts" element={<Accounts />} />

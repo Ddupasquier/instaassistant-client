@@ -30,7 +30,7 @@ function Header() {
           style={{ zIndex: 1 }}
           weight="bold"
         >
-          {localStorage.getItem('email').replace(/['"]+/g, '')} {'  '}
+          {/* {localStorage.getItem('email').replace(/['"]+/g, '')} {'  '} */}
         </Text>
 
         <Button
