@@ -47,15 +47,19 @@ function TasksTable({ tasks, height }) {
               );
             })} */}
           {tasks &&
-            [...tasks]
-              .slice(start, rowsPerPage())
+            tasks
+              .slice(start, start + rowsPerPage())
               .map((task, i) => (
                 <TasksRow key={i} task={task} rowRef={rowRef} />
               ))}
         </tbody>
       </table>
-      <button onClick={() => setStart(start - rowsPerPage())}>Back</button>
-      <button onClick={() => setStart(start + rowsPerPage())}>Next</button>
+      {start > 0 && (
+        <button onClick={() => setStart(start - rowsPerPage())}>Back</button>
+      )}
+      {start + rowsPerPage() < tasks.length && (
+        <button onClick={() => setStart(start + rowsPerPage())}>Next</button>
+      )}
     </>
   );
 }
