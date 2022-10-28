@@ -17,7 +17,7 @@ import {
   listTargets,
   accountListTypes,
   postListTypes,
-} from './constants';
+} from '../views/Account/AccountComponents/constants';
 
 // * ------- UTILS ------- * //
 import { today, thisTime } from 'utils';

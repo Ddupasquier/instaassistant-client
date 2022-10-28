@@ -3,11 +3,10 @@ import Avatar from 'react-avatar';
 import Bubble from 'components/Bubble';
 import { useParams, Link } from 'react-router-dom';
 import { Grid, Card, Text, Dropdown } from '@nextui-org/react';
-import { FiInstagram, FiSettings } from 'react-icons/fi';
-import { IoLogoYoutube } from 'react-icons/io';
-import { IoLogoTiktok } from 'react-icons/io5';
+import { FiSettings } from 'react-icons/fi';
 import BackButton from './BackButton';
 import { TaskModalContext } from 'contexts/modalContext';
+import { platformIcon } from 'platformIcons';
 
 function AccountInfo({
   handleDeleteConfirmVisible,
@@ -16,18 +15,6 @@ function AccountInfo({
 }) {
   const { taskHandler } = useContext(TaskModalContext);
   const { account_id } = useParams();
-
-  const platformIcon = () => {
-    if (currentAccount.platform === 'INSTAGRAM') {
-      return <FiInstagram size="20" />;
-    } else if (currentAccount.platform === 'YOUTUBE') {
-      return <IoLogoYoutube size="20" />;
-    } else if (currentAccount.platform === 'TIKTOK') {
-      return <IoLogoTiktok size="20" />;
-    } else {
-      return <FiInstagram size="20" />;
-    }
-  };
 
   return (
     <Grid css={{ flex: '8' }}>
@@ -38,7 +25,7 @@ function AccountInfo({
         }}
       >
         <div style={{ position: 'absolute', top: '1rem', right: '1rem' }}>
-          {platformIcon()}
+          {platformIcon(currentAccount.platform)}
         </div>
 
         <div className="user">

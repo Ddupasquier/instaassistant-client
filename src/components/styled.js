@@ -66,4 +66,7 @@ export const Select = styled('select', {
   '&:hover': {
     outline: '2px solid #6200ff',
   },
+  '&:focus': {
+    outline: '2px solid #6200ff',
+  },
 });

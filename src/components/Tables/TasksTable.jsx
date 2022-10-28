@@ -1,8 +1,7 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import TasksRow from './TasksRow';
 
 function TasksTable({ tasks, height }) {
-  // const [tasksLoading, setTasksLoading] = useState(true);
   const [rowHeight, setRowHeight] = useState(0);
   const [start, setStart] = useState(0);
   const rowRef = useRef(null);
@@ -12,10 +11,6 @@ function TasksTable({ tasks, height }) {
       setRowHeight(rowRef.current.offsetHeight);
     }
   }, [rowRef]);
-
-  useEffect(() => {
-    console.log('start', start);
-  }, [start]);
 
   const rowsPerPage = () => {
     const tableHeight = height - 220;
@@ -39,8 +34,20 @@ function TasksTable({ tasks, height }) {
           </tr>
         </thead>
         <tbody>
+          {/* {tasks &&
+            tasks.map((task, i) => {
+              return (
+                <TasksRow
+                  key={task.id}
+                  i={i}
+                  task={task}
+                  rowRef={rowRef}
+                  setStart={setStart}
+                />
+              );
+            })} */}
           {tasks &&
-            tasks
+            [...tasks]
               .slice(start, rowsPerPage())
               .map((task, i) => (
                 <TasksRow key={i} task={task} rowRef={rowRef} />

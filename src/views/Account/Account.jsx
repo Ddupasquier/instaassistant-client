@@ -16,7 +16,7 @@ import MetricChart from './AccountComponents/MetricChart';
 import InteractionLimits from './AccountComponents/InteractionLimits';
 import ConfigPopup from './AccountComponents/ConfigPopup';
 import DeleteConfirm from 'components/DeleteConfirm';
-import TaskModal from './AccountComponents/TaskModal';
+import TaskModal from '../../components/TaskModal';
 import { TasksRunning } from '.';
 
 import AccountInfo from 'components/AccountInfo';
@@ -160,9 +160,7 @@ function Account() {
             <MetricChart snapshots={snapshots} />
           </Grid.Container>
         </div>
-        <TaskModal
-          account_id={account_id}
-        />
+        <TaskModal account_id={account_id} />
         <ConfigPopup currentAccount={currentAccount} account_id={account_id} />
         <DeleteConfirm
           deleteConfirmVisible={deleteConfirmVisible}

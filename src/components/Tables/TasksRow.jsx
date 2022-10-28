@@ -14,13 +14,20 @@ import { convertToUserTime } from 'utils';
  * @param tasks object
  * @returns row for user account
  */
-function TasksRow({ i, task, rowRef }) {
+function TasksRow({ i, task, rowRef, setStart }) {
   const { account_id } = useParams();
+
   return (
-    <Tr key={task.id} role="row" aria-rowindex={i} ref={rowRef}>
-      {/* <td>
-        {task.id}
-      </td> */}
+    <Tr
+      key={task.id}
+      role="row"
+      aria-rowindex={i}
+      ref={rowRef}
+      onClick={() => {
+        window.location.href = `/accounts/${account_id}/tasks/${task.id}`;
+      }}
+      css={{ cursor: 'pointer' }}
+    >
       <td className="username-column" aria-label="username-cell" role="cell">
         <Link
           to={`/accounts/${account_id}/tasks/${task.id}`}
@@ -39,12 +46,6 @@ function TasksRow({ i, task, rowRef }) {
       <td aria-label="active-cell" role="cell">
         {convertToUserTime(task.date_created)}
       </td>
-      {/* <td className="config-column" aria-label="config-cell" role="cell">
-        {task.likes_sent}
-        {task.comments_sent}
-        {task.follows_sent}
-        {task.messages_sent}
-      </td> */}
       <td className="actions-column" aria-label="actions-cell" role="cell">
         <Link to={`/accounts/${account_id}/tasks/${task.id}`}>
           <Task size="20" />

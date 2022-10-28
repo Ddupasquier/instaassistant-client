@@ -7,7 +7,7 @@ import 'views/Accounts/scss/accounts-styles.css';
 import { Tr, Eye, Trash, Task, Username } from 'components/styled.js';
 
 // * UTILS IMPORTS
-import { capitalizeFirstLetter } from 'utils';
+import { platformIcon } from 'platformIcons';
 
 // * ICON IMPORTS
 import { AiOutlineMessage } from 'react-icons/ai';
@@ -33,7 +33,7 @@ function AccountsRow({ user, handleDeleteConfirmVisible, setUserToDelete, i }) {
         <Username href={`/accounts/${user.id}`}>@{user.username}</Username>
       </td>
       <td aria-label="platform-cell" role="cell">
-        {capitalizeFirstLetter(user.platform)}
+        {platformIcon(user.platform)}
       </td>
       <td aria-label="tags-cell" role="cell">
         {user.tags}
