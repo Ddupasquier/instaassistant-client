@@ -89,6 +89,6 @@ export const ColButton = styled('button', {
   fontWeight: 'bold',
   transition: 'all 0.2s ease-in-out',
   '&:hover': {
-    color: '$primary',
+    color: '$font',
   },
 });

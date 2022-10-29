@@ -34,7 +34,6 @@ function TasksTable({ tasks, height }) {
       backgroundColor: '#838383',
       borderColor: '#838383',
     };
-    console.log(field, sortBy);
     return field === sortBy ? activeColStyle : {};
   };
 
