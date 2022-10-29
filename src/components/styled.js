@@ -82,6 +82,11 @@ export const Select = styled('select', {
 });
 
 export const ColButton = styled('button', {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  gap: '1rem',
+  width: '100%',
   background: 'none',
   border: 'none',
   outline: 'none',
@@ -90,5 +95,41 @@ export const ColButton = styled('button', {
   transition: 'all 0.2s ease-in-out',
   '&:hover': {
     color: '$font',
+  },
+});
+
+export const BackNext = styled('button', {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  background: 'none',
+  border: 'none',
+  outline: 'none',
+  cursor: 'pointer',
+  fontWeight: 'bold',
+  transition: 'all 0.2s ease-in-out',
+  '&:hover': {
+    color: '$font',
+    transform: 'translateY(-4px) scale(1.1)',
+  },
+});
+
+export const PageButton = styled('button', {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  color: '$font',
+  borderRadius: '50%',
+  background: 'none',
+  border: 'none',
+  width: '1.7rem',
+  height: '1.7rem',
+  outline: 'none',
+  cursor: 'pointer',
+  fontWeight: 'bold',
+  transition: 'all 0.2s ease-in-out',
+  '&:hover': {
+    color: '$font',
+    transform: 'translateY(-4px) scale(1.1)',
   },
 });

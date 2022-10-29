@@ -1,12 +1,14 @@
 import React, { useLayoutEffect, useRef, useState } from 'react';
 import TasksRow from './TasksRow';
 import { sortData } from 'utils';
-import { ColButton } from '../styled';
+import { ColButton, BackNext, PageButton } from '../styled';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
+import { IoChevronBackCircle, IoChevronForwardCircle } from 'react-icons/io5';
 
 function TasksTable({ tasks, height }) {
   const [rowHeight, setRowHeight] = useState(0);
   const [start, setStart] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
   const rowRef = useRef(null);
   const [sortBy, setSortBy] = useState('date');
   const [sortDirection, setSortDirection] = useState('desc');
@@ -24,8 +26,14 @@ function TasksTable({ tasks, height }) {
   }, [rowRef]);
 
   const rowsPerPage = () => {
-    const tableHeight = height - 220;
+    const tableHeight = height - 260;
     return Math.floor(tableHeight / rowHeight);
+  };
+
+  const numberOfPages = () => {
+    const pages = Math.ceil(tasks.length / rowsPerPage());
+    const pagesArr = Array.from(Array(pages).keys());
+    return pagesArr;
   };
 
   const checkActive = (field) => {
@@ -113,12 +121,56 @@ function TasksTable({ tasks, height }) {
               ))}
         </tbody>
       </table>
-      {start > 0 && (
-        <button onClick={() => setStart(start - rowsPerPage())}>Back</button>
-      )}
-      {start + rowsPerPage() < tasks.length && (
-        <button onClick={() => setStart(start + rowsPerPage())}>Next</button>
-      )}
+      <div
+        style={{
+          display: 'flex',
+          width: 'fit-content',
+          alignItems: 'center',
+          margin: 'auto',
+          gap: '.3rem',
+        }}
+      >
+        {start > 0 && (
+          <BackNext
+            onClick={() => {
+              setStart(start - rowsPerPage());
+              setCurrentPage(currentPage - 1);
+            }}
+          >
+            <IoChevronBackCircle size="45" />
+          </BackNext>
+        )}
+        {numberOfPages().map((page) => (
+          <PageButton
+            key={page}
+            onClick={() => {
+              setStart(page * rowsPerPage());
+              setCurrentPage(page + 1);
+            }}
+            style={
+              currentPage === page + 1
+                ? {
+                    transform: 'scale(1.1)',
+                    background: 'rgba(125, 0, 255)',
+                    color: 'white',
+                  }
+                : {}
+            }
+          >
+            {page + 1}
+          </PageButton>
+        ))}
+        {start + rowsPerPage() < tasks.length && (
+          <BackNext
+            onClick={() => {
+              setStart(start + rowsPerPage());
+              setCurrentPage(currentPage + 1);
+            }}
+          >
+            <IoChevronForwardCircle size="45" />
+          </BackNext>
+        )}
+      </div>
     </>
   );
 }
