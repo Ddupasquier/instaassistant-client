@@ -41,6 +41,16 @@ export const Task = styled(BiTask, {
   },
 });
 
+export const TaskCell = styled('a', {
+  color: '$font',
+  fontSize: '1rem',
+  cursor: 'pointer',
+  transition: 'all 0.2s ease-in-out',
+  '&:hover': {
+    color: '$primary',
+  },
+});
+
 export const Username = styled('a', {
   color: '$font',
   fontSize: '1rem',
@@ -68,5 +78,17 @@ export const Select = styled('select', {
   },
   '&:focus': {
     outline: '2px solid #6200ff',
+  },
+});
+
+export const ColButton = styled('button', {
+  background: 'none',
+  border: 'none',
+  outline: 'none',
+  cursor: 'pointer',
+  fontWeight: 'bold',
+  transition: 'all 0.2s ease-in-out',
+  '&:hover': {
+    color: '$primary',
   },
 });

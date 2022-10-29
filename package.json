@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "antisocialsuite",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -20,7 +20,8 @@
     "start": "PORT=3001 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "docs": "./node_modules/.bin/jsdoc src/**"
   },
   "eslintConfig": {
     "extends": [

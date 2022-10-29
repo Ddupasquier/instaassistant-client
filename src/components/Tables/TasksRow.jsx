@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import 'views/Accounts/scss/accounts-styles.css';
 
 // * STYLED COMPONENTS
-import { Tr, Task } from 'components/styled.js';
+import { Tr, Task, TaskCell } from 'components/styled.js';
 
 // * UTILS IMPORTS
 import { convertToUserTime } from 'utils';
@@ -14,7 +14,7 @@ import { convertToUserTime } from 'utils';
  * @param tasks object
  * @returns row for user account
  */
-function TasksRow({ i, task, rowRef, setStart }) {
+function TasksRow({ i, task, rowRef }) {
   const { account_id } = useParams();
 
   return (
@@ -29,12 +29,12 @@ function TasksRow({ i, task, rowRef, setStart }) {
       css={{ cursor: 'pointer' }}
     >
       <td className="username-column" aria-label="username-cell" role="cell">
-        <Link
+        <TaskCell
           to={`/accounts/${account_id}/tasks/${task.id}`}
-          style={{ color: 'black', fontWeight: '700' }}
+          style={{ fontWeight: '700' }}
         >
           {task.task_type}
-        </Link>
+        </TaskCell>
       </td>
       <td>{task.list_type}</td>
       <td aria-label="platform-cell" role="cell">

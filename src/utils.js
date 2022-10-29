@@ -161,3 +161,29 @@ export function returnAccounts(acctArr, searchTerm) {
  * @param {string} searchTerm
  * @returns {array} accounts sorted by username or filtered by searchTerm + sorted by username
  **/
+
+export const sortData = (data, sortBy, sortDirection) => {
+  const sortedData = [...data];
+  sortedData.sort((a, b) => {
+    if (a[sortBy] < b[sortBy]) {
+      return sortDirection === 'asc' ? -1 : 1;
+    }
+    if (a[sortBy] > b[sortBy]) {
+      return sortDirection === 'asc' ? 1 : -1;
+    }
+    return 0;
+  });
+  return sortedData;
+};
+/**
+ * @function sortData
+ * @description sorts data by a given column
+ * @param {array} data - array of data
+ * @param {string} sortBy - column to sort by
+ * @param {string} sortDirection - direction to sort by
+ * @returns {array} sorted data
+ * @example
+ * sortData(data, 'username', 'asc') // returns data sorted by username in ascending order
+ * sortData(data, 'username', 'desc') // returns data sorted by username in descending order
+ * sortData(data, 'date', 'asc') // returns data sorted by date in ascending order
+ **/
