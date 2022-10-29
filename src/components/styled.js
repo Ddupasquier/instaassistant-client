@@ -44,6 +44,7 @@ export const Task = styled(BiTask, {
 export const TaskCell = styled('a', {
   color: '$font',
   fontSize: '1rem',
+  fontWeight: '700',
   cursor: 'pointer',
   transition: 'all 0.2s ease-in-out',
   '&:hover': {
@@ -51,7 +52,7 @@ export const TaskCell = styled('a', {
   },
 });
 
-export const Username = styled('a', {
+export const Username = styled('span', {
   color: '$font',
   fontSize: '1rem',
   fontWeight: 'bold',

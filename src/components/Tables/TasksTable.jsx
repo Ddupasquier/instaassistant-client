@@ -18,6 +18,19 @@ function TasksTable({ tasks, height }) {
       return sortDirection === 'asc' ? <IoIosArrowUp /> : <IoIosArrowDown />;
     }
   };
+  /**
+   * @function renderAscDesc
+   * @param {string} field
+   * @returns {JSX} icon
+   * @description
+   * This function checks the field and returns the appropriate icon
+   * based on the field.
+   * @example
+   * renderAscDesc('date')
+   * // returns <IoIosArrowDown />
+   * renderAscDesc('task')
+   * // returns null
+   */
 
   useLayoutEffect(() => {
     if (rowRef.current) {
@@ -35,6 +48,17 @@ function TasksTable({ tasks, height }) {
     const pagesArr = Array.from(Array(pages).keys());
     return pagesArr;
   };
+  /**
+   * @function numberOfPages
+   * @returns {array} of page numbers
+   * @description
+   * This function calculates the number of pages based on the number of rows
+   * and the height of the table.
+   * @example
+   * numberOfPages()
+   * // returns [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+   * // if there are 100 rows and there are 10 rows rendered on screen
+   */
 
   const checkActive = (field) => {
     const activeColStyle = {
@@ -44,6 +68,14 @@ function TasksTable({ tasks, height }) {
     };
     return field === sortBy ? activeColStyle : {};
   };
+  /**
+   * @function checkActive
+   * @param {string} field
+   * @returns {object} style
+   * @description
+   * This function checks the field that is being sorted by and returns the
+   * appropriate style object to be applied to the column header.
+   */
 
   return (
     <>
@@ -110,6 +142,7 @@ function TasksTable({ tasks, height }) {
             </th>
 
             <th scope="col">Actions</th>
+            <th scope="col">Status</th>
           </tr>
         </thead>
         <tbody>
@@ -128,18 +161,18 @@ function TasksTable({ tasks, height }) {
           alignItems: 'center',
           margin: 'auto',
           gap: '.3rem',
+          transition: 'all .5s',
         }}
       >
-        {start > 0 && (
-          <BackNext
-            onClick={() => {
-              setStart(start - rowsPerPage());
-              setCurrentPage(currentPage - 1);
-            }}
-          >
-            <IoChevronBackCircle size="45" />
-          </BackNext>
-        )}
+        <BackNext
+          onClick={() => {
+            setStart(start - rowsPerPage());
+            setCurrentPage(currentPage - 1);
+          }}
+          css={{ visibility: start > 0 ? 'visible' : 'hidden' }}
+        >
+          <IoChevronBackCircle size="45" />
+        </BackNext>
         {numberOfPages().map((page) => (
           <PageButton
             key={page}
@@ -160,16 +193,18 @@ function TasksTable({ tasks, height }) {
             {page + 1}
           </PageButton>
         ))}
-        {start + rowsPerPage() < tasks.length && (
-          <BackNext
-            onClick={() => {
-              setStart(start + rowsPerPage());
-              setCurrentPage(currentPage + 1);
-            }}
-          >
-            <IoChevronForwardCircle size="45" />
-          </BackNext>
-        )}
+        <BackNext
+          onClick={() => {
+            setStart(start + rowsPerPage());
+            setCurrentPage(currentPage + 1);
+          }}
+          css={{
+            visibility:
+              start + rowsPerPage() < tasks.length ? 'visible' : 'hidden',
+          }}
+        >
+          <IoChevronForwardCircle size="45" />
+        </BackNext>
       </div>
     </>
   );

@@ -30,7 +30,9 @@ function AccountsRow({ user, handleDeleteConfirmVisible, setUserToDelete, i }) {
           size="35"
           textSizeRatio={2}
         />
-        <Username href={`/accounts/${user.id}`}>@{user.username}</Username>
+        <Link to={`/accounts/${user.id}`}>
+          <Username>@{user.username}</Username>
+        </Link>
       </td>
       <td aria-label="platform-cell" role="cell">
         {platformIcon(user.platform)}

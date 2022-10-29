@@ -6,9 +6,6 @@ function NewAccountModal({ newAccountVisible, closeNewAccountHandler }) {
   const [pwd, setPwd] = useState('');
   const [pwdConf, setPwdConf] = useState('');
   const [username, setUsername] = useState('');
-
-  // const [postSuccess, setPostSuccess] = useState(false)
-
   const [newAccountSetup, setNewAccountSetup] = useState(null);
   const [tryingLogin, setTryingLogin] = useState(null);
 

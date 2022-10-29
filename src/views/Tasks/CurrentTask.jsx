@@ -7,6 +7,7 @@ import Bubble from 'components/Bubble';
 import AccountInfoMin from 'components/AccountInfoMin';
 import BackButton from '../../components/BackButton';
 import Loader from 'components/Loader';
+import ElipsesAnimation from 'components/Elipses/ElipsesAnimation';
 
 function CurrentTask() {
   const { task_id, account_id } = useParams();
@@ -24,6 +25,8 @@ function CurrentTask() {
     });
   }, [account_id, task_id]);
 
+  console.log(task);
+
   return (
     <div className="view-container">
       <Card
@@ -32,7 +35,7 @@ function CurrentTask() {
           background: '$myColor',
           width: '90%',
           margin: '3rem',
-          overflow: 'auto',
+          overflow: 'hidden',
         }}
       >
         {taskLoaded ? (
@@ -43,6 +46,9 @@ function CurrentTask() {
               >
                 <BackButton />
                 <h1>{task.task_type}</h1>
+                {task.status === 'ACTIVE' && (
+                  <ElipsesAnimation font={40} width={'1.1rem'} />
+                )}
                 <div>Created: {convertToUserTime(task.date_created)}</div>
                 <div>Scheduled: {convertToUserTime(task.date)}</div>
               </div>
@@ -96,69 +102,6 @@ function CurrentTask() {
                 Log Output
                 <br />
                 Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                {/* Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
-                <br /> */}
               </Card.Body>
             </Card>
           </>
