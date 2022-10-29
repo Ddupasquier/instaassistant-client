@@ -21,7 +21,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "docs": "./node_modules/.bin/jsdoc src/**"
+    "docs": "./node_modules/.bin/jsdoc -c jsdoc.json"
   },
   "eslintConfig": {
     "extends": [
