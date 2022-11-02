@@ -24,6 +24,22 @@ ChartJS.register(
   ArcElement
 );
 
+const legendMargin = {
+  id: 'increase-legend-spacing',
+  beforeInit(chart) {
+    // Get reference to the original fit function
+    const originalFit = chart.legend.fit;
+
+    // Override the fit function
+    chart.legend.fit = function fit() {
+      // Call original function and bind scope in order to use `this` correctly inside it
+      originalFit.bind(chart.legend)();
+      // Change the height as suggested in another answers
+      this.height += 20;
+    };
+  },
+};
+
 function LimitsBars({ data: { follows, likes, comments, messages }, toggle }) {
   const { theme } = useTheme();
   const [followerData, setFollowerData] = useState({
@@ -128,6 +144,7 @@ function LimitsBars({ data: { follows, likes, comments, messages }, toggle }) {
           options={chartOptions}
           data={followerData}
           height={smallScreenCheck}
+          plugins={[legendMargin]}
         />
       )}
     </>
