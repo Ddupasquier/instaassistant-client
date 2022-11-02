@@ -62,7 +62,7 @@ function ConfigPopup({ currentAccount, account_id }) {
     },
     {
       name: 'messages',
-      label: 'Direct Messages',
+      label: 'Direct Poop',
       value: currentAccount.messages,
       tool: 'This list is used to store generic comments AntiSocialSuite can send on your behalf.',
     },
