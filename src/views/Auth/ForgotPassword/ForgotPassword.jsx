@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './scss/password-styles.css';
+import './password-styles.scss';
 import { Button, Input, Spacer } from '@nextui-org/react';
 import { GenerateResetToken } from 'api/index';
 

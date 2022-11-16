@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Text, styled } from '@nextui-org/react';
-import './scss/header-styles.css';
+import './header-styles.scss';
 import { Logout } from 'api';
 import Logo from './Logo';
 
@@ -15,13 +15,17 @@ function Header() {
 
   return (
     <Header>
-      <Logo />
+      {/* <Logo />
       <LogoName className="site-name">
         <i>Anti</i>
         <b>SocialSuite</b>
-      </LogoName>
+      </LogoName> */}
+      <img
+        src="https://advancedwebtechnology.com/Portals/37/Images/homepage/antiSOCIALsuiteInvert.png?ver=g-u1nMh8HfcFY3ZfIHTpkA%3d%3d&timestamp=1666040239701"
+        alt="ass-logo"
+      />
       {localStorage.getItem('email') ? (
-        <div className="username">
+        <div className="header-right">
           <Text
             h1
             size={20}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { GetFAQs } from 'api';
-import './scss/faq-styles.css';
+import './faq-styles.scss';
 
 import { Loading, Collapse, Text, Card } from '@nextui-org/react';
 

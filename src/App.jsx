@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import 'globals/global-classes.css';
+import 'globals/global-classes.scss';
 import { Outlet } from 'react-router-dom';
 import { Header } from 'components/Header';
 import { Menu } from 'components/Menu';

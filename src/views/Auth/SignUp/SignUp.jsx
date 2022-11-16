@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './scss/signup-styles.css';
+import './signup-styles.scss';
 import { Button, Input, Loading, Spacer } from '@nextui-org/react';
 import { CreateUserPost } from 'api';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Avatar from 'react-avatar';
-import 'views/Accounts/scss/accounts-styles.css';
+import 'views/Accounts/accounts-styles.scss';
 
 // * STYLED COMPONENTS
 import { Tr, Eye, Trash, Task, Username } from 'components/styled.js';

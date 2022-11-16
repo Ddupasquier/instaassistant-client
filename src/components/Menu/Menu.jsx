@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from 'contexts/appContext';
-import './scss/menu-styles.css';
+import './menu-styles.scss';
 
 import {
   FaUserAlt,

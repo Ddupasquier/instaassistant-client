@@ -1,5 +1,5 @@
 import React, { Suspense, useState, useTransition } from 'react';
-import './scss/accounts-styles.css';
+import './accounts-styles.scss';
 
 // * NEXTUI IMPORTS
 import { Text, Button, Input } from '@nextui-org/react';
