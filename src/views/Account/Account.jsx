@@ -6,7 +6,7 @@ import { TaskModalContext } from 'contexts/modalContext';
 import { getSnapshots, GetTasks, ShowAccount } from 'api';
 
 import { Grid, Loading } from '@nextui-org/react';
-import './scss/account-styles.css';
+import './account-styles.scss';
 
 // * ------- COMPONENTS ------- *
 import Utilization from './AccountComponents/Utilization';

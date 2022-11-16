@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './scss/login-styles.css';
+import './login-styles.scss';
 import { Button, Input, Spacer } from '@nextui-org/react';
 import { loginFetch } from 'api';
 

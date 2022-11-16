@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import 'views/Accounts/scss/accounts-styles.css';
+import 'views/Accounts/accounts-styles.scss';
 
 import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
 import { MdOutlineSchedule } from 'react-icons/md';

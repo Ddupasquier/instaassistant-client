@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Text } from '@nextui-org/react';
-import './scss/billing-styles.css';
+import './billing-styles.scss';
 import { CreateCheckoutSession } from 'api';
 import Package from './Package';
 
