@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Avatar from 'react-avatar';
 import 'views/Accounts/accounts-styles.scss';
 
@@ -20,8 +20,16 @@ import { FiHeart, FiUserPlus, FiUserMinus } from 'react-icons/fi';
  * @returns row for user account
  */
 function AccountsRow({ user, handleDeleteConfirmVisible, setUserToDelete, i }) {
+  const navigate = useNavigate();
   return (
-    <Tr key={user.id} role="row" aria-rowindex={i}>
+    <Tr
+      key={user.id}
+      role="row"
+      aria-rowindex={i}
+      onClick={() => {
+        navigate(`/accounts/${user.id}`);
+      }}
+    >
       <td className="username-column" aria-label="username-cell" role="cell">
         <Avatar
           name={user.username}
@@ -50,7 +58,12 @@ function AccountsRow({ user, handleDeleteConfirmVisible, setUserToDelete, i }) {
         {user.allow_follow && <FiUserPlus title="Following enabled" />}
         {user.allow_unfollow && <FiUserMinus title="Unfollowing enabled" />}
       </td>
-      <td className="actions-column" aria-label="actions-cell" role="cell">
+      <td
+        className="actions-column"
+        aria-label="actions-cell"
+        role="presentation"
+        onClick={(e) => e.stopPropagation()}
+      >
         <Link to={`/accounts/${user.id}`}>
           <Eye title="View account" size="20" />
         </Link>
