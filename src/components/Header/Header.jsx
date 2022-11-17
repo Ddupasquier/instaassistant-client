@@ -2,29 +2,19 @@ import React from 'react';
 import { Button, Text, styled } from '@nextui-org/react';
 import './header-styles.scss';
 import { Logout } from 'api';
-import Logo from './Logo';
 
 function Header() {
   const Header = styled('header', {
     backgroundColor: '$menu',
   });
 
-  const LogoName = styled('div', {
-    color: '$font',
-  });
-
   return (
     <Header>
-      {/* <Logo />
-      <LogoName className="site-name">
-        <i>Anti</i>
-        <b>SocialSuite</b>
-      </LogoName> */}
       <img
-        src="https://advancedwebtechnology.com/Portals/37/Images/homepage/antiSOCIALsuiteInvert.png?ver=g-u1nMh8HfcFY3ZfIHTpkA%3d%3d&timestamp=1666040239701"
+        src="https://advanced-web-technology-c3582e48.s3.us-west-1.amazonaws.com/AntiSocialSuite/img/antiSOCIALsuite.svg"
         alt="ass-logo"
       />
-      {localStorage.getItem('email') ? (
+      {localStorage.getItem('email') && (
         <div className="header-right">
           <Text
             h1
@@ -42,13 +32,13 @@ function Header() {
             onPress={Logout}
             size="xs"
             color="warning"
-            css={{ marginLeft: '1rem' }}
+            css={{ margin: '0 1rem' }}
             rounded
           >
             Logout
           </Button>
         </div>
-      ) : null}
+      )}
     </Header>
   );
 }
