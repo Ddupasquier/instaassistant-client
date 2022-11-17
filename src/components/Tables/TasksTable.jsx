@@ -140,8 +140,6 @@ function TasksTable({ tasks, height }) {
                 Created {renderAscDesc('date_created')}
               </ColButton>
             </th>
-
-            <th scope="col">Actions</th>
             <th scope="col">Status</th>
           </tr>
         </thead>

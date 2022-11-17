@@ -68,11 +68,11 @@ function TasksRow({ i, task, rowRef }) {
       <td aria-label="date-created-cell" role="cell">
         {convertToUserTime(task.date_created)}
       </td>
-      <td className="actions-column" aria-label="actions-cell" role="cell">
+      {/* <td className="actions-column" aria-label="actions-cell" role="cell">
         <Link to={`/accounts/${account_id}/tasks/${task.id}`}>
           <Task size="20" />
         </Link>
-      </td>
+      </td> */}
       <td aria-label="status-cell" role="cell">
         {checkStatus(task.status)}
       </td>
