@@ -11,7 +11,6 @@ function EditProfile({
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
-    // console.log(data);
     const payload = {
       company_name: data.company_name || '',
       email: data.email || '',
@@ -19,7 +18,6 @@ function EditProfile({
       website: data.website || '',
       profile_pic: data.profile_pic || '',
     };
-    // console.log(payload);
     EditProfilePatch(payload).then(window.location.reload());
   };
 

@@ -5,6 +5,7 @@ import { BiTask } from 'react-icons/bi';
 export const Tr = styled('tr', {
   background: '$solid',
   transition: 'all 0.2s ease-in-out',
+  cursor: 'pointer',
   '&:hover': {
     filter: 'brightness(95%)',
     transform: 'translateY(-4px)',

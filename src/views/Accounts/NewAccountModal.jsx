@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { Modal, Input, Button, Text, Spacer, Loading } from '@nextui-org/react';
 import { CreateAccount, GetTask } from 'api';
+import DropDown from 'components/DropDown';
+import { platforms } from './constants';
 
 function NewAccountModal({ newAccountVisible, closeNewAccountHandler }) {
   const [pwd, setPwd] = useState('');
   const [pwdConf, setPwdConf] = useState('');
   const [username, setUsername] = useState('');
+  const [platform, setPlatform] = useState('');
   const [newAccountSetup, setNewAccountSetup] = useState(null);
   const [tryingLogin, setTryingLogin] = useState(null);
 
@@ -16,18 +19,17 @@ function NewAccountModal({ newAccountVisible, closeNewAccountHandler }) {
         'Passwords do not match. Double check your password is correct, then try again.'
       );
     } else {
-      const payload = { username, password: pwd, platform: 'instagram' };
+      const payload = { username, password: pwd, platform };
       CreateAccount(payload).then((data) => {
         if (data.success) {
           alert('we got a success');
           this.checkStatus = setInterval(() => {
             GetTask(data.task_id).then((data) => {
               if (data.error) {
-                console.log(data.error);
+                alert('failed');
               } else if (data.status === 'COMPLETED') {
                 window.location.replace('/accounts/' + data.account_id);
               } else if (data.status === 'IN_PROGRESS') {
-                console.log('Logging in...');
                 setTryingLogin(true);
               } else if (data.status === 'SCHEDULED') {
                 setNewAccountSetup(true);
@@ -61,8 +63,13 @@ function NewAccountModal({ newAccountVisible, closeNewAccountHandler }) {
           </Modal.Header>
           <form onSubmit={HandleSubmit}>
             <Modal.Body>
+              <DropDown
+                options={platforms}
+                name={'Platform'}
+                setter={setPlatform}
+              />
               <Input
-                label="username"
+                label="Username"
                 labelLeft="@"
                 underlined
                 css={{ width: '100%' }}

@@ -6,12 +6,6 @@ function DropDown({ setter, options, name }) {
     <Select
       name={name}
       required
-      // style={{
-      //   backgroundColor: 'gray',
-      //   borderRadius: '1rem',
-      //   padding: '.3rem',
-      //   width: '100%',
-      // }}
       onChange={(e) => setter(e.target.value)}
     >
       <option value="" style={{ color: 'black' }}>

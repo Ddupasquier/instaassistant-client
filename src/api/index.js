@@ -34,7 +34,8 @@ export const CreateUserPost = async (userInfo) => {
   if (response.ok) {
     return await response.json();
   } else {
-    throw new Error('Something went wrong');
+    alert('Something went wrong');
+    localStorage.removeItem('jwt');
   }
 };
 
@@ -79,7 +80,6 @@ export const GetUserInfo = async () => {
 };
 
 export const EditProfilePatch = async (newData) => {
-  console.log('newData', newData);
   const response = await fetch(editProfilePath, {
     method: 'PATCH',
     headers: {
@@ -90,16 +90,13 @@ export const EditProfilePatch = async (newData) => {
     body: JSON.stringify(newData),
   });
   if (response.ok) {
-    console.log('success');
     return await response.json();
   } else {
-    console.log('failed from client');
     throw new Error('Something went wrong');
   }
 };
 
 export const ChangePasswordPatch = async (newData) => {
-  console.log('newData', newData);
   const response = await fetch(changePasswordPath, {
     method: 'PATCH',
     headers: {
@@ -114,7 +111,6 @@ export const ChangePasswordPatch = async (newData) => {
   if (resp.error) {
     alert(resp.error);
   } else if (resp.success) {
-    console.log('success');
     return resp;
   }
 };
@@ -249,7 +245,6 @@ export const PostTask = async (formData) => {
   const res = await response.json();
   if (res.error) {
     alert('Something went wrong. Please try again later!', res.error);
-    console.log('nope', res.error);
     throw new Error(res.error);
   } else {
     return res;
@@ -351,7 +346,6 @@ export const GenerateResetToken = async (formData) => {
   if (resp_1.error) {
     alert(resp_1.error);
   } else if (resp_1.success) {
-    console.log('success');
     return resp_1;
   }
 };

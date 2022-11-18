@@ -6,7 +6,7 @@ import { Grid, Card, Text, Dropdown } from '@nextui-org/react';
 import { FiSettings } from 'react-icons/fi';
 import BackButton from './BackButton';
 import { TaskModalContext } from 'contexts/modalContext';
-import { platformIcon } from 'platformIcons';
+import { platformIcon } from 'utils';
 
 function AccountInfo({
   handleDeleteConfirmVisible,
