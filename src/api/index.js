@@ -34,7 +34,8 @@ export const CreateUserPost = async (userInfo) => {
   if (response.ok) {
     return await response.json();
   } else {
-    throw new Error('Something went wrong');
+    alert('Something went wrong');
+    localStorage.removeItem('jwt');
   }
 };
 

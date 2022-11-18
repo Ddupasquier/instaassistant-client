@@ -1,13 +1,28 @@
-import React, { useState } from 'react';
-import { Modal, Input, Button, Text, Spacer, Loading } from '@nextui-org/react';
+import React, { useState, useEffect } from 'react';
+import {
+  Modal,
+  Input,
+  Button,
+  Text,
+  Spacer,
+  Loading,
+  Dropdown,
+} from '@nextui-org/react';
 import { CreateAccount, GetTask } from 'api';
+import DropDown from 'components/DropDown';
+import { platforms } from './constants';
 
 function NewAccountModal({ newAccountVisible, closeNewAccountHandler }) {
   const [pwd, setPwd] = useState('');
   const [pwdConf, setPwdConf] = useState('');
   const [username, setUsername] = useState('');
+  const [platform, setPlatform] = useState('');
   const [newAccountSetup, setNewAccountSetup] = useState(null);
   const [tryingLogin, setTryingLogin] = useState(null);
+
+  useEffect(() => {
+    console.log(platform);
+  }, [platform]);
 
   const HandleSubmit = (e) => {
     e.preventDefault();
@@ -61,8 +76,13 @@ function NewAccountModal({ newAccountVisible, closeNewAccountHandler }) {
           </Modal.Header>
           <form onSubmit={HandleSubmit}>
             <Modal.Body>
+              <DropDown
+                options={platforms}
+                name={'Platform'}
+                setter={setPlatform}
+              />
               <Input
-                label="username"
+                label="Username"
                 labelLeft="@"
                 underlined
                 css={{ width: '100%' }}
