@@ -7,7 +7,7 @@ import 'views/Accounts/accounts-styles.scss';
 import { Tr, Eye, Trash, Task, Username } from 'components/styled.js';
 
 // * UTILS IMPORTS
-import { platformIcon } from 'platformIcons';
+import { platformIcon } from 'utils';
 
 // * ICON IMPORTS
 import { AiOutlineMessage } from 'react-icons/ai';

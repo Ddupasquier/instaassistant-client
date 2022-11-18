@@ -25,8 +25,6 @@ function CurrentTask() {
     });
   }, [account_id, task_id]);
 
-  console.log(task);
-
   return (
     <div className="view-container">
       <Card

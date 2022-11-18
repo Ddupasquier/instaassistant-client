@@ -57,7 +57,6 @@ function TaskModal({ account_id }) {
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
-    console.log('data', data);
     const scheduledDate = new Date(`${data.date} ${data.time}`).toUTCString();
     const notScheduled = new Date().toUTCString();
     const payload = {
@@ -71,14 +70,12 @@ function TaskModal({ account_id }) {
       date: schedule ? scheduledDate : notScheduled,
       date_created: notScheduled,
     };
-    console.log('payload', payload);
     const res = PostTask(payload);
     if (res.error) {
-      console.log(res.error);
-      // alert(
-      //   'Something went wrong. Please try again in a few minutes!',
-      //   res.error
-      // );
+      alert(
+        'Something went wrong. Please try again in a few minutes!',
+        res.error
+      );
     } else {
       closeTaskHandler();
     }

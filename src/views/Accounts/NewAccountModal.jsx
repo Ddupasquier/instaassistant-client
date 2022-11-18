@@ -26,11 +26,10 @@ function NewAccountModal({ newAccountVisible, closeNewAccountHandler }) {
           this.checkStatus = setInterval(() => {
             GetTask(data.task_id).then((data) => {
               if (data.error) {
-                console.log(data.error);
+                alert('failed');
               } else if (data.status === 'COMPLETED') {
                 window.location.replace('/accounts/' + data.account_id);
               } else if (data.status === 'IN_PROGRESS') {
-                console.log('Logging in...');
                 setTryingLogin(true);
               } else if (data.status === 'SCHEDULED') {
                 setNewAccountSetup(true);
