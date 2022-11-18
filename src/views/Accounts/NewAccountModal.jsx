@@ -1,13 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import {
-  Modal,
-  Input,
-  Button,
-  Text,
-  Spacer,
-  Loading,
-  Dropdown,
-} from '@nextui-org/react';
+import React, { useState } from 'react';
+import { Modal, Input, Button, Text, Spacer, Loading } from '@nextui-org/react';
 import { CreateAccount, GetTask } from 'api';
 import DropDown from 'components/DropDown';
 import { platforms } from './constants';
@@ -20,10 +12,6 @@ function NewAccountModal({ newAccountVisible, closeNewAccountHandler }) {
   const [newAccountSetup, setNewAccountSetup] = useState(null);
   const [tryingLogin, setTryingLogin] = useState(null);
 
-  useEffect(() => {
-    console.log(platform);
-  }, [platform]);
-
   const HandleSubmit = (e) => {
     e.preventDefault();
     if (pwd !== pwdConf) {
@@ -31,7 +19,7 @@ function NewAccountModal({ newAccountVisible, closeNewAccountHandler }) {
         'Passwords do not match. Double check your password is correct, then try again.'
       );
     } else {
-      const payload = { username, password: pwd, platform: 'instagram' };
+      const payload = { username, password: pwd, platform };
       CreateAccount(payload).then((data) => {
         if (data.success) {
           alert('we got a success');
