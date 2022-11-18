@@ -1,12 +1,12 @@
 import React from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import 'views/Accounts/accounts-styles.scss';
 
 import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
 import { MdOutlineSchedule } from 'react-icons/md';
 
 // * STYLED COMPONENTS
-import { Tr, Task, TaskCell } from 'components/styled.js';
+import { Tr, TaskCell } from 'components/styled.js';
 
 // * UTILS IMPORTS
 import { convertToUserTime } from 'utils';
