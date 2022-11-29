@@ -39,6 +39,7 @@ input:-webkit-autofill {
   font-family: none;
   cursor: pointer;
   font-size: 1.1rem;
+
   &:hover {
     text-decoration: underline;
   }
@@ -59,6 +60,7 @@ input:-webkit-autofill {
   overflow: auto;
   z-index: 1;
 }
+
 .account-container {
   position: relative;
   display: flex;

@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom';
 import { Header } from 'components/Header';
 import { Menu } from 'components/Menu';
 import BackgroundAnimation from 'components/Background/BackgroundAnimation';
+import { Sidebar as Example } from "components/Sidebar/Sidebar.tsx";
 
 function App() {
   const [menuItemHovered, setMenuItemHovered] = useState('');
@@ -29,6 +30,7 @@ function App() {
             menuItemHovered={menuItemHovered}
             setMenuItemHovered={setMenuItemHovered}
           />
+          // <Example />
         )}
 
         <Outlet />

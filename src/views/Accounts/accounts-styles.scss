@@ -9,26 +9,32 @@ table {
   width: 100%;
   max-height: 90%;
   table-layout: auto;
+
   td {
     text-align: center;
     padding: 0.5rem;
   }
+
   tr {
     vertical-align: center;
   }
+
   thead tr th {
     margin: 1rem;
   }
+
   .username-column {
     display: flex;
     align-items: center;
     gap: 1rem;
     text-align: left;
   }
-  .config-column > * {
+
+  .config-column>* {
     margin-right: 0.5rem;
   }
-  .actions-column > * {
+
+  .actions-column>* {
     margin-right: 0.5rem;
   }
 }
