@@ -6,7 +6,7 @@ export const SideBar = styled('div', {
   zIndex: '100',
   position: 'relative',
   padding: '0',
-  margin: '0',
+  // margin: '0',
   color: '$text',
 });
 
@@ -16,7 +16,6 @@ export const Detail = styled('details', {
 
 export const Li = styled('li', {
   margin: '0',
-  padding: '0.5rem 0',
   listStyle: 'none',
   width: '100%',
   color: '$text',

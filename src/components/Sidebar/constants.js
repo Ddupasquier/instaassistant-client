@@ -38,18 +38,18 @@ export const upperMenuItems = [
     name: 'Discover',
     to: '',
     icon: RiCompassDiscoverFill,
-    // items: ['News', 'Blog', 'Resources', 'FAQ'],
+    items: ["Blog (Coming soon)", "Trending (Coming soon)"],
   },
-  {
-    name: 'Blog (coming soon)',
-    to: '',
-    icon: BsPenFill,
-  },
-  {
-    name: 'Trending (coming soon)',
-    to: '',
-    icon: FiTrendingUp,
-  },
+  // {
+  //   name: 'Blog (coming soon)',
+  //   to: '',
+  //   icon: BsPenFill,
+  // },
+  // {
+  //   name: 'Trending (coming soon)',
+  //   to: '',
+  //   icon: FiTrendingUp,
+  // },
 ];
 
 export const lowerMenuItems = [

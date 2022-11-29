@@ -36,7 +36,7 @@ export const Sidebar = () => {
                   <summary>{item.name}</summary>
                   <ul className={item.name === 'Apps' ? 'apps-details' : null}>
                     {item.items.map((subItem, i) => (
-                      <Li key={i}>
+                      <Li key={i} className="app-icons">
                         {subItem.src ? (
                           <img
                             src={subItem.src}
