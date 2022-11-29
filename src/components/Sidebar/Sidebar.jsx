@@ -134,6 +134,9 @@ export const Sidebar = () => {
         src="https://advanced-web-technology-c3582e48.s3.us-west-1.amazonaws.com/AntiSocialSuite/img/antiSOCIALsuite.svg"
         alt="ass-logo"
       />
+      <div style={{ textAlign: 'center' }}>
+        As: {localStorage.getItem('email').replace(/['"]+/g, '')}
+      </div>
       <ul>
         {localStorage.getItem('email') &&
           upperMenuItems.map((item, i) =>
