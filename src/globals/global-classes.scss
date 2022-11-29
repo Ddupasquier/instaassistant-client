@@ -10,15 +10,11 @@ body {
 // if change size of header or menu also navigate to their respective
 // scss files and cntrl + save to update
 .app {
-  display: grid;
+  display: flex;
   position: relative;
   height: 100vh;
   grid-template-rows: 3.5rem auto;
   grid-template-columns: 3rem auto;
-
-  header {
-    grid-column: span 2;
-  }
 }
 
 .loading {
