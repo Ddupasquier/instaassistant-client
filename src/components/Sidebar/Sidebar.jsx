@@ -3,129 +3,18 @@ import { Link } from 'react-router-dom';
 import { ThemeContext } from 'contexts/appContext';
 import { styled, Switch } from '@nextui-org/react';
 import { Logout } from 'api';
+import { SideBar, Li, Detail, Icon, LowerMenu } from './styled';
+import { upperMenuItems, lowerMenuItems } from './constants';
 import './sidebar-styles.scss';
 
-import { BsSunFill, BsFillMoonStarsFill, BsPenFill } from 'react-icons/bs';
-import {
-  FaUserAlt,
-  FaUserFriends,
-  FaQuestionCircle,
-  FaMoneyBill,
-} from 'react-icons/fa';
-import { AiFillHome } from 'react-icons/ai';
-import { FiTrendingUp } from 'react-icons/fi';
-import { IoApps, IoLogOutSharp } from 'react-icons/io5';
-import { RiCompassDiscoverFill } from 'react-icons/ri';
-
-import { Ctrl, Tri, Tsk, Psc } from 'assets';
-
-const upperMenuItems = [
-  {
-    name: 'Home',
-    to: '/',
-    icon: <AiFillHome />,
-  },
-  {
-    name: 'Apps',
-    icon: <IoApps />,
-    items: [
-      { name: 'Ctrl', src: Ctrl },
-      { name: 'Tsk', src: Tsk },
-      { name: 'Tri', src: Tri },
-      { name: 'Psc', src: Psc },
-    ],
-  },
-  {
-    name: 'Accounts',
-    to: '/accounts',
-    icon: <FaUserFriends />,
-    // items: ['account1', 'account2', 'account3'],
-  },
-  {
-    name: 'Discover',
-    to: '',
-    icon: <RiCompassDiscoverFill />,
-    // items: ['News', 'Blog', 'Resources', 'FAQ'],
-  },
-  {
-    name: 'Blog (coming soon)',
-    to: '',
-    icon: <BsPenFill />,
-  },
-  {
-    name: 'Trending (coming soon)',
-    to: '',
-    icon: <FiTrendingUp />,
-  },
-];
-
-const lowerMenuItems = [
-  {
-    name: 'Account Info',
-    to: '/profile',
-    icon: <FaUserAlt />,
-  },
-  {
-    name: 'Billing',
-    to: '/billing',
-    icon: <FaMoneyBill />,
-  },
-  {
-    name: 'Support',
-    to: '/FAQ',
-    icon: <FaQuestionCircle />,
-  },
-];
+import { BsSunFill, BsFillMoonStarsFill } from 'react-icons/bs';
+import { IoLogOutSharp } from 'react-icons/io5';
 
 export const Sidebar = () => {
   const { isDark, toggleFunction } = useContext(ThemeContext);
 
-  const SideBar = styled('div', {
-    backgroundColor: '$menu',
-    width: '20rem',
-    zIndex: '100',
-    position: 'relative',
-    padding: '0',
-    margin: '0',
-    color: '$text',
-  });
-
   const Logo = styled('img', {
     filter: !isDark && 'brightness(0%)',
-  });
-
-  const Detail = styled('details', {
-    backgroundColor: 'transparent',
-  });
-
-  const Li = styled('li', {
-    margin: '0',
-    padding: '0.5rem 0',
-    listStyle: 'none',
-    width: '100%',
-    color: '$text',
-    fontSize: '1rem',
-    fontWeight: '700',
-    cursor: 'pointer',
-    transition: 'all .5s',
-    '&:hover': {
-      backgroundColor: '$hover',
-    },
-  });
-
-  const LowerMenu = styled('div', {
-    position: 'absolute',
-    bottom: '0',
-    width: '100%',
-    padding: '1rem 0',
-    background: '$myColor',
-  });
-
-  const Icon = styled('div', {
-    position: 'relative',
-    top: '2px',
-    float: 'left',
-    width: '2rem',
   });
 
   return (
@@ -142,7 +31,7 @@ export const Sidebar = () => {
           upperMenuItems.map((item, i) =>
             item.items ? (
               <Li key={item.name} className="menu-item">
-                <Icon>{item.icon}</Icon>
+                <Icon>{<item.icon />}</Icon>
                 <Detail open={item.name === 'Apps' && true}>
                   <summary>{item.name}</summary>
                   <ul className={item.name === 'Apps' ? 'apps-details' : null}>
@@ -167,7 +56,7 @@ export const Sidebar = () => {
             ) : (
               <Link to={item.to} key={item.name}>
                 <Li className="menu-item">
-                  <Icon>{item.icon}</Icon>
+                  <Icon>{<item.icon />}</Icon>
                   {item.name}
                 </Li>
               </Link>
@@ -179,7 +68,7 @@ export const Sidebar = () => {
           {lowerMenuItems.map((item) => (
             <Link to={item.to} key={item.name}>
               <Li key={item.name} className="menu-item">
-                <Icon>{item.icon}</Icon>
+                <Icon>{<item.icon />}</Icon>
                 {item.name}
               </Li>
             </Link>
