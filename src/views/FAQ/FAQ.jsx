@@ -3,6 +3,7 @@ import { GetFAQs } from 'api';
 import './faq-styles.scss';
 
 import { Loading, Collapse, Text, Card } from '@nextui-org/react';
+import Contact from 'components/Contact';
 
 const FAQ = () => {
   const [faqs, setFaqs] = useState();
@@ -16,31 +17,50 @@ const FAQ = () => {
 
   return (
     <div className="view-container">
-      <Card css={{ background: '$myColor', width: '90%' }} className="faq">
-        <Text
-          h1
-          size={60}
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          flexWrap: 'wrap',
+          padding: '5rem',
+          gap: '2rem',
+        }}
+      >
+        <Card
           css={{
-            textGradient: '45deg, $blue600 -20%, $pink600 50%',
+            background: '$myColor',
+            padding: '1rem',
+            width: '60%',
+            minWidth: '300px',
           }}
-          weight="bold"
+          className="faq"
         >
-          FAQ
-        </Text>
-        <Collapse.Group>
-          {faqsLoaded ? (
-            faqs.map((faq, index) => (
-              <Collapse title={faq.q} key={index}>
-                <Text>{faq.a}</Text>
-              </Collapse>
-            ))
-          ) : (
-            <div className="loading">
-              <Loading size="xl" />
-            </div>
-          )}
-        </Collapse.Group>
-      </Card>
+          <Text
+            h1
+            size={60}
+            css={{
+              textGradient: '45deg, $blue600 -20%, $pink600 50%',
+            }}
+            weight="bold"
+          >
+            FAQ
+          </Text>
+          <Collapse.Group>
+            {faqsLoaded ? (
+              faqs.map((faq, index) => (
+                <Collapse title={faq.q} key={index}>
+                  <Text>{faq.a}</Text>
+                </Collapse>
+              ))
+            ) : (
+              <div className="loading">
+                <Loading size="xl" />
+              </div>
+            )}
+          </Collapse.Group>
+        </Card>
+        <Contact />
+      </div>
     </div>
   );
 };

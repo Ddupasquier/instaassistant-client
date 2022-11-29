@@ -5,7 +5,7 @@ import { Card, Text } from '@nextui-org/react';
 import { convertToUserTime } from 'utils';
 import Bubble from 'components/Bubble';
 import AccountInfoMin from 'components/AccountInfoMin';
-import BackButton from '../../components/BackButton';
+import BackButton from '../../components/Buttons/BackButton';
 import Loader from 'components/Loader';
 import ElipsesAnimation from 'components/Elipses/ElipsesAnimation';
 

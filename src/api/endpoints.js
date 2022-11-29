@@ -45,3 +45,6 @@ export const CheckoutEndpoint = baseUrl + '/create-checkout-session';
 
 // * PASSWORD PATHS
 export const GenerateResetTokenPath = baseUrl + '/gen_reset_password';
+
+// * FEEBACK PATHS
+export const feedbackPath = baseUrl + '/feedback';

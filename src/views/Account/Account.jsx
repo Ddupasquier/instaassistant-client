@@ -15,8 +15,8 @@ import FollowerGain from './AccountComponents/FollowerGain';
 import MetricChart from './AccountComponents/MetricChart';
 import InteractionLimits from './AccountComponents/InteractionLimits';
 import ConfigPopup from './AccountComponents/ConfigPopup';
-import DeleteConfirm from 'components/DeleteConfirm';
-import TaskModal from '../../components/TaskModal';
+import DeleteConfirm from 'components/Modals/DeleteConfirm';
+import TaskModal from 'components/Modals/TaskModal';
 import { TasksRunning } from '.';
 
 import AccountInfo from 'components/AccountInfo';

@@ -18,6 +18,7 @@ import {
   editProfilePath,
   changePasswordPath,
   accountsManagedPath,
+  feedbackPath,
 } from './endpoints';
 
 // ----------- Start User
@@ -334,6 +335,25 @@ export const CreateCheckoutSession = async (formData) => {
 
 export const GenerateResetToken = async (formData) => {
   const response = await fetch(GenerateResetTokenPath, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify(formData),
+  });
+  const resp_1 = await response.json();
+
+  if (resp_1.error) {
+    alert(resp_1.error);
+  } else if (resp_1.success) {
+    return resp_1;
+  }
+};
+
+// SEND FEEDBACK
+export const SendFeedback = async (formData) => {
+  const response = await fetch(feedbackPath, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

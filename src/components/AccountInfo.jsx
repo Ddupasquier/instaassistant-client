@@ -4,7 +4,7 @@ import Bubble from 'components/Bubble';
 import { useParams, Link } from 'react-router-dom';
 import { Grid, Card, Text, Dropdown } from '@nextui-org/react';
 import { FiSettings } from 'react-icons/fi';
-import BackButton from './BackButton';
+import BackButton from './Buttons/BackButton';
 import { TaskModalContext } from 'contexts/modalContext';
 import { platformIcon } from 'utils';
 
