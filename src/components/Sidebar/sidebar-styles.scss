@@ -1,6 +1,6 @@
 .sidebar {
   font-family: Montserrat;
-  
+
   summary {
     list-style: none;
   }
@@ -34,6 +34,10 @@
   }
 
   .switch {
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    right: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
