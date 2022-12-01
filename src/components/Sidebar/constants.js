@@ -40,6 +40,11 @@ export const upperMenuItems = [
     icon: RiCompassDiscoverFill,
     items: ["Blog (Coming soon)", "Trending (Coming soon)"],
   },
+  {
+    name: 'test',
+    to: '/test',
+    icon: FaQuestionCircle,
+  }
   // {
   //   name: 'Blog (coming soon)',
   //   to: '',
