@@ -56,7 +56,7 @@ function Profile() {
           }}
         >
           {userLoaded ? (
-            <>
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
               <Bubble
                 htmlFor="phone"
                 num={formatPhoneNumber(userInfo.phone_number)}
@@ -69,7 +69,7 @@ function Profile() {
                 num={userInfo.billing_status}
                 name="Billing Status"
               />
-            </>
+            </div>
           ) : (
             <Loader />
           )}

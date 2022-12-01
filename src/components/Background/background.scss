@@ -12,12 +12,12 @@
   @for $i from 1 through 6 {
     img:nth-child(#{$i}) {
       position: absolute;
-      top: #{random(100) - 10} + 'vh';
-      left: #{random(65) - 10} + 'vh';
+      bottom: #{random(100) - 10} + 'vh';
+      left: #{random(65) - 10} + 'vw';
       aspect-ratio: 1/1;
       width: #{random(40) - 10} + 'vh';
       z-index: -1;
-      animation: floating #{random(4) + 4} + 's' ease-in-out infinite;
+      animation: floating #{random(8) + 4} + 's' ease-in-out infinite;
     }
 
     @keyframes floating {
