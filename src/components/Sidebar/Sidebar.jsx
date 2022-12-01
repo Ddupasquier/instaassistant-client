@@ -28,7 +28,7 @@ export const Sidebar = () => {
       </div>
       <ul>
         {localStorage.getItem('email') &&
-          upperMenuItems.map((item, i) =>
+          upperMenuItems.map((item) =>
             item.items ? (
               <Li key={item.name} className="menu-item">
                 <Icon>{<item.icon />}</Icon>

@@ -92,7 +92,7 @@ function Accounts() {
           <Button
             type="button"
             size="sm"
-            color="warning"
+            color="secondary"
             rounded
             onPress={newAccountHandler}
           >
