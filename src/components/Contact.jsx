@@ -19,10 +19,9 @@ const Contact = () => {
     <Card
       css={{
         display: 'flex',
-
         flexDirection: 'column',
         gap: '1rem',
-        width: '60%',
+        width: '40%',
         minWidth: '300px',
         padding: '1rem',
         position: 'relative',

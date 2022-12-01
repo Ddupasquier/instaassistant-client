@@ -30,7 +30,7 @@ const FAQ = () => {
           css={{
             background: '$myColor',
             padding: '1rem',
-            width: '60%',
+            width: '40%',
             minWidth: '300px',
           }}
           className="faq"
