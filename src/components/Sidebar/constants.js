@@ -1,12 +1,12 @@
-import { BsPenFill } from 'react-icons/bs';
+// import { BsPenFill } from 'react-icons/bs';
 import {
   FaUserAlt,
   FaUserFriends,
   FaQuestionCircle,
   FaMoneyBill,
 } from 'react-icons/fa';
-import { AiFillHome } from 'react-icons/ai';
-import { FiTrendingUp } from 'react-icons/fi';
+// import { AiFillHome } from 'react-icons/ai';
+// import { FiTrendingUp } from 'react-icons/fi';
 import { IoApps } from 'react-icons/io5';
 import { RiCompassDiscoverFill } from 'react-icons/ri';
 

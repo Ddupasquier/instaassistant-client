@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import 'globals/global-classes.scss';
 import { Outlet } from 'react-router-dom';
-import { Header } from 'components/Header';
-import { Menu } from 'components/Menu';
+// import { Header } from 'components/Header';
+// import { Menu } from 'components/Menu';
 import BackgroundAnimation from 'components/Background/BackgroundAnimation';
 import { Sidebar as Example } from "components/Sidebar/Sidebar";
 
 function App() {
-  const [menuItemHovered, setMenuItemHovered] = useState('');
+  // const [menuItemHovered, setMenuItemHovered] = useState('');
 
   // const animateLogo = (name) => {
   //   if (name === 'Billing') {
