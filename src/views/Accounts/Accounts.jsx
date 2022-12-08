@@ -6,7 +6,7 @@ import { Text, Button, Input } from '@nextui-org/react';
 
 // * COMPONENT IMPORTS
 import NewAccountModal from './NewAccountModal';
-import DeleteConfirm from '../../components/DeleteConfirm';
+import DeleteConfirm from '../../components/Modals/DeleteConfirm';
 import Loader from 'components/Loader';
 import AccountsTable from 'components/Tables/AccountsTable';
 
@@ -92,7 +92,7 @@ function Accounts() {
           <Button
             type="button"
             size="sm"
-            color="warning"
+            color="secondary"
             rounded
             onPress={newAccountHandler}
           >

@@ -18,6 +18,7 @@ import {
   editProfilePath,
   changePasswordPath,
   accountsManagedPath,
+  feedbackPath,
 } from './endpoints';
 
 // ----------- Start User
@@ -35,7 +36,7 @@ export const CreateUserPost = async (userInfo) => {
     return await response.json();
   } else {
     alert('Something went wrong');
-    localStorage.removeItem('jwt');
+    Logout();
   }
 };
 
@@ -76,7 +77,12 @@ export const GetUserInfo = async () => {
       Authorization: localStorage.getItem('token'),
     },
   });
-  return await response.json();
+  const resp_1 = await response.json();
+  if (resp_1.error === "AUTHENTICATION ERROR") {
+    Logout();
+  } else {
+    return resp_1;
+  }
 };
 
 export const EditProfilePatch = async (newData) => {
@@ -89,10 +95,11 @@ export const EditProfilePatch = async (newData) => {
     },
     body: JSON.stringify(newData),
   });
-  if (response.ok) {
-    return await response.json();
+  const resp_1 = await response.json();
+  if (resp_1.error === "AUTHENTICATION ERROR") {
+    Logout();
   } else {
-    throw new Error('Something went wrong');
+    return resp_1;
   }
 };
 
@@ -107,10 +114,11 @@ export const ChangePasswordPatch = async (newData) => {
     body: JSON.stringify(newData),
   });
   const resp = await response.json();
-
-  if (resp.error) {
+  if (resp.error === "AUTHENTICATION ERROR") {
+    Logout();
+  } else if (resp.error) {
     alert(resp.error);
-  } else if (resp.success) {
+  } else {
     return resp;
   }
 };
@@ -124,7 +132,14 @@ export const GetAccountsManaged = async () => {
       Authorization: localStorage.getItem('token'),
     },
   });
-  return await response.json();
+  const resp = await response.json();
+  if (resp.error === "AUTHENTICATION ERROR") {
+    Logout();
+  } else if (resp.error) {
+    alert(resp.error);
+  } else {
+    return resp;
+  }
 };
 
 // END USER
@@ -144,13 +159,13 @@ export const CreateAccount = async (formData) => {
       body: JSON.stringify(formData),
     }
   );
-
-  const resp_1 = await response.json();
-
-  if (resp_1.error) {
-    alert(resp_1.error);
+  const resp = await response.json();
+  if (resp.error === "AUTHENTICATION ERROR") {
+    Logout();
+  } else if (resp.error) {
+    alert(resp.error);
   } else {
-    return resp_1;
+    return resp;
   }
 };
 
@@ -164,11 +179,13 @@ export const PatchAccount = async (formData, account_id) => {
     },
     body: JSON.stringify(formData),
   });
-  const res = await response.json();
-  if (res.error) {
-    alert(res.error);
+  const resp = await response.json();
+  if (resp.error === "AUTHENTICATION ERROR") {
+    Logout();
+  } else if (resp.error) {
+    alert(resp.error);
   } else {
-    return res;
+    return resp;
   }
 };
 /**
@@ -184,11 +201,13 @@ export const indexAccounts = async () => {
       Authorization: localStorage.getItem('token'),
     },
   });
-  const res = await response.json();
-  if (res.error) {
-    alert(res.error);
+  const resp = await response.json();
+  if (resp.error === "AUTHENTICATION ERROR") {
+    Logout();
+  } else if (resp.error) {
+    alert(resp.error);
   } else {
-    return res;
+    return resp;
   }
 };
 
@@ -201,7 +220,14 @@ export const ShowAccount = async (id) => {
       Authorization: localStorage.getItem('token'),
     },
   });
-  return await response.json();
+  const resp = await response.json();
+  if (resp.error === "AUTHENTICATION ERROR") {
+    Logout();
+  } else if (resp.error) {
+    alert(resp.error);
+  } else {
+    return resp;
+  }
 };
 
 export const DeleteAccount = async (id) => {
@@ -213,7 +239,14 @@ export const DeleteAccount = async (id) => {
       Authorization: localStorage.getItem('token'),
     },
   });
-  return await response.json();
+  const resp = await response.json();
+  if (resp.error === "AUTHENTICATION ERROR") {
+    Logout();
+  } else if (resp.error) {
+    alert(resp.error);
+  } else {
+    return resp;
+  }
 };
 
 export const unstickAccount = async (account_id) => {
@@ -225,7 +258,14 @@ export const unstickAccount = async (account_id) => {
       Authorization: localStorage.getItem('token'),
     },
   });
-  return await response.json();
+  const resp = await response.json();
+  if (resp.error === "AUTHENTICATION ERROR") {
+    Logout();
+  } else if (resp.error) {
+    alert(resp.error);
+  } else {
+    return resp;
+  }
 };
 
 // END ACCOUNTS
@@ -242,12 +282,13 @@ export const PostTask = async (formData) => {
     },
     body: JSON.stringify(formData),
   });
-  const res = await response.json();
-  if (res.error) {
-    alert('Something went wrong. Please try again later!', res.error);
-    throw new Error(res.error);
+  const resp = await response.json();
+  if (resp.error === "AUTHENTICATION ERROR") {
+    Logout();
+  } else if (resp.error) {
+    alert(resp.error);
   } else {
-    return res;
+    return resp;
   }
 };
 
@@ -260,11 +301,13 @@ export const GetTasks = async (account_id) => {
       Authorization: localStorage.getItem('token'),
     },
   });
-  const res = await response.json();
-  if (res.error) {
-    throw new Error(res.error);
+  const resp = await response.json();
+  if (resp.error === "AUTHENTICATION ERROR") {
+    Logout();
+  } else if (resp.error) {
+    alert(resp.error);
   } else {
-    return res;
+    return resp;
   }
 };
 
@@ -277,11 +320,13 @@ export const GetTask = async (task_id) => {
       Authorization: localStorage.getItem('token'),
     },
   });
-  const res = await response.json();
-  if (res.error) {
-    throw new Error(res.error);
+  const resp = await response.json();
+  if (resp.error === "AUTHENTICATION ERROR") {
+    Logout();
+  } else if (resp.error) {
+    alert(resp.error);
   } else {
-    return res;
+    return resp;
   }
 };
 
@@ -298,7 +343,14 @@ export const getSnapshots = async (account_id) => {
       Authorization: localStorage.getItem('token'),
     },
   });
-  return await response.json();
+  const resp = await response.json();
+  if (resp.error === "AUTHENTICATION ERROR") {
+    Logout();
+  } else if (resp.error) {
+    alert(resp.error);
+  } else {
+    return resp;
+  }
 };
 
 // END SNAPSHOTS
@@ -349,3 +401,24 @@ export const GenerateResetToken = async (formData) => {
     return resp_1;
   }
 };
+
+// SEND FEEDBACK
+export const SendFeedback = async (formData) => {
+  const response = await fetch(feedbackPath, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify(formData),
+  });
+  const resp_1 = await response.json();
+
+  if (resp_1.error) {
+    alert(resp_1.error);
+  } else if (resp_1.success) {
+    return resp_1;
+  }
+};
+
+// UTILS

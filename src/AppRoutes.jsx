@@ -17,6 +17,7 @@ import { Stripe } from 'views/Stripe';
 import BackgroundAnimation from 'components/Background/BackgroundAnimation';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorFallback from 'components/ErrorFallback';
+import { ChangePassword } from 'views/Auth/ChangePassword';
 
 function AppRoutes() {
   return (
@@ -33,6 +34,7 @@ function AppRoutes() {
       }
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <Routes>
+          <Route path="/change_password" element={<ChangePassword />} />
           <Route path="/" element={<App />}>
             <Route
               index

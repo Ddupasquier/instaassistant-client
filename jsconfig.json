@@ -1,7 +1,15 @@
 {
   "compilerOptions": {
+    "jsx": "react",
+    "jsx": "react",
+    "jsx": "react",
     "baseUrl": "src"
   },
-  "include": ["src", "src/contexts/appContext.js"],
-  "exclude": ["node_modules"]
+  "include": [
+    "src",
+    "src/contexts/appContext.js"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom';
 import { Header } from 'components/Header';
 import { Menu } from 'components/Menu';
 import BackgroundAnimation from 'components/Background/BackgroundAnimation';
+import { Sidebar as Example } from "components/Sidebar/Sidebar";
 
 function App() {
   const [menuItemHovered, setMenuItemHovered] = useState('');
@@ -23,12 +24,13 @@ function App() {
   return (
     <div className="App">
       <div className="app">
-        <Header />
+        {/* <Header /> */}
         {localStorage.getItem('email') && (
-          <Menu
-            menuItemHovered={menuItemHovered}
-            setMenuItemHovered={setMenuItemHovered}
-          />
+          // <Menu
+          //   menuItemHovered={menuItemHovered}
+          //   setMenuItemHovered={setMenuItemHovered}
+          // />
+          <Example />
         )}
 
         <Outlet />

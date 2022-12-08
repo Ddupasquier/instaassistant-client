@@ -7,7 +7,7 @@ export const Tr = styled('tr', {
   transition: 'all 0.2s ease-in-out',
   cursor: 'pointer',
   '&:hover': {
-    filter: 'brightness(95%)',
+    filter: 'contrast(80%)',
     transform: 'translateY(-4px)',
   },
 });

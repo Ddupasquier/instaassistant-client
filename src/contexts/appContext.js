@@ -17,7 +17,7 @@ const ThemeProvider = ({ children }) => {
         gradient:
           'linear-gradient(112deg, $blue100 -25%, $pink500 -10%, $purple500 80%)',
         link: '#af6eff',
-        myColor: 'rgba(95, 95, 95, 0.55)',
+        myColor: 'rgba(95, 95, 95, 0.85)',
         myColorInvert: 'rgba(255, 255, 255, .7)',
         menu: 'rgb(34, 34, 34)',
         font: '#fff',

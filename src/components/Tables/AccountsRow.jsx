@@ -68,7 +68,7 @@ function AccountsRow({ user, handleDeleteConfirmVisible, setUserToDelete, i }) {
           <Eye title="View account" size="20" />
         </Link>
         <Link to={`/accounts/${user.id}/tasks`}>
-          <Task size="20" />
+          <Task title="View Tasks" size="20" />
         </Link>
         <Trash
           title="Delete account"

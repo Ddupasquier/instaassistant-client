@@ -115,7 +115,8 @@ function NewAccountModal({ newAccountVisible, closeNewAccountHandler }) {
           )}
         </>
       )}
-    </Modal>
+      <br />
+    </Modal >
   );
 }
 
