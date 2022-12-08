@@ -46,7 +46,7 @@ function SignUp({ setLogIsVisible, logIsVisible, setForgPassShown }) {
             <i>Anti</i> <b>SocialSuite</b>
           </h2>
           <h1>Sign Up</h1>
-          {!inviteCode ? (
+          {/* {!inviteCode ? (
             <Input
               required
               type="text"
@@ -55,7 +55,7 @@ function SignUp({ setLogIsVisible, logIsVisible, setForgPassShown }) {
               onChange={(e) => setCode(e.target.value)}
               aria-label="Invite Code"
             />
-          ) : (
+          ) : ( */}
             <>
               <Input
                 required
@@ -92,7 +92,7 @@ function SignUp({ setLogIsVisible, logIsVisible, setForgPassShown }) {
                 )}
               </Button>
             </>
-          )}
+          {/* )} */}
         </form>
         <div className="signup-footer">
           Forgot Password?{' '}
