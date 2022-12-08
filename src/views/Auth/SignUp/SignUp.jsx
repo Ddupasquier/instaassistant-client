@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './signup-styles.scss';
 import { Button, Input, Loading, Spacer } from '@nextui-org/react';
 import { CreateUserPost } from 'api';
@@ -9,14 +9,14 @@ function SignUp({ setLogIsVisible, logIsVisible, setForgPassShown }) {
   const [pwdconf, setPwdconf] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const [inviteCode, setInviteCode] = useState(false);
-  const [code, setCode] = useState('');
+  // const [inviteCode, setInviteCode] = useState(false);
+  // const [code, setCode] = useState('');
 
-  useEffect(() => {
-    if (code.length === 10) {
-      setInviteCode(true);
-    }
-  }, [code]);
+  // useEffect(() => {
+  //   if (code.length === 10) {
+  //     setInviteCode(true);
+  //   }
+  // }, [code]);
 
   const signupStyle = {
     position: 'absolute',
