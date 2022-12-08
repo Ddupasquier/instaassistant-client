@@ -12,6 +12,7 @@ function ChangePassword() {
   const [validKey, setValidKey] = useState(null);
 
   useEffect(() => {
+    console.log(reset_token);
     CheckKeyValid(reset_token).then((res) => {
       if (res.success) {
         setValidKey(true);
@@ -26,7 +27,7 @@ function ChangePassword() {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData);
     if (data.new_password === data.confirm_password) {
-      ResetPassword({ password: data.new_password });
+      ResetPassword({ password: data.new_password }, reset_token);
       setSending(true);
       setTimeout(() => {
         // TODO do post to change password
