@@ -32,6 +32,7 @@ function CurrentTask() {
         css={{
           background: '$myColor',
           width: '90%',
+          maxWidth: '1000px',
           margin: '3rem',
           overflow: 'hidden',
         }}

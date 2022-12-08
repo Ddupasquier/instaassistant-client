@@ -1,23 +1,8 @@
-@use '../../globals/colors.scss' as colors;
-
 .animation-container {
-  position: fixed;
-  height: 100%;
-  width: 100%;
-
-  img {
-    max-width: 30rem;
-  }
-
   @for $i from 1 through 6 {
     img:nth-child(#{$i}) {
-      position: absolute;
-      bottom: #{random(100) - 10} + 'vh';
-      left: #{random(65) - 10} + 'vw';
-      aspect-ratio: 1/1;
-      width: #{random(40) - 10} + 'vh';
-      z-index: -1;
-      animation: floating #{random(8) + 4} + 's' ease-in-out infinite;
+      transition: all 0.5s ease-in-out;
+      animation: floating #{random(12) + 8} + 's' ease-in-out infinite;
     }
 
     @keyframes floating {

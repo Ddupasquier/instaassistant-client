@@ -56,7 +56,7 @@ function Profile() {
           }}
         >
           {userLoaded ? (
-            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1rem' }}>
               <Bubble
                 htmlFor="phone"
                 num={formatPhoneNumber(userInfo.phone_number)}

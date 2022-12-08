@@ -13,11 +13,11 @@ import { RiCompassDiscoverFill } from 'react-icons/ri';
 import { Ctrl, Tri, Tsk, Psc } from 'assets';
 
 export const upperMenuItems = [
-  {
-    name: 'Home',
-    to: '/',
-    icon: AiFillHome,
-  },
+  // {
+  //   name: 'Home',
+  //   to: '/',
+  //   icon: AiFillHome,
+  // },
   {
     name: 'Apps',
     icon: IoApps,
