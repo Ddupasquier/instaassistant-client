@@ -42,6 +42,25 @@ function TasksTable({ tasks, height }) {
     const tableHeight = height - 260;
     return Math.floor(tableHeight / rowHeight);
   };
+  /**
+   * @function rowsPerPage
+   * @returns {number} rows
+   * @description
+   * This function calculates the number of rows that can be rendered on screen
+   * based on the height of the table.
+   * @example
+   * rowsPerPage()
+   * // returns 10
+   * // if the height of the table is 500px and each row is 50px
+   * // then 10 rows can be rendered on screen
+   * // 500px - 260px (header and footer) = 240px
+   * // 240px / 50px = 4.8
+   * // Math.floor(4.8) = 4
+   * // 4 rows * 50px = 200px
+   * // 200px + 260px = 460px
+   * // 460px < 500px
+   * // 10 rows can be rendered on screen
+   */
 
   const numberOfPages = () => {
     const pages = Math.ceil(tasks.length / rowsPerPage());

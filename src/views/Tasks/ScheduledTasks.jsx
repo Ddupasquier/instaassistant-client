@@ -34,7 +34,7 @@ function ScheduledTasks() {
               marginRight: '1rem',
             }}
           >
-            <Button onPress={taskHandler} rounded>
+            <Button onPress={taskHandler} rounded color="secondary">
               New Task
             </Button>
           </div>

@@ -91,7 +91,7 @@ function Accounts() {
           />
           <Button
             type="button"
-            size="sm"
+            // size="sm"
             color="secondary"
             rounded
             onPress={newAccountHandler}

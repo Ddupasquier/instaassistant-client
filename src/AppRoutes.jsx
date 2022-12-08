@@ -14,7 +14,6 @@ import ScheduledTasks from 'views/Tasks/ScheduledTasks';
 import CurrentTask from 'views/Tasks/CurrentTask';
 import { Accounts } from 'views/Accounts';
 import { Stripe } from 'views/Stripe';
-import BackgroundAnimation from 'components/Background/BackgroundAnimation';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorFallback from 'components/ErrorFallback';
 import { ChangePassword } from 'views/Auth/ChangePassword';
@@ -59,7 +58,6 @@ function AppRoutes() {
             />
             <Route path="/FAQ" element={<FAQ />} />
             <Route path="/stripe" element={<Stripe />} />
-            <Route path="test-bg" element={<BackgroundAnimation />} />
             <Route
               path="/password_reset/:reset_token"
               element={<div>Success</div>}
