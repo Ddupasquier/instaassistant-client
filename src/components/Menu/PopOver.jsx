@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { ThemeContext } from 'contexts/appContext';
+import { ThemeContext } from 'contexts/themeContext';
 
 function PopOver({ item, hovered }) {
   const { isDark } = useContext(ThemeContext);

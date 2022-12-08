@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { ThemeContext } from 'contexts/appContext';
+import { ThemeContext } from 'contexts/themeContext';
 import './menu-styles.scss';
 
 import {

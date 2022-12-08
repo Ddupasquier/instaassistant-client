@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { ThemeContext } from 'contexts/appContext';
+import { ThemeContext } from 'contexts/themeContext';
 import { styled, Switch } from '@nextui-org/react';
 import { Logout } from 'api';
 import { SideBar, Li, Detail, Icon, LowerMenu } from './styled';

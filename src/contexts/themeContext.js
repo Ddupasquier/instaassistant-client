@@ -55,7 +55,9 @@ const ThemeProvider = ({ children }) => {
   });
 
   return (
-    <ThemeContext.Provider value={{ isDark, toggleFunction }}>
+    <ThemeContext.Provider
+      value={{ isDark, toggleFunction }}
+    >
       <NextUIProvider theme={isDark ? darkTheme : lightTheme}>
         {children}
       </NextUIProvider>

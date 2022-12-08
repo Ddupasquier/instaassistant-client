@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { ThemeProvider } from 'contexts/appContext';
+import { ThemeProvider } from 'contexts/themeContext';
 import { TaskModalContextProvider } from 'contexts/modalContext';
 import { BrowserRouter } from 'react-router-dom';
 import AppRoutes from './AppRoutes';
