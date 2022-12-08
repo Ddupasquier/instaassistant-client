@@ -437,7 +437,7 @@ export const CheckKeyValid = async (key) => {
   const resp_1 = await response.json();
 
   if (resp_1.error) {
-    alert(resp_1.error);
+    throw new Error(resp_1.error);
   } else if (resp_1.success) {
     return resp_1;
   }

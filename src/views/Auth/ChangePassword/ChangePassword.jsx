@@ -13,7 +13,7 @@ function ChangePassword() {
 
   useEffect(() => {
     CheckKeyValid(reset_token).then((res) => {
-      if (res.success === true) {
+      if (res.success) {
         setValidKey(true);
       } else {
         setValidKey(false);
