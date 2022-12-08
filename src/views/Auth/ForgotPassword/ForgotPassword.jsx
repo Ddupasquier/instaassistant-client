@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './password-styles.scss';
 import { Button, Input, Spacer } from '@nextui-org/react';
 import { GenerateResetToken } from 'api/index';
+import { Logout } from 'api';
 
 function ForgotPassword({ forgPassShown, setForgPassShown }) {
   const [email, setEmail] = useState('');
@@ -16,6 +17,7 @@ function ForgotPassword({ forgPassShown, setForgPassShown }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     GenerateResetToken({ email });
+    Logout();
   };
 
   return (

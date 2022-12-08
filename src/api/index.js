@@ -19,6 +19,8 @@ import {
   changePasswordPath,
   accountsManagedPath,
   feedbackPath,
+  CheckKeyValidPath,
+  ResetPasswordPath,
 } from './endpoints';
 
 // ----------- Start User
@@ -78,7 +80,7 @@ export const GetUserInfo = async () => {
     },
   });
   const resp_1 = await response.json();
-  if (resp_1.error === "AUTHENTICATION ERROR") {
+  if (resp_1.error === 'AUTHENTICATION ERROR') {
     Logout();
   } else {
     return resp_1;
@@ -96,7 +98,7 @@ export const EditProfilePatch = async (newData) => {
     body: JSON.stringify(newData),
   });
   const resp_1 = await response.json();
-  if (resp_1.error === "AUTHENTICATION ERROR") {
+  if (resp_1.error === 'AUTHENTICATION ERROR') {
     Logout();
   } else {
     return resp_1;
@@ -114,7 +116,7 @@ export const ChangePasswordPatch = async (newData) => {
     body: JSON.stringify(newData),
   });
   const resp = await response.json();
-  if (resp.error === "AUTHENTICATION ERROR") {
+  if (resp.error === 'AUTHENTICATION ERROR') {
     Logout();
   } else if (resp.error) {
     alert(resp.error);
@@ -133,7 +135,7 @@ export const GetAccountsManaged = async () => {
     },
   });
   const resp = await response.json();
-  if (resp.error === "AUTHENTICATION ERROR") {
+  if (resp.error === 'AUTHENTICATION ERROR') {
     Logout();
   } else if (resp.error) {
     alert(resp.error);
@@ -160,7 +162,7 @@ export const CreateAccount = async (formData) => {
     }
   );
   const resp = await response.json();
-  if (resp.error === "AUTHENTICATION ERROR") {
+  if (resp.error === 'AUTHENTICATION ERROR') {
     Logout();
   } else if (resp.error) {
     alert(resp.error);
@@ -180,7 +182,7 @@ export const PatchAccount = async (formData, account_id) => {
     body: JSON.stringify(formData),
   });
   const resp = await response.json();
-  if (resp.error === "AUTHENTICATION ERROR") {
+  if (resp.error === 'AUTHENTICATION ERROR') {
     Logout();
   } else if (resp.error) {
     alert(resp.error);
@@ -202,7 +204,7 @@ export const indexAccounts = async () => {
     },
   });
   const resp = await response.json();
-  if (resp.error === "AUTHENTICATION ERROR") {
+  if (resp.error === 'AUTHENTICATION ERROR') {
     Logout();
   } else if (resp.error) {
     alert(resp.error);
@@ -221,7 +223,7 @@ export const ShowAccount = async (id) => {
     },
   });
   const resp = await response.json();
-  if (resp.error === "AUTHENTICATION ERROR") {
+  if (resp.error === 'AUTHENTICATION ERROR') {
     Logout();
   } else if (resp.error) {
     alert(resp.error);
@@ -240,7 +242,7 @@ export const DeleteAccount = async (id) => {
     },
   });
   const resp = await response.json();
-  if (resp.error === "AUTHENTICATION ERROR") {
+  if (resp.error === 'AUTHENTICATION ERROR') {
     Logout();
   } else if (resp.error) {
     alert(resp.error);
@@ -259,7 +261,7 @@ export const unstickAccount = async (account_id) => {
     },
   });
   const resp = await response.json();
-  if (resp.error === "AUTHENTICATION ERROR") {
+  if (resp.error === 'AUTHENTICATION ERROR') {
     Logout();
   } else if (resp.error) {
     alert(resp.error);
@@ -283,7 +285,7 @@ export const PostTask = async (formData) => {
     body: JSON.stringify(formData),
   });
   const resp = await response.json();
-  if (resp.error === "AUTHENTICATION ERROR") {
+  if (resp.error === 'AUTHENTICATION ERROR') {
     Logout();
   } else if (resp.error) {
     alert(resp.error);
@@ -302,7 +304,7 @@ export const GetTasks = async (account_id) => {
     },
   });
   const resp = await response.json();
-  if (resp.error === "AUTHENTICATION ERROR") {
+  if (resp.error === 'AUTHENTICATION ERROR') {
     Logout();
   } else if (resp.error) {
     alert(resp.error);
@@ -321,7 +323,7 @@ export const GetTask = async (task_id) => {
     },
   });
   const resp = await response.json();
-  if (resp.error === "AUTHENTICATION ERROR") {
+  if (resp.error === 'AUTHENTICATION ERROR') {
     Logout();
   } else if (resp.error) {
     alert(resp.error);
@@ -344,7 +346,7 @@ export const getSnapshots = async (account_id) => {
     },
   });
   const resp = await response.json();
-  if (resp.error === "AUTHENTICATION ERROR") {
+  if (resp.error === 'AUTHENTICATION ERROR') {
     Logout();
   } else if (resp.error) {
     alert(resp.error);
@@ -392,6 +394,42 @@ export const GenerateResetToken = async (formData) => {
       Accept: 'application/json',
     },
     body: JSON.stringify(formData),
+  });
+  const resp_1 = await response.json();
+
+  if (resp_1.error) {
+    alert(resp_1.error);
+  } else if (resp_1.success) {
+    return resp_1;
+  }
+};
+
+export const ResetPassword = async (formData) => {
+  const response = await fetch(ResetPasswordPath, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify(formData),
+  });
+  const resp_1 = await response.json();
+
+  if (resp_1.error) {
+    alert(resp_1.error);
+  } else if (resp_1.success) {
+    return resp_1;
+  }
+};
+
+export const CheckKeyValid = async (key) => {
+  const response = await fetch(CheckKeyValidPath, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify({ key }),
   });
   const resp_1 = await response.json();
 

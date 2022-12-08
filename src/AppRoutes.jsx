@@ -33,7 +33,10 @@ function AppRoutes() {
       }
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <Routes>
-          <Route path="/change_password" element={<ChangePassword />} />
+          <Route
+            path="/password_reset/:reset_token"
+            element={<ChangePassword />}
+          />
           <Route path="/" element={<App />}>
             <Route
               index
@@ -58,10 +61,6 @@ function AppRoutes() {
             />
             <Route path="/FAQ" element={<FAQ />} />
             <Route path="/stripe" element={<Stripe />} />
-            <Route
-              path="/password_reset/:reset_token"
-              element={<div>Success</div>}
-            />
           </Route>
         </Routes>
       </ErrorBoundary>
