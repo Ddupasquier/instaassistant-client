@@ -404,21 +404,24 @@ export const GenerateResetToken = async (formData) => {
   }
 };
 
-export const ResetPassword = async (formData) => {
+export const ResetPassword = async (formData, key) => {
   const response = await fetch(ResetPasswordPath, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
     },
-    body: JSON.stringify(formData),
+    body: JSON.stringify({ ...formData, key }),
   });
   const resp_1 = await response.json();
 
   if (resp_1.error) {
     alert(resp_1.error);
   } else if (resp_1.success) {
-    return resp_1;
+    localStorage.setItem('user', JSON.stringify(resp_1.user));
+    localStorage.setItem('token', resp_1.jwt);
+    localStorage.setItem('email', JSON.stringify(resp_1.email));
+    window.location.replace('/');
   }
 };
 
