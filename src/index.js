@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { ThemeProvider } from 'contexts/themeContext';
 import { TaskModalContextProvider } from 'contexts/modalContext';
+import { UserContextProvider } from 'contexts/userContext';
 import { BrowserRouter } from 'react-router-dom';
 import AppRoutes from './AppRoutes';
 import reportWebVitals from './reportWebVitals';
@@ -9,13 +10,15 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ThemeProvider>
-      <TaskModalContextProvider>
-        <BrowserRouter>
-          <AppRoutes />
-        </BrowserRouter>
-      </TaskModalContextProvider>
-    </ThemeProvider>
+    <UserContextProvider>
+      <ThemeProvider>
+        <TaskModalContextProvider>
+          <BrowserRouter>
+            <AppRoutes />
+          </BrowserRouter>
+        </TaskModalContextProvider>
+      </ThemeProvider>
+    </UserContextProvider>
   </React.StrictMode>
 );
 

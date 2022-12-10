@@ -4,7 +4,7 @@ import { CreateAccount, GetTask } from 'api';
 import DropDown from 'components/DropDown';
 import { platforms } from './constants';
 
-function NewAccountModal({ newAccountVisible, closeNewAccountHandler }) {
+const NewAccountModal = ({ newAccountVisible, closeNewAccountHandler }) => {
   const [pwd, setPwd] = useState('');
   const [pwdConf, setPwdConf] = useState('');
   const [username, setUsername] = useState('');
@@ -23,11 +23,12 @@ function NewAccountModal({ newAccountVisible, closeNewAccountHandler }) {
       CreateAccount(payload).then((data) => {
         if (data.success) {
           alert('we got a success');
-          this.checkStatus = setInterval(() => {
+          setInterval(() => {
             GetTask(data.task_id).then((data) => {
               if (data.error) {
                 alert('failed');
               } else if (data.status === 'COMPLETED') {
+                clearInterval();
                 window.location.replace('/accounts/' + data.account_id);
               } else if (data.status === 'IN_PROGRESS') {
                 setTryingLogin(true);
@@ -36,6 +37,7 @@ function NewAccountModal({ newAccountVisible, closeNewAccountHandler }) {
               }
             });
           }, 1000);
+          setNewAccountSetup(false);
         } else if (data.error) {
           alert(data.error);
         }
@@ -116,8 +118,8 @@ function NewAccountModal({ newAccountVisible, closeNewAccountHandler }) {
         </>
       )}
       <br />
-    </Modal >
+    </Modal>
   );
-}
+};
 
 export default NewAccountModal;

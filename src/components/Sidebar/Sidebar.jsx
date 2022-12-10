@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { ThemeContext } from 'contexts/themeContext';
+import { UserContext } from 'contexts/userContext';
 import { styled, Switch } from '@nextui-org/react';
 import { Logout } from 'api';
 import { SideBar, Li, Detail, Icon, LowerMenu } from './styled';
@@ -12,6 +13,7 @@ import { IoLogOutSharp } from 'react-icons/io5';
 
 export const Sidebar = () => {
   const { isDark, toggleFunction } = useContext(ThemeContext);
+  const { user } = useContext(UserContext);
 
   const Logo = styled('img', {
     filter: !isDark && 'brightness(0%)',
@@ -23,11 +25,8 @@ export const Sidebar = () => {
         src="https://advanced-web-technology-c3582e48.s3.us-west-1.amazonaws.com/AntiSocialSuite/img/antiSOCIALsuite.svg"
         alt="ass-logo"
       />
-      <div style={{ textAlign: 'center' }}>
-        As: {localStorage.getItem('email').replace(/['"]+/g, '')}
-      </div>
       <ul>
-        {localStorage.getItem('email') &&
+        {user &&
           upperMenuItems.map((item) =>
             item.items ? (
               <Li key={item.name} className="menu-item">
@@ -38,13 +37,21 @@ export const Sidebar = () => {
                     {item.items.map((subItem, i) => (
                       <Li key={i} className="app-icons">
                         {subItem.src ? (
-                          <img
-                            src={subItem.src}
-                            alt={subItem.name}
-                            title={subItem.name}
-                            aria-label={subItem.name}
-                            className="app-icon"
-                          />
+                          <Link
+                            to={subItem.to}
+                            onClick={() =>
+                              subItem.to === '/' &&
+                              alert('This is a coming feature')
+                            }
+                          >
+                            <img
+                              src={subItem.src}
+                              alt={subItem.name}
+                              title={subItem.name}
+                              aria-label={subItem.name}
+                              className="app-icon"
+                            />
+                          </Link>
                         ) : (
                           subItem
                         )}
@@ -69,7 +76,7 @@ export const Sidebar = () => {
             <Link to={item.to} key={item.name}>
               <Li key={item.name} className="menu-item">
                 <Icon>{<item.icon />}</Icon>
-                {item.name}
+                {item.name === 'Account Info' ? user.email : item.name}
               </Li>
             </Link>
           ))}
@@ -97,6 +104,10 @@ export const Sidebar = () => {
             checked={!isDark}
             aria-checked={isDark}
             onChange={toggleFunction}
+            tabIndex={0}
+            onKeyDown={(e) => {
+              e.key === 'Enter' && toggleFunction();
+            }}
             role="switch"
           />
         </div>

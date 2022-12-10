@@ -66,7 +66,7 @@ function SignUp({ setLogIsVisible, logIsVisible, setForgPassShown }) {
                 aria-label="Email"
               />
               <Spacer />
-              <Input
+              <Input.Password
                 required
                 type="password"
                 id="password"
@@ -75,7 +75,7 @@ function SignUp({ setLogIsVisible, logIsVisible, setForgPassShown }) {
                 aria-label="Password"
               />
               <Spacer />
-              <Input
+              <Input.Password
                 required
                 type="password"
                 id="confirmPassword"

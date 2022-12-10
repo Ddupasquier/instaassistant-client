@@ -42,7 +42,7 @@ export const CreateUserPost = async (userInfo) => {
   }
 };
 
-export const loginFetch = async (userInfo) => {
+export const loginFetch = async (userInfo, setUser) => {
   const resp = await fetch(UserLoginPath, {
     method: 'POST',
     headers: {
@@ -59,7 +59,7 @@ export const loginFetch = async (userInfo) => {
     localStorage.setItem('user', JSON.stringify(resp_1.user));
     localStorage.setItem('token', resp_1.jwt);
     localStorage.setItem('email', JSON.stringify(resp_1.email));
-    window.location.replace('/');
+    setUser(resp_1);
   }
 };
 

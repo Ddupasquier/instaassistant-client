@@ -22,10 +22,10 @@ export const upperMenuItems = [
     name: 'Apps',
     icon: IoApps,
     items: [
-      { name: 'Ctrl', src: Ctrl },
-      { name: 'Tsk', src: Tsk },
-      { name: 'Tri', src: Tri },
-      { name: 'Psc', src: Psc },
+      { name: 'Ctrl', src: Ctrl, to: '/CTRL' },
+      { name: 'Tsk', src: Tsk, to: '/' },
+      { name: 'Tri', src: Tri, to: '/' },
+      { name: 'Psc', src: Psc, to: '/' },
     ],
   },
   {

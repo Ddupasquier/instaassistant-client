@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { DeleteAccount } from 'api';
 import { Modal, Input, Button, Text } from '@nextui-org/react';
 
-function DeleteConfirm({
+const DeleteConfirm = ({
   deleteConfirmVisible,
   closeDeleteConfirmHandler,
   userInfo,
-}) {
+}) => {
   const [usernameConfirm, setUsernameConfirm] = useState('');
 
   const handleSubmit = (e) => {
@@ -18,6 +18,7 @@ function DeleteConfirm({
           window.location.replace('/accounts');
         } else if (data.error) {
           alert(data.error);
+          throw new Error(data.error);
         }
       });
     }
@@ -33,7 +34,11 @@ function DeleteConfirm({
       <Modal.Header>
         <Text id="modal-title" b transform="uppercase" size={18}>
           Are you sure you want to delete this account?
-          <Text size={18}>Type the account username to confirm</Text>
+          <Text size={18}>
+            Type the account username to confirm
+            <br />
+            {userInfo && <b>&quot;{userInfo.username}&quot;</b>}
+          </Text>
         </Text>
       </Modal.Header>
       <form onSubmit={handleSubmit}>
@@ -54,6 +59,6 @@ function DeleteConfirm({
       </form>
     </Modal>
   );
-}
+};
 
 export default DeleteConfirm;

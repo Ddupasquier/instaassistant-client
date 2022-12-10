@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { UserContext } from 'contexts/userContext';
 import { Routes, Route } from 'react-router-dom';
 import { SWRConfig } from 'swr';
 
@@ -17,8 +18,10 @@ import { Stripe } from 'views/Stripe';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorFallback from 'components/ErrorFallback';
 import { ChangePassword } from 'views/Auth/ChangePassword';
+import CTRL from 'views/CTRL/CTRL';
 
-function AppRoutes() {
+const AppRoutes = () => {
+  const { user } = useContext(UserContext);
   return (
     <SWRConfig
       value={{
@@ -38,10 +41,8 @@ function AppRoutes() {
             element={<ChangePassword />}
           />
           <Route path="/" element={<App />}>
-            <Route
-              index
-              element={localStorage.getItem('token') ? <Accounts /> : <Auth />}
-            />
+            <Route index element={user ? <Accounts /> : <Auth />} />
+            <Route path="/CTRL" element={<CTRL />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/billing" element={<Billing />} />
             <Route path="/profile" element={<Profile />} />
@@ -66,6 +67,6 @@ function AppRoutes() {
       </ErrorBoundary>
     </SWRConfig>
   );
-}
+};
 
 export default AppRoutes;

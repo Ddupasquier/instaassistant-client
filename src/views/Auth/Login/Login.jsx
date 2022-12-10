@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { UserContext } from 'contexts/userContext';
 import './login-styles.scss';
 import { Button, Input, Spacer } from '@nextui-org/react';
 import { loginFetch } from 'api';
 
-function Login({ setLogIsVisible, logIsVisible, setForgPassShown }) {
+const Login = ({ setLogIsVisible, logIsVisible, setForgPassShown }) => {
+  const { setUser } = useContext(UserContext);
   const [email, setEmail] = useState('');
   const [pwd, setPwd] = useState('');
 
@@ -16,7 +18,7 @@ function Login({ setLogIsVisible, logIsVisible, setForgPassShown }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    loginFetch({ email, password: pwd });
+    loginFetch({ email, password: pwd }, setUser);
   };
 
   return (
@@ -38,7 +40,7 @@ function Login({ setLogIsVisible, logIsVisible, setForgPassShown }) {
             aria-label="Email"
           />
           <Spacer />
-          <Input
+          <Input.Password
             required
             type="password"
             id="password"
@@ -71,6 +73,6 @@ function Login({ setLogIsVisible, logIsVisible, setForgPassShown }) {
       </div>
     </div>
   );
-}
+};
 
 export default Login;

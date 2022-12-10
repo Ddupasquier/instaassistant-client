@@ -13,7 +13,6 @@ function AccountsTable({
   handleDeleteConfirmVisible,
 }) {
   const { data, err } = useSWR('/api/accounts', indexAccounts);
-  console.log(data);
 
   return (
     <table role="table" aria-label="accounts-table">
