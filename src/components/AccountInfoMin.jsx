@@ -3,12 +3,12 @@ import Avatar from 'react-avatar';
 import { Text } from '@nextui-org/react';
 import { platformIcon } from 'utils';
 
-function AccountInfoMin({ currentAccount }) {
-  if (currentAccount) {
+function AccountInfoMin({ username, platform }) {
+  if (username && platform) {
     return (
       <div>
         <div style={{ position: 'absolute', top: '1rem', right: '1rem' }}>
-          {platformIcon(currentAccount.platform)}
+          {platformIcon(platform)}
         </div>
 
         <div className="user">
@@ -22,13 +22,13 @@ function AccountInfoMin({ currentAccount }) {
             }}
           >
             <Avatar
-              name={currentAccount.username}
+              name={username}
               round
               value="25%"
               size="65"
               textSizeRatio={2}
             />
-            <Text>@{currentAccount.username}</Text>
+            <Text>@{username}</Text>
           </div>
         </div>
       </div>

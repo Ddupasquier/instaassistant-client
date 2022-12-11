@@ -51,7 +51,10 @@ function CurrentTask() {
                 <div>Created: {convertToUserTime(task.date_created)}</div>
                 <div>Scheduled: {convertToUserTime(task.date)}</div>
               </div>
-              <AccountInfoMin currentAccount={currentAccount} />
+              <AccountInfoMin
+                username={currentAccount.username}
+                platform={currentAccount.platform}
+              />
             </Card.Header>
             <Card.Body
               css={{

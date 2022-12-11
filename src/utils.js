@@ -5,14 +5,14 @@ import { IoLogoYoutube } from 'react-icons/io';
 import { IoLogoTiktok } from 'react-icons/io5';
 
 export const platformIcon = (platform) => {
-  switch (platform.toUpperCase()) {
-    case 'INSTAGRAM':
+  switch (platform) {
+    case 'instagram':
       return <FiInstagram size="20" />;
-    case 'YOUTUBE':
+    case 'youtube':
       return <IoLogoYoutube size="20" />;
-    case 'TIKTOK':
+    case 'tiktok':
       return <IoLogoTiktok size="20" />;
-    case 'TWITTER':
+    case 'twitter':
       return <FiTwitter size="20" />;
     default:
       return <FiInstagram size="20" />;
