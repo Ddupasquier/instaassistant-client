@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { UserContext } from 'contexts/userContext';
+import React from 'react';
+// import { UserContext } from 'contexts/userContext';
 import { Routes, Route } from 'react-router-dom';
 import { SWRConfig } from 'swr';
 
@@ -21,7 +21,7 @@ import { ChangePassword } from 'views/Auth/ChangePassword';
 import CTRL from 'views/CTRL/CTRL';
 
 const AppRoutes = () => {
-  const { user } = useContext(UserContext);
+  // const { user } = useContext(UserContext);
   return (
     <SWRConfig
       value={{

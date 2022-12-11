@@ -14,7 +14,7 @@ import {
   postListTypes,
 } from './constants';
 
-import { PostTask } from 'api';
+// import { PostTask } from 'api';
 
 import { TooltipPop } from 'components/Tooltip';
 import AccountInfoMin from 'components/AccountInfoMin';

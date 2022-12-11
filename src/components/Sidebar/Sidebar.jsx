@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { ThemeContext } from 'contexts/themeContext';
-import { UserContext } from 'contexts/userContext';
+// import { UserContext } from 'contexts/userContext';
 import { styled, Switch } from '@nextui-org/react';
 import { Logout } from 'api';
 import { SideBar, Li, Detail, Icon, LowerMenu } from './styled';
@@ -13,7 +13,7 @@ import { IoLogOutSharp } from 'react-icons/io5';
 
 export const Sidebar = () => {
   const { isDark, toggleFunction } = useContext(ThemeContext);
-  const { user } = useContext(UserContext);
+  // const { user } = useContext(UserContext);
 
   const Logo = styled('img', {
     filter: !isDark && 'brightness(0%)',
