@@ -26,7 +26,7 @@ export const Sidebar = () => {
         alt="ass-logo"
       />
       <ul>
-        {user &&
+        {localStorage.getItem('email') &&
           upperMenuItems.map((item) =>
             item.items ? (
               <Li key={item.name} className="menu-item">
@@ -76,7 +76,9 @@ export const Sidebar = () => {
             <Link to={item.to} key={item.name}>
               <Li key={item.name} className="menu-item">
                 <Icon>{<item.icon />}</Icon>
-                {item.name === 'Account Info' ? user.email : item.name}
+                {item.name === 'Account Info'
+                  ? localStorage.getItem('email').replaceAll('"', '')
+                  : item.name}
               </Li>
             </Link>
           ))}

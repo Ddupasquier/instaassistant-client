@@ -9,15 +9,17 @@ const UserContextProvider = ({ children }) => {
   const [accounts, setAccounts] = useState(null);
 
   useEffect(() => {
-    const getUser = async () => {
-      const [userInfo, accounts] = await Promise.all([
-        GetUserInfo(),
-        indexAccounts(),
-      ]);
-      setUserInfo(userInfo);
-      setAccounts(accounts);
-    };
-    getUser();
+    if (localStorage.getItem('email')) {
+      const getUser = async () => {
+        const [userInfo, accounts] = await Promise.all([
+          GetUserInfo(),
+          indexAccounts(),
+        ]);
+        setUserInfo(userInfo);
+        setAccounts(accounts);
+      };
+      getUser();
+    }
   }, [user]);
 
   return (

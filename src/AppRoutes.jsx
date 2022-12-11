@@ -41,7 +41,10 @@ const AppRoutes = () => {
             element={<ChangePassword />}
           />
           <Route path="/" element={<App />}>
-            <Route index element={user ? <Accounts /> : <Auth />} />
+            <Route
+              index
+              element={localStorage.getItem('email') ? <Accounts /> : <Auth />}
+            />
             <Route path="/CTRL" element={<CTRL />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/billing" element={<Billing />} />

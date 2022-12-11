@@ -28,10 +28,13 @@ const CTRL = () => {
   const [currentAccount, setCurrentAccount] = useState({});
 
   useEffect(() => {
-    const thisAccount = accounts.find(
-      (account) => account.username === currentAccountName
-    );
-    setCurrentAccount(thisAccount);
+    if (currentAccountName) {
+      const thisAccount = accounts.find(
+        (account) => account.username === currentAccountName
+      );
+      setCurrentAccount(thisAccount);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [accounts, currentAccountName]);
 
   const handleSubmit = (e) => {
@@ -50,15 +53,16 @@ const CTRL = () => {
       date: notScheduled,
       date_created: notScheduled,
     };
-    const res = PostTask(payload);
-    if (res.error) {
-      alert(
-        'Something went wrong. Please try again in a few minutes!',
-        res.error
-      );
-    } else {
-      alert('Task successfully created!');
-    }
+    console.log(payload);
+    // const res = PostTask(payload);
+    // if (res.error) {
+    //   alert(
+    //     'Something went wrong. Please try again in a few minutes!',
+    //     res.error
+    //   );
+    // } else {
+    //   alert('Task successfully created!');
+    // }
   };
 
   return (
@@ -81,7 +85,7 @@ const CTRL = () => {
           )}
         </div>
         <br />
-        {accounts && (
+        {localStorage.getItem('email') && (
           <Select
             onChange={(e) => {
               setCurrentAccountName(e.target.value);
@@ -141,6 +145,7 @@ const CTRL = () => {
 
               {listTypeSelected && (
                 <>
+                  <br />
                   <Input
                     labelPlaceholder="Target URL"
                     name="targetUrl"
@@ -149,13 +154,18 @@ const CTRL = () => {
                     bordered
                     required
                   />
-                  <div style={{ display: 'flex', gap: '.5rem' }}>
-                    Optional Arguments
-                    <TooltipPop
-                      content="Optional arguments will overwrite your config for this task alone."
-                      local="right"
-                    />
-                  </div>
+
+                  {actionSelected === 'Message' ||
+                    (actionSelected === 'Comment' && (
+                      <div style={{ display: 'flex', gap: '.5rem' }}>
+                        Optional Arguments
+                        <TooltipPop
+                          content="Optional arguments will overwrite your config for this task alone."
+                          local="right"
+                        />
+                      </div>
+                    ))}
+
                   {actionSelected === 'Message' && (
                     <Textarea
                       labelPlaceholder="Custom Message(s)"
@@ -165,6 +175,7 @@ const CTRL = () => {
                       color="secondary"
                     />
                   )}
+
                   {actionSelected === 'Comment' && (
                     <Textarea
                       labelPlaceholder="Custom Comment(s)"
