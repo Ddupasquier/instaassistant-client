@@ -60,6 +60,9 @@ export const loginFetch = async (userInfo, setUser) => {
     localStorage.setItem('token', resp_1.jwt);
     localStorage.setItem('email', JSON.stringify(resp_1.email));
     setUser(resp_1);
+    setTimeout(() => {
+      window.location.replace('/');
+    }, 1000);
   }
 };
 
