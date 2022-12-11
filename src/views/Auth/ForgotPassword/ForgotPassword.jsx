@@ -37,6 +37,7 @@ function ForgotPassword({ forgPassShown, setForgPassShown }) {
             placeholder="ENTIRE EMAIL ADDRESS"
             aria-label="Email"
             onChange={(e) => setEmail(e.target.value)}
+            css={{ width: '50%' }}
           />
           <Spacer />
           <Button type="submit">Reset</Button>

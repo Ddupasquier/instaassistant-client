@@ -38,6 +38,7 @@ const Login = ({ setLogIsVisible, logIsVisible, setForgPassShown }) => {
             placeholder="EMAIL"
             onChange={(e) => setEmail(e.target.value)}
             aria-label="Email"
+            css={{ width: '60%' }}
           />
           <Spacer />
           <Input.Password
@@ -47,6 +48,7 @@ const Login = ({ setLogIsVisible, logIsVisible, setForgPassShown }) => {
             placeholder="PASSWORD"
             onChange={(e) => setPwd(e.target.value)}
             aria-label="Password"
+            css={{ width: '60%' }}
           />
           <Spacer />
           <Button type="submit">Login</Button>

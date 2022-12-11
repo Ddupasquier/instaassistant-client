@@ -56,42 +56,45 @@ function SignUp({ setLogIsVisible, logIsVisible, setForgPassShown }) {
               aria-label="Invite Code"
             />
           ) : ( */}
-            <>
-              <Input
-                required
-                type="text"
-                id="username"
-                placeholder="EMAIL"
-                onChange={(e) => setEmail(e.target.value)}
-                aria-label="Email"
-              />
-              <Spacer />
-              <Input.Password
-                required
-                type="password"
-                id="password"
-                placeholder="PASSWORD"
-                onChange={(e) => setPwd(e.target.value)}
-                aria-label="Password"
-              />
-              <Spacer />
-              <Input.Password
-                required
-                type="password"
-                id="confirmPassword"
-                placeholder="CONFIRM PASSWORD"
-                onChange={(e) => setPwdconf(e.target.value)}
-                aria-label="Confirm Password"
-              />
-              <Spacer />
-              <Button type="submit">
-                {!loading ? (
-                  <>Sign Up</>
-                ) : (
-                  <Loading size="sm" color="secondary" />
-                )}
-              </Button>
-            </>
+          <>
+            <Input
+              required
+              type="text"
+              id="username"
+              placeholder="EMAIL"
+              onChange={(e) => setEmail(e.target.value)}
+              aria-label="Email"
+              css={{ width: '60%' }}
+            />
+            <Spacer />
+            <Input.Password
+              required
+              type="password"
+              id="password"
+              placeholder="PASSWORD"
+              onChange={(e) => setPwd(e.target.value)}
+              aria-label="Password"
+              css={{ width: '60%' }}
+            />
+            <Spacer />
+            <Input.Password
+              required
+              type="password"
+              id="confirmPassword"
+              placeholder="CONFIRM PASSWORD"
+              onChange={(e) => setPwdconf(e.target.value)}
+              aria-label="Confirm Password"
+              css={{ width: '60%' }}
+            />
+            <Spacer />
+            <Button type="submit">
+              {!loading ? (
+                <>Sign Up</>
+              ) : (
+                <Loading size="sm" color="secondary" />
+              )}
+            </Button>
+          </>
           {/* )} */}
         </form>
         <div className="signup-footer">
