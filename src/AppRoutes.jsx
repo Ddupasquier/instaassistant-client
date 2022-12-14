@@ -19,6 +19,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import ErrorFallback from 'components/ErrorFallback';
 import { ChangePassword } from 'views/Auth/ChangePassword';
 import CTRL from 'views/CTRL/CTRL';
+import TSK from 'views/TSK/TSK';
 
 const AppRoutes = () => {
   // const { user } = useContext(UserContext);
@@ -46,6 +47,7 @@ const AppRoutes = () => {
               element={localStorage.getItem('email') ? <Accounts /> : <Auth />}
             />
             <Route path="/CTRL" element={<CTRL />} />
+            <Route path="/TSK" element={<TSK />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/billing" element={<Billing />} />
             <Route path="/profile" element={<Profile />} />

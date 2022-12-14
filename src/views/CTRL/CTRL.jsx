@@ -1,20 +1,14 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { UserContext } from 'contexts/userContext';
-import './ctrl-styles.scss';
 
 import { Card, Button, Input, Textarea } from '@nextui-org/react';
 import { Select } from 'components/styled';
 
 import DropDown from 'components/DropDown';
 
-import {
-  actions,
-  listTargets,
-  accountListTypes,
-  postListTypes,
-} from './constants';
+import { actions } from './constants';
 
-// import { PostTask } from 'api';
+import { PostTask } from 'api';
 
 import { TooltipPop } from 'components/Tooltip';
 import AccountInfoMin from 'components/AccountInfoMin';
@@ -22,8 +16,6 @@ import AccountInfoMin from 'components/AccountInfoMin';
 const CTRL = () => {
   const { accounts } = useContext(UserContext);
   const [actionSelected, setActionSelected] = useState('');
-  const [listTargetSelected, setListTargetSelected] = useState('');
-  const [listTypeSelected, setListTypeSelected] = useState('');
   const [currentAccountName, setCurrentAccountName] = useState();
   const [currentAccount, setCurrentAccount] = useState({});
 
@@ -45,7 +37,7 @@ const CTRL = () => {
     const payload = {
       account_id: currentAccount.id,
       task_type: data.Action,
-      list_type: `${data.ListTarget}:${data.ListType}`,
+      list_type: ``,
       target_url: data.targetUrl,
       custom_messages: data.customMessages,
       custom_comments: data.customComments,
@@ -53,16 +45,17 @@ const CTRL = () => {
       date: notScheduled,
       date_created: notScheduled,
     };
-    console.log(payload);
-    // const res = PostTask(payload);
-    // if (res.error) {
-    //   alert(
-    //     'Something went wrong. Please try again in a few minutes!',
-    //     res.error
-    //   );
-    // } else {
-    //   alert('Task successfully created!');
-    // }
+    const res = PostTask(payload);
+    if (res.error) {
+      alert(
+        'Something went wrong. Please try again in a few minutes!',
+        res.error
+      );
+      window.location.replace('/CTRL');
+    } else {
+      alert('Task successfully created!');
+    }
+    window.location.replace('/CTRL');
   };
 
   return (
@@ -94,15 +87,16 @@ const CTRL = () => {
             <option value={null} style={{ color: 'black' }}>
               Select an account
             </option>
-            {accounts.map((account) => (
-              <option
-                key={account.id}
-                value={account.username}
-                style={{ color: 'black' }}
-              >
-                {account.username}
-              </option>
-            ))}
+            {accounts &&
+              accounts.map((account) => (
+                <option
+                  key={account.id}
+                  value={account.username}
+                  style={{ color: 'black' }}
+                >
+                  {account.username}
+                </option>
+              ))}
           </Select>
         )}
 
@@ -123,70 +117,36 @@ const CTRL = () => {
                 name={'Action'}
               />
 
-              {actionSelected && (
-                <DropDown
-                  options={listTargets}
-                  setter={setListTargetSelected}
-                  name={'ListTarget'}
-                />
-              )}
+              <Input
+                name="targetUrl"
+                label="Target URL"
+                type="text"
+                bordered
+                color="secondary"
+              />
+              <br />
 
-              {listTargetSelected && (
-                <DropDown
-                  options={
-                    listTargetSelected === 'Account'
-                      ? accountListTypes
-                      : postListTypes
-                  }
-                  setter={setListTypeSelected}
-                  name={'ListType'}
-                />
-              )}
-
-              {listTypeSelected && (
-                <>
-                  <br />
-                  <Input
-                    labelPlaceholder="Target URL"
-                    name="targetUrl"
-                    status="secondary"
+              <>
+                {actionSelected === 'Message' && (
+                  <Textarea
+                    labelPlaceholder="Custom Message(s)"
+                    name="customMessages"
                     type="text"
                     bordered
-                    required
+                    color="secondary"
                   />
+                )}
 
-                  {actionSelected === 'Message' ||
-                    (actionSelected === 'Comment' && (
-                      <div style={{ display: 'flex', gap: '.5rem' }}>
-                        Optional Arguments
-                        <TooltipPop
-                          content="Optional arguments will overwrite your config for this task alone."
-                          local="right"
-                        />
-                      </div>
-                    ))}
-
-                  {actionSelected === 'Message' && (
-                    <Textarea
-                      labelPlaceholder="Custom Message(s)"
-                      name="customMessages"
-                      type="text"
-                      bordered
-                      color="secondary"
-                    />
-                  )}
-
-                  {actionSelected === 'Comment' && (
-                    <Textarea
-                      labelPlaceholder="Custom Comment(s)"
-                      name="customComments"
-                      type="text"
-                      bordered
-                      color="secondary"
-                    />
-                  )}
-                </>
-              )}
+                {actionSelected === 'Comment' && (
+                  <Textarea
+                    labelPlaceholder="Custom Comment(s)"
+                    name="customComments"
+                    type="text"
+                    bordered
+                    color="secondary"
+                  />
+                )}
+              </>
             </Card.Body>
             <Card.Footer>
               <Button rounded color="secondary" type="submit">

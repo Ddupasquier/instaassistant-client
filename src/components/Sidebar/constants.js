@@ -23,7 +23,7 @@ export const upperMenuItems = [
     icon: IoApps,
     items: [
       { name: 'Ctrl', src: Ctrl, to: '/CTRL' },
-      { name: 'Tsk', src: Tsk, to: '/' },
+      { name: 'Tsk', src: Tsk, to: '/TSK' },
       { name: 'Tri', src: Tri, to: '/' },
       { name: 'Psc', src: Psc, to: '/' },
     ],
