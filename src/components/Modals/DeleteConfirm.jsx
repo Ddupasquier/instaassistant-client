@@ -37,7 +37,11 @@ const DeleteConfirm = ({
           <Text size={18}>
             Type the account username to confirm
             <br />
-            {userInfo && <b>&quot;{userInfo.username}&quot;</b>}
+            {userInfo && (
+              <span style={{ color: 'rgba(243, 18, 96)', fontWeight: '800' }}>
+                {userInfo.username}
+              </span>
+            )}
           </Text>
         </Text>
       </Modal.Header>
