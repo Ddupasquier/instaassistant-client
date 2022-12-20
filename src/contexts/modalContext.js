@@ -1,8 +1,8 @@
 import React, { createContext, useState } from 'react';
 
-const TaskModalContext = createContext(false);
+const ModalContext = createContext(false);
 
-const TaskModalContextProvider = ({ children }) => {
+const ModalContextProvider = ({ children }) => {
   const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
 
   const closeTaskHandler = () => {
@@ -12,10 +12,12 @@ const TaskModalContextProvider = ({ children }) => {
   const taskHandler = () => setIsTaskModalOpen(true);
 
   return (
-    <TaskModalContext.Provider value={{ isTaskModalOpen, closeTaskHandler, taskHandler }}>
+    <ModalContext.Provider
+      value={{ isTaskModalOpen, closeTaskHandler, taskHandler }}
+    >
       {children}
-    </TaskModalContext.Provider>
+    </ModalContext.Provider>
   );
 };
 
-export { TaskModalContextProvider, TaskModalContext };
+export { ModalContextProvider, ModalContext };

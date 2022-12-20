@@ -74,6 +74,7 @@ export const Select = styled('select', {
   fontSize: '1rem',
   fontWeight: 'bold',
   cursor: 'pointer',
+  width: '100%',
   transition: 'all 0.2s ease-in-out',
   '&:hover': {
     outline: '2px solid #6200ff',

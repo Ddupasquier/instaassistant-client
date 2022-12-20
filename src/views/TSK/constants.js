@@ -4,7 +4,7 @@ export const actions = [
   { value: 'Like Spree', label: 'Like Spree' },
   { value: 'Comment Spree', label: 'Comment Spree' },
   { value: 'Message Spree', label: 'Message Spree' },
-  { value: 'Interact', label: 'Interact' },
+  { value: 'Hyper Active', label: 'Hyper Active' },
   { value: '', label: 'Clean - Coming Soon' },
   { value: '', label: 'Black List - Coming Soon' },
   { value: '', label: 'White List - Coming Soon' },

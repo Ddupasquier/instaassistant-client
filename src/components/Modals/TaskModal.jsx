@@ -9,7 +9,7 @@ import {
 } from '@nextui-org/react';
 import { PostTask } from 'api';
 import { TooltipPop } from 'components/Tooltip';
-import { TaskModalContext } from 'contexts/modalContext';
+import { ModalContext } from 'contexts/modalContext';
 
 // * ------- CONSTANTS ------- * //
 import {
@@ -23,8 +23,10 @@ import {
 import { today, thisTime } from 'utils';
 import DropDown from 'components/DropDown';
 
+import { IoChevronForward } from 'react-icons/io5';
+
 function TaskModal({ account_id }) {
-  const { isTaskModalOpen, closeTaskHandler } = useContext(TaskModalContext);
+  const { isTaskModalOpen, closeTaskHandler } = useContext(ModalContext);
 
   const [actionSelected, setActionSelected] = useState('');
   const [listTargetSelected, setListTargetSelected] = useState('');
@@ -111,24 +113,35 @@ function TaskModal({ account_id }) {
             setter={setActionSelected}
             name={'Action'}
           />
-          {actionSelected && (
-            <DropDown
-              options={listTargets}
-              setter={setListTargetSelected}
-              name={'ListTarget'}
-            />
-          )}
-          {listTargetSelected && (
-            <DropDown
-              options={
-                listTargetSelected === 'Account'
-                  ? accountListTypes
-                  : postListTypes
-              }
-              setter={setListTypeSelected}
-              name={'ListType'}
-            />
-          )}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            {actionSelected && (
+              <DropDown
+                options={listTargets}
+                setter={setListTargetSelected}
+                name={'ListTarget'}
+              />
+            )}
+            {listTargetSelected && (
+              <>
+                <IoChevronForward size="50" />
+                <DropDown
+                  options={
+                    listTargetSelected === 'Account'
+                      ? accountListTypes
+                      : postListTypes
+                  }
+                  setter={setListTypeSelected}
+                  name={'ListType'}
+                />
+              </>
+            )}
+          </div>
 
           {listTypeSelected && (
             <>

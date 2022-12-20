@@ -11,7 +11,7 @@ const DeleteConfirm = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (usernameConfirm === userInfo.username) {
+    if (usernameConfirm.toLowerCase() === userInfo.username.toLowerCase()) {
       DeleteAccount(userInfo.id).then((data) => {
         closeDeleteConfirmHandler();
         if (data.success) {

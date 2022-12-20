@@ -3,6 +3,7 @@ import { UserContext } from 'contexts/userContext';
 
 import { Card, Button, Input, Textarea, styled } from '@nextui-org/react';
 import { Select } from 'components/styled';
+import { IoChevronForward } from 'react-icons/io5';
 
 import DropDown from 'components/DropDown';
 
@@ -150,25 +151,35 @@ const TSK = () => {
                 name={'Action'}
               />
 
-              {actionSelected && (
-                <DropDown
-                  options={listTargets}
-                  setter={setListTargetSelected}
-                  name={'ListTarget'}
-                />
-              )}
-
-              {listTargetSelected && (
-                <DropDown
-                  options={
-                    listTargetSelected === 'Account'
-                      ? accountListTypes
-                      : postListTypes
-                  }
-                  setter={setListTypeSelected}
-                  name={'ListType'}
-                />
-              )}
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                {actionSelected && (
+                  <DropDown
+                    options={listTargets}
+                    setter={setListTargetSelected}
+                    name={'ListTarget'}
+                  />
+                )}
+                {listTargetSelected && (
+                  <>
+                    <IoChevronForward size="50" />
+                    <DropDown
+                      options={
+                        listTargetSelected === 'Account'
+                          ? accountListTypes
+                          : postListTypes
+                      }
+                      setter={setListTypeSelected}
+                      name={'ListType'}
+                    />
+                  </>
+                )}
+              </div>
 
               {listTypeSelected && (
                 <>

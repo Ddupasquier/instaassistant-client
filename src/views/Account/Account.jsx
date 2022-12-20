@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import { TaskModalContext } from 'contexts/modalContext';
+import { ModalContext } from 'contexts/modalContext';
 
 // * ------- API LAYER ------- *
 import { getSnapshots, GetTasks, ShowAccount } from 'api';
@@ -22,9 +22,9 @@ import { TasksRunning } from '.';
 import AccountInfo from 'components/AccountInfo';
 
 function Account() {
-  const { toggleTaskModal } = useContext(TaskModalContext);
+  const { toggleTaskModal } = useContext(ModalContext);
 
-  // * ------- DESCTRUCTURING URL PARAMS ------- *
+  // * ------- DESTRUCTURING URL PARAMS ------- *
   const { account_id } = useParams();
 
   // * ------- TASK FORM AND MODAL HANDLERS ------- *

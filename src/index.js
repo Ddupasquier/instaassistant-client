@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { ThemeProvider } from 'contexts/themeContext';
-import { TaskModalContextProvider } from 'contexts/modalContext';
+import { ModalContextProvider } from 'contexts/modalContext';
 import { UserContextProvider } from 'contexts/userContext';
 import { BrowserRouter } from 'react-router-dom';
 import AppRoutes from './AppRoutes';
@@ -12,11 +12,11 @@ root.render(
   <React.StrictMode>
     <UserContextProvider>
       <ThemeProvider>
-        <TaskModalContextProvider>
+        <ModalContextProvider>
           <BrowserRouter>
             <AppRoutes />
           </BrowserRouter>
-        </TaskModalContextProvider>
+        </ModalContextProvider>
       </ThemeProvider>
     </UserContextProvider>
   </React.StrictMode>

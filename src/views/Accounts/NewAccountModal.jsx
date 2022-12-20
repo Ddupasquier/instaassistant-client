@@ -12,14 +12,18 @@ const NewAccountModal = ({ newAccountVisible, closeNewAccountHandler }) => {
   const [newAccountSetup, setNewAccountSetup] = useState(null);
   const [tryingLogin, setTryingLogin] = useState(null);
 
-  const HandleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (pwd !== pwdConf) {
       alert(
         'Passwords do not match. Double check your password is correct, then try again.'
       );
     } else {
-      const payload = { username, password: pwd, platform };
+      const payload = {
+        username,
+        password: pwd,
+        platform,
+      };
       CreateAccount(payload).then((data) => {
         if (data.success) {
           alert('we got a success');
@@ -63,7 +67,7 @@ const NewAccountModal = ({ newAccountVisible, closeNewAccountHandler }) => {
               </Text>
             </Text>
           </Modal.Header>
-          <form onSubmit={HandleSubmit}>
+          <form onSubmit={handleSubmit}>
             <Modal.Body>
               <DropDown
                 options={platforms}

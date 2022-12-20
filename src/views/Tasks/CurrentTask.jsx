@@ -51,10 +51,12 @@ function CurrentTask() {
                 <div>Created: {convertToUserTime(task.date_created)}</div>
                 <div>Scheduled: {convertToUserTime(task.date)}</div>
               </div>
-              <AccountInfoMin
-                username={currentAccount.username}
-                platform={currentAccount.platform}
-              />
+              {currentAccount.username && (
+                <AccountInfoMin
+                  username={currentAccount.username}
+                  platform={currentAccount.platform}
+                />
+              )}
             </Card.Header>
             <Card.Body
               css={{

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { TaskModalContext } from 'contexts/modalContext';
+import { ModalContext } from 'contexts/modalContext';
 import { Button } from '@nextui-org/react';
 import { useWindowHeight } from 'hooks/windowSize';
 import { useParams } from 'react-router-dom';
@@ -9,7 +9,7 @@ import Loader from 'components/Loader';
 import { GetTasks } from 'api';
 
 function ScheduledTasks() {
-  const { taskHandler } = useContext(TaskModalContext);
+  const { taskHandler } = useContext(ModalContext);
   const [height] = useWindowHeight();
   const { account_id } = useParams();
   const [tasks, setTasks] = useState([]);

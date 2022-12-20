@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './signup-styles.scss';
-import { Button, Input, Loading, Spacer } from '@nextui-org/react';
+import { Button, Input, Loading, Spacer, Checkbox } from '@nextui-org/react';
 import { CreateUserPost } from 'api';
 
 function SignUp({ setLogIsVisible, logIsVisible, setForgPassShown }) {
@@ -8,6 +8,8 @@ function SignUp({ setLogIsVisible, logIsVisible, setForgPassShown }) {
   const [pwd, setPwd] = useState('');
   const [pwdconf, setPwdconf] = useState('');
   const [loading, setLoading] = useState(false);
+  const [tosCheck, setTosCheck] = useState(false);
+  const [tosShown, setTosShown] = useState(false);
 
   // const [inviteCode, setInviteCode] = useState(false);
   // const [code, setCode] = useState('');
@@ -25,10 +27,18 @@ function SignUp({ setLogIsVisible, logIsVisible, setForgPassShown }) {
     zIndex: '3',
   };
 
+  useEffect(() => {
+    if (email.length > 1 && pwd.length > 1 && pwdconf.length > 1) {
+      setTosShown(true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [email, pwd, pwdconf]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
     // if pwdconf is not equal to pwd, alert user
-    if (pwd !== pwdconf) {
+    if (pwd !== pwdconf && tosCheck) {
       alert('Passwords do not match');
       return;
     }
@@ -87,7 +97,35 @@ function SignUp({ setLogIsVisible, logIsVisible, setForgPassShown }) {
               css={{ width: '60%' }}
             />
             <Spacer />
-            <Button type="submit">
+
+            {tosShown && (
+              <>
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '.5rem',
+                  }}
+                >
+                  <Checkbox isSelected={tosCheck} onChange={setTosCheck} />{' '}
+                  <span>
+                    I have read the{' '}
+                    <a
+                      href="*"
+                      target="_blank"
+                      rel="noreferrer"
+                      style={{ color: 'blue' }}
+                    >
+                      terms of service
+                    </a>
+                  </span>
+                </div>
+                <Spacer />
+              </>
+            )}
+
+            <Button type="submit" disabled={!tosCheck}>
               {!loading ? (
                 <>Sign Up</>
               ) : (

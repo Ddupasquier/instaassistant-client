@@ -5,7 +5,7 @@ import { useParams, Link } from 'react-router-dom';
 import { Grid, Card, Text, Dropdown } from '@nextui-org/react';
 import { FiSettings } from 'react-icons/fi';
 import BackButton from './Buttons/BackButton';
-import { TaskModalContext } from 'contexts/modalContext';
+import { ModalContext } from 'contexts/modalContext';
 import { platformIcon } from 'utils';
 
 function AccountInfo({
@@ -13,7 +13,7 @@ function AccountInfo({
   currentAccount,
   snapshots,
 }) {
-  const { taskHandler } = useContext(TaskModalContext);
+  const { taskHandler } = useContext(ModalContext);
   const { account_id } = useParams();
 
   return (

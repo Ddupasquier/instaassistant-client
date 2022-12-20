@@ -21,6 +21,10 @@ import { FiHeart, FiUserPlus, FiUserMinus } from 'react-icons/fi';
  */
 function AccountsRow({ user, handleDeleteConfirmVisible, setUserToDelete, i }) {
   const navigate = useNavigate();
+
+  const tags = user.tags.split(',');
+  const firstFiveTags = tags.slice(0, 5);
+
   return (
     <Tr
       key={user.id}
@@ -46,7 +50,34 @@ function AccountsRow({ user, handleDeleteConfirmVisible, setUserToDelete, i }) {
         {platformIcon(user.platform)}
       </td>
       <td aria-label="tags-cell" role="cell">
-        {user.tags}
+        {firstFiveTags.length > 1 &&
+          firstFiveTags.map((tag, i) => (
+            <span
+              key={i}
+              style={{
+                background: '#5AA9E6',
+                marginRight: '.5rem',
+                padding: '.2rem .5rem',
+                borderRadius: '5px',
+                color: 'white',
+              }}
+            >
+              {tag}
+            </span>
+          ))}
+        {tags.length > 5 && (
+          <span
+            style={{
+              background: 'gray',
+              marginRight: '.5rem',
+              padding: '.2rem .5rem',
+              borderRadius: '5px',
+              color: 'white',
+            }}
+          >
+            ...
+          </span>
+        )}
       </td>
       <td aria-label="active-cell" role="cell">
         {user.active ? 'Active' : 'Idle'}
