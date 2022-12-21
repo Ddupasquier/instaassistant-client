@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { ThemeContext } from 'contexts/themeContext';
-// import { UserContext } from 'contexts/userContext';
+import { ModalContext } from 'contexts/modalContext';
 import { styled, Switch } from '@nextui-org/react';
 import { Logout } from 'api';
 import { SideBar, Li, Detail, Icon, LowerMenu } from './styled';
@@ -12,6 +12,7 @@ import { BsSunFill, BsFillMoonStarsFill } from 'react-icons/bs';
 import { IoLogOutSharp } from 'react-icons/io5';
 
 export const Sidebar = () => {
+  const { setUserToApps } = useContext(ModalContext);
   const { isDark, toggleFunction } = useContext(ThemeContext);
   // const { user } = useContext(UserContext);
 
@@ -39,10 +40,11 @@ export const Sidebar = () => {
                         {subItem.src ? (
                           <Link
                             to={subItem.to}
-                            onClick={() =>
+                            onClick={() => {
                               subItem.to === '/' &&
-                              alert('This is a coming feature')
-                            }
+                                alert('This is a coming feature');
+                              setUserToApps(null);
+                            }}
                           >
                             <img
                               src={subItem.src}

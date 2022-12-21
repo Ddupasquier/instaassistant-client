@@ -16,9 +16,7 @@ import {
 } from './constants';
 
 import { PostTask } from 'api';
-
 import { today, thisTime } from 'utils';
-
 import { TooltipPop } from 'components/Tooltip';
 import AccountInfoMin from 'components/AccountInfoMin';
 
@@ -113,11 +111,13 @@ const TSK = () => {
         'Something went wrong. Please try again in a few minutes!',
         res.error
       );
-      window.location.replace('/TSK');
     } else {
       alert('Task successfully created!');
     }
-    window.location.replace('/TSK');
+
+    setActionSelected('');
+    setListTargetSelected('');
+    setListTypeSelected('');
   };
 
   return (
