@@ -16,7 +16,12 @@ import { FaRegEnvelopeOpen } from 'react-icons/fa';
 import { FiHeart, FiUserPlus, FiUserMinus } from 'react-icons/fi';
 
 function AccountsRow({ user, i }) {
-  const { appsHandler, setUserToDelete, handleDeleteConfirmVisible } = useContext(ModalContext);
+  const {
+    appsHandler,
+    setUserToDelete,
+    handleDeleteConfirmVisible,
+    setUserToApps,
+  } = useContext(ModalContext);
   const navigate = useNavigate();
 
   const tags = user.tags.split(',');
@@ -92,21 +97,14 @@ function AccountsRow({ user, i }) {
         role="presentation"
         onClick={(e) => e.stopPropagation()}
       >
-        <button
-          style={{
-            background: 'none',
-            border: 'none',
-            padding: '0',
-            cursor: 'pointer',
+        <Folder
+          title="Open in..."
+          onClick={() => {
+            appsHandler();
+            setUserToApps(user);
           }}
-          onClick={appsHandler}
-        >
-          <Folder
-            title="Open in..."
-            size="20"
-            style={{ pointerEvents: 'inherit' }}
-          />
-        </button>
+          size="20"
+        />
         <Link to={`/accounts/${user.id}`}>
           <Eye title="View account" size="20" />
         </Link>

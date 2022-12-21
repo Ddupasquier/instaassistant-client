@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { ModalContext } from 'contexts/modalContext';
 import { Modal, Text } from '@nextui-org/react';
@@ -6,12 +6,9 @@ import { Modal, Text } from '@nextui-org/react';
 import { apps } from 'constants';
 import { Li } from 'components/Sidebar/styled';
 
-const AppsModal = ({ username }) => {
-  const { isAppsModalOpen, closeAppsHandler } = useContext(ModalContext);
-
-  useEffect(() => {
-    console.log(username, 'modal');
-  }, [username]);
+const AppsModal = () => {
+  const { isAppsModalOpen, closeAppsHandler, userToApps } =
+    useContext(ModalContext);
 
   return (
     <Modal
@@ -25,11 +22,15 @@ const AppsModal = ({ username }) => {
           Which App would you like to view this user in?
         </Text>
       </Modal.Header>
-      {username && (
+      {userToApps && (
         <Modal.Body>
           <ul>
             {apps.map((app, i) => (
-              <Link to={`${app.to}/${username}`} key={i}>
+              <Link
+                to={`${app.to}/${userToApps.username}`}
+                key={i}
+                onClick={closeAppsHandler}
+              >
                 <Li>{app.name}</Li>
               </Link>
             ))}

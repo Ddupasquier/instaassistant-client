@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Avatar from 'react-avatar';
 import { Text } from '@nextui-org/react';
 import { platformIcon } from 'utils';
 import Loader from './Loader';
 
 function AccountInfoMin({ username, platform }) {
+  const [info, setInfo] = useState({ username, platform });
+
+  useEffect(() => {
+    setInfo({ username, platform });
+  }, [username, platform]);
+
   return (
     <div>
-      {username !== undefined && platform ? (
+      {info ? (
         <>
           <div style={{ position: 'absolute', top: '1rem', right: '1rem' }}>
-            {platformIcon(platform)}
+            {platformIcon(info.platform)}
           </div>
 
           <div className="user">
@@ -24,13 +30,13 @@ function AccountInfoMin({ username, platform }) {
               }}
             >
               <Avatar
-                name={username}
+                name={info.username}
                 round
                 value="25%"
                 size="65"
                 textSizeRatio={2}
               />
-              <Text>@{username}</Text>
+              <Text>@{info.username}</Text>
             </div>
           </div>
         </>

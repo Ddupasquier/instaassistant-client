@@ -1,4 +1,5 @@
-import React, { Suspense, useState, useTransition } from 'react';
+import React, { Suspense, useState, useTransition, useContext } from 'react';
+import { ModalContext } from 'contexts/modalContext';
 import './accounts-styles.scss';
 
 // * NEXTUI IMPORTS
@@ -9,16 +10,12 @@ import NewAccountModal from './NewAccountModal';
 import DeleteConfirm from '../../components/Modals/DeleteConfirm';
 import Loader from 'components/Loader';
 import AccountsTable from 'components/Tables/AccountsTable';
+import AppsModal from 'components/Modals/AppsModal';
 
 function Accounts() {
+  const { newAccountHandler } = useContext(ModalContext);
   const [searchTerm, setSearchTerm] = useState('');
   const [isUpdating, startUpdating] = useTransition();
-
-  const [newAccountVisible, setNewAccountVisible] = useState(false);
-  const newAccountHandler = () => setNewAccountVisible(true);
-  const closeNewAccountHandler = () => {
-    setNewAccountVisible(false);
-  };
 
   function updateSearchTerm(newVal) {
     startUpdating(() => {
@@ -52,25 +49,6 @@ function Accounts() {
           >
             Account Management
           </Text>
-          {/* <Dropdown>
-            <Dropdown.Button flat color="secondary" css={{ tt: 'capitalize' }}>
-              {selectedValue}
-            </Dropdown.Button>
-            <Dropdown.Menu
-              aria-label="Single selection actions"
-              color="secondary"
-              disallowEmptySelection
-              selectionMode="single"
-              selectedKeys={selected}
-              onSelectionChange={setSelected}
-            >
-              <Dropdown.Item key="All">All</Dropdown.Item>
-              <Dropdown.Item key="Instagram">Instagram</Dropdown.Item>
-              <Dropdown.Item key="Twitter">Twitter</Dropdown.Item>
-              <Dropdown.Item key="TikTok">TikTok</Dropdown.Item>
-              <Dropdown.Item key="Facebook">Facebook</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown> */}
           <Input
             clearable
             underlined
@@ -84,7 +62,6 @@ function Accounts() {
           />
           <Button
             type="button"
-            // size="sm"
             color="secondary"
             rounded
             onPress={newAccountHandler}
@@ -96,19 +73,13 @@ function Accounts() {
           <Loader />
         ) : (
           <Suspense fallback={<Loader />}>
-            <AccountsTable
-              isUpdating={isUpdating}
-              searchTerm={searchTerm}
-            />
+            <AccountsTable isUpdating={isUpdating} searchTerm={searchTerm} />
           </Suspense>
         )}
       </div>
-      <NewAccountModal
-        newAccountHandler={newAccountHandler}
-        closeNewAccountHandler={closeNewAccountHandler}
-        newAccountVisible={newAccountVisible}
-      />
+      <NewAccountModal />
       <DeleteConfirm />
+      <AppsModal />
     </>
   );
 }

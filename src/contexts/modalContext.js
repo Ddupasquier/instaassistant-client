@@ -11,6 +11,7 @@ const ModalContextProvider = ({ children }) => {
   };
 
   // * APPS MODAL
+  const [userToApps, setUserToApps] = useState(null);
   const [isAppsModalOpen, setIsAppsModalOpen] = useState(false);
   const appsHandler = () => setIsAppsModalOpen(true);
   const closeAppsHandler = () => {
@@ -23,6 +24,13 @@ const ModalContextProvider = ({ children }) => {
   const handleDeleteConfirmVisible = () => setDeleteConfirmVisible(true);
   const closeDeleteConfirmHandler = () => {
     setDeleteConfirmVisible(false);
+  };
+
+  // * NEW ACCOUNT MODAL
+  const [newAccountVisible, setNewAccountVisible] = useState(false);
+  const newAccountHandler = () => setNewAccountVisible(true);
+  const closeNewAccountHandler = () => {
+    setNewAccountVisible(false);
   };
 
   return (
@@ -39,6 +47,11 @@ const ModalContextProvider = ({ children }) => {
         closeDeleteConfirmHandler,
         userToDelete,
         setUserToDelete,
+        newAccountVisible,
+        newAccountHandler,
+        closeNewAccountHandler,
+        userToApps,
+        setUserToApps,
       }}
     >
       {children}

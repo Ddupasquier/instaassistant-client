@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import { UserContext } from 'contexts/userContext';
+import { ModalContext } from 'contexts/modalContext';
 
 import { Card, Button, Input, Textarea, styled } from '@nextui-org/react';
 import { Select } from 'components/styled';
@@ -45,24 +45,50 @@ const DateStyle = styled('input', {
 });
 
 const TSK = () => {
-  const { tsk_id } = useParams();
+  const { userToApps } = useContext(ModalContext);
   const { accounts } = useContext(UserContext);
   const [actionSelected, setActionSelected] = useState('');
   const [listTargetSelected, setListTargetSelected] = useState('');
   const [listTypeSelected, setListTypeSelected] = useState('');
-  const [currentAccountName, setCurrentAccountName] = useState();
-  const [currentAccount, setCurrentAccount] = useState({});
   const [schedule, setSchedule] = useState(false);
 
+  const [selectedAccount, setSelectedAccount] = useState();
+  const [selectedAccountName, setSelectedAccountName] = useState();
+  const [selectedAccountPlatform, setSelectedAccountPlatform] = useState();
+
   useEffect(() => {
-    if (currentAccountName) {
-      const thisAccount = accounts.find(
-        (account) => account.username === currentAccountName
-      );
-      setCurrentAccount(thisAccount);
+    if (userToApps) {
+      setSelectedAccount(userToApps);
+      setSelectedAccountName(userToApps.username);
+      setSelectedAccountPlatform(userToApps.platform);
+    } else {
+      if (accounts) {
+        setSelectedAccount(accounts[0]);
+        setSelectedAccountName(accounts[0].username);
+        setSelectedAccountPlatform(accounts[0].platform);
+      } else {
+        setSelectedAccount(null);
+        setSelectedAccountName(null);
+        setSelectedAccountPlatform(null);
+      }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [accounts, currentAccountName]);
+  }, [accounts, userToApps]);
+
+  useEffect(() => {
+    if (selectedAccount) {
+      setSelectedAccountName(selectedAccount.username);
+      setSelectedAccountPlatform(selectedAccount.platform);
+    }
+  }, [selectedAccount]);
+
+  useEffect(() => {
+    if (selectedAccount) {
+      const account = accounts.find(
+        (account) => account.username === selectedAccountName
+      );
+      setSelectedAccount(account);
+    }
+  }, [accounts, selectedAccount, selectedAccountName]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -71,7 +97,7 @@ const TSK = () => {
     const scheduledDate = new Date(`${data.date} ${data.time}`).toUTCString();
     const notScheduled = new Date().toUTCString();
     const payload = {
-      account_id: currentAccount.id,
+      account_id: selectedAccount.id,
       task_type: data.Action,
       list_type: `${data.ListTarget}:${data.ListType}`,
       target_url: data.targetUrl,
@@ -94,18 +120,6 @@ const TSK = () => {
     window.location.replace('/TSK');
   };
 
-  // console.log(typeof tsk_id, 'before filter');
-  // const filterAccount = (tsk_id) => {
-  //   if (tsk_id !== '') {
-  //     console.log(tsk_id);
-  //     const filteredAccount = accounts.filter(
-  //       (account) => account.id === tsk_id
-  //     );
-  //     return filteredAccount;
-  //   }
-  //   return null;
-  // };
-
   return (
     <div className="view-container">
       <Card css={{ width: '60%', padding: '2rem' }}>
@@ -118,192 +132,172 @@ const TSK = () => {
           }}
         >
           <h1>TSK</h1>
-          {currentAccountName && (
+          {selectedAccount && (
             <AccountInfoMin
-              username={currentAccount?.username}
-              platform={currentAccount?.platform}
+              username={selectedAccountName}
+              platform={selectedAccountPlatform}
             />
           )}
         </div>
         <br />
-        {localStorage.getItem('email') && (
+        {localStorage.getItem('email') && !userToApps && (
           <Select
             onChange={(e) => {
-              setCurrentAccountName(e.target.value);
+              setSelectedAccountName(e.target.value);
             }}
-            defaultValue={
-              accounts &&
-              tsk_id !== '' &&
-              accounts.filter((account) => account.username === tsk_id)
-            }
           >
             <option value={null} style={{ color: 'black' }}>
               Select an account
             </option>
             {accounts &&
-              accounts.map(
-                (account) => (
-                  // account.id === Number(tsk_id) ? (
-                  //   <option
-                  //     key={account.id}
-                  //     value={account.username}
-                  //     style={{ color: 'black' }}
-                  //     selected
-                  //   >
-                  //     {account.username}
-                  //   </option>
-                  // ) : (
-                  <option
-                    key={account.id}
-                    value={account.username}
-                    style={{ color: 'black' }}
-                  >
-                    {account.username}
-                  </option>
-                )
-                // )
-              )}
+              accounts.map((account) => (
+                <option
+                  key={account.id}
+                  value={account.username}
+                  style={{ color: 'black' }}
+                >
+                  {account.username}
+                </option>
+              ))}
           </Select>
         )}
 
-        {currentAccountName && (
-          <form onSubmit={handleSubmit}>
-            <Card.Body css={{ gap: '1rem' }}>
-              <div style={{ display: 'flex', gap: '.5rem' }}>
-                Action
-                <TooltipPop
-                  content="Choose the action you would like your account to take."
-                  local="right"
-                />
-              </div>
-
-              <DropDown
-                options={actions}
-                setter={setActionSelected}
-                name={'Action'}
+        <form onSubmit={handleSubmit}>
+          <Card.Body css={{ gap: '1rem' }}>
+            <div style={{ display: 'flex', gap: '.5rem' }}>
+              Action
+              <TooltipPop
+                content="Choose the action you would like your account to take."
+                local="right"
               />
+            </div>
 
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                {actionSelected && (
-                  <DropDown
-                    options={listTargets}
-                    setter={setListTargetSelected}
-                    name={'ListTarget'}
-                  />
-                )}
-                {listTargetSelected && (
-                  <>
-                    <IoChevronForward size="50" />
-                    <DropDown
-                      options={
-                        listTargetSelected === 'Account'
-                          ? accountListTypes
-                          : postListTypes
-                      }
-                      setter={setListTypeSelected}
-                      name={'ListType'}
-                    />
-                  </>
-                )}
-              </div>
+            <DropDown
+              options={actions}
+              setter={setActionSelected}
+              name={'Action'}
+            />
 
-              {listTypeSelected && (
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              {actionSelected && (
+                <DropDown
+                  options={listTargets}
+                  setter={setListTargetSelected}
+                  name={'ListTarget'}
+                />
+              )}
+              {listTargetSelected && (
                 <>
-                  <br />
-                  <Input
-                    labelPlaceholder="Target URL"
-                    name="targetUrl"
-                    status="secondary"
-                    type="text"
-                    bordered
-                    required
+                  <IoChevronForward size="50" />
+                  <DropDown
+                    options={
+                      listTargetSelected === 'Account'
+                        ? accountListTypes
+                        : postListTypes
+                    }
+                    setter={setListTypeSelected}
+                    name={'ListType'}
                   />
-                  <br />
-
-                  {actionSelected === 'Message' ||
-                    (actionSelected === 'Comment' && (
-                      <div style={{ display: 'flex', gap: '.5rem' }}>
-                        Optional Arguments
-                        <TooltipPop
-                          content="Optional arguments will overwrite your config for this task alone."
-                          local="right"
-                        />
-                      </div>
-                    ))}
-
-                  {actionSelected === 'Message Spree' && (
-                    <Textarea
-                      labelPlaceholder="Custom Message(s)"
-                      name="customMessages"
-                      type="text"
-                      bordered
-                      color="secondary"
-                    />
-                  )}
-
-                  {actionSelected === 'Comment Spree' && (
-                    <Textarea
-                      labelPlaceholder="Custom Comment(s)"
-                      name="customComments"
-                      type="text"
-                      bordered
-                      color="secondary"
-                    />
-                  )}
-
-                  <div
-                    style={{
-                      display: 'flex',
-                      gap: '.5rem',
-                      alignItems: 'center',
-                    }}
-                  >
-                    <label
-                      htmlFor="schedule"
-                      style={{ display: 'flex', gap: '.5rem' }}
-                    >
-                      <input
-                        type="checkbox"
-                        name="schedule"
-                        onChange={() => setSchedule(true)}
-                      />
-                      Schedule?
-                    </label>
-                    {schedule && (
-                      <>
-                        <DateStyle
-                          defaultValue={today}
-                          type="date"
-                          name="date"
-                          min={today}
-                          style={{ width: '100%' }}
-                        />
-                        <TimeStyle
-                          defaultValue={thisTime}
-                          type="time"
-                          name="time"
-                          min={thisTime}
-                          style={{ width: '100%' }}
-                        />
-                      </>
-                    )}
-                  </div>
                 </>
               )}
-            </Card.Body>
-            <Card.Footer>
-              <Button rounded color="secondary" type="submit">
-                Run
-              </Button>
-            </Card.Footer>
-          </form>
-        )}
+            </div>
+
+            {listTypeSelected && (
+              <>
+                <br />
+                <Input
+                  labelPlaceholder="Target URL"
+                  name="targetUrl"
+                  status="secondary"
+                  type="text"
+                  bordered
+                  required
+                />
+                <br />
+
+                {actionSelected === 'Message' ||
+                  (actionSelected === 'Comment' && (
+                    <div style={{ display: 'flex', gap: '.5rem' }}>
+                      Optional Arguments
+                      <TooltipPop
+                        content="Optional arguments will overwrite your config for this task alone."
+                        local="right"
+                      />
+                    </div>
+                  ))}
+
+                {actionSelected === 'Message Spree' && (
+                  <Textarea
+                    labelPlaceholder="Custom Message(s)"
+                    name="customMessages"
+                    type="text"
+                    bordered
+                    color="secondary"
+                  />
+                )}
+
+                {actionSelected === 'Comment Spree' && (
+                  <Textarea
+                    labelPlaceholder="Custom Comment(s)"
+                    name="customComments"
+                    type="text"
+                    bordered
+                    color="secondary"
+                  />
+                )}
+
+                <div
+                  style={{
+                    display: 'flex',
+                    gap: '.5rem',
+                    alignItems: 'center',
+                  }}
+                >
+                  <label
+                    htmlFor="schedule"
+                    style={{ display: 'flex', gap: '.5rem' }}
+                  >
+                    <input
+                      type="checkbox"
+                      name="schedule"
+                      onChange={() => setSchedule(true)}
+                    />
+                    Schedule?
+                  </label>
+                  {schedule && (
+                    <>
+                      <DateStyle
+                        defaultValue={today}
+                        type="date"
+                        name="date"
+                        min={today}
+                        style={{ width: '100%' }}
+                      />
+                      <TimeStyle
+                        defaultValue={thisTime}
+                        type="time"
+                        name="time"
+                        min={thisTime}
+                        style={{ width: '100%' }}
+                      />
+                    </>
+                  )}
+                </div>
+              </>
+            )}
+          </Card.Body>
+          <Card.Footer>
+            <Button rounded color="secondary" type="submit">
+              Run
+            </Button>
+          </Card.Footer>
+        </form>
       </Card>
     </div>
   );

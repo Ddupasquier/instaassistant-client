@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { ModalContext } from 'contexts/modalContext';
 import { Modal, Input, Button, Text, Spacer, Loading } from '@nextui-org/react';
 import { CreateAccount, GetTask } from 'api';
 import DropDown from 'components/DropDown';
 import { platforms } from './constants';
 
-const NewAccountModal = ({ newAccountVisible, closeNewAccountHandler }) => {
+const NewAccountModal = () => {
+  const { newAccountVisible, closeNewAccountHandler } =
+    useContext(ModalContext);
   const [pwd, setPwd] = useState('');
   const [pwdConf, setPwdConf] = useState('');
   const [username, setUsername] = useState('');
