@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { Card, Grid, Button } from '@nextui-org/react';
 import ElipsesAnimation from 'components/Elipses/ElipsesAnimation';
 
-function TasksRunning({ tasksActive, task }) {
+function TasksRunning({ task }) {
   const { account_id } = useParams();
   return (
     <>
@@ -48,6 +48,5 @@ function TasksRunning({ tasksActive, task }) {
     </>
   );
 }
-// }
 
 export default TasksRunning;

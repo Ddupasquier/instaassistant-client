@@ -49,10 +49,24 @@ const TSK = () => {
   const [listTargetSelected, setListTargetSelected] = useState('');
   const [listTypeSelected, setListTypeSelected] = useState('');
   const [schedule, setSchedule] = useState(false);
+  const [inputLabel, setInputLabel] = useState('Target URL');
 
   const [selectedAccount, setSelectedAccount] = useState();
   const [selectedAccountName, setSelectedAccountName] = useState();
   const [selectedAccountPlatform, setSelectedAccountPlatform] = useState();
+
+  useEffect(() => {
+    switch (listTargetSelected) {
+      case 'Post':
+        setInputLabel('Target URL');
+        break;
+      case 'Account':
+        setInputLabel('@username');
+        break;
+      default:
+        setInputLabel('Target URL');
+    }
+  }, [listTargetSelected]);
 
   useEffect(() => {
     if (userToApps) {
@@ -211,7 +225,7 @@ const TSK = () => {
               <>
                 <br />
                 <Input
-                  labelPlaceholder="Target URL"
+                  labelPlaceholder={inputLabel}
                   name="targetUrl"
                   status="secondary"
                   type="text"

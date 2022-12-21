@@ -129,10 +129,12 @@ function Account() {
               taskHandler={toggleTaskModal}
               snapshots={snapshots}
             />
-            <TasksRunning
-              tasksActive={currentAccount.active}
-              task={runningTask}
-            />
+            {currentAccount.active && (
+              <TasksRunning
+                tasksActive={currentAccount.active}
+                task={runningTask}
+              />
+            )}
           </>
         </Grid.Container>
 
