@@ -13,7 +13,7 @@ import { convertToUserTime } from 'utils';
 import ElipsesAnimation from 'components/Elipses/ElipsesAnimation';
 
 const checkStatus = (status) => {
-  if (status === 'ACTIVE') {
+  if (status === 'IN_PROGRESS') {
     return <ElipsesAnimation font={20} />;
   } else if (status === 'COMPLETED') {
     return <FaCheckCircle style={{ color: 'green', fontSize: '1.5rem' }} />;
