@@ -11,7 +11,7 @@ import ElipsesAnimation from 'components/Elipses/ElipsesAnimation';
 
 function CurrentTask() {
   const { task_id, account_id } = useParams();
-  const [currentAccount, setCurrentAccount] = useState();
+  const [currentAccount, setCurrentAccount] = useState(null);
   const [task, setTask] = useState();
   const [taskLoaded, setTaskLoaded] = useState(false);
 
@@ -51,7 +51,7 @@ function CurrentTask() {
                 <div>Created: {convertToUserTime(task.date_created)}</div>
                 <div>Scheduled: {convertToUserTime(task.date)}</div>
               </div>
-              {currentAccount.username && (
+              {currentAccount && (
                 <AccountInfoMin
                   username={currentAccount.username}
                   platform={currentAccount.platform}
