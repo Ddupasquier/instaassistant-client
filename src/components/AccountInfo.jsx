@@ -1,20 +1,35 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { ModalContext } from 'contexts/modalContext';
+import { UserContext } from 'contexts/userContext';
 import Avatar from 'react-avatar';
 import Bubble from 'components/Bubble';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Grid, Card, Text, Dropdown } from '@nextui-org/react';
 import { FiSettings } from 'react-icons/fi';
 import BackButton from './Buttons/BackButton';
-import { ModalContext } from 'contexts/modalContext';
 import { platformIcon } from 'utils';
 
-function AccountInfo({
-  handleDeleteConfirmVisible,
-  currentAccount,
-  snapshots,
-}) {
-  const { taskHandler } = useContext(ModalContext);
+function AccountInfo({ currentAccount, snapshots }) {
+  const navigate = useNavigate();
+
+  const { taskHandler, handleDeleteConfirmVisible, setUserToDelete, setUserToApps } =
+    useContext(ModalContext);
+
+  const { collabAccounts } = useContext(UserContext);
   const { account_id } = useParams();
+
+  const [canDelete, setCanDelete] = useState(true);
+
+  useEffect(() => {
+    if (collabAccounts) {
+      const isCollab = collabAccounts.filter(
+        (acc) => acc.id === currentAccount.id
+      );
+      if (isCollab) {
+        setCanDelete(false);
+      }
+    }
+  }, [collabAccounts, currentAccount.id]);
 
   return (
     <Grid css={{ flex: '8' }}>
@@ -77,40 +92,61 @@ function AccountInfo({
               <FiSettings />
             </Dropdown.Button>
             <Dropdown.Menu color="secondary" aria-label="User Actions">
-              <Dropdown.Item key="profile" aria-label="create-task">
+              <Dropdown.Item aria-label="create-task">
+                <Text
+                  b
+                  color="inherit"
+                  onClick={() => {
+                    setUserToApps(currentAccount);
+                    navigate(`/CTRL/${currentAccount.username}`);
+                  }}
+                  css={{ d: 'flex' }}
+                >
+                  Open in CTRL
+                </Text>
+              </Dropdown.Item>
+              <Dropdown.Item aria-label="create-task">
                 <Text
                   b
                   color="inherit"
                   onClick={taskHandler}
                   css={{ d: 'flex' }}
                 >
-                  Create Task
+                  Open in TSK
                 </Text>
               </Dropdown.Item>
-              <Dropdown.Item key="scheduled-tasks" aria-label="scheduled-tasks">
+              <Dropdown.Item aria-label="scheduled-tasks">
                 <Link to={`/accounts/${account_id}/tasks`}>
                   <Text b color="inherit" css={{ d: 'flex', color: '$font' }}>
-                    Scheduled Tasks
+                    Schedule
                   </Text>
                 </Link>
               </Dropdown.Item>
-              <Dropdown.Item key="Edit" aria-label="edit-account">
+              <Dropdown.Item aria-label="edit-account">
                 <Link to={`/accounts/${account_id}/update`}>
                   <Text b color="inherit" css={{ d: 'flex', color: '$font' }}>
-                    Edit Account
+                    Settings
                   </Text>
                 </Link>
               </Dropdown.Item>
-              <Dropdown.Item key="Delete" aria-label="delete-account">
-                <Text
-                  b
-                  color="error"
-                  css={{ d: 'flex' }}
-                  onClick={handleDeleteConfirmVisible}
+              {canDelete && (
+                <Dropdown.Item
+                  aria-label="delete-account"
+                  disabled={true}
                 >
-                  Delete
-                </Text>
-              </Dropdown.Item>
+                  <Text
+                    b
+                    color="error"
+                    css={{ d: 'flex' }}
+                    onClick={() => {
+                      handleDeleteConfirmVisible();
+                      setUserToDelete(currentAccount);
+                    }}
+                  >
+                    Delete
+                  </Text>
+                </Dropdown.Item>
+              )}
             </Dropdown.Menu>
           </Dropdown>
         </div>

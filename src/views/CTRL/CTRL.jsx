@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { UserContext } from 'contexts/userContext';
+import { ModalContext } from 'contexts/modalContext';
 
 import { Card, Button, Input, Textarea } from '@nextui-org/react';
 import { Select } from 'components/styled';
@@ -14,20 +15,70 @@ import { TooltipPop } from 'components/Tooltip';
 import AccountInfoMin from 'components/AccountInfoMin';
 
 const CTRL = () => {
-  const { accounts } = useContext(UserContext);
+  const { userToApps } = useContext(ModalContext);
+  const { allAccounts } = useContext(UserContext);
   const [actionSelected, setActionSelected] = useState('');
-  const [currentAccountName, setCurrentAccountName] = useState();
-  const [currentAccount, setCurrentAccount] = useState({});
+  const [inputLabel, setInputLabel] = useState('Target URL');
+
+  const [selectedAccount, setSelectedAccount] = useState();
+  const [selectedAccountName, setSelectedAccountName] = useState();
+  const [selectedAccountPlatform, setSelectedAccountPlatform] = useState();
 
   useEffect(() => {
-    if (currentAccountName) {
-      const thisAccount = accounts.find(
-        (account) => account.username === currentAccountName
-      );
-      setCurrentAccount(thisAccount);
+    switch (actionSelected) {
+      case 'Follow':
+        setInputLabel('@username');
+        break;
+      case 'Like':
+        setInputLabel('Target URL');
+        break;
+      case 'Comment':
+        setInputLabel('Target URL');
+        break;
+      case 'Message':
+        setInputLabel('@username');
+        break;
+      case 'Unfollow':
+        setInputLabel('@username');
+        break;
+      default:
+        setInputLabel('Target URL');
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [accounts, currentAccountName]);
+  }, [actionSelected]);
+
+  useEffect(() => {
+    if (userToApps) {
+      setSelectedAccount(userToApps);
+      setSelectedAccountName(userToApps.username);
+      setSelectedAccountPlatform(userToApps.platform);
+    } else {
+      if (allAccounts) {
+        setSelectedAccount(allAccounts[0]);
+        setSelectedAccountName(allAccounts[0].username);
+        setSelectedAccountPlatform(allAccounts[0].platform);
+      } else {
+        setSelectedAccount(null);
+        setSelectedAccountName(null);
+        setSelectedAccountPlatform(null);
+      }
+    }
+  }, [allAccounts, userToApps]);
+
+  useEffect(() => {
+    if (selectedAccount) {
+      setSelectedAccountName(selectedAccount.username);
+      setSelectedAccountPlatform(selectedAccount.platform);
+    }
+  }, [selectedAccount]);
+
+  useEffect(() => {
+    if (selectedAccount) {
+      const account = allAccounts.find(
+        (account) => account.username === selectedAccountName
+      );
+      setSelectedAccount(account);
+    }
+  }, [allAccounts, selectedAccount, selectedAccountName]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,7 +86,7 @@ const CTRL = () => {
     const data = Object.fromEntries(formData.entries());
     const notScheduled = new Date().toUTCString();
     const payload = {
-      account_id: currentAccount.id,
+      account_id: selectedAccount.id,
       task_type: data.Action,
       list_type: ``,
       target_url: data.targetUrl,
@@ -51,11 +102,10 @@ const CTRL = () => {
         'Something went wrong. Please try again in a few minutes!',
         res.error
       );
-      window.location.replace('/CTRL');
     } else {
+      setActionSelected('');
       alert('Task successfully created!');
     }
-    window.location.replace('/CTRL');
   };
 
   return (
@@ -70,25 +120,25 @@ const CTRL = () => {
           }}
         >
           <h1>CTRL</h1>
-          {currentAccountName && (
+          {selectedAccount && (
             <AccountInfoMin
-              username={currentAccount?.username}
-              platform={currentAccount?.platform}
+              username={selectedAccountName}
+              platform={selectedAccountPlatform}
             />
           )}
         </div>
         <br />
-        {localStorage.getItem('email') && (
+        {localStorage.getItem('email') && !userToApps && (
           <Select
             onChange={(e) => {
-              setCurrentAccountName(e.target.value);
+              setSelectedAccountName(e.target.value);
             }}
           >
             <option value={null} style={{ color: 'black' }}>
               Select an account
             </option>
-            {accounts &&
-              accounts.map((account) => (
+            {allAccounts &&
+              allAccounts.map((account) => (
                 <option
                   key={account.id}
                   value={account.username}
@@ -100,61 +150,72 @@ const CTRL = () => {
           </Select>
         )}
 
-        {currentAccountName && (
-          <form onSubmit={handleSubmit}>
-            <Card.Body css={{ gap: '1rem' }}>
-              <div style={{ display: 'flex', gap: '.5rem' }}>
-                Action
-                <TooltipPop
-                  content="Choose the action you would like your account to take."
-                  local="right"
-                />
-              </div>
-
-              <DropDown
-                options={actions}
-                setter={setActionSelected}
-                name={'Action'}
+        <form onSubmit={handleSubmit}>
+          <Card.Body css={{ gap: '1rem' }}>
+            <div style={{ display: 'flex', gap: '.5rem' }}>
+              Action
+              <TooltipPop
+                content="Choose the action you would like your account to take."
+                local="right"
               />
+            </div>
 
+            <DropDown
+              options={actions}
+              setter={setActionSelected}
+              name={'Action'}
+            />
+
+            <>
+              <br />
               <Input
+                labelPlaceholder={inputLabel}
                 name="targetUrl"
-                label="Target URL"
+                status="secondary"
                 type="text"
                 bordered
-                color="secondary"
+                required
               />
               <br />
 
-              <>
-                {actionSelected === 'Message' && (
-                  <Textarea
-                    labelPlaceholder="Custom Message(s)"
-                    name="customMessages"
-                    type="text"
-                    bordered
-                    color="secondary"
+              {(actionSelected === 'Comment' ||
+                actionSelected === 'Message') && (
+                <div style={{ display: 'flex', gap: '.5rem' }}>
+                  Optional Arguments
+                  <TooltipPop
+                    content="Optional arguments will overwrite your config for this task alone."
+                    local="right"
                   />
-                )}
+                </div>
+              )}
 
-                {actionSelected === 'Comment' && (
-                  <Textarea
-                    labelPlaceholder="Custom Comment(s)"
-                    name="customComments"
-                    type="text"
-                    bordered
-                    color="secondary"
-                  />
-                )}
-              </>
-            </Card.Body>
-            <Card.Footer>
-              <Button rounded color="secondary" type="submit">
-                Run
-              </Button>
-            </Card.Footer>
-          </form>
-        )}
+              {actionSelected === 'Message' && (
+                <Textarea
+                  labelPlaceholder="Custom Message(s)"
+                  name="customMessages"
+                  type="text"
+                  bordered
+                  color="secondary"
+                />
+              )}
+
+              {actionSelected === 'Comment' && (
+                <Textarea
+                  labelPlaceholder="Custom Comment(s)"
+                  name="customComments"
+                  type="text"
+                  bordered
+                  color="secondary"
+                />
+              )}
+            </>
+          </Card.Body>
+          <Card.Footer>
+            <Button rounded color="secondary" type="submit">
+              Run
+            </Button>
+          </Card.Footer>
+        </form>
       </Card>
     </div>
   );

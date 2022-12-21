@@ -2,7 +2,7 @@ import { styled } from '@nextui-org/react';
 
 export const SideBar = styled('div', {
   backgroundColor: '$menu',
-  width: '20rem',
+  width: '325px',
   zIndex: '100',
   position: 'relative',
   padding: '0',

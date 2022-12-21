@@ -44,7 +44,7 @@ const DateStyle = styled('input', {
 
 const TSK = () => {
   const { userToApps } = useContext(ModalContext);
-  const { accounts } = useContext(UserContext);
+  const { allAccounts } = useContext(UserContext);
   const [actionSelected, setActionSelected] = useState('');
   const [listTargetSelected, setListTargetSelected] = useState('');
   const [listTypeSelected, setListTypeSelected] = useState('');
@@ -60,17 +60,17 @@ const TSK = () => {
       setSelectedAccountName(userToApps.username);
       setSelectedAccountPlatform(userToApps.platform);
     } else {
-      if (accounts) {
-        setSelectedAccount(accounts[0]);
-        setSelectedAccountName(accounts[0].username);
-        setSelectedAccountPlatform(accounts[0].platform);
+      if (allAccounts) {
+        setSelectedAccount(allAccounts[0]);
+        setSelectedAccountName(allAccounts[0].username);
+        setSelectedAccountPlatform(allAccounts[0].platform);
       } else {
         setSelectedAccount(null);
         setSelectedAccountName(null);
         setSelectedAccountPlatform(null);
       }
     }
-  }, [accounts, userToApps]);
+  }, [allAccounts, userToApps]);
 
   useEffect(() => {
     if (selectedAccount) {
@@ -81,12 +81,12 @@ const TSK = () => {
 
   useEffect(() => {
     if (selectedAccount) {
-      const account = accounts.find(
+      const account = allAccounts.find(
         (account) => account.username === selectedAccountName
       );
       setSelectedAccount(account);
     }
-  }, [accounts, selectedAccount, selectedAccountName]);
+  }, [allAccounts, selectedAccount, selectedAccountName]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -112,12 +112,11 @@ const TSK = () => {
         res.error
       );
     } else {
+      setActionSelected('');
+      setListTargetSelected('');
+      setListTypeSelected('');
       alert('Task successfully created!');
     }
-
-    setActionSelected('');
-    setListTargetSelected('');
-    setListTypeSelected('');
   };
 
   return (
@@ -149,8 +148,8 @@ const TSK = () => {
             <option value={null} style={{ color: 'black' }}>
               Select an account
             </option>
-            {accounts &&
-              accounts.map((account) => (
+            {allAccounts &&
+              allAccounts.map((account) => (
                 <option
                   key={account.id}
                   value={account.username}

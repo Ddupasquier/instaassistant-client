@@ -16,7 +16,7 @@ import MetricChart from './AccountComponents/MetricChart';
 import InteractionLimits from './AccountComponents/InteractionLimits';
 import ConfigPopup from './AccountComponents/ConfigPopup';
 import DeleteConfirm from 'components/Modals/DeleteConfirm';
-import TaskModal from 'components/Modals/TaskModal';
+import TaskModal from 'components/Modals/TSKModal';
 import { TasksRunning } from '.';
 
 import AccountInfo from 'components/AccountInfo';
@@ -26,15 +26,6 @@ function Account() {
 
   // * ------- DESTRUCTURING URL PARAMS ------- *
   const { account_id } = useParams();
-
-  // * ------- TASK FORM AND MODAL HANDLERS ------- *
-  const [deleteConfirmVisible, setDeleteConfirmVisible] = useState(false);
-
-  const handleDeleteConfirmVisible = () => setDeleteConfirmVisible(true);
-
-  const closeDeleteConfirmHandler = () => {
-    setDeleteConfirmVisible(false);
-  };
 
   // * ------- STATE ------- *
   const [currentAccount, setCurrentAccount] = useState(null);
@@ -134,7 +125,6 @@ function Account() {
         >
           <>
             <AccountInfo
-              handleDeleteConfirmVisible={handleDeleteConfirmVisible}
               currentAccount={currentAccount}
               taskHandler={toggleTaskModal}
               snapshots={snapshots}
@@ -162,11 +152,7 @@ function Account() {
         </div>
         <TaskModal account_id={account_id} />
         <ConfigPopup currentAccount={currentAccount} account_id={account_id} />
-        <DeleteConfirm
-          deleteConfirmVisible={deleteConfirmVisible}
-          closeDeleteConfirmHandler={closeDeleteConfirmHandler}
-          userInfo={currentAccount}
-        />
+        <DeleteConfirm />
       </div>
     );
   }

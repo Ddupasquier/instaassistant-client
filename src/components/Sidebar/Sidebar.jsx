@@ -14,10 +14,10 @@ import { IoLogOutSharp } from 'react-icons/io5';
 export const Sidebar = () => {
   const { setUserToApps } = useContext(ModalContext);
   const { isDark, toggleFunction } = useContext(ThemeContext);
-  // const { user } = useContext(UserContext);
 
   const Logo = styled('img', {
     filter: !isDark && 'brightness(0%)',
+    width: '325px',
   });
 
   return (

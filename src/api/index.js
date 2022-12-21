@@ -6,7 +6,8 @@ import {
   BotAccountPath,
   faqPath,
   CreateAccountPath,
-  BotIndexPath,
+  IndexAccountsPath,
+  IndexCollabPath,
   AccountPatchPath,
   AccountShowPath,
   snapshotPath,
@@ -193,12 +194,28 @@ export const PatchAccount = async (formData, account_id) => {
     return resp;
   }
 };
-/**
- *
- * FIXME: Should return error in event of error.
- */
+
 export const indexAccounts = async () => {
-  const response = await fetch(BotIndexPath, {
+  const response = await fetch(IndexAccountsPath, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: localStorage.getItem('token'),
+    },
+  });
+  const resp = await response.json();
+  if (resp.error === 'AUTHENTICATION ERROR') {
+    Logout();
+  } else if (resp.error) {
+    alert(resp.error);
+  } else {
+    return resp;
+  }
+};
+
+export const indexCollab = async () => {
+  const response = await fetch(IndexCollabPath, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

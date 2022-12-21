@@ -3,7 +3,7 @@ import { ModalContext } from 'contexts/modalContext';
 import { Button } from '@nextui-org/react';
 import { useWindowHeight } from 'hooks/windowSize';
 import { useParams } from 'react-router-dom';
-import TaskModal from 'components/Modals/TaskModal';
+import TaskModal from 'components/Modals/TSKModal';
 import TasksTable from 'components/Tables/TasksTable';
 import Loader from 'components/Loader';
 import { GetTasks } from 'api';

@@ -4,15 +4,17 @@ import { returnAccounts } from 'utils';
 import AccountsRow from './AccountsRow';
 import ErrorFallback from 'components/ErrorFallback';
 import useSWR from 'swr';
-import { indexAccounts } from 'api';
+import { indexAccounts, indexCollab } from 'api';
 
-function AccountsTable({
-  searchTerm,
-  setUserToDelete,
-  setDeleteConfirmVisible,
-  handleDeleteConfirmVisible,
-}) {
-  const { data, err } = useSWR('/api/accounts', indexAccounts);
+function AccountsTable({ searchTerm }) {
+  const { data: myAccounts, error: accountsErr } = useSWR(
+    '/api/accounts',
+    indexAccounts
+  );
+  const { data: collabAccounts, error: collabErr } = useSWR(
+    '/api/collab-accounts',
+    indexCollab
+  );
 
   return (
     <table role="table" aria-label="accounts-table">
@@ -30,16 +32,16 @@ function AccountsTable({
       </thead>
       <tbody>
         <ErrorBoundary FallbackComponent={ErrorFallback}>
-          {err
+          {accountsErr
             ? 'Error'
-            : returnAccounts(data, searchTerm).map((user, i) => (
-                <AccountsRow
-                  key={i}
-                  user={user}
-                  setDeleteConfirmVisible={setDeleteConfirmVisible}
-                  setUserToDelete={setUserToDelete}
-                  handleDeleteConfirmVisible={handleDeleteConfirmVisible}
-                />
+            : returnAccounts(myAccounts, searchTerm).map((user, i) => (
+                <AccountsRow key={i} user={user} />
+              ))}
+
+          {collabErr
+            ? 'Error'
+            : returnAccounts(collabAccounts, searchTerm).map((user, i) => (
+                <AccountsRow key={i} user={user} />
               ))}
         </ErrorBoundary>
       </tbody>

@@ -16,7 +16,9 @@ export const AccountPatchPath = baseUrl + '/accounts/';
 
 export const AccountShowPath = baseUrl + '/accounts/';
 
-export const BotIndexPath = baseUrl + '/user_accounts';
+export const IndexAccountsPath = baseUrl + '/user_accounts';
+
+export const IndexCollabPath = baseUrl + '/collab_accounts';
 
 export const BotAccountPath = baseUrl + '/accounts/'; // Delete bot based on bot_id
 
