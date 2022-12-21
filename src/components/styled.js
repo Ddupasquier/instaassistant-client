@@ -1,6 +1,7 @@
 import { styled } from '@nextui-org/react';
 import { FiTrash2, FiEye } from 'react-icons/fi';
 import { BiTask } from 'react-icons/bi';
+import { AiOutlineFolderOpen } from 'react-icons/ai';
 
 export const Tr = styled('tr', {
   background: '$solid',
@@ -18,7 +19,7 @@ export const Eye = styled(FiEye, {
   cursor: 'pointer',
   transition: 'all 0.2s ease-in-out',
   '&:hover': {
-    color: '$primary',
+    color: '$secondary',
   },
 });
 
@@ -39,6 +40,16 @@ export const Task = styled(BiTask, {
   transition: 'all 0.2s ease-in-out',
   '&:hover': {
     color: '$primary',
+  },
+});
+
+export const Folder = styled(AiOutlineFolderOpen, {
+  color: '$font',
+  fontSize: '1.5rem',
+  cursor: 'pointer',
+  transition: 'all 0.2s ease-in-out',
+  '&:hover': {
+    color: '$warning',
   },
 });
 

@@ -46,7 +46,9 @@ const AppRoutes = () => {
               index
               element={localStorage.getItem('email') ? <Accounts /> : <Auth />}
             />
+            <Route path="/CTRL/:ctrl_id" element={<CTRL />} />
             <Route path="/CTRL" element={<CTRL />} />
+            <Route path="/TSK/:tsk_id" element={<TSK />} />
             <Route path="/TSK" element={<TSK />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/billing" element={<Billing />} />

@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { ModalContext } from 'contexts/modalContext';
 import { DeleteAccount } from 'api';
 import { Modal, Input, Button, Text } from '@nextui-org/react';
 
-const DeleteConfirm = ({
-  deleteConfirmVisible,
-  closeDeleteConfirmHandler,
-  userInfo,
-}) => {
+const DeleteConfirm = () => {
+  const { deleteConfirmVisible, closeDeleteConfirmHandler, userToDelete } =
+    useContext(ModalContext);
+
   const [usernameConfirm, setUsernameConfirm] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (usernameConfirm.toLowerCase() === userInfo.username.toLowerCase()) {
-      DeleteAccount(userInfo.id).then((data) => {
+    if (usernameConfirm.toLowerCase() === userToDelete.username.toLowerCase()) {
+      DeleteAccount(userToDelete.id).then((data) => {
         closeDeleteConfirmHandler();
         if (data.success) {
           window.location.replace('/accounts');
@@ -37,9 +37,9 @@ const DeleteConfirm = ({
           <Text size={18}>
             Type the account username to confirm
             <br />
-            {userInfo && (
+            {userToDelete && (
               <span style={{ color: 'rgba(243, 18, 96)', fontWeight: '800' }}>
-                {userInfo.username}
+                {userToDelete.username}
               </span>
             )}
           </Text>

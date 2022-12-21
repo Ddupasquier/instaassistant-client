@@ -10,7 +10,8 @@ import {
 import { IoApps } from 'react-icons/io5';
 import { RiCompassDiscoverFill } from 'react-icons/ri';
 
-import { Ctrl, Tri, Tsk, Psc } from 'assets';
+// eslint-disable-next-line n/no-deprecated-api
+import { apps } from 'constants';
 
 export const upperMenuItems = [
   // {
@@ -21,12 +22,7 @@ export const upperMenuItems = [
   {
     name: 'Apps',
     icon: IoApps,
-    items: [
-      { name: 'Ctrl', src: Ctrl, to: '/CTRL' },
-      { name: 'Tsk', src: Tsk, to: '/TSK' },
-      { name: 'Tri', src: Tri, to: '/' },
-      { name: 'Psc', src: Psc, to: '/' },
-    ],
+    items: apps,
   },
   {
     name: 'Accounts',
@@ -38,7 +34,7 @@ export const upperMenuItems = [
     name: 'Discover',
     to: '',
     icon: RiCompassDiscoverFill,
-    items: ["Blog (Coming soon)", "Trending (Coming soon)"],
+    items: ['Blog (Coming soon)', 'Trending (Coming soon)'],
   },
   // {
   //   name: 'test',

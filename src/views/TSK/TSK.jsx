@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { UserContext } from 'contexts/userContext';
 
 import { Card, Button, Input, Textarea, styled } from '@nextui-org/react';
@@ -44,6 +45,7 @@ const DateStyle = styled('input', {
 });
 
 const TSK = () => {
+  const { tsk_id } = useParams();
   const { accounts } = useContext(UserContext);
   const [actionSelected, setActionSelected] = useState('');
   const [listTargetSelected, setListTargetSelected] = useState('');
@@ -92,6 +94,18 @@ const TSK = () => {
     window.location.replace('/TSK');
   };
 
+  // console.log(typeof tsk_id, 'before filter');
+  // const filterAccount = (tsk_id) => {
+  //   if (tsk_id !== '') {
+  //     console.log(tsk_id);
+  //     const filteredAccount = accounts.filter(
+  //       (account) => account.id === tsk_id
+  //     );
+  //     return filteredAccount;
+  //   }
+  //   return null;
+  // };
+
   return (
     <div className="view-container">
       <Card css={{ width: '60%', padding: '2rem' }}>
@@ -117,20 +131,38 @@ const TSK = () => {
             onChange={(e) => {
               setCurrentAccountName(e.target.value);
             }}
+            defaultValue={
+              accounts &&
+              tsk_id !== '' &&
+              accounts.filter((account) => account.username === tsk_id)
+            }
           >
             <option value={null} style={{ color: 'black' }}>
               Select an account
             </option>
             {accounts &&
-              accounts.map((account) => (
-                <option
-                  key={account.id}
-                  value={account.username}
-                  style={{ color: 'black' }}
-                >
-                  {account.username}
-                </option>
-              ))}
+              accounts.map(
+                (account) => (
+                  // account.id === Number(tsk_id) ? (
+                  //   <option
+                  //     key={account.id}
+                  //     value={account.username}
+                  //     style={{ color: 'black' }}
+                  //     selected
+                  //   >
+                  //     {account.username}
+                  //   </option>
+                  // ) : (
+                  <option
+                    key={account.id}
+                    value={account.username}
+                    style={{ color: 'black' }}
+                  >
+                    {account.username}
+                  </option>
+                )
+                // )
+              )}
           </Select>
         )}
 

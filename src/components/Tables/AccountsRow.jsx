@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ModalContext } from 'contexts/modalContext';
 import { Link, useNavigate } from 'react-router-dom';
 import Avatar from 'react-avatar';
 import 'views/Accounts/accounts-styles.scss';
 
 // * STYLED COMPONENTS
-import { Tr, Eye, Trash, Task, Username } from 'components/styled.js';
+import { Tr, Eye, Trash, Task, Username, Folder } from 'components/styled.js';
 
 // * UTILS IMPORTS
 import { platformIcon } from 'utils';
@@ -13,13 +14,9 @@ import { platformIcon } from 'utils';
 import { AiOutlineMessage } from 'react-icons/ai';
 import { FaRegEnvelopeOpen } from 'react-icons/fa';
 import { FiHeart, FiUserPlus, FiUserMinus } from 'react-icons/fi';
-/**
- * @function AccountsRow
- * @description Renders a row for each account
- * @param user object, handleDeleteConfirmVisible and setUserToDelete function
- * @returns row for user account
- */
-function AccountsRow({ user, handleDeleteConfirmVisible, setUserToDelete, i }) {
+
+function AccountsRow({ user, i }) {
+  const { appsHandler, setUserToDelete, handleDeleteConfirmVisible } = useContext(ModalContext);
   const navigate = useNavigate();
 
   const tags = user.tags.split(',');
@@ -95,6 +92,21 @@ function AccountsRow({ user, handleDeleteConfirmVisible, setUserToDelete, i }) {
         role="presentation"
         onClick={(e) => e.stopPropagation()}
       >
+        <button
+          style={{
+            background: 'none',
+            border: 'none',
+            padding: '0',
+            cursor: 'pointer',
+          }}
+          onClick={appsHandler}
+        >
+          <Folder
+            title="Open in..."
+            size="20"
+            style={{ pointerEvents: 'inherit' }}
+          />
+        </button>
         <Link to={`/accounts/${user.id}`}>
           <Eye title="View account" size="20" />
         </Link>

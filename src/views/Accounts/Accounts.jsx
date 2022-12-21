@@ -11,15 +11,8 @@ import Loader from 'components/Loader';
 import AccountsTable from 'components/Tables/AccountsTable';
 
 function Accounts() {
-  const [userToDelete, setUserToDelete] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
-  const [deleteConfirmVisible, setDeleteConfirmVisible] = useState(false);
   const [isUpdating, startUpdating] = useTransition();
-
-  const handleDeleteConfirmVisible = () => setDeleteConfirmVisible(true);
-  const closeDeleteConfirmHandler = () => {
-    setDeleteConfirmVisible(false);
-  };
 
   const [newAccountVisible, setNewAccountVisible] = useState(false);
   const newAccountHandler = () => setNewAccountVisible(true);
@@ -106,9 +99,6 @@ function Accounts() {
             <AccountsTable
               isUpdating={isUpdating}
               searchTerm={searchTerm}
-              setUserToDelete={setUserToDelete}
-              setDeleteConfirmVisible={setDeleteConfirmVisible}
-              handleDeleteConfirmVisible={handleDeleteConfirmVisible}
             />
           </Suspense>
         )}
@@ -118,12 +108,7 @@ function Accounts() {
         closeNewAccountHandler={closeNewAccountHandler}
         newAccountVisible={newAccountVisible}
       />
-      <DeleteConfirm
-        deleteConfirmVisible={deleteConfirmVisible}
-        closeDeleteConfirmHandler={closeDeleteConfirmHandler}
-        userInfo={userToDelete}
-      />
-      {/* <Base64Test/> */}
+      <DeleteConfirm />
     </>
   );
 }
