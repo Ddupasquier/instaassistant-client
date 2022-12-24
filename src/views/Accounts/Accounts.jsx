@@ -3,7 +3,7 @@ import { ModalContext } from 'contexts/modalContext';
 import './accounts-styles.scss';
 
 // * NEXTUI IMPORTS
-import { Text, Button, Input } from '@nextui-org/react';
+import { Text, Button, Input, Card } from '@nextui-org/react';
 
 // * COMPONENT IMPORTS
 import NewAccountModal from './NewAccountModal';
@@ -73,7 +73,9 @@ function Accounts() {
           <Loader />
         ) : (
           <Suspense fallback={<Loader />}>
-            <AccountsTable isUpdating={isUpdating} searchTerm={searchTerm} />
+            <Card css={{ width: '95%', margin: 'auto' }}>
+              <AccountsTable isUpdating={isUpdating} searchTerm={searchTerm} />
+            </Card>
           </Suspense>
         )}
       </div>

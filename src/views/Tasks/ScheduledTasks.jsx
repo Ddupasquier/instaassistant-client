@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { ModalContext } from 'contexts/modalContext';
-import { Button } from '@nextui-org/react';
+import { Button, Card } from '@nextui-org/react';
 import { useWindowHeight } from 'hooks/windowSize';
 import { useParams } from 'react-router-dom';
 import TaskModal from 'components/Modals/TSKModal';
@@ -40,7 +40,9 @@ function ScheduledTasks() {
           </div>
         </div>
         {tasksLoaded ? (
-          <TasksTable tasks={tasks} height={height} />
+          <Card css={{ width: '95%', margin: 'auto' }}>
+            <TasksTable tasks={tasks} height={height} />
+          </Card>
         ) : (
           <Loader />
         )}
