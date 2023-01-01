@@ -21,37 +21,43 @@ function Billing() {
 
   const packages = [
     {
-      name: 'Pro Plan',
-      monthly: '$99.99',
-      yearly: '$800.00',
+      name: 'Social Starter',
+      monthly: '$99.88',
+      yearly: '$1088',
       features: {
         users: 1,
-        accounts: 10,
+        accounts: 5,
+        tasksPerMonth: "1,000",
+        triggers: "5"
       },
       description:
-        'THIS NEEDS WORDING - $500 ad spend for social boosts Discover the best time to publish Access messages in one inbox Schedule in bulk Access to free integrations Live in-dash chat support',
+        "Get access to the Antisocial Suite and take control of your social media presence. Collaborate with your team and schedule up to 1,000 automation tasks per month to save time and effort. Our advanced triggers allow you to manage your social media presence without lifting a finger. Don't miss out on this opportunity to optimize your conversion rates and drive success for your business.",
     },
     {
-      name: 'Team Plan',
-      monthly: '$179.99',
-      yearly: '$1,600.00',
+      name: 'Silver Surge',
+      monthly: '$179.88',
+      yearly: '$1,944',
       features: {
         users: 3,
         accounts: 20,
+        tasksPerMonth: "UNLIMITED",
+        triggers: "20"
       },
       description:
-        'THIS NEEDS WORDING - $2000 ad spend for social boosts Analytics & reports Access messages in one inbox Schedule in bulk Access to free integrations Live in-dash chat support',
+        "Upgrade to our Silver Surge package, our most popular offering. This package includes everything from our Starter subscription, but with even more features to help you succeed. Connect multiple accounts, access more advanced triggers, and schedule more monthly tasks to streamline your social media management. Whether you're a boutique agency or just starting out in parent-child marketing, the Silver Surge package is the perfect choice for optimizing your conversion rates."
     },
     {
-      name: 'Enterprise Plan',
-      monthly: '$299.99',
-      yearly: '$2,400.00',
+      name: 'Elite Engagement',
+      monthly: '$299.88',
+      yearly: '$3,240',
       features: {
         users: 5 + '+',
         accounts: 50,
+        tasksPerMonth: "UNLIMITED",
+        triggers: "100"
       },
       description:
-        'THIS NEEDS WORDING - Publishing approvals Employee advocacy Social advertising Social customer care App directory with 150+ tools Priority support and training',
+        "Maximize your social media presence with our Elite Engagement package. This top-tier offering includes all of the features of our Starter and Silver Surge packages, plus additional support to help you drive high levels of engagement with your audience. Collaborate with our team of experts to develop a customized social media strategy and leverage influencer partnerships to reach a wider audience. With the Elite Engagement package, you'll have everything you need to take your business to the next level and optimize your conversion rates.",
     },
   ];
 
