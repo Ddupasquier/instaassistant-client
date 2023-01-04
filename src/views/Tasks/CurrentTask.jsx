@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { GetTask, ShowAccount } from 'api';
@@ -14,16 +15,37 @@ function CurrentTask() {
   const [currentAccount, setCurrentAccount] = useState(null);
   const [task, setTask] = useState();
   const [taskLoaded, setTaskLoaded] = useState(false);
+  const [inProgress, setInProgress] = useState(false);
 
   useEffect(() => {
     GetTask(task_id)
       .then((data) => setTask(data))
-      .then(() => setTaskLoaded(true));
-
+      .then(() => setTaskLoaded(true))
+      .then(() => {
+        if (task.status == "IN_PROGRESS") {
+          setInProgress(true);
+        }
+      });
+    ;
     ShowAccount(account_id).then((data) => {
       setCurrentAccount(data);
     });
   }, [account_id, task_id]);
+
+  useEffect(() => {
+    setInterval(() => {
+      GetTask(task_id)
+        .then((data) => setTask(data))
+        .then(() => {
+          if (task.status != "IN_PROGRESS") {
+            setInProgress(false);
+          }
+        });
+    }
+      , 10000);
+  }, [inProgress]);
+
+  // if task.status == "IN_PROGRESS" set intrival for incemented fetch
 
   return (
     <div className="view-container">
@@ -68,25 +90,25 @@ function CurrentTask() {
             >
               <Bubble
                 htmlFor="follows-sent"
-                num={task.follows_sent}
+                num={task.follows_sent ? task.follows_sent : 0}
                 name="Follows Sent"
               />
 
               <Bubble
                 htmlFor="likes-sent"
-                num={task.likes_sent}
+                num={task.likes_sent ? task.likes_sent : 0}
                 name="Likes Sent"
               />
 
               <Bubble
                 htmlFor="comments-sent"
-                num={task.comments_sent}
+                num={task.comments_sent ? task.comments_sent : 0}
                 name="Comments Sent"
               />
 
               <Bubble
                 htmlFor="messages-sent"
-                num={task.messages_sent}
+                num={task.messages_sent ? task.messages_sent : 0}
                 name="Messages Sent"
               />
             </Card.Body>
@@ -101,11 +123,6 @@ function CurrentTask() {
                     <Text>{log}</Text>
                   </div>
                 ))}
-                Log Output
-                <br />
-                Log Output
-                <br />
-                Log Output
               </Card.Body>
             </Card>
           </>
