@@ -22,7 +22,7 @@ function CurrentTask() {
       .then((data) => setTask(data))
       .then(() => setTaskLoaded(true))
       .then(() => {
-        if (task.status == "IN_PROGRESS") {
+        if (task.status === "IN_PROGRESS") {
           setInProgress(true);
         }
       });
@@ -37,7 +37,7 @@ function CurrentTask() {
       GetTask(task_id)
         .then((data) => setTask(data))
         .then(() => {
-          if (task.status != "IN_PROGRESS") {
+          if (task.status !== "IN_PROGRESS") {
             setInProgress(false);
           }
         });
