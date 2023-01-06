@@ -102,6 +102,13 @@ h1 {
   background: rgba(0, 213, 155, 0.4);
 }
 
+.app-icon {
+  transition: all 0.5s;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
 ::-webkit-scrollbar {
   width: 12px;
 }

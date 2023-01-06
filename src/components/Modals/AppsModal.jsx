@@ -24,14 +24,22 @@ const AppsModal = () => {
       </Modal.Header>
       {userToApps && (
         <Modal.Body>
-          <ul>
+          <ul style={{ display: 'flex', justifyContent: 'space-evenly' }}>
             {apps.map((app, i) => (
               <Link
                 to={`${app.to}/${userToApps.username}`}
                 key={i}
                 onClick={closeAppsHandler}
               >
-                <Li>{app.name}</Li>
+                <Li>
+                  <img
+                    src={app.src}
+                    alt={app.name}
+                    height="70px"
+                    title={app.name}
+                    className="app-icon"
+                  />
+                </Li>
               </Link>
             ))}
           </ul>
