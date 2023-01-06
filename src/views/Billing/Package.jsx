@@ -10,6 +10,7 @@ function Package({
   yearly,
   features,
   description,
+  billing
 }) {
   return (
     <div
@@ -23,16 +24,14 @@ function Package({
       }}
     >
       <Text size={20} h5>
-        {name}
-        <br />
-        {monthly} monthly
-        <br />
-        {yearly} annually
+        {name} - {billing === 'monthly' ? monthly + ' monthly' : yearly + ' annually'}
       </Text>
       <Text size={18} h5>
-        {features.users} Users
-        <br />
         {features.accounts} Social Accounts
+        <br />
+        {features.tasksPerMonth} tasks
+        <br />
+        {features.triggers} triggers
       </Text>
       <Text size={15} h5>
         {description}
@@ -48,11 +47,6 @@ function Package({
         >
           Checkout
         </Button>
-        <br />
-        <br />
-        <Text size={12} h5 color="red" css={{ float: 'right' }}>
-          Cancel Anytime.
-        </Text>
       </form>
     </div>
   );

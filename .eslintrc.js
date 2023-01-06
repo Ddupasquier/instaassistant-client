@@ -19,12 +19,14 @@ module.exports = {
   plugins: ['react'],
   rules: {
     'react/prop-types': 0,
-    semi: [2, 'always'],
     'space-before-function-paren': 0,
     'comma-dangle': 0,
+    'multiline-ternary': 0,
+    'no-trailing-spaces': 0,
     indent: 0,
     camelcase: 0,
-    'multiline-ternary': 0,
     quotes: 0,
+    semi: 0,
+    'no-multiple-empty-lines': [2, { max: 2, maxEOF: 1 }],
   },
-};
+}
