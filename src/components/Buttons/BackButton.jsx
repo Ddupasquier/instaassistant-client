@@ -4,18 +4,21 @@ import { Button } from '@nextui-org/react';
 import { IoChevronBack } from 'react-icons/io5';
 
 const BackButton = () => {
-      const backNavigate = useNavigate();
+  const backNavigate = useNavigate();
   return (
-
-      <Button
-        size="sm"
-        color="warning"
-        css={{ padding: '0', minWidth: '2rem' }}
-        rounded
-            onClick={() => backNavigate(-1)}
-      >
-        <IoChevronBack size="20" />
-      </Button>
+    <Button
+      size="sm"
+      color="warning"
+      css={{
+        padding: '0',
+        minWidth: '2rem',
+        '&:hover': { transform: 'scale(1.1)' },
+      }}
+      rounded
+      onClick={() => backNavigate(-1)}
+    >
+      <IoChevronBack size="20" />
+    </Button>
   );
 };
 

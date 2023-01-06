@@ -46,6 +46,13 @@ input:-webkit-autofill {
   z-index: 1;
 }
 
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+}
+
 .view-container {
   display: flex;
   flex-direction: column;
@@ -67,6 +74,32 @@ input:-webkit-autofill {
   padding: 0 4rem;
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
+}
+
+@mixin buttons {
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  padding: 0.25rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.cancel-button {
+  @include buttons;
+  background: rgba(243, 18, 96);
+}
+
+.rerun-button {
+  @include buttons;
+  background: rgba(0, 213, 155, 0.4);
 }
 
 ::-webkit-scrollbar {

@@ -28,5 +28,7 @@ module.exports = {
     quotes: 0,
     semi: 0,
     'no-multiple-empty-lines': [2, { max: 2, maxEOF: 1 }],
+    'object-curly-spacing': 0,
+    'object-curly-newline': 0,
   },
 }

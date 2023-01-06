@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { GetTask, ShowAccount } from 'api';
@@ -6,9 +5,11 @@ import { Card, Text } from '@nextui-org/react';
 import { convertToUserTime } from 'utils';
 import Bubble from 'components/Bubble';
 import AccountInfoMin from 'components/AccountInfoMin';
-import BackButton from '../../components/Buttons/BackButton';
+import BackButton from 'components/Buttons/BackButton';
 import Loader from 'components/Loader';
 import ElipsesAnimation from 'components/Elipses/ElipsesAnimation';
+import { RiRefreshLine } from 'react-icons/ri';
+import { TiCancel } from 'react-icons/ti';
 
 function CurrentTask() {
   const { task_id, account_id } = useParams();
@@ -22,14 +23,14 @@ function CurrentTask() {
       .then((data) => setTask(data))
       .then(() => setTaskLoaded(true))
       .then(() => {
-        if (task.status === "IN_PROGRESS") {
+        if (task.status === 'IN_PROGRESS') {
           setInProgress(true);
         }
       });
-    ;
     ShowAccount(account_id).then((data) => {
       setCurrentAccount(data);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [account_id, task_id]);
 
   useEffect(() => {
@@ -37,18 +38,51 @@ function CurrentTask() {
       GetTask(task_id)
         .then((data) => setTask(data))
         .then(() => {
-          if (task.status !== "IN_PROGRESS") {
+          if (task.status !== 'IN_PROGRESS') {
             setInProgress(false);
           }
         });
-    }
-      , 10000);
+    }, 10000);
+    clearInterval();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inProgress]);
-
-  // if task.status == "IN_PROGRESS" set intrival for incemented fetch
 
   return (
     <div className="view-container">
+      {task && (
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            alignSelf: 'start',
+            gap: '1rem',
+            width: '90%',
+            maxWidth: '1000px',
+            margin: '0 3rem',
+            position: 'relative',
+            top: '2rem',
+          }}
+        >
+          <div style={{ display: 'flex', gap: '1rem' }}>
+            <h1>{task.task_type}</h1>
+            <Bubble
+              htmlFor="status"
+              num={task.status ? task.status : ''}
+              name="Status"
+            />
+          </div>
+          <div style={{ display: 'flex', gap: '1rem' }}>
+            <button className="rerun-button" title="Rerun">
+              <RiRefreshLine size="30" />
+            </button>
+            <button className="cancel-button" title="Cancel">
+              <TiCancel size="30" />
+            </button>
+          </div>
+        </div>
+      )}
       <Card
         style={{ zIndex: 1 }}
         css={{
@@ -66,7 +100,6 @@ function CurrentTask() {
                 style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}
               >
                 <BackButton />
-                <h1>{task.task_type}</h1>
                 {task.status === 'ACTIVE' && (
                   <ElipsesAnimation font={40} width={'1.1rem'} />
                 )}
@@ -77,6 +110,7 @@ function CurrentTask() {
                 <AccountInfoMin
                   username={currentAccount.username}
                   platform={currentAccount.platform}
+                  currentAccount={currentAccount.id}
                 />
               )}
             </Card.Header>

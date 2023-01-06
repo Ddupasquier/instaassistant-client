@@ -1,15 +1,19 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Avatar from 'react-avatar';
 import { Text } from '@nextui-org/react';
 import { platformIcon } from 'utils';
 import Loader from './Loader';
 
-function AccountInfoMin({ username, platform }) {
-  const [info, setInfo] = useState({ username, platform });
+function AccountInfoMin({ username, platform, currentAccount = null }) {
+  const navigate = useNavigate();
+  const [info, setInfo] = useState({ username, platform, currentAccount });
 
   useEffect(() => {
-    setInfo({ username, platform });
-  }, [username, platform]);
+    setInfo({ username, platform, currentAccount });
+  }, [username, platform, currentAccount]);
 
   return (
     <div>
@@ -29,14 +33,25 @@ function AccountInfoMin({ username, platform }) {
                 marginRight: '2rem',
               }}
             >
-              <Avatar
-                name={info.username}
-                round
-                value="25%"
-                size="65"
-                textSizeRatio={2}
-              />
-              <Text>@{info.username}</Text>
+              <div
+                onClick={() => navigate(`/accounts/${info.currentAccount}`)}
+                style={{ cursor: 'pointer' }}
+              >
+                <Avatar
+                  name={info.username}
+                  round
+                  value="25%"
+                  size="65"
+                  textSizeRatio={2}
+                />
+              </div>
+
+              <Text
+                onClick={() => navigate(`/accounts/${info.currentAccount}`)}
+                css={{ cursor: 'pointer' }}
+              >
+                @{info.username}
+              </Text>
             </div>
           </div>
         </>
