@@ -97,7 +97,7 @@ const AccountUpdate = () => {
               </Button>
             </Link>
             <Button onClick={handleUnstick}>Un-stuck My Account</Button>
-            <Button onClick={handleUnstick}>Regenorate Login Cookies</Button>
+            <Button onClick={handleUnstick}>Regenarate Login Cookies</Button>
           </Card.Footer>
         </Card>
       </div>
