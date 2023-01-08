@@ -13,6 +13,11 @@ const AccountUpdate = () => {
   return (
     <>
       <div style={{ zIndex: 10 }}>
+        <ul>
+          <li>Account Information</li>
+          <li>Collaboration</li>
+          <li>Administration</li>
+        </ul>
         <Card>
           <Card.Header>
             <Text
@@ -92,6 +97,7 @@ const AccountUpdate = () => {
               </Button>
             </Link>
             <Button onClick={handleUnstick}>Un-stuck My Account</Button>
+            <Button onClick={handleUnstick}>Regenorate Login Cookies</Button>
           </Card.Footer>
         </Card>
       </div>

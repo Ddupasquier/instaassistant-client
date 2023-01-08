@@ -13,7 +13,7 @@ import { platformIcon } from 'utils';
 // * ICON IMPORTS
 import { AiOutlineMessage } from 'react-icons/ai';
 import { FaRegEnvelopeOpen } from 'react-icons/fa';
-import { FiHeart, FiUserPlus, FiUserMinus } from 'react-icons/fi';
+import { FiHeart, FiUserPlus, FiUserMinus, FiSettings } from 'react-icons/fi';
 
 function AccountsRow({ user, i }) {
   const {
@@ -97,6 +97,10 @@ function AccountsRow({ user, i }) {
         role="presentation"
         onClick={(e) => e.stopPropagation()}
       >
+
+        <Link to={`/accounts/${user.id}`}>
+          <Eye title="View account" size="20" />
+        </Link>
         <Folder
           title="Open in..."
           onClick={() => {
@@ -105,11 +109,11 @@ function AccountsRow({ user, i }) {
           }}
           size="20"
         />
-        <Link to={`/accounts/${user.id}`}>
-          <Eye title="View account" size="20" />
-        </Link>
         <Link to={`/accounts/${user.id}/tasks`}>
           <Task title="View Tasks" size="20" />
+        </Link>
+        <Link to={`/accounts/${user.id}/update`}>
+          <FiSettings />
         </Link>
         <Trash
           title="Delete account"
