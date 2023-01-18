@@ -65,7 +65,7 @@ const TSK = () => {
   }, []);
 
   useEffect(() => {
-    if (selectParam) {
+    if (selectParam && allAccounts) {
       setSelectedAccount(
         allAccounts.find((acc) => acc.username === selectParam)
       );

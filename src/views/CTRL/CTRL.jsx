@@ -1,10 +1,10 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import { UserContext } from 'contexts/userContext';
-import { ModalContext } from 'contexts/modalContext';
+import { useParams } from 'react-router-dom';
 
-import { Card, Button, Input, Textarea } from '@nextui-org/react';
+import { Card, Button, Input, Textarea, styled } from '@nextui-org/react';
 import { Select } from 'components/styled';
+import { IoChevronForward } from 'react-icons/io5';
 
 import DropDown from 'components/DropDown';
 
@@ -17,17 +17,31 @@ import AccountInfoMin from 'components/AccountInfoMin';
 
 const CTRL = () => {
   const { ctrl_id } = useParams();
-  const { userToApps } = useContext(ModalContext);
+
   const { allAccounts } = useContext(UserContext);
+
+  const [selectParam, setSelectParam] = useState(undefined);
   const [actionSelected, setActionSelected] = useState('');
   const [inputLabel, setInputLabel] = useState('Target URL');
 
-  const [selectedAccount, setSelectedAccount] = useState();
-  const [selectedAccountName, setSelectedAccountName] = useState();
-  const [selectedAccountPlatform, setSelectedAccountPlatform] = useState();
+  const [selectedAccount, setSelectedAccount] = useState(null);
+  const { id, username, platform } = selectedAccount || {};
 
-  console.log(ctrl_id)
-  console.log(userToApps)
+  useEffect(() => {
+    if (ctrl_id) {
+      setSelectParam(ctrl_id);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (selectParam && allAccounts) {
+      setSelectedAccount(
+        allAccounts.find((acc) => acc.username === selectParam)
+      );
+    }
+  }, [allAccounts, selectParam, selectedAccount]);
+
 
   useEffect(() => {
     switch (actionSelected) {
@@ -51,47 +65,13 @@ const CTRL = () => {
     }
   }, [actionSelected]);
 
-  useEffect(() => {
-    if (userToApps) {
-      setSelectedAccount(userToApps);
-      setSelectedAccountName(userToApps.username);
-      setSelectedAccountPlatform(userToApps.platform);
-    } else {
-      if (allAccounts) {
-        setSelectedAccount(allAccounts[0]);
-        setSelectedAccountName(allAccounts[0].username);
-        setSelectedAccountPlatform(allAccounts[0].platform);
-      } else {
-        setSelectedAccount(null);
-        setSelectedAccountName(null);
-        setSelectedAccountPlatform(null);
-      }
-    }
-  }, [allAccounts, userToApps]);
-
-  useEffect(() => {
-    if (selectedAccount) {
-      setSelectedAccountName(selectedAccount.username);
-      setSelectedAccountPlatform(selectedAccount.platform);
-    }
-  }, [selectedAccount]);
-
-  useEffect(() => {
-    if (selectedAccount) {
-      const account = allAccounts.find(
-        (account) => account.username === selectedAccountName
-      );
-      setSelectedAccount(account);
-    }
-  }, [allAccounts, selectedAccount, selectedAccountName]);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     const notScheduled = new Date().toUTCString();
     const payload = {
-      account_id: selectedAccount.id,
+      account_id: id,
       task_type: data.Action,
       list_type: ``,
       target_url: data.targetUrl,
@@ -127,16 +107,15 @@ const CTRL = () => {
           <h1>CTRL</h1>
           {selectedAccount && (
             <AccountInfoMin
-              username={selectedAccountName}
-              platform={selectedAccountPlatform}
+              username={username}
+              platform={platform}
             />
           )}
         </div>
         <br />
-        {localStorage.getItem('email') && !userToApps && (
           <Select
             onChange={(e) => {
-              setSelectedAccountName(e.target.value);
+              setSelectParam(e.target.value);
             }}
           >
             <option value={null} style={{ color: 'black' }}>
@@ -153,7 +132,6 @@ const CTRL = () => {
                 </option>
               ))}
           </Select>
-        )}
 
         <form onSubmit={handleSubmit}>
           <Card.Body css={{ gap: '1rem' }}>
