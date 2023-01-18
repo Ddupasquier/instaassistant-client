@@ -39,6 +39,7 @@ function ScheduledTasks() {
             </Button>
           </div>
         </div>
+        <br />
         {tasksLoaded ? (
           <Card css={{ width: '95%', margin: 'auto' }}>
             <TasksTable tasks={tasks} height={height} />

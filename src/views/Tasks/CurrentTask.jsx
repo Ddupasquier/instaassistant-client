@@ -60,7 +60,7 @@ function CurrentTask() {
             gap: '1rem',
             width: '90%',
             maxWidth: '1000px',
-            margin: '0 3rem',
+            margin: 'auto',
             position: 'relative',
             top: '2rem',
           }}

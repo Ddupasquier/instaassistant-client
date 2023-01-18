@@ -79,7 +79,7 @@ function TasksRow({ i, task, rowRef }) {
           <Task size="20" />
         </Link>
       </td> */}
-      <td aria-label="status-cell" role="cell">
+      <td aria-label="status-cell" role="cell" title={task.status}>
         {checkStatus(task.status)}
       </td>
     </Tr>

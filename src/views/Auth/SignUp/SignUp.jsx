@@ -117,7 +117,7 @@ function SignUp({ setLogIsVisible, logIsVisible, setForgPassShown }) {
                       rel="noreferrer"
                       style={{ color: 'blue' }}
                     >
-                      terms of service
+                      Terms of service
                     </a>
                   </span>
                 </div>

@@ -40,7 +40,9 @@ function TasksTable({ tasks, height }) {
 
   const rowsPerPage = () => {
     const tableHeight = height - 260;
-    return Math.floor(tableHeight / rowHeight);
+    return Math.floor(tableHeight / rowHeight) < 5
+      ? 5
+      : Math.floor(tableHeight / rowHeight);
   };
   /**
    * @function rowsPerPage
