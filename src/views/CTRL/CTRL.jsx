@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { UserContext } from 'contexts/userContext';
 import { ModalContext } from 'contexts/modalContext';
 
@@ -15,6 +16,7 @@ import { TooltipPop } from 'components/Tooltip';
 import AccountInfoMin from 'components/AccountInfoMin';
 
 const CTRL = () => {
+  const { ctrl_id } = useParams();
   const { userToApps } = useContext(ModalContext);
   const { allAccounts } = useContext(UserContext);
   const [actionSelected, setActionSelected] = useState('');
@@ -23,6 +25,9 @@ const CTRL = () => {
   const [selectedAccount, setSelectedAccount] = useState();
   const [selectedAccountName, setSelectedAccountName] = useState();
   const [selectedAccountPlatform, setSelectedAccountPlatform] = useState();
+
+  console.log(ctrl_id)
+  console.log(userToApps)
 
   useEffect(() => {
     switch (actionSelected) {
