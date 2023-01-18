@@ -27,7 +27,7 @@ const AppsModal = () => {
           <ul style={{ display: 'flex', justifyContent: 'space-evenly' }}>
             {apps.map((app, i) => (
               <Link
-                to={`${app.to}/${userToApps.username}`}
+                to={`${app.to}/${userToApps}`}
                 key={i}
                 onClick={closeAppsHandler}
               >

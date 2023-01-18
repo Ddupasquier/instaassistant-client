@@ -7,13 +7,13 @@ import { Text } from '@nextui-org/react';
 import { platformIcon } from 'utils';
 import Loader from './Loader';
 
-function AccountInfoMin({ username, platform, currentAccount = null }) {
+function AccountInfoMin({ id, username, platform }) {
   const navigate = useNavigate();
-  const [info, setInfo] = useState({ username, platform, currentAccount });
+  const [info, setInfo] = useState({ id, username, platform });
 
   useEffect(() => {
-    setInfo({ username, platform, currentAccount });
-  }, [username, platform, currentAccount]);
+    setInfo({ id, username, platform });
+  }, [id, username, platform]);
 
   return (
     <div>
@@ -34,7 +34,7 @@ function AccountInfoMin({ username, platform, currentAccount = null }) {
               }}
             >
               <div
-                onClick={() => navigate(`/accounts/${info.currentAccount}`)}
+                onClick={() => navigate(`/accounts/${info.id}`)}
                 style={{ cursor: 'pointer' }}
               >
                 <Avatar
@@ -47,7 +47,7 @@ function AccountInfoMin({ username, platform, currentAccount = null }) {
               </div>
 
               <Text
-                onClick={() => navigate(`/accounts/${info.currentAccount}`)}
+                onClick={() => navigate(`/accounts/${info.id}`)}
                 css={{ cursor: 'pointer' }}
               >
                 @{info.username}

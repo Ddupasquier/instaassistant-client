@@ -105,7 +105,7 @@ function AccountsRow({ user, i }) {
           title="Open in..."
           onClick={() => {
             appsHandler();
-            setUserToApps(user);
+            setUserToApps(user.username);
           }}
           size="20"
         />
