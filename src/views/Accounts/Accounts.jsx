@@ -38,17 +38,7 @@ function Accounts() {
           }}
         >
           {' '}
-          <Text
-            h1
-            size={60}
-            css={{
-              textGradient: '45deg, $blue600 -20%, $pink600 50%',
-              height: 'fit-content',
-            }}
-            weight="bold"
-          >
-            Account Management
-          </Text>
+          <h1 style={{ margin: '0 1rem' }}>Account Mgmt</h1>
           <Input
             clearable
             underlined

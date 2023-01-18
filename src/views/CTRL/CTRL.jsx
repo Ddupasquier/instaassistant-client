@@ -106,6 +106,7 @@ const CTRL = () => {
           <h1>CTRL</h1>
           {selectedAccount && (
             <AccountInfoMin
+              id={id}
               username={username}
               platform={platform}
             />
