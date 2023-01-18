@@ -9,7 +9,7 @@ import { MdOutlineSchedule } from 'react-icons/md';
 import { Tr, TaskCell } from 'components/styled.js';
 
 // * UTILS IMPORTS
-import { convertToUserTime } from 'utils';
+import { convertToUserTime, isThisALink } from 'utils';
 import ElipsesAnimation from 'components/Elipses/ElipsesAnimation';
 
 const checkStatus = (status) => {
@@ -58,9 +58,15 @@ function TasksRow({ i, task, rowRef }) {
           {task.task_type}
         </TaskCell>
       </td>
-      <td>{task.list_type}</td>
+      <td>{task.list_type && task.list_type.split(':')[1]}</td>
       <td aria-label="targeturl-cell" role="cell">
-        {task.target_url}
+        {isThisALink(task.target_url) ? (
+          <a href={task.target_url} target="_blank" rel="noreferrer">
+            Post
+          </a>
+        ) : (
+          task.target_url
+        )}
       </td>
       <td aria-label="scheduled-date-cell" role="cell">
         {convertToUserTime(task.date, true)}

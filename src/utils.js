@@ -208,3 +208,11 @@ export const sortData = (data, sortBy, sortDirection) => {
  * sortData(data, 'username', 'desc') // returns data sorted by username in descending order
  * sortData(data, 'date', 'asc') // returns data sorted by date in ascending order
  **/
+
+export const isThisALink = (str) => {
+  let isLink;
+  if (str && str.includes('http')) {
+    isLink = true;
+  } else isLink = false;
+  return isLink;
+};
