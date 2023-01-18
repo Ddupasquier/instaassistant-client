@@ -63,10 +63,10 @@ function TasksRow({ i, task, rowRef }) {
         {task.target_url}
       </td>
       <td aria-label="scheduled-date-cell" role="cell">
-        {convertToUserTime(task.date)}
+        {convertToUserTime(task.date, true)}
       </td>
       <td aria-label="date-created-cell" role="cell">
-        {convertToUserTime(task.date_created)}
+        {convertToUserTime(task.date_created, false)}
       </td>
       {/* <td className="actions-column" aria-label="actions-cell" role="cell">
         <Link to={`/accounts/${account_id}/tasks/${task.id}`}>

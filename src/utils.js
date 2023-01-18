@@ -108,7 +108,7 @@ export const thisTime = new Date().toLocaleTimeString('en-US', {
  * @example '23:59'
  */
 
-export const convertToUserTime = (time) => {
+export const convertToUserTime = (time, showMinutes) => {
   const date = new Date(time);
   const options = {
     timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
@@ -116,8 +116,8 @@ export const convertToUserTime = (time) => {
     day: 'numeric',
     year: 'numeric',
     hour12: true,
-    hour: 'numeric',
-    minute: 'numeric',
+    hour: showMinutes ? 'numeric' : undefined,
+    minute: showMinutes ? 'numeric' : undefined,
   };
   return date.toLocaleString('en-US', options);
 };
