@@ -8,7 +8,7 @@ import 'views/Accounts/accounts-styles.scss';
 import { Tr, Eye, Trash, Task, Username, Folder } from 'components/styled.js';
 
 // * UTILS IMPORTS
-import { platformIcon } from 'utils';
+import { platformIcon, truncateString } from 'utils';
 
 // * ICON IMPORTS
 import { AiOutlineMessage } from 'react-icons/ai';
@@ -26,6 +26,7 @@ function AccountsRow({ user, i }) {
 
   const tags = user.tags.split(',');
   const firstFiveTags = tags.slice(0, 5);
+  const remainingTags = tags.slice(5).join(',');
 
   return (
     <Tr
@@ -51,33 +52,37 @@ function AccountsRow({ user, i }) {
       <td aria-label="platform-cell" role="cell">
         {platformIcon(user.platform)}
       </td>
-      <td aria-label="tags-cell" role="cell">
-        {firstFiveTags.length > 1 &&
-          firstFiveTags.map((tag, i) => (
-            <span
-              key={i}
-              style={{
-                background: '#5AA9E6',
-                marginRight: '.5rem',
-                padding: '.2rem .5rem',
-                borderRadius: '5px',
-                color: 'white',
-              }}
-            >
-              {tag}
-            </span>
-          ))}
+      <td aria-label="tags-cell" role="cell" className="tags-cell">
+        {tags &&
+          firstFiveTags.map(
+            (tag, i) =>
+              tag !== '' && (
+                <div
+                  key={i}
+                  style={{
+                    background: '#5AA9E6',
+                    padding: '.2rem .5rem',
+                    borderRadius: '5px',
+                    color: 'white',
+                    fontSize: '0.8rem',
+                  }}
+                >
+                  {truncateString(tag, 5)}
+                </div>
+              )
+          )}
         {tags.length > 5 && (
           <span
             style={{
-              background: 'gray',
-              marginRight: '.5rem',
+              background: '#5AA9E6',
               padding: '.2rem .5rem',
               borderRadius: '5px',
               color: 'white',
+              fontSize: '0.8rem',
             }}
+            title={`${remainingTags}`}
           >
-            ...
+            +{tags.length - 5}
           </span>
         )}
       </td>
@@ -97,7 +102,6 @@ function AccountsRow({ user, i }) {
         role="presentation"
         onClick={(e) => e.stopPropagation()}
       >
-
         <Link to={`/accounts/${user.id}`}>
           <Eye title="View account" size="20" />
         </Link>

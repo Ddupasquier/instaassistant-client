@@ -3,7 +3,7 @@ import { ModalContext } from 'contexts/modalContext';
 import './accounts-styles.scss';
 
 // * NEXTUI IMPORTS
-import { Text, Button, Input, Card } from '@nextui-org/react';
+import { Button, Input, Card } from '@nextui-org/react';
 
 // * COMPONENT IMPORTS
 import NewAccountModal from './NewAccountModal';

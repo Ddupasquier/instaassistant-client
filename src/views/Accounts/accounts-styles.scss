@@ -38,4 +38,15 @@ table {
   .actions-column>* {
     margin-right: 0.5rem;
   }
+
+  .tags-cell {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 15rem;
+    gap: .2rem;
+    position: relative;
+    top: -.5rem;
+    overflow: hidden;
+  }
 }

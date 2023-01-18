@@ -34,9 +34,9 @@ export const capitalizeFirstLetter = (string) => {
  * returns 'Hello World'
  */
 
-export const truncateString = (string) => {
-  if (string.length > 12) {
-    return string.slice(0, 12) + '...';
+export const truncateString = (string, num = 12) => {
+  if (string.length > num) {
+    return string.slice(0, num) + '...';
   }
   return string;
 };
