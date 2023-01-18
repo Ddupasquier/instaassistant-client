@@ -2,9 +2,8 @@ import React, { useState, useContext, useEffect } from 'react';
 import { UserContext } from 'contexts/userContext';
 import { useParams } from 'react-router-dom';
 
-import { Card, Button, Input, Textarea, styled } from '@nextui-org/react';
+import { Card, Button, Input, Textarea } from '@nextui-org/react';
 import { Select } from 'components/styled';
-import { IoChevronForward } from 'react-icons/io5';
 
 import DropDown from 'components/DropDown';
 
