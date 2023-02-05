@@ -68,85 +68,42 @@ export const loginFetch = async (userInfo, setUser) => {
   }
 };
 
-export const Logout = () => {
-  localStorage.removeItem('token');
-  localStorage.removeItem('user');
-  localStorage.removeItem('email');
-  window.location.replace('/');
-};
-
 export const GetUserInfo = async () => {
   const response = await fetch(UserViewPath + localStorage.getItem('user'), {
     method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Authorization: localStorage.getItem('token'),
-    },
+    headers: genericHeaders,
   });
-  const resp_1 = await response.json();
-  if (resp_1.error === 'AUTHENTICATION ERROR') {
-    Logout();
-  } else {
-    return resp_1;
-  }
+  const resp = await response.json();
+  return checkAuth(resp);
 };
 
 export const EditProfilePatch = async (newData) => {
   const response = await fetch(editProfilePath, {
     method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Authorization: localStorage.getItem('token'),
-    },
+    headers: genericHeaders,
     body: JSON.stringify(newData),
   });
-  const resp_1 = await response.json();
-  if (resp_1.error === 'AUTHENTICATION ERROR') {
-    Logout();
-  } else {
-    return resp_1;
-  }
+  const resp = await response.json();
+  return checkAuth(resp);
 };
 
 export const ChangePasswordPatch = async (newData) => {
   const response = await fetch(changePasswordPath, {
     method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Authorization: localStorage.getItem('token'),
-    },
+    headers: genericHeaders,
     body: JSON.stringify(newData),
   });
   const resp = await response.json();
-  if (resp.error === 'AUTHENTICATION ERROR') {
-    Logout();
-  } else if (resp.error) {
-    alert(resp.error);
-  } else {
-    return resp;
-  }
+  return checkAuth(resp);
 };
 
 export const GetAccountsManaged = async () => {
   const response = await fetch(accountsManagedPath, {
     method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Authorization: localStorage.getItem('token'),
-    },
+    headers: genericHeaders,
   });
   const resp = await response.json();
-  if (resp.error === 'AUTHENTICATION ERROR') {
-    Logout();
-  } else if (resp.error) {
-    alert(resp.error);
-  } else {
-    return resp;
-  }
+  return checkAuth(resp);
 };
 
 // END USER
@@ -167,128 +124,62 @@ export const CreateAccount = async (formData) => {
     }
   );
   const resp = await response.json();
-  if (resp.error === 'AUTHENTICATION ERROR') {
-    Logout();
-  } else if (resp.error) {
-    alert(resp.error);
-  } else {
-    return resp;
-  }
+  return checkAuth(resp);
 };
 
 export const PatchAccount = async (formData, account_id) => {
   const response = await fetch(AccountPatchPath + account_id, {
     method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Authorization: localStorage.getItem('token'),
-    },
+    headers: genericHeaders,
     body: JSON.stringify(formData),
   });
   const resp = await response.json();
-  if (resp.error === 'AUTHENTICATION ERROR') {
-    Logout();
-  } else if (resp.error) {
-    alert(resp.error);
-  } else {
-    return resp;
-  }
+  return checkAuth(resp);
 };
 
 export const indexAccounts = async () => {
   const response = await fetch(IndexAccountsPath, {
     method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Authorization: localStorage.getItem('token'),
-    },
+    headers: genericHeaders,
   });
   const resp = await response.json();
-  if (resp.error === 'AUTHENTICATION ERROR') {
-    Logout();
-  } else if (resp.error) {
-    alert(resp.error);
-  } else {
-    return resp;
-  }
+  return checkAuth(resp);
 };
 
 export const indexCollab = async () => {
   const response = await fetch(IndexCollabPath, {
     method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Authorization: localStorage.getItem('token'),
-    },
+    headers: genericHeaders,
   });
   const resp = await response.json();
-  if (resp.error === 'AUTHENTICATION ERROR') {
-    Logout();
-  } else if (resp.error) {
-    alert(resp.error);
-  } else {
-    return resp;
-  }
+  return checkAuth(resp);
 };
 
 export const ShowAccount = async (id) => {
   const response = await fetch(AccountShowPath + id, {
     method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Authorization: localStorage.getItem('token'),
-    },
+    headers: genericHeaders,
   });
   const resp = await response.json();
-  if (resp.error === 'AUTHENTICATION ERROR') {
-    Logout();
-  } else if (resp.error) {
-    alert(resp.error);
-  } else {
-    return resp;
-  }
+  return checkAuth(resp);
 };
 
 export const DeleteAccount = async (id) => {
   const response = await fetch(BotAccountPath + id, {
     method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Authorization: localStorage.getItem('token'),
-    },
+    headers: genericHeaders,
   });
   const resp = await response.json();
-  if (resp.error === 'AUTHENTICATION ERROR') {
-    Logout();
-  } else if (resp.error) {
-    alert(resp.error);
-  } else {
-    return resp;
-  }
+  return checkAuth(resp);
 };
 
 export const unstickAccount = async (account_id) => {
   const response = await fetch(unstickAccountPath + account_id, {
     method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Authorization: localStorage.getItem('token'),
-    },
+    headers: genericHeaders,
   });
   const resp = await response.json();
-  if (resp.error === 'AUTHENTICATION ERROR') {
-    Logout();
-  } else if (resp.error) {
-    alert(resp.error);
-  } else {
-    return resp;
-  }
+  return checkAuth(resp);
 };
 
 // END ACCOUNTS
@@ -298,59 +189,29 @@ export const unstickAccount = async (account_id) => {
 export const PostTask = async (formData) => {
   const response = await fetch(TaskPath, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Authorization: localStorage.getItem('token'),
-    },
+    headers: genericHeaders,
     body: JSON.stringify(formData),
   });
   const resp = await response.json();
-  if (resp.error === 'AUTHENTICATION ERROR') {
-    Logout();
-  } else if (resp.error) {
-    alert(resp.error);
-  } else {
-    return resp;
-  }
+  return checkAuth(resp);
 };
 
 export const GetTasks = async (account_id) => {
   const response = await fetch(AccountTaskPath + '/' + account_id, {
     method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Authorization: localStorage.getItem('token'),
-    },
+    headers: genericHeaders,
   });
   const resp = await response.json();
-  if (resp.error === 'AUTHENTICATION ERROR') {
-    Logout();
-  } else if (resp.error) {
-    alert(resp.error);
-  } else {
-    return resp;
-  }
+  return checkAuth(resp);
 };
 
 export const GetTask = async (task_id) => {
   const response = await fetch(TaskPath + '/' + task_id, {
     method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Authorization: localStorage.getItem('token'),
-    },
+    headers: genericHeaders,
   });
   const resp = await response.json();
-  if (resp.error === 'AUTHENTICATION ERROR') {
-    Logout();
-  } else if (resp.error) {
-    alert(resp.error);
-  } else {
-    return resp;
-  }
+  return checkAuth(resp);
 };
 
 // END TASKS
@@ -360,20 +221,10 @@ export const GetTask = async (task_id) => {
 export const getSnapshots = async (account_id) => {
   const response = await fetch(snapshotPath + '/' + account_id, {
     method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Authorization: localStorage.getItem('token'),
-    },
+    headers: genericHeaders,
   });
   const resp = await response.json();
-  if (resp.error === 'AUTHENTICATION ERROR') {
-    Logout();
-  } else if (resp.error) {
-    alert(resp.error);
-  } else {
-    return resp;
-  }
+  return checkAuth(resp);
 };
 
 // END SNAPSHOTS
@@ -397,11 +248,7 @@ export const FetchInstagramTaskTypes = async () => {
 export const CreateCheckoutSession = async (formData) => {
   const response = await fetch(CheckoutEndpoint, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Authorization: localStorage.getItem('token'),
-    },
+    headers: genericHeaders,
     body: JSON.stringify(formData),
   });
   return await response.json();
@@ -487,22 +334,34 @@ export const SendFeedback = async (formData) => {
 export const GetCollaborators = async (account_id) => {
   const response = await fetch(collabPath + account_id, {
     method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Authorization: localStorage.getItem('token'),
-    },
+    headers: genericHeaders,
   });
-  console.log(console.log(await response.text()));
+  // console.log(console.log(await response.text()));
   const resp = await response.json();
-  // console.log(resp);
+  return checkAuth(resp);
+};
+
+// UTILS
+// * Check auth status (logout or continue)
+const checkAuth = async (resp) => {
   if (resp.error === 'AUTHENTICATION ERROR') {
     Logout();
   } else if (resp.error) {
     alert(resp.error);
-  } else if (await response.text() !== undefined) {
+  } else {
     return resp;
   }
 };
 
-// UTILS
+const genericHeaders = {
+  'Content-Type': 'application/json',
+  Accept: 'application/json',
+  Authorization: localStorage.getItem('token'),
+};
+
+export const Logout = () => {
+  localStorage.removeItem('token');
+  localStorage.removeItem('user');
+  localStorage.removeItem('email');
+  window.location.replace('/');
+};
