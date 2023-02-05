@@ -1,20 +1,20 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
+import { ModalContext } from 'contexts/modalContext';
 import { ThemeContext } from 'contexts/themeContext';
 import './account-update-styles.scss';
-import { Input, Text, Card, Link, Button } from '@nextui-org/react';
+import { Input, Card, Button } from '@nextui-org/react';
 import { MagnifyingGlass } from 'assets';
 import CollabTable from 'components/Tables/CollabTable';
-// import { HiMagnifyingGlass } from 'react-icons/hi';
-// import { RxMagnifyingGlass } from 'react-icons/rx';
 
 function AccountCollaboration() {
+  const {collabHandler} = useContext(ModalContext);
   const { isDark } = useContext(ThemeContext);
 
   return (
     <div className="account-collaboration">
       <div className="head">
         <h1>Manage Access</h1>
-        <Button color="warning" auto>
+        <Button color="warning" auto onClick={collabHandler}>
           Add people
         </Button>
       </div>

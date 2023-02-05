@@ -336,7 +336,6 @@ export const GetCollaborators = async (account_id) => {
     method: 'GET',
     headers: genericHeaders,
   });
-  // console.log(console.log(await response.text()));
   const resp = await response.json();
   return checkAuth(resp);
 };

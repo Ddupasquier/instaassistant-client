@@ -10,18 +10,16 @@ function CollabTable() {
   useEffect(() => {
     GetCollaborators(account_id).then((res) => {
       if (res) {
-        setCollabs(res.data);
-        console.log(collabs);
+        setCollabs(res);
       }
     });
-  }, [account_id]);
+  }, []);
 
   return (
-    <table role="table" aria-label="collab-table">
-      <tbody>
-        {/* {collabs && collabs.map((user, i) => <CollabRow key={i} user={user} />)} */}
-      </tbody>
-    </table>
+    <div>
+      {collabs &&
+        collabs.map((collab, i) => <CollabRow key={i} collab={collab} />)}
+    </div>
   );
 }
 

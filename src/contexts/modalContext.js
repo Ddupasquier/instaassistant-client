@@ -33,6 +33,13 @@ const ModalContextProvider = ({ children }) => {
     setNewAccountVisible(false);
   };
 
+  // * COLLAB MODAL
+  const [isCollabModalOpen, setIsCollabModalOpen] = useState(false);
+  const collabHandler = () => setIsCollabModalOpen(true);
+  const closeCollabHandler = () => {
+    setIsCollabModalOpen(false);
+  };
+
   return (
     <ModalContext.Provider
       value={{
@@ -52,6 +59,9 @@ const ModalContextProvider = ({ children }) => {
         closeNewAccountHandler,
         userToApps,
         setUserToApps,
+        isCollabModalOpen,
+        collabHandler,
+        closeCollabHandler,
       }}
     >
       {children}

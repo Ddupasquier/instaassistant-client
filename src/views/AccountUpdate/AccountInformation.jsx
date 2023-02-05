@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, Text, Card, Link, Button } from '@nextui-org/react';
+import { Input } from '@nextui-org/react';
 import './account-update-styles.scss';
 
 function AccountInformation() {
