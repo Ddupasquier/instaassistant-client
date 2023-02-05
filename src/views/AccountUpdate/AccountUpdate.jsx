@@ -25,7 +25,7 @@ const AccountUpdate = () => {
           flexDirection: 'row',
           alignItems: 'center',
           justifyContent: 'center',
-          height: '90%',
+          height: 'fit-content',
           width: '90%',
         }}
       >

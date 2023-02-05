@@ -22,6 +22,7 @@ import {
   feedbackPath,
   CheckKeyValidPath,
   ResetPasswordPath,
+  collabPath,
 } from './endpoints';
 
 // ----------- Start User
@@ -479,6 +480,28 @@ export const SendFeedback = async (formData) => {
     alert(resp_1.error);
   } else if (resp_1.success) {
     return resp_1;
+  }
+};
+
+// COLLABORATORS
+export const GetCollaborators = async (account_id) => {
+  const response = await fetch(collabPath + account_id, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: localStorage.getItem('token'),
+    },
+  });
+  console.log(console.log(await response.text()));
+  const resp = await response.json();
+  // console.log(resp);
+  if (resp.error === 'AUTHENTICATION ERROR') {
+    Logout();
+  } else if (resp.error) {
+    alert(resp.error);
+  } else if (await response.text() !== undefined) {
+    return resp;
   }
 };
 

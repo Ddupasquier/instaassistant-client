@@ -52,3 +52,6 @@ export const ResetPasswordPath = baseUrl + '/users/reset_password';
 
 // * FEEBACK PATHS
 export const feedbackPath = baseUrl + '/feedback';
+
+//* COLLAB PATHS
+export const collabPath = baseUrl + '/accounts_collaborators/';
