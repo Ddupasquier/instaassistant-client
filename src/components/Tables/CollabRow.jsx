@@ -2,9 +2,20 @@ import React, { useContext } from 'react';
 import Avatar from 'react-avatar';
 import { Button } from '@nextui-org/react';
 import { ThemeContext } from 'contexts/themeContext';
+import { useParams } from 'react-router-dom';
+import { DeleteCollaborator } from 'api';
 
-function CollabRow({ collab }) {
+function CollabRow({ collab, setCollabs, collabs }) {
+  const { account_id } = useParams();
   const { isDark } = useContext(ThemeContext);
+
+  const deleteCollabUi = (account_id) => {
+    const newCollabs = collabs.filter(
+      (collab) => collab.account_id !== account_id
+    );
+    setCollabs(newCollabs);
+  };
+
   return (
     <div
       style={{
@@ -45,7 +56,15 @@ function CollabRow({ collab }) {
         role="cell"
         style={{ paddingRight: '.5rem' }}
       >
-        <Button color="error" auto rounded>
+        <Button
+          color="error"
+          auto
+          rounded
+          onClick={() => {
+            DeleteCollaborator(collab.id);
+            deleteCollabUi(collab.id);
+          }}
+        >
           Remove
         </Button>
       </div>

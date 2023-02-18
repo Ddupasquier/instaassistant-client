@@ -3,8 +3,9 @@ import { ModalContext } from 'contexts/modalContext';
 import { ThemeContext } from 'contexts/themeContext';
 import { Modal, Input, Button, Text } from '@nextui-org/react';
 import { MagnifyingGlass, CollabIcon } from 'assets';
+import { AddCollaborator } from 'api';
 
-const CollabModal = ({accountId}) => {
+const CollabModal = ({ accountId }) => {
   const { isDark } = useContext(ThemeContext);
   const { isCollabModalOpen, closeCollabHandler } = useContext(ModalContext);
 
@@ -12,6 +13,8 @@ const CollabModal = ({accountId}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    AddCollaborator(accountId, inputVal);
+    closeCollabHandler();
   };
 
   return (

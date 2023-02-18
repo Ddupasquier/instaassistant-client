@@ -55,3 +55,5 @@ export const feedbackPath = baseUrl + '/feedback';
 
 //* COLLAB PATHS
 export const collabPath = baseUrl + '/accounts_collaborators/';
+export const collabDeletePath = baseUrl + '/collaborators/';
+export const collabAddPath = baseUrl + '/collaborators/';

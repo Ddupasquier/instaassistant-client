@@ -7,14 +7,14 @@ import { MagnifyingGlass } from 'assets';
 import CollabTable from 'components/Tables/CollabTable';
 
 function AccountCollaboration() {
-  const {collabHandler} = useContext(ModalContext);
+  const { collabHandler } = useContext(ModalContext);
   const { isDark } = useContext(ThemeContext);
 
   return (
     <div className="account-collaboration">
       <div className="head">
         <h1>Manage Access</h1>
-        <Button color="warning" auto onClick={collabHandler}>
+        <Button color="warning" auto onClick={collabHandler} rounded>
           Add people
         </Button>
       </div>
@@ -24,7 +24,8 @@ function AccountCollaboration() {
         >
           <Input
             placeholder="Find a collaborator..."
-            contentLeft={<MagnifyingGlass color={isDark ? "white" : "black"} />}
+            contentLeft={<MagnifyingGlass color={isDark ? 'white' : 'black'} />}
+            css={{ marginBottom: '.5rem' }}
           />
           <CollabTable />
         </Card>

@@ -23,6 +23,8 @@ import {
   CheckKeyValidPath,
   ResetPasswordPath,
   collabPath,
+  collabDeletePath,
+  collabAddPath,
 } from './endpoints';
 
 // ----------- Start User
@@ -335,6 +337,28 @@ export const GetCollaborators = async (account_id) => {
   const response = await fetch(collabPath + account_id, {
     method: 'GET',
     headers: genericHeaders,
+  });
+  const resp = await response.json();
+  return checkAuth(resp);
+};
+
+export const DeleteCollaborator = async (collaborator_id) => {
+  const response = await fetch(
+    collabDeletePath + collaborator_id + '/delete',
+    {
+      method: 'GET',
+      headers: genericHeaders,
+    }
+  );
+  const resp = await response.json();
+  return checkAuth(resp);
+};
+
+export const AddCollaborator = async (accountId, inputVal) => {
+  const response = await fetch(collabAddPath + `${accountId}`, {
+    method: 'POST',
+    headers: genericHeaders,
+    body: JSON.stringify({ email: inputVal }),
   });
   const resp = await response.json();
   return checkAuth(resp);

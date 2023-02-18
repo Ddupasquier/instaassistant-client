@@ -18,7 +18,7 @@ function CollabTable() {
   return (
     <div>
       {collabs &&
-        collabs.map((collab, i) => <CollabRow key={i} collab={collab} />)}
+        collabs.map((collab, i) => <CollabRow key={i} collab={collab} setCollabs={setCollabs} collabs={collabs} />)}
     </div>
   );
 }

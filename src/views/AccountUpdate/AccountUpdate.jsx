@@ -37,6 +37,7 @@ const AccountUpdate = () => {
               <Button
                 onClick={() => setDisplayType('account')}
                 color="secondary"
+                rounded
               >
                 Account Information
               </Button>
@@ -45,6 +46,7 @@ const AccountUpdate = () => {
               <Button
                 onClick={() => setDisplayType('collaboration')}
                 color="secondary"
+                rounded
               >
                 Collaboration
               </Button>
@@ -53,12 +55,13 @@ const AccountUpdate = () => {
               <Button
                 onClick={() => setDisplayType('administration')}
                 color="secondary"
+                rounded
               >
                 Administration
               </Button>
             </li>
             <li>
-              <Button onClick={handleUnstick} color="error">
+              <Button onClick={handleUnstick} color="error" rounded>
                 Unstick Account
               </Button>
             </li>
