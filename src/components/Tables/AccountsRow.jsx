@@ -5,7 +5,7 @@ import Avatar from 'react-avatar';
 import 'views/Accounts/accounts-styles.scss';
 
 // * STYLED COMPONENTS
-import { Tr, Eye, Trash, Task, Username, Folder } from 'components/styled.js';
+import { Tr, Eye, Trash, Task, Username, Folder, Cog } from 'components/styled.js';
 
 // * UTILS IMPORTS
 import { platformIcon, truncateString } from 'utils';
@@ -117,7 +117,7 @@ function AccountsRow({ user, i }) {
           <Task title="View Tasks" size="20" />
         </Link>
         <Link to={`/accounts/${user.id}/update`}>
-          <FiSettings />
+          <Cog title="Account Settings" size="20" />
         </Link>
         <Trash
           title="Delete account"

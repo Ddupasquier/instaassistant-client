@@ -1,5 +1,5 @@
 import { styled } from '@nextui-org/react';
-import { FiTrash2, FiEye } from 'react-icons/fi';
+import { FiTrash2, FiEye, FiSettings } from 'react-icons/fi';
 import { BiTask } from 'react-icons/bi';
 import { AiOutlineFolderOpen } from 'react-icons/ai';
 
@@ -14,6 +14,16 @@ export const Tr = styled('tr', {
 });
 
 export const Eye = styled(FiEye, {
+  color: '$font',
+  fontSize: '1.5rem',
+  cursor: 'pointer',
+  transition: 'all 0.2s ease-in-out',
+  '&:hover': {
+    color: '$secondary',
+  },
+});
+
+export const Cog = styled(FiSettings, {
   color: '$font',
   fontSize: '1.5rem',
   cursor: 'pointer',
