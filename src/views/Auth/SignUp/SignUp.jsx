@@ -112,7 +112,7 @@ function SignUp({ setLogIsVisible, logIsVisible, setForgPassShown }) {
                   <span>
                     I have read the{' '}
                     <a
-                      href="*"
+                      href="https://advanced-web-technology-c3582e48.s3.us-west-1.amazonaws.com/AntiSocialSuite/TermsOfService/Anti-Social%20Suite%20Terms%20Of%20Service.pdf"
                       target="_blank"
                       rel="noreferrer"
                       style={{ color: 'blue' }}
