@@ -74,7 +74,7 @@ function TaskModal({ account_id }) {
     };
     const res = PostTask(payload);
     if (res.error) {
-      alert(
+      throw new Error(
         'Something went wrong. Please try again in a few minutes!',
         res.error
       );

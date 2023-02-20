@@ -39,7 +39,7 @@ function ChangePassword() {
     if (data.new_password !== data.confirm_password) {
       setSending(true);
       setTimeout(() => {
-        alert('Passwords do not match');
+        throw new Error('Passwords do not match');
         setSending(false);
       }, 2000);
     }

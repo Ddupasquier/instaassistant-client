@@ -37,9 +37,9 @@ function SignUp({ setLogIsVisible, logIsVisible, setForgPassShown }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // if pwdconf is not equal to pwd, alert user
+    // if pwdconf is not equal to pwd, throw new Error user
     if (pwd !== pwdconf && tosCheck) {
-      alert('Passwords do not match');
+      throw new Error('Passwords do not match');
       return;
     }
     setLoading(true);

@@ -17,7 +17,7 @@ const DeleteConfirm = () => {
         if (data.success) {
           window.location.replace('/accounts');
         } else if (data.error) {
-          alert(data.error);
+          throw new Error(data.error);
           throw new Error(data.error);
         }
       });

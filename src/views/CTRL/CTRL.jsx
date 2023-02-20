@@ -41,7 +41,6 @@ const CTRL = () => {
     }
   }, [allAccounts, selectParam, selectedAccount]);
 
-
   useEffect(() => {
     switch (actionSelected) {
       case 'Follow':
@@ -82,13 +81,13 @@ const CTRL = () => {
     };
     const res = PostTask(payload);
     if (res.error) {
-      alert(
+      throw new Error(
         'Something went wrong. Please try again in a few minutes!',
         res.error
       );
     } else {
       setActionSelected('');
-      alert('Task successfully created!');
+      throw new Error('Task successfully created!');
     }
   };
 
@@ -105,33 +104,29 @@ const CTRL = () => {
         >
           <h1>CTRL</h1>
           {selectedAccount && (
-            <AccountInfoMin
-              id={id}
-              username={username}
-              platform={platform}
-            />
+            <AccountInfoMin id={id} username={username} platform={platform} />
           )}
         </div>
         <br />
-          <Select
-            onChange={(e) => {
-              setSelectParam(e.target.value);
-            }}
-          >
-            <option value={null} style={{ color: 'black' }}>
-              Select an account
-            </option>
-            {allAccounts &&
-              allAccounts.map((account) => (
-                <option
-                  key={account.id}
-                  value={account.username}
-                  style={{ color: 'black' }}
-                >
-                  {account.username}
-                </option>
-              ))}
-          </Select>
+        <Select
+          onChange={(e) => {
+            setSelectParam(e.target.value);
+          }}
+        >
+          <option value={null} style={{ color: 'black' }}>
+            Select an account
+          </option>
+          {allAccounts &&
+            allAccounts.map((account) => (
+              <option
+                key={account.id}
+                value={account.username}
+                style={{ color: 'black' }}
+              >
+                {account.username}
+              </option>
+            ))}
+        </Select>
 
         <form onSubmit={handleSubmit}>
           <Card.Body css={{ gap: '1rem' }}>

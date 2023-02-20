@@ -61,7 +61,7 @@ const TSK = () => {
     if (tsk_id) {
       setSelectParam(tsk_id);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -104,7 +104,7 @@ const TSK = () => {
     };
     const res = PostTask(payload);
     if (res.error) {
-      alert(
+      throw new Error(
         'Something went wrong. Please try again in a few minutes!',
         res.error
       );
@@ -112,7 +112,7 @@ const TSK = () => {
       setActionSelected('');
       setListTargetSelected('');
       setListTypeSelected('');
-      alert('Task successfully created!');
+      throw new Error('Task successfully created!');
     }
   };
 

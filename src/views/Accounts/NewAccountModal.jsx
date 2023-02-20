@@ -18,7 +18,7 @@ const NewAccountModal = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (pwd !== pwdConf) {
-      alert(
+      throw new Error(
         'Passwords do not match. Double check your password is correct, then try again.'
       );
     } else {
@@ -29,11 +29,11 @@ const NewAccountModal = () => {
       };
       CreateAccount(payload).then((data) => {
         if (data.success) {
-          alert('we got a success');
+          throw new Error('we got a success');
           setInterval(() => {
             GetTask(data.task_id).then((data) => {
               if (data.error) {
-                alert('failed');
+                throw new Error('failed');
               } else if (data.status === 'COMPLETED') {
                 clearInterval();
                 window.location.replace('/accounts/' + data.account_id);
@@ -46,7 +46,7 @@ const NewAccountModal = () => {
           }, 1000);
           setNewAccountSetup(false);
         } else if (data.error) {
-          alert(data.error);
+          throw new Error(data.error);
         }
       });
     }

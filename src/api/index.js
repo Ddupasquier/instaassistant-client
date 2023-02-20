@@ -41,8 +41,8 @@ export const CreateUserPost = async (userInfo) => {
   if (response.ok) {
     return await response.json();
   } else {
-    alert('Something went wrong');
     Logout();
+    throw new Error('Something went wrong');
   }
 };
 
@@ -57,8 +57,10 @@ export const loginFetch = async (userInfo, setUser) => {
   });
   const resp_1 = await resp.json();
   if (resp_1.error) {
-    alert(resp_1.error, 'The email or password you provided is incorrect!');
-    throw new Error(resp_1.error);
+    throw new Error(
+      resp_1.error,
+      'The email or password you provided is incorrect!'
+    );
   } else {
     localStorage.setItem('user', JSON.stringify(resp_1.user));
     localStorage.setItem('token', resp_1.jwt);
@@ -268,7 +270,7 @@ export const GenerateResetToken = async (formData) => {
   const resp_1 = await response.json();
 
   if (resp_1.error) {
-    alert(resp_1.error);
+    throw new Error(resp_1.error);
   } else if (resp_1.success) {
     return resp_1;
   }
@@ -286,7 +288,7 @@ export const ResetPassword = async (formData, key) => {
   const resp_1 = await response.json();
 
   if (resp_1.error) {
-    alert(resp_1.error);
+    throw new Error(resp_1.error);
   } else if (resp_1.success) {
     localStorage.setItem('user', JSON.stringify(resp_1.user));
     localStorage.setItem('token', resp_1.jwt);
@@ -326,7 +328,7 @@ export const SendFeedback = async (formData) => {
   const resp_1 = await response.json();
 
   if (resp_1.error) {
-    alert(resp_1.error);
+    throw new Error(resp_1.error);
   } else if (resp_1.success) {
     return resp_1;
   }
@@ -343,13 +345,10 @@ export const GetCollaborators = async (account_id) => {
 };
 
 export const DeleteCollaborator = async (collaborator_id) => {
-  const response = await fetch(
-    collabDeletePath + collaborator_id + '/delete',
-    {
-      method: 'GET',
-      headers: genericHeaders,
-    }
-  );
+  const response = await fetch(collabDeletePath + collaborator_id + '/delete', {
+    method: 'GET',
+    headers: genericHeaders,
+  });
   const resp = await response.json();
   return checkAuth(resp);
 };
@@ -370,7 +369,7 @@ const checkAuth = async (resp) => {
   if (resp.error === 'AUTHENTICATION ERROR') {
     Logout();
   } else if (resp.error) {
-    alert(resp.error);
+    throw new Error(resp.error);
   } else {
     return resp;
   }
