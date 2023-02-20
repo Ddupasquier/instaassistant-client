@@ -42,7 +42,7 @@ export const Sidebar = () => {
                             to={subItem.to}
                             onClick={() => {
                               subItem.to === '/' &&
-                                throw new Error('This is a coming feature');
+                                alert('This is a coming feature');
                               setUserToApps(null);
                             }}
                           >

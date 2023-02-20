@@ -12,7 +12,7 @@ function ChangePassword({ changePasswordVisible, closeChangePasswordHandler }) {
       new_password:
         data.new_password === data.confirm_password
           ? data.new_password
-          : throw new Error('Passwords do not match'),
+          : alert('Passwords do not match'),
     };
     ChangePasswordPatch(payload).then(closeChangePasswordHandler());
   };
